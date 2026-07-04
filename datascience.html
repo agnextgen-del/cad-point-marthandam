@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Science & AI Course | CADPOINT Authorized Training Centre</title>
+  <meta name="description" content="Master Data Science & Artificial Intelligence at CADPOINT. Learn Python, Machine Learning, Deep Learning, NLP, Computer Vision with real-time projects and 100% placement support.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="icon" type="image/x-icon" href="assets/image/cadd-logo.webp">
+  <style>
+    :root {
+      --primary: #8B0000;
+      --primary-light: #A00000;
+      --primary-dark: #5c0000;
+      --primary-glow: rgba(139,0,0,0.35);
+      --white: #ffffff;
+      --light-gray: #F5F5F5;
+      --text-dark: #1a1a1a;
+      --text-muted: #555;
+      --border-light: rgba(139,0,0,0.15);
+      --glass-bg: rgba(255,255,255,0.08);
+      --glass-border: rgba(255,255,255,0.18);
+    }
+
+    html, body { max-width: 100%; overflow-x: hidden; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; color: var(--text-dark); background: var(--white); overflow-x: hidden; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+    /* ─── LOADER ─── */
+    #loader {
+      position: fixed; inset: 0; background: var(--primary-dark); z-index: 9999;
+      display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 20px;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    #loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-logo { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2rem; color: white; letter-spacing: 4px; }
+    .loader-logo span { color: #ffd700; }
+    .loader-bar { width: 200px; height: 3px; background: rgba(255,255,255,0.15); border-radius: 3px; overflow: hidden; }
+    .loader-bar-inner { height: 100%; background: linear-gradient(90deg, var(--primary-light), #ffd700); border-radius: 3px; animation: loadBar 1.8s ease-in-out forwards; }
+    @keyframes loadBar { from { width: 0; } to { width: 100%; } }
+
+    /* ─── BACK TO TOP ─── */
+    #backToTop {
+      position: fixed; bottom: 30px; right: 30px; width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; border: none;
+      border-radius: 50%; cursor: pointer; box-shadow: 0 6px 20px var(--primary-glow);
+      opacity: 0; transform: translateY(20px); transition: all 0.4s ease; z-index: 999;
+      display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+    }
+    #backToTop.visible { opacity: 1; transform: translateY(0); }
+    #backToTop:hover { transform: translateY(-4px); box-shadow: 0 10px 30px var(--primary-glow); }
+
+    /* ─── NAVBAR ─── */
+    .navbar {
+      background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
+      box-shadow: 0 2px 30px rgba(139,0,0,0.12); padding: 7px 0;
+      position: sticky; top: 0; z-index: 1000; transition: all 0.3s ease;
+    }
+    .navbar.scrolled { padding: 8px 0; box-shadow: 0 4px 40px rgba(139,0,0,0.2); }
+    .navbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-text .brand-name { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.3rem; color: var(--primary); letter-spacing: 2px; }
+    .logo-text .brand-sub { font-size: 0.58rem; font-weight: 600; color: #666; letter-spacing: 1.5px; text-transform: uppercase; }
+    .navbar-nav .nav-link { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.8px; text-transform: uppercase; padding: 8px 16px !important; border-radius: 6px; transition: all 0.3s ease; }
+    .navbar-nav .nav-link:hover { color: var(--primary); }
+    .btn-nav-enroll { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white !important; padding: 8px 22px !important; border-radius: 25px !important; font-weight: 700 !important; box-shadow: 0 4px 15px var(--primary-glow); transition: all 0.3s ease !important; }
+    .btn-nav-enroll:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--primary-glow) !important; }
+    .btn-nav-enroll::after { display: none !important; }
+
+    /* ─── MEGA MENU ─── */
+    #coursesNav { position: static !important; }
+    #coursesNav > div { display: flex; align-items: center; }
+    .courses-mega-menu {
+      position: fixed !important; top: auto !important; left: 50% !important;
+      transform: translateX(-50%) translateY(6px) !important; width: min(960px, 96vw) !important;
+      display: block !important; opacity: 0; visibility: hidden;
+      transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+      pointer-events: none; border: none !important; border-radius: 16px !important; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.16), 0 0 0 1px rgba(139,0,0,0.1) !important; padding: 0 !important;
+    }
+    .courses-mega-menu.show { opacity: 1 !important; visibility: visible !important; transform: translateX(-50%) translateY(0) !important; pointer-events: auto !important; }
+    .mega-col { flex: 1; padding: 20px 10px 10px 10px; border-right: 1px solid rgba(139,0,0,0.08); background: white; }
+    .mega-col:last-child { border-right: none; }
+    .mega-col-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid rgba(139,0,0,0.08); }
+    .mega-col-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .mega-col-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.82rem; color: var(--text-dark); letter-spacing: 0.4px; }
+    .mega-col-sub { font-size: 0.68rem; color: #999; font-weight: 500; margin-top: 1px; }
+    .mega-item { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 7px; font-size: 0.8rem; font-weight: 500; color: var(--text-dark); text-decoration: none; transition: background 0.15s, color 0.15s, padding-left 0.15s; margin-bottom: 2px; }
+    .mega-item i { font-size: 0.72rem; width: 16px; text-align: center; color: #aaa; transition: color 0.15s; flex-shrink: 0; }
+    .mega-item:hover { background: rgba(139,0,0,0.07); color: var(--primary); padding-left: 12px; }
+    .mega-item:hover i { color: var(--primary); }
+    #coursesNav .courses-caret { color: var(--text-dark); transition: color 0.2s; }
+    #coursesNav .courses-caret:hover { color: var(--primary); }
+    .mega-close-x { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border: none; border-radius: 50%; background: #fff; color: #222; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 99; box-shadow: 0 4px 15px rgba(0,0,0,.12); transition: .3s ease; }
+    .mega-close-x:hover { background: var(--primary); color: #fff; transform: rotate(90deg); }
+
+    /* ─── MOBILE NAV ─── */
+    @media (max-width: 991px) {
+      .navbar-collapse { background: #fff; padding: 15px; border-radius: 18px; margin-top: 15px; box-shadow: 0 10px 35px rgba(0,0,0,.08); }
+      #coursesNav { width: 100%; }
+      #coursesNav .d-flex { width: 100%; justify-content: space-between; align-items: center; }
+      #coursesNav .nav-link { padding: 12px 0 !important; }
+      .courses-mega-menu {  transform: none !important; width: 100% !important; min-width: 100% !important; margin-top: 10px !important; border: none !important; box-shadow: none !important; border-radius: 16px !important; overflow: hidden; background: #f8f9fb; }
+      .courses-mega-menu .d-flex { flex-direction: column !important; gap: 0 !important; padding-top: 0 !important; }
+      .mega-col { width: 100% !important; border-right: none !important; border-bottom: 1px solid rgba(0,0,0,.06); padding: 18px 16px !important; }
+      .mega-col:last-child { border-bottom: none; }
+      .mega-item { width: 100%; display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 10px; font-size: .92rem; }
+    }
+
+    /* ─── BREADCRUMB TICKER ─── */
+    .breadcrumb-slider { background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-dark) 100%); padding: 0; overflow: hidden; height: 38px; display: flex; align-items: center; position: relative; }
+    .breadcrumb-slider::before, .breadcrumb-slider::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none; }
+    .breadcrumb-slider::before { left: 0; background: linear-gradient(to right, var(--primary-dark), transparent); }
+    .breadcrumb-slider::after { right: 0; background: linear-gradient(to left, var(--primary-dark), transparent); }
+    .breadcrumb-track { display: flex; animation: scrollBreadcrumb 28s linear infinite; white-space: nowrap; will-change: transform; }
+    .breadcrumb-track:hover { animation-play-state: paused; }
+    .breadcrumb-item-slide { display: inline-flex; align-items: center; gap: 8px; padding: 0 30px; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 1px; text-transform: uppercase; font-family: 'Montserrat', sans-serif; }
+    .breadcrumb-item-slide i { color: rgba(255,255,255,0.6); font-size: 0.7rem; }
+    @keyframes scrollBreadcrumb { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ─── HERO SECTION ─── */
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, #c0392b 80%, var(--primary-dark) 100%);
+      min-height: 92vh; display: flex; align-items: center; position: relative; overflow: hidden; padding: 80px 0 80px;
+    }
+    .hero-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.4;
+    }
+    /* Floating particles */
+    .hero-particle { position: absolute; border-radius: 50%; pointer-events: none; animation: floatParticle 6s ease-in-out infinite; }
+    .hero-particle:nth-child(1) { width: 300px; height: 300px; background: radial-gradient(circle, rgba(255,215,0,0.08) 0%, transparent 70%); top: -100px; left: -80px; animation-delay: 0s; }
+    .hero-particle:nth-child(2) { width: 500px; height: 500px; background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%); top: -150px; right: -100px; animation-delay: -3s; }
+    .hero-particle:nth-child(3) { width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,215,0,0.06) 0%, transparent 70%); bottom: 50px; left: 30%; animation-delay: -1.5s; }
+    @keyframes floatParticle { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(10px); padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+    .hero-badge span { color: #ffd700; }
+    .hero-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; color: white; margin-bottom: 20px; }
+    .hero-title .highlight { color: #ffd700; }
+    .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.82); line-height: 1.8; margin-bottom: 32px; max-width: 680px; margin-left: auto; margin-right: auto; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 36px; }
+    .hero-tag { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; padding: 6px 16px; font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.9); display: flex; align-items: center; gap: 6px; transition: all 0.3s ease; }
+    .hero-tag:hover { background: rgba(255,215,0,0.15); border-color: rgba(255,215,0,0.4); color: #ffd700; transform: translateY(-2px); }
+    .hero-tag i { font-size: 0.7rem; color: #ffd700; }
+    .hero-stats-row { display: flex; gap: 40px; justify-content: center; margin-bottom: 40px; flex-wrap: wrap; }
+    .hero-stat { text-align: center; }
+    .hero-stat .num { display: block; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2rem; color: #ffd700; line-height: 1; }
+    .hero-stat .lbl { font-size: 0.75rem; color: rgba(255,255,255,0.7); font-weight: 500; }
+    .hero-divider { width: 1px; height: 50px; background: rgba(255,255,255,0.2); align-self: center; }
+    .btn-hero-primary { background: linear-gradient(135deg, #ffd700, #ffb700); color: var(--primary-dark) !important; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.88rem; letter-spacing: 0.8px; padding: 14px 32px; border-radius: 50px; border: none; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 8px 25px rgba(255,215,0,0.4); transition: all 0.3s ease; }
+    .btn-hero-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(255,215,0,0.5); }
+    .btn-hero-outline { background: transparent; color: white !important; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem; letter-spacing: 0.8px; padding: 13px 32px; border-radius: 50px; border: 2px solid rgba(255,255,255,0.4); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; }
+    .btn-hero-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); transform: translateY(-3px); }
+    .hero-wave { position: absolute; bottom: 0; width: 100%; line-height: 0; }
+    .hero-wave svg { display: block; }
+
+    /* ─── SECTION COMMON ─── */
+    section { padding: 90px 0; }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; padding: 7px 20px; border-radius: 50px; background: rgba(139,0,0,0.08); color: var(--primary); font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; border: 1px solid rgba(139,0,0,0.15); margin-bottom: 16px; }
+    .section-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(1.7rem, 3.5vw, 2.5rem); line-height: 1.2; color: var(--text-dark); margin-bottom: 14px; }
+    .section-sub { font-size: 1rem; color: var(--text-muted); line-height: 1.8; max-width: 620px; }
+    .section-sub.mx-auto { margin-left: auto; margin-right: auto; }
+
+    /* ─── OVERVIEW SECTION ─── */
+    .overview-section { background: #fff; }
+    .overview-img-wrap { position: relative; }
+    .overview-img-wrap img { width: 100%; border-radius: 20px; box-shadow: 0 30px 80px rgba(0,0,0,0.12); }
+    .overview-badge-float { position: absolute; bottom: -20px; right: -20px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; padding: 18px 24px; border-radius: 16px; text-align: center; box-shadow: 0 15px 40px var(--primary-glow); }
+    .overview-badge-float .big { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.8rem; color: #ffd700; line-height: 1; }
+    .overview-badge-float .small { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.5px; }
+    .overview-bullet { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px; }
+    .overview-bullet-icon { width: 42px; height: 42px; border-radius: 12px; background: rgba(139,0,0,0.08); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; transition: all 0.3s ease; }
+    .overview-bullet:hover .overview-bullet-icon { background: var(--primary); color: white; }
+    .overview-bullet-text h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.92rem; color: var(--text-dark); margin-bottom: 3px; }
+    .overview-bullet-text p { font-size: 0.83rem; color: var(--text-muted); margin: 0; line-height: 1.6; }
+
+    /* ─── WHY SECTION ─── */
+    .why-section { background: var(--light-gray); position: relative; overflow: hidden; }
+    .why-section::before { content: ''; position: absolute; width: 500px; height: 500px; background: rgba(139,0,0,0.04); border-radius: 50%; top: -200px; right: -150px; filter: blur(80px); pointer-events: none; }
+    .why-card { background: white; border-radius: 20px; padding: 32px 28px; box-shadow: 0 4px 30px rgba(0,0,0,0.06); transition: all 0.4s ease; height: 100%; border: 1px solid rgba(139,0,0,0.05); }
+    .why-card:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(139,0,0,0.12); border-color: #8b0000; }
+    .why-icon { width: 64px; height: 64px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 20px; transition: all 0.3s ease; }
+    .why-card:hover .why-icon { transform: scale(1.1) rotate(-5deg); }
+    .why-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; color: var(--text-dark); margin-bottom: 10px; }
+    .why-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; margin: 0; }
+
+    /* ─── MODULES SECTION ─── */
+    .modules-section { background: #fff; }
+    .module-card { background: white; border-radius: 16px; padding: 24px 22px; border: 1px solid rgba(139,0,0,0.08); transition: all 0.35s ease; height: 100%; position: relative; overflow: hidden; }
+    .module-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--primary)); transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease; }
+    .module-card:hover::before { transform: scaleX(1); }
+    .module-card:hover { box-shadow: 0 15px 50px rgba(138, 48, 48, 0.1); transform: translateY(-5px); }
+    .module-num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2rem; color: rgba(139,0,0,0.08); line-height: 1; margin-bottom: 8px; }
+    .module-icon { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 14px; }
+    .module-card h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--text-dark); margin-bottom: 10px; }
+    .module-topics { list-style: none; padding: 0; margin: 0; }
+    .module-topics li { font-size: 0.78rem; color: var(--text-muted); padding: 3px 0; display: flex; align-items: center; gap: 6px; }
+    .module-topics li::before { content: '▸'; color: var(--primary); font-size: 0.7rem; }
+
+    /* ─── AI TECH SPLIT SECTION ─── */
+    .ai-tech-section { background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%); }
+    .ai-tech-img { border-radius: 24px; overflow: hidden; position: relative; }
+    .ai-tech-img img { width: 100%; display: block; }
+    .ai-tech-svg { width: 100%; border-radius: 24px; box-shadow: 0 30px 80px rgba(0,0,0,0.15); }
+    .tech-pill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
+    .tech-pill { background: white; border-radius: 12px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: all 0.3s ease; border: 1px solid rgba(139,0,0,0.05); }
+    .tech-pill:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(139,0,0,0.1); }
+    .tech-pill-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .tech-pill h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.8rem; color: var(--text-dark); margin: 0 0 2px; }
+    .tech-pill p { font-size: 0.7rem; color: var(--text-muted); margin: 0; }
+
+    /* ─── PROJECTS SECTION ─── */
+    .projects-section { background: #fff; }
+    .project-card { border-radius: 20px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.08); transition: all 0.4s ease; height: 100%; background: white; border: 1px solid rgba(139,0,0,0.06); }
+    .project-card:hover { transform: translateY(-8px); box-shadow: 0 25px 70px rgba(139,0,0,0.12); }
+    .project-card-top { padding: 28px; background: linear-gradient(135deg, var(--primary-dark), var(--primary)); position: relative; overflow: hidden; }
+    .project-card-top::after { content: ''; position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; border-radius: 50%; background: rgba(255,255,255,0.05); }
+    .project-card-top .proj-icon { font-size: 2.5rem; color: #ffd700; margin-bottom: 10px; position: relative; z-index: 1; }
+    .project-card-top h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; color: white; margin: 0; position: relative; z-index: 1; }
+    .project-card-body { padding: 22px; }
+    .project-card-body p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px; }
+    .project-tag { display: inline-block; padding: 4px 10px; background: rgba(139,0,0,0.07); color: var(--primary); border-radius: 6px; font-size: 0.72rem; font-weight: 600; margin: 3px; }
+
+    /* ─── CAREER SECTION ─── */
+    .career-section { background: var(--light-gray); }
+    .career-card { background: white; border-radius: 20px; padding: 28px; box-shadow: 0 4px 30px rgba(0,0,0,0.06); transition: all 0.4s ease; height: 100%; border-left: 4px solid var(--primary); }
+    .career-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
+    .career-role { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; color: var(--text-dark); margin-bottom: 8px; }
+    .career-salary { display: inline-block; background: rgba(139,0,0,0.08); color: var(--primary); padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; margin-bottom: 12px; }
+    .career-demand { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+    .demand-bar { flex: 1; height: 6px; background: rgba(139,0,0,0.1); border-radius: 3px; overflow: hidden; }
+    .demand-fill { height: 100%; background: linear-gradient(90deg, var(--primary), #ffd700); border-radius: 3px; }
+    .demand-label { font-size: 0.72rem; font-weight: 700; color: var(--primary); white-space: nowrap; }
+    .career-skills { display: flex; flex-wrap: wrap; gap: 5px; }
+    .career-skill-tag { background: #f5f5f5; color: var(--text-muted); padding: 3px 10px; border-radius: 5px; font-size: 0.72rem; font-weight: 500; }
+
+    /* ─── LEARNING PROCESS ─── */
+    .process-section { background: white; }
+    .process-timeline { position: relative; }
+    .process-timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--primary), #ffd700); transform: translateX(-50%); }
+    .process-step { display: flex; align-items: flex-start; gap: 30px; margin-bottom: 60px; position: relative; }
+    .process-step:nth-child(even) { flex-direction: row-reverse; }
+    .process-step-content { flex: 1; background: white; border-radius: 20px; padding: 28px; box-shadow: 0 8px 40px rgba(0,0,0,0.08); border: 1px solid rgba(139,0,0,0.08); transition: all 0.3s ease; }
+    .process-step-content:hover { box-shadow: 0 15px 60px rgba(139,0,0,0.12); }
+    .process-step-num { width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.3rem; flex-shrink: 0; box-shadow: 0 8px 25px var(--primary-glow); z-index: 1; position: relative; }
+    .process-step-content h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; color: var(--text-dark); margin-bottom: 8px; }
+    .process-step-content p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; margin: 0; }
+    @media (max-width: 767px) {
+      .process-timeline::before { left: 28px; }
+      .process-step, .process-step:nth-child(even) { flex-direction: row; }
+      .process-step-content { flex: 1; }
+    }
+
+    /* ─── STATS BAND ─── */
+    .stats-band { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); padding: 70px 0; }
+    .stat-item { text-align: center; padding: 20px; }
+    .stat-item .num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 3rem; color: #ffd700; line-height: 1; margin-bottom: 8px; }
+    .stat-item .lbl { font-size: 0.95rem; color: rgba(255,255,255,0.85); font-weight: 500; }
+    .stat-divider { width: 1px; background: rgba(255,255,255,0.2); align-self: stretch; }
+
+    /* ─── TESTIMONIALS ─── */
+    .testi-section { background: var(--light-gray); }
+    .testi-card { background: white; border-radius: 20px; padding: 32px; box-shadow: 0 8px 40px rgba(0,0,0,0.07); border: 1px solid rgba(139,0,0,0.05); transition: all 0.4s ease; height: 100%; }
+    .testi-card:hover { box-shadow: 0 20px 60px rgba(0,0,0,0.12); transform: translateY(-5px); }
+    .testi-stars { color: #ffd700; font-size: 0.85rem; margin-bottom: 16px; }
+    .testi-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 24px; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 14px; }
+    .testi-avatar { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--primary-light)); display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.1rem; color: white; flex-shrink: 0; }
+    .testi-name { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--text-dark); }
+    .testi-company { font-size: 0.75rem; color: var(--primary); font-weight: 600; }
+    .testi-quote-mark { font-size: 4rem; color: rgba(139,0,0,0.08); font-family: Georgia, serif; line-height: 0.5; float: left; margin-right: 8px; margin-top: 20px; }
+
+    /* ─── FAQ SECTION ─── */
+    .faq-section {background: var(--light-gray); }
+    .accordion-button { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--text-dark); background: white; padding: 18px 22px; }
+    .accordion-button:not(.collapsed) { color: var(--primary); background: rgba(139,0,0,0.03); box-shadow: none; }
+    .accordion-button:focus { box-shadow: none; }
+    .accordion-button::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%238B0000'%3E%3Cpath d='M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z'/%3E%3C/svg%3E"); }
+    .accordion-item { border: 1px solid rgba(139,0,0,0.1); border-radius: 14px !important; margin-bottom: 12px; overflow: hidden; }
+    .accordion-body { font-size: 0.87rem; color: var(--text-muted); line-height: 1.8; padding: 0 22px 18px; }
+
+    /* ─── CTA SECTION ─── */
+    .cta-section { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, #c0392b 100%); padding: 90px 0; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%); top: -200px; right: -100px; }
+    .cta-section::after { content: ''; position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(255,215,0,0.06) 0%, transparent 70%); bottom: -150px; left: -80px; }
+    .cta-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(1.8rem, 4vw, 3rem); color: white; margin-bottom: 16px; }
+    .cta-subtitle { color: rgba(255,255,255,0.8); font-size: 1rem; margin-bottom: 36px; }
+    .btn-cta-glow { background: linear-gradient(135deg, #ffd700, #ffb700); color: var(--primary-dark) !important; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; padding: 16px 42px; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; animation: pulseGlow 2.5s infinite; transition: all 0.3s ease; }
+    .btn-cta-glow:hover { transform: translateY(-4px); }
+    @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(255,215,0,0.5); } 50% { box-shadow: 0 0 0 18px rgba(255,215,0,0); } }
+    .btn-cta-outline { background: transparent; color: white !important; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; padding: 15px 36px; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; border: 2px solid rgba(255,255,255,0.4); transition: all 0.3s ease; }
+    .btn-cta-outline:hover { border-color: white; background: rgba(255,255,255,0.1); }
+
+    /* ─── FOOTER ─── */
+    footer { background: #0d0d0d; padding: 70px 0 0; color: rgba(255,255,255,0.75); }
+    .footer-brand { margin-bottom: 20px; }
+    .footer-desc { font-size: 0.85rem; line-height: 1.8; color: rgba(255,255,255,0.55); margin-bottom: 22px; }
+    .footer-socials { display: flex; gap: 10px; }
+    .footer-social-btn { width: 36px; height: 36px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); font-size: 0.85rem; transition: all 0.3s ease; text-decoration: none; }
+    .footer-social-btn:hover { background: var(--primary); border-color: var(--primary); color: white; transform: translateY(-3px); }
+    .footer-heading { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 1.5px; text-transform: uppercase; color: white; margin-bottom: 20px; position: relative; padding-bottom: 10px; }
+    .footer-heading::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 2px; background: var(--primary); border-radius: 2px; }
+    .footer-links { list-style: none; padding: 0; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 6px; }
+    .footer-links a:hover { color: var(--primary-light); padding-left: 5px; }
+    .footer-links a i { font-size: 0.65rem; color: var(--primary); }
+    .footer-contact li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; font-size: 0.85rem; }
+    .footer-contact li i { color: var(--primary-light); margin-top: 3px; flex-shrink: 0; font-size: 0.85rem; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding: 22px 0; margin-top: 50px; font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+
+    /* ─── GLASSMORPHISM HIGHLIGHT BOX ─── */
+    .glass-highlight { background: rgba(139,0,0,0.06); border: 1px solid rgba(139,0,0,0.12); border-radius: 16px; padding: 24px; backdrop-filter: blur(10px); }
+    .glass-highlight-dark { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 24px; }
+
+    /* ─── BENEFITS SECTION ─── */
+    .benefits-section { background: #fff; }
+    .benefit-item { display: flex; align-items: flex-start; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(139,0,0,0.06); }
+    .benefit-item:last-child { border-bottom: none; }
+    .benefit-icon { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; box-shadow: 0 4px 15px var(--primary-glow); }
+    .benefit-text h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--text-dark); margin-bottom: 3px; }
+    .benefit-text p { font-size: 0.82rem; color: var(--text-muted); margin: 0; line-height: 1.6; }
+
+    /* ─── RIPPLE ─── */
+    .ripple { position: relative; overflow: hidden; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 767px) {
+      section { padding: 65px 0; }
+      .hero-section { padding: 70px 0 60px; }
+      .hero-stats-row { gap: 20px; }
+      .hero-divider { display: none; }
+      .stats-band .col-md-3 { text-align: center; }
+    }
+    @media (max-width: 576px) {
+      .tech-pill-grid { grid-template-columns: 1fr; }
+      .overview-badge-float { right: 0; bottom: -10px; }
+    }
+
+    .text-lg-justify{
+      text-align:justify;
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<!-- <div id="loader">
+  <div class="loader-logo">CAD<span>POINT</span></div>
+  <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+</div> -->
+
+<!-- BACK TO TOP -->
+<button id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+<!-- ═══════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════ -->
+<div id="header"></div>
+
+<!-- BREADCRUMB TICKER -->
+<div class="breadcrumb-slider">
+  <div class="breadcrumb-track">
+    <div class="breadcrumb-item-slide"><i class="fas fa-brain"></i> <strong>Data Science</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-robot"></i> <strong>Artificial Intelligence</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-chart-line"></i> <strong>Machine Learning</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-network-wired"></i> <strong>Deep Learning</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fab fa-python"></i> <strong>Python for AI</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-eye"></i> <strong>Computer Vision</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-comment-dots"></i> <strong>NLP</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-award"></i> <strong>Certification</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-brain"></i> <strong>Data Science</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-robot"></i> <strong>Artificial Intelligence</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-chart-line"></i> <strong>Machine Learning</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-network-wired"></i> <strong>Deep Learning</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fab fa-python"></i> <strong>Python for AI</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-eye"></i> <strong>Computer Vision</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-comment-dots"></i> <strong>NLP</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-award"></i> <strong>Certification</strong></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     HERO SECTION
+═══════════════════════════════════════════ -->
+<section class="hero-section">
+  <div class="hero-particle"></div>
+  <div class="hero-particle"></div>
+  <div class="hero-particle"></div>
+  <div class="container position-relative text-center" style="z-index:1">
+    <div class="hero-badge" data-aos="fade-down" data-aos-delay="100">
+      <i class="fas fa-star"></i> <span>ISO Certified</span> &nbsp;|&nbsp; Industry-Ready AI Training
+    </div>
+    <h1 class="hero-title" id="heroTitle" data-aos="fade-up" data-aos-delay="200">
+      Master <span class="highlight">Data Science</span> &<br>Artificial Intelligence
+    </h1>
+    <p class="hero-sub" data-aos="fade-up" data-aos-delay="300">
+      Launch your career in AI, Machine Learning, Data Analytics & Automation. Learn from industry experts with real-world projects, hands-on datasets, and 100% placement support.
+    </p>
+    <div class="hero-tags" data-aos="fade-up" data-aos-delay="380">
+      <span class="hero-tag"><i class="fab fa-python"></i> Python</span>
+      <span class="hero-tag"><i class="fas fa-robot"></i> Machine Learning</span>
+      <span class="hero-tag"><i class="fas fa-brain"></i> Deep Learning</span>
+      <span class="hero-tag"><i class="fas fa-chart-bar"></i> Data Analytics</span>
+      <span class="hero-tag"><i class="fas fa-comment-dots"></i> NLP</span>
+      <span class="hero-tag"><i class="fas fa-eye"></i> Computer Vision</span>
+      <span class="hero-tag"><i class="fas fa-database"></i> SQL & Power BI</span>
+    </div>
+    
+    <div class="d-flex flex-wrap gap-3 justify-content-center" data-aos="fade-up" data-aos-delay="500">
+      <a href="https://wa.me/919895352624" class="btn-hero-primary ripple">
+        <i class="fas fa-rocket"></i>Book a Free Demo
+      </a>
+      <a href="tel:+919895352624" class="btn-hero-outline">
+        <i class="fas fa-compass"></i> Contact now
+      </a>
+    </div>
+  </div>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" fill="#ffffff"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     COURSE OVERVIEW
+═══════════════════════════════════════════ -->
+<section class="overview-section" id="overview">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-5" data-aos="fade-right">
+        <img src="assets/image/ai-course.webp" class="w-100">
+       
+      </div>
+      <div class="col-lg-7" data-aos="fade-left">
+        <div class="section-tag"><i class="fas fa-graduation-cap"></i> Course Overview</div>
+        <h2 class="section-title"> Data Science &<span style="color:var(--primary)"> AI Course</span></h2>
+        <p class="section-sub mb-4 text-lg-justify">At CADDPOINT, we provide industry-focused Data Science and Artificial Intelligence courses designed to help students and professionals build successful careers in today’s technology-driven world. Our training programs cover Python, Machine Learning, Deep Learning, Data Analytics, AI tools, and real-time projects guided by experienced trainers. We focus on practical learning, hands-on assignments, and career development to ensure students gain both technical knowledge and confidence. Whether you are a beginner or looking to upgrade your skills, CADDPOINT offers the right learning environment with expert mentorship, flexible training schedules, and certification support to help you achieve your professional goals in the fast-growing AI and Data Science industry.</p>
+        <!-- <div class="overview-bullet">
+          <div class="overview-bullet-icon"><i class="fas fa-clock"></i></div>
+          <div class="overview-bullet-text"><h6>Flexible Duration</h6><p>6–12 months (Weekend / Weekday / Fast-track batches available)</p></div>
+        </div> -->
+        <!-- <div class="overview-bullet">
+          <div class="overview-bullet-icon"><i class="fas fa-laptop"></i></div>
+          <div class="overview-bullet-text"><h6>Online & Offline Modes</h6><p>Attend from anywhere or visit our state-of-the-art lab facility</p></div>
+        </div> -->
+        <!-- <div class="overview-bullet">
+          <div class="overview-bullet-icon"><i class="fas fa-certificate"></i></div>
+          <div class="overview-bullet-text"><h6>Dual Certification</h6><p>CADPOINT certification + globally recognized course completion certificate</p></div>
+        </div> -->
+        <!-- <div class="overview-bullet">
+          <div class="overview-bullet-icon"><i class="fas fa-project-diagram"></i></div>
+          <div class="overview-bullet-text"><h6>15+ Real-Time Projects</h6><p>Build a portfolio with AI models, dashboards, and deployed ML solutions</p></div>
+        </div> -->
+        <a href="https://wa.me/919895352624" class="btn-hero-primary ripple mt-3" style="text-decoration:none;">
+          <i class="fas fa-rocket"></i> Enroll Now
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     WHY LEARN DATA SCIENCE & AI
+═══════════════════════════════════════════ -->
+<section class="why-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-fire"></i> Industry Demand</div>
+      <h2 class="section-title">Why Choose <span style="color:var(--primary)">Data Science & AI?</span></h2>
+      <p class="section-sub mx-auto">The world's fastest-growing field — powering every industry from healthcare to finance</p>
+    </div>
+    <div class="row gy-4">
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="why-card">
+          <div class="why-icon" style="background:rgba(37,99,235,0.1);color:#2563eb;"><i class="fas fa-dollar-sign"></i></div>
+          <h5>Highest Paying IT Career</h5>
+          <p>Data Scientists and AI Engineers command salaries of ₹6–40 LPA in India and $90K–$200K+ globally — making it the most lucrative tech domain.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+        <div class="why-card">
+          <div class="why-icon" style="background:rgba(139,0,0,0.1);color:var(--primary);"><i class="fas fa-chart-line"></i></div>
+          <h5>Explosive Job Growth</h5>
+          <p>The US Bureau of Labor Statistics projects 36% growth in data science roles through 2031 — 4x faster than the average occupation.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="why-card">
+          <div class="why-icon" style="background:rgba(16,185,129,0.1);color:#059669;"><i class="fas fa-globe"></i></div>
+          <h5>Universal Industry Demand</h5>
+          <p>Every industry — BFSI, healthcare, retail, e-commerce, manufacturing — now needs AI experts to power smarter, data-driven decisions.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
+        <div class="why-card">
+          <div class="why-icon" style="background:rgba(234,88,12,0.1);color:#ea580c;"><i class="fas fa-robot"></i></div>
+          <h5>Automation & Future Tech</h5>
+          <p>AI is the foundation of automation, autonomous vehicles, GenAI, and Industry 4.0 — skills you learn today are valid for decades ahead.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="why-card">
+          <div class="why-icon" style="background:rgba(139,0,0,0.1);color:var(--primary);"><i class="fas fa-laptop-code"></i></div>
+          <h5>Freelancing & Remote Work</h5>
+          <p>Build AI projects for global clients on platforms like Upwork, Toptal, and Kaggle — earn in dollars from anywhere in the world.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="350">
+        <div class="why-card">
+          <div class="why-icon" style="background:rgba(255,215,0,0.15);color:#b8860b;"><i class="fas fa-star"></i></div>
+          <h5>Work at Top Companies</h5>
+          <p>Our alumni work at Google, Amazon, Microsoft, Infosys, TCS, Wipro, startups, and leading MNCs — your next career milestone starts here.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     AI TECH SPLIT SECTION
+═══════════════════════════════════════════ -->
+<section class="benefits-section" style="background:#fff;">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="section-tag"><i class="fas fa-brain"></i> Core Technologies</div>
+        <h2 class="section-title">AI Technologies You Will <span style="color:var(--primary)">Master</span></h2>
+        <p class="section-sub mb-4">Our curriculum covers end-to-end AI stack  from data collection to model deployment using the most in-demand tools and frameworks.</p>
+        <div class="tech-pill-grid">
+          <div class="tech-pill">
+            <div class="tech-pill-icon" style="background:rgba(59,130,246,0.1);color:#3b82f6;"><i class="fab fa-python"></i></div>
+            <div><h6>Python & NumPy</h6><p>Core AI programming</p></div>
+          </div>
+          <div class="tech-pill">
+            <div class="tech-pill-icon" style="background:rgba(139,0,0,0.1);color:var(--primary);"><i class="fas fa-brain"></i></div>
+            <div><h6>TensorFlow & Keras</h6><p>Deep learning frameworks</p></div>
+          </div>
+          <div class="tech-pill">
+            <div class="tech-pill-icon" style="background:rgba(16,185,129,0.1);color:#059669;"><i class="fas fa-robot"></i></div>
+            <div><h6>Scikit-Learn</h6><p>ML algorithms library</p></div>
+          </div>
+          <div class="tech-pill">
+            <div class="tech-pill-icon" style="background:rgba(234,88,12,0.1);color:#ea580c;"><i class="fas fa-chart-bar"></i></div>
+            <div><h6>Power BI & Tableau</h6><p>Data visualization</p></div>
+          </div>
+          <div class="tech-pill">
+            <div class="tech-pill-icon" style="background:rgba(139,92,246,0.1);color:#7c3aed;"><i class="fas fa-database"></i></div>
+            <div><h6>SQL & Pandas</h6><p>Data engineering</p></div>
+          </div>
+          <div class="tech-pill">
+            <div class="tech-pill-icon" style="background:rgba(255,215,0,0.15);color:#b8860b;"><i class="fas fa-eye"></i></div>
+            <div><h6>OpenCV</h6><p>Computer vision</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <!-- Benefits with bullet points -->
+        <div class="glass-highlight">
+          <h5 class="mb-4 text-center" style="font-family:Montserrat,sans-serif;font-weight:700;color:var(--text-dark);">What You Gain at CADPOINT</h5>
+          <div class="benefit-item">
+            <div class="benefit-icon"><i class="fas fa-briefcase"></i></div>
+            <div class="benefit-text"><h6>100% Placement Assistance</h6><p>Dedicated HR team, resume reviews, mock interviews & direct company referrals</p></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon"><i class="fas fa-flask"></i></div>
+            <div class="benefit-text"><h6>Real-Time Project Experience</h6><p>Work on live business datasets — fraud detection, sentiment analysis, image recognition</p></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon"><i class="fas fa-certificate"></i></div>
+            <div class="benefit-text"><h6>Industry Certification</h6><p>Globally recognized certificate that boosts your resume and LinkedIn profile significantly</p></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon"><i class="fas fa-users"></i></div>
+            <div class="benefit-text"><h6>Internship Opportunities</h6><p>Collaborate with partner companies for paid/unpaid internships during your course</p></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon"><i class="fas fa-book-open"></i></div>
+            <div class="benefit-text"><h6>Lifetime Study Materials</h6><p>Access to recorded sessions, course notes, datasets & code repositories forever</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     COURSE MODULES
+═══════════════════════════════════════════ -->
+<section class="modules-section" id="modules" style="background:#f8f9fb;">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-layer-group"></i> Curriculum</div>
+      <h2 class="section-title">Complete Course <span style="color:var(--primary)">Modules</span></h2>
+      <p class="section-sub mx-auto">Structured, industry-aligned curriculum covering every aspect of modern Data Science and AI engineering</p>
+    </div>
+    <div class="row gy-4">
+      <!-- Module 1 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="module-card">
+          <div class="module-num">01</div>
+          <div class="module-icon" style="background:rgba(59,130,246,0.1);color:#3b82f6;"><i class="fab fa-python"></i></div>
+          <h6>Python for Data Science</h6>
+          <ul class="module-topics">
+            <li>Python syntax, OOP concepts</li>
+            <li>NumPy arrays & operations</li>
+            <li>Pandas DataFrames</li>
+            <li>File handling & data I/O</li>
+            <li>Matplotlib & Seaborn basics</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Module 2 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="140">
+        <div class="module-card">
+          <div class="module-num">02</div>
+          <div class="module-icon" style="background:rgba(16,185,129,0.1);color:#059669;"><i class="fas fa-database"></i></div>
+          <h6>SQL for Data Science</h6>
+          <ul class="module-topics">
+            <li>SQL fundamentals & joins</li>
+            <li>Window functions & CTEs</li>
+            <li>Data aggregation & filtering</li>
+            <li>MySQL & PostgreSQL</li>
+            <li>Python-SQL integration</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Module 3 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="180">
+        <div class="module-card">
+          <div class="module-num">03</div>
+          <div class="module-icon" style="background:rgba(139,0,0,0.1);color:var(--primary);"><i class="fas fa-chart-area"></i></div>
+          <h6>Data Analysis & EDA</h6>
+          <ul class="module-topics">
+            <li>Exploratory data analysis</li>
+            <li>Statistical data profiling</li>
+            <li>Data cleaning & wrangling</li>
+            <li>Feature engineering</li>
+            <li>Hypothesis testing</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Module 4 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="220">
+        <div class="module-card">
+          <div class="module-num">04</div>
+          <div class="module-icon" style="background:rgba(234,88,12,0.1);color:#ea580c;"><i class="fas fa-cogs"></i></div>
+          <h6>Machine Learning</h6>
+          <ul class="module-topics">
+            <li>Supervised / unsupervised learning</li>
+            <li>Linear & logistic regression</li>
+            <li>Decision trees, Random Forest</li>
+            <li>SVM, KNN, Naive Bayes</li>
+            <li>Model evaluation & tuning</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Module 5 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="260">
+        <div class="module-card">
+          <div class="module-num">05</div>
+          <div class="module-icon" style="background:rgba(139,0,0,0.1);color:var(--primary);"><i class="fas fa-network-wired"></i></div>
+          <h6>Deep Learning & Neural Networks</h6>
+          <ul class="module-topics">
+            <li>ANN, CNN, RNN architecture</li>
+            <li>Backpropagation & optimization</li>
+            <li>TensorFlow & Keras</li>
+            <li>Transfer learning</li>
+            <li>Dropout & regularization</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Module 6 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="module-card">
+          <div class="module-num">06</div>
+          <div class="module-icon" style="background:rgba(139,92,246,0.1);color:#7c3aed;"><i class="fas fa-comment-alt"></i></div>
+          <h6>Natural Language Processing</h6>
+          <ul class="module-topics">
+            <li>Text preprocessing & tokenization</li>
+            <li>Sentiment analysis</li>
+            <li>Named entity recognition</li>
+            <li>Transformers & BERT basics</li>
+            <li>Chatbot development</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Module 7 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="340">
+        <div class="module-card">
+          <div class="module-num">07</div>
+          <div class="module-icon" style="background:rgba(255,215,0,0.15);color:#b8860b;"><i class="fas fa-eye"></i></div>
+          <h6>Computer Vision</h6>
+          <ul class="module-topics">
+            <li>Image processing with OpenCV</li>
+            <li>Object detection & YOLO</li>
+            <li>Image classification with CNN</li>
+            <li>Face recognition systems</li>
+            <li>Video analysis basics</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Module 8 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="380">
+        <div class="module-card">
+          <div class="module-num">08</div>
+          <div class="module-icon" style="background:rgba(37,99,235,0.1);color:#2563eb;"><i class="fas fa-chart-bar"></i></div>
+          <h6>Power BI & Tableau</h6>
+          <ul class="module-topics">
+            <li>Dashboard design principles</li>
+            <li>Power BI reports & DAX</li>
+            <li>Tableau visualizations</li>
+            <li>Business KPI dashboards</li>
+            <li>Publishing & sharing reports</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Module 9 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="420">
+        <div class="module-card">
+          <div class="module-num">09</div>
+          <div class="module-icon" style="background:rgba(16,185,129,0.1);color:#059669;"><i class="fas fa-cloud-upload-alt"></i></div>
+          <h6>Model Deployment & MLOps</h6>
+          <ul class="module-topics">
+            <li>Flask & FastAPI for ML APIs</li>
+            <li>Streamlit web apps</li>
+            <li>AWS / GCP basics for ML</li>
+            <li>Docker & containerization</li>
+            <li>ML pipeline automation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ML CONCEPTS — ALTERNATING LAYOUT
+═══════════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <!-- Row 1 -->
+    <div class="row align-items-center gy-5 flex-row-reverse">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="section-tag"><i class="fas fa-cogs"></i> Machine Learning</div>
+        <h2 class="section-title">From Raw Data to <span style="color:var(--primary)">Predictive Models</span></h2>
+        <p class="section-sub mb-4">Understand the full ML lifecycle — from data collection and preprocessing to model training, validation, and production deployment.</p>
+        <ul style="list-style:none;padding:0;">
+          <li style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(139,0,0,0.06);">
+            <i class="fas fa-check-circle" style="color:var(--primary);font-size:1rem;"></i>
+            <span style="font-size:0.9rem;color:var(--text-dark);font-weight:500;">Supervised & Unsupervised Learning Algorithms</span>
+          </li>
+          <li style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(139,0,0,0.06);">
+            <i class="fas fa-check-circle" style="color:var(--primary);font-size:1rem;"></i>
+            <span style="font-size:0.9rem;color:var(--text-dark);font-weight:500;">Feature Selection, Dimensionality Reduction</span>
+          </li>
+          <li style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(139,0,0,0.06);">
+            <i class="fas fa-check-circle" style="color:var(--primary);font-size:1rem;"></i>
+            <span style="font-size:0.9rem;color:var(--text-dark);font-weight:500;">Cross-Validation & Hyperparameter Tuning</span>
+          </li>
+          <li style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(139,0,0,0.06);">
+            <i class="fas fa-check-circle" style="color:var(--primary);font-size:1rem;"></i>
+            <span style="font-size:0.9rem;color:var(--text-dark);font-weight:500;">Ensemble Methods — Boosting, Bagging, Stacking</span>
+          </li>
+          <li style="display:flex;align-items:center;gap:12px;padding:10px 0;">
+            <i class="fas fa-check-circle" style="color:var(--primary);font-size:1rem;"></i>
+            <span style="font-size:0.9rem;color:var(--text-dark);font-weight:500;">Scikit-learn, XGBoost, LightGBM mastery</span>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <img src="assets/image/prediction-model.webp" class="w-100">
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     REAL-TIME PROJECTS
+═══════════════════════════════════════════ -->
+<section class="projects-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-flask"></i> Hands-On Learning</div>
+      <h2 class="section-title">Real-Time <span style="color:var(--primary)">AI Projects</span></h2>
+      <p class="section-sub mx-auto">Build an industry-ready portfolio with 15+ real-world AI & Data Science projects using live datasets</p>
+    </div>
+    <div class="row gy-4">
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="project-card">
+          <div class="project-card-top">
+            <div class="proj-icon"><i class="fas fa-credit-card"></i></div>
+            <h5>Credit Card Fraud Detection</h5>
+          </div>
+          <div class="project-card-body">
+            <p>Build a real-time fraud detection system using imbalanced financial datasets, ensemble models, and threshold optimization.</p>
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Scikit-Learn</span>
+            <span class="project-tag">XGBoost</span>
+            <span class="project-tag">SMOTE</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+        <div class="project-card">
+          <div class="project-card-top">
+            <div class="proj-icon"><i class="fas fa-comment-dots"></i></div>
+            <h5>Sentiment Analysis Engine</h5>
+          </div>
+          <div class="project-card-body">
+            <p>Analyze Twitter and product reviews using NLP pipelines, BERT embeddings, and deploy as a real-time web API.</p>
+            <span class="project-tag">NLP</span>
+            <span class="project-tag">BERT</span>
+            <span class="project-tag">FastAPI</span>
+            <span class="project-tag">Transformers</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="project-card">
+          <div class="project-card-top">
+            <div class="proj-icon"><i class="fas fa-user-friends"></i></div>
+            <h5>Movie Recommendation System</h5>
+          </div>
+          <div class="project-card-body">
+            <p>Build collaborative and content-based filtering recommendation engines using matrix factorization and cosine similarity.</p>
+            <span class="project-tag">Collaborative Filtering</span>
+            <span class="project-tag">Pandas</span>
+            <span class="project-tag">Streamlit</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
+        <div class="project-card">
+          <div class="project-card-top">
+            <div class="proj-icon"><i class="fas fa-stethoscope"></i></div>
+            <h5>Medical Disease Prediction</h5>
+          </div>
+          <div class="project-card-body">
+            <p>Predict diabetes, heart disease, and cancer using clinical datasets, feature engineering, and interpretable ML models.</p>
+            <span class="project-tag">Healthcare Data</span>
+            <span class="project-tag">Random Forest</span>
+            <span class="project-tag">SHAP</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="project-card">
+          <div class="project-card-top">
+            <div class="proj-icon"><i class="fas fa-car"></i></div>
+            <h5>Object Detection with YOLO</h5>
+          </div>
+          <div class="project-card-body">
+            <p>Real-time object detection and tracking for vehicles, pedestrians, and traffic signs using YOLOv8 and OpenCV.</p>
+            <span class="project-tag">Computer Vision</span>
+            <span class="project-tag">YOLOv8</span>
+            <span class="project-tag">OpenCV</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="350">
+        <div class="project-card">
+          <div class="project-card-top">
+            <div class="proj-icon"><i class="fas fa-chart-line"></i></div>
+            <h5>Sales Forecasting Dashboard</h5>
+          </div>
+          <div class="project-card-body">
+            <p>Time-series forecasting with ARIMA, Prophet, and LSTM — published as an interactive Power BI dashboard.</p>
+            <span class="project-tag">Time Series</span>
+            <span class="project-tag">Prophet</span>
+            <span class="project-tag">Power BI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CAREER OPPORTUNITIES
+═══════════════════════════════════════════ -->
+<section class="career-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-briefcase"></i> Career Paths</div>
+      <h2 class="section-title">High-Demand <span style="color:var(--primary)">Career Roles</span></h2>
+      <p class="section-sub mx-auto">Unlock top-paying AI career opportunities across every major industry globally</p>
+    </div>
+    <div class="row gy-4">
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="career-card">
+          <div class="career-role"><i class="fas fa-brain me-2" style="color:var(--primary);"></i>Data Scientist</div>
+          <div class="career-salary">₹8 – 40 LPA</div>
+          <div class="career-demand"><div class="demand-bar"><div class="demand-fill" style="width:95%"></div></div><span class="demand-label">95% Demand</span></div>
+          <div class="career-skills">
+            <span class="career-skill-tag">Python</span><span class="career-skill-tag">ML</span><span class="career-skill-tag">Statistics</span><span class="career-skill-tag">SQL</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="140">
+        <div class="career-card">
+          <div class="career-role"><i class="fas fa-robot me-2" style="color:var(--primary);"></i>AI Engineer</div>
+          <div class="career-salary">₹10 – 45 LPA</div>
+          <div class="career-demand"><div class="demand-bar"><div class="demand-fill" style="width:92%"></div></div><span class="demand-label">92% Demand</span></div>
+          <div class="career-skills">
+            <span class="career-skill-tag">Deep Learning</span><span class="career-skill-tag">TensorFlow</span><span class="career-skill-tag">MLOps</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="180">
+        <div class="career-card">
+          <div class="career-role"><i class="fas fa-cogs me-2" style="color:var(--primary);"></i>ML Engineer</div>
+          <div class="career-salary">₹8 – 35 LPA</div>
+          <div class="career-demand"><div class="demand-bar"><div class="demand-fill" style="width:90%"></div></div><span class="demand-label">90% Demand</span></div>
+          <div class="career-skills">
+            <span class="career-skill-tag">Scikit-Learn</span><span class="career-skill-tag">Docker</span><span class="career-skill-tag">AWS</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="220">
+        <div class="career-card">
+          <div class="career-role"><i class="fas fa-chart-bar me-2" style="color:var(--primary);"></i>Data Analyst</div>
+          <div class="career-salary">₹4 – 18 LPA</div>
+          <div class="career-demand"><div class="demand-bar"><div class="demand-fill" style="width:98%"></div></div><span class="demand-label">98% Demand</span></div>
+          <div class="career-skills">
+            <span class="career-skill-tag">Excel</span><span class="career-skill-tag">SQL</span><span class="career-skill-tag">Power BI</span><span class="career-skill-tag">Tableau</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="260">
+        <div class="career-card">
+          <div class="career-role"><i class="fas fa-comment-dots me-2" style="color:var(--primary);"></i>NLP Engineer</div>
+          <div class="career-salary">₹9 – 38 LPA</div>
+          <div class="career-demand"><div class="demand-bar"><div class="demand-fill" style="width:85%"></div></div><span class="demand-label">85% Demand</span></div>
+          <div class="career-skills">
+            <span class="career-skill-tag">NLP</span><span class="career-skill-tag">BERT</span><span class="career-skill-tag">Hugging Face</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="career-card">
+          <div class="career-role"><i class="fas fa-chart-pie me-2" style="color:var(--primary);"></i>BI Analyst</div>
+          <div class="career-salary">₹5 – 22 LPA</div>
+          <div class="career-demand"><div class="demand-bar"><div class="demand-fill" style="width:88%"></div></div><span class="demand-label">88% Demand</span></div>
+          <div class="career-skills">
+            <span class="career-skill-tag">Power BI</span><span class="career-skill-tag">DAX</span><span class="career-skill-tag">Tableau</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     LEARNING PROCESS
+═══════════════════════════════════════════ -->
+<section class="process-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-map-signs"></i> Your Journey</div>
+      <h2 class="section-title">Your Learning <span style="color:var(--primary)">Roadmap</span></h2>
+      <p class="section-sub mx-auto">A structured, step-by-step path from beginner to AI professional</p>
+    </div>
+    <div class="process-timeline">
+      <div class="process-step" data-aos="fade-right">
+        <div class="process-step-num">1</div>
+        <div class="process-step-content">
+          <h5><i class="fas fa-sign-in-alt me-2" style="color:var(--primary);"></i> Enroll & Onboard</h5>
+          <p>Register for the course, get access to the learning portal, orientation session, batch allocation, and meet your dedicated mentor.</p>
+        </div>
+      </div>
+      <div class="process-step" data-aos="fade-left">
+        <div class="process-step-num">2</div>
+        <div class="process-step-content">
+          <h5><i class="fas fa-book me-2" style="color:var(--primary);"></i> Core Concept Learning</h5>
+          <p>Master Python, statistics, data analysis, and ML fundamentals through live classes, recorded videos, and interactive coding assignments.</p>
+        </div>
+      </div>
+      <div class="process-step" data-aos="fade-right">
+        <div class="process-step-num">3</div>
+        <div class="process-step-content">
+          <h5><i class="fas fa-database me-2" style="color:var(--primary);"></i> Practice on Real Datasets</h5>
+          <p>Apply your skills on Kaggle datasets, business data, and simulated industry scenarios — guided by expert instructors.</p>
+        </div>
+      </div>
+      <div class="process-step" data-aos="fade-left">
+        <div class="process-step-num">4</div>
+        <div class="process-step-content">
+          <h5><i class="fas fa-brain me-2" style="color:var(--primary);"></i> Build AI Models</h5>
+          <p>Train, evaluate, and optimize real machine learning and deep learning models — from regression to neural networks and NLP.</p>
+        </div>
+      </div>
+      <div class="process-step" data-aos="fade-right">
+        <div class="process-step-num">5</div>
+        <div class="process-step-content">
+          <h5><i class="fas fa-project-diagram me-2" style="color:var(--primary);"></i> Capstone Real-Time Projects</h5>
+          <p>Complete 3–5 end-to-end AI projects with documentation, deployed as web apps — the core of your professional portfolio.</p>
+        </div>
+      </div>
+      <div class="process-step" data-aos="fade-left">
+        <div class="process-step-num">6</div>
+        <div class="process-step-content">
+          <h5><i class="fas fa-certificate me-2" style="color:var(--primary);"></i> Certification</h5>
+          <p>Appear for the assessment and receive your CADPOINT Data Science & AI certification — recognized by 100+ partner companies.</p>
+        </div>
+      </div>
+      <div class="process-step" data-aos="fade-right">
+        <div class="process-step-num">7</div>
+        <div class="process-step-content">
+          <h5><i class="fas fa-handshake me-2" style="color:var(--primary);"></i> Placement Preparation</h5>
+          <p>Resume building, LinkedIn optimization, mock interviews, HR sessions, and direct referrals to 200+ hiring companies.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FAQ SECTION
+═══════════════════════════════════════════ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <div class="section-tag mx-auto"><i class="fas fa-question-circle"></i> FAQ</div>
+          <h2 class="section-title">Frequently Asked <span style="color:var(--primary)">Questions</span></h2>
+        </div>
+        <div class="accordion" id="faqAccordion" data-aos="fade-up" data-aos-delay="100">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                Is programming knowledge required to join this course?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">No prior programming experience is required. Our course starts from Python basics and gradually advances to AI/ML concepts. Students from any educational background — engineering, commerce, or arts — can join. We ensure every student builds a strong foundation before moving to advanced topics.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                Do you provide 100% placement support?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Yes. CADPOINT has a dedicated placement team that assists every student with resume preparation, LinkedIn profile optimization, mock technical interviews, HR interviews, and direct company referrals. We have partnerships with 200+ companies actively hiring AI & Data Science professionals.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                Are online classes available for this course?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Yes, we offer both online and offline (classroom) modes. Online sessions are conducted live via video conference with full interaction, screen sharing, and Q&A. All sessions are recorded and available for 6 months for revision. Students can switch between modes based on their convenience.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                What software and tools will I need?
+              </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">All tools used in the course are free and open-source: Python (Anaconda), Jupyter Notebook, VS Code, Google Colab, MySQL, Power BI Desktop, and Tableau Public. You need a laptop with 8GB RAM (16GB preferred). All setup guides are provided during onboarding. No paid software required.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                Is an internship available as part of the course?
+              </button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Yes. Top-performing students are offered internship opportunities with our partner companies during and after the course. Internships provide real industry experience, add value to your resume, and often convert to full-time roles. Details are discussed during the course based on performance and batch availability.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                What certification will I receive after completing the course?
+              </button>
+            </h2>
+            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Upon successful completion, you receive a CADPOINT Certified Data Scientist & AI Professional certificate. This is recognized by our 200+ partner companies. We also guide you in preparing for globally recognized certifications like Google Professional Data Engineer, AWS ML Specialty, and IBM Data Science Professional Certificate.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CTA SECTION
+═══════════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="container text-center position-relative" style="z-index:1">
+    <div data-aos="zoom-in">
+      <div class="section-tag mx-auto mb-3" style="color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.08);"><i class="fas fa-rocket"></i> Start Today</div>
+      <h2 class="cta-title">Start Your <span style="color:#ffd700">AI & Data Science</span><br>Career Today</h2>
+      <p class="cta-subtitle">Join 2500+ professionals who have transformed their careers with CADPOINT's world-class Data Science & AI training</p>
+      <div class="d-flex flex-wrap gap-3 justify-content-center">
+        <a href="https://wa.me/919895352624" class="btn-cta-glow">
+          <i class="fas fa-rocket"></i> Enroll Now — Free Consultation
+        </a>
+        <a href="tel:+919895352624" class="btn-cta-outline">
+          <i class="fas fa-phone"></i> Call Now
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<div id="footer"></div>
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+fetch("./header.html")
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById("header").innerHTML = html;
+    initCaddNav();
+  });
+
+  fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+      document.getElementById('footer').innerHTML = data;
+  });
+</script>
+
+
+<script>
+function initCaddNav() {
+
+    const coursesNav = document.getElementById('coursesNav');
+    const caret = document.getElementById('coursesCaret');
+    const menu = document.getElementById('coursesMegaMenu');
+    const closeBtn = document.getElementById('closeMegaMenu');
+
+    if (!coursesNav || !caret || !menu) return;
+
+    // X BUTTON CLOSE (Desktop + Mobile)
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.remove('show');
+
+        });
+    }
+
+    // MOBILE
+    if (window.innerWidth <= 991) {
+
+        caret.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!coursesNav.contains(e.target)) {
+                menu.classList.remove('show');
+            }
+        });
+
+        return;
+    }
+
+    // DESKTOP
+    coursesNav.addEventListener('mouseenter', function () {
+        menu.classList.add('show');
+    });
+
+    coursesNav.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+
+    menu.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+}
+</script>
+
+<script>
+// ─── CLOSE MEGA MENU BUTTON ──────────────────
+// document.getElementById("closeMegaMenu").addEventListener("click", function () {
+//   document.querySelector(".courses-mega-menu").classList.remove("show");
+// });
+
+// ─── LOADER ─────────────────────────────────
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+  }, 1800);
+});
+
+// ─── AOS ────────────────────────────────────
+AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });
+
+// ─── NAVBAR SCROLL ──────────────────────────
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  if (window.scrollY > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+  const btn = document.getElementById('backToTop');
+  if (window.scrollY > 400) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+});
+
+// ─── BACK TO TOP ────────────────────────────
+document.getElementById('backToTop').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ─── COUNTER ANIMATION ──────────────────────
+function animateCounters() {
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseInt(el.getAttribute('data-count'));
+    let current = 0;
+    const increment = target / 60;
+    const suffix = el.textContent.includes('%') ? '%' : '+';
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) { current = target; clearInterval(timer); }
+      el.textContent = Math.floor(current) + suffix;
+    }, 25);
+  });
+}
+
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { animateCounters(); statsObserver.disconnect(); }
+  });
+}, { threshold: 0.3 });
+const statsBand = document.querySelector('.stats-band');
+if (statsBand) statsObserver.observe(statsBand);
+
+// ─── HERO TEXT ANIMATION ────────────────────
+const heroTitle = document.getElementById('heroTitle');
+if (heroTitle) {
+  heroTitle.style.opacity = '0';
+  heroTitle.style.transform = 'translateY(30px)';
+  heroTitle.style.transition = 'opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s';
+  setTimeout(() => { heroTitle.style.opacity = '1'; heroTitle.style.transform = 'translateY(0)'; }, 300);
+}
+
+// ─── RIPPLE ─────────────────────────────────
+document.querySelectorAll('.ripple').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.style.cssText = `position:absolute;border-radius:50%;background:rgba(255,255,255,0.3);width:10px;height:10px;left:${e.clientX-rect.left-5}px;top:${e.clientY-rect.top-5}px;transform:scale(0);animation:rippleAnim 0.6s ease-out forwards;pointer-events:none;`;
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 700);
+  });
+});
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `@keyframes rippleAnim { to { transform:scale(30); opacity:0; } }`;
+document.head.appendChild(rippleStyle);
+
+// ─── COURSES MEGA DROPDOWN HOVER ────────────
+(function () {
+  const coursesNav = document.getElementById('coursesNav');
+  if (!coursesNav) return;
+  const menu = coursesNav.querySelector('.courses-mega-menu');
+  const caret = document.getElementById('coursesDropdown');
+  if (!menu) return;
+  let hideTimer;
+  function showMenu() {
+    clearTimeout(hideTimer);
+    const navRect = document.getElementById('mainNav').getBoundingClientRect();
+    menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    menu.classList.add('show');
+    if (caret) caret.querySelector('i').style.transform = 'rotate(180deg)';
+  }
+  function hideMenu() {
+    hideTimer = setTimeout(function () {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }, 120);
+  }
+  coursesNav.addEventListener('mouseenter', showMenu);
+  coursesNav.addEventListener('mouseleave', hideMenu);
+  menu.addEventListener('mouseenter', showMenu);
+  menu.addEventListener('mouseleave', hideMenu);
+  if (caret) {
+    caret.querySelector('i').style.transition = 'transform 0.25s ease';
+    caret.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (menu.classList.contains('show')) { hideMenu(); } else { showMenu(); }
+    });
+  }
+  document.addEventListener('click', function (e) {
+    if (!coursesNav.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }
+  });
+  window.addEventListener('scroll', function () {
+    if (menu.classList.contains('show')) {
+      const navRect = document.getElementById('mainNav').getBoundingClientRect();
+      menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    }
+  });
+})();
+
+// ─── DEMAND BAR ANIMATION ON SCROLL ─────────
+const demandBars = document.querySelectorAll('.demand-fill');
+const demandObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const bar = entry.target;
+      const width = bar.style.width;
+      bar.style.width = '0';
+      setTimeout(() => { bar.style.transition = 'width 1.2s ease'; bar.style.width = width; }, 100);
+      demandObserver.unobserve(bar);
+    }
+  });
+}, { threshold: 0.3 });
+demandBars.forEach(bar => { bar.style.width = bar.style.width; demandObserver.observe(bar); });
+</script>
+</body>
+</html>

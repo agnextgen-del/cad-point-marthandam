@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mechanical AutoCAD Course | CADPOINT Authorized Training Centre</title>
+  <meta name="description" content="Master Mechanical AutoCAD at CADPOINT. Learn mechanical drafting, manufacturing drawings, assembly drawings, machine component design and build your design engineering career.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="assets/image/cadd-logo.webp">
+  <style>
+    /* ═══════════════════════════════════════
+       CSS VARIABLES — EXACT MATCH TO CADPOINT
+    ═══════════════════════════════════════ */
+    :root {
+      --primary: #8B0000;
+      --primary-light: #A00000;
+      --primary-dark: #5c0000;
+      --primary-glow: rgba(139,0,0,0.35);
+      --white: #ffffff;
+      --light-gray: #F5F5F5;
+      --text-dark: #1a1a1a;
+      --text-muted: #555;
+      --border-light: rgba(139,0,0,0.15);
+      --glass-bg: rgba(255,255,255,0.08);
+      --glass-border: rgba(255,255,255,0.18);
+    }
+
+    html, body { max-width: 100%; overflow-x: hidden; scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; color: var(--text-dark); background: var(--white); }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+    /* ─── LOADER ─── */
+    #loader {
+      position: fixed; inset: 0; background: var(--primary-dark);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      z-index: 9999; transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    #loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-logo { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2.5rem; color: white; letter-spacing: 3px; margin-bottom: 20px; }
+    .loader-logo span { color: #ffd700; }
+    .loader-bar { width: 200px; height: 4px; background: rgba(255,255,255,0.2); border-radius: 10px; overflow: hidden; }
+    .loader-bar-inner { height: 100%; width: 0; background: linear-gradient(90deg, #ffd700, #ffb700); border-radius: 10px; animation: loadBar 2s ease forwards; }
+    @keyframes loadBar { to { width: 100%; } }
+
+    /* ─── BACK TO TOP ─── */
+    #backToTop {
+      position: fixed; bottom: 30px; right: 30px; width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white; border: none; border-radius: 50%; cursor: pointer;
+      box-shadow: 0 6px 20px var(--primary-glow);
+      opacity: 0; transform: translateY(20px); transition: all 0.4s ease;
+      z-index: 999; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+    }
+    #backToTop.visible { opacity: 1; transform: translateY(0); }
+    #backToTop:hover { transform: translateY(-4px); box-shadow: 0 10px 30px var(--primary-glow); }
+
+    /* ─── NAVBAR ─── */
+    .navbar {
+      background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
+      box-shadow: 0 2px 30px rgba(139,0,0,0.12); padding: 7px 0;
+      position: sticky; top: 0; z-index: 1000; transition: all 0.3s ease;
+    }
+    .navbar.scrolled { padding: 8px 0; box-shadow: 0 4px 40px rgba(139,0,0,0.2); }
+    .navbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-text img { height: 48px; width: auto; }
+    .navbar-nav .nav-link {
+      font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.82rem;
+      letter-spacing: 0.8px; text-transform: uppercase; padding: 8px 16px !important;
+      border-radius: 6px; transition: all 0.3s ease;
+    }
+    .navbar-nav .nav-link:hover { color: var(--primary); }
+    .btn-nav-enroll {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white !important; padding: 8px 22px !important; border-radius: 25px !important;
+      font-weight: 700 !important; box-shadow: 0 4px 15px var(--primary-glow); transition: all 0.3s ease !important;
+    }
+    .btn-nav-enroll:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--primary-glow) !important; }
+    .btn-nav-enroll::after { display: none !important; }
+
+    /* ─── MEGA MENU ─── */
+    #coursesNav { position: static !important; }
+    #coursesNav > div { display: flex; align-items: center; }
+
+    /* DESKTOP */
+    @media(min-width:992px){
+      .courses-mega-menu {
+        position: fixed !important; top: auto !important; left: 50% !important;
+        transform: translateX(-50%) translateY(6px) !important;
+        width: min(960px, 96vw) !important; display: block !important;
+        opacity: 0; visibility: hidden;
+        transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+        pointer-events: none; border: none !important; border-radius: 16px !important;
+        overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.16), 0 0 0 1px rgba(139,0,0,0.1) !important;
+        padding: 0 !important;
+      }
+      .courses-mega-menu.show {
+        opacity: 1 !important; visibility: visible !important;
+        transform: translateX(-50%) translateY(0) !important; pointer-events: auto !important;
+      }
+    }
+
+    /* MOBILE */
+    @media (max-width: 991px) {
+      .navbar-collapse { background:#fff; padding:15px; border-radius:18px; margin-top:15px; box-shadow:0 10px 35px rgba(0,0,0,.08); }
+      #coursesNav { width:100%; }
+      #coursesNav .d-flex { width:100%; justify-content:space-between; align-items:center; }
+      #coursesNav .nav-link { padding:12px 0 !important; }
+      .courses-mega-menu {
+        display: none; position: fixed !important; top: 0; left: 0;
+        width: 100% !important; height: 100vh !important; background: #fff;
+        z-index: 999999; overflow-y: auto !important; padding: 80px 20px 40px;
+      }
+      .courses-mega-menu.show { display: block !important; }
+      .courses-mega-menu .d-flex { flex-direction:column !important; gap:0 !important; padding-top:0 !important; }
+      .mega-col { width:100% !important; border-right:none !important; border-bottom:1px solid rgba(0,0,0,.06); padding:18px 16px !important; }
+      .mega-col:last-child { border-bottom:none; }
+    }
+
+    .mega-topbar { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: white; font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.6px; }
+    .mega-viewall { color: #ffd700 !important; font-size: 0.75rem; font-weight: 700; text-decoration: none; transition: opacity 0.2s; }
+    .mega-viewall:hover { opacity: 0.8; }
+    .mega-col { flex: 1; padding:20px 10px 10px 10px; border-right: 1px solid rgba(139,0,0,0.08); background: white; }
+    .mega-col:last-child { border-right: none; }
+    .mega-col-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid rgba(139,0,0,0.08); }
+    .mega-col-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .mega-col-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.82rem; color: var(--text-dark); letter-spacing: 0.4px; }
+    .mega-col-sub { font-size: 0.68rem; color: #999; font-weight: 500; margin-top: 1px; }
+    .mega-item { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 7px; font-size: 0.8rem; font-weight: 500; color: var(--text-dark); text-decoration: none; transition: background 0.15s, color 0.15s, padding-left 0.15s; margin-bottom: 2px; }
+    .mega-item i { font-size: 0.72rem; width: 16px; text-align: center; color: #aaa; transition: color 0.15s; flex-shrink: 0; }
+    .mega-item:hover { background: rgba(139,0,0,0.07); color: var(--primary); padding-left: 12px; }
+    .mega-item:hover i { color: var(--primary); }
+    #coursesNav .courses-caret { color: var(--text-dark); transition: color 0.2s; }
+    #coursesNav .courses-caret:hover { color: var(--primary); }
+    .mega-close-x { position:absolute; top:12px; right:12px; width:34px; height:34px; border:none; border-radius:50%; background:#fff; color:#222; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:99; box-shadow:0 4px 15px rgba(0,0,0,.12); transition:.3s ease; }
+    .mega-close-x:hover { background:var(--primary); color:#fff; transform:rotate(90deg); }
+
+    /* ─── BREADCRUMB SLIDER ─── */
+    .breadcrumb-slider { background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-dark) 100%); padding: 0; overflow: hidden; height: 38px; display: flex; align-items: center; position: relative; }
+    .breadcrumb-slider::before, .breadcrumb-slider::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none; }
+    .breadcrumb-slider::before { left: 0; background: linear-gradient(to right, var(--primary-dark), transparent); }
+    .breadcrumb-slider::after { right: 0; background: linear-gradient(to left, var(--primary-dark), transparent); }
+    .breadcrumb-track { display: flex; animation: scrollBreadcrumb 28s linear infinite; white-space: nowrap; will-change: transform; }
+    .breadcrumb-track:hover { animation-play-state: paused; }
+    .breadcrumb-item-slide { display: inline-flex; align-items: center; gap: 8px; padding: 0 30px; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 1px; text-transform: uppercase; font-family: 'Montserrat', sans-serif; }
+    .breadcrumb-item-slide i { color: rgba(255,255,255,0.6); font-size: 0.7rem; }
+    @keyframes scrollBreadcrumb { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ─── HERO SECTION ─── */
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, #c0392b 80%, var(--primary-dark) 100%);
+      min-height: 85vh; display: flex; align-items: center; position: relative; overflow: hidden; padding: 80px 0 100px;
+      text-align: center;
+    }
+    .hero-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.4;
+    }
+    .hero-section::after { content: ''; position: absolute; width: 700px; height: 700px; background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%); top: -200px; right: -100px; pointer-events: none; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(10px); padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+    .hero-badge span { color: #ffd700; }
+    .hero-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; color: white; margin-bottom: 20px; }
+    .hero-title .highlight { color: #ffd700; }
+    .hero-desc { font-size: 1.05rem; color: rgba(255,255,255,0.85); line-height: 1.8; margin: 0 auto 32px; max-width: 750px; text-align: justify; }
+    .hero-stats-row { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 36px; }
+    .hero-stat-pill { background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(10px); padding: 10px 24px; border-radius: 50px; text-align: center; }
+    .hero-stat-pill .num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.5rem; color: #ffd700; display: block; }
+    .hero-stat-pill .lbl { font-size: 0.72rem; color: rgba(255,255,255,0.75); font-weight: 500; letter-spacing: 0.5px; }
+    .btn-hero-primary {
+      background: linear-gradient(135deg, #ffd700, #ffb700); color: var(--primary-dark) !important;
+      font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.88rem; letter-spacing: 0.8px;
+      padding: 14px 36px; border-radius: 50px; border: none; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      box-shadow: 0 8px 25px rgba(255,215,0,0.4); transition: all 0.3s ease; position: relative; overflow: hidden;
+    }
+    .btn-hero-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(255,215,0,0.5); color: var(--primary-dark) !important; }
+    .btn-hero-outline {
+      background: transparent; color: white !important;
+      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem; letter-spacing: 0.8px;
+      padding: 13px 32px; border-radius: 50px; border: 2px solid rgba(255,255,255,0.5);
+      text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease;
+    }
+    .btn-hero-outline:hover { background: rgba(255,255,255,0.12); border-color: white; transform: translateY(-2px); }
+    .hero-btn-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* WAVE */
+    .hero-wave { position: absolute; bottom: -2px; left: 0; width: 100%; line-height: 0; }
+    .hero-wave svg { width: 100%; height: 55px; display: block; }
+
+    /* ─── SECTION COMMON ─── */
+    section { padding: 90px 0; }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; padding: 6px 18px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--border-light); background: rgba(139,0,0,0.06); color: var(--primary); margin-bottom: 14px; }
+    .section-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(1.6rem, 3.5vw, 2.4rem); line-height: 1.2; color: var(--text-dark); margin-bottom: 14px; }
+    .section-title span { color: var(--primary); }
+    .section-line { width: 70px; height: 4px; background: var(--primary); border-radius: 10px; margin-bottom: 20px; }
+    .section-line.mx-auto { margin-left: auto; margin-right: auto; }
+    .section-desc { color: var(--text-muted); font-size: 1rem; line-height: 1.9; text-align: justify; }
+
+    /* ─── IMAGE-CONTENT SECTIONS ─── */
+    .img-content-section { padding: 90px 0; }
+    .img-content-section.bg-light-gray { background: var(--light-gray); }
+    .content-img-wrap { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.12); height: 100%; }
+    .content-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .content-img-wrap:hover img { transform: scale(1.03); }
+    .img-content-body { display: flex; flex-direction: column; justify-content: center; height: 100%; }
+    .bullet-list { list-style: none; padding: 0; margin: 0; }
+    .bullet-list li { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(139,0,0,0.07); font-size: 0.95rem; color: var(--text-muted); }
+    .bullet-list li:last-child { border-bottom: none; }
+    .bullet-list li .bi { width: 28px; height: 28px; background: rgba(139,0,0,0.08); color: var(--primary); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; }
+
+    /* ─── COURSE OVERVIEW CARDS ─── */
+    .overview-card { background: white; border-radius: 20px; padding: 32px 24px; box-shadow: 0 8px 30px rgba(0,0,0,0.06); border: 1px solid rgba(139,0,0,0.06); height: 100%; transition: all 0.35s ease; position: relative; overflow: hidden; }
+    .overview-card::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 0; height: 4px; background: var(--primary); border-radius: 4px; transition: 0.4s; }
+    .overview-card:hover::before { width: 100%; }
+    .overview-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(139,0,0,0.12); }
+    .overview-icon { width: 64px; height: 64px; background: linear-gradient(135deg, var(--primary-dark), var(--primary)); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; margin-bottom: 18px; box-shadow: 0 8px 20px var(--primary-glow); }
+    .overview-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; color: var(--text-dark); margin-bottom: 10px; }
+    .overview-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; text-align: justify; margin: 0; }
+
+    /* ─── WHY SECTION ─── */
+    .why-section { background: var(--light-gray); position: relative; overflow: hidden; }
+    .why-section::before { content: ''; position: absolute; width: 500px; height: 500px; background: rgba(139,0,0,0.04); border-radius: 50%; top: -220px; left: -180px; filter: blur(80px); }
+    .why-card { background: white; border-radius: 20px; padding: 30px 22px; text-align: center; border: 1px solid rgba(220,220,220,0.6); box-shadow: 0 8px 30px rgba(0,0,0,0.05); height: 100%; transition: all 0.4s ease; position: relative; overflow: hidden; }
+    .why-card::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 0; height: 4px; background: var(--primary); border-radius: 4px; transition: 0.5s; }
+    .why-card:hover::before { width: 100%; }
+    .why-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(139,0,0,0.12); }
+    .why-icon { width: 76px; height: 76px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 1.7rem; color: white; box-shadow: 0 8px 25px rgba(139,0,0,0.25); transition: 0.4s; }
+    .why-card:hover .why-icon { transform: scale(1.1) rotate(8deg); }
+    .why-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.95rem; color: var(--text-dark); margin-bottom: 10px; }
+    .why-card p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.75; text-align: justify; margin: 0; }
+
+    /* ─── MODULES SECTION ─── */
+    .modules-section { background: white; }
+    .module-card { background: white; border-radius: 16px; padding: 24px 20px; border: 1px solid rgba(139,0,0,0.08); box-shadow: 0 4px 20px rgba(0,0,0,0.05); height: 100%; transition: all 0.35s ease; cursor: pointer; }
+    .module-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(139,0,0,0.12); border-color: rgba(139,0,0,0.25); }
+    .module-num { width: 44px; height: 44px; background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: white; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 0.9rem; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+    .module-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.92rem; color: var(--text-dark); margin-bottom: 8px; }
+    .module-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; text-align: justify; margin: 0; }
+    .module-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 3px 10px; border-radius: 50px; background: rgba(139,0,0,0.07); color: var(--primary); margin-top: 10px; letter-spacing: 0.5px; }
+
+    /* ─── GRADIENT FEATURE SECTION ─── */
+    .gradient-feature { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, #c0392b 100%); padding: 90px 0; position: relative; overflow: hidden; }
+    .gradient-feature::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+    .feat-glass-card { background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(10px); border-radius: 20px; padding: 28px 22px; text-align: center; height: 100%; transition: 0.35s ease; }
+    .feat-glass-card:hover { background: rgba(255,255,255,0.12); transform: translateY(-6px); }
+    .feat-glass-icon { width: 60px; height: 60px; background: rgba(255,215,0,0.15); border: 1px solid rgba(255,215,0,0.3); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: #ffd700; margin: 0 auto 16px; }
+    .feat-glass-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.95rem; color: white; margin-bottom: 8px; }
+    .feat-glass-card p { font-size: 0.85rem; color: rgba(255,255,255,0.78); line-height: 1.7; text-align: justify; margin: 0; }
+
+    /* ─── CAREER CARDS ─── */
+    .career-section { background: var(--light-gray); }
+    .career-card { background: white; border-radius: 18px; padding: 28px 22px; box-shadow: 0 6px 25px rgba(0,0,0,0.06); border-left: 4px solid var(--primary); height: 100%; transition: 0.35s ease; }
+    .career-card:hover { transform: translateY(-6px); box-shadow: 0 18px 45px rgba(139,0,0,0.1); }
+    .career-card .c-icon { width: 52px; height: 52px; background: rgba(139,0,0,0.08); color: var(--primary); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 14px; }
+    .career-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.95rem; color: var(--text-dark); margin-bottom: 6px; }
+    .career-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; text-align: justify; margin: 0; }
+    .salary-badge { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 50px; background: rgba(139,0,0,0.07); color: var(--primary); margin-top: 10px; }
+
+    /* ─── TIMELINE ─── */
+    .timeline-section { background: white; }
+    .timeline-wrap { position: relative; padding: 20px 0; }
+    .timeline-wrap::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, var(--primary-dark), var(--primary)); transform: translateX(-50%); border-radius: 3px; }
+    .tl-item { position: relative; margin-bottom: 50px; }
+    .tl-item:nth-child(odd) .tl-content { margin-right: calc(50% + 40px); text-align: right; }
+    .tl-item:nth-child(even) .tl-content { margin-left: calc(50% + 40px); }
+    .tl-dot { position: absolute; left: 50%; top: 16px; width: 52px; height: 52px; background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; transform: translateX(-50%); z-index: 2; box-shadow: 0 6px 20px var(--primary-glow); border: 4px solid white; }
+    .tl-content { background: white; border-radius: 16px; padding: 24px 22px; box-shadow: 0 8px 25px rgba(0,0,0,0.07); border: 1px solid rgba(139,0,0,0.07); }
+    .tl-content h5 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; color: var(--primary); margin-bottom: 6px; }
+    .tl-content p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; text-align: justify; margin: 0; }
+    .tl-step-num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 0.75rem; color: rgba(139,0,0,0.4); letter-spacing: 1px; margin-bottom: 4px; }
+    @media(max-width:768px){
+      .timeline-wrap::before { left: 28px; }
+      .tl-item:nth-child(odd) .tl-content, .tl-item:nth-child(even) .tl-content { margin-left: 70px; margin-right: 0; text-align: left; }
+      .tl-dot { left: 28px; }
+    }
+
+    /* ─── STATS BAND ─── */
+    .stats-band { background: var(--primary); padding: 70px 0; }
+    .stat-col { border-right: 1px solid rgba(255,255,255,0.2); }
+    .stat-col:last-child { border-right: none; }
+    .stat-box { padding: 20px 10px; transition: 0.4s ease; }
+    .stat-box:hover { transform: translateY(-8px); }
+    .stat-box h2 { font-size: 62px; font-weight: 800; color: #ffd400; margin-bottom: 12px; line-height: 1; font-family: 'Montserrat', sans-serif; }
+    .stat-box p { font-size: 20px; font-weight: 500; color: #fff; margin: 0; }
+    @media(max-width:991px){ .stat-col { border-right: none; margin-bottom: 30px; } }
+    @media(max-width:576px){ .stats-band { padding: 50px 0; } .stat-box h2 { font-size: 42px; } .stat-box p { font-size: 16px; } }
+
+    /* ─── TESTIMONIALS ─── */
+    .testi-section { background: var(--light-gray); }
+    .testi-card { background: white; border-radius: 20px; padding: 30px 26px; box-shadow: 0 8px 30px rgba(0,0,0,0.07); border: 1px solid rgba(139,0,0,0.06); height: 100%; transition: 0.35s ease; position: relative; }
+    .testi-card::before { content: '\201C'; font-size: 6rem; font-family: Georgia, serif; color: rgba(139,0,0,0.06); position: absolute; top: 10px; left: 20px; line-height: 1; }
+    .testi-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(139,0,0,0.1); }
+    .testi-rating { color: #ffc107; font-size: 0.85rem; margin-bottom: 14px; }
+    .testi-text { font-size: 0.92rem; color: var(--text-muted); line-height: 1.8; text-align: justify; margin-bottom: 20px; position: relative; z-index: 1; }
+    .testi-author { display: flex; align-items: center; gap: 14px; }
+    .testi-avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: white; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .testi-author-info h6 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.92rem; color: var(--text-dark); margin: 0 0 2px; }
+    .testi-author-info small { font-size: 0.78rem; color: var(--primary); font-weight: 600; }
+
+    /* ─── FAQ ─── */
+    .faq-section { background: white; }
+    .faq-accordion .accordion-item { border: 1px solid rgba(139,0,0,0.1); border-radius: 14px !important; margin-bottom: 12px; overflow: hidden; }
+    .faq-accordion .accordion-button { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--text-dark); background: white; padding: 18px 22px; }
+    .faq-accordion .accordion-button:not(.collapsed) { color: var(--primary); background: rgba(139,0,0,0.03); box-shadow: none; }
+    .faq-accordion .accordion-button::after { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%238B0000'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e"); }
+    .faq-accordion .accordion-body { font-size: 0.92rem; color: var(--text-muted); line-height: 1.85; text-align: justify; padding: 0 22px 20px; background: white; }
+
+    /* ─── CTA SECTION ─── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, #c0392b 100%);
+      padding: 100px 0; text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-section::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+    .cta-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(1.8rem, 4vw, 3rem); color: white; line-height: 1.2; margin-bottom: 18px; }
+    .cta-subtitle { font-size: 1.05rem; color: rgba(255,255,255,0.82); max-width: 600px; margin: 0 auto 36px; line-height: 1.75; }
+    .btn-cta-glow {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, #ffd700, #ffb700); color: var(--primary-dark) !important;
+      font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; letter-spacing: 0.5px;
+      padding: 16px 42px; border-radius: 50px; text-decoration: none;
+      box-shadow: 0 10px 30px rgba(255,215,0,0.4); transition: all 0.3s ease;
+    }
+    .btn-cta-glow:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(255,215,0,0.5); }
+    .btn-cta-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: white !important; border: 2px solid rgba(255,255,255,0.5);
+      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem;
+      padding: 14px 36px; border-radius: 50px; text-decoration: none; transition: all 0.3s ease;
+    }
+    .btn-cta-outline:hover { background: rgba(255,255,255,0.1); border-color: white; }
+
+    /* ─── FOOTER ─── */
+    footer { background: linear-gradient(135deg, var(--primary-dark) 0%, #1a0000 100%); padding: 70px 0 0; }
+    .footer-brand { margin-bottom: 20px; }
+    .footer-brand img { filter: brightness(0) invert(1); opacity: 0.9; max-width: 200px; height: auto; }
+    .footer-desc { font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.8; margin-bottom: 24px; }
+    .footer-socials { display: flex; gap: 10px; }
+    .footer-social-btn { width: 38px; height: 38px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.75); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; text-decoration: none; transition: all 0.3s; }
+    .footer-social-btn:hover { background: var(--primary-light); color: white; transform: translateY(-3px); }
+    .footer-heading { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.88rem; color: white; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 18px; }
+    .footer-links { list-style: none; padding: 0; margin: 0; }
+    .footer-links li { margin-bottom: 8px; }
+    .footer-links a { font-size: 0.87rem; color: rgba(255,255,255,0.62); text-decoration: none; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+    .footer-links a:hover { color: #ffd700; padding-left: 4px; }
+    .footer-links a i { font-size: 0.65rem; color: rgba(139,0,0,0.6); }
+    .footer-contact li { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px; font-size: 0.87rem; color: rgba(255,255,255,0.62); }
+    .footer-contact li i { color: var(--primary-light); margin-top: 3px; flex-shrink: 0; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); margin-top: 50px; padding: 18px 0; font-size: 0.82rem; color: rgba(255,255,255,0.45); }
+
+    /* ─── RIPPLE ─── */
+    .ripple { position: relative; overflow: hidden; }
+
+    /* ─── RESPONSIVE ─── */
+    @media(max-width:767px){
+      section { padding: 65px 0; }
+      .hero-btn-group { flex-direction: column; align-items: center; }
+      .btn-hero-primary, .btn-hero-outline { width: 240px; justify-content: center; }
+      .hero-stats-row { gap: 20px; }
+    }
+
+    /* ─── FLOATING ANIM ─── */
+    @keyframes floatUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    .float-anim { animation: floatUp 3s ease-in-out infinite; }
+
+    /* ─── GLASSMORPHISM CARD ─── */
+    .glass-card { background: rgba(255,255,255,0.7); backdrop-filter: blur(16px); border: 1px solid rgba(139,0,0,0.1); border-radius: 20px; }
+
+    /* ─── INDUSTRY DEMAND SECTION ─── */
+    .demand-section { background: white; }
+    .demand-list-item { display: flex; align-items: flex-start; gap: 14px; padding: 16px 0; border-bottom: 1px solid rgba(139,0,0,0.07); }
+    .demand-list-item:last-child { border-bottom: none; }
+    .demand-icon { width: 44px; height: 44px; background: rgba(139,0,0,0.08); color: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .demand-list-item h6 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.93rem; color: var(--text-dark); margin-bottom: 4px; }
+    .demand-list-item p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin: 0; text-align: justify; }
+
+    /* ─── IMAGE EQUAL HEIGHT ─── */
+    .row-equal { align-items: stretch; }
+    .row-equal .col-img { display: flex; }
+    .row-equal .col-img .content-img-wrap { flex: 1; }
+  </style>
+</head>
+<body>
+
+<!-- ═══ LOADER ═══ -->
+<div id="loader">
+  <div class="loader-logo">CAD<span>POINT</span></div>
+  <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+</div>
+
+<!-- ═══ BACK TO TOP ═══ -->
+<button id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+<!-- ═══════════════════════════════════════════
+     NAVBAR — EXACT COPY FROM HOMEPAGE
+═══════════════════════════════════════════ -->
+<nav class="navbar navbar-expand-lg" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <div class="logo-text">
+        <img src="assets/image/caddpoint-logo.webp" alt="CADPOINT Logo">
+      </div>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span style="background:var(--primary);display:block;width:22px;height:2px;margin:5px 0;border-radius:2px;transition:all 0.3s"></span>
+      <span style="background:var(--primary);display:block;width:16px;height:2px;margin:5px 0;border-radius:2px;transition:all 0.3s"></span>
+      <span style="background:var(--primary);display:block;width:22px;height:2px;margin:5px 0;border-radius:2px;transition:all 0.3s"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item dropdown" id="coursesNav">
+          <div class="d-flex align-items-center">
+            <a href="javascript:void(0)" class="nav-link pe-1" style="white-space:nowrap;">Courses</a>
+            <span class="nav-link ps-0 pe-2 courses-caret" style="cursor:pointer;" id="coursesDropdown">
+              <i class="fas fa-chevron-down" style="font-size:0.65rem;"></i>
+            </span>
+          </div>
+          <div class="dropdown-menu courses-mega-menu p-0" aria-labelledby="coursesDropdown" style="margin-top:20px;">
+            <button type="button" class="mega-close-x" id="closeMegaMenu"><i class="fas fa-times"></i></button>
+            <div class="d-flex" style="padding-top:20px;">
+              <!-- CIVIL -->
+              <div class="mega-col">
+                <div class="mega-col-head">
+                  <span class="mega-col-icon" style="background:rgba(37,99,235,0.12);color:#2563eb;"><i class="fas fa-hard-hat"></i></span>
+                  <div><div class="mega-col-title">Civil</div><div class="mega-col-sub">Infrastructure &amp; Architecture</div></div>
+                </div>
+                <a class="mega-item" href="autocad.html"><i class="fas fa-drafting-compass"></i>AutoCAD 2D &amp; 3D</a>
+                <a class="mega-item" href="revit.html"><i class="fas fa-building"></i>Revit Architecture</a>
+                <a class="mega-item" href="staad-pro.html"><i class="fas fa-project-diagram"></i>STAAD.Pro</a>
+                <a class="mega-item" href="sketchup.html"><i class="fas fa-pencil-ruler"></i>SketchUp</a>
+                <a class="mega-item" href="lumion.html"><i class="fas fa-sun"></i>Lumion</a>
+                <a class="mega-item" href="3dmax-vray.html"><i class="fas fa-film"></i>3DS Max &amp; V-Ray</a>
+                <a class="mega-item" href="civil3d.html"><i class="fas fa-road"></i>Civil 3D</a>
+              </div>
+              <!-- MECHANICAL -->
+              <div class="mega-col">
+                <div class="mega-col-head">
+                  <span class="mega-col-icon" style="background:rgba(234,88,12,0.12);color:#ea580c;"><i class="fas fa-cogs"></i></span>
+                  <div><div class="mega-col-title">Mechanical</div><div class="mega-col-sub">Design &amp; Manufacturing</div></div>
+                </div>
+                <a class="mega-item" href="mechanical-autocad.html" style="color:var(--primary);font-weight:700;"><i class="fas fa-cog"></i>Mechanical AutoCAD</a>
+                <a class="mega-item" href="404.html"><i class="fas fa-cog"></i>SolidWorks</a>
+                <a class="mega-item" href="creo.html"><i class="fas fa-cog"></i>Creo</a>
+                <a class="mega-item" href="404.html"><i class="fas fa-cog"></i>CATIA V5/V6</a>
+                <a class="mega-item" href="404.html"><i class="fas fa-cog"></i>NX CAD/NX CAM</a>
+                <a class="mega-item" href="404.html"><i class="fas fa-cog"></i>ANSYS (FEA/CFD)</a>
+                <a class="mega-item" href="404.html"><i class="fas fa-plug"></i>EPLAN</a>
+              </div>
+              <!-- IT -->
+              <div class="mega-col">
+                <div class="mega-col-head">
+                  <span class="mega-col-icon" style="background:rgba(16,185,129,0.12);color:#059669;"><i class="fas fa-laptop-code"></i></span>
+                  <div><div class="mega-col-title">IT Courses</div><div class="mega-col-sub">Software &amp; Development</div></div>
+                </div>
+                <a class="mega-item" href="web-development.html"><i class="fas fa-code"></i>Web Development</a>
+                <a class="mega-item" href="python.html"><i class="fab fa-python"></i>Python Programming</a>
+                <a class="mega-item" href="java.html"><i class="fab fa-java"></i>Java Development</a>
+                <a class="mega-item" href="datascience.html"><i class="fas fa-brain"></i>Data Science &amp; AI</a>
+                <a class="mega-item" href="ui-ux.html"><i class="fas fa-palette"></i>UI/UX Design</a>
+                <a class="mega-item" href="graphical-designing.html"><i class="fas fa-palette"></i>Graphical Designing</a>
+                <a class="mega-item" href="digital-marketing.html"><i class="fas fa-bullhorn"></i>Digital Marketing</a>
+              </div>
+              <!-- ELECTRICAL -->
+              <div class="mega-col">
+                <div class="mega-col-head">
+                  <span class="mega-col-icon" style="background:rgba(234,88,12,0.12);color:#ea580c;"><i class="fas fa-bolt"></i></span>
+                  <div><div class="mega-col-title">Electrical</div><div class="mega-col-sub">Design &amp; Manufacturing</div></div>
+                </div>
+                <a class="mega-item" href="autocad-electrical.html"><i class="fas fa-cog"></i>AutoCAD Electrical</a>
+                <a class="mega-item" href="revit-mep.html"><i class="fas fa-cog"></i>Revit MEP</a>
+                <a class="mega-item" href="navis-work.html"><i class="fas fa-cog"></i>Navisworks</a>
+                <a class="mega-item" href="404.html"><i class="fas fa-cog"></i>Eplan</a>
+              </div>
+              <!-- NON-IT -->
+              <div class="mega-col" style="border-right:none;">
+                <div class="mega-col-head">
+                  <span class="mega-col-icon" style="background:rgba(139,0,0,0.12);color:var(--primary);"><i class="fas fa-briefcase"></i></span>
+                  <div><div class="mega-col-title">Non-IT</div><div class="mega-col-sub">Business &amp; Management</div></div>
+                </div>
+                <a class="mega-item" href="tally.html"><i class="fas fa-calculator"></i>Tally &amp; Accounting</a>
+                <a class="mega-item" href="sap.html"><i class="fas fa-users"></i>SAP</a>
+                <a class="mega-item" href="gst-taxation.html"><i class="fas fa-file-invoice"></i>GST &amp; Taxation</a>
+                <a class="mega-item" href="404.html"><i class="fas fa-comments"></i>Spoken English</a>
+                <a class="mega-item" href="404.html"><i class="fas fa-user-tie"></i>Personality Development</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+        <li class="nav-item ms-lg-2"><a class="nav-link btn-nav-enroll ripple" href="javascript:void(0)">Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ BREADCRUMB SLIDER ═══ -->
+<div class="breadcrumb-slider">
+  <div class="breadcrumb-track">
+    <div class="breadcrumb-item-slide"><i class="fas fa-cog"></i> <strong>Mechanical AutoCAD</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-drafting-compass"></i> <strong>Engineering Drawings</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-industry"></i> <strong>Manufacturing Drawings</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-tools"></i> <strong>Machine Component Design</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-award"></i> <strong>ISO Certified Training</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-user-tie"></i> <strong>Placement Support</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-star"></i> <strong>Real-Time Projects</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-certificate"></i> <strong>Certification</strong></div>
+    <!-- duplicate for seamless loop -->
+    <div class="breadcrumb-item-slide"><i class="fas fa-cog"></i> <strong>Mechanical AutoCAD</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-drafting-compass"></i> <strong>Engineering Drawings</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-industry"></i> <strong>Manufacturing Drawings</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-tools"></i> <strong>Machine Component Design</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-award"></i> <strong>ISO Certified Training</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-user-tie"></i> <strong>Placement Support</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-star"></i> <strong>Real-Time Projects</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-certificate"></i> <strong>Certification</strong></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     HERO SECTION
+═══════════════════════════════════════════ -->
+<section class="hero-section" id="home">
+  <div class="container position-relative" style="z-index:1">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 text-center">
+        <div class="hero-badge" data-aos="fade-down">
+          <i class="fas fa-cogs"></i> <span>CADPOINT</span> Mechanical Design Program
+        </div>
+        <h1 class="hero-title" id="heroTitle" data-aos="fade-up" data-aos-delay="100">
+          Master <span class="highlight">Mechanical AutoCAD</span><br>&amp; Build Your Design Engineering Career
+        </h1>
+        <p class="hero-desc" data-aos="fade-up" data-aos-delay="200">
+          Gain hands-on expertise in mechanical drafting, manufacturing drawings, machine component design, assembly drawings, engineering documentation, and industrial design workflows. Our comprehensive program prepares you for real-world engineering challenges with industry-standard practices and live project training.
+        </p>
+        <div class="hero-stats-row" data-aos="fade-up" data-aos-delay="300">
+          <div class="hero-stat-pill">
+            <span class="num" data-hero-count="3000">3000+</span>
+            <span class="lbl">Students Trained</span>
+          </div>
+          <div class="hero-stat-pill">
+            <span class="num">500+</span>
+            <span class="lbl">Projects Completed</span>
+          </div>
+          <div class="hero-stat-pill">
+            <span class="num">98%</span>
+            <span class="lbl">Placement Rate</span>
+          </div>
+          <div class="hero-stat-pill">
+            <span class="num">14+</span>
+            <span class="lbl">Years Excellence</span>
+          </div>
+        </div>
+        <div class="hero-btn-group" data-aos="fade-up" data-aos-delay="400">
+          <a href="contact.html" class="btn-hero-primary ripple">
+            <i class="fas fa-rocket"></i> Start Learning
+          </a>
+          <a href="#modules" class="btn-hero-outline">
+            <i class="fas fa-book-open"></i> View Course
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Wave -->
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 55" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,30 C360,60 1080,0 1440,30 L1440,55 L0,55 Z" fill="#ffffff"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     COURSE OVERVIEW
+═══════════════════════════════════════════ -->
+<section id="overview" style="padding:90px 0;background:#fff;">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-info-circle"></i> Course Overview</div>
+      <h2 class="section-title">What is <span>Mechanical AutoCAD?</span></h2>
+      <div class="section-line mx-auto"></div>
+      <p class="section-desc mx-auto" style="max-width:780px;">Mechanical AutoCAD is the industry's most widely used software for creating precise 2D mechanical drawings and engineering documentation. From machine component design to complete manufacturing assemblies, this course equips you with comprehensive skills to produce professional-grade engineering drawings that meet international standards and industrial requirements.</p>
+    </div>
+    <div class="row gy-4">
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="overview-card">
+          <div class="overview-icon"><i class="fas fa-drafting-compass"></i></div>
+          <h5>Mechanical Drafting</h5>
+          <p>Master precision 2D drafting techniques used in mechanical engineering, including orthographic projections, section views, and auxiliary views for complex machine parts.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="overview-card">
+          <div class="overview-icon"><i class="fas fa-cog"></i></div>
+          <h5>Component Design</h5>
+          <p>Design individual machine components including gears, shafts, bearings, flanges, and fasteners with accurate dimensioning and geometric tolerancing specifications.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="overview-card">
+          <div class="overview-icon"><i class="fas fa-industry"></i></div>
+          <h5>Manufacturing Drawings</h5>
+          <p>Create complete manufacturing drawings with all required specifications including material callouts, surface finish symbols, and production annotations that shops need.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="overview-card">
+          <div class="overview-icon"><i class="fas fa-layer-group"></i></div>
+          <h5>Assembly Drawings</h5>
+          <p>Develop detailed assembly drawings showing how components fit together, complete with exploded views, bill of materials, and part identification balloons for production.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SECTION: MECHANICAL DRAFTING TECHNIQUES (image left)
+═══════════════════════════════════════════ -->
+<section class="img-content-section bg-light-gray">
+  <div class="container">
+    <div class="row align-items-stretch gy-4 row-equal">
+      <div class="col-lg-6 col-img" data-aos="fade-right">
+        <div class="content-img-wrap">
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80" alt="Mechanical Drafting" loading="lazy">
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="img-content-body ps-lg-4">
+          <div class="section-tag"><i class="fas fa-pencil-ruler"></i> Drafting Techniques</div>
+          <h2 class="section-title">Mechanical Drafting <span>Techniques</span></h2>
+          <div class="section-line"></div>
+          <p class="section-desc mb-4">Our Mechanical AutoCAD training focuses on developing precision drafting skills that are directly applicable in manufacturing and engineering environments. You will learn the fundamentals of technical drawing language understood globally by engineers and manufacturers.</p>
+          <ul class="bullet-list">
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>Orthographic Projection</strong> — First and third angle projection for complete multi-view drawings with correct line types and standards.</div></li>
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>Section Views</strong> — Full, half, revolved, and removed sections to clearly show internal features of complex components.</div></li>
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>Auxiliary Views</strong> — True shape views of inclined surfaces that cannot be shown in standard principal views.</div></li>
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>Detail Views</strong> — Enlarged views for small or complex features requiring additional clarity and annotation.</div></li>
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>GD&amp;T Symbols</strong> — Geometric Dimensioning and Tolerancing symbols applied correctly to ensure functional fits and interchangeability.</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SECTION: MACHINE COMPONENT DESIGN (image right)
+═══════════════════════════════════════════ -->
+<section class="img-content-section" style="background:#fff;">
+  <div class="container">
+    <div class="row align-items-stretch gy-4 row-equal">
+      <div class="col-lg-6 order-lg-2 col-img" data-aos="fade-left">
+        <div class="content-img-wrap">
+          <img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=800&q=80" alt="Machine Component Design" loading="lazy">
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-1" data-aos="fade-right">
+        <div class="img-content-body pe-lg-4">
+          <div class="section-tag"><i class="fas fa-cog"></i> Component Design</div>
+          <h2 class="section-title">Machine <span>Component Design</span></h2>
+          <div class="section-line"></div>
+          <p class="section-desc mb-4">Understanding how to design individual mechanical components is the foundation of any engineering career. Our course covers the complete design documentation process for all common machine elements used across manufacturing industries.</p>
+          <ul class="bullet-list">
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>Shafts &amp; Couplings</strong> — Design and detail transmission shafts, keys, keyways, and various coupling types for power transmission systems.</div></li>
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>Gears &amp; Sprockets</strong> — Technical drawings for spur, helical, bevel gears and chain sprockets with proper tooth profile representation.</div></li>
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>Bearings &amp; Housings</strong> — Document bearing selections, fits, and housing designs for rotating machinery applications.</div></li>
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>Fasteners &amp; Joints</strong> — Represent threaded fasteners, welded joints, and brazed connections with correct conventional symbols.</div></li>
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>Piping &amp; Flanges</strong> — Create pipe layout drawings and flange detail drawings for industrial piping systems.</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SECTION: MANUFACTURING DRAWINGS (image left)
+═══════════════════════════════════════════ -->
+<section class="img-content-section bg-light-gray">
+  <div class="container">
+    <div class="row align-items-stretch gy-4 row-equal">
+      <div class="col-lg-6 col-img" data-aos="fade-right">
+        <div class="content-img-wrap">
+          <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80" alt="Manufacturing Drawings" loading="lazy">
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="img-content-body ps-lg-4">
+          <div class="section-tag"><i class="fas fa-industry"></i> Manufacturing Drawings</div>
+          <h2 class="section-title">Production-Ready <span>Manufacturing Drawings</span></h2>
+          <div class="section-line"></div>
+          <p class="section-desc mb-4">Manufacturing drawings are the communication bridge between design engineers and the production floor. You will learn to create complete, unambiguous drawings that contain all information required for machining, fabrication, and quality inspection.</p>
+          <ul class="bullet-list">
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>Title Block &amp; Revision Control</strong> — Professional title blocks with complete drawing information, tolerances, and revision history management.</div></li>
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>Dimensional Tolerancing</strong> — Limit and fit systems including clearance, interference, and transition fits for mating components.</div></li>
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>Surface Finish Symbols</strong> — Surface texture symbols and roughness values required for machined surfaces and functional areas.</div></li>
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>Material &amp; Process Callouts</strong> — Material specifications, heat treatment notes, and manufacturing process annotations on drawings.</div></li>
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>ISO &amp; ASME Standards</strong> — Apply international drawing standards ensuring drawings are understood worldwide in global manufacturing environments.</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SECTION: ASSEMBLY DRAWINGS (image right)
+═══════════════════════════════════════════ -->
+<section class="img-content-section" style="background:#fff;">
+  <div class="container">
+    <div class="row align-items-stretch gy-4 row-equal">
+      <div class="col-lg-6 order-lg-2 col-img" data-aos="fade-left">
+        <div class="content-img-wrap">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" alt="Assembly Drawings" loading="lazy">
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-1" data-aos="fade-right">
+        <div class="img-content-body pe-lg-4">
+          <div class="section-tag"><i class="fas fa-layer-group"></i> Assembly Drawings</div>
+          <h2 class="section-title">Complete <span>Assembly Drawings</span></h2>
+          <div class="section-line"></div>
+          <p class="section-desc mb-4">Assembly drawings show the complete picture of how individual components combine into functional mechanical systems. Mastering assembly documentation is essential for any engineer working in product design, maintenance, or manufacturing planning.</p>
+          <ul class="bullet-list">
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>General Assembly Views</strong> — Complete assembly showing all components in their final assembled position with proper conventions.</div></li>
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>Exploded View Drawings</strong> — Isometric exploded views clearly showing component sequence and assembly relationships for maintenance.</div></li>
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>Bill of Materials (BOM)</strong> — Structured parts lists with item numbers, descriptions, quantities, material grades, and standards.</div></li>
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>Balloon Callouts</strong> — Item number balloons linked to BOM for clear identification of each component in the assembly.</div></li>
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>Sub-Assembly Documentation</strong> — Managing complex assemblies by organizing into sub-assemblies with proper hierarchy and cross-referencing.</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     WHY LEARN MECHANICAL AUTOCAD
+═══════════════════════════════════════════ -->
+<section class="why-section" id="why">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-question-circle"></i> Why AutoCAD</div>
+      <h2 class="section-title">Why Choose <span>Mechanical AutoCAD?</span></h2>
+      <div class="section-line mx-auto"></div>
+      <p class="section-desc mx-auto" style="max-width:700px;">Mechanical AutoCAD remains the gold standard for engineering documentation worldwide. Here's why mastering this skill is one of the most valuable investments you can make in your engineering career.</p>
+    </div>
+    <div class="row gy-4">
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-globe"></i></div>
+          <h5>Global Industry Demand</h5>
+          <p>Mechanical AutoCAD proficiency is required in manufacturing companies across the globe. Every engineering firm, OEM, and Tier-1 supplier requires skilled AutoCAD draftsmen for their production documentation needs.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-factory"></i></div>
+          <h5>Manufacturing Sector Growth</h5>
+          <p>India's manufacturing sector under Make in India initiative is experiencing unprecedented growth. Automotive, aerospace, heavy engineering, and defense industries create thousands of CAD engineer positions annually.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-briefcase"></i></div>
+          <h5>Engineering Career Gateway</h5>
+          <p>Mechanical AutoCAD proficiency opens doors to roles in design engineering, product development, quality assurance, and manufacturing engineering — spanning industries from automotive to consumer products.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-building"></i></div>
+          <h5>Multinational Company Requirements</h5>
+          <p>Top MNCs including L&amp;T, Tata Motors, Mahindra, Bosch, Siemens, and GE routinely hire candidates with strong AutoCAD skills as a baseline requirement for engineering and design roles.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-certificate"></i></div>
+          <h5>Certification Value</h5>
+          <p>An Autodesk-certified AutoCAD credential from an authorized training centre like CADPOINT significantly enhances your resume, demonstrating verified competency to employers and recruitment teams.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-rupee-sign"></i></div>
+          <h5>High Salary Potential</h5>
+          <p>Mechanical AutoCAD professionals can command salaries ranging from ₹3 LPA for fresh graduates to ₹12+ LPA for experienced design engineers, with opportunities to grow into senior positions quickly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SECTION: FABRICATION & DIMENSIONING (image left)
+═══════════════════════════════════════════ -->
+<section class="img-content-section" style="background:#fff;">
+  <div class="container">
+    <div class="row align-items-stretch gy-4 row-equal">
+      <div class="col-lg-6 col-img" data-aos="fade-right">
+        <div class="content-img-wrap">
+          <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=800&q=80" alt="Fabrication and Dimensioning" loading="lazy">
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="img-content-body ps-lg-4">
+          <div class="section-tag"><i class="fas fa-ruler-combined"></i> Fabrication &amp; Tolerancing</div>
+          <h2 class="section-title">Fabrication Drawings &amp; <span>Dimensioning</span></h2>
+          <div class="section-line"></div>
+          <p class="section-desc mb-4">Fabrication drawings bridge design intent with actual production. Learning proper dimensioning and tolerancing techniques ensures your designs can be manufactured accurately and economically, reducing costly rework and production errors.</p>
+          <ul class="bullet-list">
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>Weld Symbol Representation</strong> — Standard AWS and ISO welding symbols on structural and fabricated components to communicate joint requirements to welders.</div></li>
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>Sheet Metal Drawings</strong> — Flat pattern layouts, bend notes, K-factor calculations, and forming specifications for sheet metal fabrication work.</div></li>
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>Tolerance Stack-Up Analysis</strong> — Understanding how dimensional tolerances accumulate in assemblies and how to allocate tolerances to ensure proper function.</div></li>
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>Casting &amp; Forging Drawings</strong> — Draft angles, parting lines, core prints, and machining allowances for cast and forged components in production.</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SECTION: ENGINEERING DOCUMENTATION (image right)
+═══════════════════════════════════════════ -->
+<section class="img-content-section bg-light-gray">
+  <div class="container">
+    <div class="row align-items-stretch gy-4 row-equal">
+      <div class="col-lg-6 order-lg-2 col-img" data-aos="fade-left">
+        <div class="content-img-wrap">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80" alt="Engineering Documentation" loading="lazy">
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-1" data-aos="fade-right">
+        <div class="img-content-body pe-lg-4">
+          <div class="section-tag"><i class="fas fa-file-alt"></i> Documentation</div>
+          <h2 class="section-title">Engineering <span>Documentation</span></h2>
+          <div class="section-line"></div>
+          <p class="section-desc mb-4">Professional engineering documentation goes beyond individual drawings. Complete product documentation packages are essential for manufacturing, quality control, maintenance, and regulatory compliance in modern engineering organizations.</p>
+          <ul class="bullet-list">
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>Drawing Management</strong> — Numbering systems, revision control, document hierarchy, and release procedures for engineering drawing packages.</div></li>
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>Technical Specifications</strong> — Writing and incorporating material specifications, process specifications, and quality standards into drawing packages.</div></li>
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>Engineering Change Orders</strong> — Proper procedures for modifying released drawings while maintaining design history and traceability records.</div></li>
+            <li><span class="bi"><i class="fas fa-check"></i></span><div><strong>Plot Plan &amp; Layout</strong> — Plant layout drawings showing equipment arrangement, access routes, and maintenance clearances for industrial facilities.</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     INDUSTRY DEMAND — BULLET HIGHLIGHT SECTION
+═══════════════════════════════════════════ -->
+<section class="demand-section" style="background:#fff;padding:90px 0;">
+  <div class="container">
+    <div class="row gy-5 align-items-center">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="section-tag"><i class="fas fa-chart-line"></i> Industry Demand</div>
+        <h2 class="section-title">Why Industry Needs <span>You</span></h2>
+        <div class="section-line"></div>
+        <p class="section-desc mb-4">The manufacturing industry is experiencing a significant shortage of skilled AutoCAD draftsmen and mechanical design engineers. Companies are actively seeking trained professionals who can produce accurate, standard-compliant engineering drawings.</p>
+        <div class="demand-list-item">
+          <div class="demand-icon"><i class="fas fa-chart-bar"></i></div>
+          <div><h6>High Industry Demand</h6><p>Engineering drawing roles grew by 28% in 2024 as manufacturing expansion accelerates under national infrastructure and defence programmes across India and Southeast Asia.</p></div>
+        </div>
+        <div class="demand-list-item">
+          <div class="demand-icon"><i class="fas fa-car"></i></div>
+          <div><h6>Manufacturing Industry Opportunities</h6><p>Automotive, aerospace, heavy equipment, and consumer product manufacturers are the largest employers of Mechanical AutoCAD professionals with diverse role profiles.</p></div>
+        </div>
+        <div class="demand-list-item">
+          <div class="demand-icon"><i class="fas fa-globe-asia"></i></div>
+          <div><h6>Global Engineering Opportunities</h6><p>AutoCAD certification opens international career doors in the Middle East, Southeast Asia, Europe, and North America where skilled mechanical draftsmen are in constant demand.</p></div>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="demand-list-item">
+          <div class="demand-icon"><i class="fas fa-certificate"></i></div>
+          <div><h6>Certification Support</h6><p>CADPOINT provides full preparation and support for Autodesk Certified Professional certification exams, adding a globally recognized credential to your professional profile.</p></div>
+        </div>
+        <div class="demand-list-item">
+          <div class="demand-icon"><i class="fas fa-briefcase"></i></div>
+          <div><h6>Internship Opportunities</h6><p>Our industry partnerships provide students with real internship placements at manufacturing companies, giving you essential work experience during your training period.</p></div>
+        </div>
+        <div class="demand-list-item">
+          <div class="demand-icon"><i class="fas fa-project-diagram"></i></div>
+          <div><h6>Real-Time Project Training</h6><p>Work on actual industrial drawing projects from our partner companies, building a professional portfolio that demonstrates real capability to prospective employers.</p></div>
+        </div>
+        <div class="demand-list-item">
+          <div class="demand-icon"><i class="fas fa-folder-open"></i></div>
+          <div><h6>Portfolio Development</h6><p>Graduate with a comprehensive portfolio of professional-grade engineering drawings covering all major drawing types, showcasing your complete range of AutoCAD skills.</p></div>
+        </div>
+        <div class="demand-list-item">
+          <div class="demand-icon"><i class="fas fa-user-graduate"></i></div>
+          <div><h6>Placement Assistance</h6><p>Our dedicated placement cell actively connects graduates with hiring companies through campus drives, job fairs, and direct referrals to our extensive industry network.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     STATS BAND
+═══════════════════════════════════════════ -->
+<div class="stats-band">
+  <div class="container">
+    <div class="row text-center gy-4">
+      <div class="col-lg-3 col-6 stat-col" data-aos="zoom-in" data-aos-delay="0">
+        <div class="stat-box">
+          <h2 data-count="3000">0+</h2>
+          <p>Students Trained</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-6 stat-col" data-aos="zoom-in" data-aos-delay="100">
+        <div class="stat-box">
+          <h2 data-count="500">0+</h2>
+          <p>Projects Completed</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-6 stat-col" data-aos="zoom-in" data-aos-delay="200">
+        <div class="stat-box">
+          <h2 data-count="95">0+</h2>
+          <p>Placement Rate %</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-6 stat-col" data-aos="zoom-in" data-aos-delay="300">
+        <div class="stat-box">
+          <h2 data-count="14">0+</h2>
+          <p>Years Excellence</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     COURSE MODULES
+═══════════════════════════════════════════ -->
+<section class="modules-section" id="modules">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-book"></i> Curriculum</div>
+      <h2 class="section-title">Course <span>Modules</span></h2>
+      <div class="section-line mx-auto"></div>
+      <p class="section-desc mx-auto" style="max-width:680px;">Our structured curriculum takes you from foundational AutoCAD concepts through to advanced mechanical engineering drawing applications, covering every aspect of industrial drafting practice.</p>
+    </div>
+    <div class="row gy-4">
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="module-card">
+          <div class="module-num">01</div>
+          <h5>AutoCAD Fundamentals</h5>
+          <p>Interface navigation, drawing setup, coordinate systems, essential draw and modify commands, layers, linetypes, lineweights, and file management for professional workflows.</p>
+          <span class="module-tag">Foundation</span>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="50">
+        <div class="module-card">
+          <div class="module-num">02</div>
+          <h5>Mechanical Drafting Basics</h5>
+          <p>Orthographic projection theory, principal views, line conventions, drawing scales, sheet layouts, drawing standards including BIS, ISO, and ASME conventions.</p>
+          <span class="module-tag">Core Skills</span>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="module-card">
+          <div class="module-num">03</div>
+          <h5>Engineering Drawings</h5>
+          <p>Section views, auxiliary views, broken views, partial views, conventional breaks, and all drawing conventions used in professional mechanical engineering documentation.</p>
+          <span class="module-tag">Core Skills</span>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="module-card">
+          <div class="module-num">04</div>
+          <h5>Dimensioning Techniques</h5>
+          <p>Linear, angular, radial, and ordinate dimensioning. Tolerance application, limit and fit systems, GD&amp;T symbols, surface texture annotations, and dimension styles management.</p>
+          <span class="module-tag">Advanced</span>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="50">
+        <div class="module-card">
+          <div class="module-num">05</div>
+          <h5>Assembly Drawings</h5>
+          <p>General assembly layouts, exploded view creation, bill of materials preparation, balloon annotation, part numbering systems, and assembly drawing release procedures.</p>
+          <span class="module-tag">Advanced</span>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="module-card">
+          <div class="module-num">06</div>
+          <h5>Manufacturing Drawings</h5>
+          <p>Complete detail drawings with machining operations, tool paths annotation, surface finish requirements, heat treatment notes, and complete production documentation packages.</p>
+          <span class="module-tag">Advanced</span>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="module-card">
+          <div class="module-num">07</div>
+          <h5>Fabrication Drawings</h5>
+          <p>Structural steel drawings, weld symbols, sheet metal flat pattern layouts, pipe spool drawings, and fabrication detail drawings for industrial construction projects.</p>
+          <span class="module-tag">Specialization</span>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="50">
+        <div class="module-card">
+          <div class="module-num">08</div>
+          <h5>Industrial Standards</h5>
+          <p>Comprehensive study of BIS, ISO, DIN, and ASME/ANSI drawing standards. Application of standard symbol libraries, tolerance tables, and material designation systems.</p>
+          <span class="module-tag">Standards</span>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="module-card">
+          <div class="module-num">09</div>
+          <h5>Production Documentation</h5>
+          <p>Drawing package management, revision control procedures, engineering change management, drawing transmittal processes, and digital document management best practices.</p>
+          <span class="module-tag">Professional</span>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mx-auto" data-aos="fade-up" data-aos-delay="0">
+        <div class="module-card" style="border-color:rgba(139,0,0,0.25);box-shadow:0 8px 30px rgba(139,0,0,0.12);">
+          <div class="module-num" style="background:linear-gradient(135deg,#ffd700,#ffb700);color:var(--primary-dark);">10</div>
+          <h5>Real-Time Projects</h5>
+          <p>End-to-end industrial drawing projects covering a complete product assembly. Students produce a professional drawing package demonstrating all course skills for portfolio use.</p>
+          <span class="module-tag" style="background:rgba(255,215,0,0.15);color:#b8860b;">Capstone Project</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     GRADIENT FEATURES — INDUSTRIAL STANDARDS
+═══════════════════════════════════════════ -->
+<section class="gradient-feature">
+  <div class="container position-relative" style="z-index:1;">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto" style="color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.08);"><i class="fas fa-award"></i> Standards</div>
+      <h2 class="section-title" style="color:white;">Industrial <span style="color:#ffd700;">Standards & Workflow</span></h2>
+      <div class="section-line mx-auto" style="background:#ffd700;"></div>
+      <p style="color:rgba(255,255,255,0.8);font-size:1rem;line-height:1.8;max-width:680px;margin:0 auto;text-align:justify;">Master the complete engineering design workflow from concept sketching to production-ready drawing packages, using internationally recognized standards that employers across industries require from day one.</p>
+    </div>
+    <div class="row gy-4">
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="feat-glass-card">
+          <div class="feat-glass-icon"><i class="fas fa-drafting-compass"></i></div>
+          <h5>ISO Drawing Standards</h5>
+          <p>Apply ISO 128, ISO 129, and related standards for drawing practice ensuring your drawings conform to internationally accepted conventions for line types, dimensioning, and lettering.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="feat-glass-card">
+          <div class="feat-glass-icon"><i class="fas fa-ruler"></i></div>
+          <h5>ASME Y14 Standards</h5>
+          <p>Understand the ASME Y14 series covering dimensioning, tolerancing, and drawing format requirements used by American and international aerospace and automotive manufacturers.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="feat-glass-card">
+          <div class="feat-glass-icon"><i class="fas fa-cogs"></i></div>
+          <h5>BIS Standards</h5>
+          <p>Bureau of Indian Standards drawing conventions and practices required by PSUs, defense organizations, and Indian manufacturing companies for all engineering documentation.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="feat-glass-card">
+          <div class="feat-glass-icon"><i class="fas fa-tasks"></i></div>
+          <h5>Engineering Workflow</h5>
+          <p>End-to-end design workflow from requirement review, concept sketching, detailed drafting, review cycles, to drawing release and production documentation management.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="feat-glass-card">
+          <div class="feat-glass-icon"><i class="fas fa-print"></i></div>
+          <h5>Plot &amp; Output Management</h5>
+          <p>Configure plot styles, page setups, and output settings for paper drawings, PDF exports, and digital format distribution while maintaining drawing quality and standards compliance.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="feat-glass-card">
+          <div class="feat-glass-icon"><i class="fas fa-database"></i></div>
+          <h5>Template &amp; Block Libraries</h5>
+          <p>Create and manage drawing templates, standard block libraries, symbol collections, and attribute definitions for efficient, consistent drawing production across all projects.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CAREER OPPORTUNITIES
+═══════════════════════════════════════════ -->
+<section class="career-section" id="careers">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-briefcase"></i> Career Paths</div>
+      <h2 class="section-title">Career <span>Opportunities</span></h2>
+      <div class="section-line mx-auto"></div>
+      <p class="section-desc mx-auto" style="max-width:680px;">A Mechanical AutoCAD certification from CADPOINT unlocks a wide range of exciting engineering career opportunities across multiple high-growth industries both in India and internationally.</p>
+    </div>
+    <div class="row gy-4">
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="career-card">
+          <div class="c-icon"><i class="fas fa-pencil-ruler"></i></div>
+          <h5>Mechanical Design Engineer</h5>
+          <p>Design and develop mechanical components and systems, creating complete drawing packages for manufacturing, assembly, and quality verification across product development cycles.</p>
+          <span class="salary-badge">₹3.5 – ₹8 LPA</span>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="career-card">
+          <div class="c-icon"><i class="fas fa-drafting-compass"></i></div>
+          <h5>AutoCAD Draftsman</h5>
+          <p>Create detailed engineering drawings from engineer sketches and 3D models, preparing complete drawing sets for manufacturing, construction, and documentation projects.</p>
+          <span class="salary-badge">₹2.5 – ₹5 LPA</span>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="career-card">
+          <div class="c-icon"><i class="fas fa-laptop-code"></i></div>
+          <h5>CAD Engineer</h5>
+          <p>Specialized role managing CAD systems, standards implementation, and providing technical support for engineering teams using AutoCAD and related design software tools.</p>
+          <span class="salary-badge">₹3 – ₹7 LPA</span>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="career-card">
+          <div class="c-icon"><i class="fas fa-industry"></i></div>
+          <h5>Production Design Engineer</h5>
+          <p>Bridge design and manufacturing by creating production drawings, process sheets, and tooling drawings that guide the shop floor team through fabrication and assembly operations.</p>
+          <span class="salary-badge">₹3.5 – ₹7.5 LPA</span>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="career-card">
+          <div class="c-icon"><i class="fas fa-cogs"></i></div>
+          <h5>Manufacturing Engineer</h5>
+          <p>Develop manufacturing processes and documentation, creating operation sheets, tooling layouts, and process drawings that define how products will be produced efficiently.</p>
+          <span class="salary-badge">₹4 – ₹9 LPA</span>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="career-card">
+          <div class="c-icon"><i class="fas fa-hard-hat"></i></div>
+          <h5>Industrial Design Engineer</h5>
+          <p>Combine engineering knowledge with industrial design principles to create products that are functional, manufacturable, and aesthetically aligned with brand and market requirements.</p>
+          <span class="salary-badge">₹4 – ₹10 LPA</span>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mx-auto" data-aos="fade-up" data-aos-delay="0">
+        <div class="career-card">
+          <div class="c-icon"><i class="fas fa-wrench"></i></div>
+          <h5>Mechanical Drafting Engineer</h5>
+          <p>Create technical drawings for complex mechanical systems in sectors including oil &amp; gas, power generation, and heavy equipment manufacturing, following client-specific standards and specifications.</p>
+          <span class="salary-badge">₹3 – ₹6.5 LPA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     LEARNING PROCESS TIMELINE
+═══════════════════════════════════════════ -->
+<section class="timeline-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-route"></i> Your Journey</div>
+      <h2 class="section-title">Learning <span>Process</span></h2>
+      <div class="section-line mx-auto"></div>
+      <p class="section-desc mx-auto" style="max-width:650px;">Our proven step-by-step learning journey takes you from enrollment to employment with structured guidance at every stage of your Mechanical AutoCAD training experience.</p>
+    </div>
+    <div class="timeline-wrap">
+      <div class="tl-item" data-aos="fade-right">
+        <div class="tl-dot"><i class="fas fa-clipboard-check"></i></div>
+        <div class="tl-content">
+          <div class="tl-step-num">STEP 01</div>
+          <h5>Enroll &amp; Orientation</h5>
+          <p>Complete the enrollment process, receive your course materials, and attend orientation where you meet your trainers, understand the course structure, lab facilities, and available support resources throughout your training.</p>
+        </div>
+      </div>
+      <div class="tl-item" data-aos="fade-left">
+        <div class="tl-dot"><i class="fas fa-book-open"></i></div>
+        <div class="tl-content">
+          <div class="tl-step-num">STEP 02</div>
+          <h5>Learn Core Concepts</h5>
+          <p>Master AutoCAD fundamentals, mechanical drawing theory, engineering standards, and drawing conventions through structured classroom sessions with expert trainers and comprehensive course materials.</p>
+        </div>
+      </div>
+      <div class="tl-item" data-aos="fade-right">
+        <div class="tl-dot"><i class="fas fa-pencil-alt"></i></div>
+        <div class="tl-content">
+          <div class="tl-step-num">STEP 03</div>
+          <h5>Practice Drafting</h5>
+          <p>Develop hands-on proficiency through extensive lab practice sessions. Complete structured drawing exercises covering all major drawing types, from simple component drawings to complex assembly documentation.</p>
+        </div>
+      </div>
+      <div class="tl-item" data-aos="fade-left">
+        <div class="tl-dot"><i class="fas fa-industry"></i></div>
+        <div class="tl-content">
+          <div class="tl-step-num">STEP 04</div>
+          <h5>Real-Time Projects</h5>
+          <p>Apply all learned skills on actual industrial drawing projects sourced from our manufacturing industry partners. Produce complete drawing packages that become the centerpiece of your professional portfolio.</p>
+        </div>
+      </div>
+      <div class="tl-item" data-aos="fade-right">
+        <div class="tl-dot"><i class="fas fa-certificate"></i></div>
+        <div class="tl-content">
+          <div class="tl-step-num">STEP 05</div>
+          <h5>Certification</h5>
+          <p>Receive your CADPOINT course completion certificate and prepare for the Autodesk Certified Professional examination with targeted exam preparation sessions, practice tests, and guidance from certified trainers.</p>
+        </div>
+      </div>
+      <div class="tl-item" data-aos="fade-left">
+        <div class="tl-dot"><i class="fas fa-rocket"></i></div>
+        <div class="tl-content">
+          <div class="tl-step-num">STEP 06</div>
+          <h5>Placement Preparation</h5>
+          <p>Dedicated placement preparation including resume building, portfolio review, interview coaching, aptitude training, and active job matching through our extensive network of hiring company partnerships.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     REAL-TIME PROJECTS SECTION
+═══════════════════════════════════════════ -->
+<section style="background:var(--light-gray);padding:90px 0;">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-5" data-aos="fade-right">
+        <div class="section-tag"><i class="fas fa-tools"></i> Live Projects</div>
+        <h2 class="section-title">Real-Time <span>Project Training</span></h2>
+        <div class="section-line"></div>
+        <p class="section-desc mb-4">At CADPOINT, we believe learning is most effective when applied to real engineering challenges. Our real-time project training program gives you direct experience with actual industrial projects that matter to real manufacturing companies.</p>
+        <p class="section-desc">Each student completes a comprehensive project that involves creating a full drawing package for an industrial product — from individual component details to complete assembly documentation — giving you a portfolio that employers immediately recognize as genuine professional work.</p>
+        <a href="contact.html" class="btn-hero-primary ripple mt-4 d-inline-flex" style="text-decoration:none;">
+          <i class="fas fa-rocket"></i> Enroll Now
+        </a>
+      </div>
+      <div class="col-lg-7" data-aos="fade-left">
+        <div class="row gy-3">
+          <div class="col-6">
+            <div class="glass-card p-4">
+              <div style="width:44px;height:44px;background:rgba(139,0,0,0.08);color:var(--primary);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:12px;"><i class="fas fa-cog"></i></div>
+              <h6 style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.9rem;margin-bottom:6px;">Machine Component Package</h6>
+              <p style="font-size:0.83rem;color:var(--text-muted);margin:0;text-align:justify;">Complete detail drawing set for a mechanical assembly including all component drawings with full dimensioning, tolerances, and material specifications.</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="glass-card p-4">
+              <div style="width:44px;height:44px;background:rgba(139,0,0,0.08);color:var(--primary);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:12px;"><i class="fas fa-layer-group"></i></div>
+              <h6 style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.9rem;margin-bottom:6px;">Assembly Documentation</h6>
+              <p style="font-size:0.83rem;color:var(--text-muted);margin:0;text-align:justify;">Full assembly drawing package with BOM, part identification, exploded views, and installation instructions for a real industrial product assembly.</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="glass-card p-4">
+              <div style="width:44px;height:44px;background:rgba(139,0,0,0.08);color:var(--primary);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:12px;"><i class="fas fa-industry"></i></div>
+              <h6 style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.9rem;margin-bottom:6px;">Fabrication Drawing Set</h6>
+              <p style="font-size:0.83rem;color:var(--text-muted);margin:0;text-align:justify;">Industrial fabrication drawing package for a structural or pressure vessel component, including weld details, material certifications, and inspection requirements.</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="glass-card p-4">
+              <div style="width:44px;height:44px;background:rgba(139,0,0,0.08);color:var(--primary);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:12px;"><i class="fas fa-file-alt"></i></div>
+              <h6 style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.9rem;margin-bottom:6px;">Production Documentation</h6>
+              <p style="font-size:0.83rem;color:var(--text-muted);margin:0;text-align:justify;">A complete production documentation package including operation sheets, tool layouts, inspection sheets, and drawing register for a manufactured product line.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     STUDENT TESTIMONIALS
+═══════════════════════════════════════════ -->
+<section class="testi-section" id="testimonials">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-star"></i> Testimonials</div>
+      <h2 class="section-title">What Our <span>Students Say</span></h2>
+      <div class="section-line mx-auto"></div>
+    </div>
+    <div class="row gy-4">
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="testi-card">
+          <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-text">CADPOINT's Mechanical AutoCAD course is exceptional. The hands-on project work was the game changer — I graduated with a professional drawing portfolio that impressed every company I interviewed with. Placed at L&amp;T within three weeks of completing the course.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">RK</div>
+            <div class="testi-author-info"><h6>Rajesh Kumar</h6><small>AutoCAD Draftsman → L&T Engineering</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="testi-card">
+          <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-text">The depth of the curriculum here is outstanding. I learned not just how to use AutoCAD but how to think like a mechanical engineer when creating drawings. The trainers have real industry experience and share practical knowledge you cannot find in online courses.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">PS</div>
+            <div class="testi-author-info"><h6>Priya Subramanian</h6><small>Mech Design Engineer → Tata Technologies</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="testi-card">
+          <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+          <p class="testi-text">Coming from a non-engineering background, I was nervous. But the trainers at CADPOINT made everything clear and approachable. The structured modules and constant practice sessions built my confidence rapidly. I'm now employed as a CAD draftsman with a great salary.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">AM</div>
+            <div class="testi-author-info"><h6>Arjun Murugan</h6><small>CAD Draftsman → Bosch India</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="testi-card">
+          <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-text">The placement support from CADPOINT is genuine and effective. They connected me with multiple manufacturing companies in my area and prepared me thoroughly for technical interviews. I received two job offers and chose the one with better growth prospects.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">ST</div>
+            <div class="testi-author-info"><h6>Senthil Thangavel</h6><small>Production Design Engineer → Mahindra</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="testi-card">
+          <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-text">CADPOINT's real-time project training was worth every rupee. Working on actual manufacturing drawings taught me things no textbook could. My supervisor at my current company said my drawing quality was noticeably higher than other fresh graduates they had hired previously.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">VM</div>
+            <div class="testi-author-info"><h6>Vignesh Mohan</h6><small>Mechanical Drafting Engineer → BHEL</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="testi-card">
+          <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-text">I completed the Mechanical AutoCAD course while working part-time and the flexible scheduling from CADPOINT made it possible. The certification I received helped me transition from a technician role into a full design engineering position at a leading automotive supplier.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">KN</div>
+            <div class="testi-author-info"><h6>Kavitha Nair</h6><small>Industrial Design Engineer → Sundaram-Clayton</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FAQ ACCORDION
+═══════════════════════════════════════════ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="row gy-5 align-items-start">
+      <div class="col-lg-4" data-aos="fade-right">
+        <div class="section-tag"><i class="fas fa-question-circle"></i> FAQ</div>
+        <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+        <div class="section-line"></div>
+        <p class="section-desc">Have questions about our Mechanical AutoCAD course? We've answered the most common queries below. Reach out to us anytime for personalized guidance.</p>
+        <a href="contact.html" class="btn-hero-primary ripple mt-4 d-inline-flex" style="text-decoration:none;">
+          <i class="fas fa-phone"></i> Talk to Us
+        </a>
+      </div>
+      <div class="col-lg-8" data-aos="fade-left">
+        <div class="accordion faq-accordion" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">What software do I need for this course?</button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">The course is conducted using AutoCAD (latest version) from Autodesk. CADPOINT provides fully licensed software in our computer lab for all hands-on practice sessions. Students also receive guidance on obtaining the free Autodesk student license for home practice, ensuring you have consistent access to the software throughout your training period.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">What certification will I receive after completing the course?</button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Upon successful completion, you receive a CADPOINT Mechanical AutoCAD course completion certificate recognized by hiring companies in the manufacturing sector. Additionally, CADPOINT fully prepares you for the Autodesk Certified User (ACU) and Autodesk Certified Professional (ACP) examinations, which are globally recognized credentials that significantly enhance your professional profile and employment prospects.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">Do I get real industry project experience during the course?</button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Absolutely. Real-time project training is a core component of our curriculum, not an afterthought. Students work on actual industrial drawing projects from our manufacturing industry partners, producing complete drawing packages for real products. This gives you a professional-quality portfolio and the experience of meeting actual industry documentation standards and client requirements before graduation.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">What is the placement support provided?</button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Our placement support is comprehensive and proactive. The CADPOINT placement cell maintains active relationships with over 150 manufacturing and engineering companies. Services include resume preparation, portfolio review, mock interviews, aptitude training, and direct referrals to hiring companies. We conduct regular campus placement drives and connect graduates with opportunities across automotive, heavy engineering, fabrication, and aerospace sectors in India and the Middle East.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">Are internship opportunities available during or after the course?</button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Yes, CADPOINT has partnerships with manufacturing companies that offer internship placements for eligible students. Internships provide invaluable real workplace experience, industry contacts, and often lead directly to full employment offers. Our placement team actively facilitates internship matching based on student skills, location preferences, and company requirements throughout the year.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">What is the course duration and class schedule?</button>
+            </h2>
+            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">The Mechanical AutoCAD course runs for approximately 3 months with both regular and weekend batch options available to accommodate working professionals and students. Regular batches run Monday to Friday with flexible morning, afternoon, and evening slots. Weekend batches run Saturday and Sunday. The course includes approximately 120 hours of instruction, lab practice, and project work spread across the duration.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">Is this course suitable for freshers with no prior CAD experience?</button>
+            </h2>
+            <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Yes, this course is specifically designed to take students from zero CAD knowledge to professional competency. Our trainers are experienced in teaching beginners and the structured curriculum starts from absolute fundamentals before progressing through increasingly advanced topics. Many of our most successful graduates had no prior CAD experience when they enrolled. A basic understanding of mechanical engineering concepts is helpful but not strictly required for enrollment.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CTA SECTION
+═══════════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="container text-center position-relative" style="z-index:1;">
+    <div data-aos="zoom-in">
+      <div class="section-tag mx-auto mb-3" style="color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.08);">
+        <i class="fas fa-rocket"></i> Start Today
+      </div>
+      <h2 class="cta-title">Start Your <span style="color:#ffd700;">Mechanical Design</span><br>Engineering Career Today</h2>
+      <p class="cta-subtitle">Join thousands of engineering professionals who launched their careers with CADPOINT's industry-leading Mechanical AutoCAD program. Your future in engineering starts here.</p>
+      <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <a href="contact.html" class="btn-cta-glow">
+          <i class="fas fa-rocket"></i> Enroll Now — Free Counselling
+        </a>
+        <a href="contact.html" class="btn-cta-outline">
+          <i class="fas fa-phone-alt"></i> Talk to an Advisor
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER — EXACT COPY FROM HOMEPAGE
+═══════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="row gy-5">
+      <div class="col-lg-4">
+        <div class="footer-brand">
+          <img src="assets/image/cadd-logo.webp" style="width:250px;height:60px;filter:none;opacity:1;" alt="CADPOINT Logo">
+        </div>
+        <p class="footer-desc">India's premier authorized training centre for CAD, BIM, and Engineering software. ISO 9001:2015 certified with 14+ years of excellence in technical education.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social-btn"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="footer-social-btn"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="footer-social-btn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="footer-social-btn"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="footer-social-btn"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4">
+        <h5 class="footer-heading">Quick Links</h5>
+        <ul class="footer-links">
+          <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+          <li><a href="service.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+          <li><a href="python.html"><i class="fas fa-chevron-right"></i> Python</a></li>
+          <li><a href="java.html"><i class="fas fa-chevron-right"></i> Java</a></li>
+          <li><a href="tally.html"><i class="fas fa-chevron-right"></i> Tally</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-4">
+        <h5 class="footer-heading">Our Courses</h5>
+        <ul class="footer-links">
+          <li><a href="autocad.html"><i class="fas fa-chevron-right"></i> AutoCAD 2D &amp; 3D</a></li>
+          <li><a href="sap.html"><i class="fas fa-chevron-right"></i> SAP</a></li>
+          <li><a href="revit.html"><i class="fas fa-chevron-right"></i> Revit Architecture</a></li>
+          <li><a href="civil3d.html"><i class="fas fa-chevron-right"></i> Civil 3D</a></li>
+          <li><a href="lumion.html"><i class="fas fa-chevron-right"></i> Lumion</a></li>
+          <li><a href="3dmax-vray.html"><i class="fas fa-chevron-right"></i> 3DS Max &amp; V-Ray</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-4">
+        <h5 class="footer-heading">Contact Info</h5>
+        <ul class="footer-links footer-contact list-unstyled">
+          <li><i class="fas fa-map-marker-alt"></i> <span>3rd floor JJ Arcade, near New Bus Stand, Marthandam, Tamil Nadu 629165</span></li>
+          <li><i class="fas fa-phone-alt"></i> <span>+91 9895352624</span></li>
+          <li><i class="fas fa-envelope"></i> <span>info@cadpoint.in<br>admissions@cadpoint.in</span></li>
+          <li><i class="fas fa-clock"></i> <span>Mon–Sun: 9:00 AM – 6:00 PM</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <span>© 2026 <strong style="color:rgba(255,255,255,0.7)">CADPOINT</strong> Authorized Training Centre. All Rights Reserved.</span>
+      <span>powered by caddpoint</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+// ─── MEGA MENU CLOSE BUTTON ──────────────────
+document.getElementById("closeMegaMenu").addEventListener("click", function() {
+  document.querySelector(".courses-mega-menu").classList.remove("show");
+});
+
+// ─── LOADER ─────────────────────────────────
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1800);
+});
+
+// ─── AOS INIT ───────────────────────────────
+AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });
+
+// ─── NAVBAR SCROLL ──────────────────────────
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  if (window.scrollY > 50) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+  const btn = document.getElementById('backToTop');
+  if (window.scrollY > 400) btn.classList.add('visible'); else btn.classList.remove('visible');
+});
+
+// ─── BACK TO TOP ────────────────────────────
+document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// ─── COUNTER ANIMATION ──────────────────────
+function animateCounters() {
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseInt(el.getAttribute('data-count'));
+    let current = 0;
+    const increment = target / 60;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) { current = target; clearInterval(timer); }
+      el.textContent = Math.floor(current) + '+';
+    }, 25);
+  });
+}
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) { animateCounters(); statsObserver.disconnect(); } });
+}, { threshold: 0.3 });
+const statsBand = document.querySelector('.stats-band');
+if (statsBand) statsObserver.observe(statsBand);
+
+// ─── HERO TITLE ANIMATION ───────────────────
+const heroTitle = document.getElementById('heroTitle');
+if (heroTitle) {
+  heroTitle.style.opacity = '0';
+  heroTitle.style.transform = 'translateY(30px)';
+  heroTitle.style.transition = 'opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s';
+  setTimeout(() => { heroTitle.style.opacity = '1'; heroTitle.style.transform = 'translateY(0)'; }, 300);
+}
+
+// ─── RIPPLE EFFECT ──────────────────────────
+document.querySelectorAll('.ripple').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.style.cssText = `position:absolute;border-radius:50%;background:rgba(255,255,255,0.3);width:10px;height:10px;left:${e.clientX-rect.left-5}px;top:${e.clientY-rect.top-5}px;transform:scale(0);animation:rippleAnim 0.6s ease-out forwards;pointer-events:none;`;
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 700);
+  });
+});
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `@keyframes rippleAnim{to{transform:scale(30);opacity:0;}}`;
+document.head.appendChild(rippleStyle);
+</script>
+
+<script>
+// ─── COURSES MEGA DROPDOWN HOVER ────────────
+(function() {
+  const coursesNav = document.getElementById('coursesNav');
+  if (!coursesNav) return;
+  const menu = coursesNav.querySelector('.courses-mega-menu');
+  const caret = document.getElementById('coursesDropdown');
+  if (!menu) return;
+  let hideTimer;
+
+  function showMenu() {
+    clearTimeout(hideTimer);
+    const navRect = document.getElementById('mainNav').getBoundingClientRect();
+    menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    menu.classList.add('show');
+    if (caret) caret.querySelector('i').style.transform = 'rotate(180deg)';
+  }
+  function hideMenu() {
+    hideTimer = setTimeout(function() {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }, 120);
+  }
+
+  coursesNav.addEventListener('mouseenter', showMenu);
+  coursesNav.addEventListener('mouseleave', hideMenu);
+  menu.addEventListener('mouseenter', showMenu);
+  menu.addEventListener('mouseleave', hideMenu);
+
+  if (caret) {
+    caret.querySelector('i').style.transition = 'transform 0.25s ease';
+    caret.addEventListener('click', function(e) {
+      e.stopPropagation();
+      if (menu.classList.contains('show')) hideMenu(); else showMenu();
+    });
+  }
+
+  document.addEventListener('click', function(e) {
+    if (!coursesNav.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }
+  });
+
+  window.addEventListener('scroll', function() {
+    if (menu.classList.contains('show')) {
+      const navRect = document.getElementById('mainNav').getBoundingClientRect();
+      menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    }
+  });
+})();
+</script>
+</body>
+</html>

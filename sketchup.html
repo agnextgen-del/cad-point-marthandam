@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SketchUp Course | CADPOINT Authorized Training Centre</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="assets/image/cadd-logo.webp">
+  <style>
+    :root {
+      --primary: #8B0000;
+      --primary-light: #A00000;
+      --primary-dark: #5c0000;
+      --primary-glow: rgba(139,0,0,0.35);
+      --white: #ffffff;
+      --light-gray: #F5F5F5;
+      --text-dark: #1a1a1a;
+      --text-muted: #555;
+      --border-light: rgba(139,0,0,0.15);
+      --glass-bg: rgba(255,255,255,0.08);
+      --glass-border: rgba(255,255,255,0.18);
+    }
+
+    html, body { max-width: 100%; overflow-x: hidden; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; color: var(--text-dark); background: var(--white); }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+    /* ── LOADER ── */
+    #loader {
+      position: fixed; inset: 0; background: #5c0000; z-index: 9999;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    #loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .loader-logo { font-family: 'Montserrat',sans-serif; font-weight: 900; font-size: 2rem; letter-spacing: 6px; color: #fff; margin-bottom: 28px; }
+    .loader-logo span { color: #ffd700; }
+    .loader-bar { width: 220px; height: 3px; background: rgba(255,255,255,0.12); border-radius: 3px; overflow: hidden; }
+    .loader-bar-inner { height: 100%; width: 0; background: linear-gradient(90deg,#cc0000,#ffd700); border-radius: 3px; animation: loaderAnim 1.8s ease-in-out infinite; }
+    @keyframes loaderAnim {
+      0%{width:0%;margin-left:0;opacity:1}
+      50%{width:70%;margin-left:0;opacity:1}
+      100%{width:0%;margin-left:100%;opacity:0}
+    }
+
+    /* ── BACK TO TOP ── */
+    #backToTop {
+      position: fixed; bottom: 30px; right: 30px; width: 44px; height: 44px;
+      background: linear-gradient(135deg,var(--primary),var(--primary-light)); color: white;
+      border: none; border-radius: 50%; cursor: pointer;
+      box-shadow: 0 6px 20px var(--primary-glow); opacity: 0; transform: translateY(20px);
+      transition: all 0.4s ease; z-index: 999; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+    }
+    #backToTop.visible { opacity: 1; transform: translateY(0); }
+    #backToTop:hover { transform: translateY(-4px); }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
+      box-shadow: 0 2px 30px rgba(139,0,0,0.12); padding: 7px 0;
+      position: sticky; top: 0; z-index: 1000; transition: all 0.3s ease;
+    }
+    .navbar.scrolled { padding: 8px 0; box-shadow: 0 4px 40px rgba(139,0,0,0.2); }
+    .navbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-text img { height: 48px; }
+    .logo-text .brand-name { font-family: 'Montserrat',sans-serif; font-weight: 900; font-size: 1.3rem; color: var(--primary); letter-spacing: 2px; }
+    .logo-text .brand-sub { font-size: 0.58rem; font-weight: 600; color: #666; letter-spacing: 1.5px; text-transform: uppercase; }
+    .navbar-nav .nav-link { font-family: 'Montserrat',sans-serif; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.8px; text-transform: uppercase; padding: 8px 16px !important; border-radius: 6px; transition: all 0.3s ease; }
+    .navbar-nav .nav-link:hover { color: var(--primary); }
+    .btn-nav-enroll { background: linear-gradient(135deg,var(--primary),var(--primary-light)); color: white !important; padding: 8px 22px !important; border-radius: 25px !important; font-weight: 700 !important; box-shadow: 0 4px 15px var(--primary-glow); transition: all 0.3s ease !important; }
+    .btn-nav-enroll:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--primary-glow) !important; }
+    .btn-nav-enroll::after { display: none !important; }
+
+    /* Mega Close X */
+    .mega-close-x { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border: none; border-radius: 50%; background: #fff; color: #222; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 99; box-shadow: 0 4px 15px rgba(0,0,0,.12); transition: .3s ease; }
+    .mega-close-x:hover { background: var(--primary); color: #fff; transform: rotate(90deg); }
+
+    /* Mega Dropdown */
+    #coursesNav { position: static !important; }
+    #coursesNav > div { display: flex; align-items: center; }
+    .courses-mega-menu {
+      position: fixed !important; top: auto !important; left: 50% !important;
+      transform: translateX(-50%) translateY(6px) !important;
+      width: min(960px,96vw) !important; display: block !important;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+      pointer-events: none; border: none !important; border-radius: 16px !important;
+      overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.16), 0 0 0 1px rgba(139,0,0,0.1) !important;
+      padding: 0 !important;
+    }
+    .courses-mega-menu.show { opacity: 1 !important; visibility: visible !important; transform: translateX(-50%) translateY(0) !important; pointer-events: auto !important; }
+    .mega-col { flex: 1; padding: 20px 10px 10px 10px; border-right: 1px solid rgba(139,0,0,0.08); background: white; }
+    .mega-col:last-child { border-right: none; }
+    .mega-col-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid rgba(139,0,0,0.08); }
+    .mega-col-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .mega-col-title { font-family: 'Montserrat',sans-serif; font-weight: 800; font-size: 0.82rem; color: var(--text-dark); }
+    .mega-col-sub { font-size: 0.68rem; color: #999; font-weight: 500; margin-top: 1px; }
+    .mega-item { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 7px; font-size: 0.8rem; font-weight: 500; color: var(--text-dark); text-decoration: none; transition: background 0.15s, color 0.15s, padding-left 0.15s; margin-bottom: 2px; }
+    .mega-item i { font-size: 0.72rem; width: 16px; text-align: center; color: #aaa; transition: color 0.15s; flex-shrink: 0; }
+    .mega-item:hover { background: rgba(139,0,0,0.07); color: var(--primary); padding-left: 12px; }
+    .mega-item:hover i { color: var(--primary); }
+    #coursesNav .courses-caret { color: var(--text-dark); transition: color 0.2s; }
+    #coursesNav .courses-caret:hover { color: var(--primary); }
+    .dropdown-item:hover { background: linear-gradient(135deg,var(--primary),var(--primary-light)); color: #fff; border-radius: 5px; }
+
+    /* Mobile dropdown */
+    @media(max-width:991px){
+      .navbar-collapse { background:#fff; padding:15px; border-radius:18px; margin-top:15px; box-shadow:0 10px 35px rgba(0,0,0,.08); }
+      #coursesNav { width:100%; }
+      #coursesNav .d-flex { width:100%; justify-content:space-between; align-items:center; }
+      #coursesNav .nav-link { padding:12px 0 !important; }
+      .courses-caret { padding-right:0 !important; }
+      .courses-mega-menu { 
+        /* position:static !important; */
+         transform:none !important; width:100% !important; min-width:100% !important; margin-top:10px !important; border:none !important; box-shadow:none !important; border-radius:16px !important; overflow:hidden; background:#f8f9fb; }
+      .courses-mega-menu .d-flex { flex-direction:column !important; gap:0 !important; padding-top:0 !important; }
+      .mega-col { width:100% !important; border-right:none !important; border-bottom:1px solid rgba(0,0,0,.06); padding:18px 16px !important; }
+      .mega-col:last-child { border-bottom:none; }
+    }
+
+    /* ── BREADCRUMB TICKER ── */
+    .breadcrumb-slider { background: linear-gradient(90deg,var(--primary-dark),var(--primary),var(--primary-dark)); padding:0; overflow:hidden; height:38px; display:flex; align-items:center; position:relative; }
+    .breadcrumb-slider::before,.breadcrumb-slider::after { content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; pointer-events:none; }
+    .breadcrumb-slider::before { left:0; background:linear-gradient(to right,var(--primary-dark),transparent); }
+    .breadcrumb-slider::after { right:0; background:linear-gradient(to left,var(--primary-dark),transparent); }
+    .breadcrumb-track { display:flex; animation:scrollBreadcrumb 28s linear infinite; white-space:nowrap; will-change:transform; }
+    .breadcrumb-track:hover { animation-play-state:paused; }
+    .breadcrumb-item-slide { display:inline-flex; align-items:center; gap:8px; padding:0 30px; font-size:0.75rem; font-weight:600; color:rgba(255,255,255,0.9); letter-spacing:1px; text-transform:uppercase; font-family:'Montserrat',sans-serif; }
+    .breadcrumb-item-slide i { color:rgba(255,255,255,0.6); font-size:0.7rem; }
+    @keyframes scrollBreadcrumb { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+    /* ── HERO ── */
+    .hero-section {
+      background: linear-gradient(135deg,#5c0000 0%,#8B0000 40%,#c0392b 80%,#5c0000 100%);
+      min-height: 88vh; display: flex; align-items: center;
+      position: relative; overflow: hidden; padding: 80px 0 100px;
+    }
+    .hero-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-section::after { content: ''; position: absolute; width: 700px; height: 700px; background: radial-gradient(circle,rgba(255,255,255,0.06) 0%,transparent 70%); top: -200px; right: -100px; pointer-events: none; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(10px); padding: 6px 18px; border-radius: 50px; font-size: 0.72rem; font-weight: 700; color: rgba(255,255,255,0.9); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 22px; font-family: 'Montserrat',sans-serif; }
+    .hero-badge span { color: #ffd700; }
+    .hero-title { font-family: 'Montserrat',sans-serif; font-weight: 900; font-size: clamp(2.4rem,5vw,3.4rem); line-height: 1.1; color: white; margin-bottom: 22px; }
+    .hero-title .highlight { color: #ffd700; }
+    .hero-desc { font-size: 1rem; color: rgba(255,255,255,0.82); line-height: 1.8; margin-bottom: 28px; max-width: 600px; }
+    .hero-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+    .hero-pill { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.9); font-family: 'Montserrat',sans-serif; font-size: 0.72rem; font-weight: 700; padding: 5px 14px; border-radius: 50px; display: inline-flex; align-items: center; gap: 6px; }
+    .hero-pill i { color: #ffd700; font-size: 0.65rem; }
+
+    /* Animated CTA Button */
+    .btn-hero-animated {
+      background: linear-gradient(135deg,#ffd700,#ffb700);
+      color: #5c0000 !important; font-family: 'Montserrat',sans-serif; font-weight: 800;
+      font-size: 0.95rem; letter-spacing: 0.5px; padding: 16px 42px; border-radius: 50px;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
+      box-shadow: 0 8px 30px rgba(255,215,0,0.45); position: relative; overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: pulseGlowBtn 2.5s infinite;
+    }
+    .btn-hero-animated span { position: relative; z-index: 1; }
+    .btn-hero-animated:hover { transform: translateY(-4px); box-shadow: 0 16px 50px rgba(255,215,0,0.65); color: #5c0000 !important; }
+    @keyframes pulseGlowBtn {
+      0%,100% { box-shadow: 0 8px 30px rgba(255,215,0,0.4); }
+      50% { box-shadow: 0 12px 50px rgba(255,215,0,0.75), 0 0 0 10px rgba(255,215,0,0.08); }
+    }
+    .btn-hero-ghost {
+      background: transparent; color: white !important; font-family: 'Montserrat',sans-serif; font-weight: 700; font-size: 0.88rem;
+      padding: 14px 32px; border-radius: 50px; border: 2px solid rgba(255,255,255,0.5);
+      text-decoration: none; display: inline-flex; align-items: center; gap: 8px; backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    .btn-hero-ghost:hover { border-color: white; background: rgba(255,255,255,0.12); transform: translateY(-3px); color: white !important; }
+    .hero-btn-group { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    /* Hero stats */
+    .hero-stats-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 36px; }
+    .hero-stat-pill { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 14px; padding: 14px 22px; text-align: center; backdrop-filter: blur(10px); }
+    .hero-stat-pill .snum { font-family: 'Montserrat',sans-serif; font-weight: 900; font-size: 1.5rem; color: #ffd700; line-height: 1; display: block; }
+    .hero-stat-pill .slbl { font-size: 0.72rem; color: rgba(255,255,255,0.75); font-weight: 500; margin-top: 4px; display: block; }
+
+    /* White curve */
+    .hero-curve { position: absolute; bottom: 0; width: 100%; height: 50px; line-height: 0; }
+    .hero-curve svg { width: 100%; height: 100%; display: block; }
+    .hero-curve path { fill: #ffffff; }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 90px 0; }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(139,0,0,0.08); border: 1px solid rgba(139,0,0,0.2); color: var(--primary); font-family: 'Montserrat',sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 14px; border-radius: 50px; margin-bottom: 14px; }
+    .section-title { font-family: 'Montserrat',sans-serif; font-weight: 800; font-size: clamp(1.8rem,3.5vw,2.6rem); line-height: 1.2; color: var(--text-dark); margin-bottom: 14px; }
+    .section-title span { color: var(--primary); }
+    .section-subtitle { color: var(--text-muted); font-size: 1rem; line-height: 1.7; max-width: 600px; }
+    .divider-line { width: 60px; height: 4px; background: linear-gradient(90deg,var(--primary),var(--primary-light)); border-radius: 4px; margin: 16px 0 24px; }
+    .divider-line.mx-auto { margin-left: auto !important; margin-right: auto !important; }
+
+    /* ── MARQUEE ── */
+    .marquee-section { background: linear-gradient(135deg,var(--primary-dark),var(--primary)); padding: 28px 0; overflow: hidden; position: relative; }
+    .marquee-section::before,.marquee-section::after { content:''; position:absolute; top:0; bottom:0; width:120px; z-index:2; }
+    .marquee-section::before { left:0; background:linear-gradient(to right,var(--primary-dark),transparent); }
+    .marquee-section::after { right:0; background:linear-gradient(to left,var(--primary-dark),transparent); }
+    .marquee-track { display:flex; animation:marqueeScroll 25s linear infinite; will-change:transform; }
+    .marquee-track:hover { animation-play-state:paused; }
+    .marquee-item { display:inline-flex; align-items:center; gap:12px; padding:0 28px; white-space:nowrap; font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.95rem; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.9); }
+    .marquee-dot { width:6px; height:6px; background:#ffd700; border-radius:50%; flex-shrink:0; }
+    @keyframes marqueeScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+    /* ── ABOUT SECTION (image + content) ── */
+    .about-sketchup-section { background: #fff; }
+    .about-feature { display:flex; align-items:flex-start; gap:16px; padding:18px 20px; background:white; border-radius:14px; box-shadow:0 4px 16px rgba(0,0,0,0.06); border-left:4px solid var(--primary); transition:all 0.3s ease; margin-bottom:14px; }
+    .about-feature:hover { transform:translateX(5px); box-shadow:0 8px 25px rgba(139,0,0,0.12); }
+    .about-feature-icon { width:46px; height:46px; background:linear-gradient(135deg,rgba(139,0,0,0.08),rgba(139,0,0,0.15)); border-radius:12px; display:flex; align-items:center; justify-content:center; color:var(--primary); font-size:1.1rem; flex-shrink:0; }
+    .about-feature h6 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.88rem; margin-bottom:4px; }
+    .about-feature p { font-size:0.82rem; color:var(--text-muted); margin:0; line-height:1.6; }
+    /* 3D SVG illustration box */
+    .sketchup-visual-box { width:100%; border-radius:20px; overflow:hidden; box-shadow:0 25px 70px rgba(139,0,0,0.2); border:3px solid rgba(139,0,0,0.1); background:linear-gradient(135deg,#1a0505 0%,#5c0000 50%,#8B0000 100%); height:420px; display:flex; align-items:center; justify-content:center; position:relative; }
+    .sketchup-visual-box::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px); background-size:40px 40px; }
+
+    /* ── LEARN CARDS ── */
+    .learn-section { background: var(--light-gray); }
+    .learn-card {
+      background: white; border-radius: 24px; padding: 36px 28px; border: 1px solid rgba(220,220,220,0.6);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.05); height: 100%; position: relative; overflow: hidden;
+      transition: transform 0.45s ease, box-shadow 0.45s ease;
+    }
+    .learn-card::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:0%; height:5px; background:linear-gradient(135deg,#5c0000,#8B0000,#c0392b); border-radius:50px; transition:.5s; }
+    .learn-card:hover::before { width:100%; }
+    .learn-card:hover { transform:translateY(-12px); box-shadow:0 18px 40px rgba(139,0,0,0.15); }
+    .module-num { position:absolute; top:16px; right:20px; font-family:'Montserrat',sans-serif; font-weight:900; font-size:4rem; color:rgba(139,0,0,0.06); line-height:1; }
+    .learn-icon { width:80px; height:80px; background:var(--primary); border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:22px; box-shadow:0 10px 30px rgba(139,0,0,0.25); transition:.4s; }
+    .learn-icon i { color:#fff; font-size:2rem; }
+    .learn-card:hover .learn-icon { transform:scale(1.08) rotate(8deg); }
+    .learn-card h4 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1rem; color:var(--text-dark); margin-bottom:10px; }
+    .learn-card p { font-size:0.85rem; color:var(--text-muted); line-height:1.8; margin:0; }
+
+    /* ── SHOWCASE CARDS ── */
+    .showcase-section { background: #fff; }
+    .showcase-card { border-radius:20px; overflow:hidden; position:relative; cursor:pointer; box-shadow:0 10px 40px rgba(0,0,0,0.1); transition:transform 0.4s ease, box-shadow 0.4s ease; }
+    .showcase-card:hover { transform:translateY(-8px); box-shadow:0 25px 60px rgba(139,0,0,0.2); }
+    .showcase-img { height:290px; display:flex; align-items:center; justify-content:center; overflow:hidden; position:relative; transition:transform 0.5s ease; }
+    .showcase-card:hover .showcase-img { transform:scale(1.08); }
+    .showcase-img-icon { font-size:5rem; color:rgba(255,255,255,0.2); z-index:1; position:relative; }
+    .showcase-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(139,0,0,0.92) 0%,rgba(139,0,0,0.4) 50%,transparent 100%); opacity:0; transition:opacity 0.4s ease; }
+    .showcase-card:hover .showcase-overlay { opacity:1; }
+    .showcase-content { position:absolute; bottom:0; left:0; right:0; padding:24px; transform:translateY(20px); transition:transform 0.4s ease; z-index:2; }
+    .showcase-card:hover .showcase-content { transform:translateY(0); }
+    .showcase-tag { display:inline-block; background:#ffd700; color:#5c0000; font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.65rem; letter-spacing:1px; text-transform:uppercase; padding:3px 10px; border-radius:50px; margin-bottom:8px; }
+    .showcase-content h5 { font-family:'Montserrat',sans-serif; font-weight:700; color:white; font-size:1rem; margin-bottom:6px; }
+    .showcase-content p { color:rgba(255,255,255,0.82); font-size:0.82rem; margin:0 0 12px; line-height:1.5; }
+    .showcase-arrow { width:36px; height:36px; background:rgba(255,255,255,0.2); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; color:white; font-size:0.8rem; border:1px solid rgba(255,255,255,0.3); }
+    .showcase-card-bottom { background:white; padding:16px 20px; }
+    .showcase-card-bottom h6 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.88rem; color:var(--text-dark); margin:0 0 4px; }
+    .showcase-card-bottom small { color:var(--text-muted); font-size:0.78rem; }
+
+    /* ── FEATURES (GLASS) ── */
+    .features-section { background:linear-gradient(135deg,#5c0000 0%,#8B0000 50%,#5c0000 100%); padding:100px 0; position:relative; overflow:hidden; }
+    .features-section::before { content:''; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/svg%3E"); }
+    .glass-card { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); backdrop-filter:blur(20px); border-radius:20px; padding:36px 28px; text-align:center; height:100%; transition:transform 0.35s ease, background 0.35s ease; }
+    .glass-card:hover { transform:translateY(-10px); background:rgba(255,255,255,0.14); }
+    .glass-card-icon { width:72px; height:72px; border-radius:16px; background:rgba(255,215,0,0.15); border:1px solid rgba(255,215,0,0.25); display:flex; align-items:center; justify-content:center; margin:0 auto 22px; font-size:1.8rem; color:#ffd700; transition:transform 0.35s ease; }
+    .glass-card:hover .glass-card-icon { transform:scale(1.1) rotate(6deg); }
+    .glass-card h5 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1rem; color:white; margin-bottom:10px; }
+    .glass-card p { font-size:0.85rem; color:rgba(255,255,255,0.72); line-height:1.8; margin:0; }
+
+    /* ── SKILLS ── */
+    .skills-section { background:#fff; }
+    .skill-tool-card { background:white; border-radius:20px; border:1px solid rgba(220,220,220,0.7); box-shadow:0 6px 25px rgba(0,0,0,0.06); padding:30px 20px; text-align:center; transition:transform 0.35s ease, box-shadow 0.35s ease; }
+    .skill-tool-card:hover { transform:translateY(-8px); box-shadow:0 15px 40px rgba(139,0,0,0.12); }
+    .skill-tool-icon { width:80px; height:80px; border-radius:16px; display:flex; align-items:center; justify-content:center; margin:0 auto 18px; }
+    .skill-tool-card h5 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.9rem; margin-bottom:4px; color:var(--text-dark); }
+    .skill-tool-card p { font-size:0.75rem; color:var(--text-muted); margin-bottom:14px; }
+    .skill-bar-wrap { padding:0 4px; }
+    .skill-bar-bg { height:5px; background:rgba(139,0,0,0.1); border-radius:5px; overflow:hidden; }
+    .skill-bar-fill { height:100%; background:linear-gradient(90deg,var(--primary-dark),var(--primary)); border-radius:5px; width:0; transition:width 1.2s ease; }
+
+    /* ── ACHIEVEMENT STRIP ── */
+    .achievement-strip { background:#8b0000; padding:70px 0; }
+    .achievement-col { border-right:1px solid rgba(255,255,255,.2); }
+    .no-border { border-right:none; }
+    .achievement-box { padding:20px 10px; transition:.4s ease; }
+    .achievement-box:hover { transform:translateY(-8px); }
+    .achievement-box h2 { font-size:62px; font-weight:800; color:#ffd400; margin-bottom:12px; line-height:1; font-family:'Montserrat',sans-serif; }
+    .achievement-box p { font-size:20px; font-weight:500; color:#fff; margin:0; }
+    @media(max-width:991px){ .achievement-col{border-right:none;margin-bottom:30px;} }
+    @media(max-width:576px){ .achievement-strip{padding:50px 0;} .achievement-box h2{font-size:42px;} .achievement-box p{font-size:16px;} }
+
+    /* ── CTA SECTION ── */
+    .cta-section { background:linear-gradient(135deg,#5c0000 0%,#8B0000 50%,#c0392b 100%); padding:90px 0; position:relative; overflow:hidden; }
+    .cta-section::before { content:''; position:absolute; width:500px; height:500px; background:radial-gradient(circle,rgba(255,255,255,0.06) 0%,transparent 70%); top:-200px; right:-100px; }
+    .cta-title { font-family:'Montserrat',sans-serif; font-weight:900; font-size:clamp(1.8rem,4vw,3rem); color:white; margin-bottom:16px; }
+    .cta-subtitle { color:rgba(255,255,255,0.8); font-size:1rem; margin-bottom:36px; }
+    .btn-cta-glow { background:linear-gradient(135deg,#ffd700,#ffb700); color:#5c0000 !important; font-family:'Montserrat',sans-serif; font-weight:800; font-size:1rem; padding:16px 42px; border-radius:50px; text-decoration:none; display:inline-flex; align-items:center; gap:10px; animation:pulseGlow 2.5s infinite; transition:all 0.3s ease; }
+    .btn-cta-glow:hover { transform:translateY(-4px); color:#5c0000 !important; }
+    @keyframes pulseGlow { 0%,100%{box-shadow:0 0 0 0 rgba(255,215,0,0.5)} 50%{box-shadow:0 0 0 18px rgba(255,215,0,0)} }
+
+    /* ── FOOTER ── */
+    footer { background:#0d0d0d; padding:70px 0 0; color:rgba(255,255,255,0.75); }
+    .footer-brand { margin-bottom:20px; }
+    .footer-desc { font-size:0.85rem; line-height:1.8; color:rgba(255,255,255,0.55); margin-bottom:22px; }
+    .footer-socials { display:flex; gap:10px; }
+    .footer-social-btn { width:36px; height:36px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:8px; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.6); font-size:0.85rem; transition:all 0.3s ease; text-decoration:none; }
+    .footer-social-btn:hover { background:var(--primary); border-color:var(--primary); color:white; transform:translateY(-3px); }
+    .footer-heading { font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.9rem; letter-spacing:1.5px; text-transform:uppercase; color:white; margin-bottom:20px; position:relative; padding-bottom:10px; }
+    .footer-heading::after { content:''; position:absolute; bottom:0; left:0; width:30px; height:2px; background:var(--primary); border-radius:2px; }
+    .footer-links { list-style:none; padding:0; }
+    .footer-links li { margin-bottom:10px; }
+    .footer-links a { color:rgba(255,255,255,0.55); text-decoration:none; font-size:0.85rem; transition:all 0.3s ease; display:flex; align-items:center; gap:6px; }
+    .footer-links a:hover { color:var(--primary-light); padding-left:5px; }
+    .footer-links a i { font-size:0.65rem; color:var(--primary); }
+    .footer-contact li { display:flex; align-items:flex-start; gap:10px; margin-bottom:14px; font-size:0.85rem; }
+    .footer-contact li i { color:var(--primary-light); margin-top:3px; flex-shrink:0; font-size:0.85rem; }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,0.08); padding:22px 0; margin-top:50px; font-size:0.8rem; color:rgba(255,255,255,0.4); }
+
+    /* Ripple */
+    .ripple { position:relative; overflow:hidden; }
+
+
+     /* ═══════════════════════════════════════════
+       CAREER SECTION
+    ═══════════════════════════════════════════ */
+    .career-section { padding:90px 0; background:var(--light-gray); }
+    .career-card {
+      background:#fff; border-radius:20px; padding:30px 26px;
+      border:1px solid rgba(139,0,0,.08); transition:all .35s; position:relative; overflow:hidden; height:100%;
+      box-shadow:0 4px 16px rgba(0,0,0,.05);
+    }
+    .career-card::after { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(139,0,0,.04),transparent); opacity:0; transition:opacity .35s; }
+    .career-card:hover { transform:translateY(-8px); box-shadow:0 20px 50px rgba(139,0,0,.12); border-color:rgba(139,0,0,.22); }
+    .career-card:hover::after { opacity:1; }
+    .career-role-icon { width:60px; height:60px; background:linear-gradient(135deg,var(--primary),var(--primary-light)); border-radius:16px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.5rem; margin-bottom:16px; box-shadow:0 6px 18px var(--primary-glow); }
+    .career-card h5 { font-family:'Montserrat',sans-serif; font-weight:800; font-size:.95rem; margin-bottom:8px; }
+    .career-card .salary { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.1rem; color:var(--primary); margin-bottom:12px; }
+    .demand-bar { height:6px; background:#f0f0f0; border-radius:3px; margin-bottom:6px; overflow:hidden; }
+    .demand-fill { height:100%; border-radius:3px; background:linear-gradient(90deg,var(--primary),var(--primary-light)); transition:width 1.2s ease; }
+    .demand-label { font-size:.72rem; color:var(--text-muted); display:flex; justify-content:space-between; }
+
+
+    /* Responsive hero */
+    @media(max-width:991px) {
+      .hero-section { padding:60px 0 80px; text-align:center; }
+      .hero-pills, .hero-btn-group, .hero-stats-row { justify-content:center; }
+      .hero-desc { margin:0 auto 28px; }
+    }
+    @media(max-width:767px) {
+      section { padding:65px 0; }
+      .hero-btn-group { flex-direction:column; align-items:center; }
+      .btn-hero-animated,.btn-hero-ghost { width:260px; justify-content:center; }
+      .hero-stats-row { justify-content:center; }
+    }
+
+    .text-lg-justify{
+      text-align:justify;
+    }
+
+    @media (max-width: 775px) {
+  .text-m-center {
+    text-align: center !important;
+  }
+}
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<!-- <div id="loader">
+  <div class="loader-logo">CAD<span>POINT</span></div>
+  <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+</div> -->
+
+<!-- BACK TO TOP -->
+<button id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+<!-- ═══════ NAVBAR ═══════ -->
+<div id="header"></div>
+
+
+<!-- ═══════ BREADCRUMB TICKER ═══════ -->
+<div class="breadcrumb-slider">
+  <div class="breadcrumb-track">
+    <div class="breadcrumb-item-slide"><i class="fas fa-pencil-ruler"></i> <strong>3D Modeling</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i> <strong>Architectural Design</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-couch"></i> <strong>Interior Design</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-tree"></i> <strong>Landscape Design</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-sun"></i> <strong>V-Ray Rendering</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-file-alt"></i> <strong>Layout Tool</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-plug"></i> <strong>Plugin Ecosystem</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-award"></i> <strong>ISO Certified</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-user-tie"></i> <strong>Placement Support</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-cube"></i> <strong>Conceptual Design</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-pencil-ruler"></i> <strong>3D Modeling</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i> <strong>Architectural Design</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-couch"></i> <strong>Interior Design</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-tree"></i> <strong>Landscape Design</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-sun"></i> <strong>V-Ray Rendering</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-file-alt"></i> <strong>Layout Tool</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-plug"></i> <strong>Plugin Ecosystem</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-award"></i> <strong>ISO Certified</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-user-tie"></i> <strong>Placement Support</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-cube"></i> <strong>Conceptual Design</strong></div>
+  </div>
+</div>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero-section" id="home">
+  <div class="container position-relative" style="z-index:2;">
+    <div class="row justify-content-center">
+      <div class="col-lg-9 col-xl-8 text-center" data-aos="fade-up">
+        <div class="hero-badge"><span>✦</span> Autodesk Authorized · SketchUp Training <span>✦</span></div>
+        <h1 class="hero-title" id="heroTitle">
+          Master <span class="highlight">SketchUp</span> 3D<br>Design & Visualization
+        </h1>
+        <p class="hero-desc mx-auto">
+          From architectural concepts to interior layouts, master SketchUp — the world's most intuitive 3D modeling software used by architects, interior designers, and landscape professionals.
+        </p>
+        <div class="hero-pills justify-content-center">
+          <span class="hero-pill"><i class="fas fa-check-circle"></i> Industry-Certified Course</span>
+          <span class="hero-pill"><i class="fas fa-check-circle"></i> Live Project Training</span>
+          <span class="hero-pill"><i class="fas fa-check-circle"></i> Placement Assistance</span>
+          <span class="hero-pill"><i class="fas fa-check-circle"></i> Flexible Batches</span>
+        </div>
+        <div class="hero-btn-group justify-content-center">
+          <a href="https://wa.me/919895352624" class="btn-hero-animated ripple">
+            <span><i class="fas fa-pencil-ruler me-2"></i>Enroll in SketchUp Course</span>
+          </a>
+          <!-- <a href="#learn" class="btn-hero-ghost">Explore Curriculum <i class="fas fa-arrow-down ms-1"></i></a> -->
+        </div>
+        <!-- <div class="hero-stats-row justify-content-center">
+          <div class="hero-stat-pill"><span class="snum">2,500+</span><span class="slbl">Happy Students</span></div>
+          <div class="hero-stat-pill"><span class="snum" style="color:#ffd700;">4.9★</span><span class="slbl">Course Rating</span></div>
+          <div class="hero-stat-pill"><span class="snum">100%</span><span class="slbl">Job Assistance</span></div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <div class="hero-curve">
+    <svg viewBox="0 0 1440 150" preserveAspectRatio="none">
+      <path d="M0,80 C300,150 1100,0 1440,100 L1440,150 L0,150 Z"></path>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══════ MARQUEE ═══════ -->
+<!-- <div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span>3D Modeling</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Conceptual Design</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Interior Design</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Landscape Design</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Architectural Visualization</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>V-Ray Rendering</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Layout Tool</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Plugin Ecosystem</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Placement Support</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>ISO Certified</div>
+
+    <div class="marquee-item"><span class="marquee-dot"></span>3D Modeling</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Conceptual Design</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Interior Design</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Landscape Design</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Architectural Visualization</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>V-Ray Rendering</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Layout Tool</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Plugin Ecosystem</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Placement Support</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>ISO Certified</div>
+  </div>
+</div> -->
+
+<!-- ═══════ ABOUT SKETCHUP ═══════ -->
+<section class="about-sketchup-section" id="about-sketchup">
+  <div class="container">
+    <div class="row align-items-center gy-5 text-m-center">
+      <div class="col-lg-5" data-aos="fade-right">
+        <img src="assets/image/sketchup-design.webp" class="w-100">
+        <!-- <div class="sketchup-visual-box">
+         
+         
+        </div> -->
+      </div>
+      <div class="col-lg-7 text-m-center" data-aos="fade-left">
+        <div class="section-tag"><i class="fas fa-pencil-ruler"></i> About The Course</div>
+        <h2 class="section-title mt-2">SketchUp 3D <span>Design </span></h2>
+      
+        <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.8;margin-bottom:24px;" class="text-lg-justify">
+          The SketchUp 3D Design Course at CADD Point is designed to help students, architects, interior designers, and engineering professionals master the art of 3D modeling and visualization. This course provides hands-on training in creating realistic architectural designs, interior layouts, furniture models, and detailed project presentations using SketchUp software. With expert guidance, practical assignments, and industry-focused learning methods, students gain the skills needed to transform creative ideas into professional 3D designs. The program also covers rendering techniques, model editing, and presentation tools, making it an ideal choice for anyone looking to build a successful career in design and drafting.
+        </p>
+      
+        <div class="hero-btn-group ">
+          <a href="tel:+919895352624" class="btn-hero-animated ripple">
+            <span>Contact now</span>
+          </a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ═══════ ACHIEVEMENT STRIP ═══════ -->
+<section class="achievement-strip">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-6 col-md-3 achievement-col" data-aos="fade-up" data-aos-delay="50">
+        <div class="achievement-box"><h2 data-count="2500">0+</h2><p>Students Trained</p></div>
+      </div>
+      <div class="col-6 col-md-3 achievement-col" data-aos="fade-up" data-aos-delay="100">
+        <div class="achievement-box"><h2 data-count="14">0+</h2><p>Years of Excellence</p></div>
+      </div>
+      <div class="col-6 col-md-3 achievement-col" data-aos="fade-up" data-aos-delay="150">
+        <div class="achievement-box"><h2 data-count="200">0+</h2><p>Hiring Partners</p></div>
+      </div>
+      <div class="col-6 col-md-3 achievement-col no-border" data-aos="fade-up" data-aos-delay="200">
+        <div class="achievement-box"><h2 style="font-size:52px;">4.9★</h2><p>Google Rating</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════ ABOUT SKETCHUP ═══════ -->
+<section class="about-sketchup-section" id="about-sketchup">
+  <div class="container">
+    <div class="row align-items-center gy-5 flex-row-reverse">
+      <div class="col-lg-6" data-aos="fade-right">
+       <img src="assets/image/sketchup-plan.webp" class="w-100">
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <!-- <div class="section-tag text-m-center"><i class="fas fa-pencil-ruler"></i> About The Course</div> -->
+        <h2 class="section-title mt-2 text-m-center">SketchUp 3D <span>Design </span></h2>
+      
+        <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.8;margin-bottom:24px;">
+          SketchUp is the world's most intuitive 3D modeling software, trusted by architects, interior designers, landscape professionals, and urban planners across the globe. At CADPOINT, our SketchUp course takes you from basic navigation all the way to professional-grade rendering and client presentations.
+        </p>
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="fas fa-globe"></i></div>
+          <div><h6>Industry-Standard 3D Tool</h6><p>Used by top architecture firms, interior design studios, and construction companies worldwide for rapid 3D visualization.</p></div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="fas fa-briefcase"></i></div>
+          <div><h6>High-Demand Career Skill</h6><p>SketchUp proficiency opens doors in architecture, interior design, landscape planning, real estate visualization, and game design.</p></div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="fas fa-film"></i></div>
+          <div><h6>V-Ray & Rendering Integration</h6><p>Go beyond modeling — produce photorealistic renders and animated walkthroughs using V-Ray for SketchUp and Lumion.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ LEARN CARDS ═══════ -->
+<section class="learn-section" id="learn">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-book-open"></i> Course Curriculum</div>
+      <h2 class="section-title mt-2">What You'll <span>Learn</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">A structured, project-based curriculum designed to take you from SketchUp beginner to professional 3D designer in the shortest time possible.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+        <div class="learn-card">
+          <div class="module-num">01</div>
+          <div class="learn-icon"><i class="fas fa-pencil-ruler"></i></div>
+          <h4>SketchUp Interface & Navigation</h4>
+          <p>Master the SketchUp workspace, toolbars, drawing axes, orbit/pan/zoom controls, and efficient 3D navigation techniques used by professionals daily.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="learn-card">
+          <div class="module-num">02</div>
+          <div class="learn-icon"><i class="fas fa-cubes"></i></div>
+          <h4>3D Modeling Fundamentals</h4>
+          <p>Create precise 3D geometry using push/pull, follow me, intersect faces, and advanced solid tools for complex architectural and product forms.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
+        <div class="learn-card">
+          <div class="module-num">03</div>
+          <div class="learn-icon"><i class="fas fa-home"></i></div>
+          <h4>Architectural & Interior Design</h4>
+          <p>Design complete building exteriors, interior spaces, furniture layouts, and space planning using real-world scale, components, and dynamic blocks.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="learn-card">
+          <div class="module-num">04</div>
+          <div class="learn-icon"><i class="fas fa-tree"></i></div>
+          <h4>Landscape & Site Design</h4>
+          <p>Model terrain, pathways, planting layouts, site furniture, and outdoor spaces using SketchUp's terrain sculpting and sandbox tools.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="250">
+        <div class="learn-card">
+          <div class="module-num">05</div>
+          <div class="learn-icon"><i class="fas fa-paint-brush"></i></div>
+          <h4>Materials, Textures & Styles</h4>
+          <p>Apply realistic materials, custom textures, and visual styles. Configure scenes, shadows, section cuts, and atmospheric effects for compelling presentations.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="learn-card">
+          <div class="module-num">06</div>
+          <div class="learn-icon"><i class="fas fa-film"></i></div>
+          <h4>Rendering & Presentation</h4>
+          <p>Export photorealistic renders using V-Ray for SketchUp. Create animated walkthroughs, Layout sheet presentations, and client-ready deliverables.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SHOWCASE CARDS ═══════ -->
+<!-- <section class="showcase-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-images"></i> Project Gallery</div>
+      <h2 class="section-title mt-2">SketchUp <span>Design Showcase</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Explore the kind of stunning 3D projects you'll create during your training at CADPOINT.</p>
+    </div>
+    <div class="row g-4">
+     
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="50">
+        <div class="showcase-card">
+          <div class="showcase-img" style="background:linear-gradient(135deg,#1a0505,#5c0000,#8B0000);">
+            <i class="fas fa-home showcase-img-icon"></i>
+            <div class="showcase-overlay"></div>
+            <div class="showcase-content">
+              <span class="showcase-tag">3D Architecture</span>
+              <h5>Residential Villa Design</h5>
+              <p>Complete exterior 3D model with landscaping, materials & V-Ray render</p>
+              <span class="showcase-arrow"><i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+          <div class="showcase-card-bottom">
+            <h6>Villa 3D Concept</h6>
+            <small><i class="fas fa-pencil-ruler" style="color:var(--primary);margin-right:5px;"></i>SketchUp + V-Ray</small>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="showcase-card">
+          <div class="showcase-img" style="background:linear-gradient(135deg,#0d1117,#1a2a3a,#2a4a6a);">
+            <i class="fas fa-couch showcase-img-icon"></i>
+            <div class="showcase-overlay"></div>
+            <div class="showcase-content">
+              <span class="showcase-tag">Interior Design</span>
+              <h5>Modern Living Room</h5>
+              <p>Detailed interior space with furniture, lighting, textures & shadow study</p>
+              <span class="showcase-arrow"><i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+          <div class="showcase-card-bottom">
+            <h6>Interior Visualization</h6>
+            <small><i class="fas fa-pencil-ruler" style="color:var(--primary);margin-right:5px;"></i>SketchUp + Lumion</small>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="150">
+        <div class="showcase-card">
+          <div class="showcase-img" style="background:linear-gradient(135deg,#0a1f0a,#1a3a1a,#2a5a2a);">
+            <i class="fas fa-tree showcase-img-icon"></i>
+            <div class="showcase-overlay"></div>
+            <div class="showcase-content">
+              <span class="showcase-tag">Landscape Design</span>
+              <h5>Urban Park Layout</h5>
+              <p>Site design with terrain, pathways, planting zones & site furniture</p>
+              <span class="showcase-arrow"><i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+          <div class="showcase-card-bottom">
+            <h6>Landscape Planning</h6>
+            <small><i class="fas fa-pencil-ruler" style="color:var(--primary);margin-right:5px;"></i>SketchUp Sandbox</small>
+          </div>
+        </div>
+      </div>
+     
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="showcase-card">
+          <div class="showcase-img" style="background:linear-gradient(135deg,#1a1a05,#3a3a0a,#5c4a0a);">
+            <i class="fas fa-building showcase-img-icon"></i>
+            <div class="showcase-overlay"></div>
+            <div class="showcase-content">
+              <span class="showcase-tag">Commercial Project</span>
+              <h5>Office Building Concept</h5>
+              <p>Multi-storey commercial facade with curtain wall glazing & signage</p>
+              <span class="showcase-arrow"><i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+          <div class="showcase-card-bottom">
+            <h6>Commercial Facade</h6>
+            <small><i class="fas fa-pencil-ruler" style="color:var(--primary);margin-right:5px;"></i>SketchUp + Layout</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- ═══════ COURSE FEATURES (GLASS) ═══════ -->
+<section class="features-section">
+  <div class="container position-relative" style="z-index:1;">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto" style="color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.08);"><i class="fas fa-star"></i> Why Choose Us</div>
+      <h2 class="section-title mt-2" style="color:white;">Premium <span style="color:#ffd700;">Course Features</span></h2>
+      <div class="divider-line mx-auto" style="background:linear-gradient(90deg,#ffd700,#ffb700);"></div>
+      <p class="section-subtitle mx-auto" style="color:rgba(255,255,255,0.72);">Everything you need to transform your design career with world-class SketchUp training, expert mentors, and real project experience.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+        <div class="glass-card"><div class="glass-card-icon"><i class="fas fa-certificate"></i></div><h5>Industry Certificate</h5><p>Receive a recognized SketchUp training certificate from CADPOINT, an Autodesk Authorized Training Centre — valued by top employers.</p></div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="glass-card"><div class="glass-card-icon"><i class="fas fa-laptop-code"></i></div><h5>Live Project Training</h5><p>Work on 8+ real-world SketchUp projects covering architectural, interior, landscape, and commercial design categories.</p></div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
+        <div class="glass-card"><div class="glass-card-icon"><i class="fas fa-chalkboard-teacher"></i></div><h5>Expert Trainers</h5><p>Learn from certified trainers with 10+ years of professional SketchUp, V-Ray, and Lumion project experience across industries.</p></div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="glass-card"><div class="glass-card-icon"><i class="fas fa-clock"></i></div><h5>Flexible Timings</h5><p>Morning, evening, and weekend batches available. Switch batches anytime without extra charges — designed around your schedule.</p></div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="250">
+        <div class="glass-card"><div class="glass-card-icon"><i class="fas fa-users"></i></div><h5>Placement Support</h5><p>Dedicated placement cell with 200+ hiring partners. Resume review, portfolio building, and job referrals are all included.</p></div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="glass-card"><div class="glass-card-icon"><i class="fas fa-video"></i></div><h5>Recorded Sessions</h5><p>Lifetime access to recorded class videos, updated study materials, and all project files from our student learning portal.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SKILLS ═══════ -->
+<section class="skills-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-tools"></i> Tools & Software</div>
+      <h2 class="section-title mt-2">Software <span>Skills</span> You'll Master</h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Beyond SketchUp, you'll gain proficiency in the complete suite of architectural visualization tools used in top design firms globally.</p>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="50">
+        <div class="skill-tool-card">
+          <div class="skill-tool-icon" style="background:linear-gradient(135deg,rgba(139,0,0,0.1),rgba(139,0,0,0.18));">
+            <i class="fas fa-pencil-ruler" style="color:var(--primary);font-size:2rem;"></i>
+          </div>
+          <h5>SketchUp Pro</h5><p>Core Software</p>
+          <div class="skill-bar-wrap"><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95"></div></div></div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="100">
+        <div class="skill-tool-card">
+          <div class="skill-tool-icon" style="background:linear-gradient(135deg,rgba(230,168,23,0.1),rgba(230,168,23,0.18));">
+            <i class="fas fa-sun" style="color:#e6a817;font-size:2rem;"></i>
+          </div>
+          <h5>V-Ray</h5><p>Rendering</p>
+          <div class="skill-bar-wrap"><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="82"></div></div></div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="150">
+        <div class="skill-tool-card">
+          <div class="skill-tool-icon" style="background:linear-gradient(135deg,rgba(0,80,160,0.1),rgba(0,80,160,0.18));">
+            <i class="fas fa-drafting-compass" style="color:#0050a0;font-size:2rem;"></i>
+          </div>
+          <h5>AutoCAD</h5><p>2D Drafting</p>
+          <div class="skill-bar-wrap"><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80"></div></div></div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="200">
+        <div class="skill-tool-card">
+          <div class="skill-tool-icon" style="background:linear-gradient(135deg,rgba(0,160,80,0.1),rgba(0,160,80,0.18));">
+            <i class="fas fa-film" style="color:#00a050;font-size:2rem;"></i>
+          </div>
+          <h5>Lumion</h5><p>Visualization</p>
+          <div class="skill-bar-wrap"><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="75"></div></div></div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="250">
+        <div class="skill-tool-card">
+          <div class="skill-tool-icon" style="background:linear-gradient(135deg,rgba(139,0,0,0.08),rgba(139,0,0,0.15));">
+            <i class="fas fa-file-alt" style="color:var(--primary);font-size:2rem;"></i>
+          </div>
+          <h5>Layout</h5><p>Presentation</p>
+          <div class="skill-bar-wrap"><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="70"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ═══════════════════════════════════════════
+     CAREER OPPORTUNITIES
+═══════════════════════════════════════════ -->
+<section class="career-section" id="careers">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <div class="section-tag mx-auto"><i class="fas fa-user-tie"></i> Career Paths</div>
+        <h2 class="section-title mt-2">Career <span>Opportunities</span></h2>
+        <div class="divider-line mx-auto"></div>
+        <p class="section-subtitle mx-auto">A SketchUp certification from CADPOINT opens doors to these in-demand roles across India's booming design industry.</p>
+      </div>
+      <div class="row g-4">
+  
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+          <div class="career-card">
+            <div class="career-role-icon"><i class="fas fa-cube"></i></div>
+            <h5>3D Designer</h5>
+            <div class="salary">₹3.5 – 8 LPA</div>
+            <p style="font-size:.83rem;color:var(--text-muted);margin-bottom:16px">Create 3D models for architecture firms, product companies, and gaming studios.</p>
+            <div class="demand-bar"><div class="demand-fill" style="width:90%"></div></div>
+            <div class="demand-label"><span>Market Demand</span><span>Very High</span></div>
+          </div>
+        </div>
+  
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="career-card">
+            <div class="career-role-icon"><i class="fas fa-building"></i></div>
+            <h5>Architectural Modeler</h5>
+            <div class="salary">₹4 – 9 LPA</div>
+            <p style="font-size:.83rem;color:var(--text-muted);margin-bottom:16px">Build complete architectural models for residential, commercial, and urban projects.</p>
+            <div class="demand-bar"><div class="demand-fill" style="width:88%"></div></div>
+            <div class="demand-label"><span>Market Demand</span><span>Very High</span></div>
+          </div>
+        </div>
+  
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
+          <div class="career-card">
+            <div class="career-role-icon"><i class="fas fa-couch"></i></div>
+            <h5>Interior Designer</h5>
+            <div class="salary">₹4 – 12 LPA</div>
+            <p style="font-size:.83rem;color:var(--text-muted);margin-bottom:16px">Design and visualize interior spaces for residential, hospitality, and retail clients.</p>
+            <div class="demand-bar"><div class="demand-fill" style="width:85%"></div></div>
+            <div class="demand-label"><span>Market Demand</span><span>High</span></div>
+          </div>
+        </div>
+  
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="career-card">
+            <div class="career-role-icon"><i class="fas fa-chair"></i></div>
+            <h5>Furniture Designer</h5>
+            <div class="salary">₹3 – 7 LPA</div>
+            <p style="font-size:.83rem;color:var(--text-muted);margin-bottom:16px">Model custom furniture pieces for manufacturers, studios, and e-commerce catalogues.</p>
+            <div class="demand-bar"><div class="demand-fill" style="width:78%"></div></div>
+            <div class="demand-label"><span>Market Demand</span><span>Good</span></div>
+          </div>
+        </div>
+  
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="250">
+          <div class="career-card">
+            <div class="career-role-icon"><i class="fas fa-eye"></i></div>
+            <h5>Visualization Artist</h5>
+            <div class="salary">₹5 – 14 LPA</div>
+            <p style="font-size:.83rem;color:var(--text-muted);margin-bottom:16px">Create photorealistic renders and animations for real estate, AEC, and marketing campaigns.</p>
+            <div class="demand-bar"><div class="demand-fill" style="width:92%"></div></div>
+            <div class="demand-label"><span>Market Demand</span><span>Very High</span></div>
+          </div>
+        </div>
+  
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="career-card">
+            <div class="career-role-icon"><i class="fas fa-drafting-compass"></i></div>
+            <h5>CAD / 3D Drafter</h5>
+            <div class="salary">₹2.5 – 6 LPA</div>
+            <p style="font-size:.83rem;color:var(--text-muted);margin-bottom:16px">Produce technical 3D drawings, layout plans, and design documentation for engineering and construction.</p>
+            <div class="demand-bar"><div class="demand-fill" style="width:82%"></div></div>
+            <div class="demand-label"><span>Market Demand</span><span>High</span></div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+
+
+
+<!-- ═══════ CTA ═══════ -->
+<section class="cta-section">
+  <div class="container text-center position-relative" style="z-index:1;">
+    <div data-aos="zoom-in">
+      <div class="section-tag mx-auto mb-3" style="color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.08);"><i class="fas fa-rocket"></i> Get Started Today</div>
+      <h2 class="cta-title">Ready to Master<br><span style="color:#ffd700;">SketchUp 3D Design?</span></h2>
+      <p class="cta-subtitle">Join 2,500+ students who launched their design careers with CADPOINT's industry-certified SketchUp course.</p>
+      <a href="https://wa.me/919895352624" class="btn-cta-glow">
+        <i class="fas fa-rocket"></i> Enroll Now — It's Free to Inquire
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<div id="footer"></div>
+
+
+
+<!-- ═══════ SCRIPTS ═══════ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+<script>
+function initCaddNav() {
+
+    const coursesNav = document.getElementById('coursesNav');
+    const caret = document.getElementById('coursesCaret');
+    const menu = document.getElementById('coursesMegaMenu');
+    const closeBtn = document.getElementById('closeMegaMenu');
+
+    if (!coursesNav || !caret || !menu) return;
+
+    // X BUTTON CLOSE (Desktop + Mobile)
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.remove('show');
+
+        });
+    }
+
+    // MOBILE
+    if (window.innerWidth <= 991) {
+
+        caret.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!coursesNav.contains(e.target)) {
+                menu.classList.remove('show');
+            }
+        });
+
+        return;
+    }
+
+    // DESKTOP
+    coursesNav.addEventListener('mouseenter', function () {
+        menu.classList.add('show');
+    });
+
+    coursesNav.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+
+    menu.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+}
+</script>
+
+<script>
+fetch("./header.html")
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById("header").innerHTML = html;
+    initCaddNav();
+  });
+
+  fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+      document.getElementById('footer').innerHTML = data;
+  });
+</script>
+
+
+<script>
+// LOADER
+window.addEventListener('load', () => {
+  setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 2000);
+});
+
+// AOS
+AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });
+
+// NAVBAR SCROLL
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+  document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 400);
+});
+
+// BACK TO TOP
+document.getElementById('backToTop').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// CLOSE MEGA MENU
+document.getElementById('closeMegaMenu').addEventListener('click', () => {
+  document.querySelector('.courses-mega-menu').classList.remove('show');
+});
+
+// MEGA DROPDOWN HOVER
+(function () {
+  const coursesNav = document.getElementById('coursesNav');
+  if (!coursesNav) return;
+  const menu = coursesNav.querySelector('.courses-mega-menu');
+  const caret = document.getElementById('coursesDropdown');
+  if (!menu) return;
+  let hideTimer;
+  function showMenu() {
+    clearTimeout(hideTimer);
+    const navRect = document.getElementById('mainNav').getBoundingClientRect();
+    menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    menu.classList.add('show');
+    if (caret) caret.querySelector('i').style.transform = 'rotate(180deg)';
+  }
+  function hideMenu() {
+    hideTimer = setTimeout(() => {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }, 120);
+  }
+  coursesNav.addEventListener('mouseenter', showMenu);
+  coursesNav.addEventListener('mouseleave', hideMenu);
+  menu.addEventListener('mouseenter', showMenu);
+  menu.addEventListener('mouseleave', hideMenu);
+  if (caret) {
+    caret.querySelector('i').style.transition = 'transform 0.25s ease';
+    caret.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menu.classList.contains('show') ? hideMenu() : showMenu();
+    });
+  }
+  document.addEventListener('click', (e) => {
+    if (!coursesNav.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }
+  });
+  window.addEventListener('scroll', () => {
+    if (menu.classList.contains('show')) {
+      const navRect = document.getElementById('mainNav').getBoundingClientRect();
+      menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    }
+  });
+})();
+
+// HERO TITLE ANIMATION
+const heroTitle = document.getElementById('heroTitle');
+if (heroTitle) {
+  heroTitle.style.opacity = '0';
+  heroTitle.style.transform = 'translateY(30px)';
+  heroTitle.style.transition = 'opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s';
+  setTimeout(() => { heroTitle.style.opacity = '1'; heroTitle.style.transform = 'translateY(0)'; }, 300);
+}
+
+// SKILL BAR ANIMATION
+const skillObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+        bar.style.width = bar.getAttribute('data-width') + '%';
+      });
+      skillObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.skills-section').forEach(s => skillObserver.observe(s));
+
+// ACHIEVEMENT COUNTER
+function animateCounters() {
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseInt(el.getAttribute('data-count'));
+    let current = 0;
+    const increment = target / 60;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) { current = target; clearInterval(timer); }
+      el.textContent = Math.floor(current) + '+';
+    }, 25);
+  });
+}
+const achieveObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { animateCounters(); achieveObserver.disconnect(); }
+  });
+}, { threshold: 0.3 });
+const strip = document.querySelector('.achievement-strip');
+if (strip) achieveObserver.observe(strip);
+
+// RIPPLE
+document.querySelectorAll('.ripple').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.style.cssText = `position:absolute;border-radius:50%;background:rgba(255,255,255,0.3);width:10px;height:10px;left:${e.clientX-rect.left-5}px;top:${e.clientY-rect.top-5}px;transform:scale(0);animation:rippleAnim 0.6s ease-out forwards;pointer-events:none;`;
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 700);
+  });
+});
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `@keyframes rippleAnim{to{transform:scale(30);opacity:0}}`;
+document.head.appendChild(rippleStyle);
+</script>
+</body>
+</html>

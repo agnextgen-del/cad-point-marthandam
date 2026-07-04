@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Login | CADPOINT</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+  :root{
+    --primary:#8B0000;
+    --primary-light:#A00000;
+    --primary-glow:rgba(139,0,0,0.35);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    min-height:100vh;
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#1a1a1a 0%,#2b0a0a 45%,#3a0d0d 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+  }
+  .auth-card{
+    width:100%;
+    max-width:420px;
+    background:rgba(255,255,255,0.97);
+    border-radius:18px;
+    padding:40px 34px 34px;
+    box-shadow:0 25px 60px rgba(0,0,0,0.45);
+    animation:fadeUp .6s ease both;
+  }
+  @keyframes fadeUp{
+    from{opacity:0; transform:translateY(24px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  .auth-logo{ display:flex; align-items:center; justify-content:center; }
+  .icon-shield{
+    width:54px;height:54px;border-radius:50%;
+    background:linear-gradient(135deg,var(--primary),var(--primary-light));
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-size:1.5rem;
+    box-shadow:0 8px 20px var(--primary-glow);
+  }
+  h1.auth-title{
+    font-family:'Montserrat',sans-serif;
+    font-size:1.3rem; font-weight:700; text-align:center;
+    color:#1f1f1f; margin:14px 0 2px;
+  }
+  p.auth-sub{ text-align:center; color:#777; font-size:.85rem; margin:0 0 26px; }
+  .form-group{ margin-bottom:18px; }
+  label{ display:block; font-size:.8rem; font-weight:600; color:#444; margin-bottom:6px; }
+  .input-wrap{ position:relative; }
+  .input-wrap i.field-icon{
+    position:absolute; left:14px; top:50%; transform:translateY(-50%);
+    color:#a0a0a0; font-size:.9rem;
+  }
+  input[type="text"], input[type="password"]{
+    width:100%; padding:12px 14px 12px 38px;
+    border:1.5px solid #e2e2e2; border-radius:10px;
+    font-size:.92rem; font-family:'Poppins',sans-serif; outline:none;
+    transition:border-color .25s, box-shadow .25s;
+  }
+  input:focus{ border-color:var(--primary); box-shadow:0 0 0 3px var(--primary-glow); }
+  .toggle-pass{
+    position:absolute; right:12px; top:50%; transform:translateY(-50%);
+    cursor:pointer; color:#999; font-size:.9rem;
+  }
+  .toggle-pass:hover{ color:var(--primary); }
+  .btn-login{
+    width:100%; padding:12px; border:none; border-radius:10px;
+    background:linear-gradient(135deg,var(--primary),var(--primary-light));
+    color:#fff; font-weight:600; font-size:.95rem; cursor:pointer;
+    box-shadow:0 10px 24px var(--primary-glow);
+    transition:transform .15s;
+  }
+  .btn-login:hover{ transform:translateY(-2px); }
+  .info-note{
+    text-align:center; font-size:.78rem; color:#888;
+    background:#f7f7f7; border-radius:8px; padding:10px; margin-top:16px;
+  }
+  .back-link{
+    display:block; text-align:center; margin-top:16px;
+    font-size:.8rem; color:#888; text-decoration:none;
+  }
+  .back-link:hover{ color:var(--primary); }
+</style>
+</head>
+<body>
+
+<div class="auth-card">
+  <div class="auth-logo"><div class="icon-shield"><i class="fas fa-graduation-cap"></i></div></div>
+  <h1 class="auth-title">Student Login</h1>
+  <p class="auth-sub">Access your CADPOINT student dashboard</p>
+
+  <form id="studentForm" autocomplete="off">
+    <div class="form-group">
+      <label for="studentId">Student ID / Email</label>
+      <div class="input-wrap">
+        <i class="fas fa-user field-icon"></i>
+        <input type="text" id="studentId" placeholder="Enter Student ID or Email" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="studentPassword">Password</label>
+      <div class="input-wrap">
+        <i class="fas fa-key field-icon"></i>
+        <input type="password" id="studentPassword" placeholder="Enter password" autocomplete="new-password" required style="padding-right:40px;">
+        <span class="toggle-pass" id="toggleStudentPass"><i class="fas fa-eye"></i></span>
+      </div>
+    </div>
+    <button type="submit" class="btn-login"><i class="fas fa-right-to-bracket me-1"></i> Login</button>
+  </form>
+
+  <div class="info-note"><i class="fas fa-circle-info me-1"></i>Student portal coming soon. Please contact the institute for current course access.</div>
+  <a href="index.html" class="back-link"><i class="fas fa-arrow-left me-1"></i>Back to Home</a>
+</div>
+
+<script>
+  document.getElementById('toggleStudentPass').addEventListener('click', function () {
+    const input = document.getElementById('studentPassword');
+    const show = input.type === 'password';
+    input.type = show ? 'text' : 'password';
+    this.innerHTML = show ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>';
+  });
+
+  document.getElementById('studentForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    alert('Student portal is coming soon. Please contact CADPOINT for assistance.');
+  });
+</script>
+
+</body>
+</html>

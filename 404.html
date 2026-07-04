@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 – Page Not Found | CADPOINT</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ 
+ <link rel="icon" type="image/x-icon" href="assets/image/cadd-logo.webp">
+ <style>
+    /* ═══════ CSS VARIABLES ═══════ */
+    :root {
+      --primary: #8B0000;
+      --primary-light: #A00000;
+      --primary-dark: #5c0000;
+      --primary-glow: rgba(139,0,0,0.35);
+      --white: #ffffff;
+      --light-gray: #F5F5F5;
+      --text-dark: #1a1a1a;
+      --text-muted: #555;
+      --border-light: rgba(139,0,0,0.15);
+      --glass-bg: rgba(255,255,255,0.08);
+      --glass-border: rgba(255,255,255,0.18);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+    html, body { max-width: 100%; overflow-x: hidden; }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+    /* ═══════════════════════════════════════════
+       LOADER
+    ═══════════════════════════════════════════ */
+    #loader {
+      position: fixed; inset: 0;
+      background: var(--primary-dark);
+      z-index: 9999;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 20px;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    #loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-logo { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2rem; color: white; letter-spacing: 4px; }
+    .loader-logo span { color: #ffd700; }
+    .loader-bar { width: 200px; height: 3px; background: rgba(255,255,255,0.15); border-radius: 3px; overflow: hidden; }
+    .loader-bar-inner { height: 100%; background: linear-gradient(90deg, var(--primary-light), #ffd700); border-radius: 3px; animation: loadBar 1.8s ease-in-out forwards; }
+    @keyframes loadBar { from { width: 0; } to { width: 100%; } }
+
+    /* ─── BACK TO TOP ─── */
+    #backToTop {
+      position: fixed; bottom: 30px; right: 30px;
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white; border: none; border-radius: 50%; cursor: pointer;
+      box-shadow: 0 6px 20px var(--primary-glow);
+      opacity: 0; transform: translateY(20px);
+      transition: all 0.4s ease; z-index: 999;
+      display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+    }
+    #backToTop.visible { opacity: 1; transform: translateY(0); }
+    #backToTop:hover { transform: translateY(-4px); box-shadow: 0 10px 30px var(--primary-glow); }
+
+    /* ═══════════════════════════════════════════
+       NAVBAR
+    ═══════════════════════════════════════════ */
+    .navbar {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 2px 30px rgba(139,0,0,0.12);
+      padding: 7px 0;
+      position: sticky; top: 0; z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    .navbar.scrolled { padding: 8px 0; box-shadow: 0 4px 40px rgba(139,0,0,0.2); }
+    .navbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icon { width: 48px; height: 48px; flex-shrink: 0; }
+    .logo-text { line-height: 1.1; }
+    .logo-text .brand-name { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.3rem; color: var(--primary); letter-spacing: 2px; }
+    .logo-text .brand-sub { font-size: 0.58rem; font-weight: 600; color: #666; letter-spacing: 1.5px; text-transform: uppercase; }
+
+    .navbar-nav .nav-link {
+      font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.82rem;
+      letter-spacing: 0.8px; text-transform: uppercase;
+      padding: 8px 16px !important; border-radius: 6px;
+      transition: all 0.3s ease; position: relative;
+    }
+    .navbar-nav .nav-link:hover { color: var(--primary); }
+
+    .btn-nav-enroll {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white !important; padding: 8px 22px !important; border-radius: 25px !important;
+      font-weight: 700 !important; box-shadow: 0 4px 15px var(--primary-glow);
+      transition: all 0.3s ease !important;
+    }
+    .btn-nav-enroll:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--primary-glow) !important; }
+    .btn-nav-enroll::after { display: none !important; }
+    .ripple { position: relative; overflow: hidden; }
+
+    /* ═══════════════════════════════════════════
+       MEGA DROPDOWN
+    ═══════════════════════════════════════════ */
+    #coursesNav { position: static !important; }
+    #coursesNav > div { display: flex; align-items: center; }
+
+    .courses-mega-menu {
+      position: fixed !important; top: auto !important;
+      left: 50% !important;
+      transform: translateX(-50%) translateY(6px) !important;
+      width: min(960px, 96vw) !important;
+      display: block !important; opacity: 0; visibility: hidden;
+      transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+      pointer-events: none; border: none !important;
+      border-radius: 16px !important; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.16), 0 0 0 1px rgba(139,0,0,0.1) !important;
+      padding: 0 !important;
+    }
+    .courses-mega-menu.show {
+      opacity: 1 !important; visibility: visible !important;
+      transform: translateX(-50%) translateY(0) !important;
+      pointer-events: auto !important;
+    }
+    .mega-topbar {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: white; font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.6px;
+    }
+    .mega-viewall { color: #ffd700 !important; font-size: 0.75rem; font-weight: 700; text-decoration: none; transition: opacity 0.2s; }
+    .mega-viewall:hover { opacity: 0.8; }
+    .mega-col {
+      flex: 1; padding: 20px 10px 10px 10px;
+      border-right: 1px solid rgba(139,0,0,0.08); background: white;
+    }
+    .mega-col:last-child { border-right: none; }
+    .mega-col-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid rgba(139,0,0,0.08); }
+    .mega-col-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .mega-col-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.82rem; color: var(--text-dark); letter-spacing: 0.4px; }
+    .mega-col-sub { font-size: 0.68rem; color: #999; font-weight: 500; margin-top: 1px; }
+    .mega-item {
+      display: flex; align-items: center; gap: 8px; padding: 6px 8px;
+      border-radius: 7px; font-size: 0.8rem; font-weight: 500;
+      color: var(--text-dark); text-decoration: none;
+      transition: background 0.15s, color 0.15s, padding-left 0.15s; margin-bottom: 2px;
+    }
+    .mega-item i { font-size: 0.72rem; width: 16px; text-align: center; color: #aaa; transition: color 0.15s; flex-shrink: 0; }
+    .mega-item:hover { background: rgba(139,0,0,0.07); color: var(--primary); padding-left: 12px; }
+    .mega-item:hover i { color: var(--primary); }
+    #coursesNav .courses-caret { color: var(--text-dark); transition: color 0.2s; }
+    #coursesNav .courses-caret:hover { color: var(--primary); }
+
+    /* X Close Button */
+    .mega-close-x {
+      position: absolute; top: 12px; right: 12px;
+      width: 34px; height: 34px; border: none; border-radius: 50%;
+      background: #fff; color: #222;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 99; box-shadow: 0 4px 15px rgba(0,0,0,.12);
+      transition: .3s ease;
+    }
+    .mega-close-x:hover { background: var(--primary); color: #fff; transform: rotate(90deg); }
+
+    /* Mobile Navbar */
+    @media (max-width: 991px) {
+      .navbar-collapse { background: #fff; padding: 15px; border-radius: 18px; margin-top: 15px; box-shadow: 0 10px 35px rgba(0,0,0,.08); }
+      #coursesNav { width: 100%; }
+      #coursesNav .d-flex { width: 100%; justify-content: space-between; align-items: center; }
+      #coursesNav .nav-link { padding: 12px 0 !important; }
+      .courses-caret { padding-right: 0 !important; }
+      .courses-mega-menu { position: static !important; transform: none !important; width: 100% !important; min-width: 100% !important; margin-top: 10px !important; border: none !important; box-shadow: none !important; border-radius: 16px !important; overflow: hidden; background: #f8f9fb; }
+      .courses-mega-menu .d-flex { flex-direction: column !important; gap: 0 !important; padding-top: 0 !important; }
+      .mega-col { width: 100% !important; border-right: none !important; border-bottom: 1px solid rgba(0,0,0,.06); padding: 18px 16px !important; }
+      .mega-col:last-child { border-bottom: none; }
+      .mega-col-title { font-size: 1rem; font-weight: 700; }
+      .mega-col-sub { font-size: .78rem; }
+      .mega-item { width: 100%; display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 10px; font-size: .92rem; }
+      .mega-item:hover { background: #fff; }
+      .mega-item i { width: 18px; text-align: center; }
+    }
+
+    /* ═══════════════════════════════════════════
+       BREADCRUMB SLIDER
+    ═══════════════════════════════════════════ */
+    .breadcrumb-slider {
+      background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-dark) 100%);
+      padding: 0; overflow: hidden; height: 38px;
+      display: flex; align-items: center; position: relative;
+    }
+    .breadcrumb-slider::before, .breadcrumb-slider::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none; }
+    .breadcrumb-slider::before { left: 0; background: linear-gradient(to right, var(--primary-dark), transparent); }
+    .breadcrumb-slider::after { right: 0; background: linear-gradient(to left, var(--primary-dark), transparent); }
+    .breadcrumb-track { display: flex; animation: scrollBreadcrumb 28s linear infinite; white-space: nowrap; will-change: transform; }
+    .breadcrumb-track:hover { animation-play-state: paused; }
+    .breadcrumb-item-slide { display: inline-flex; align-items: center; gap: 8px; padding: 0 30px; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 1px; text-transform: uppercase; font-family: 'Montserrat', sans-serif; }
+    @keyframes scrollBreadcrumb { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ═══════════════════════════════════════════
+       404 HERO SECTION
+    ═══════════════════════════════════════════ */
+    .error-section {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, #c0392b 80%, var(--primary-dark) 100%);
+      min-height: 80vh;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding: 80px 0 60px;
+    }
+    .error-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2zm4 0L80 4v2L46 40h-2zm4 0L80 8v2L50 40h-2zm4 0L80 12v2L54 40h-2zm4 0L80 16v2L58 40h-2zm4 0L80 20v2L62 40h-2zm4 0L80 24v2L66 40h-2zm4 0L80 28v2L70 40h-2zm4 0L80 32v2L74 40h-2zm4 0L80 36v2L78 40h-2zm4 0L80 40h-2v-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.4;
+    }
+    .error-section::after {
+      content: '';
+      position: absolute; width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+      top: -200px; right: -100px; pointer-events: none;
+    }
+
+    /* Floating particles */
+    .particle {
+      position: absolute; border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+      animation: floatParticle linear infinite;
+    }
+    @keyframes floatParticle {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
+    }
+
+    /* Big 404 number */
+    .error-number {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(8rem, 20vw, 14rem);
+      line-height: 1;
+      color: rgba(255,255,255,0.08);
+      letter-spacing: -10px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    /* CAD Blueprint SVG illustration */
+    .blueprint-wrap {
+      position: relative; z-index: 2;
+      display: flex; justify-content: center;
+    }
+    .blueprint-svg {
+      width: 100%;
+      max-width: 420px;
+      filter: drop-shadow(0 20px 50px rgba(0,0,0,0.4));
+      animation: floatBlueprint 4s ease-in-out infinite;
+    }
+    @keyframes floatBlueprint {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-18px); }
+    }
+
+    /* Error text content */
+    .error-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px); padding: 6px 16px; border-radius: 50px;
+      font-size: 0.75rem; font-weight: 600;
+      color: rgba(255,255,255,0.9); letter-spacing: 1px; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .error-badge span { color: #ffd700; }
+
+    .error-code-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(5rem, 12vw, 8rem);
+      line-height: 1;
+      color: white;
+      letter-spacing: -4px;
+      margin-bottom: 8px;
+      position: relative;
+    }
+    .error-code-label .glitch-line {
+      display: block;
+      animation: glitchText 3s infinite;
+    }
+    @keyframes glitchText {
+      0%, 90%, 100% { clip-path: none; transform: none; }
+      92% { clip-path: rect(0 9999px 2px 0); transform: translateX(-4px); }
+      94% { clip-path: rect(30px 9999px 50px 0); transform: translateX(4px); }
+      96% { clip-path: rect(10px 9999px 25px 0); transform: translateX(-3px); }
+      98% { clip-path: none; transform: none; }
+    }
+
+    .error-tagline {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      color: #ffd700;
+      margin-bottom: 16px;
+    }
+    .error-desc {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.8; margin-bottom: 36px; max-width: 480px;
+    }
+
+    /* WIP badge */
+    .wip-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(255,215,0,0.12);
+      border: 1px solid rgba(255,215,0,0.3);
+      border-radius: 12px; padding: 12px 22px; margin-bottom: 30px;
+    }
+    .wip-pulse {
+      width: 10px; height: 10px; background: #ffd700; border-radius: 50%;
+      animation: wipPulse 1.4s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes wipPulse {
+      0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(255,215,0,0.5); }
+      50% { opacity: 0.7; transform: scale(1.15); box-shadow: 0 0 0 8px rgba(255,215,0,0); }
+    }
+    .wip-text { font-size: 0.85rem; font-weight: 600; color: #ffd700; font-family: 'Montserrat', sans-serif; letter-spacing: 0.5px; }
+
+    /* Buttons */
+    .btn-error-primary {
+      background: linear-gradient(135deg, #ffd700, #ffb700);
+      color: var(--primary-dark) !important;
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: 0.88rem; letter-spacing: 0.8px;
+      padding: 14px 32px; border-radius: 50px; border: none;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+      box-shadow: 0 8px 25px rgba(255,215,0,0.4);
+      transition: all 0.3s ease; position: relative; overflow: hidden;
+    }
+    .btn-error-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(255,215,0,0.5); color: var(--primary-dark) !important; }
+
+    .btn-error-outline {
+      background: transparent; color: white !important;
+      font-family: 'Montserrat', sans-serif; font-weight: 700;
+      font-size: 0.88rem; letter-spacing: 0.8px;
+      padding: 13px 28px; border-radius: 50px;
+      border: 2px solid rgba(255,255,255,0.35);
+      text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+      transition: all 0.3s ease;
+    }
+    .btn-error-outline:hover { border-color: white; background: rgba(255,255,255,0.1); transform: translateY(-3px); color: white !important; }
+
+    .error-btn-group { display: flex; flex-wrap: wrap; gap: 14px; }
+
+    /* Progress bar decoration */
+    .error-progress {
+      width: 100%; max-width: 380px;
+      height: 4px; background: rgba(255,255,255,0.12);
+      border-radius: 50px; overflow: hidden; margin: 28px 0 10px;
+    }
+    .error-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary-light), #ffd700);
+      border-radius: 50px;
+      width: 0;
+      animation: progressFill 2.5s ease-out 1s forwards;
+    }
+    @keyframes progressFill { to { width: 68%; } }
+    .error-progress-label {
+      font-size: 0.72rem; color: rgba(255,255,255,0.5);
+      font-family: 'Montserrat', sans-serif; font-weight: 600; letter-spacing: 1px;
+    }
+
+    /* Quick links row */
+    .quick-links-section {
+      background: var(--light-gray);
+      padding: 70px 0;
+    }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid var(--border-light);
+      background: rgba(139,0,0,0.06);
+      color: var(--primary); padding: 6px 16px;
+      border-radius: 50px; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; font-family: 'Montserrat', sans-serif;
+      margin-bottom: 16px;
+    }
+    .ql-heading {
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--text-dark);
+      margin-bottom: 10px; line-height: 1.2;
+    }
+    .ql-sub { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 48px; }
+
+    .ql-card {
+      background: white; border-radius: 20px; padding: 32px 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      text-align: center; height: 100%;
+      border-bottom: 3px solid transparent;
+      transition: all 0.35s ease;
+      text-decoration: none; display: block; color: var(--text-dark);
+    }
+    .ql-card:hover { transform: translateY(-8px); box-shadow: 0 16px 40px rgba(139,0,0,0.12); border-bottom-color: var(--primary); color: var(--primary); }
+    .ql-icon {
+      width: 64px; height: 64px; border-radius: 16px; margin: 0 auto 18px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; transition: all 0.35s ease;
+    }
+    .ql-card:hover .ql-icon { transform: scale(1.1) rotate(6deg); }
+    .ql-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; margin-bottom: 8px; }
+    .ql-card p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+    /* Center layout for error section */
+    .error-content-center {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .error-content-center .error-desc { margin-left: auto; margin-right: auto; }
+    .error-content-center .error-progress { margin-left: auto; margin-right: auto; }
+    .error-content-center .error-progress-label { text-align: center; }
+    .error-content-center .error-btn-group { justify-content: center; }
+    .error-content-center .wip-badge { justify-content: center; }
+
+    @media (max-width: 767px) {
+      .error-number { font-size: 50vw; }
+    }
+
+    /* ═══════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════ */
+    footer { background: #0d0d0d; padding: 70px 0 0; color: rgba(255,255,255,0.75); }
+    .footer-brand { margin-bottom: 20px; }
+    .footer-desc { font-size: 0.85rem; line-height: 1.8; color: rgba(255,255,255,0.55); margin-bottom: 22px; }
+    .footer-socials { display: flex; gap: 10px; }
+    .footer-social-btn {
+      width: 36px; height: 36px; background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.6); font-size: 0.85rem;
+      transition: all 0.3s ease; text-decoration: none;
+    }
+    .footer-social-btn:hover { background: var(--primary); border-color: var(--primary); color: white; transform: translateY(-3px); }
+    .footer-heading {
+      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem;
+      letter-spacing: 1.5px; text-transform: uppercase; color: white;
+      margin-bottom: 20px; position: relative; padding-bottom: 10px;
+    }
+    .footer-heading::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 2px; background: var(--primary); border-radius: 2px; }
+    .footer-links { list-style: none; padding: 0; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 6px; }
+    .footer-links a:hover { color: var(--primary-light); padding-left: 5px; }
+    .footer-links a i { font-size: 0.65rem; color: var(--primary); }
+    .footer-contact li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; font-size: 0.85rem; }
+    .footer-contact li i { color: var(--primary-light); margin-top: 3px; flex-shrink: 0; font-size: 0.85rem; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding: 22px 0; margin-top: 50px; font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+
+    /* ═══════════════════════════════════════════
+       WIP NOTICE BANNER
+    ═══════════════════════════════════════════ */
+    .wip-notice-banner {
+      background: linear-gradient(135deg, #fff9e6, #fffdf0);
+      border-top: 3px solid #ffd700;
+      padding: 50px 0;
+    }
+    .wip-icon-circle {
+      width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 22px; font-size: 2rem; color: #ffd700;
+      box-shadow: 0 10px 30px var(--primary-glow);
+      animation: wibbleIcon 3s ease-in-out infinite;
+    }
+    @keyframes wibbleIcon {
+      0%, 100% { transform: rotate(-5deg) scale(1); }
+      50% { transform: rotate(5deg) scale(1.06); }
+    }
+    .wip-notice-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--text-dark); margin-bottom: 10px; }
+    .wip-notice-text { color: var(--text-muted); font-size: 0.92rem; line-height: 1.8; max-width: 560px; margin: 0 auto 24px; }
+    .wip-steps { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 8px; }
+    .wip-step {
+      display: flex; align-items: center; gap: 8px;
+      background: white; border: 1px solid rgba(139,0,0,0.1);
+      border-radius: 50px; padding: 8px 18px;
+      font-size: 0.8rem; font-weight: 600; color: var(--text-dark);
+      font-family: 'Montserrat', sans-serif; box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    }
+    .wip-step i { color: var(--primary); font-size: 0.78rem; }
+  </style>
+</head>
+<body>
+
+<!-- ═══ LOADER ═══ -->
+<!-- <div id="loader">
+  <div class="loader-logo">CAD<span>POINT</span></div>
+  <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+</div> -->
+
+<!-- ═══ BACK TO TOP ═══ -->
+<button id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+<!-- ═══════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════ -->
+<div id="header"></div>
+
+<!-- ═══════════════════════════════════════════
+     BREADCRUMB SLIDER
+═══════════════════════════════════════════ -->
+<div class="breadcrumb-slider">
+  <div class="breadcrumb-track">
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i> <strong>CAD Training</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-drafting-compass"></i> <strong>AutoCAD</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-cogs"></i> <strong>SolidWorks</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-building"></i> <strong>Revit Architecture</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-bolt"></i> <strong>Electrical CAD</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-cube"></i> <strong>3DS Max</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-award"></i> <strong>ISO Certified</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-user-tie"></i> <strong>Placement Support</strong></div>
+    <!-- Duplicate for seamless loop -->
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i> <strong>CAD Training</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-drafting-compass"></i> <strong>AutoCAD</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-cogs"></i> <strong>SolidWorks</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-building"></i> <strong>Revit Architecture</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-bolt"></i> <strong>Electrical CAD</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-cube"></i> <strong>3DS Max</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-award"></i> <strong>ISO Certified</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-user-tie"></i> <strong>Placement Support</strong></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     404 ERROR SECTION
+═══════════════════════════════════════════ -->
+<section class="error-section">
+
+  <!-- Floating particles -->
+  <div class="particle" style="width:18px;height:18px;left:10%;animation-duration:12s;animation-delay:0s;"></div>
+  <div class="particle" style="width:10px;height:10px;left:25%;animation-duration:9s;animation-delay:2s;"></div>
+  <div class="particle" style="width:24px;height:24px;left:55%;animation-duration:14s;animation-delay:1s;"></div>
+  <div class="particle" style="width:8px;height:8px;left:75%;animation-duration:10s;animation-delay:3s;"></div>
+  <div class="particle" style="width:14px;height:14px;left:88%;animation-duration:11s;animation-delay:0.5s;"></div>
+
+  <!-- Ghost 404 watermark -->
+  <div class="error-number">404</div>
+
+  <div class="container position-relative" style="z-index:2;">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10">
+        <div class="error-content-center">
+
+          <div class="error-badge">
+            <i class="fas fa-exclamation-triangle"></i> Error <span>404</span> — Not Found
+          </div>
+
+          <div class="error-code-label">
+            <span class="glitch-line">Oops!</span>
+          </div>
+
+          <!-- <p class="error-tagline">Blueprint Gone Missing</p> -->
+
+          <p class="error-desc">
+         We're currently making improvements to enhance your experience. Our team is working behind the scenes to bring you updated features and better services.
+          </p>
+
+          <!-- WIP badge -->
+          <div class="wip-badge">
+            <div class="wip-pulse"></div>
+            <span class="wip-text"><i class="fas fa-wrench me-2"></i>We are working on this page — check back soon!</span>
+          </div>
+
+          <!-- Progress -->
+         
+          <!-- <p class="error-progress-label">PAGE UNDER CONSTRUCTION — 68% COMPLETE</p> -->
+
+          <div class="error-btn-group mt-2">
+            <a href="index.html" class="btn-error-primary ripple">
+              <i class="fas fa-home"></i> <span>Back to Home</span>
+            </a>
+            <a href="tel:+919895352624" class="btn-error-outline">
+              <i class="fas fa-envelope"></i> Contact Us
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     WIP NOTICE BANNER
+═══════════════════════════════════════════ -->
+<section class="wip-notice-banner">
+  <div class="container text-center">
+    <div class="wip-icon-circle">
+      <i class="fas fa-tools"></i>
+    </div>
+    <h2 class="wip-notice-title">We're Working on This Page</h2>
+    <p class="wip-notice-text">
+      Our team of engineers is currently designing and building this page to perfection — just like a precision CAD drawing. It will be live soon with full content, features, and details. Thank you for your patience!
+    </p>
+    <div class="wip-steps">
+      <span class="wip-step"><i class="fas fa-check-circle"></i> Design Approved</span>
+      <span class="wip-step"><i class="fas fa-spinner fa-spin"></i> Development In Progress</span>
+      <span class="wip-step"><i class="fas fa-clock"></i> Launch Coming Soon</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     QUICK LINKS / EXPLORE SECTION
+═══════════════════════════════════════════ -->
+<section class="quick-links-section">
+  <div class="container">
+    <div class="text-center mb-2">
+      <div class="section-tag mx-auto"><i class="fas fa-compass"></i> Explore CADPOINT</div>
+      <h2 class="ql-heading">Where Would You Like to Go?</h2>
+      <p class="ql-sub">Here are some helpful pages to get you back on track.</p>
+    </div>
+    <div class="row gy-4">
+
+      <div class="col-lg-4 col-md-6">
+        <a href="index.html" class="ql-card">
+          <div class="ql-icon" style="background:rgba(139,0,0,0.08);">
+            <i class="fas fa-home" style="color:var(--primary);"></i>
+          </div>
+          <h5>Home</h5>
+          <p>Head back to our main page and explore everything CADPOINT has to offer.</p>
+        </a>
+      </div>
+
+      <!-- <div class="col-lg-3 col-md-6">
+        <a href="#" class="ql-card">
+          <div class="ql-icon" style="background:rgba(37,99,235,0.08);">
+            <i class="fas fa-graduation-cap" style="color:#2563eb;"></i>
+          </div>
+          <h5>All Courses</h5>
+          <p>Browse our full catalogue of CAD, BIM, IT, and professional courses.</p>
+        </a>
+      </div> -->
+
+      <div class="col-lg-4 col-md-6">
+        <a href="service.html" class="ql-card">
+          <div class="ql-icon" style="background:rgba(16,185,129,0.08);">
+            <i class="fas fa-briefcase" style="color:#059669;"></i>
+          </div>
+          <h5>Services</h5>
+          <p>Discover our professional design, drafting, and consultancy services.</p>
+        </a>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <a href="contact.html" class="ql-card">
+          <div class="ql-icon" style="background:rgba(234,88,12,0.08);">
+            <i class="fas fa-envelope" style="color:#ea580c;"></i>
+          </div>
+          <h5>Contact Us</h5>
+          <p>Reach our team directly for admissions, queries, or support.</p>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<div id="footer"></div>
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+fetch("./header.html")
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById("header").innerHTML = html;
+    initCaddNav();
+  });
+
+  fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+      document.getElementById('footer').innerHTML = data;
+  });
+</script>
+
+<script>
+function initCaddNav() {
+
+    const coursesNav = document.getElementById('coursesNav');
+    const caret = document.getElementById('coursesCaret');
+    const menu = document.getElementById('coursesMegaMenu');
+    const closeBtn = document.getElementById('closeMegaMenu');
+
+    if (!coursesNav || !caret || !menu) return;
+
+    // X BUTTON CLOSE (Desktop + Mobile)
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.remove('show');
+
+        });
+    }
+
+    // MOBILE
+    if (window.innerWidth <= 991) {
+
+        caret.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!coursesNav.contains(e.target)) {
+                menu.classList.remove('show');
+            }
+        });
+
+        return;
+    }
+
+    // DESKTOP
+    coursesNav.addEventListener('mouseenter', function () {
+        menu.classList.add('show');
+    });
+
+    coursesNav.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+
+    menu.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+}
+</script>
+
+
+<script>
+// ─── LOADER ─────────────────────────────────
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+  }, 2000);
+});
+
+// ─── NAVBAR SCROLL ──────────────────────────
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  if (window.scrollY > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+
+  const btn = document.getElementById('backToTop');
+  if (window.scrollY > 400) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+});
+
+// ─── BACK TO TOP ────────────────────────────
+document.getElementById('backToTop').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ─── RIPPLE EFFECT ──────────────────────────
+document.querySelectorAll('.ripple').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.style.cssText = `
+      position:absolute; border-radius:50%;
+      background:rgba(255,255,255,0.3);
+      width:10px; height:10px;
+      left:${e.clientX - rect.left - 5}px;
+      top:${e.clientY - rect.top - 5}px;
+      transform:scale(0); animation:rippleAnim 0.6s ease-out forwards;
+      pointer-events:none;
+    `;
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 700);
+  });
+});
+
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `@keyframes rippleAnim { to { transform:scale(30); opacity:0; } }`;
+document.head.appendChild(rippleStyle);
+</script>
+
+<!-- ─── MEGA DROPDOWN ─── -->
+<script>
+document.getElementById("closeMegaMenu").addEventListener("click", function() {
+  document.querySelector(".courses-mega-menu").classList.remove("show");
+});
+</script>
+
+<script>
+(function () {
+  const coursesNav = document.getElementById('coursesNav');
+  if (!coursesNav) return;
+  const menu = coursesNav.querySelector('.courses-mega-menu');
+  const caret = document.getElementById('coursesDropdown');
+  if (!menu) return;
+  let hideTimer;
+
+  function showMenu() {
+    clearTimeout(hideTimer);
+    const navRect = document.getElementById('mainNav').getBoundingClientRect();
+    menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    menu.classList.add('show');
+    if (caret) caret.querySelector('i').style.transform = 'rotate(180deg)';
+  }
+
+  function hideMenu() {
+    hideTimer = setTimeout(function () {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }, 120);
+  }
+
+  coursesNav.addEventListener('mouseenter', showMenu);
+  coursesNav.addEventListener('mouseleave', hideMenu);
+  menu.addEventListener('mouseenter', showMenu);
+  menu.addEventListener('mouseleave', hideMenu);
+
+  if (caret) {
+    caret.querySelector('i').style.transition = 'transform 0.25s ease';
+    caret.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (menu.classList.contains('show')) { hideMenu(); } else { showMenu(); }
+    });
+  }
+
+  document.addEventListener('click', function (e) {
+    if (!coursesNav.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }
+  });
+
+  window.addEventListener('scroll', function () {
+    if (menu.classList.contains('show')) {
+      const navRect = document.getElementById('mainNav').getBoundingClientRect();
+      menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

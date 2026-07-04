@@ -1,0 +1,2076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — CADPOINT Authorized Training Centre</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="icon" type="image/x-icon" href="assets/image/cadd-logo.webp">
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>emailjs.init("tWbOHqqX7ucQNFfdk");</script>
+  <style>
+    /* ══════════════════════════════════════════
+       ROOT & RESET
+    ══════════════════════════════════════════ */
+    :root {
+      --primary: #8B0000;
+      --primary-light: #A00000;
+      --primary-dark: #5c0000;
+      --primary-glow: rgba(139,0,0,0.35);
+      --primary-soft: rgba(139,0,0,0.08);
+      --white: #ffffff;
+      --light-gray: #F5F5F5;
+      --text-dark: #1a1a1a;
+      --text-muted: #555;
+      --border-light: rgba(139,0,0,0.15);
+      --glass-bg: rgba(255,255,255,0.08);
+      --glass-border: rgba(255,255,255,0.18);
+      --gold: #ffd700;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+    /* X CLOSE BUTTON */
+
+.mega-close-x{
+  position:absolute;
+  top:12px;
+  right:12px;
+  width:34px;
+  height:34px;
+  border:none;
+  border-radius:50%;
+  background:#fff;
+  color:#222;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:99;
+  box-shadow:0 4px 15px rgba(0,0,0,.12);
+  transition:.3s ease;
+}
+
+.mega-close-x:hover{
+  background:var(--primary);
+  color:#fff;
+  transform:rotate(90deg);
+}
+/* ═══════════════════════════════════════════
+   MOBILE DROPDOWN FIX
+═══════════════════════════════════════════ */
+
+@media (max-width: 991px) {
+
+  /* NAVBAR */
+  .navbar-collapse{
+    background:#fff;
+    padding:15px;
+    border-radius:18px;
+    margin-top:15px;
+    box-shadow:0 10px 35px rgba(0,0,0,.08);
+  }
+
+  /* COURSE NAV ITEM */
+  #coursesNav{
+    width:100%;
+  }
+
+  /* COURSE TITLE + CARET */
+  #coursesNav .d-flex{
+    width:100%;
+    justify-content:space-between;
+    align-items:center;
+  }
+
+  #coursesNav .nav-link{
+    padding:12px 0 !important;
+  }
+
+  .courses-caret{
+    padding-right:0 !important;
+  }
+
+  /* DROPDOWN MENU */
+  .courses-mega-menu{
+    position:static !important;
+    transform:none !important;
+    width:100% !important;
+    min-width:100% !important;
+    margin-top:10px !important;
+    border:none !important;
+    box-shadow:none !important;
+    border-radius:16px !important;
+    overflow:hidden;
+    background:#f8f9fb;
+  }
+
+  /* DROPDOWN INNER LAYOUT */
+  .courses-mega-menu .d-flex{
+    flex-direction:column !important;
+    gap:0 !important;
+    padding-top:0 !important;
+  }
+
+  /* EACH COLUMN */
+  .mega-col{
+    width:100% !important;
+    border-right:none !important;
+    border-bottom:1px solid rgba(0,0,0,.06);
+    padding:18px 16px !important;
+  }
+
+  .mega-col:last-child{
+    border-bottom:none;
+  }
+
+  /* HEADING */
+  .mega-col-head{
+    margin-bottom:14px;
+  }
+
+  .mega-col-title{
+    font-size:1rem;
+    font-weight:700;
+  }
+
+  .mega-col-sub{
+    font-size:.78rem;
+  }
+
+  /* ITEMS */
+  .mega-item{
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 12px;
+    border-radius:10px;
+    font-size:.92rem;
+  }
+
+  .mega-item:hover{
+    background:#fff;
+  }
+
+  /* ICON */
+  .mega-item i{
+    width:18px;
+    text-align:center;
+  }
+
+}
+    /* ══════════════════════════════════════════
+       LOADER
+    ══════════════════════════════════════════ */
+    #loader {
+      position: fixed; inset: 0;
+      background: var(--primary-dark);
+      z-index: 9999;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 20px;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    #loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-logo { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2rem; color: white; letter-spacing: 4px; }
+    .loader-logo span { color: var(--gold); }
+    .loader-bar { width: 200px; height: 3px; background: rgba(255,255,255,0.15); border-radius: 3px; overflow: hidden; }
+    .loader-bar-inner { height: 100%; background: linear-gradient(90deg, var(--primary-light), var(--gold)); border-radius: 3px; animation: loadBar 1.8s ease-in-out forwards; }
+    @keyframes loadBar { from { width: 0; } to { width: 100%; } }
+
+    /* ── BACK TO TOP ── */
+    #backToTop {
+      position: fixed; bottom: 30px; right: 30px;
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white; border: none; border-radius: 50%; cursor: pointer;
+      box-shadow: 0 6px 20px var(--primary-glow);
+      opacity: 0; transform: translateY(20px);
+      transition: all 0.4s ease; z-index: 999;
+      display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+    }
+    #backToTop.visible { opacity: 1; transform: translateY(0); }
+    #backToTop:hover { transform: translateY(-4px); box-shadow: 0 10px 30px var(--primary-glow); }
+
+    /* ══════════════════════════════════════════
+       NAVBAR
+    ══════════════════════════════════════════ */
+    .navbar {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 2px 30px rgba(139,0,0,0.12);
+      padding: 12px 0; position: sticky; top: 0; z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    .navbar.scrolled { padding: 8px 0; box-shadow: 0 4px 40px rgba(139,0,0,0.2); }
+    .navbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-text { line-height: 1.1; }
+    .logo-text .brand-name { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.3rem; color: var(--primary); letter-spacing: 2px; }
+    .logo-text .brand-sub { font-size: 0.58rem; font-weight: 600; color: #666; letter-spacing: 1.5px; text-transform: uppercase; }
+    .navbar-nav .nav-link { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.8px; text-transform: uppercase; padding: 8px 16px !important; border-radius: 6px; transition: all 0.3s ease; }
+    .navbar-nav .nav-link:hover { color: var(--primary); }
+    .navbar-nav .nav-link.active { color: var(--primary); }
+    .btn-nav-enroll { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white !important; padding: 8px 22px !important; border-radius: 25px !important; font-weight: 700 !important; box-shadow: 0 4px 15px var(--primary-glow); transition: all 0.3s ease !important; }
+    .btn-nav-enroll:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--primary-glow) !important; }
+
+    /* mega menu */
+    #coursesNav { position: static !important; }
+    #coursesNav > div { display: flex; align-items: center; }
+    .courses-mega-menu { position: fixed !important; top: auto !important; left: 50% !important; transform: translateX(-50%) translateY(6px) !important; width: min(960px, 96vw) !important; display: block !important; opacity: 0; visibility: hidden; transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s; pointer-events: none; border: none !important; border-radius: 16px !important; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.16), 0 0 0 1px rgba(139,0,0,0.1) !important; padding: 0 !important; }
+    .courses-mega-menu.show { opacity: 1 !important; visibility: visible !important; transform: translateX(-50%) translateY(0) !important; pointer-events: auto !important; }
+    .mega-col { flex: 1; padding: 20px 16px 20px 20px; border-right: 1px solid rgba(139,0,0,0.08); background: white; }
+    .mega-col:last-child { border-right: none; }
+    .mega-col-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid rgba(139,0,0,0.08); }
+    .mega-col-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .mega-col-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.82rem; color: var(--text-dark); letter-spacing: 0.4px; }
+    .mega-col-sub { font-size: 0.68rem; color: #999; font-weight: 500; margin-top: 1px; }
+    .mega-item { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 7px; font-size: 0.8rem; font-weight: 500; color: var(--text-dark); text-decoration: none; transition: background 0.15s, color 0.15s, padding-left 0.15s; margin-bottom: 2px; }
+    .mega-item i { font-size: 0.72rem; width: 16px; text-align: center; color: #aaa; transition: color 0.15s; flex-shrink: 0; }
+    .mega-item:hover { background: rgba(139,0,0,0.07); color: var(--primary); padding-left: 12px; }
+    .mega-item:hover i { color: var(--primary); }
+    #coursesNav .courses-caret { color: var(--text-dark); transition: color 0.2s; }
+    #coursesNav .courses-caret:hover { color: var(--primary); }
+
+    /* ══════════════════════════════════════════
+       BREADCRUMB SLIDER
+    ══════════════════════════════════════════ */
+    .breadcrumb-slider { background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-dark) 100%); padding: 0; overflow: hidden; height: 38px; display: flex; align-items: center; position: relative; }
+    .breadcrumb-slider::before, .breadcrumb-slider::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none; }
+    .breadcrumb-slider::before { left: 0; background: linear-gradient(to right, var(--primary-dark), transparent); }
+    .breadcrumb-slider::after { right: 0; background: linear-gradient(to left, var(--primary-dark), transparent); }
+    .breadcrumb-track { display: flex; animation: scrollBreadcrumb 28s linear infinite; white-space: nowrap; will-change: transform; }
+    .breadcrumb-track:hover { animation-play-state: paused; }
+    .breadcrumb-item-slide { display: inline-flex; align-items: center; gap: 8px; padding: 0 30px; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 1px; text-transform: uppercase; font-family: 'Montserrat', sans-serif; }
+    .breadcrumb-item-slide .sep { color: rgba(255,255,255,0.4); font-size: 0.65rem; }
+    .breadcrumb-item-slide i { color: rgba(255,255,255,0.6); font-size: 0.7rem; }
+    @keyframes scrollBreadcrumb { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ══════════════════════════════════════════
+       HERO SECTION
+    ══════════════════════════════════════════ */
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, #c0392b 80%, var(--primary-dark) 100%);
+      min-height: 72vh; display: flex; align-items: center;
+      position: relative; overflow: hidden; padding: 80px 0 100px;
+    }
+    .hero-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2zm4 0L80 4v2L46 40h-2zm4 0L80 8v2L50 40h-2zm4 0L80 12v2L54 40h-2zm4 0L80 16v2L58 40h-2zm4 0L80 20v2L62 40h-2zm4 0L80 24v2L66 40h-2zm4 0L80 28v2L70 40h-2zm4 0L80 32v2L74 40h-2zm4 0L80 36v2L78 40h-2zm4 0L80 40h-2v-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.4;
+    }
+
+    /* floating orbs */
+    .hero-orb {
+      position: absolute; border-radius: 50%; pointer-events: none;
+      background: radial-gradient(circle, rgba(255,255,255,0.07) 0%, transparent 70%);
+    }
+    .hero-orb-1 { width: 600px; height: 600px; top: -250px; right: -150px; }
+    .hero-orb-2 { width: 400px; height: 400px; bottom: -100px; left: -120px; animation: orbFloat 6s ease-in-out infinite; }
+    .hero-orb-3 { width: 200px; height: 200px; top: 20%; left: 30%; animation: orbFloat 8s ease-in-out infinite 2s; }
+    @keyframes orbFloat { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-20px) scale(1.05); } }
+
+    /* floating particles */
+    .particle { position: absolute; width: 6px; height: 6px; background: rgba(255,215,0,0.3); border-radius: 50%; animation: particleDrift linear infinite; }
+    @keyframes particleDrift { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-100px) rotate(360deg); opacity: 0; } }
+
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(10px); padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+    .hero-badge span { color: var(--gold); }
+
+    .hero-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; color: white; margin-bottom: 18px; }
+    .hero-title .highlight { color: var(--gold); }
+    .hero-desc { font-size: 1rem; color: rgba(255,255,255,0.82); line-height: 1.8; margin-bottom: 36px; max-width: 550px; }
+
+    /* CTA Call Now button */
+    .btn-call-now {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1.5px solid rgba(255,255,255,0.35);
+      color: white !important;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800; font-size: 1rem; letter-spacing: 1px;
+      padding: 16px 44px; border-radius: 50px;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 12px;
+      box-shadow: 0 0 0 0 rgba(255,255,255,0.2), 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+      animation: callPulse 2.5s ease-in-out infinite;
+      transition: all 0.4s ease; position: relative; overflow: hidden;
+    }
+    .btn-call-now::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent); opacity: 0; transition: opacity 0.3s; }
+    .btn-call-now:hover { transform: translateY(-4px) scale(1.04); box-shadow: 0 0 40px rgba(255,255,255,0.25), 0 20px 50px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.3) !important; animation: none; border-color: rgba(255,255,255,0.6); }
+    .btn-call-now:hover::before { opacity: 1; }
+    .btn-call-now .btn-icon { width: 38px; height: 38px; background: linear-gradient(135deg, var(--primary-light), #e53030); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+    @keyframes callPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.3), 0 8px 32px rgba(0,0,0,0.3); }
+      50% { box-shadow: 0 0 0 16px rgba(255,255,255,0), 0 8px 32px rgba(0,0,0,0.3); }
+    }
+
+    /* wave */
+    .hero-wave { position: absolute; bottom: 0; width: 100%; height: 60px; line-height: 0; }
+    .hero-wave svg { width: 100%; height: 100%; display: block; }
+    .hero-wave path { fill: var(--white); }
+
+    /* ══════════════════════════════════════════
+       SECTION COMMON
+    ══════════════════════════════════════════ */
+    section { padding: 90px 0; }
+
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--primary-soft); border: 1px solid var(--border-light); color: var(--primary); font-family: 'Montserrat', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 14px; border-radius: 50px; margin-bottom: 14px; }
+    .section-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(1.8rem, 3.5vw, 2.4rem); line-height: 1.2; color: var(--text-dark); margin-bottom: 14px; }
+    .section-title span { color: var(--primary); }
+    .section-subtitle { color: var(--text-muted); font-size: 1rem; line-height: 1.7; max-width: 560px; }
+    .divider-line { width: 60px; height: 4px; background: linear-gradient(90deg, var(--primary), var(--primary-light)); border-radius: 4px; margin: 16px 0 24px; }
+
+
+
+
+
+    /* ─── CONTACT INFO CARDS ─── */
+    .contact-info-section { background: white; }
+
+    .contact-card {
+      background: white;
+      border-radius: 20px;
+      padding: 36px 28px;
+      text-align: center;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.07);
+      border: 1px solid rgba(139,0,0,0.07);
+      transition: all 0.4s ease;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+      transform-origin: left;
+    }
+
+    .contact-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(139,0,0,0.14); }
+    .contact-card:hover::before { transform: scaleX(1); }
+
+    .contact-card-icon {
+      width: 72px; height: 72px;
+      background: linear-gradient(135deg, rgba(139,0,0,0.08), rgba(139,0,0,0.14));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 1.8rem; color: var(--primary);
+      transition: all 0.4s ease;
+    }
+
+    .contact-card:hover .contact-card-icon {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      box-shadow: 0 10px 30px var(--primary-glow);
+    }
+
+    .contact-card h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700; font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    .contact-card p {
+      font-size: 0.875rem; color: var(--text-muted);
+      line-height: 1.8; margin: 0;
+    }
+
+    .contact-card a {
+      color: var(--primary); text-decoration: none;
+      transition: color 0.2s; font-weight: 500;
+    }
+
+    .contact-card a:hover { color: var(--primary-dark); }
+
+/* ─── CONTACT FORM ─── */
+.contact-form-section { background: var(--light-gray); }
+
+.form-floating-label {
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.form-floating-label input,
+.form-floating-label textarea,
+.form-floating-label select {
+  width: 100%;
+  padding: 18px 20px 10px;
+  border: 2px solid #e8e0e0;
+  border-radius: 12px;
+  background: white;
+  font-size: 0.92rem;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-dark);
+  outline: none;
+  transition: all 0.3s ease;
+  appearance: none;
+}
+
+.form-floating-label textarea {
+  resize: none;
+  min-height: 130px;
+}
+
+.form-floating-label input:focus,
+.form-floating-label textarea:focus,
+.form-floating-label select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(139,0,0,0.08);
+}
+
+.form-floating-label label {
+  position: absolute;
+  left: 20px; top: 14px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  font-weight: 500;
+}
+
+.form-floating-label input:focus ~ label,
+.form-floating-label input:not(:placeholder-shown) ~ label,
+.form-floating-label textarea:focus ~ label,
+.form-floating-label textarea:not(:placeholder-shown) ~ label,
+.form-floating-label select:focus ~ label {
+  top: 5px;
+  font-size: 0.7rem;
+  color: var(--primary);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.form-floating-label .field-icon {
+  position: absolute;
+  right: 16px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  transition: color 0.3s ease;
+  pointer-events: none;
+}
+
+.form-floating-label textarea ~ .field-icon { top: 18px; transform: none; }
+
+.form-floating-label input:focus ~ .field-icon,
+.form-floating-label textarea:focus ~ .field-icon { color: var(--primary); }
+
+.contact-form-card {
+  background: white;
+  border-radius: 24px;
+  padding: 48px 40px;
+  box-shadow: 0 10px 50px rgba(139,0,0,0.1);
+  border: 1px solid rgba(139,0,0,0.06);
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.8px;
+  padding: 15px 40px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 8px 25px var(--primary-glow);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  justify-content: center;
+}
+
+.btn-submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px var(--primary-glow);
+}
+
+.btn-submit::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn-submit:hover::before { opacity: 1; }
+.btn-submit span { position: relative; z-index: 1; }
+
+/* ─── CONTACT INFO CARDS ─── */
+.contact-info-section { background: white; }
+
+.contact-card {
+  background: white;
+  border-radius: 20px;
+  padding: 36px 28px;
+  text-align: center;
+  box-shadow: 0 4px 25px rgba(0,0,0,0.07);
+  border: 1px solid rgba(139,0,0,0.07);
+  transition: all 0.4s ease;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+  transform-origin: left;
+}
+
+.contact-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(139,0,0,0.14); }
+.contact-card:hover::before { transform: scaleX(1); }
+
+.contact-card-icon {
+  width: 72px; height: 72px;
+  background: linear-gradient(135deg, rgba(139,0,0,0.08), rgba(139,0,0,0.14));
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 1.8rem; color: var(--primary);
+  transition: all 0.4s ease;
+}
+
+.contact-card:hover .contact-card-icon {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: white;
+  box-shadow: 0 10px 30px var(--primary-glow);
+}
+
+.contact-card h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700; font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+.contact-card p {
+  font-size: 0.875rem; color: var(--text-muted);
+  line-height: 1.8; margin: 0;
+}
+
+.contact-card a {
+  color: var(--primary); text-decoration: none;
+  transition: color 0.2s; font-weight: 500;
+}
+
+.contact-card a:hover { color: var(--primary-dark); }
+
+    /* ══════════════════════════════════════════
+       CONTACT INFO CARDS
+    ══════════════════════════════════════════ */
+    /* .contact-info-section { background: var(--light-gray); }
+
+    .info-card {
+      background: white;
+      border-radius: 20px;
+      padding: 36px 28px;
+      text-align: center;
+      border: 1px solid rgba(139,0,0,0.06);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative; overflow: hidden; height: 100%;
+    }
+    .info-card::before {
+      content: ''; position: absolute; inset: 0; border-radius: 20px;
+      border: 1.5px solid transparent;
+      background: linear-gradient(135deg, rgba(139,0,0,0.3), rgba(200,0,0,0.1)) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .info-card::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center bottom, rgba(139,0,0,0.04), transparent 70%); opacity: 0; transition: opacity 0.4s; border-radius: 20px; }
+    .info-card:hover { transform: translateY(-10px); box-shadow: 0 24px 60px rgba(139,0,0,0.15); }
+    .info-card:hover::before { opacity: 1; }
+    .info-card:hover::after { opacity: 1; }
+
+    .info-icon-wrap {
+      width: 72px; height: 72px; border-radius: 18px;
+      background: linear-gradient(135deg, rgba(139,0,0,0.1), rgba(200,0,0,0.05));
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px; font-size: 1.6rem; color: var(--primary);
+      position: relative; transition: all 0.4s ease;
+      box-shadow: 0 4px 16px rgba(139,0,0,0.15);
+    }
+    .info-icon-wrap::before {
+      content: ''; position: absolute; inset: -3px; border-radius: 21px;
+      background: linear-gradient(135deg, rgba(139,0,0,0.2), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .info-card:hover .info-icon-wrap { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; box-shadow: 0 8px 28px rgba(139,0,0,0.4); transform: scale(1.1); }
+    .info-card:hover .info-icon-wrap::before { opacity: 1; }
+    .info-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; color: var(--text-dark); margin-bottom: 10px; }
+    .info-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; margin: 0; }
+    .info-card a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .info-card a:hover { text-decoration: underline; } */
+
+    /* ══════════════════════════════════════════
+       MULTIPLE WAYS SECTION
+    ══════════════════════════════════════════ */
+    .ways-section {
+      background: linear-gradient(135deg, #fff5f5 0%, #fff0f0 30%, #fef2f2 60%, #fff5f5 100%);
+      position: relative; overflow: hidden;
+    }
+    .ways-section::before {
+      content: ''; position: absolute;
+      width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(139,0,0,0.05) 0%, transparent 70%);
+      top: -200px; right: -200px; pointer-events: none;
+    }
+    .ways-section::after {
+      content: ''; position: absolute;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,0,0,0.04) 0%, transparent 70%);
+      bottom: -150px; left: -100px; pointer-events: none;
+    }
+
+    .way-card {
+      background: white;
+      border-radius: 18px; padding: 30px 24px;
+      border: 1px solid rgba(139,0,0,0.08);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative; overflow: hidden; height: 100%;
+      cursor: pointer;
+    }
+    .way-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(139,0,0,0.03), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .way-card-border {
+      position: absolute; inset: 0; border-radius: 18px;
+      border: 2px solid transparent;
+      background: linear-gradient(135deg, rgba(139,0,0,0.5), rgba(200,50,50,0.2)) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out; mask-composite: exclude;
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .way-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(139,0,0,0.12); }
+    .way-card:hover::before { opacity: 1; }
+    .way-card:hover .way-card-border { opacity: 1; }
+
+    .way-icon-wrap {
+      width: 58px; height: 58px; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 18px; position: relative;
+      transition: all 0.4s ease;
+    }
+    .way-icon-circle {
+      position: absolute; inset: -6px; border-radius: 22px;
+      border: 2px dashed rgba(139,0,0,0.15);
+      animation: rotateSlow 8s linear infinite;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .way-card:hover .way-icon-circle { opacity: 1; }
+    @keyframes rotateSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .way-card:hover .way-icon-wrap { transform: scale(1.12); }
+    .way-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.98rem; color: var(--text-dark); margin-bottom: 8px; }
+    .way-card p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin-bottom: 16px; }
+    .way-card .way-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 600; color: var(--primary); text-decoration: none; font-family: 'Montserrat', sans-serif; transition: gap 0.3s; }
+    .way-card:hover .way-link { gap: 10px; }
+
+    /* ══════════════════════════════════════════
+       CONTACT FORM SECTION
+    ══════════════════════════════════════════ */
+    .form-section { background: var(--white); }
+
+    .form-illustration-wrap {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary), #c0392b);
+      border-radius: 24px; padding: 50px 40px;
+      position: relative; overflow: hidden; height: 100%;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .form-illustration-wrap::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .form-illustration-wrap .orb-il { position: absolute; border-radius: 50%; pointer-events: none; }
+    .orb-il-1 { width: 300px; height: 300px; top: -100px; right: -100px; background: radial-gradient(circle, rgba(255,255,255,0.07) 0%, transparent 70%); }
+    .orb-il-2 { width: 200px; height: 200px; bottom: -80px; left: -60px; background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%); }
+
+    .form-il-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: white; font-size: 0.7rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 50px; margin-bottom: 20px; font-family: 'Montserrat', sans-serif; }
+    .form-il-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(1.5rem, 3vw, 2rem); color: white; line-height: 1.2; margin-bottom: 16px; }
+    .form-il-title span { color: var(--gold); }
+    .form-il-desc { font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 30px; }
+
+    .form-il-feature { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+    .form-il-feature-icon { width: 42px; height: 42px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 1rem; flex-shrink: 0; }
+    .form-il-feature-text h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem; color: white; margin: 0 0 2px; }
+    .form-il-feature-text p { font-size: 0.78rem; color: rgba(255,255,255,0.65); margin: 0; }
+
+    /* glass form card */
+    .form-glass-card {
+      background: white;
+      border-radius: 24px;
+      padding: 48px 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.07), 0 0 0 1px rgba(139,0,0,0.06);
+    }
+    .form-glass-card h3 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--text-dark); margin-bottom: 8px; }
+    .form-glass-card p.form-sub { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 30px; }
+
+    /* floating label inputs */
+    .floating-group { position: relative; margin-bottom: 22px; }
+    .floating-group input,
+    .floating-group select,
+    .floating-group textarea {
+      width: 100%; padding: 18px 18px 8px;
+      border: 1.5px solid #e0e0e0; border-radius: 12px;
+      font-family: 'Poppins', sans-serif; font-size: 0.9rem; color: var(--text-dark);
+      background: #fafafa; transition: all 0.3s ease;
+      outline: none; resize: vertical;
+    }
+    .floating-group input:focus,
+    .floating-group select:focus,
+    .floating-group textarea:focus {
+      border-color: var(--primary);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(139,0,0,0.08), 0 4px 16px rgba(139,0,0,0.08);
+    }
+    .floating-group label {
+      position: absolute; top: 50%; left: 18px;
+      transform: translateY(-50%);
+      font-size: 0.88rem; color: #999; pointer-events: none;
+      transition: all 0.25s ease; font-family: 'Poppins', sans-serif;
+      background: transparent;
+    }
+    .floating-group textarea ~ label { top: 20px; transform: none; }
+    .floating-group input:focus ~ label,
+    .floating-group input:not(:placeholder-shown) ~ label,
+    .floating-group select:focus ~ label,
+    .floating-group select:not([value=""]) ~ label,
+    .floating-group textarea:focus ~ label,
+    .floating-group textarea:not(:placeholder-shown) ~ label {
+      top: 8px; transform: none; font-size: 0.72rem; color: var(--primary); font-weight: 600;
+    }
+    .floating-group .input-icon { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: #bbb; transition: color 0.3s; pointer-events: none; }
+    .floating-group textarea ~ .input-icon { top: 20px; transform: none; }
+    .floating-group input:focus ~ .input-icon,
+    .floating-group textarea:focus ~ .input-icon { color: var(--primary); }
+
+    .btn-submit {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary), #c0392b);
+      color: white; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.92rem;
+      letter-spacing: 0.8px; padding: 16px 40px; border-radius: 50px; border: none;
+      cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
+      box-shadow: 0 8px 25px var(--primary-glow); transition: all 0.3s ease; position: relative; overflow: hidden;
+    }
+    .btn-submit::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent); opacity: 0; transition: opacity 0.3s; }
+    .btn-submit:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(139,0,0,0.4); }
+    .btn-submit:hover::before { opacity: 1; }
+
+    /* success state */
+    .form-success { display: none; text-align: center; padding: 30px; }
+    .form-success.show { display: block; }
+    .success-icon { width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; margin: 0 auto 20px; animation: successPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    @keyframes successPop { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+    /* ══════════════════════════════════════════
+       FAQ SECTION
+    ══════════════════════════════════════════ */
+    .faq-section { background: var(--light-gray); }
+
+    .faq-illustration {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      border-radius: 24px; padding: 50px 40px;
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      min-height: 400px;
+    }
+    .faq-illustration::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.08), transparent 60%);
+    }
+
+    .faq-svg-wrap { position: relative; z-index: 1; text-align: center; }
+    .faq-il-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.4rem; color: white; margin-top: 24px; }
+    .faq-il-sub { font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-top: 8px; line-height: 1.7; }
+
+    .faq-stat-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; padding: 8px 18px; margin-top: 20px; }
+    .faq-stat-badge span { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--gold); }
+    .faq-stat-badge small { font-size: 0.78rem; color: rgba(255,255,255,0.7); }
+
+    /* accordion */
+    .faq-accordion .accordion-item {
+      background: white; border: 1px solid rgba(139,0,0,0.08);
+      border-radius: 14px !important; margin-bottom: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      transition: all 0.3s ease; overflow: hidden;
+    }
+    .faq-accordion .accordion-item:hover { box-shadow: 0 6px 24px rgba(139,0,0,0.1); border-color: rgba(139,0,0,0.2); }
+    .faq-accordion .accordion-button {
+      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.92rem;
+      color: var(--text-dark); background: white; border-radius: 14px !important;
+      padding: 18px 22px; box-shadow: none !important;
+      transition: color 0.3s;
+    }
+    .faq-accordion .accordion-button:not(.collapsed) { color: var(--primary); background: linear-gradient(135deg, rgba(139,0,0,0.04), white); }
+    .faq-accordion .accordion-button::after { filter: none; background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%238B0000'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e"); }
+    .faq-accordion .accordion-body { font-size: 0.88rem; color: var(--text-muted); line-height: 1.8; padding: 0 22px 20px; }
+
+    /* ══════════════════════════════════════════
+       MAP SECTION
+    ══════════════════════════════════════════ */
+    /* .map-section { padding: 0; }
+    .map-wrapper { position: relative; }
+    .map-wrapper iframe { width: 100%; height: 420px; border: none; display: block; }
+    .map-overlay-card {
+      position: absolute; top: 30px; left: 50px;
+      background: white; border-radius: 20px;
+      padding: 28px 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      min-width: 280px; z-index: 10;
+      border-left: 4px solid var(--primary);
+    }
+    .map-overlay-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; color: var(--text-dark); margin-bottom: 14px; }
+    .map-info-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; font-size: 0.83rem; color: var(--text-muted); }
+    .map-info-row i { color: var(--primary); flex-shrink: 0; margin-top: 2px; }
+    @media (max-width: 576px) { .map-overlay-card { display: none; } } */
+
+    /* ─── MAP SECTION ─── */
+    .map-section { background: var(--light-gray); padding: 80px 0; }
+
+    .map-wrapper {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(139,0,0,0.12);
+      border: 3px solid rgba(139,0,0,0.1);
+      position: relative;
+    }
+
+    .map-wrapper iframe {
+      display: block;
+      width: 100%;
+      height: 420px;
+      border: none;
+    }
+
+    .map-overlay-card {
+      position: absolute;
+      top: 20px; left: 20px;
+      background: white;
+      border-radius: 14px;
+      padding: 18px 22px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      max-width: 260px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .map-overlay-card h6 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700; font-size: 0.88rem;
+      color: var(--primary); margin-bottom: 6px;
+    }
+
+    .map-overlay-card p {
+      font-size: 0.78rem; color: var(--text-muted);
+      line-height: 1.6; margin: 0;
+    }
+
+    /* ══════════════════════════════════════════
+       CTA SECTION
+    ══════════════════════════════════════════ */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, #c0392b 100%);
+      padding: 90px 0; position: relative; overflow: hidden;
+    }
+    .cta-section::before { content: ''; position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%); top: -200px; right: -100px; }
+    .cta-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(1.8rem, 4vw, 3rem); color: white; margin-bottom: 16px; }
+    .cta-subtitle { color: rgba(255,255,255,0.8); font-size: 1rem; margin-bottom: 36px; }
+    .btn-cta-glow { background: linear-gradient(135deg, var(--gold), #ffb700); color: var(--primary-dark) !important; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; padding: 16px 42px; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 0 0 0 rgba(255,215,0,0.5); animation: pulseGlow 2.5s infinite; transition: all 0.3s ease; }
+    .btn-cta-glow:hover { transform: translateY(-4px); }
+    @keyframes pulseGlow { 0%,100% { box-shadow: 0 0 0 0 rgba(255,215,0,0.5); } 50% { box-shadow: 0 0 0 18px rgba(255,215,0,0); } }
+
+    /* ══════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════ */
+    footer { background: #0d0d0d; padding: 70px 0 0; color: rgba(255,255,255,0.75); }
+    .footer-brand { margin-bottom: 20px; }
+    .footer-desc { font-size: 0.85rem; line-height: 1.8; color: rgba(255,255,255,0.55); margin-bottom: 22px; }
+    .footer-socials { display: flex; gap: 10px; }
+    .footer-social-btn { width: 36px; height: 36px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); font-size: 0.85rem; transition: all 0.3s ease; text-decoration: none; }
+    .footer-social-btn:hover { background: var(--primary); border-color: var(--primary); color: white; transform: translateY(-3px); }
+    .footer-heading { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 1.5px; text-transform: uppercase; color: white; margin-bottom: 20px; position: relative; padding-bottom: 10px; }
+    .footer-heading::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 2px; background: var(--primary); border-radius: 2px; }
+    .footer-links { list-style: none; padding: 0; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 6px; }
+    .footer-links a:hover { color: var(--primary-light); padding-left: 5px; }
+    .footer-links a i { font-size: 0.65rem; color: var(--primary); }
+    .footer-contact li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; font-size: 0.85rem; }
+    .footer-contact li i { color: var(--primary-light); margin-top: 3px; flex-shrink: 0; font-size: 0.85rem; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding: 22px 0; margin-top: 50px; font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+
+    /* ══════════════════════════════════════════
+       RIPPLE
+    ══════════════════════════════════════════ */
+    .ripple { position: relative; overflow: hidden; }
+
+    /* ══════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════ */
+    @media (max-width: 991px) {
+      .hero-section { padding: 70px 0 90px; text-align: center; }
+      .hero-desc { margin: 0 auto 36px; }
+      .map-overlay-card { top: 20px; left: 20px; min-width: 240px; }
+    }
+    @media (max-width: 767px) {
+      section { padding: 65px 0; }
+      .form-glass-card { padding: 36px 24px; }
+      .form-illustration-wrap { padding: 40px 28px; }
+      .faq-illustration { min-height: 300px; padding: 40px 28px; }
+    }
+    @media (max-width: 575px) {
+      .btn-call-now { padding: 14px 32px; font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ LOADER ═══════════════════════════════ -->
+<!-- <div id="loader">
+  <div class="loader-logo">CAD<span>POINT</span></div>
+  <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+</div> -->
+
+<!-- ═══ BACK TO TOP ══════════════════════════ -->
+<button id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+<!-- ═══════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════ -->
+<div id="header"></div>
+
+<!-- ═══════════════════════════════════════════
+     BREADCRUMB SLIDER
+═══════════════════════════════════════════ -->
+<div class="breadcrumb-slider">
+  <div class="breadcrumb-track">
+    <div class="breadcrumb-item-slide"><i class="fas fa-phone-alt"></i> <strong>Contact Us</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-map-marker-alt"></i> <strong>Marthandam, Kanyakumari</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-envelope"></i> <strong>info@cadpoint.in</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-clock"></i> <strong>Mon–Sat 9AM–6PM</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-headset"></i> <strong>24/7 Support</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fab fa-whatsapp"></i> <strong>WhatsApp Support</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-award"></i> <strong>ISO 9001:2015 Certified</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-graduation-cap"></i> <strong>5000+ Students</strong></div>
+    <!-- duplicate for seamless loop -->
+    <div class="breadcrumb-item-slide"><i class="fas fa-phone-alt"></i> <strong>Contact Us</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-map-marker-alt"></i> <strong>Marthandam ,Kanyakumari</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-envelope"></i> <strong>info@cadpoint.in</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-clock"></i> <strong>Mon–Sat 9AM–6PM</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-headset"></i> <strong>24/7 Support</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fab fa-whatsapp"></i> <strong>WhatsApp Support</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-award"></i> <strong>ISO 9001:2015 Certified</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-graduation-cap"></i> <strong>5000+ Students</strong></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     HERO SECTION
+═══════════════════════════════════════════ -->
+<section class="hero-section">
+  <!-- orbs -->
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+  <!-- floating particles -->
+  <div class="particle" style="left:10%;animation-duration:12s;animation-delay:0s;width:5px;height:5px;"></div>
+  <div class="particle" style="left:25%;animation-duration:15s;animation-delay:3s;width:4px;height:4px;"></div>
+  <div class="particle" style="left:50%;animation-duration:10s;animation-delay:6s;width:6px;height:6px;"></div>
+  <div class="particle" style="left:70%;animation-duration:14s;animation-delay:1s;width:4px;height:4px;"></div>
+  <div class="particle" style="left:85%;animation-duration:11s;animation-delay:4s;width:5px;height:5px;"></div>
+  <div class="particle" style="left:40%;animation-duration:16s;animation-delay:8s;width:3px;height:3px;"></div>
+
+  <div class="container position-relative" style="z-index:1">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+
+        <div class="hero-badge" data-aos="fade-down" data-aos-delay="100">
+          <i class="fas fa-headset"></i> <span>24/7</span> Customer Support Available
+        </div>
+
+        <h1 class="hero-title" id="heroTitle" data-aos="fade-up" data-aos-delay="200">
+          Let's <span class="highlight">Connect</span> With Us
+        </h1>
+
+        <p class="hero-desc mx-auto" data-aos="fade-up" data-aos-delay="300">
+          Have questions about our courses, admissions, or career guidance? 
+          Our expert team is ready to help you take the next step in your engineering career.
+        </p>
+
+        <div data-aos="zoom-in" data-aos-delay="450">
+          <a href="tel:+919895352624" class="btn-call-now ripple">
+            <span class="btn-icon"><i class="fas fa-phone-alt"></i></span>
+            <span>Call Now</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- wave -->
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+      <path d="M0,30 C300,60 1100,0 1440,40 L1440,60 L0,60 Z"></path>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CONTACT INFO CARDS
+═══════════════════════════════════════════ -->
+<!-- <section class="contact-info-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag"><i class="fas fa-address-card"></i> Get In Touch</div>
+      <h2 class="section-title">Reach Us <span>Anytime, Anywhere</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Multiple channels to connect with our expert support team. We're always here for you.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="info-card">
+          <div class="info-icon-wrap"><i class="fas fa-phone-alt"></i></div>
+          <h5>Call Us</h5>
+          <p>
+            <a href="tel:+919876543210">+91 98765 43210</a><br>
+            <a href="tel:+918765432109">+91 87654 32109</a>
+          </p>
+          <div style="margin-top:14px;"><span style="display:inline-block;background:rgba(139,0,0,0.08);color:var(--primary);font-size:0.72rem;font-weight:600;padding:4px 12px;border-radius:20px;">Mon–Sat · 9AM–8PM</span></div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="info-card">
+          <div class="info-icon-wrap"><i class="fas fa-envelope"></i></div>
+          <h5>Email Us</h5>
+          <p>
+            <a href="mailto:info@cadpoint.in">info@cadpoint.in</a><br>
+            <a href="mailto:admissions@cadpoint.in">admissions@cadpoint.in</a>
+          </p>
+          <div style="margin-top:14px;"><span style="display:inline-block;background:rgba(139,0,0,0.08);color:var(--primary);font-size:0.72rem;font-weight:600;padding:4px 12px;border-radius:20px;">Reply within 24 hours</span></div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="info-card">
+          <div class="info-icon-wrap"><i class="fas fa-map-marker-alt"></i></div>
+          <h5>Visit Us</h5>
+          <p>123 Tech Park, Industrial Area,<br>Mumbai – 400001,<br>Maharashtra, India</p>
+          <div style="margin-top:14px;"><span style="display:inline-block;background:rgba(139,0,0,0.08);color:var(--primary);font-size:0.72rem;font-weight:600;padding:4px 12px;border-radius:20px;"><i class="fas fa-directions me-1"></i>Get Directions</span></div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="info-card">
+          <div class="info-icon-wrap"><i class="fas fa-clock"></i></div>
+          <h5>Working Hours</h5>
+          <p>
+            <strong style="color:var(--text-dark)">Mon – Fri</strong><br>9:00 AM – 8:00 PM<br>
+            <strong style="color:var(--text-dark)">Saturday</strong><br>10:00 AM – 6:00 PM
+          </p>
+          <div style="margin-top:14px;"><span style="display:inline-block;background:rgba(0,150,0,0.1);color:#006600;font-size:0.72rem;font-weight:600;padding:4px 12px;border-radius:20px;"><i class="fas fa-circle me-1" style="font-size:0.5rem"></i>Open Now</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+
+<!-- ═══════════════════════════════════════════
+     CONTACT FORM + INFO
+═══════════════════════════════════════════ -->
+<section class="contact-form-section">
+    <div class="container">
+      <div class="row gy-5 align-items-start">
+  
+        <!-- FORM -->
+        <div class="col-lg-7" data-aos="fade-right">
+          <div class="contact-form-card">
+            <div class="section-tag"><i class="fas fa-paper-plane"></i> Send a Message</div>
+            <h2 class="section-title mb-2">Let's Start a <span>Conversation</span></h2>
+            <div class="divider-line"></div>
+            <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:32px;line-height:1.7">
+              Have questions about our courses or want to enroll? Fill out the form and our admission team will get back to you within 24 hours.
+            </p>
+  
+            <form id="contactForm" novalidate>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-floating-label">
+                    <input type="text" id="fname"  name="fname"placeholder=" " required>
+                    <label for="fname">First Name *</label>
+                    <i class="fas fa-user field-icon"></i>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-floating-label">
+                    <input type="text" id="lname" name="lname" placeholder=" " required>
+                    <label for="lname">Last Name *</label>
+                    <i class="fas fa-user field-icon"></i>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-floating-label">
+                    <input type="email" id="email" name="email"  placeholder=" " required>
+                    <label for="email">Email Address *</label>
+                    <i class="fas fa-envelope field-icon"></i>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-floating-label">
+                    <input type="tel" id="phone"  name="phone"  placeholder=" ">
+                    <label for="phone">Phone Number</label>
+                    <i class="fas fa-phone field-icon"></i>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="form-floating-label">
+                <select id="course" name="course"  required>
+                  <option value="" disabled selected></option>
+                  <option value="autocad">AutoCAD 2D & 3D</option>
+                  <option value="solidworks">SolidWorks Professional</option>
+                  <option value="revit">Revit Architecture</option>
+                  <option value="civil3d">Civil 3D & STAAD.Pro</option>
+                  <option value="electrical">AutoCAD Electrical</option>
+                  <option value="3dsmax">3DS Max & V-Ray</option>
+                  <option value="catia">CATIA</option>
+                  <option value="other">Other / Not Sure</option>
+                </select>
+                <label for="course">Course Interested In *</label>
+                <i class="fas fa-book field-icon"></i>
+              </div>
+  
+              <div class="form-floating-label">
+                <select id="timing" name="timing">
+                  <option value="" disabled selected></option>
+                  <option>Weekday Morning (9AM–12PM)</option>
+                  <option>Weekday Afternoon (2PM–5PM)</option>
+                  <option>Weekday Evening (6PM–8PM)</option>
+                  <option>Weekend Batch (Sat–Sun)</option>
+                </select>
+                <label for="timing">Preferred Batch Timing</label>
+                <i class="fas fa-clock field-icon"></i>
+              </div>
+  
+              <div class="form-floating-label">
+                <textarea id="message" name="message" placeholder=" "></textarea>
+                <label for="message">Your Message</label>
+                <i class="fas fa-comment field-icon"></i>
+              </div>
+  
+              <button type="submit" class="btn-submit">
+                <span><i class="fas fa-paper-plane me-2"></i>Send Message</span>
+              </button>
+  
+              <div class="form-success" id="formSuccess">
+                <div style="font-size:2rem;margin-bottom:8px">✅</div>
+                <div style="font-family:Montserrat,sans-serif;font-weight:700;font-size:1rem;color:#2e7d32;margin-bottom:4px">Message Sent Successfully!</div>
+                <div style="font-size:0.85rem;color:#388e3c">Thank you for reaching out. Our team will contact you within 24 hours.</div>
+              </div>
+            </form>
+          </div>
+        </div>
+  
+        <!-- INFO SIDEBAR -->
+        <div class="col-lg-5" data-aos="fade-left">
+          <div class="section-tag"><i class="fas fa-info-circle"></i> Contact Details</div>
+          <h2 class="section-title mb-2">Reach Us <span>Directly</span></h2>
+          <!-- <div class="divider-line"></div> -->
+  
+          <div class="d-flex flex-column gap-3 mb-4">
+            <div style="background:white;border-radius:16px;padding:22px 24px;box-shadow:0 4px 20px rgba(0,0,0,0.06);border-left:4px solid var(--primary);display:flex;align-items:flex-start;gap:16px;transition:all 0.3s ease;" class="info-row">
+              <div style="width:48px;height:48px;background:linear-gradient(135deg,rgba(139,0,0,0.1),rgba(139,0,0,0.16));border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.2rem;flex-shrink:0">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <div style="font-family:Montserrat,sans-serif;font-weight:700;font-size:0.88rem;margin-bottom:4px">Visit Our Centre</div>
+                <div style="font-size:0.82rem;color:var(--text-muted);line-height:1.7">JJ Arcade,Near New Bus stand Marthandam , Tamilnadu 629165</div>
+              </div>
+            </div>
+  
+            <div style="background:white;border-radius:16px;padding:22px 24px;box-shadow:0 4px 20px rgba(0,0,0,0.06);border-left:4px solid var(--primary);display:flex;align-items:flex-start;gap:16px;" class="info-row">
+              <div style="width:48px;height:48px;background:linear-gradient(135deg,rgba(139,0,0,0.1),rgba(139,0,0,0.16));border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.2rem;flex-shrink:0">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div>
+                <div style="font-family:Montserrat,sans-serif;font-weight:700;font-size:0.88rem;margin-bottom:4px">Call Us</div>
+                <div style="font-size:0.82rem;color:var(--text-muted);line-height:1.8">
+                  <a href="tel:+919895352624" style="color:var(--primary);text-decoration:none;font-weight:600">+919895352624</a><br>
+                </div>
+              </div>
+            </div>
+  
+            <div style="background:white;border-radius:16px;padding:22px 24px;box-shadow:0 4px 20px rgba(0,0,0,0.06);border-left:4px solid var(--primary);display:flex;align-items:flex-start;gap:16px;" class="info-row">
+              <div style="width:48px;height:48px;background:linear-gradient(135deg,rgba(139,0,0,0.1),rgba(139,0,0,0.16));border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.2rem;flex-shrink:0">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <div style="font-family:Montserrat,sans-serif;font-weight:700;font-size:0.88rem;margin-bottom:4px">Email Us</div>
+                <div style="font-size:0.82rem;color:var(--text-muted);line-height:1.8">
+                  <a href="mailto:cadpointmarthandam@gmail.com" style="color:var(--primary);text-decoration:none;font-weight:600">cadpointmarthandam@gmail.com</a><br>
+                  <a href="mailto:admissions@cadpoint.in" style="color:var(--primary);text-decoration:none;font-weight:600">admissions@cadpoint.in</a>
+                </div>
+              </div>
+            </div>
+  
+            <div style="background:white;border-radius:16px;padding:22px 24px;box-shadow:0 4px 20px rgba(0,0,0,0.06);border-left:4px solid var(--primary);display:flex;align-items:flex-start;gap:16px;" class="info-row">
+              <div style="width:48px;height:48px;background:linear-gradient(135deg,rgba(139,0,0,0.1),rgba(139,0,0,0.16));border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.2rem;flex-shrink:0">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div>
+                <div style="font-family:Montserrat,sans-serif;font-weight:700;font-size:0.88rem;margin-bottom:4px">Working Hours</div>
+                <div style="font-size:0.82rem;color:var(--text-muted);line-height:1.8">
+                  Monday – Friday: <strong>9:00 AM – 6:00 PM</strong><br>
+                  Saturday- sunday: <strong>9:00 AM – 6:00 PM</strong><br>
+                  <!-- Sunday: <strong style="color:var(--primary)">By Appointment</strong> -->
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Social links -->
+          <div style="background:linear-gradient(135deg,var(--primary-dark),var(--primary));border-radius:18px;padding:28px 24px;text-align:center;">
+            <div style="font-family:Montserrat,sans-serif;font-weight:700;color:white;font-size:0.95rem;margin-bottom:6px">Follow Us on Social Media</div>
+            <div style="font-size:0.8rem;color:rgba(255,255,255,0.7);margin-bottom:20px">Stay updated with latest courses & offers</div>
+            <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;">
+              <a href="#" style="width:42px;height:42px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;text-decoration:none;transition:all 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" style="width:42px;height:42px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;text-decoration:none;transition:all 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'"><i class="fab fa-instagram"></i></a>
+              <a href="#" style="width:42px;height:42px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;text-decoration:none;transition:all 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" style="width:42px;height:42px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;text-decoration:none;transition:all 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'"><i class="fab fa-youtube"></i></a>
+              <a href="#" style="width:42px;height:42px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;text-decoration:none;transition:all 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'"><i class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- ═══════════════════════════════════════════
+     CONTACT INFO CARDS
+═══════════════════════════════════════════ -->
+<section class="contact-info-section" style="background: linear-gradient(135deg, #fff5f5 0%, #fff0f0 30%, #fef2f2 60%, #fff5f5 100%);">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <div class="section-tag"><i class="fas fa-concierge-bell"></i> Our Support</div>
+        <h2 class="section-title">Multiple Ways to <span>Connect</span></h2>
+        <div class="divider-line mx-auto"></div>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="0">
+          <div class="contact-card">
+            <div class="contact-card-icon"><i class="fas fa-comments"></i></div>
+            <h4>Live Chat</h4>
+            <p>Chat with our support team in real-time for quick answers to your queries.<br><br><a href="https://wa.me/919895352624">Start Chat →</a></p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="contact-card">
+            <div class="contact-card-icon"><i class="fab fa-whatsapp"></i></div>
+            <h4>WhatsApp</h4>
+            <p>Message us directly on WhatsApp for fast, convenient communication anytime.<br><br><a href="https://wa.me/919895352624">Chat Now →</a></p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="contact-card">
+            <div class="contact-card-icon"><i class="fas fa-calendar-check"></i></div>
+            <h4>Book a Demo</h4>
+            <p>Schedule a free demo class to experience our teaching methodology firsthand.<br><br><a href="https://wa.me/919895352624">Book Free Demo →</a></p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="contact-card">
+            <div class="contact-card-icon"><i class="fas fa-map-marked-alt"></i></div>
+            <h4>Visit Campus</h4>
+            <p>Come to our training centre and speak directly with our admissions counselors.<br><br><a href="https://share.google/NJ36Xld7facvyK5X0">Get Directions →</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+
+<!-- ═══════════════════════════════════════════
+     MULTIPLE WAYS TO CONNECT
+═══════════════════════════════════════════ -->
+<!-- <section class="ways-section">
+  <div class="container position-relative" style="z-index:1">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag"><i class="fas fa-share-alt"></i> Connect</div>
+      <h2 class="section-title">Multiple Ways to <span>Connect</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Choose your preferred channel — we're active everywhere and respond promptly.</p>
+    </div>
+
+    <div class="row g-4">
+      
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="way-card">
+          <div class="way-card-border"></div>
+          <div class="way-icon-wrap" style="background:linear-gradient(135deg,rgba(37,99,235,0.12),rgba(99,139,255,0.08));">
+            <div class="way-icon-circle"></div>
+            <i class="fas fa-comments" style="color:#2563eb;font-size:1.4rem;"></i>
+          </div>
+          <h5>Live Chat Support</h5>
+          <p>Chat with our counselors in real-time. Get instant answers to your course and admission queries without waiting.</p>
+          <a href="#" class="way-link">Start Chat <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="80">
+        <div class="way-card">
+          <div class="way-card-border"></div>
+          <div class="way-icon-wrap" style="background:linear-gradient(135deg,rgba(37,185,80,0.12),rgba(0,200,80,0.08));">
+            <div class="way-icon-circle" style="border-color:rgba(37,185,80,0.25)"></div>
+            <i class="fab fa-whatsapp" style="color:#25B853;font-size:1.4rem;"></i>
+          </div>
+          <h5>WhatsApp Support</h5>
+          <p>Message us on WhatsApp for quick responses. Share documents, get brochures, and discuss course details instantly.</p>
+          <a href="https://wa.me/919876543210" class="way-link">Chat on WhatsApp <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="160">
+        <div class="way-card">
+          <div class="way-card-border"></div>
+          <div class="way-icon-wrap" style="background:linear-gradient(135deg,rgba(139,0,0,0.12),rgba(200,0,0,0.06));">
+            <div class="way-icon-circle" style="border-color:rgba(139,0,0,0.2)"></div>
+            <i class="fas fa-phone-volume" style="color:var(--primary);font-size:1.4rem;"></i>
+          </div>
+          <h5>Direct Call</h5>
+          <p>Speak directly with our admissions team for personalized course guidance and fee structure information.</p>
+          <a href="tel:+919876543210" class="way-link">Call Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+     
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="way-card">
+          <div class="way-card-border"></div>
+          <div class="way-icon-wrap" style="background:linear-gradient(135deg,rgba(234,88,12,0.12),rgba(255,120,0,0.06));">
+            <div class="way-icon-circle" style="border-color:rgba(234,88,12,0.2)"></div>
+            <i class="fas fa-envelope-open-text" style="color:#ea580c;font-size:1.4rem;"></i>
+          </div>
+          <h5>Email Support</h5>
+          <p>Send detailed queries about admissions, course syllabus, and placement support. We reply within 24 hours.</p>
+          <a href="mailto:info@cadpoint.in" class="way-link">Send Email <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="80">
+        <div class="way-card">
+          <div class="way-card-border"></div>
+          <div class="way-icon-wrap" style="background:linear-gradient(135deg,rgba(126,34,206,0.1),rgba(200,50,255,0.06));">
+            <div class="way-icon-circle" style="border-color:rgba(126,34,206,0.2)"></div>
+            <i class="fas fa-hashtag" style="color:#7e22ce;font-size:1.4rem;"></i>
+          </div>
+          <h5>Social Media</h5>
+          <p>Follow us on Facebook, Instagram, LinkedIn & YouTube for course updates, student success stories, and events.</p>
+          <div class="d-flex gap-2 mt-2">
+            <a href="#" style="color:#1877f2;font-size:1.1rem;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.3)'" onmouseout="this.style.transform='scale(1)'"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" style="color:#e1306c;font-size:1.1rem;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.3)'" onmouseout="this.style.transform='scale(1)'"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="color:#0077b5;font-size:1.1rem;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.3)'" onmouseout="this.style.transform='scale(1)'"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" style="color:#ff0000;font-size:1.1rem;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.3)'" onmouseout="this.style.transform='scale(1)'"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+
+     
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="160">
+        <div class="way-card">
+          <div class="way-card-border"></div>
+          <div class="way-icon-wrap" style="background:linear-gradient(135deg,rgba(16,185,129,0.12),rgba(0,200,130,0.06));">
+            <div class="way-icon-circle" style="border-color:rgba(16,185,129,0.2)"></div>
+            <i class="fas fa-walking" style="color:#059669;font-size:1.4rem;"></i>
+          </div>
+          <h5>Walk-In Counselling</h5>
+          <p>Visit our centre for a free demo session. Meet our trainers, see our labs, and get a complete course walkthrough.</p>
+          <a href="#map" class="way-link">Get Directions <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- ═══════════════════════════════════════════
+     CONTACT FORM SECTION
+═══════════════════════════════════════════ -->
+<!-- <section class="form-section" id="contact-form">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag"><i class="fas fa-paper-plane"></i> Send A Message</div>
+      <h2 class="section-title">Drop Us <span>A Message</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Fill out the form and our team will get back to you within 24 hours with personalized guidance.</p>
+    </div>
+
+    <div class="row g-4 align-items-stretch">
+     
+      <div class="col-lg-5" data-aos="fade-right" data-aos-delay="100">
+        <div class="form-illustration-wrap">
+          <div class="orb-il orb-il-1"></div>
+          <div class="orb-il orb-il-2"></div>
+
+          <div class="form-il-tag"><i class="fas fa-headset"></i> We're Here to Help</div>
+          <h3 class="form-il-title">Start Your <span>Engineering</span> Journey Today</h3>
+          <p class="form-il-desc">Our counselors are ready to guide you through course selection, fees, batch timings, and career opportunities.</p>
+
+          <div class="form-il-feature">
+            <div class="form-il-feature-icon"><i class="fas fa-bolt"></i></div>
+            <div class="form-il-feature-text">
+              <h6>Lightning Fast Response</h6>
+              <p>We reply to all inquiries within 2–4 hours</p>
+            </div>
+          </div>
+          <div class="form-il-feature">
+            <div class="form-il-feature-icon"><i class="fas fa-user-shield"></i></div>
+            <div class="form-il-feature-text">
+              <h6>100% Confidential</h6>
+              <p>Your data is safe and never shared</p>
+            </div>
+          </div>
+          <div class="form-il-feature">
+            <div class="form-il-feature-icon"><i class="fas fa-gift"></i></div>
+            <div class="form-il-feature-text">
+              <h6>Free Demo Class</h6>
+              <p>Attend a free session before enrolling</p>
+            </div>
+          </div>
+          <div class="form-il-feature">
+            <div class="form-il-feature-icon"><i class="fas fa-chart-line"></i></div>
+            <div class="form-il-feature-text">
+              <h6>Career Guidance</h6>
+              <p>Expert counselors for your career path</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+     
+      <div class="col-lg-7" data-aos="fade-left" data-aos-delay="200">
+        <div class="form-glass-card">
+          <h3>Send Us a Message</h3>
+          <p class="form-sub">Fill in the details below and we'll get back to you shortly.</p>
+
+          <div id="contactFormWrap">
+            <form id="contactForm" novalidate>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="floating-group">
+                    <input type="text" id="fname" placeholder=" " required>
+                    <label for="fname">Full Name *</label>
+                    <i class="fas fa-user input-icon"></i>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="floating-group">
+                    <input type="email" id="femail" placeholder=" " required>
+                    <label for="femail">Email Address *</label>
+                    <i class="fas fa-envelope input-icon"></i>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="floating-group">
+                    <input type="tel" id="fphone" placeholder=" " required>
+                    <label for="fphone">Phone Number *</label>
+                    <i class="fas fa-phone input-icon"></i>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="floating-group">
+                    <select id="fsubject">
+                      <option value="" disabled selected></option>
+                      <option>Course Inquiry</option>
+                      <option>Admission Process</option>
+                      <option>Fee Structure</option>
+                      <option>Placement Support</option>
+                      <option>Demo Class Request</option>
+                      <option>Other</option>
+                    </select>
+                    <label for="fsubject">Subject *</label>
+                    <i class="fas fa-tag input-icon"></i>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="floating-group">
+                    <textarea id="fmessage" rows="5" placeholder=" " required></textarea>
+                    <label for="fmessage">Your Message *</label>
+                    <i class="fas fa-pen input-icon"></i>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn-submit ripple">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>Send Message</span>
+                    <span class="btn-loader" style="display:none;"><i class="fas fa-spinner fa-spin"></i></span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+        
+          <div class="form-success" id="formSuccess">
+            <div class="success-icon"><i class="fas fa-check"></i></div>
+            <h4 style="font-family:'Montserrat',sans-serif;font-weight:800;color:var(--text-dark);margin-bottom:10px;">Message Sent Successfully!</h4>
+            <p style="color:var(--text-muted);font-size:0.9rem;">Thank you for reaching out. Our team will get back to you within 24 hours. Check your email for confirmation.</p>
+            <a href="#" onclick="resetForm();return false;" style="display:inline-flex;align-items:center;gap:8px;margin-top:20px;color:var(--primary);font-weight:600;text-decoration:none;"><i class="fas fa-redo"></i> Send Another Message</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- ═══════════════════════════════════════════
+     GOOGLE MAP
+═══════════════════════════════════════════ -->
+<section id="map" class="map-section">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <div class="section-tag"><i class="fas fa-map-marked-alt"></i> Find Us</div>
+        <h2 class="section-title">Our <span>Location</span></h2>
+        <div class="divider-line mx-auto"></div>
+      </div>
+      <div class="map-wrapper" data-aos="zoom-in">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3948.002260140112!2d77.2232849!3d8.3025723!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s3rd%20Floor%20JJ%20Arcade%2C%20Market%20Rd%2C%20Marthandam!5e0!3m2!1sen!2sin!4v1778751344400!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="map-overlay-card">
+          <h6><i class="fas fa-map-marker-alt me-2"></i>CADPOINT Training Centre</h6>
+          <p>3rd Floor JJ Arcade,
+            Market Rd, Marthandam</p>
+          <div style="margin-top:10px">
+            <a href="https://maps.app.goo.gl/aLKi96cX7WDLndg36" target="_blank" style="color:var(--primary);font-size:0.78rem;font-weight:600;text-decoration:none"><i class="fas fa-external-link-alt me-1"></i>Open in Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- ═══════════════════════════════════════════
+     FAQ SECTION
+═══════════════════════════════════════════ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag"><i class="fas fa-question-circle"></i> FAQ</div>
+      <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Everything you need to know before reaching out to us.</p>
+    </div>
+
+    <div class="row g-4 align-items-center">
+      <!-- FAQ Illustration -->
+      <div class="col-lg-4" data-aos="fade-right">
+        <div class="faq-illustration">
+          <div class="faq-svg-wrap">
+            <!-- Clean SVG illustration -->
+            <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="100" cy="100" r="90" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+              <circle cx="100" cy="100" r="65" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+              <!-- Question mark center -->
+              <text x="100" y="86" text-anchor="middle" fill="#ffd700" font-family="Montserrat,Arial" font-weight="900" font-size="52">?</text>
+              <!-- Small icons around -->
+              <circle cx="100" cy="140" r="6" fill="#ffd700" opacity="0.8"/>
+              <!-- decoration dots -->
+              <circle cx="38" cy="80" r="4" fill="rgba(255,255,255,0.3)"/>
+              <circle cx="162" cy="80" r="4" fill="rgba(255,255,255,0.3)"/>
+              <circle cx="55" cy="145" r="3" fill="rgba(255,215,0,0.4)"/>
+              <circle cx="145" cy="145" r="3" fill="rgba(255,215,0,0.4)"/>
+              <circle cx="100" cy="28" r="3" fill="rgba(255,255,255,0.4)"/>
+              <!-- outer ring arcs -->
+              <path d="M 30,100 A 70,70 0 0,1 60,44" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none" stroke-dasharray="6,4"/>
+              <path d="M 170,100 A 70,70 0 0,1 140,44" stroke="rgba(255,215,0,0.2)" stroke-width="2" fill="none" stroke-dasharray="6,4"/>
+            </svg>
+
+            <h4 class="faq-il-title">Got Questions?</h4>
+            <p class="faq-il-sub">We've answered the most common questions for you. Still unsure? Reach out!</p>
+
+            <div class="faq-stat-badge">
+              <span>50+</span>
+              <small>Questions Answered</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accordion -->
+      <div class="col-lg-8" data-aos="fade-left" data-aos-delay="100">
+        <div class="accordion faq-accordion" id="faqAccordion">
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                <i class="fas fa-graduation-cap me-3" style="color:var(--primary)"></i>
+                What courses do you offer at CADPOINT?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                CADPOINT offers 25+ industry-recognized courses across CAD, BIM, Mechanical Design, Civil Engineering, Electrical Design, IT Software, and Business Management. This includes AutoCAD, SolidWorks, Revit Architecture, Civil 3D, STAAD.Pro, Web Development, Python, Data Science, and many more. All courses are industry-aligned and taught by expert trainers.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                <i class="fas fa-rupee-sign me-3" style="color:var(--primary)"></i>
+                What is the fee structure for your courses?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Course fees vary based on the program and duration. We offer competitive pricing starting from ₹3,000 for short-term courses to ₹25,000+ for comprehensive programs. Flexible installment payment options are available. Contact us directly or fill the inquiry form for a customized fee quote based on your selected course.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                <i class="fas fa-briefcase me-3" style="color:var(--primary)"></i>
+                Do you provide placement assistance after completion?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Yes! CADPOINT offers 100% placement support to all students. We have strong industry connections with 200+ companies. Our dedicated placement cell assists with resume building, interview preparation, mock tests, and job referrals. Our placement rate is 98%, with students placed in leading engineering firms across India.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                <i class="fas fa-certificate me-3" style="color:var(--primary)"></i>
+                Are the certificates industry-recognized?
+              </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Absolutely. CADPOINT is an ISO 9001:2015 certified organization and an authorized training partner for Autodesk, PTC, and other leading software companies. Our certificates are globally recognized and carry significant weight with employers in India, the Middle East, and other international markets.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                <i class="fas fa-clock me-3" style="color:var(--primary)"></i>
+                What are the batch timings and course duration?
+              </button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                We offer flexible batch timings to suit students and working professionals — Morning (8AM–11AM), Afternoon (12PM–3PM), Evening (5PM–8PM), and Weekend batches. Course duration ranges from 1 month for basic courses to 6 months for advanced programs. Fast-track options are also available.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                <i class="fas fa-laptop me-3" style="color:var(--primary)"></i>
+                Can I attend a free demo class before enrolling?
+              </button>
+            </h2>
+            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Yes! We encourage all prospective students to attend a FREE demo session before making any commitment. Simply call us, WhatsApp, or fill out our inquiry form to schedule your demo. You'll get a hands-on experience of our teaching methodology, lab facilities, and course structure before deciding.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     MAP SECTION
+═══════════════════════════════════════════ -->
+<!-- <div class="map-section" id="map">
+  <div class="map-wrapper">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609823055!2d72.74109995!3d19.08219865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1699999999999!5m2!1sen!2sin"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      title="CADPOINT Location Map">
+    </iframe>
+    <div class="map-overlay-card">
+      <h5><i class="fas fa-map-marker-alt me-2" style="color:var(--primary)"></i>CADPOINT Training Centre</h5>
+      <div class="map-info-row"><i class="fas fa-location-dot"></i><span>123 Tech Park, Industrial Area, Mumbai – 400001</span></div>
+      <div class="map-info-row"><i class="fas fa-phone-alt"></i><span>+91 98765 43210</span></div>
+      <div class="map-info-row"><i class="fas fa-clock"></i><span>Mon–Sat: 9AM – 8PM</span></div>
+      <a href="https://maps.google.com" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--primary);color:white;font-size:0.78rem;font-weight:700;padding:8px 16px;border-radius:20px;text-decoration:none;margin-top:6px;font-family:'Montserrat',sans-serif;"><i class="fas fa-directions"></i> Get Directions</a>
+    </div>
+  </div>
+</div> -->
+
+<!-- ═══════════════════════════════════════════
+     CTA SECTION
+═══════════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="container text-center position-relative" style="z-index:1">
+    <div data-aos="fade-up">
+      <div class="hero-badge d-inline-flex mb-3"><i class="fas fa-rocket"></i> <span>Free</span> Demo Available</div>
+      <h2 class="cta-title">Ready to Build Your <br>Engineering Career?</h2>
+      <p class="cta-subtitle">Join 5000+ students who transformed their careers with CADPOINT. Enroll today!</p>
+      <a href="https://wa.me/919895352624" class="btn-cta-glow">
+        <i class="fas fa-paper-plane"></i> Book a Free Demo
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<div id="footer"></div>
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+<script>
+emailjs.init({
+    publicKey: "tWbOHqqX7ucQNFfdk"
+});
+</script>
+
+
+<script>
+document
+  .getElementById("contactForm")
+  .addEventListener("submit", function (e) {
+
+    e.preventDefault();
+
+    emailjs.sendForm(
+      "service_aeh1idl",
+      "template_svyjl2l",
+      this
+    )
+    .then(function(response) {
+
+      console.log("SUCCESS!", response);
+
+      document.getElementById("formSuccess").style.display = "block";
+
+      document.getElementById("contactForm").reset();
+
+    })
+    .catch(function(error) {
+
+      console.error("FAILED...", error);
+
+      alert("Failed to send message. Please try again.");
+
+    });
+
+});
+</script>
+
+<script>
+fetch("./header.html")
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById("header").innerHTML = html;
+    initCaddNav();
+  });
+
+  fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+      document.getElementById('footer').innerHTML = data;
+  });
+</script>
+
+<script>
+function initCaddNav() {
+
+    const coursesNav = document.getElementById('coursesNav');
+    const caret = document.getElementById('coursesCaret');
+    const menu = document.getElementById('coursesMegaMenu');
+    const closeBtn = document.getElementById('closeMegaMenu');
+
+    if (!coursesNav || !caret || !menu) return;
+
+    // X BUTTON CLOSE (Desktop + Mobile)
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.remove('show');
+
+        });
+    }
+
+    // MOBILE
+    if (window.innerWidth <= 991) {
+
+        caret.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!coursesNav.contains(e.target)) {
+                menu.classList.remove('show');
+            }
+        });
+
+        return;
+    }
+
+    // DESKTOP
+    coursesNav.addEventListener('mouseenter', function () {
+        menu.classList.add('show');
+    });
+
+    coursesNav.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+
+    menu.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+}
+</script>
+
+
+<script>
+
+  document
+    .getElementById("closeMegaMenu")
+    .addEventListener("click", function () {
+  
+      document
+        .querySelector(".courses-mega-menu")
+        .classList.remove("show");
+  
+    });
+  
+  </script>
+  
+<script>
+// ─── LOADER ─────────────────────────────────
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+  }, 1800);
+});
+
+// ─── AOS INIT ───────────────────────────────
+AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });
+
+// ─── NAVBAR SCROLL ──────────────────────────
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  if (window.scrollY > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+  const btn = document.getElementById('backToTop');
+  if (window.scrollY > 400) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+});
+
+// ─── BACK TO TOP ────────────────────────────
+document.getElementById('backToTop').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ─── HERO TEXT ANIMATION ────────────────────
+const heroTitle = document.getElementById('heroTitle');
+if (heroTitle) {
+  heroTitle.style.opacity = '0';
+  heroTitle.style.transform = 'translateY(30px)';
+  heroTitle.style.transition = 'opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s';
+  setTimeout(() => {
+    heroTitle.style.opacity = '1';
+    heroTitle.style.transform = 'translateY(0)';
+  }, 300);
+}
+
+// ─── CONTACT FORM SUBMIT ────────────────────
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('.btn-submit');
+  const loader = btn.querySelector('.btn-loader');
+  const icon = btn.querySelector('.fa-paper-plane');
+
+  // Show loading state
+  btn.disabled = true;
+  if (loader) loader.style.display = 'inline';
+  if (icon) icon.style.display = 'none';
+
+  // Send via EmailJS
+  emailjs.sendForm('service_aeh1idl', 'template_svyjl2l', this)
+    .then(function() {
+      document.getElementById('contactFormWrap').style.display = 'none';
+      document.getElementById('formSuccess').classList.add('show');
+      btn.disabled = false;
+      if (loader) loader.style.display = 'none';
+      if (icon) icon.style.display = 'inline';
+    }, function(error) {
+      btn.disabled = false;
+      if (loader) loader.style.display = 'none';
+      if (icon) icon.style.display = 'inline';
+      alert('Failed to send message. Error: ' + (error.text || JSON.stringify(error)));
+    });
+});
+
+function resetForm() {
+  document.getElementById('contactFormWrap').style.display = 'block';
+  document.getElementById('formSuccess').classList.remove('show');
+  document.getElementById('contactForm').reset();
+}
+
+// ─── RIPPLE EFFECT ──────────────────────────
+document.querySelectorAll('.ripple').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.style.cssText = `
+      position:absolute; border-radius:50%;
+      background:rgba(255,255,255,0.3);
+      width:10px; height:10px;
+      left:${e.clientX - rect.left - 5}px;
+      top:${e.clientY - rect.top - 5}px;
+      transform:scale(0); animation:rippleAnim 0.6s ease-out forwards;
+      pointer-events:none; z-index:10;
+    `;
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 700);
+  });
+});
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `@keyframes rippleAnim { to { transform:scale(30); opacity:0; } }`;
+document.head.appendChild(rippleStyle);
+
+// ─── COURSES MEGA DROPDOWN ──────────────────
+(function () {
+  const coursesNav = document.getElementById('coursesNav');
+  if (!coursesNav) return;
+  const menu = coursesNav.querySelector('.courses-mega-menu');
+  const caret = document.getElementById('coursesDropdown');
+  if (!menu) return;
+  let hideTimer;
+
+  function showMenu() {
+    clearTimeout(hideTimer);
+    const navRect = document.getElementById('mainNav').getBoundingClientRect();
+    menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    menu.classList.add('show');
+    if (caret) caret.querySelector('i').style.transform = 'rotate(180deg)';
+  }
+
+  function hideMenu() {
+    hideTimer = setTimeout(function () {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }, 120);
+  }
+
+  coursesNav.addEventListener('mouseenter', showMenu);
+  coursesNav.addEventListener('mouseleave', hideMenu);
+  menu.addEventListener('mouseenter', showMenu);
+  menu.addEventListener('mouseleave', hideMenu);
+
+  if (caret) {
+    caret.querySelector('i').style.transition = 'transform 0.25s ease';
+    caret.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (menu.classList.contains('show')) { hideMenu(); } else { showMenu(); }
+    });
+  }
+
+  document.addEventListener('click', function (e) {
+    if (!coursesNav.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }
+  });
+
+  window.addEventListener('scroll', function () {
+    if (menu.classList.contains('show')) {
+      const navRect = document.getElementById('mainNav').getBoundingClientRect();
+      menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    }
+  });
+})();
+
+// ─── SELECT FLOATING LABEL FIX ──────────────
+document.querySelectorAll('.floating-group select').forEach(sel => {
+  sel.addEventListener('change', function() {
+    const label = this.parentElement.querySelector('label');
+    if (this.value) {
+      label.style.top = '8px';
+      label.style.transform = 'none';
+      label.style.fontSize = '0.72rem';
+      label.style.color = 'var(--primary)';
+      label.style.fontWeight = '600';
+    }
+  });
+});
+</script>
+
+</body>
+</html>

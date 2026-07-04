@@ -1,0 +1,1999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services — CADPOINT Authorized Training Centre</title>
+  <meta name="description" content="Explore CADPOINT's professional CAD, BIM and engineering training services. Corporate training, software consulting, certification programs and more."/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="icon" type="image/x-icon" href="assets/image/cadd-logo.webp">
+  <style>
+    :root {
+      --primary: #8B0000;
+      --primary-light: #A00000;
+      --primary-dark: #5c0000;
+      --primary-glow: rgba(139,0,0,0.35);
+      --gold: #c8963c;
+      --gold-light: #f0b429;
+      --white: #ffffff;
+      --off-white: #fafaf8;
+      --light-gray: #F5F4F0;
+      --text-dark: #1a1a1a;
+      --text-mid: #3d3d3d;
+      --text-muted: #6b6b6b;
+      --border-light: rgba(139,0,0,0.12);
+      --glass-bg: rgba(255,255,255,0.07);
+      --glass-border: rgba(255,255,255,0.18);
+      --shadow-sm: 0 4px 20px rgba(0,0,0,0.06);
+      --shadow-md: 0 8px 40px rgba(0,0,0,0.10);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.14);
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.hero-wave svg {
+  display: block;
+  width: 100%;
+
+}
+
+/* X CLOSE BUTTON */
+
+.mega-close-x{
+  position:absolute;
+  top:12px;
+  right:12px;
+  width:34px;
+  height:34px;
+  border:none;
+  border-radius:50%;
+  background:#fff;
+  color:#222;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:99;
+  box-shadow:0 4px 15px rgba(0,0,0,.12);
+  transition:.3s ease;
+}
+
+.mega-close-x:hover{
+  background:var(--primary);
+  color:#fff;
+  transform:rotate(90deg);
+}
+/* ═══════════════════════════════════════════
+   MOBILE DROPDOWN FIX
+═══════════════════════════════════════════ */
+
+@media (max-width: 991px) {
+
+  /* NAVBAR */
+  .navbar-collapse{
+    background:#fff;
+    padding:15px;
+    border-radius:18px;
+    margin-top:15px;
+    box-shadow:0 10px 35px rgba(0,0,0,.08);
+  }
+
+  /* COURSE NAV ITEM */
+  #coursesNav{
+    width:100%;
+  }
+
+  /* COURSE TITLE + CARET */
+  #coursesNav .d-flex{
+    width:100%;
+    justify-content:space-between;
+    align-items:center;
+  }
+
+  #coursesNav .nav-link{
+    padding:12px 0 !important;
+  }
+
+  .courses-caret{
+    padding-right:0 !important;
+  }
+
+  /* DROPDOWN MENU */
+  .courses-mega-menu{
+    position:static !important;
+    transform:none !important;
+    width:100% !important;
+    min-width:100% !important;
+    margin-top:10px !important;
+    border:none !important;
+    box-shadow:none !important;
+    border-radius:16px !important;
+    overflow:hidden;
+    background:#f8f9fb;
+  }
+
+  /* DROPDOWN INNER LAYOUT */
+  .courses-mega-menu .d-flex{
+    flex-direction:column !important;
+    gap:0 !important;
+    padding-top:0 !important;
+  }
+
+  /* EACH COLUMN */
+  .mega-col{
+    width:100% !important;
+    border-right:none !important;
+    border-bottom:1px solid rgba(0,0,0,.06);
+    padding:18px 16px !important;
+  }
+
+  .mega-col:last-child{
+    border-bottom:none;
+  }
+
+  /* HEADING */
+  .mega-col-head{
+    margin-bottom:14px;
+  }
+
+  .mega-col-title{
+    font-size:1rem;
+    font-weight:700;
+  }
+
+  .mega-col-sub{
+    font-size:.78rem;
+  }
+
+  /* ITEMS */
+  .mega-item{
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 12px;
+    border-radius:10px;
+    font-size:.92rem;
+  }
+
+  .mega-item:hover{
+    background:#fff;
+  }
+
+  /* ICON */
+  .mega-item i{
+    width:18px;
+    text-align:center;
+  }
+
+}
+
+
+    html { scroll-behavior:smooth; }
+    
+    body { font-family:'Poppins',sans-serif; color:var(--text-dark); background:var(--white); overflow-x:hidden; }
+
+    ::-webkit-scrollbar { width:6px; }
+    ::-webkit-scrollbar-track { background:#f1f1f1; }
+    ::-webkit-scrollbar-thumb { background:var(--primary); border-radius:10px; }
+    /* ── PROCESS / HOW IT WORKS ── */
+.process-section{background:#fff;}
+.process-list{margin-top:60px;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0;}
+.process-step{position:relative;padding:36px 28px;text-align:center;}
+.process-step:not(:last-child)::after{content:'';position:absolute;top:56px;right:-1px;width:2px;height:30%;background:linear-gradient(to bottom,rgba(139,0,0,0.2),transparent);display:none;}
+@media(min-width:768px){.process-step:not(:last-child)::after{display:block;}}
+.process-num{width:54px;height:54px;background:linear-gradient(135deg,var(--primary),var(--primary-light));border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.1rem;color:white;margin:0 auto 20px;box-shadow:0 8px 20px var(--glow);transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);}
+.process-step:hover .process-num{transform:scale(1.2) rotate(10deg);box-shadow:0 12px 30px var(--glow);}
+.process-step h4{font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.95rem;color:var(--text);margin-bottom:8px;}
+.process-step p{font-size:0.82rem;color:var(--muted);line-height:1.7;}
+
+    /* ── LOADER ── */
+    #loader {
+      position:fixed; inset:0; background:var(--primary-dark);
+      display:flex; align-items:center; justify-content:center;
+      z-index:9999; transition:opacity 0.5s ease, visibility 0.5s ease;
+    }
+    #loader.hidden { opacity:0; visibility:hidden; }
+    .loader-inner { text-align:center; }
+    .loader-logo {
+      font-family:'Montserrat',sans-serif; font-weight:900; font-size:2.2rem;
+      color:white; letter-spacing:4px;
+      animation: pulse 1.2s ease-in-out infinite;
+    }
+    .loader-logo span { color:var(--gold-light); }
+    .loader-bar {
+      width:180px; height:3px; background:rgba(255,255,255,0.15);
+      border-radius:10px; margin:16px auto 0; overflow:hidden;
+    }
+    .loader-bar-fill {
+      height:100%; background:linear-gradient(90deg,var(--gold),var(--gold-light));
+      border-radius:10px; animation:loadBar 2s ease-in-out forwards;
+    }
+    @keyframes loadBar { from{width:0} to{width:100%} }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 2px 30px rgba(139,0,0,0.12);
+      padding: 12px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    .navbar.scrolled { padding: 8px 0; box-shadow: 0 4px 40px rgba(139,0,0,0.2); }
+    .navbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icon { width: 48px; height: 48px; flex-shrink: 0; }
+    .logo-text { line-height: 1.1; }
+    .logo-text .brand-name {
+      font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.3rem;
+      color: var(--primary); letter-spacing: 2px;
+    }
+    .logo-text .brand-sub {
+      font-size: 0.58rem; font-weight: 600; color: #666;
+      letter-spacing: 1.5px; text-transform: uppercase;
+    }
+    .navbar-nav .nav-link {
+      font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.82rem;
+      letter-spacing: 0.8px; text-transform: uppercase;
+      padding: 8px 16px !important; border-radius: 6px; transition: all 0.3s ease; position: relative;
+    }
+    .navbar-nav .nav-link:hover { color: var(--primary); }
+    .btn-nav-enroll {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white !important; padding: 8px 22px !important; border-radius: 25px !important;
+      font-weight: 700 !important; box-shadow: 0 4px 15px var(--primary-glow);
+      transition: all 0.3s ease !important;
+    }
+    .btn-nav-enroll:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--primary-glow) !important; }
+    .btn-nav-enroll::after { display: none !important; }
+
+    /* ── COURSES MEGA DROPDOWN ── */
+    #coursesNav { position: static !important; }
+    #coursesNav > div { display: flex; align-items: center; }
+    .courses-mega-menu {
+      position: fixed !important; top: auto !important; left: 50% !important;
+      transform: translateX(-50%) translateY(6px) !important;
+      width: min(960px, 96vw) !important;
+      display: block !important; opacity: 0; visibility: hidden;
+      transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+      pointer-events: none; border: none !important; border-radius: 16px !important;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.16), 0 0 0 1px rgba(139,0,0,0.1) !important;
+      padding: 0 !important;
+    }
+    .courses-mega-menu.show {
+      opacity: 1 !important; visibility: visible !important;
+      transform: translateX(-50%) translateY(0) !important; pointer-events: auto !important;
+    }
+    .mega-col {
+      flex: 1; padding: 20px 16px 20px 20px;
+      border-right: 1px solid rgba(139,0,0,0.08); background: white;
+    }
+    .mega-col:last-child { border-right: none; }
+    .mega-col-head {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 14px; padding-bottom: 12px;
+      border-bottom: 1px solid rgba(139,0,0,0.08);
+    }
+    .mega-col-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .mega-col-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.82rem;
+      color: var(--text-dark); letter-spacing: 0.4px;
+    }
+    .mega-col-sub { font-size: 0.68rem; color: #999; font-weight: 500; margin-top: 1px; }
+    .mega-item {
+      display: flex; align-items: center; gap: 8px; padding: 6px 8px;
+      border-radius: 7px; font-size: 0.8rem; font-weight: 500; color: var(--text-dark);
+      text-decoration: none; transition: background 0.15s, color 0.15s, padding-left 0.15s; margin-bottom: 2px;
+    }
+    .mega-item i { font-size: 0.72rem; width: 16px; text-align: center; color: #aaa; transition: color 0.15s; flex-shrink: 0; }
+    .mega-item:hover { background: rgba(139,0,0,0.07); color: var(--primary); padding-left: 12px; }
+    .mega-item:hover i { color: var(--primary); }
+    #coursesNav .courses-caret { color: var(--text-dark); transition: color 0.2s; }
+    #coursesNav .courses-caret:hover { color: var(--primary); }
+
+    .dropdown-menu {
+      border-radius: 10px; border: none; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .dropdown-header.text-primary { color: #0a3d62 !important; font-weight: bold; }
+    .dropdown-header.text-danger { color: #e55039 !important; font-weight: bold; }
+    .dropdown-item:hover {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: #fff; border-radius: 5px;
+    }
+
+    /* ── TICKER ── */
+    .ticker-bar {
+      background:linear-gradient(90deg,var(--primary-dark),var(--primary),var(--primary-dark));
+      height:36px; overflow:hidden; display:flex; align-items:center; position:relative;
+    }
+    .ticker-bar::before,.ticker-bar::after {
+      content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; pointer-events:none;
+    }
+    .ticker-bar::before { left:0; background:linear-gradient(to right,var(--primary-dark),transparent); }
+    .ticker-bar::after  { right:0; background:linear-gradient(to left,var(--primary-dark),transparent); }
+    .ticker-track {
+      display:flex; animation:tickerScroll 30s linear infinite; white-space:nowrap; will-change:transform;
+    }
+    .ticker-track:hover { animation-play-state:paused; }
+    .ticker-item {
+      display:inline-flex; align-items:center; gap:8px; padding:0 28px;
+      font-size:0.72rem; font-weight:600; color:rgba(255,255,255,0.9);
+      letter-spacing:1px; text-transform:uppercase; font-family:'Montserrat',sans-serif;
+    }
+    .ticker-item i { color:var(--gold-light); font-size:0.65rem; }
+    .ticker-sep { color:rgba(255,255,255,0.3); margin:0 4px; }
+    @keyframes tickerScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+    /* ── HERO ── */
+    .hero-services {
+      min-height:80vh; background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 45%,#c0392b 80%,var(--primary-dark) 100%);
+      display:flex; align-items:center; position:relative; overflow:hidden; padding:50px 0 70px;
+    }
+    .hero-services::before {
+      content:''; position:absolute; inset:0;
+      background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='1' fill='rgba(255,255,255,0.06)'/%3E%3C/svg%3E") repeat;
+    }
+    .hero-orb {
+      position:absolute; border-radius:50%; filter:blur(60px); pointer-events:none; opacity:0.18;
+    }
+    .hero-orb-1 { width:500px; height:500px; background:var(--gold-light); top:-100px; right:-120px; animation:floatOrb 8s ease-in-out infinite; }
+    .hero-orb-2 { width:350px; height:350px; background:white; bottom:-80px; left:-80px; animation:floatOrb 10s ease-in-out infinite reverse; }
+    @keyframes floatOrb { 0%,100%{transform:translate(0,0)} 50%{transform:translate(20px,-20px)} }
+
+    .hero-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(255,255,255,0.12); backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,0.25); border-radius:30px;
+      padding:7px 18px; font-size:0.75rem; font-weight:600; color:rgba(255,255,255,0.9);
+      text-transform:uppercase; letter-spacing:1px; font-family:'Montserrat',sans-serif;
+      margin-bottom:24px;
+    }
+    .hero-badge i { color:var(--gold-light); }
+    .hero-title {
+      font-family:'Montserrat',sans-serif; font-weight:900; font-size:clamp(2.2rem,5vw,4rem);
+      color:white; line-height:1.1; letter-spacing:-1px; margin-bottom:22px;
+    }
+    .hero-title .accent { color:var(--gold-light); position:relative; display:inline-block; }
+    /* .hero-title .accent::after {
+      content:''; position:absolute; left:0; bottom:-4px; width:100%; height:3px;
+      background:var(--gold-light); border-radius:2px;
+    } */
+    .hero-desc {
+      font-size:1.05rem; color:rgba(255,255,255,0.82); line-height:1.75;
+       /* max-width:800px;   */
+       
+       margin-bottom:36px;
+    }
+    .hero-btns { display:flex; flex-wrap:wrap; gap:14px; }
+    .btn-hero-primary {
+      background:linear-gradient(135deg,var(--gold),var(--gold-light));
+      color:var(--primary-dark); font-family:'Montserrat',sans-serif; font-weight:800;
+      font-size:0.9rem; letter-spacing:0.5px; padding:14px 34px; border-radius:30px;
+      border:none; cursor:pointer; transition:all 0.3s ease; display:inline-flex; align-items:center; gap:8px;
+      text-decoration:none; box-shadow:0 6px 25px rgba(200,150,60,0.4);
+    }
+    .btn-hero-primary:hover { transform:translateY(-3px); box-shadow:0 12px 35px rgba(200,150,60,0.5); color:var(--primary-dark); }
+    .btn-hero-outline {
+      border:2px solid rgba(255,255,255,0.5); color:white; font-family:'Montserrat',sans-serif;
+      font-weight:700; font-size:0.9rem; padding:12px 30px; border-radius:30px;
+      background:transparent; cursor:pointer; transition:all 0.3s ease;
+      display:inline-flex; align-items:center; gap:8px; text-decoration:none;
+    }
+    .btn-hero-outline:hover { background:rgba(255,255,255,0.12); border-color:white; color:white; transform:translateY(-2px); }
+
+    .hero-stats {
+      display:flex; flex-wrap:wrap; gap:24px; margin-top:50px; padding-top:40px;
+      border-top:1px solid rgba(255,255,255,0.15);
+    }
+    .hero-stat-item { text-align:center; }
+    .hero-stat-num {
+      font-family:'Montserrat',sans-serif; font-weight:900; font-size:2rem;
+      color:var(--gold-light); display:block; line-height:1;
+    }
+    .hero-stat-lbl { font-size:0.72rem; color:rgba(255,255,255,0.65); text-transform:uppercase; letter-spacing:1px; margin-top:4px; }
+
+    .hero-image-wrap {
+      position:relative; display:flex; align-items:center; justify-content:center;
+    }
+    .hero-card-float {
+      background:rgba(255,255,255,0.10); backdrop-filter:blur(16px);
+      border:1px solid rgba(255,255,255,0.2); border-radius:20px; padding:30px;
+      animation:cardFloat 6s ease-in-out infinite;
+    }
+    @keyframes cardFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-15px)} }
+    .hero-card-float .icon-grid {
+      display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:24px;
+    }
+    .icon-cell {
+      aspect-ratio:1; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15);
+      border-radius:14px; display:flex; flex-direction:column; align-items:center; justify-content:center;
+      gap:6px; font-size:0.62rem; color:rgba(255,255,255,0.8); text-transform:uppercase;
+      letter-spacing:0.8px; font-weight:600; transition:all 0.3s ease; padding:14px 8px;
+    }
+    .icon-cell i { font-size:1.5rem; }
+    .icon-cell:hover { background:rgba(255,255,255,0.14); transform:translateY(-3px); }
+    .icon-cell.red i { color:#ff6b6b; }
+    .icon-cell.gold i { color:var(--gold-light); }
+    .icon-cell.blue i { color:#74b9ff; }
+    .icon-cell.green i { color:#55efc4; }
+    .icon-cell.purple i { color:#a29bfe; }
+    .icon-cell.cyan i { color:#00cec9; }
+
+    .hero-card-caption {
+      text-align:center; font-size:0.78rem; color:rgba(255,255,255,0.65);
+      font-family:'Montserrat',sans-serif; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+    }
+
+    /* ── SECTION HEADERS ── */
+    .section-tag {
+      display:inline-flex; align-items:center; gap:7px;
+      border:1px solid var(--border-light); border-radius:20px;
+      padding:6px 16px; font-size:0.72rem; font-weight:700; color:var(--primary);
+      letter-spacing:1px; text-transform:uppercase; font-family:'Montserrat',sans-serif;
+      background:rgba(139,0,0,0.05); margin-bottom:14px;
+    }
+    .section-title {
+      font-family:'Montserrat',sans-serif; font-weight:900;
+      font-size:clamp(1.7rem,3.5vw,2.8rem); color:var(--text-dark); line-height:1.2;
+      margin-bottom:16px; letter-spacing:-0.5px;
+    }
+    .section-title span { color:var(--primary); }
+    .section-subtitle { font-size:1rem; color:var(--text-muted); max-width:560px; line-height:1.7; }
+    .section-divider {
+      width:60px; height:4px; background:linear-gradient(90deg,var(--primary),var(--gold));
+      border-radius:2px; margin:20px 0;
+    }
+    .section-divider.center { margin:20px auto; }
+
+    /* ── SERVICES OVERVIEW ── */
+    .services-overview { padding:100px 0; background:var(--off-white); }
+    .overview-card {
+      background:white; border-radius:20px; padding:38px 30px;
+      border:1px solid rgba(0,0,0,0.06); transition:all 0.4s ease;
+      box-shadow:var(--shadow-sm); height:100%; position:relative; overflow:hidden;
+    }
+    .overview-card::before {
+      content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
+      background:linear-gradient(90deg,var(--primary),var(--gold));
+      transform:scaleX(0); transition:transform 0.4s ease;
+    }
+    .overview-card:hover { transform:translateY(-8px); box-shadow:var(--shadow-lg); }
+    .overview-card:hover::before { transform:scaleX(1); }
+    .ov-icon {
+      width:60px; height:60px; border-radius:16px; margin-bottom:22px;
+      display:flex; align-items:center; justify-content:center; font-size:1.6rem;
+      background:linear-gradient(135deg,rgba(139,0,0,0.08),rgba(139,0,0,0.15));
+      color:var(--primary); transition:all 0.4s ease;
+    }
+    .overview-card:hover .ov-icon {
+      background:linear-gradient(135deg,var(--primary),var(--primary-light));
+      color:white; transform:rotate(5deg) scale(1.08);
+    }
+    .ov-title { font-family:'Montserrat',sans-serif; font-weight:800; font-size:1.05rem; color:var(--text-dark); margin-bottom:10px; }
+    .ov-desc { font-size:0.88rem; color:var(--text-muted); line-height:1.65; }
+    .ov-link {
+      display:inline-flex; align-items:center; gap:6px; font-size:0.82rem;
+      font-weight:700; color:var(--primary); text-decoration:none; margin-top:16px;
+      font-family:'Montserrat',sans-serif; letter-spacing:0.3px; transition:gap 0.3s ease;
+    }
+    .ov-link:hover { gap:10px; color:var(--primary); }
+
+    /* ── SERVICE CARDS DETAIL ── */
+    .services-detail { padding:100px 0; background:white; }
+    .service-detail-card {
+      border-radius:24px; overflow:hidden; background:white;
+      border:1px solid rgba(0,0,0,0.07); box-shadow:var(--shadow-sm);
+      transition:all 0.4s ease; height:100%;
+    }
+    .service-detail-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-lg); }
+    .service-detail-head {
+      padding:36px 32px 28px; position:relative; overflow:hidden;
+    }
+    .sdh-bg { position:absolute; inset:0; opacity:0.06; }
+    .sdh-icon {
+      width:56px; height:56px; border-radius:14px; display:flex; align-items:center;
+      justify-content:center; font-size:1.5rem; color:white; margin-bottom:18px; position:relative; z-index:1;
+    }
+    .sdh-title { font-family:'Montserrat',sans-serif; font-weight:800; font-size:1.1rem; color:white; position:relative; z-index:1; margin-bottom:6px; }
+    .sdh-sub { font-size:0.82rem; color:rgba(255,255,255,0.75); position:relative; z-index:1; }
+    .service-detail-body { padding:28px 32px 32px; }
+    .feature-list { list-style:none; padding:0; margin:0; }
+    .feature-list li {
+      display:flex; align-items:flex-start; gap:10px; font-size:0.86rem;
+      color:var(--text-mid); padding:7px 0; border-bottom:1px solid rgba(0,0,0,0.04);
+    }
+    .feature-list li:last-child { border-bottom:none; }
+    .feature-list li i { color:var(--primary); margin-top:2px; flex-shrink:0; font-size:0.75rem; }
+
+    /* ── WHY CHOOSE US ── */
+    .why-us { padding:100px 0; background:var(--off-white); }
+    .why-card {
+      display:flex; gap:20px; background:white; border-radius:18px; padding:28px 26px;
+      border:1px solid rgba(0,0,0,0.06); box-shadow:var(--shadow-sm);
+      transition:all 0.3s ease; height:100%;
+    }
+    .why-card:hover { transform:translateX(6px); box-shadow:var(--shadow-md); border-left:3px solid var(--primary); }
+    .why-icon-wrap {
+      width:52px; height:52px; border-radius:13px; flex-shrink:0;
+      background:linear-gradient(135deg,rgba(139,0,0,0.08),rgba(139,0,0,0.15));
+      display:flex; align-items:center; justify-content:center; font-size:1.4rem; color:var(--primary);
+    }
+    .why-content h5 { font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.98rem; margin-bottom:6px; }
+    .why-content p { font-size:0.84rem; color:var(--text-muted); line-height:1.6; margin:0; }
+
+    .why-image-col { display:flex; align-items:center; justify-content:center; }
+    .why-central-card {
+      background:linear-gradient(135deg,var(--primary-dark),var(--primary));
+      border-radius:24px; padding:48px 40px; text-align:center; color:white;
+      box-shadow:0 20px 60px var(--primary-glow); position:relative; overflow:hidden; max-width:340px;
+    }
+    .why-central-card::before {
+      content:''; position:absolute; top:-60px; right:-60px; width:200px; height:200px;
+      background:rgba(255,255,255,0.06); border-radius:50%;
+    }
+    .why-big-num {
+      font-family:'Montserrat',sans-serif; font-weight:900; font-size:4.5rem; color:var(--gold-light);
+      line-height:1; margin-bottom:8px;
+    }
+    .why-big-lbl { font-size:0.9rem; color:rgba(255,255,255,0.8); font-weight:600; margin-bottom:28px; }
+    .why-metric { margin-bottom:18px; }
+    .why-metric-val { font-family:'Montserrat',sans-serif; font-weight:800; font-size:1.6rem; color:white; }
+    .why-metric-key { font-size:0.75rem; color:rgba(255,255,255,0.65); text-transform:uppercase; letter-spacing:1px; }
+    .why-divider { border-top:1px solid rgba(255,255,255,0.15); margin:20px 0; }
+
+    /* ── PROCESS TIMELINE ── */
+    .process-section { padding:100px 0; background:white; }
+    .timeline-container { position:relative; max-width:900px; margin:0 auto; }
+    .timeline-line {
+      position:absolute; left:50%; top:0; bottom:0; width:2px;
+      background:linear-gradient(to bottom,transparent,var(--border-light),var(--primary),var(--border-light),transparent);
+      transform:translateX(-50%);
+    }
+    .timeline-step {
+      position:relative; display:flex; align-items:flex-start; gap:40px; margin-bottom:56px;
+    }
+    .timeline-step:nth-child(even) { flex-direction:row-reverse; }
+    .timeline-step:nth-child(even) .step-content { text-align:right; }
+    .step-node {
+      position:absolute; left:50%; top:20px; transform:translate(-50%,-50%);
+      width:52px; height:52px; border-radius:50%; z-index:2;
+      background:linear-gradient(135deg,var(--primary),var(--primary-light));
+      display:flex; align-items:center; justify-content:center; color:white;
+      font-family:'Montserrat',sans-serif; font-weight:900; font-size:1rem;
+      box-shadow:0 0 0 6px white, 0 0 0 8px var(--border-light);
+    }
+    .step-content {
+      width:calc(50% - 50px); background:white; border-radius:18px;
+      padding:28px 26px; border:1px solid rgba(0,0,0,0.07); box-shadow:var(--shadow-sm);
+      transition:all 0.3s ease;
+    }
+    .step-content:hover { transform:translateY(-4px); box-shadow:var(--shadow-md); }
+    .step-num {
+      font-family:'Montserrat',sans-serif; font-weight:900; font-size:0.7rem;
+      color:var(--primary); letter-spacing:2px; text-transform:uppercase; margin-bottom:6px;
+    }
+    .step-title { font-family:'Montserrat',sans-serif; font-weight:800; font-size:1rem; margin-bottom:8px; }
+    .step-desc { font-size:0.85rem; color:var(--text-muted); line-height:1.6; margin:0; }
+
+    @media(max-width:767px) {
+      .timeline-line { display:none; }
+      .timeline-step, .timeline-step:nth-child(even) { flex-direction:column; }
+      .timeline-step:nth-child(even) .step-content { text-align:left; }
+      .step-node { display:none; }
+      .step-content { width:100%; }
+    }
+
+    /* ── PRICING ── */
+    .pricing-section { padding:100px 0; background:var(--off-white); }
+    .pricing-toggle-wrap {
+      display:flex; align-items:center; justify-content:center; gap:16px;
+      margin-bottom:56px; flex-wrap:wrap;
+    }
+    .toggle-label { font-family:'Montserrat',sans-serif; font-weight:600; font-size:0.85rem; color:var(--text-muted); }
+    .toggle-label.active { color:var(--primary); }
+    .toggle-switch {
+      width:52px; height:28px; background:var(--primary); border-radius:14px; position:relative;
+      cursor:pointer; border:none; transition:background 0.3s ease;
+    }
+    .toggle-switch::after {
+      content:''; position:absolute; top:4px; left:4px; width:20px; height:20px;
+      background:white; border-radius:50%; transition:transform 0.3s ease; box-shadow:0 2px 6px rgba(0,0,0,0.2);
+    }
+    .toggle-switch.annual::after { transform:translateX(24px); }
+    .badge-save {
+      background:var(--gold); color:var(--primary-dark); font-family:'Montserrat',sans-serif;
+      font-weight:800; font-size:0.68rem; padding:3px 10px; border-radius:12px; letter-spacing:0.5px;
+    }
+
+    .pricing-card {
+      background:white; border-radius:24px; padding:40px 34px; border:1px solid rgba(0,0,0,0.07);
+      box-shadow:var(--shadow-sm); transition:all 0.4s ease; height:100%; position:relative; overflow:hidden;
+    }
+    .pricing-card.popular {
+      background:linear-gradient(135deg,var(--primary-dark),var(--primary));
+      border-color:transparent; box-shadow:0 20px 60px var(--primary-glow); transform:scale(1.03);
+    }
+    .pricing-card:hover { transform:translateY(-8px) scale(1.01); box-shadow:var(--shadow-lg); }
+    .pricing-card.popular:hover { transform:translateY(-8px) scale(1.04); }
+    .popular-tag {
+      position:absolute; top:24px; right:24px;
+      background:var(--gold); color:var(--primary-dark);
+      font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.65rem;
+      padding:4px 12px; border-radius:12px; letter-spacing:0.5px; text-transform:uppercase;
+    }
+    .pricing-icon {
+      width:56px; height:56px; border-radius:14px; margin-bottom:20px;
+      display:flex; align-items:center; justify-content:center; font-size:1.5rem;
+    }
+    .pricing-card:not(.popular) .pricing-icon { background:rgba(139,0,0,0.08); color:var(--primary); }
+    .pricing-card.popular .pricing-icon { background:rgba(255,255,255,0.15); color:var(--gold-light); }
+    .pricing-plan { font-family:'Montserrat',sans-serif; font-weight:800; font-size:1rem; margin-bottom:6px; }
+    .pricing-card:not(.popular) .pricing-plan { color:var(--text-dark); }
+    .pricing-card.popular .pricing-plan { color:white; }
+    .pricing-desc { font-size:0.83rem; line-height:1.6; margin-bottom:22px; }
+    .pricing-card:not(.popular) .pricing-desc { color:var(--text-muted); }
+    .pricing-card.popular .pricing-desc { color:rgba(255,255,255,0.72); }
+    .pricing-price {
+      font-family:'Montserrat',sans-serif; font-weight:900; font-size:2.6rem;
+      line-height:1; margin-bottom:4px;
+    }
+    .pricing-card:not(.popular) .pricing-price { color:var(--primary); }
+    .pricing-card.popular .pricing-price { color:var(--gold-light); }
+    .pricing-price sup { font-size:1.2rem; vertical-align:super; }
+    .pricing-period { font-size:0.78rem; margin-bottom:24px; }
+    .pricing-card:not(.popular) .pricing-period { color:var(--text-muted); }
+    .pricing-card.popular .pricing-period { color:rgba(255,255,255,0.6); }
+    .pricing-divider { border:none; border-top:1px solid; margin:0 0 24px; }
+    .pricing-card:not(.popular) .pricing-divider { border-color:rgba(0,0,0,0.07); }
+    .pricing-card.popular .pricing-divider { border-color:rgba(255,255,255,0.15); }
+    .pricing-features { list-style:none; padding:0; margin:0 0 30px; }
+    .pricing-features li {
+      display:flex; align-items:center; gap:10px; font-size:0.84rem; padding:7px 0;
+    }
+    .pricing-card:not(.popular) .pricing-features li { color:var(--text-mid); }
+    .pricing-card.popular .pricing-features li { color:rgba(255,255,255,0.85); }
+    .pricing-features li i { font-size:0.75rem; flex-shrink:0; }
+    .pricing-card:not(.popular) .pricing-features li i { color:var(--primary); }
+    .pricing-card.popular .pricing-features li i { color:var(--gold-light); }
+    .btn-pricing {
+      width:100%; padding:13px; border-radius:30px; border:none; cursor:pointer;
+      font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.88rem;
+      letter-spacing:0.3px; transition:all 0.3s ease; display:block; text-align:center; text-decoration:none;
+    }
+    .btn-pricing-light {
+      background:rgba(139,0,0,0.06); color:var(--primary);
+      border:2px solid rgba(139,0,0,0.15);
+    }
+    .btn-pricing-light:hover { background:var(--primary); color:white; transform:translateY(-2px); }
+    .btn-pricing-glow {
+      background:linear-gradient(135deg,var(--gold),var(--gold-light));
+      color:var(--primary-dark); box-shadow:0 6px 25px rgba(200,150,60,0.4);
+    }
+    .btn-pricing-glow:hover { transform:translateY(-3px); box-shadow:0 12px 35px rgba(200,150,60,0.5); color:var(--primary-dark); }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { padding:100px 0; background:white; }
+    .testi-slider-wrap { position:relative; overflow:hidden; }
+    .testi-track {
+      display:flex; transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .testi-slide { min-width:calc(33.333% - 16px); margin-right:24px; }
+    @media(max-width:991px) { .testi-slide { min-width:calc(50% - 12px); } }
+    @media(max-width:576px) { .testi-slide { min-width:100%; } }
+
+    .testi-card {
+      background:var(--off-white); border-radius:20px; padding:34px 30px;
+      border:1px solid rgba(0,0,0,0.06); height:100%; position:relative;
+      transition:all 0.3s ease;
+    }
+    .testi-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-md); }
+    .testi-quote-icon {
+      font-size:2.5rem; line-height:1; color:var(--primary); opacity:0.15;
+      font-family:'Playfair Display',serif; margin-bottom:10px;
+    }
+    .testi-text { font-size:0.88rem; color:var(--text-mid); line-height:1.75; margin-bottom:22px; font-style:italic; }
+    .testi-stars { color:var(--gold); font-size:0.8rem; margin-bottom:16px; }
+    .testi-stars i { margin-right:2px; }
+    .testi-author { display:flex; align-items:center; gap:14px; }
+    .testi-avatar {
+      width:46px; height:46px; border-radius:50%; flex-shrink:0;
+      background:linear-gradient(135deg,var(--primary-dark),var(--primary));
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.85rem; color:white;
+    }
+    .testi-name { font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.9rem; margin-bottom:2px; }
+    .testi-role { font-size:0.75rem; color:var(--text-muted); }
+
+    .testi-nav { display:flex; justify-content:center; gap:12px; margin-top:40px; }
+    .testi-btn {
+      width:44px; height:44px; border-radius:50%; border:2px solid rgba(139,0,0,0.2);
+      background:white; color:var(--primary); cursor:pointer; display:flex;
+      align-items:center; justify-content:center; font-size:0.9rem; transition:all 0.3s ease;
+    }
+    .testi-btn:hover { background:var(--primary); color:white; border-color:var(--primary); transform:scale(1.08); }
+    .testi-dots { display:flex; gap:8px; align-items:center; }
+    .testi-dot {
+      width:8px; height:8px; border-radius:4px; background:rgba(139,0,0,0.2);
+      cursor:pointer; transition:all 0.3s ease;
+    }
+    .testi-dot.active { background:var(--primary); width:24px; }
+
+    /* ── FAQ ── */
+    .faq-section { padding:100px 0; background:var(--off-white); }
+    .faq-item {
+      background:white; border-radius:14px; margin-bottom:12px;
+      border:1px solid rgba(0,0,0,0.07); overflow:hidden; transition:all 0.3s ease;
+    }
+    .faq-item:hover { box-shadow:var(--shadow-sm); }
+    .faq-question {
+      padding:22px 26px; cursor:pointer; display:flex; justify-content:space-between; align-items:center;
+      font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.94rem; color:var(--text-dark);
+      gap:16px; user-select:none; background:none; border:none; width:100%; text-align:left;
+      transition:color 0.3s ease;
+    }
+    .faq-question:hover { color:var(--primary); }
+    .faq-question.open { color:var(--primary); }
+    .faq-icon {
+      width:32px; height:32px; border-radius:50%; background:rgba(139,0,0,0.07);
+      display:flex; align-items:center; justify-content:center; flex-shrink:0;
+      color:var(--primary); font-size:0.75rem; transition:all 0.3s ease;
+    }
+    .faq-question.open .faq-icon { background:var(--primary); color:white; transform:rotate(45deg); }
+    .faq-answer {
+      max-height:0; overflow:hidden; transition:max-height 0.4s ease, padding 0.3s ease;
+    }
+    .faq-answer.open { max-height:300px; }
+    .faq-answer-inner { padding:0 26px 22px; font-size:0.87rem; color:var(--text-muted); line-height:1.75; }
+
+    /* ── CONTACT CTA ── */
+    .contact-cta { padding:100px 0; background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 50%,#c0392b 100%); position:relative; overflow:hidden; }
+    .contact-cta::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(ellipse at 70% 50%, rgba(200,150,60,0.15) 0%, transparent 60%);
+    }
+    .cta-title {
+      font-family:'Montserrat',sans-serif; font-weight:900; font-size:clamp(1.8rem,4vw,3rem);
+      color:white; line-height:1.2; margin-bottom:16px;
+    }
+    .cta-title span { color:var(--gold-light); }
+    .cta-sub { font-size:1rem; color:rgba(255,255,255,0.78); margin-bottom:36px; max-width:480px; }
+    .cta-cards { display:flex; flex-wrap:wrap; gap:16px; }
+    .cta-info-card {
+      background:rgba(255,255,255,0.10); backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,0.2); border-radius:14px; padding:18px 22px;
+      display:flex; align-items:center; gap:14px; flex:1; min-width:200px; transition:all 0.3s ease;
+    }
+    .cta-info-card:hover { background:rgba(255,255,255,0.15); transform:translateY(-3px); }
+    .cta-info-card i { font-size:1.3rem; color:var(--gold-light); flex-shrink:0; }
+    .cta-info-card-text span { display:block; font-size:0.72rem; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:1px; font-family:'Montserrat',sans-serif; font-weight:600; }
+    .cta-info-card-text strong { font-family:'Montserrat',sans-serif; font-size:0.9rem; color:white; font-weight:700; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0d0d0d;
+      padding: 70px 0 0;
+      color: rgba(255,255,255,0.75);
+    }
+    .footer-brand { margin-bottom: 20px; }
+    .footer-desc { font-size: 0.85rem; line-height: 1.8; color: rgba(255,255,255,0.55); margin-bottom: 22px; }
+    .footer-socials { display: flex; gap: 10px; }
+    .footer-social-btn {
+      width: 36px; height: 36px; background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.6); font-size: 0.85rem; transition: all 0.3s ease; text-decoration: none;
+    }
+    .footer-social-btn:hover { background: var(--primary); border-color: var(--primary); color: white; transform: translateY(-3px); }
+    .footer-heading {
+      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem;
+      letter-spacing: 1.5px; text-transform: uppercase; color: white;
+      margin-bottom: 20px; position: relative; padding-bottom: 10px;
+    }
+    .footer-heading::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 30px; height: 2px; background: var(--primary); border-radius: 2px;
+    }
+    .footer-links { list-style: none; padding: 0; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a {
+      color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem;
+      transition: all 0.3s ease; display: flex; align-items: center; gap: 6px;
+    }
+    .footer-links a:hover { color: var(--primary-light); padding-left: 5px; }
+    .footer-links a i { font-size: 0.65rem; color: var(--primary); }
+    .footer-contact li {
+      display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; font-size: 0.85rem;
+    }
+    .footer-contact li i { color: var(--primary-light); margin-top: 3px; flex-shrink: 0; font-size: 0.85rem; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08); padding: 22px 0;
+      margin-top: 50px; font-size: 0.8rem; color: rgba(255,255,255,0.4);
+    }
+    .footer-desc { font-size:0.86rem; color:rgba(255,255,255,0.5); line-height:1.75; margin:20px 0 24px; }
+    .footer-socials { display:flex; gap:10px; flex-wrap:wrap; }
+    .footer-social-btn {
+      width:38px; height:38px; border-radius:50%; border:1px solid rgba(255,255,255,0.12);
+      display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.5);
+      font-size:0.82rem; text-decoration:none; transition:all 0.3s ease;
+    }
+    .footer-social-btn:hover { background:var(--primary); color:white; border-color:var(--primary); transform:translateY(-3px); }
+    .footer-heading {
+      font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.85rem; color:white;
+      letter-spacing:1px; text-transform:uppercase; margin-bottom:20px;
+    }
+    .footer-links { list-style:none; padding:0; margin:0; }
+    .footer-links li { margin-bottom:10px; }
+    .footer-links a {
+      color:rgba(255,255,255,0.5); text-decoration:none; font-size:0.85rem;
+      display:flex; align-items:center; gap:7px; transition:all 0.3s ease;
+    }
+    .footer-links a:hover { color:var(--primary-light); padding-left:4px; }
+    .footer-links a i { font-size:0.65rem; color:var(--primary); flex-shrink:0; }
+    .footer-bottom {
+      margin-top:50px; padding:20px 0; border-top:1px solid rgba(255,255,255,0.06);
+      font-size:0.8rem; color:rgba(255,255,255,0.3);
+    }
+
+    /* ── BACK TO TOP ── */
+    #backToTop {
+      position:fixed; bottom:28px; right:28px; width:46px; height:46px; border-radius:50%;
+      background:linear-gradient(135deg,var(--primary),var(--primary-light));
+      color:white; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center;
+      font-size:1rem; box-shadow:0 6px 20px var(--primary-glow); z-index:999;
+      opacity:0; visibility:hidden; transform:translateY(20px); transition:all 0.3s ease;
+    }
+    #backToTop.visible { opacity:1; visibility:visible; transform:translateY(0); }
+    #backToTop:hover { transform:translateY(-3px); }
+
+    /* ── STATS BAND ── */
+    .stats-band {
+      background:linear-gradient(135deg,var(--primary-dark),var(--primary));
+      padding:60px 0;
+    }
+    .stat-box { text-align:center; padding:16px; }
+    .stat-num {
+      font-family:'Montserrat',sans-serif; font-weight:900; font-size:2.6rem;
+      color:var(--gold-light); display:block; line-height:1;
+    }
+    .stat-lbl { font-size:0.75rem; color:rgba(255,255,255,0.68); text-transform:uppercase; letter-spacing:1.2px; margin-top:6px; }
+    .stat-divider { width:1px; background:rgba(255,255,255,0.15); align-self:stretch; }
+
+    /* UTILITIES */
+    .text-primary-brand { color:var(--primary); }
+    .bg-brand-subtle { background:rgba(139,0,0,0.05); }
+    .rounded-xl { border-radius:16px; }
+    .section-py { padding:100px 0; }
+    
+   /* CURVE DESIGN */
+/* .hero-curve {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height:50px;
+  line-height: 0;
+}
+
+.hero-curve svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hero-curve path {
+  fill: #ffffff; /* match next section background */
+} */
+
+.hero-services {
+  min-height: 100vh; /* full screen height */
+  display: flex;
+  align-items: center; /* vertical center */
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, #b30000, #ff3d00);
+  position: relative;
+  overflow: hidden;
+  padding: 80px 0;
+}
+
+/* limit width for better center look */
+.hero-services .col-lg-8 {
+  margin: auto;
+}
+
+/* buttons center */
+.hero-btns {
+  margin-top: 20px;
+}
+
+/* wave */
+.hero-wave {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.hero-wave svg {
+  width: 100%;
+  height: 120px;
+}
+
+
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<!-- <div id="loader">
+  <div class="loader-inner">
+    <div class="loader-logo">CAD<span>POINT</span></div>
+    <div style="font-size:0.65rem;color:rgba(255,255,255,0.45);letter-spacing:2px;text-transform:uppercase;margin-top:6px;font-family:'Montserrat',sans-serif">Loading Services</div>
+    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+  </div>
+</div> -->
+
+<!-- BACK TO TOP -->
+<button id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+<!-- NAVBAR -->
+<div id="header"></div>
+
+
+
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-track" id="tickerTrack">
+    <div class="ticker-item"><i class="fas fa-star"></i> ISO 9001:2015 Certified <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-certificate"></i> Autodesk Authorised Centre <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-users"></i> 5,000+ Professionals Trained <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-briefcase"></i> 95% Placement Success Rate <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-award"></i> 14+ Years of Excellence <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-graduation-cap"></i> Industry-Recognised Certifications <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-star"></i> ISO 9001:2015 Certified <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-certificate"></i> Autodesk Authorised Centre <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-users"></i> 5,000+ Professionals Trained <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-briefcase"></i> 95% Placement Success Rate <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-award"></i> 14+ Years of Excellence <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-graduation-cap"></i> Industry-Recognised Certifications <span class="ticker-sep">◆</span></div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero-services d-flex align-items-center" id="home">
+
+  <div class="container position-relative text-center" style="z-index:2">
+    <div class="row justify-content-center">
+
+      <div class="col-lg-12">
+
+        <div class="hero-badge">
+          <i class="fas fa-cogs"></i> Professional Engineering Services
+        </div>
+
+        <h1 class="hero-title">
+          our <span class="accent"> Services</span>
+        
+        </h1>
+
+        <p class="text-center text-white hero-desc">
+          From corporate training programs to full-scale CAD drafting, BIM modelling,
+          and software consulting — <br>CADPOINT delivers engineering services that
+          accelerate your projects and career.
+        </p>
+
+        <div class="hero-btns d-flex justify-content-center gap-3">
+          <a href="https://wa.me/919895352624" class="btn-hero-primary">
+            <i class="fas fa-rocket"></i> Enquiry About Course
+          </a>
+          <a href="tel:+919895352624" class="btn-hero-outline">
+            <i class="fas fa-phone-alt"></i> Talk to an Expert
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- WAVE -->
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path fill="#ffffff"
+        d="M0,192L80,186.7C160,181,320,171,480,176C640,181,800,203,960,202.7C1120,203,1280,181,1360,170.7L1440,160L1440,320L0,320Z">
+      </path>
+    </svg>
+  </div>
+
+</section>
+
+<!-- STATS BAND -->
+<!-- <section class="stats-band">
+  <div class="container">
+    <div class="row text-center gy-4">
+      <div class="col-6 col-md-3" data-aos="zoom-in">
+        <div class="stat-box">
+          <span class="stat-num" data-count="5000">0+</span>
+          <div class="stat-lbl">Students Placed</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100">
+        <div class="stat-box">
+          <span class="stat-num" data-count="200">0+</span>
+          <div class="stat-lbl">Corporate Clients</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="200">
+        <div class="stat-box">
+          <span class="stat-num" data-count="30">0+</span>
+          <div class="stat-lbl">CAD Courses</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300">
+        <div class="stat-box">
+          <span class="stat-num" data-count="14">0+</span>
+          <div class="stat-lbl">Years of Excellence</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+
+<!-- SERVICE DETAIL CARDS -->
+<section class="services-detail" id="services-detail">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-7 text-center" data-aos="fade-up">
+        <div class="section-tag mx-auto"><i class="fas fa-layer-group"></i> In Depth</div>
+        <h2 class="section-title">Detailed Service <span>Offerings</span></h2>
+        <div class="section-divider center"></div>
+        <p class="section-subtitle mx-auto">Deep-dive into what each service delivers for you and your organisation.</p>
+      </div>
+    </div>
+    <div class="row gy-4">
+      <!-- Card 1 -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up">
+        <div class="service-detail-card">
+          <div class="service-detail-head" style="background:linear-gradient(135deg,#8B0000,#c0392b)">
+            <div class="sdh-bg"><svg width="100%" height="100%"><pattern id="p1" patternUnits="userSpaceOnUse" width="40" height="40"><circle cx="20" cy="20" r="1" fill="white"/></pattern><rect width="100%" height="100%" fill="url(#p1)"/></svg></div>
+            <div class="sdh-icon" style="background:rgba(255,255,255,0.15)"><i class="fas fa-graduation-cap"></i></div>
+            <div class="sdh-title">CAD Training Programs</div>
+            <div class="sdh-sub">Beginner to Expert Levels</div>
+          </div>
+          <div class="service-detail-body">
+            <ul class="feature-list">
+              <li><i class="fas fa-check-circle"></i> AutoCAD 2D & 3D — Full Syllabus</li>
+              <li><i class="fas fa-check-circle"></i> SolidWorks Mechanical Design</li>
+              <li><i class="fas fa-check-circle"></i> Revit Architecture & MEP</li>
+              <li><i class="fas fa-check-circle"></i> Civil 3D Infrastructure Design</li>
+              <li><i class="fas fa-check-circle"></i> AutoCAD Electrical & Plant 3D</li>
+              <li><i class="fas fa-check-circle"></i> 3DS Max Visualisation & V-Ray</li>
+              <li><i class="fas fa-check-circle"></i> Authorised Certification on Completion</li>
+            </ul>
+            <a href="courses.html" class="ov-link mt-3">View All Courses <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="service-detail-card">
+          <div class="service-detail-head" style="background:linear-gradient(135deg,#1a237e,#283593)">
+            <div class="sdh-bg"><svg width="100%" height="100%"><pattern id="p2" patternUnits="userSpaceOnUse" width="40" height="40"><circle cx="20" cy="20" r="1" fill="white"/></pattern><rect width="100%" height="100%" fill="url(#p2)"/></svg></div>
+            <div class="sdh-icon" style="background:rgba(255,255,255,0.15)"><i class="fas fa-building"></i></div>
+            <div class="sdh-title">BIM Services</div>
+            <div class="sdh-sub">Architecture, MEP & Structural</div>
+          </div>
+          <div class="service-detail-body">
+            <ul class="feature-list">
+              <li><i class="fas fa-check-circle"></i> BIM Feasibility & Strategy</li>
+              <li><i class="fas fa-check-circle"></i> LOD 300/400 3D Modelling</li>
+              <li><i class="fas fa-check-circle"></i> Clash Detection & Resolution</li>
+              <li><i class="fas fa-check-circle"></i> 4D Construction Sequencing</li>
+              <li><i class="fas fa-check-circle"></i> 5D Cost Estimation Models</li>
+              <li><i class="fas fa-check-circle"></i> As-Built Documentation</li>
+              <li><i class="fas fa-check-circle"></i> ISO 19650 Compliance Support</li>
+            </ul>
+            <a href="contact.html" class="ov-link mt-3">Request a Quote <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="service-detail-card">
+          <div class="service-detail-head" style="background:linear-gradient(135deg,#1b5e20,#2e7d32)">
+            <div class="sdh-bg"><svg width="100%" height="100%"><pattern id="p3" patternUnits="userSpaceOnUse" width="40" height="40"><circle cx="20" cy="20" r="1" fill="white"/></pattern><rect width="100%" height="100%" fill="url(#p3)"/></svg></div>
+            <div class="sdh-icon" style="background:rgba(255,255,255,0.15)"><i class="fas fa-industry"></i></div>
+            <div class="sdh-title">Corporate Training</div>
+            <div class="sdh-sub">Custom Enterprise Programs</div>
+          </div>
+          <div class="service-detail-body">
+            <ul class="feature-list">
+              <li><i class="fas fa-check-circle"></i> Needs Assessment & Gap Analysis</li>
+              <li><i class="fas fa-check-circle"></i> Custom Course Development</li>
+              <li><i class="fas fa-check-circle"></i> On-Site or Virtual Delivery</li>
+              <li><i class="fas fa-check-circle"></i> Batch Scheduling Flexibility</li>
+              <li><i class="fas fa-check-circle"></i> Progress Dashboards & Reports</li>
+              <li><i class="fas fa-check-circle"></i> Post-Training Support for 6 Months</li>
+              <li><i class="fas fa-check-circle"></i> Branded Certificates & Transcripts</li>
+            </ul>
+            <a href="contact.html" class="ov-link mt-3">Enquire Now <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up">
+        <div class="service-detail-card">
+          <div class="service-detail-head" style="background:linear-gradient(135deg,#6d1c00,#bf360c)">
+            <div class="sdh-bg"><svg width="100%" height="100%"><pattern id="p4" patternUnits="userSpaceOnUse" width="40" height="40"><circle cx="20" cy="20" r="1" fill="white"/></pattern><rect width="100%" height="100%" fill="url(#p4)"/></svg></div>
+            <div class="sdh-icon" style="background:rgba(255,255,255,0.15)"><i class="fas fa-drafting-compass"></i></div>
+            <div class="sdh-title">CAD Drafting & Design</div>
+            <div class="sdh-sub">Precision Engineering Drawings</div>
+          </div>
+          <div class="service-detail-body">
+            <ul class="feature-list">
+              <li><i class="fas fa-check-circle"></i> 2D Floor Plans & Elevations</li>
+              <li><i class="fas fa-check-circle"></i> 3D Mechanical Part Modelling</li>
+              <li><i class="fas fa-check-circle"></i> Fabrication & Shop Drawings</li>
+              <li><i class="fas fa-check-circle"></i> As-Built Survey Drawings</li>
+              <li><i class="fas fa-check-circle"></i> Electrical Schematics</li>
+              <li><i class="fas fa-check-circle"></i> ISO/ASME Standards Compliance</li>
+              <li><i class="fas fa-check-circle"></i> Fast Turnaround — 24–48 hrs</li>
+            </ul>
+            <a href="contact.html" class="ov-link mt-3">Submit a Project <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Card 5 -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="service-detail-card">
+          <div class="service-detail-head" style="background:linear-gradient(135deg,#4a148c,#6a1b9a)">
+            <div class="sdh-bg"><svg width="100%" height="100%"><pattern id="p5" patternUnits="userSpaceOnUse" width="40" height="40"><circle cx="20" cy="20" r="1" fill="white"/></pattern><rect width="100%" height="100%" fill="url(#p5)"/></svg></div>
+            <div class="sdh-icon" style="background:rgba(255,255,255,0.15)"><i class="fas fa-certificate"></i></div>
+            <div class="sdh-title">Certification & Exams</div>
+            <div class="sdh-sub">Globally Recognised Credentials</div>
+          </div>
+          <div class="service-detail-body">
+            <ul class="feature-list">
+              <li><i class="fas fa-check-circle"></i> Autodesk Certified User (ACU)</li>
+              <li><i class="fas fa-check-circle"></i> Autodesk Certified Professional</li>
+              <li><i class="fas fa-check-circle"></i> Exam Prep Workshops</li>
+              <li><i class="fas fa-check-circle"></i> Mock Test Series & Feedback</li>
+              <li><i class="fas fa-check-circle"></i> Official ATC Testing Centre</li>
+              <li><i class="fas fa-check-circle"></i> Digital Badge & Transcript</li>
+              <li><i class="fas fa-check-circle"></i> Resit Support if Needed</li>
+            </ul>
+            <a href="courses.html" class="ov-link mt-3">See Certifications <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Card 6 -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="service-detail-card">
+          <div class="service-detail-head" style="background:linear-gradient(135deg,#004d40,#00695c)">
+            <div class="sdh-bg"><svg width="100%" height="100%"><pattern id="p6" patternUnits="userSpaceOnUse" width="40" height="40"><circle cx="20" cy="20" r="1" fill="white"/></pattern><rect width="100%" height="100%" fill="url(#p6)"/></svg></div>
+            <div class="sdh-icon" style="background:rgba(255,255,255,0.15)"><i class="fas fa-headset"></i></div>
+            <div class="sdh-title">Software Support & AMC</div>
+            <div class="sdh-sub">Annual Maintenance Contracts</div>
+          </div>
+          <div class="service-detail-body">
+            <ul class="feature-list">
+              <li><i class="fas fa-check-circle"></i> Software Installation & Setup</li>
+              <li><i class="fas fa-check-circle"></i> Network Licence Configuration</li>
+              <li><i class="fas fa-check-circle"></i> Priority Helpdesk — 9 AM–6 PM</li>
+              <li><i class="fas fa-check-circle"></i> Remote Desktop Support</li>
+              <li><i class="fas fa-check-circle"></i> Annual Version Upgrade Guidance</li>
+              <li><i class="fas fa-check-circle"></i> Troubleshooting & Bug Fixes</li>
+              <li><i class="fas fa-check-circle"></i> Custom Template & Profile Setup</li>
+            </ul>
+            <a href="contact.html" class="ov-link mt-3">Get AMC Quote <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SERVICES OVERVIEW -->
+<section class="services-overview" id="services-overview">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-7 text-center" data-aos="fade-up">
+        <div class="section-tag mx-auto"><i class="fas fa-th"></i> What We Offer</div>
+        <h2 class="section-title">Our <span>Core Services</span></h2>
+        <div class="section-divider center"></div>
+        <p class="section-subtitle mx-auto">From professional training to full-scale engineering consulting — we cover the complete spectrum of CAD and BIM services.</p>
+      </div>
+    </div>
+    <div class="row gy-4">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up">
+        <div class="overview-card">
+          <div class="ov-icon"><i class="fas fa-graduation-cap"></i></div>
+          <div class="ov-title">Professional CAD Training</div>
+          <p class="ov-desc">Authorised instructor-led programs in AutoCAD, SolidWorks, Revit, Civil 3D, and more — from beginner to expert level.</p>
+          <a href="#services-detail" class="ov-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="80">
+        <div class="overview-card">
+          <div class="ov-icon"><i class="fas fa-building"></i></div>
+          <div class="ov-title">BIM Consulting & Services</div>
+          <p class="ov-desc">Complete Building Information Modelling solutions — clash detection, 4D/5D BIM, LOD 400 models, and BIM coordination.</p>
+          <a href="#services-detail" class="ov-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="160">
+        <div class="overview-card">
+          <div class="ov-icon"><i class="fas fa-briefcase"></i></div>
+          <div class="ov-title">Corporate Training Programs</div>
+          <p class="ov-desc">Custom on-site or online training for engineering teams with flexible schedules, branded content, and progress reporting.</p>
+          <a href="#services-detail" class="ov-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="overview-card">
+          <div class="ov-icon"><i class="fas fa-drafting-compass"></i></div>
+          <div class="ov-title">CAD Drafting & Design</div>
+          <p class="ov-desc">Precision 2D drafting, 3D modelling, mechanical drawings, and architectural plans delivered on time to exact specifications.</p>
+          <a href="#services-detail" class="ov-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="80">
+        <div class="overview-card">
+          <div class="ov-icon"><i class="fas fa-certificate"></i></div>
+          <div class="ov-title">Certification Programmes</div>
+          <p class="ov-desc">Authorised Autodesk ATC exams, globally recognised certifications, and preparation support for international standards.</p>
+          <a href="#services-detail" class="ov-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="160">
+        <div class="overview-card">
+          <div class="ov-icon"><i class="fas fa-headset"></i></div>
+          <div class="ov-title">Software Support & AMC</div>
+          <p class="ov-desc">Annual maintenance contracts, software setup, licence management, and ongoing technical support for CAD/BIM tools.</p>
+          <a href="#services-detail" class="ov-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="why-us" id="why-us">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-7 text-center" data-aos="fade-up">
+        <div class="section-tag mx-auto"><i class="fas fa-shield-alt"></i> Our Advantage</div>
+        <h2 class="section-title">Why Choose <span>CADPOINT?</span></h2>
+        <div class="section-divider center"></div>
+        <p class="section-subtitle mx-auto">We combine deep technical expertise with industry-aligned curriculum to deliver measurable results.</p>
+      </div>
+    </div>
+    <div class="row align-items-stretch gy-4">
+      <div class="col-lg-4 order-lg-2 d-flex justify-content-center" data-aos="zoom-in" data-aos-delay="200">
+        <div class="why-central-card">
+          <div class="why-big-num" data-count-why="14">14</div>
+          <div class="why-big-lbl">Years of Trusted Excellence</div>
+          <div class="why-divider"></div>
+          <div class="why-metric">
+            <div class="why-metric-val">5,000+</div>
+            <div class="why-metric-key">Alumni Network</div>
+          </div>
+          <div class="why-metric">
+            <div class="why-metric-val">95%</div>
+            <div class="why-metric-key">Placement Rate</div>
+          </div>
+          <div class="why-metric">
+            <div class="why-metric-val">200+</div>
+            <div class="why-metric-key">Hiring Partners</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 order-lg-1" data-aos="fade-right" data-aos-delay="100">
+        <div class="d-flex flex-column gap-3 h-100">
+          <div class="why-card">
+            <div class="why-icon-wrap"><i class="fas fa-award"></i></div>
+            <div class="why-content"><h5>Authorised by Autodesk</h5><p>Official Autodesk Training Centre (ATC) — globally recognised certifications on completion.</p></div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon-wrap"><i class="fas fa-chalkboard-teacher"></i></div>
+            <div class="why-content"><h5>Expert Industry Trainers</h5><p>All instructors hold 8+ years of active project experience in their respective CAD disciplines.</p></div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon-wrap"><i class="fas fa-laptop-code"></i></div>
+            <div class="why-content"><h5>Hands-On Lab Environment</h5><p>Modern computer labs with licensed software — every student gets individual workstation time.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 order-lg-3" data-aos="fade-left" data-aos-delay="100">
+        <div class="d-flex flex-column gap-3 h-100">
+          <div class="why-card">
+            <div class="why-icon-wrap"><i class="fas fa-briefcase"></i></div>
+            <div class="why-content"><h5>Placement Assistance</h5><p>Dedicated placement team with a network of 200+ engineering firms actively recruiting CADPOINT graduates.</p></div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon-wrap"><i class="fas fa-clock"></i></div>
+            <div class="why-content"><h5>Flexible Batch Timings</h5><p>Morning, evening, weekend, and fast-track batches to fit around your work or college schedule.</p></div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon-wrap"><i class="fas fa-sync-alt"></i></div>
+            <div class="why-content"><h5>Free Repeat Classes</h5><p>Unlimited revision sessions within the course period — no extra charge if you need more practice.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section process-section" id="process">
+    <div class="container">
+      <div style="text-align:center;" class="reveal">
+        <div class="section-tag"><i class="fas fa-route"></i> The Process</div>
+        <h2 class="section-title">Your Journey with <span>CADPOINT</span></h2>
+        <div class="divider mx-auto"></div>
+      </div>
+      <div class="process-list reveal" style="transition-delay:0.15s">
+        <div class="process-step">
+          <div class="process-num">01</div>
+          <h4>Free Counselling</h4>
+          <p>Schedule a no-cost career consultation. Our experts help you choose the right course for your goals.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">02</div>
+          <h4>Enroll & Join Batch</h4>
+          <p>Pick your preferred batch timing and begin training on industry-grade licensed software immediately.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">03</div>
+          <h4>Hands-On Projects</h4>
+          <p>Work on real-world projects curated from actual industry briefs to build a professional portfolio.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">04</div>
+          <h4>Certification Exam</h4>
+          <p>Attempt the globally recognized CADPOINT ISO certification exam upon course completion.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">05</div>
+          <h4>Placement Drive</h4>
+          <p>Attend exclusive placement drives with our 50+ corporate partners and launch your dream career.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+<!-- PROCESS TIMELINE -->
+<!-- <section class="process-section" id="process">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-7 text-center" data-aos="fade-up">
+        <div class="section-tag mx-auto"><i class="fas fa-sitemap"></i> How We Work</div>
+        <h2 class="section-title">Our <span>Process</span></h2>
+        <div class="section-divider center"></div>
+        <p class="section-subtitle mx-auto">A structured, transparent workflow — from your initial enquiry to your final certification or project delivery.</p>
+      </div>
+    </div>
+    <div class="timeline-container">
+      <div class="timeline-line"></div>
+
+      <div class="timeline-step" data-aos="fade-right">
+        <div class="step-content">
+          <div class="step-num">Step 01</div>
+          <div class="step-title">Free Consultation</div>
+          <p class="step-desc">Book a free 30-minute call with our expert counsellors. We assess your background, goals, and recommend the right service — training, consulting, or drafting.</p>
+        </div>
+        <div class="step-node">01</div>
+        <div style="width:calc(50% - 50px)"></div>
+      </div>
+
+      <div class="timeline-step" data-aos="fade-left">
+        <div style="width:calc(50% - 50px)"></div>
+        <div class="step-node">02</div>
+        <div class="step-content">
+          <div class="step-num">Step 02</div>
+          <div class="step-title">Custom Plan Design</div>
+          <p class="step-desc">We create a tailored training roadmap or project plan based on your requirements — including timelines, software versions, and learning outcomes.</p>
+        </div>
+      </div>
+
+      <div class="timeline-step" data-aos="fade-right">
+        <div class="step-content">
+          <div class="step-num">Step 03</div>
+          <div class="step-title">Enrolment & Onboarding</div>
+          <p class="step-desc">Complete enrolment in minutes. Get instant access to your student portal, study materials, and your first batch schedule — no delays.</p>
+        </div>
+        <div class="step-node">03</div>
+        <div style="width:calc(50% - 50px)"></div>
+      </div>
+
+      <div class="timeline-step" data-aos="fade-left">
+        <div style="width:calc(50% - 50px)"></div>
+        <div class="step-node">04</div>
+        <div class="step-content">
+          <div class="step-num">Step 04</div>
+          <div class="step-title">Training & Delivery</div>
+          <p class="step-desc">Expert-led sessions with real-world project exercises, weekly assessments, and dedicated lab hours. Corporate clients receive weekly progress reports.</p>
+        </div>
+      </div>
+
+      <div class="timeline-step" data-aos="fade-right">
+        <div class="step-content">
+          <div class="step-num">Step 05</div>
+          <div class="step-title">Certification & Support</div>
+          <p class="step-desc">Upon completion, receive your CADPOINT + Autodesk certification. Career support, interview prep, and placement assistance activate immediately.</p>
+        </div>
+        <div class="step-node">05</div>
+        <div style="width:calc(50% - 50px)"></div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-7 text-center" data-aos="fade-up">
+        <div class="section-tag mx-auto"><i class="fas fa-tag"></i> Transparent Pricing</div>
+        <h2 class="section-title">Service <span>Packages</span></h2>
+        <div class="section-divider center"></div>
+        <p class="section-subtitle mx-auto">Flexible packages designed for individual learners, professionals and enterprise teams.</p>
+      </div>
+    </div>
+    <div class="pricing-toggle-wrap" data-aos="fade-up">
+      <span class="toggle-label active" id="monthlyLbl">Individual</span>
+      <button class="toggle-switch" id="pricingToggle" aria-label="Toggle pricing"></button>
+      <span class="toggle-label" id="annualLbl">Corporate</span>
+      <span class="badge-save">Save 30%</span>
+    </div>
+    <div class="row gy-4 justify-content-center" id="pricingCards">
+      <!-- Essential -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up">
+        <div class="pricing-card">
+          <div class="pricing-icon"><i class="fas fa-seedling"></i></div>
+          <div class="pricing-plan">Starter</div>
+          <p class="pricing-desc">Perfect for beginners exploring a single CAD discipline.</p>
+          <div class="pricing-price individual-price"><sup>₹</sup><span class="price-val">12,999</span></div>
+          <div class="pricing-price corporate-price" style="display:none"><sup>₹</sup><span class="price-val">8,999</span></div>
+          <div class="pricing-period individual-per">/ per student · one software</div>
+          <div class="pricing-period corporate-per" style="display:none">/ per head · group of 10+</div>
+          <hr class="pricing-divider"/>
+          <ul class="pricing-features">
+            <li><i class="fas fa-check-circle"></i> 1 CAD Software of Choice</li>
+            <li><i class="fas fa-check-circle"></i> 40 Hours of Training</li>
+            <li><i class="fas fa-check-circle"></i> Study Materials Included</li>
+            <li><i class="fas fa-check-circle"></i> CADPOINT Certificate</li>
+            <li><i class="fas fa-check-circle"></i> 3-Month Lab Access</li>
+            <li style="opacity:0.35"><i class="fas fa-times-circle"></i> Placement Support</li>
+          </ul>
+          <a href="contact.html" class="btn-pricing btn-pricing-light">Enrol Now</a>
+        </div>
+      </div>
+      <!-- Professional (Popular) -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="pricing-card popular">
+          <span class="popular-tag">⭐ Most Popular</span>
+          <div class="pricing-icon"><i class="fas fa-rocket"></i></div>
+          <div class="pricing-plan">Professional</div>
+          <p class="pricing-desc">Our flagship program for serious career changers and engineers.</p>
+          <div class="pricing-price individual-price"><sup>₹</sup><span class="price-val">28,999</span></div>
+          <div class="pricing-price corporate-price" style="display:none"><sup>₹</sup><span class="price-val">19,999</span></div>
+          <div class="pricing-period individual-per">/ per student · 2 softwares</div>
+          <div class="pricing-period corporate-per" style="display:none">/ per head · group of 10+</div>
+          <hr class="pricing-divider"/>
+          <ul class="pricing-features">
+            <li><i class="fas fa-check-circle"></i> 2 CAD Softwares of Choice</li>
+            <li><i class="fas fa-check-circle"></i> 80 Hours of Training</li>
+            <li><i class="fas fa-check-circle"></i> Full Study Material Kit</li>
+            <li><i class="fas fa-check-circle"></i> Autodesk Certification Exam</li>
+            <li><i class="fas fa-check-circle"></i> 6-Month Lab Access</li>
+            <li><i class="fas fa-check-circle"></i> Placement Assistance</li>
+          </ul>
+          <a href="contact.html" class="btn-pricing btn-pricing-glow">Enrol Now</a>
+        </div>
+      </div>
+      <!-- Enterprise -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="pricing-card">
+          <div class="pricing-icon"><i class="fas fa-building"></i></div>
+          <div class="pricing-plan">Enterprise</div>
+          <p class="pricing-desc">Fully custom program for engineering companies and institutions.</p>
+          <div class="pricing-price individual-price" style="font-size:1.5rem"><span class="price-val" style="font-size:1.5rem">Custom</span></div>
+          <div class="pricing-price corporate-price" style="display:none;font-size:1.5rem"><span class="price-val" style="font-size:1.5rem">Custom</span></div>
+          <div class="pricing-period individual-per">/ contact us for a quote</div>
+          <div class="pricing-period corporate-per" style="display:none">/ volume discounts apply</div>
+          <hr class="pricing-divider"/>
+          <ul class="pricing-features">
+            <li><i class="fas fa-check-circle"></i> Unlimited Softwares & Topics</li>
+            <li><i class="fas fa-check-circle"></i> Custom Hours & Schedule</li>
+            <li><i class="fas fa-check-circle"></i> Branded Course Materials</li>
+            <li><i class="fas fa-check-circle"></i> Multiple Authorised Certs</li>
+            <li><i class="fas fa-check-circle"></i> On-Site Delivery Available</li>
+            <li><i class="fas fa-check-circle"></i> Dedicated Account Manager</li>
+          </ul>
+          <a href="contact.html" class="btn-pricing btn-pricing-light">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-7 text-center" data-aos="fade-up">
+        <div class="section-tag mx-auto"><i class="fas fa-quote-left"></i> Client Stories</div>
+        <h2 class="section-title">What Our <span>Alumni Say</span></h2>
+        <div class="section-divider center"></div>
+      </div>
+    </div>
+    <div class="testi-slider-wrap" data-aos="fade-up" data-aos-delay="100">
+      <div class="testi-track" id="testiTrack">
+        <div class="testi-slide">
+          <div class="testi-card">
+            <div class="testi-quote-icon">"</div>
+            <p class="testi-text">CADPOINT's AutoCAD course was the turning point in my career. The hands-on lab sessions and real-world projects gave me the confidence to clear my interview at L&T Construction.</p>
+            <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <div class="testi-author">
+              <div class="testi-avatar">RK</div>
+              <div><div class="testi-name">Rahul Kumar</div><div class="testi-role">AutoCAD Graduate → L&T Construction</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-slide">
+          <div class="testi-card">
+            <div class="testi-quote-icon">"</div>
+            <p class="testi-text">The SolidWorks course at CADPOINT is extremely detailed. The instructor has real industry experience and teaches you exactly what employers want. I got placed within 2 weeks of completing.</p>
+            <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <div class="testi-author">
+              <div class="testi-avatar">PS</div>
+              <div><div class="testi-name">Priya Sharma</div><div class="testi-role">SolidWorks Graduate → Tata Motors</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-slide">
+          <div class="testi-card">
+            <div class="testi-quote-icon">"</div>
+            <p class="testi-text">The Revit Architecture training was exceptional. Industry-aligned curriculum and the placement team worked tirelessly to help me land my dream role at Shapoorji Pallonji.</p>
+            <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+            <div class="testi-author">
+              <div class="testi-avatar">AM</div>
+              <div><div class="testi-name">Arjun Mehta</div><div class="testi-role">Revit Graduate → Shapoorji Pallonji</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-slide">
+          <div class="testi-card">
+            <div class="testi-quote-icon">"</div>
+            <p class="testi-text">As an engineering manager, I enrolled my entire team in CADPOINT's corporate Civil 3D program. The ROI was immediate — project delivery time dropped by 30% in the first quarter.</p>
+            <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <div class="testi-author">
+              <div class="testi-avatar">SV</div>
+              <div><div class="testi-name">Suresh Verma</div><div class="testi-role">Engineering Manager, NHAI</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-slide">
+          <div class="testi-card">
+            <div class="testi-quote-icon">"</div>
+            <p class="testi-text">I came with zero CAD knowledge. The trainers were patient, structured the course brilliantly, and by the end I had a full portfolio project and an Autodesk certification to show employers.</p>
+            <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <div class="testi-author">
+              <div class="testi-avatar">DG</div>
+              <div><div class="testi-name">Divya Gupta</div><div class="testi-role">3DS Max Graduate → Godrej Properties</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-slide">
+          <div class="testi-card">
+            <div class="testi-quote-icon">"</div>
+            <p class="testi-text">The BIM consulting services from CADPOINT were transformative for our construction project. Their team delivered LOD 400 models on time with zero clash issues on handover day.</p>
+            <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <div class="testi-author">
+              <div class="testi-avatar">AJ</div>
+              <div><div class="testi-name">Amit Joshi</div><div class="testi-role">Project Director, Pune Smart City</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-nav" data-aos="fade-up">
+      <button class="testi-btn" id="testiPrev"><i class="fas fa-chevron-left"></i></button>
+      <div class="testi-dots" id="testiDots"></div>
+      <button class="testi-btn" id="testiNext"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-12 text-center" data-aos="fade-up">
+        <div class="section-tag mx-auto"><i class="fas fa-question-circle"></i> FAQ</div>
+        <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+        <div class="section-divider center"></div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-5" data-aos="fade-up">
+        <img src="assets/image/autocad.webp">
+      </div>
+
+      <div class="col-lg-7" data-aos="fade-up">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What is the minimum eligibility to join CADPOINT courses?
+            <div class="faq-icon"><i class="fas fa-plus"></i></div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Most of our courses require a minimum 10th or 12th standard pass. Engineering degree or diploma holders can directly join advanced modules. We also offer foundation modules for complete beginners regardless of educational background.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Do you offer online or remote training?
+            <div class="faq-icon"><i class="fas fa-plus"></i></div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Yes. We offer fully live instructor-led online sessions via Zoom/Teams with recorded backups. Students receive the same study materials and assessments as classroom students. Lab access is provided via remote desktop for online learners.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Is the Autodesk certification globally recognised?
+            <div class="faq-icon"><i class="fas fa-plus"></i></div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Yes. Autodesk Certified User (ACU) and Autodesk Certified Professional (ACP) credentials are globally recognised and respected by engineering employers worldwide. They are valid indefinitely for the software version tested.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What is the duration of a typical corporate training programme?
+            <div class="faq-icon"><i class="fas fa-plus"></i></div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Corporate programmes can range from a 2-day intensive workshop to a 3-month comprehensive upskilling programme, depending on the software and objectives. We design the schedule around your team's work hours and project commitments.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Do you provide placement guarantee?
+            <div class="faq-icon"><i class="fas fa-plus"></i></div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">We do not offer a legally binding guarantee, however our 95% placement track record across 14+ years speaks for itself. We provide active placement assistance including resume building, mock interviews, and direct referrals to our 200+ hiring partners.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Can I repeat or retake classes if I miss sessions?
+            <div class="faq-icon"><i class="fas fa-plus"></i></div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Yes. You can attend any batch running the same course free of charge within 6 months of your enrolment. Recorded sessions are also available in your student portal for revision at any time.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section class="contact-cta" id="contact">
+  <div class="container position-relative text-center" style="z-index:1">
+    <div class="row justify-content-center">
+      <div class="col-lg-8" data-aos="fade-up">
+        <div class="section-tag mx-auto" style="color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.25);background:rgba(255,255,255,0.08);display:inline-flex;"><i class="fas fa-rocket"></i> Start Today</div>
+        <h2 class="cta-title">Ready to <span>Transform</span><br>Your Engineering Career?</h2>
+        <p class="cta-sub mx-auto" style="max-width:520px;">Join over 5,000 professionals who have accelerated their careers and projects with CADPOINT's world-class services.</p>
+        <div class="d-flex flex-wrap gap-3 justify-content-center mb-5">
+          <a href="tel:+919895352624" class="btn-hero-primary ripple" style="background:linear-gradient(135deg,#c8963c,#f0b429);color:#5c0000">
+            <i class="fas fa-graduation-cap"></i> Contact Our Team
+          </a>
+          <!-- <a href="contact.html" class="btn-hero-outline">
+            <i class="fas fa-envelope"></i> Get a Free Quote
+          </a> -->
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-lg-10">
+        <div class="cta-cards justify-content-center">
+          <div class="cta-info-card">
+            <i class="fas fa-phone-alt"></i>
+            <div class="cta-info-card-text"><span>Call Us Now</span><a href="tel:+919895352624" style="text-decoration:none;"><strong>+919895352624</strong></a></div>
+          </div>
+          <div class="cta-info-card">
+            <i class="fab fa-whatsapp"></i>
+            <div class="cta-info-card-text"><span>WhatsApp</span><a href="https://wa.me/919895352624" style="text-decoration:none;"><strong>+919895352624</strong></a></div>
+          </div>
+          <!-- <div class="cta-info-card">
+            <i class="fas fa-envelope"></i>
+            <div class="cta-info-card-text"><span>Email Us</span><strong>cadpointmarthandam@gmail.com</strong></div>
+          </div> -->
+        <div class="cta-info-card">
+            <i class="fas fa-clock"></i>
+            <div class="cta-info-card-text"><span>Hours</span><strong>Mon–Sat 9AM–6PM</strong></div> 
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div id="footer"></div>
+
+
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+function initCaddNav() {
+
+    const coursesNav = document.getElementById('coursesNav');
+    const caret = document.getElementById('coursesCaret');
+    const menu = document.getElementById('coursesMegaMenu');
+    const closeBtn = document.getElementById('closeMegaMenu');
+
+    if (!coursesNav || !caret || !menu) return;
+
+    // X BUTTON CLOSE (Desktop + Mobile)
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.remove('show');
+
+        });
+    }
+
+    // MOBILE
+    if (window.innerWidth <= 991) {
+
+        caret.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!coursesNav.contains(e.target)) {
+                menu.classList.remove('show');
+            }
+        });
+
+        return;
+    }
+
+    // DESKTOP
+    coursesNav.addEventListener('mouseenter', function () {
+        menu.classList.add('show');
+    });
+
+    coursesNav.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+
+    menu.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+}
+</script>
+
+<script>
+fetch("./header.html")
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById("header").innerHTML = html;
+    initCaddNav();
+  });
+
+  fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+      document.getElementById('footer').innerHTML = data;
+  });
+</script>
+
+
+<script>
+
+  document
+    .getElementById("closeMegaMenu")
+    .addEventListener("click", function () {
+  
+      document
+        .querySelector(".courses-mega-menu")
+        .classList.remove("show");
+  
+    });
+  
+  </script>
+  
+<script>
+// LOADER
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hidden'),2000));
+
+// AOS
+AOS.init({ duration:700, easing:'ease-out-cubic', once:true, offset:60 });
+
+// NAVBAR SCROLL
+window.addEventListener('scroll',()=>{
+  document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>50);
+  document.getElementById('backToTop').classList.toggle('visible',window.scrollY>400);
+});
+
+// BACK TO TOP
+document.getElementById('backToTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+// COUNTER ANIMATION
+function animateCounters(scope){
+  (scope||document).querySelectorAll('[data-count]').forEach(el=>{
+    const target=parseInt(el.getAttribute('data-count'));
+    const suffix=el.closest('.hero-stat-item')||el.closest('.stat-box')?
+      (target>=100?'+':'%'):'+';
+    let current=0, inc=target/60;
+    const t=setInterval(()=>{
+      current+=inc;
+      if(current>=target){current=target;clearInterval(t);}
+      el.textContent=Math.floor(current)+(target>=100?'+':'%');
+    },25);
+  });
+}
+const statsBand=document.querySelector('.stats-band');
+if(statsBand){new IntersectionObserver((e)=>{if(e[0].isIntersecting){animateCounters(statsBand);e[0].target.setAttribute('data-counted','1');}},{threshold:0.3}).observe(statsBand);}
+const heroStats=document.querySelector('.hero-stats');
+if(heroStats){new IntersectionObserver((e)=>{if(e[0].isIntersecting){animateCounters(heroStats);}},{threshold:0.3}).observe(heroStats);}
+
+// PRICING TOGGLE
+const toggle=document.getElementById('pricingToggle');
+let isCorporate=false;
+toggle.addEventListener('click',()=>{
+  isCorporate=!isCorporate;
+  toggle.classList.toggle('annual',isCorporate);
+  document.getElementById('monthlyLbl').classList.toggle('active',!isCorporate);
+  document.getElementById('annualLbl').classList.toggle('active',isCorporate);
+  document.querySelectorAll('.individual-price,.individual-per').forEach(e=>e.style.display=isCorporate?'none':'');
+  document.querySelectorAll('.corporate-price,.corporate-per').forEach(e=>e.style.display=isCorporate?'':'none');
+});
+
+// TESTIMONIALS SLIDER
+const track=document.getElementById('testiTrack');
+const slides=track.querySelectorAll('.testi-slide');
+const dotsContainer=document.getElementById('testiDots');
+let current=0, slidesPerView=3;
+
+function getSPV(){ return window.innerWidth<576?1:window.innerWidth<992?2:3; }
+function buildDots(){
+  dotsContainer.innerHTML='';
+  const pages=Math.ceil(slides.length/getSPV());
+  for(let i=0;i<pages;i++){
+    const d=document.createElement('div');
+    d.className='testi-dot'+(i===0?' active':'');
+    d.addEventListener('click',()=>goTo(i));
+    dotsContainer.appendChild(d);
+  }
+}
+function goTo(idx){
+  slidesPerView=getSPV();
+  const pages=Math.ceil(slides.length/slidesPerView);
+  current=Math.max(0,Math.min(idx,pages-1));
+  const slideW=slides[0].offsetWidth+24;
+  track.style.transform=`translateX(-${current*slidesPerView*slideW}px)`;
+  dotsContainer.querySelectorAll('.testi-dot').forEach((d,i)=>d.classList.toggle('active',i===current));
+}
+document.getElementById('testiNext').addEventListener('click',()=>goTo(current+1));
+document.getElementById('testiPrev').addEventListener('click',()=>goTo(current-1));
+window.addEventListener('resize',()=>{buildDots();goTo(0);});
+buildDots();
+
+// FAQ
+function toggleFaq(btn){
+  const answer=btn.nextElementSibling;
+  const isOpen=answer.classList.contains('open');
+  document.querySelectorAll('.faq-answer.open').forEach(a=>{a.classList.remove('open');a.previousElementSibling.classList.remove('open');});
+  if(!isOpen){answer.classList.add('open');btn.classList.add('open');}
+}
+
+// RIPPLE
+document.querySelectorAll('.ripple').forEach(btn=>{
+  btn.style.position='relative'; btn.style.overflow='hidden';
+  btn.addEventListener('click',function(e){
+    const r=this.getBoundingClientRect();
+    const rpl=document.createElement('span');
+    Object.assign(rpl.style,{
+      position:'absolute',borderRadius:'50%',background:'rgba(255,255,255,0.3)',
+      width:'10px',height:'10px',left:(e.clientX-r.left-5)+'px',top:(e.clientY-r.top-5)+'px',
+      transform:'scale(0)',animation:'rippleAnim 0.6s ease-out forwards',pointerEvents:'none'
+    });
+    this.appendChild(rpl);
+    setTimeout(()=>rpl.remove(),700);
+  });
+});
+const rs=document.createElement('style');
+rs.textContent='@keyframes rippleAnim{to{transform:scale(30);opacity:0}}';
+document.head.appendChild(rs);
+</script>
+<script id="hoverfix1">
+  // ─── COURSES MEGA DROPDOWN: hover to open ───
+  (function () {
+    const coursesNav = document.getElementById('coursesNav');
+    if (!coursesNav) return;
+    const menu = coursesNav.querySelector('.courses-mega-menu');
+    const caret = document.getElementById('coursesDropdown');
+    if (!menu) return;
+    let hideTimer;
+
+    function showMenu() {
+      clearTimeout(hideTimer);
+      const navRect = document.getElementById('mainNav').getBoundingClientRect();
+      menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+      menu.classList.add('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(180deg)';
+    }
+
+    function hideMenu() {
+      hideTimer = setTimeout(function () {
+        menu.classList.remove('show');
+        if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+      }, 120);
+    }
+
+    coursesNav.addEventListener('mouseenter', showMenu);
+    coursesNav.addEventListener('mouseleave', hideMenu);
+    menu.addEventListener('mouseenter', showMenu);
+    menu.addEventListener('mouseleave', hideMenu);
+
+    if (caret) {
+      caret.querySelector('i').style.transition = 'transform 0.25s ease';
+      caret.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (menu.classList.contains('show')) { hideMenu(); } else { showMenu(); }
+      });
+    }
+
+    document.addEventListener('click', function (e) {
+      if (!coursesNav.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.remove('show');
+        if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+      }
+    });
+
+    window.addEventListener('scroll', function () {
+      if (menu.classList.contains('show')) {
+        const navRect = document.getElementById('mainNav').getBoundingClientRect();
+        menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+      }
+    });
+  })();
+</script>
+</body>
+</html>

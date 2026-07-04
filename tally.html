@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tally Prime Course | CADPOINT Authorized Training Centre</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ <link rel="icon" type="image/x-icon" href="assets/image/cadd-logo.webp">
+ <style>
+    /* ═══════════════════════════════════════
+       CSS VARIABLES — EXACT MATCH TO CADPOINT
+    ═══════════════════════════════════════ */
+    :root {
+      --primary: #8B0000;
+      --primary-light: #A00000;
+      --primary-dark: #5c0000;
+      --primary-glow: rgba(139,0,0,0.35);
+      --white: #ffffff;
+      --light-gray: #F5F5F5;
+      --text-dark: #1a1a1a;
+      --text-muted: #555;
+      --border-light: rgba(139,0,0,0.15);
+      --glass-bg: rgba(255,255,255,0.08);
+      --glass-border: rgba(255,255,255,0.18);
+    }
+
+    html, body { max-width: 100%; overflow-x: hidden; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+    /* ═══════════════════════════════════════
+       NAVBAR — EXACT COPY FROM INDEX.HTML
+    ═══════════════════════════════════════ */
+    .navbar {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 2px 30px rgba(139,0,0,0.12);
+      padding: 12px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    .navbar.scrolled { padding: 8px 0; box-shadow: 0 4px 40px rgba(139,0,0,0.2); }
+    .navbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icon { width: 48px; height: 48px; flex-shrink: 0; }
+    .logo-text { line-height: 1.1; }
+    .logo-text .brand-name { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.3rem; color: var(--primary); letter-spacing: 2px; }
+    .logo-text .brand-sub { font-size: 0.58rem; font-weight: 600; color: #666; letter-spacing: 1.5px; text-transform: uppercase; }
+    .navbar-nav .nav-link { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.8px; text-transform: uppercase; padding: 8px 16px !important; border-radius: 6px; transition: all 0.3s ease; position: relative; }
+    .navbar-nav .nav-link:hover { color: var(--primary); }
+    .btn-nav-enroll { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white !important; padding: 8px 22px !important; border-radius: 25px !important; font-weight: 700 !important; box-shadow: 0 4px 15px var(--primary-glow); transition: all 0.3s ease !important; }
+    .btn-nav-enroll:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--primary-glow) !important; }
+    .btn-nav-enroll::after { display: none !important; }
+
+
+    
+ /* X CLOSE BUTTON */
+
+.mega-close-x{
+  position:absolute;
+  top:12px;
+  right:12px;
+  width:34px;
+  height:34px;
+  border:none;
+  border-radius:50%;
+  background:#fff;
+  color:#222;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:99;
+  box-shadow:0 4px 15px rgba(0,0,0,.12);
+  transition:.3s ease;
+}
+
+.mega-close-x:hover{
+  background:var(--primary);
+  color:#fff;
+  transform:rotate(90deg);
+}
+/* ═══════════════════════════════════════════
+   MOBILE DROPDOWN FIX
+═══════════════════════════════════════════ */
+
+@media (max-width: 991px) {
+
+  /* NAVBAR */
+  .navbar-collapse{
+    background:#fff;
+    padding:15px;
+    border-radius:18px;
+    margin-top:15px;
+    box-shadow:0 10px 35px rgba(0,0,0,.08);
+  }
+
+  /* COURSE NAV ITEM */
+  #coursesNav{
+    width:100%;
+  }
+
+  /* COURSE TITLE + CARET */
+  #coursesNav .d-flex{
+    width:100%;
+    justify-content:space-between;
+    align-items:center;
+  }
+
+  #coursesNav .nav-link{
+    padding:12px 0 !important;
+  }
+
+  .courses-caret{
+    padding-right:0 !important;
+  }
+
+  /* DROPDOWN MENU */
+  .courses-mega-menu{
+    /* position:static !important; */
+    transform:none !important;
+    width:100% !important;
+    min-width:100% !important;
+    margin-top:10px !important;
+    border:none !important;
+    box-shadow:none !important;
+    border-radius:16px !important;
+    overflow:hidden;
+    background:#f8f9fb;
+  }
+
+  /* DROPDOWN INNER LAYOUT */
+  .courses-mega-menu .d-flex{
+    flex-direction:column !important;
+    gap:0 !important;
+    padding-top:0 !important;
+  }
+
+  /* EACH COLUMN */
+  .mega-col{
+    width:100% !important;
+    border-right:none !important;
+    border-bottom:1px solid rgba(0,0,0,.06);
+    padding:18px 16px !important;
+  }
+
+  .mega-col:last-child{
+    border-bottom:none;
+  }
+
+  /* HEADING */
+  .mega-col-head{
+    margin-bottom:14px;
+  }
+
+  .mega-col-title{
+    font-size:1rem;
+    font-weight:700;
+  }
+
+  .mega-col-sub{
+    font-size:.78rem;
+  }
+
+  /* ITEMS */
+  .mega-item{
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 12px;
+    border-radius:10px;
+    font-size:.92rem;
+  }
+
+  .mega-item:hover{
+    background:#fff;
+  }
+
+  /* ICON */
+  .mega-item i{
+    width:18px;
+    text-align:center;
+  }
+
+}
+
+
+    
+    /* Mega menu */
+    #coursesNav { position: static !important; }
+    #coursesNav > div { display: flex; align-items: center; }
+    .courses-mega-menu {
+      position: fixed !important;
+      top: auto !important;
+      left: 50% !important;
+      transform: translateX(-50%) translateY(6px) !important;
+      width: min(960px, 96vw) !important;
+      display: block !important;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+      pointer-events: none;
+      border: none !important; border-radius: 16px !important; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.16), 0 0 0 1px rgba(139,0,0,0.1) !important;
+      padding: 0 !important;
+    }
+    .courses-mega-menu.show { opacity: 1 !important; visibility: visible !important; transform: translateX(-50%) translateY(0) !important; pointer-events: auto !important; }
+    .mega-col { flex: 1; padding: 20px 10px 10px 10px; border-right: 1px solid rgba(139,0,0,0.08); background: white; }
+    .mega-col:last-child { border-right: none; }
+    .mega-col-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid rgba(139,0,0,0.08); }
+    .mega-col-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .mega-col-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.82rem; color: var(--text-dark); letter-spacing: 0.4px; }
+    .mega-col-sub { font-size: 0.68rem; color: #999; font-weight: 500; margin-top: 1px; }
+    .mega-item { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 7px; font-size: 0.8rem; font-weight: 500; color: var(--text-dark); text-decoration: none; transition: background 0.15s, color 0.15s, padding-left 0.15s; margin-bottom: 2px; }
+    .mega-item i { font-size: 0.72rem; width: 16px; text-align: center; color: #aaa; transition: color 0.15s; flex-shrink: 0; }
+    .mega-item:hover { background: rgba(139,0,0,0.07); color: var(--primary); padding-left: 12px; }
+    .mega-item:hover i { color: var(--primary); }
+    #coursesNav .courses-caret { color: var(--text-dark); transition: color 0.2s; }
+    #coursesNav .courses-caret:hover { color: var(--primary); }
+    .dropdown-menu { border-radius: 10px; border: none; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    .dropdown-item:hover { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #fff; border-radius: 5px; }
+
+    /* ═══════════════════════════════════════
+       BREADCRUMB SLIDER — TALLY THEMED
+    ═══════════════════════════════════════ */
+    .breadcrumb-slider {
+      background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-dark) 100%);
+      padding: 0; overflow: hidden; height: 38px; display: flex; align-items: center; position: relative;
+    }
+    .breadcrumb-slider::before, .breadcrumb-slider::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none; }
+    .breadcrumb-slider::before { left: 0; background: linear-gradient(to right, var(--primary-dark), transparent); }
+    .breadcrumb-slider::after { right: 0; background: linear-gradient(to left, var(--primary-dark), transparent); }
+    .breadcrumb-track { display: flex; animation: scrollBreadcrumb 28s linear infinite; white-space: nowrap; will-change: transform; }
+    .breadcrumb-track:hover { animation-play-state: paused; }
+    .breadcrumb-item-slide { display: inline-flex; align-items: center; gap: 8px; padding: 0 30px; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 1px; text-transform: uppercase; font-family: 'Montserrat', sans-serif; }
+    .breadcrumb-item-slide i { color: rgba(255,255,255,0.6); font-size: 0.7rem; }
+    @keyframes scrollBreadcrumb { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ═══════════════════════════════════════
+       HERO SECTION
+    ═══════════════════════════════════════ */
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, #c0392b 80%, var(--primary-dark) 100%);
+      min-height: 88vh;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding: 70px 0 100px;
+    }
+    .hero-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2zm4 0L80 4v2L46 40h-2zm4 0L80 8v2L50 40h-2zm4 0L80 12v2L54 40h-2zm4 0L80 16v2L58 40h-2zm4 0L80 20v2L62 40h-2zm4 0L80 24v2L66 40h-2zm4 0L80 28v2L70 40h-2zm4 0L80 32v2L74 40h-2zm4 0L80 36v2L78 40h-2zm4 0L80 40h-2v-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.4;
+    }
+
+    /* Animated floating blobs */
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.15;
+      pointer-events: none;
+    }
+    .hero-blob-1 { width: 500px; height: 500px; background: #ff4444; top: -150px; right: -100px; animation: blobFloat 8s ease-in-out infinite; }
+    .hero-blob-2 { width: 300px; height: 300px; background: #ffd700; bottom: -80px; left: -80px; animation: blobFloat 10s ease-in-out infinite reverse; }
+    .hero-blob-3 { width: 200px; height: 200px; background: #fff; top: 50%; left: 40%; animation: blobFloat 6s ease-in-out infinite 2s; }
+    @keyframes blobFloat { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(30px,-30px) scale(1.1); } }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px);
+      padding: 6px 16px; border-radius: 50px;
+      font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.9);
+      letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px;
+    }
+    .hero-badge span { color: #ffd700; }
+
+    .hero-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.1; color: white; margin-bottom: 20px;
+    }
+    .hero-title .highlight { color: #ffd700; position: relative; }
+    .hero-title .highlight::after {
+      /* content: ''; */
+      position: absolute;
+      bottom: -4px; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, #ffd700, transparent);
+      border-radius: 2px;
+    }
+
+    .hero-desc { font-size: 1rem; color: rgba(255,255,255,0.82); line-height: 1.8; margin-bottom: 28px; max-width: 630px; }
+
+    .hero-bullets { list-style: none; padding: 0; margin-bottom: 36px; }
+    .hero-bullets li { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.9); font-size: 0.92rem; font-weight: 500; margin-bottom: 10px; }
+    .hero-bullets li i { width: 22px; height: 22px; background: rgba(255,215,0,0.2); border: 1px solid rgba(255,215,0,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: #ffd700; flex-shrink: 0; }
+
+    .btn-hero-primary {
+      background: linear-gradient(135deg, #ffd700, #ffb700);
+      color: var(--primary-dark) !important;
+      font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.88rem;
+      letter-spacing: 0.8px; padding: 14px 32px; border-radius: 50px; border: none;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+      box-shadow: 0 8px 25px rgba(255,215,0,0.4);
+      transition: all 0.3s ease; position: relative; overflow: hidden;
+    }
+    .btn-hero-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(255,215,0,0.5); color: var(--primary-dark) !important; }
+
+    .btn-hero-outline {
+      background: transparent; color: white !important;
+      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem;
+      letter-spacing: 0.8px; padding: 13px 30px; border-radius: 50px;
+      border: 2px solid rgba(255,255,255,0.5); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: all 0.3s ease; backdrop-filter: blur(10px);
+    }
+    .btn-hero-outline:hover { border-color: white; background: rgba(255,255,255,0.12); transform: translateY(-3px); }
+
+    /* Hero illustration SVG */
+    .hero-illustration { position: relative; display: flex; justify-content: center; align-items: center; }
+    .hero-img-wrapper { position: relative; animation: floatHero 4s ease-in-out infinite; }
+    @keyframes floatHero { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-18px); } }
+
+    .hero-stat-card {
+      position: absolute;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 14px; padding: 12px 18px; color: white; text-align: center;
+      animation: floatCard 3s ease-in-out infinite;
+    }
+    .hero-stat-card.card-1 { bottom: 20px; left: -30px; animation-delay: 0.5s; }
+    .hero-stat-card.card-2 { top: 30px; right: -20px; animation-delay: 1s; }
+    @keyframes floatCard { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
+    .hero-stat-card .num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.6rem; color: #ffd700; line-height: 1; }
+    .hero-stat-card .label { font-size: 0.7rem; opacity: 0.85; font-weight: 500; }
+
+    .hero-curve { position: absolute; bottom: 0; width: 100%; height: 50px; line-height: 0; }
+    .hero-curve svg { width: 100%; height: 100%; display: block; }
+    .hero-curve path { fill: #ffffff; }
+
+    /* ═══════════════════════════════════════
+       SECTION COMMON STYLES
+    ═══════════════════════════════════════ */
+    section { padding: 90px 0; }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(139,0,0,0.08); border: 1px solid rgba(139,0,0,0.2);
+      color: var(--primary); font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 50px; margin-bottom: 14px;
+    }
+    .section-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.2; color: var(--text-dark); margin-bottom: 14px; }
+    .section-title span { color: var(--primary); }
+    .section-subtitle { color: var(--text-muted); font-size: 1rem; line-height: 1.7; max-width: 560px; }
+    .divider-line { width: 60px; height: 4px; background: linear-gradient(90deg, var(--primary), var(--primary-light)); border-radius: 4px; margin: 16px 0 24px; }
+
+    /* ═══════════════════════════════════════
+       ABOUT TALLY SECTION
+    ═══════════════════════════════════════ */
+    .about-section { background: var(--white); }
+    .about-tally-img {
+      border-radius: 20px;
+      background: linear-gradient(135deg, #fff5f5, #ffe5e5);
+      border: 2px solid rgba(139,0,0,0.1);
+      padding: 30px;
+      box-shadow: 0 20px 60px rgba(139,0,0,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    .about-tally-img::before {
+      content: '';
+      position: absolute; top: -40px; right: -40px;
+      width: 150px; height: 150px;
+      background: radial-gradient(circle, rgba(139,0,0,0.08), transparent);
+      border-radius: 50%;
+    }
+    .about-badge-float {
+      position: absolute; bottom: 20px; left: 20px;
+      background: var(--primary);
+      color: white; border-radius: 14px;
+      padding: 12px 18px; text-align: center;
+      box-shadow: 0 10px 30px rgba(139,0,0,0.3);
+    }
+    .about-badge-float .num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.8rem; color: #ffd700; line-height: 1; }
+    .about-badge-float .lbl { font-size: 0.7rem; opacity: 0.85; }
+    .about-feature { display: flex; align-items: flex-start; gap: 14px; padding: 16px; border-radius: 12px; border: 1px solid rgba(139,0,0,0.08); transition: all 0.3s ease; margin-bottom: 4px; }
+    .about-feature:hover { background: rgba(139,0,0,0.03); border-color: rgba(139,0,0,0.2); transform: translateX(5px); }
+    .about-feature-icon { width: 42px; height: 42px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1rem; flex-shrink: 0; }
+    .about-feature h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--text-dark); margin-bottom: 4px; }
+    .about-feature p { font-size: 0.82rem; color: var(--text-muted); margin: 0; }
+
+    /* ═══════════════════════════════════════
+       WHAT YOU WILL LEARN
+    ═══════════════════════════════════════ */
+    .learn-section { background: var(--light-gray); }
+    .learn-card {
+      background: white;
+      border-radius: 18px;
+      padding: 30px 24px;
+      border: 1px solid rgba(139,0,0,0.06);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      height: 100%;
+      position: relative; overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .learn-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .learn-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(139,0,0,0.12); border-color: rgba(139,0,0,0.15); }
+    .learn-card:hover::before { transform: scaleX(1); }
+    .learn-card-icon { width: 56px; height: 56px; background: linear-gradient(135deg, rgba(139,0,0,0.1), rgba(139,0,0,0.05)); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--primary); margin-bottom: 18px; transition: all 0.3s ease; }
+    .learn-card:hover .learn-card-icon { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; transform: scale(1.1); }
+    .learn-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; color: var(--text-dark); margin-bottom: 10px; }
+    .learn-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; margin: 0; }
+    .learn-card .topics { list-style: none; padding: 0; margin: 12px 0 0; }
+    .learn-card .topics li { font-size: 0.8rem; color: var(--text-muted); padding: 3px 0; display: flex; align-items: center; gap: 8px; }
+    .learn-card .topics li i { color: var(--primary); font-size: 0.6rem; }
+
+    /* ═══════════════════════════════════════
+       COURSE FEATURES — GLASSMORPHISM
+    ═══════════════════════════════════════ */
+    .features-section {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, #c0392b 100%);
+      position: relative; overflow: hidden;
+    }
+    .features-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .feature-glass-card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px; padding: 32px 24px;
+      text-align: center; height: 100%;
+      transition: all 0.4s ease;
+      position: relative; overflow: hidden;
+    }
+    .feature-glass-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .feature-glass-card:hover { transform: translateY(-8px); border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.14); }
+    .feature-glass-card:hover::before { opacity: 1; }
+    .feature-glass-icon { width: 64px; height: 64px; background: rgba(255,215,0,0.15); border: 2px solid rgba(255,215,0,0.3); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; color: #ffd700; margin: 0 auto 18px; transition: all 0.3s ease; }
+    .feature-glass-card:hover .feature-glass-icon { background: rgba(255,215,0,0.25); transform: scale(1.1) rotate(5deg); }
+    .feature-glass-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: white; margin-bottom: 10px; font-size: 1rem; }
+    .feature-glass-card p { font-size: 0.83rem; color: rgba(255,255,255,0.72); line-height: 1.7; margin: 0; }
+
+    /* ═══════════════════════════════════════
+       SOFTWARE SKILLS SECTION
+    ═══════════════════════════════════════ */
+    .skills-section { background: white; }
+    .skill-card {
+      background: white;
+      border-radius: 16px; padding: 24px 20px; text-align: center;
+      border: 2px solid rgba(139,0,0,0.07);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+      transition: all 0.35s ease; cursor: pointer;
+    }
+    .skill-card:hover { border-color: var(--primary); transform: translateY(-6px); box-shadow: 0 16px 40px rgba(139,0,0,0.12); }
+    .skill-icon-wrap { width: 70px; height: 70px; border-radius: 18px; background: linear-gradient(135deg, rgba(139,0,0,0.08), rgba(139,0,0,0.04)); display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; font-size: 1.8rem; color: var(--primary); transition: all 0.3s ease; }
+    .skill-card:hover .skill-icon-wrap { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; }
+    .skill-card h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text-dark); margin-bottom: 8px; }
+    .skill-bar { height: 5px; background: rgba(139,0,0,0.1); border-radius: 5px; overflow: hidden; }
+    .skill-bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-light)); border-radius: 5px; width: 0; transition: width 1.5s ease 0.3s; }
+    .skill-level { font-size: 0.72rem; color: var(--primary); font-weight: 600; margin-top: 6px; }
+
+    /* ═══════════════════════════════════════
+       CAREER OPPORTUNITIES
+    ═══════════════════════════════════════ */
+    .career-section { background: var(--light-gray); }
+    .career-card {
+      background: white; border-radius: 18px; padding: 30px 24px;
+      border: 1px solid rgba(139,0,0,0.08);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      height: 100%; text-align: center;
+      transition: all 0.4s ease; position: relative; overflow: hidden;
+    }
+    .career-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 0;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      transition: height 0.4s ease;
+      z-index: 0;
+    }
+    .career-card:hover::after { height: 100%; }
+    .career-card > * { position: relative; z-index: 1; }
+    .career-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(139,0,0,0.2); }
+    .career-card:hover h5, .career-card:hover p, .career-card:hover .career-icon { color: white !important; }
+    .career-card:hover .career-salary { background: rgba(255,255,255,0.15); color: #ffd700; border-color: rgba(255,215,0,0.3); }
+    .career-icon { width: 60px; height: 60px; border-radius: 50%; background: rgba(139,0,0,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--primary); margin: 0 auto 16px; transition: all 0.3s ease; }
+    .career-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; color: var(--text-dark); margin-bottom: 8px; transition: color 0.3s; }
+    .career-card p { font-size: 0.82rem; color: var(--text-muted); transition: color 0.3s; margin-bottom: 14px; }
+    .career-salary { display: inline-block; font-size: 0.75rem; font-weight: 700; color: var(--primary); background: rgba(139,0,0,0.08); padding: 4px 12px; border-radius: 50px; border: 1px solid rgba(139,0,0,0.15); transition: all 0.3s; }
+
+    /* ═══════════════════════════════════════
+       STATS / ACHIEVEMENTS STRIP
+    ═══════════════════════════════════════ */
+    .achievement-strip { background: #8b0000; padding: 70px 0; }
+    .achievement-col { border-right: 1px solid rgba(255,255,255,.2); }
+    .no-border { border-right: none; }
+    .achievement-box { padding: 20px 10px; transition: .4s ease; }
+    .achievement-box:hover { transform: translateY(-8px); }
+    .achievement-box h2 { font-size: 62px; font-weight: 800; color: #ffd400; margin-bottom: 12px; line-height: 1; font-family: 'Montserrat', sans-serif; }
+    .achievement-box p { font-size: 20px; font-weight: 500; color: #fff; margin: 0; }
+    @media(max-width:991px) { .achievement-col { border-right: none; margin-bottom: 30px; } }
+    @media(max-width:576px) { .achievement-strip { padding: 50px 0; } .achievement-box h2 { font-size: 42px; } .achievement-box p { font-size: 16px; } }
+
+    /* ═══════════════════════════════════════
+       TESTIMONIALS SLIDER
+    ═══════════════════════════════════════ */
+    .testimonials-section { background: white; }
+    .testi-track-wrapper { overflow: hidden; position: relative; }
+    .testi-track { display: flex; gap: 24px; transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .testi-card {
+      min-width: calc(33.333% - 16px);
+      background: white; border-radius: 20px;
+      padding: 30px 26px;
+      border: 1px solid rgba(139,0,0,0.08);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      flex-shrink: 0; position: relative;
+    }
+    .testi-card::before { content: '\201C'; font-size: 5rem; color: rgba(139,0,0,0.07); position: absolute; top: 10px; right: 20px; line-height: 1; font-family: Georgia, serif; }
+    .testi-stars { color: #ffd700; font-size: 0.85rem; margin-bottom: 14px; }
+    .testi-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar { width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--primary-light)); display: flex; align-items: center; justify-content: center; color: white; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.1rem; flex-shrink: 0; }
+    .testi-name { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--text-dark); }
+    .testi-role { font-size: 0.75rem; color: var(--primary); font-weight: 600; }
+    .testi-nav { display: flex; gap: 12px; justify-content: center; margin-top: 36px; }
+    .testi-btn { width: 44px; height: 44px; border-radius: 50%; border: 2px solid rgba(139,0,0,0.2); background: white; color: var(--primary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; font-size: 0.9rem; }
+    .testi-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+    .testi-dots { display: flex; gap: 8px; align-items: center; }
+    .testi-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(139,0,0,0.2); transition: all 0.3s; cursor: pointer; }
+    .testi-dot.active { width: 24px; border-radius: 4px; background: var(--primary); }
+    @media (max-width:991px) { .testi-card { min-width: calc(50% - 12px); } }
+    @media (max-width:575px) { .testi-card { min-width: 100%; } }
+
+    /* ═══════════════════════════════════════
+       FAQ SECTION
+    ═══════════════════════════════════════ */
+    .faq-section { background: var(--light-gray); }
+    .faq-accordion .accordion-item {
+      border: 1px solid rgba(139,0,0,0.1) !important;
+      border-radius: 12px !important;
+      margin-bottom: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .faq-accordion .accordion-button {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700; font-size: 0.95rem;
+      color: var(--text-dark); background: white;
+      padding: 18px 24px;
+      box-shadow: none !important;
+    }
+    .faq-accordion .accordion-button:not(.collapsed) { color: white; 
+      background:var(--primary); }
+    .faq-accordion .accordion-button::after { filter: none; }
+    .faq-accordion .accordion-button:not(.collapsed)::after { filter: hue-rotate(200deg) saturate(5) brightness(0.5); }
+    .faq-accordion .accordion-body { padding: 0 24px 20px; font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; background: white; }
+
+    
+    /* ═══════════════════════════════════════
+       FINAL CTA SECTION
+    ═══════════════════════════════════════ */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary), #c0392b);
+      padding: 100px 0; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(255,215,0,0.08), transparent 70%);
+    }
+    .cta-section h2 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(2rem, 4vw, 3rem); color: white; margin-bottom: 16px; }
+    .cta-section p { color: rgba(255,255,255,0.8); font-size: 1.05rem; margin-bottom: 40px; max-width: 550px; margin-left: auto; margin-right: auto; }
+    .btn-cta-glow {
+      background: linear-gradient(135deg, #ffd700, #ffb700);
+      color: var(--primary-dark) !important;
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: 1rem; padding: 16px 42px; border-radius: 50px;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
+      box-shadow: 0 0 0 0 rgba(255,215,0,0.5);
+      animation: pulseGlow 2.5s infinite; transition: all 0.3s ease; margin: 8px;
+    }
+    .btn-cta-glow:hover { transform: translateY(-4px); }
+    .btn-cta-outline-white {
+      background: transparent; color: white !important;
+      border: 2px solid rgba(255,255,255,0.5);
+      font-family: 'Montserrat', sans-serif; font-weight: 700;
+      font-size: 1rem; padding: 14px 38px; border-radius: 50px;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
+      transition: all 0.3s ease; margin: 8px;
+    }
+    .btn-cta-outline-white:hover { border-color: white; background: rgba(255,255,255,0.1); transform: translateY(-4px); }
+    @keyframes pulseGlow { 0%,100% { box-shadow: 0 0 0 0 rgba(255,215,0,0.5); } 50% { box-shadow: 0 0 0 18px rgba(255,215,0,0); } }
+
+    /* ═══════════════════════════════════════
+       MARQUEE STRIP
+    ═══════════════════════════════════════ */
+    .marquee-section { background: rgba(139,0,0,0.04); padding: 20px 0; overflow: hidden; border-top: 1px solid rgba(139,0,0,0.08); border-bottom: 1px solid rgba(139,0,0,0.08); }
+    .marquee-track { display: flex; animation: marquee 20s linear infinite; }
+    .marquee-track:hover { animation-play-state: paused; }
+    .marquee-item { display: flex; align-items: center; gap: 10px; padding: 0 24px; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.82rem; letter-spacing: 1px; color: var(--primary); text-transform: uppercase; white-space: nowrap; }
+    .marquee-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--primary); display: inline-block; opacity: 0.4; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ═══════════════════════════════════════
+       FOOTER — EXACT MATCH
+    ═══════════════════════════════════════ */
+    footer { background: #0d0d0d; padding: 70px 0 0; color: rgba(255,255,255,0.75); }
+    .footer-brand { margin-bottom: 20px; }
+    .footer-desc { font-size: 0.85rem; line-height: 1.8; color: rgba(255,255,255,0.55); margin-bottom: 22px; }
+    .footer-socials { display: flex; gap: 10px; }
+    .footer-social-btn { width: 36px; height: 36px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); font-size: 0.85rem; transition: all 0.3s ease; text-decoration: none; }
+    .footer-social-btn:hover { background: var(--primary); border-color: var(--primary); color: white; transform: translateY(-3px); }
+    .footer-heading { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 1.5px; text-transform: uppercase; color: white; margin-bottom: 20px; position: relative; padding-bottom: 10px; }
+    .footer-heading::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 2px; background: var(--primary); border-radius: 2px; }
+    .footer-links { list-style: none; padding: 0; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 6px; }
+    .footer-links a:hover { color: var(--primary-light); padding-left: 5px; }
+    .footer-links a i { font-size: 0.65rem; color: var(--primary); }
+    .footer-contact li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; font-size: 0.85rem; }
+    .footer-contact li i { color: var(--primary-light); margin-top: 3px; flex-shrink: 0; font-size: 0.85rem; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding: 22px 0; margin-top: 50px; font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+
+    /* ═══════════════════════════════════════
+       LOADER & BACK TO TOP
+    ═══════════════════════════════════════ */
+    #loader { position: fixed; inset: 0; background: var(--primary-dark); z-index: 9999; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 20px; transition: opacity 0.5s ease, visibility 0.5s ease; }
+    #loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-logo { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2rem; color: white; letter-spacing: 4px; }
+    .loader-logo span { color: #ffd700; }
+    .loader-bar { width: 200px; height: 3px; background: rgba(255,255,255,0.15); border-radius: 3px; overflow: hidden; }
+    .loader-bar-inner { height: 100%; background: linear-gradient(90deg, var(--primary-light), #ffd700); border-radius: 3px; animation: loadBar 1.8s ease-in-out forwards; }
+    @keyframes loadBar { from { width: 0; } to { width: 100%; } }
+    #backToTop { position: fixed; bottom: 30px; right: 30px; width: 44px; height: 44px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; border: none; border-radius: 50%; cursor: pointer; box-shadow: 0 6px 20px var(--primary-glow); opacity: 0; transform: translateY(20px); transition: all 0.4s ease; z-index: 999; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+    #backToTop.visible { opacity: 1; transform: translateY(0); }
+    #backToTop:hover { transform: translateY(-4px); box-shadow: 0 10px 30px var(--primary-glow); }
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════ */
+    @media (max-width: 991px) {
+      .hero-section { padding: 60px 0 80px; text-align: center; }
+      .hero-bullets li { justify-content: center; }
+      .hero-desc { margin: 0 auto 28px; }
+      .hero-illustration { margin-top: 50px; }
+      .hero-stat-card.card-2 { right: 0; }
+      .hero-stat-card.card-1 { left: 0; }
+      /* .courses-mega-menu { display: none !important; } */
+    }
+    @media (max-width: 767px) {
+      section { padding: 65px 0; }
+      .hero-btn-group { flex-direction: column; align-items: center; }
+    }
+    .ripple { position: relative; overflow: hidden; }
+
+    /* Page Header / Hero sub-banner */
+    .page-hero-band {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      padding: 20px 0 0;
+      text-align: center;
+      color: white;
+    }
+    .page-hero-band .page-crumb { font-size: 0.78rem; color: rgba(255,255,255,0.65); margin-bottom: 8px; }
+    .page-hero-band .page-crumb a { color: rgba(255,255,255,0.65); text-decoration: none; }
+    .page-hero-band .page-crumb a:hover { color: #ffd700; }
+
+    /* Tally SVG Illustration */
+    .tally-svg-wrapper {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+      border: 3px solid rgba(255,255,255,0.15);
+    }
+
+    /* Floating icons in hero */
+    .floating-icon {
+      position: absolute;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      padding: 10px 14px;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: flex; align-items: center; gap: 6px;
+      backdrop-filter: blur(10px);
+      animation: floatCard 4s ease-in-out infinite;
+    }
+    .floating-icon i { color: #ffd700; }
+    .fi-1 { bottom: 120px; left: -10px; animation-delay: 0.3s; }
+    .fi-2 { top: 60px; right: -10px; animation-delay: 1.2s; }
+    .fi-3 { top: 50%; left: -20px; animation-delay: 2s; transform: translateY(-50%); }
+    @media(max-width:991px) { .floating-icon { display:none; } }
+
+
+    .tally-hero-section{
+    background: #fff;
+    overflow: hidden;
+}
+
+/* IMAGE */
+.tally-image-wrapper{
+    position: relative;
+}
+
+.tally-main-img{
+    width: 100%;
+    border-radius: 35px;
+    object-fit: cover;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+    transition: 0.5s ease;
+}
+
+.tally-main-img:hover{
+    transform: scale(1.02);
+}
+
+/* FLOATING CARD */
+.tally-floating-card{
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    background: #fff;
+    padding: 16px 22px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    animation: floatCard 3s ease-in-out infinite;
+}
+
+.icon-box{
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    background: linear-gradient(135deg,#b30000,#d10000);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.3rem;
+}
+
+.tally-floating-card h5{
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #111;
+}
+
+.tally-floating-card p{
+    margin: 0;
+    font-size: 0.92rem;
+    color: #777;
+}
+
+/* CONTENT */
+.course-tag{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(179,0,0,0.08);
+    color: #b30000;
+    padding: 10px 18px;
+    border-radius: 40px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.tally-title{
+    font-size: 32px;
+    font-weight: 800;
+    color: #111;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.tally-title span{
+    color: #b30000;
+}
+
+.tally-desc{
+    /* font-size: 1.12rem;
+    color: #666;
+    line-height: 1.9;
+    margin-bottom: 28px; */
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 24px;
+}
+
+/* FEATURES */
+.tally-features{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.feature-item{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.05rem;
+    color: #444;
+    font-weight: 500;
+}
+
+.feature-item i{
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(179,0,0,0.1);
+    color: #b30000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+/* BUTTON */
+.tally-btn{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 17px 38px;
+    background: linear-gradient(135deg,#b30000,#d40000);
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 700;
+    border-radius: 60px;
+    text-decoration: none;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(179,0,0,0.25);
+    transition: all 0.4s ease;
+}
+
+.tally-btn::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,0.6) 50%,
+      rgba(255,255,255,0) 100%
+    );
+    transform: skewX(-25deg);
+    animation: glossyMove 3s infinite;
+}
+
+.tally-btn:hover{
+    transform: translateY(-5px);
+    color: #fff;
+    box-shadow: 0 20px 45px rgba(179,0,0,0.35);
+}
+
+@keyframes glossyMove{
+    0%{
+        left: -120%;
+    }
+    100%{
+        left: 160%;
+    }
+}
+
+@keyframes floatCard{
+    0%{
+        transform: translateY(0px);
+    }
+    50%{
+        transform: translateY(-10px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 991px){
+
+    .tally-title{
+        font-size: 2.4rem;
+    }
+
+    .tally-desc{
+        font-size: 1rem;
+    }
+
+    .tally-image-wrapper{
+        max-width: 550px;
+        margin: auto;
+    }
+}
+
+@media (max-width: 576px){
+
+    .tally-title{
+        font-size: 2rem;
+    }
+
+    .feature-item{
+        align-items: flex-start;
+    }
+
+    .tally-btn{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .tally-floating-card{
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        padding: 14px 18px;
+    }
+}
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<!-- <div id="loader">
+  <div class="loader-logo">CAD<span>POINT</span></div>
+  <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+</div> -->
+
+<!-- BACK TO TOP -->
+<button id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+<!-- ═══════════════════════════════════════════
+     NAVBAR — EXACT MATCH FROM INDEX.HTML
+═══════════════════════════════════════════ -->
+<div id="header"></div>
+
+
+<!-- ═══════════════════════════════════════════
+     BREADCRUMB SLIDER — TALLY THEMED
+═══════════════════════════════════════════ -->
+<div class="breadcrumb-slider">
+  <div class="breadcrumb-track">
+    <div class="breadcrumb-item-slide"><i class="fas fa-calculator"></i> <strong>Tally Prime</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-file-invoice-dollar"></i> <strong>GST Filing</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-users"></i> <strong>Payroll Management</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-boxes"></i> <strong>Inventory Control</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-chart-line"></i> <strong>Financial Reports</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-award"></i> <strong>Certification Course</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-briefcase"></i> <strong>100% Placement Support</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-star"></i> <strong>ISO Certified Institute</strong></div>
+    <!-- Duplicate for seamless loop -->
+    <div class="breadcrumb-item-slide"><i class="fas fa-calculator"></i> <strong>Tally Prime</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-file-invoice-dollar"></i> <strong>GST Filing</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-users"></i> <strong>Payroll Management</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-boxes"></i> <strong>Inventory Control</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-chart-line"></i> <strong>Financial Reports</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-award"></i> <strong>Certification Course</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-briefcase"></i> <strong>100% Placement Support</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-star"></i> <strong>ISO Certified Institute</strong></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     HERO SECTION
+═══════════════════════════════════════════ -->
+<section class="hero-section">
+
+    <!-- Background blobs -->
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="hero-blob hero-blob-3"></div>
+  
+    <div class="container position-relative" style="z-index:1">
+  
+      <div class="row justify-content-center text-center">
+  
+        <!-- CENTER CONTENT -->
+        <div class="col-lg-12"
+             data-aos="fade-up"
+             data-aos-duration="800">
+  
+          <!-- Badge -->
+          <div class="hero-badge mx-auto">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Tally Prime</span> Certified Course
+          </div>
+  
+          <!-- Heading -->
+          <h1 class="hero-title" id="heroTitle">
+            Master
+            <span class="highlight">Tally Prime</span>
+            &amp; Accounting Skills
+          </h1>
+  
+          <!-- Description -->
+          <p class="hero-desc mx-auto">
+            India's most comprehensive Tally Prime training program.
+            Learn GST, payroll, inventory management, and advanced
+            financial reporting with industry experts.
+            Get job-ready in just 3 months.
+          </p>
+  
+          <!-- Bullet Points -->
+          <!-- <ul class="hero-bullets mx-auto">
+  
+            <li>
+              <i class="fas fa-check"></i>
+              Tally Prime, GST Filing &amp; Returns
+            </li>
+  
+            <li>
+              <i class="fas fa-check"></i>
+              Payroll, Inventory &amp; Business Management
+            </li>
+  
+            <li>
+              <i class="fas fa-check"></i>
+              Real-time Projects &amp; Practical Training
+            </li>
+  
+            <li>
+              <i class="fas fa-check"></i>
+              100% Placement Assistance &amp; Certification
+            </li>
+  
+          </ul>
+   -->
+          <!-- Buttons -->
+          <div class="d-flex flex-wrap justify-content-center gap-3 hero-btn-group">
+  
+            <a href="https://wa.me/919895352624"
+               class="btn-hero-primary ripple">
+  
+              <i class="fas fa-rocket"></i>
+              Enroll Now
+  
+            </a>
+  
+            <a href="tel:+919895352624"
+               class="btn-hero-outline">
+              Contact Our Team
+  
+            </a>
+  
+          </div>
+  
+        </div>
+  
+      </div>
+  
+    </div>
+  
+    <!-- Wave divider -->
+    <div class="hero-curve">
+      <svg viewBox="0 0 1440 150" preserveAspectRatio="none">
+        <path d="M0,80 C300,150 1100,0 1440,100 L1440,150 L0,150 Z"></path>
+      </svg>
+    </div>
+  
+  </section>
+
+<!-- ═══════════════════════════════════════════
+     MARQUEE STRIP
+═══════════════════════════════════════════ -->
+
+<!-- ═══════════════════════════════════════════
+     ABOUT TALLY COURSE SECTION
+═══════════════════════════════════════════ -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+
+      <!-- LEFT: Illustration -->
+      <div class="col-lg-5" data-aos="fade-right">
+       <img src="assets/image/tally-course.webp" style="border-radius:20px;">
+      </div>
+
+      <!-- RIGHT: Content -->
+      <div class="col-lg-7" data-aos="fade-left">
+        <div class="section-tag"><i class="fas fa-book-open"></i> About This Course</div>
+        <h2 class="section-title">Tally Prime<span> Course</span></h2>
+        
+        <p style="color:var(--text-muted);line-height:1.8;margin-bottom:24px;">
+          Our Tally Prime Training Course is a comprehensive, industry-aligned program designed for students, 
+          working professionals, and entrepreneurs. Covering everything from basic accounting principles to 
+          advanced GST filing and payroll management, this course equips you with the practical skills 
+          demanded by India's top companies.
+        </p>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <div class="about-feature">
+              <div class="about-feature-icon"><i class="fas fa-award"></i></div>
+              <div><h6>ISO Certified Institute</h6><p>Training backed by ISO 9001:2015 quality standards</p></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="about-feature">
+              <div class="about-feature-icon"><i class="fas fa-user-tie"></i></div>
+              <div><h6>Expert Trainers</h6><p>Learn from CA-qualified &amp; industry professionals</p></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="about-feature">
+              <div class="about-feature-icon"><i class="fas fa-laptop-code"></i></div>
+              <div><h6>Live Projects</h6><p>Work on real company data &amp; live case studies</p></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="about-feature">
+              <div class="about-feature-icon"><i class="fas fa-briefcase"></i></div>
+              <div><h6>100% Placement</h6><p>Dedicated placement cell &amp; career guidance</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ACHIEVEMENTS STRIP
+═══════════════════════════════════════════ -->
+<div class="achievement-strip">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-3 achievement-col" data-aos="fade-up" data-aos-delay="0">
+        <div class="achievement-box">
+          <h2 data-count="3000">0+</h2>
+          <p>Students Placed</p>
+        </div>
+      </div>
+      <div class="col-md-3 achievement-col" data-aos="fade-up" data-aos-delay="100">
+        <div class="achievement-box">
+          <h2 data-count="100">0%</h2>
+          <p>Placement Rate</p>
+        </div>
+      </div>
+      <div class="col-md-3 achievement-col" data-aos="fade-up" data-aos-delay="200">
+        <div class="achievement-box">
+          <h2 data-count="14">0+</h2>
+          <p>Years Experience</p>
+        </div>
+      </div>
+      <div class="col-md-3 no-border" data-aos="fade-up" data-aos-delay="300">
+        <div class="achievement-box">
+          <h2 data-count="500">0+</h2>
+          <p>Companies Hiring</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     WHAT YOU WILL LEARN
+═══════════════════════════════════════════ -->
+<section class="learn-section" id="syllabus">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag"><i class="fas fa-graduation-cap"></i> Course Curriculum</div>
+      <h2 class="section-title">What You Will <span>Learn</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">A structured curriculum covering everything from accounting basics to advanced Tally Prime features</p>
+    </div>
+
+    <div class="row g-4">
+      <!-- Card 1 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="learn-card">
+          <div class="learn-card-icon"><i class="fas fa-calculator"></i></div>
+          <h5>Tally Prime Fundamentals</h5>
+          <p>Master the complete Tally Prime interface, company creation, and basic accounting operations from the ground up.</p>
+          <ul class="topics">
+            <li><i class="fas fa-circle"></i> Company Setup &amp; Configuration</li>
+            <li><i class="fas fa-circle"></i> Ledger &amp; Group Management</li>
+            <li><i class="fas fa-circle"></i> Voucher Entry (All Types)</li>
+            <li><i class="fas fa-circle"></i> Day Book &amp; Trial Balance</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="learn-card">
+          <div class="learn-card-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+          <h5>GST Management</h5>
+          <p>Complete GST implementation in Tally — from setup to filing GSTR-1, GSTR-3B, and reconciliation.</p>
+          <ul class="topics">
+            <li><i class="fas fa-circle"></i> GST Configuration in Tally</li>
+            <li><i class="fas fa-circle"></i> GSTR-1 &amp; GSTR-3B Filing</li>
+            <li><i class="fas fa-circle"></i> E-Invoice &amp; E-Way Bill</li>
+            <li><i class="fas fa-circle"></i> GST Reconciliation</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="learn-card">
+          <div class="learn-card-icon"><i class="fas fa-users"></i></div>
+          <h5>Payroll Management</h5>
+          <p>Set up and manage complete employee payroll including salary structures, PF, ESI, and tax deductions.</p>
+          <ul class="topics">
+            <li><i class="fas fa-circle"></i> Employee Master Setup</li>
+            <li><i class="fas fa-circle"></i> Salary Structures &amp; Pay Heads</li>
+            <li><i class="fas fa-circle"></i> PF, ESI &amp; Professional Tax</li>
+            <li><i class="fas fa-circle"></i> Payslip &amp; Payroll Reports</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="learn-card">
+          <div class="learn-card-icon"><i class="fas fa-boxes"></i></div>
+          <h5>Inventory Management</h5>
+          <p>Manage stock, purchases, sales, godowns, and batch-wise tracking for complete inventory control.</p>
+          <ul class="topics">
+            <li><i class="fas fa-circle"></i> Stock Items &amp; Groups</li>
+            <li><i class="fas fa-circle"></i> Purchase &amp; Sales Orders</li>
+            <li><i class="fas fa-circle"></i> Godown Management</li>
+            <li><i class="fas fa-circle"></i> Stock Ageing &amp; Valuation</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Card 5 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="learn-card">
+          <div class="learn-card-icon"><i class="fas fa-book"></i></div>
+          <h5>Accounting Fundamentals</h5>
+          <p>Strong foundation in accounting principles — debit/credit, journal entries, and the accounting cycle.</p>
+          <ul class="topics">
+            <li><i class="fas fa-circle"></i> Accounting Principles &amp; Concepts</li>
+            <li><i class="fas fa-circle"></i> Journal, Ledger &amp; Cash Book</li>
+            <li><i class="fas fa-circle"></i> Bank Reconciliation Statement</li>
+            <li><i class="fas fa-circle"></i> TDS &amp; TCS Concepts</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Card 6 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="learn-card">
+          <div class="learn-card-icon"><i class="fas fa-chart-pie"></i></div>
+          <h5>Financial Reports</h5>
+          <p>Generate and analyze profit &amp; loss, balance sheets, cash flow statements, and management reports.</p>
+          <ul class="topics">
+            <li><i class="fas fa-circle"></i> Profit &amp; Loss Account</li>
+            <li><i class="fas fa-circle"></i> Balance Sheet Analysis</li>
+            <li><i class="fas fa-circle"></i> Cash Flow Statement</li>
+            <li><i class="fas fa-circle"></i> MIS &amp; Ratio Analysis</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     COURSE FEATURES — GLASSMORPHISM
+═══════════════════════════════════════════ -->
+<section class="features-section">
+  <div class="container position-relative" style="z-index:1">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.25);color:white;">
+        <i class="fas fa-star"></i> Why Choose Us
+      </div>
+      <h2 class="section-title" style="color:white;">Course <span style="color:#ffd700;">Features</span></h2>
+      <div class="divider-line mx-auto" style="background:linear-gradient(90deg,#ffd700,rgba(255,215,0,0.3));"></div>
+      <p class="section-subtitle mx-auto" style="color:rgba(255,255,255,0.72);">Premium features designed to accelerate your accounting career</p>
+    </div>
+    <div class="row g-4">
+      <!-- <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="feature-glass-card">
+          <div class="feature-glass-icon"><i class="fas fa-certificate"></i></div>
+          <h5>Industry Certification</h5>
+          <p>Receive a CADPOINT-certified completion certificate recognized by 500+ hiring companies across India.</p>
+        </div>
+      </div> -->
+      <!-- <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="feature-glass-card">
+          <div class="feature-glass-icon"><i class="fas fa-laptop"></i></div>
+          <h5>100% Practical Training</h5>
+          <p>Every session is hands-on with real company data, live voucher entry, and industry-standard projects.</p>
+        </div>
+      </div> -->
+      <!-- <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="feature-glass-card">
+          <div class="feature-glass-icon"><i class="fas fa-briefcase"></i></div>
+          <h5>Placement Assistance</h5>
+          <p>Dedicated placement team with resume building, mock interviews, and direct company referrals.</p>
+        </div>
+      </div> -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="feature-glass-card">
+          <div class="feature-glass-icon"><i class="fas fa-project-diagram"></i></div>
+          <h5>Real-time Projects</h5>
+          <p>Work on 5+ live accounting projects simulating real business environments — retail, manufacturing &amp; more.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="feature-glass-card">
+          <div class="feature-glass-icon"><i class="fas fa-calendar-alt"></i></div>
+          <h5>Flexible Timings</h5>
+          <p>Morning, evening, and weekend batches available. Learn at your own pace with batch flexibility.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="feature-glass-card">
+          <div class="feature-glass-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+          <h5>Expert Trainers</h5>
+          <p>Learn from CA-qualified trainers and Tally-certified professionals with 10+ years of industry experience.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="tally-hero-section py-5">
+    <div class="container">
+      <div class="row align-items-center g-5">
+  
+        <!-- Left Image -->
+        <div class="col-lg-5" data-aos="fade-right">
+          <!-- <div class="tally-image-wrapper"> -->
+  
+            <img src="assets/image/accounting.webp" alt="Tally Prime Course"
+                 class="img-fluid ">
+  
+            <!-- Floating Card -->
+            <!-- <div class="tally-floating-card"> -->
+              <!-- <div class="icon-box">
+                <i class="fas fa-user-graduate"></i>
+              </div> -->
+  
+              <!-- <div>
+                <h5>5000+ Students</h5>
+                <p>Successfully Trained</p>
+              </div> -->
+            <!-- </div> -->
+  
+          <!-- </div> -->
+        </div>
+  
+        <!-- Right Content -->
+        <div class="col-lg-7" data-aos="fade-left">
+  
+          <span class="course-tag">
+            <i class="fas fa-certificate"></i>
+            Certified Course
+          </span>
+  
+          <h1 class="tally-title">
+            Master <span>Tally Prime</span> & Accounting Skills
+          </h1>
+  
+          <p class="tally-desc">
+            India's most comprehensive Tally Prime training program.
+            Learn GST, payroll, inventory management, and advanced
+            financial reporting with industry experts.
+            Get job-ready in just 3 months.
+          </p>
+  
+          <!-- Features -->
+          <div class="tally-features">
+  
+            <div class="feature-item">
+              <i class="fas fa-check"></i>
+              <span>Tally Prime, GST Filing & Returns</span>
+            </div>
+  
+            <div class="feature-item">
+              <i class="fas fa-check"></i>
+              <span>Payroll, Inventory & Business Management</span>
+            </div>
+  
+            <div class="feature-item">
+              <i class="fas fa-check"></i>
+              <span>Real-time Projects & Practical Training</span>
+            </div>
+  
+            <div class="feature-item">
+              <i class="fas fa-check"></i>
+              <span>100% Placement Assistance & Certification</span>
+            </div>
+  
+          </div>
+  
+          <!-- Button -->
+          <div class="mt-4">
+            <a href="https://wa.me/919895352624" class="tally-btn">
+              <i class="fas fa-paper-plane"></i>
+              Enroll Now
+            </a>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- ═══════════════════════════════════════════
+     CAREER OPPORTUNITIES
+═══════════════════════════════════════════ -->
+<section class="career-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag"><i class="fas fa-road"></i> Career Paths</div>
+      <h2 class="section-title">Career <span>Opportunities</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Unlock high-paying accounting roles across all industries after completing this course</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-user-tie"></i></div>
+          <h5>Accountant</h5>
+          <p>Manage books of accounts, journal entries, and financial statements for businesses.</p>
+          <span class="career-salary">₹2.5L – ₹5L per year</span>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-file-invoice"></i></div>
+          <h5>GST Executive</h5>
+          <p>Handle GST compliance, return filing, reconciliation, and input tax credit management.</p>
+          <span class="career-salary">₹3L – ₹6L per year</span>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-users"></i></div>
+          <h5>Payroll Executive</h5>
+          <p>Process monthly payrolls, manage PF/ESI compliance, and handle statutory deductions.</p>
+          <span class="career-salary">₹2.8L – ₹5.5L per year</span>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-chart-line"></i></div>
+          <h5>Accounts Manager</h5>
+          <p>Lead accounting teams, oversee financial reporting, and coordinate audits &amp; compliance.</p>
+          <span class="career-salary">₹5L – ₹10L per year</span>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-receipt"></i></div>
+          <h5>Billing Executive</h5>
+          <p>Handle invoicing, purchase orders, billing management, and debtor/creditor reconciliation.</p>
+          <span class="career-salary">₹2.2L – ₹4L per year</span>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-laptop-house"></i></div>
+          <h5>Finance Analyst</h5>
+          <p>Analyze financial data, prepare MIS reports, and support business decision making.</p>
+          <span class="career-salary">₹4L – ₹8L per year</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════════════════ -->
+<!-- <section class="testimonials-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag"><i class="fas fa-quote-left"></i> Student Reviews</div>
+      <h2 class="section-title">What Our <span>Students Say</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Real success stories from real students who transformed their careers</p>
+    </div>
+    <div class="testi-track-wrapper" data-aos="fade-up" data-aos-delay="100">
+      <div class="testi-track" id="testiTrack">
+  
+        <div class="testi-card">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-text">"After completing the Tally Prime course at CADPOINT, I got placed in an MNC as an Accounts Executive within 2 weeks. The practical training was excellent and the trainers were very supportive throughout."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">P</div>
+            <div>
+              <div class="testi-name">Priya Sharma</div>
+              <div class="testi-role">Accounts Executive, TCS — Mumbai</div>
+            </div>
+          </div>
+        </div>
+       
+        <div class="testi-card">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-text">"The GST module was incredibly detailed and practical. I joined as a fresher and now I handle GST filings for 20+ clients. CADPOINT's course was a life-changing decision for me."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">R</div>
+            <div>
+              <div class="testi-name">Rahul Verma</div>
+              <div class="testi-role">GST Consultant, Self-Employed — Delhi</div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="testi-card">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+          <p class="testi-text">"I was a homemaker looking for a career restart. CADPOINT's flexible batches and supportive trainers made learning easy. I'm now working as a payroll executive earning well."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">A</div>
+            <div>
+              <div class="testi-name">Anita Patel</div>
+              <div class="testi-role">Payroll Executive, HDFC — Ahmedabad</div>
+            </div>
+          </div>
+        </div>
+    
+        <div class="testi-card">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-text">"The live project experience at CADPOINT is what sets it apart. Working on actual business scenarios built my confidence completely. Got my first job at a CA firm within a month!"</p>
+          <div class="testi-author">
+            <div class="testi-avatar">K</div>
+            <div>
+              <div class="testi-name">Karthik Nair</div>
+              <div class="testi-role">Junior Accountant, CA Firm — Bangalore</div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="testi-card">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-text">"Best investment I ever made. The trainers at CADPOINT explained every concept with real business examples. I cleared my Tally certification with distinction. Highly recommend!"</p>
+          <div class="testi-author">
+            <div class="testi-avatar">S</div>
+            <div>
+              <div class="testi-name">Sneha Iyer</div>
+              <div class="testi-role">Finance Analyst, Infosys — Chennai</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="testi-nav">
+      <button class="testi-btn" id="testiBtnPrev"><i class="fas fa-arrow-left"></i></button>
+      <div class="testi-dots" id="testiDots">
+        <div class="testi-dot active" data-idx="0"></div>
+        <div class="testi-dot" data-idx="1"></div>
+        <div class="testi-dot" data-idx="2"></div>
+      </div>
+      <button class="testi-btn" id="testiBtnNext"><i class="fas fa-arrow-right"></i></button>
+    </div>
+  </div>
+</section> -->
+
+<!-- ═══════════════════════════════════════════
+     FAQ SECTION
+═══════════════════════════════════════════ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <div class="section-tag"><i class="fas fa-question-circle"></i> FAQ</div>
+          <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+          <div class="divider-line mx-auto"></div>
+        </div>
+        <div class="accordion faq-accordion" id="faqAccordion" data-aos="fade-up" data-aos-delay="100">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                Who is this Tally Prime course suitable for?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                This course is suitable for commerce students (10th, 12th, graduates), working professionals looking to upskill, business owners who want to manage their own accounts, and anyone seeking a career in accounting, finance, or GST consulting. No prior accounting knowledge is required.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                What is the duration of the Tally Prime course?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                The complete Tally Prime course duration is 3 months (approximately 90 hours of training). We offer flexible batches including morning, evening, and weekend options to accommodate your schedule.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                Will I get a certificate after completing the course?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Yes! Upon successful completion, you will receive a CADPOINT-certified course completion certificate. We also help you prepare for Tally's official certification exam, which is recognized by employers across India.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                Is placement assistance provided?
+              </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Absolutely. CADPOINT has a dedicated placement cell that connects students with 500+ hiring partners. We provide resume building, interview preparation, and direct referrals to top accounting firms, CA offices, and corporate companies.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                Is GST covered in this course?
+              </button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Yes, GST is a core module of this course. You will learn complete GST implementation in Tally Prime — from setting up GST ledgers to filing GSTR-1, GSTR-3B, generating e-invoices, and e-way bills.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                What computer skills do I need before joining?
+              </button>
+            </h2>
+            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Only basic computer operating skills are required (Windows, typing, internet browsing). No programming or advanced computer knowledge is needed. Our trainers will guide you from the very beginning.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FINAL CTA SECTION
+═══════════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="container position-relative" style="z-index:1">
+    <div data-aos="zoom-in">
+      <div class="section-tag mx-auto mb-4" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);color:white;display:inline-flex;">
+        <i class="fas fa-rocket"></i> Start Today
+      </div>
+      <h2>Start Your Accounting Career Today</h2>
+      <p>Join over 3,000 students who built successful accounting careers with CADPOINT. Enroll now and get career-ready in just 3 months.</p>
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <a href="https://wa.me/919895352624" class="btn-cta-glow">
+          <i class="fas fa-rocket"></i> Enroll Now — Free Counselling
+        </a>
+        <a href="tel:+919895352624" class="btn-cta-outline-white">
+          <i class="fas fa-phone-alt"></i> Talk to an Expert
+        </a>
+      </div>
+      <!-- Trust badges -->
+      <!-- <div class="d-flex flex-wrap justify-content-center gap-4 mt-5">
+        <div style="text-align:center;color:rgba(255,255,255,0.7);">
+          <i class="fas fa-shield-alt" style="color:#ffd700;font-size:1.4rem;display:block;margin-bottom:6px;"></i>
+          <div style="font-size:0.75rem;font-weight:600;">ISO Certified</div>
+        </div>
+        <div style="text-align:center;color:rgba(255,255,255,0.7);">
+          <i class="fas fa-users" style="color:#ffd700;font-size:1.4rem;display:block;margin-bottom:6px;"></i>
+          <div style="font-size:0.75rem;font-weight:600;">3000+ Alumni</div>
+        </div>
+        <div style="text-align:center;color:rgba(255,255,255,0.7);">
+          <i class="fas fa-briefcase" style="color:#ffd700;font-size:1.4rem;display:block;margin-bottom:6px;"></i>
+          <div style="font-size:0.75rem;font-weight:600;">500+ Hiring Partners</div>
+        </div>
+        <div style="text-align:center;color:rgba(255,255,255,0.7);">
+          <i class="fas fa-star" style="color:#ffd700;font-size:1.4rem;display:block;margin-bottom:6px;"></i>
+          <div style="font-size:0.75rem;font-weight:600;">4.9/5 Rating</div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER — EXACT MATCH FROM INDEX.HTML
+═══════════════════════════════════════════ -->
+<div id="footer"></div>
+
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+function initCaddNav() {
+
+    const coursesNav = document.getElementById('coursesNav');
+    const caret = document.getElementById('coursesCaret');
+    const menu = document.getElementById('coursesMegaMenu');
+    const closeBtn = document.getElementById('closeMegaMenu');
+
+    if (!coursesNav || !caret || !menu) return;
+
+    // X BUTTON CLOSE (Desktop + Mobile)
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.remove('show');
+
+        });
+    }
+
+    // MOBILE
+    if (window.innerWidth <= 991) {
+
+        caret.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!coursesNav.contains(e.target)) {
+                menu.classList.remove('show');
+            }
+        });
+
+        return;
+    }
+
+    // DESKTOP
+    coursesNav.addEventListener('mouseenter', function () {
+        menu.classList.add('show');
+    });
+
+    coursesNav.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+
+    menu.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+}
+</script>
+
+<script>
+fetch("./header.html")
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById("header").innerHTML = html;
+    initCaddNav();
+  });
+
+  fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+      document.getElementById('footer').innerHTML = data;
+  });
+</script>
+
+
+<script>
+
+    document
+      .getElementById("closeMegaMenu")
+      .addEventListener("click", function () {
+    
+        document
+          .querySelector(".courses-mega-menu")
+          .classList.remove("show");
+    
+      });
+    
+    </script>
+
+<script>
+// ─── LOADER ─────────────────────────────────
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+  }, 2000);
+});
+
+// ─── AOS INIT ───────────────────────────────
+AOS.init({
+  duration: 700,
+  easing: 'ease-out-cubic',
+  once: true,
+  offset: 60
+});
+
+// ─── NAVBAR SCROLL ──────────────────────────
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  if (window.scrollY > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+  const btn = document.getElementById('backToTop');
+  if (window.scrollY > 400) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+});
+
+// ─── BACK TO TOP ────────────────────────────
+document.getElementById('backToTop').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ─── HERO TEXT ANIMATION ────────────────────
+const heroTitle = document.getElementById('heroTitle');
+if (heroTitle) {
+  heroTitle.style.opacity = '0';
+  heroTitle.style.transform = 'translateY(30px)';
+  heroTitle.style.transition = 'opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s';
+  setTimeout(() => {
+    heroTitle.style.opacity = '1';
+    heroTitle.style.transform = 'translateY(0)';
+  }, 300);
+}
+
+// ─── COUNTER ANIMATION ──────────────────────
+function animateCounters() {
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseInt(el.getAttribute('data-count'));
+    let current = 0;
+    const increment = target / 60;
+    const suffix = el.closest('.achievement-box') ? (target === 100 ? '%' : '+') : '+';
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) { current = target; clearInterval(timer); }
+      el.textContent = Math.floor(current) + suffix;
+    }, 25);
+  });
+}
+const achieveObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { animateCounters(); achieveObserver.disconnect(); }
+  });
+}, { threshold: 0.3 });
+const achieveStrip = document.querySelector('.achievement-strip');
+if (achieveStrip) achieveObserver.observe(achieveStrip);
+
+// ─── SKILL BAR ANIMATION ────────────────────
+const skillObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      document.querySelectorAll('.skill-bar-fill').forEach(bar => {
+        bar.style.width = bar.getAttribute('data-width') + '%';
+      });
+      skillObserver.disconnect();
+    }
+  });
+}, { threshold: 0.3 });
+const skillsSection = document.querySelector('.skills-section');
+if (skillsSection) skillObserver.observe(skillsSection);
+
+// ─── RIPPLE EFFECT ──────────────────────────
+document.querySelectorAll('.ripple').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.style.cssText = `
+      position:absolute; border-radius:50%;
+      background:rgba(255,255,255,0.3);
+      width:10px; height:10px;
+      left:${e.clientX - rect.left - 5}px;
+      top:${e.clientY - rect.top - 5}px;
+      transform:scale(0); animation:rippleAnim 0.6s ease-out forwards;
+      pointer-events:none; z-index:10;
+    `;
+    this.style.position = 'relative';
+    this.style.overflow = 'hidden';
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 700);
+  });
+});
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `@keyframes rippleAnim { to { transform:scale(30); opacity:0; } }`;
+document.head.appendChild(rippleStyle);
+
+// ─── TESTIMONIALS SLIDER ─────────────────────
+(function() {
+  const track = document.getElementById('testiTrack');
+  const dots = document.querySelectorAll('.testi-dot');
+  const prevBtn = document.getElementById('testiBtnPrev');
+  const nextBtn = document.getElementById('testiBtnNext');
+  if (!track) return;
+
+  let currentIdx = 0;
+  let visibleCards = 3;
+  const cards = track.querySelectorAll('.testi-card');
+  const totalCards = cards.length;
+
+  function getVisibleCount() {
+    if (window.innerWidth < 576) return 1;
+    if (window.innerWidth < 992) return 2;
+    return 3;
+  }
+
+  function getMaxIdx() {
+    return totalCards - getVisibleCount();
+  }
+
+  function slideTo(idx) {
+    visibleCards = getVisibleCount();
+    const maxIdx = getMaxIdx();
+    currentIdx = Math.max(0, Math.min(idx, maxIdx));
+    const cardWidth = track.querySelector('.testi-card').offsetWidth + 24;
+    track.style.transform = `translateX(-${currentIdx * cardWidth}px)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === Math.floor(currentIdx / 1)));
+  }
+
+  prevBtn?.addEventListener('click', () => slideTo(currentIdx - 1));
+  nextBtn?.addEventListener('click', () => slideTo(currentIdx + 1));
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => slideTo(parseInt(dot.getAttribute('data-idx'))));
+  });
+  window.addEventListener('resize', () => slideTo(currentIdx));
+
+  // Auto-slide every 5s
+  setInterval(() => {
+    const maxIdx = getMaxIdx();
+    slideTo(currentIdx < maxIdx ? currentIdx + 1 : 0);
+  }, 5000);
+})();
+
+// ─── MEGA DROPDOWN ───────────────────────────
+(function() {
+  const coursesNav = document.getElementById('coursesNav');
+  if (!coursesNav) return;
+  const menu = coursesNav.querySelector('.courses-mega-menu');
+  const caret = document.getElementById('coursesDropdown');
+  if (!menu) return;
+  let hideTimer;
+
+  function showMenu() {
+    clearTimeout(hideTimer);
+    const navRect = document.getElementById('mainNav').getBoundingClientRect();
+    menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    menu.classList.add('show');
+    if (caret) caret.querySelector('i').style.transform = 'rotate(180deg)';
+  }
+  function hideMenu() {
+    hideTimer = setTimeout(() => {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }, 120);
+  }
+
+  coursesNav.addEventListener('mouseenter', showMenu);
+  coursesNav.addEventListener('mouseleave', hideMenu);
+  menu.addEventListener('mouseenter', showMenu);
+  menu.addEventListener('mouseleave', hideMenu);
+  if (caret) {
+    caret.querySelector('i').style.transition = 'transform 0.25s ease';
+    caret.addEventListener('click', function(e) {
+      e.stopPropagation();
+      if (menu.classList.contains('show')) hideMenu(); else showMenu();
+    });
+  }
+  document.addEventListener('click', function(e) {
+    if (!coursesNav.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }
+  });
+  window.addEventListener('scroll', function() {
+    if (menu.classList.contains('show')) {
+      const navRect = document.getElementById('mainNav').getBoundingClientRect();
+      menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    }
+  });
+})();
+</script>
+</body>
+</html>

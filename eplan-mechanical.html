@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EPLAN Mechanical Course | CADPOINT Authorized Training Centre</title>
+  <meta name="description" content="Master EPLAN Mechanical with CADPOINT. Learn mechanical documentation, machine design workflows, BOM management, manufacturing documentation, and real-world industrial projects. Get certified and placed.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ 
+   <link rel="icon" type="image/x-icon" href="assets/image/cadd-logo.webp">
+   <style>
+    /* ═══════════════════════════════════════
+       CSS VARIABLES — CADPOINT BRAND
+    ═══════════════════════════════════════ */
+    :root {
+      --primary: #8B0000;
+      --primary-light: #A00000;
+      --primary-dark: #5c0000;
+      --primary-glow: rgba(139,0,0,0.35);
+      --white: #ffffff;
+      --light-gray: #F5F5F5;
+      --text-dark: #1a1a1a;
+      --text-muted: #555;
+      --border-light: rgba(139,0,0,0.15);
+      --glass-bg: rgba(255,255,255,0.08);
+      --glass-border: rgba(255,255,255,0.18);
+    }
+
+    html, body { max-width: 100%; overflow-x: hidden; scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; color: var(--text-dark); background: var(--white); }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* ═══════════════════════════════════════
+       PAGE LOADER
+    ═══════════════════════════════════════ */
+    #loader {
+      position: fixed; inset: 0; background: var(--primary-dark);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 9999; transition: opacity 0.6s ease, visibility 0.6s;
+      flex-direction: column; gap: 20px;
+    }
+    #loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-logo { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2rem; color: #fff; letter-spacing: 3px; }
+    .loader-logo span { color: #ffd700; }
+    .loader-bar { width: 200px; height: 3px; background: rgba(255,255,255,0.15); border-radius: 2px; overflow: hidden; }
+    .loader-bar-fill { height: 100%; background: linear-gradient(90deg, #ffd700, #ffb700); animation: loaderAnim 1.8s ease forwards; }
+    @keyframes loaderAnim { 0% { width: 0; } 100% { width: 100%; } }
+
+    /* ═══════════════════════════════════════
+       SCROLL TO TOP
+    ═══════════════════════════════════════ */
+    #backToTop {
+      position: fixed; bottom: 30px; right: 30px; width: 44px; height: 44px;
+      background: var(--primary); color: white; border: none; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 999; opacity: 0; visibility: hidden;
+      transition: all 0.3s ease; box-shadow: 0 4px 20px var(--primary-glow);
+      font-size: 0.9rem;
+    }
+    #backToTop.visible { opacity: 1; visibility: visible; }
+    #backToTop:hover { transform: translateY(-4px); }
+
+    /* ═══════════════════════════════════════
+       MEGA MENU CLOSE X
+    ═══════════════════════════════════════ */
+    .mega-close-x {
+      position: absolute; top: 12px; right: 12px;
+      width: 34px; height: 34px; border: none; border-radius: 50%;
+      background: #fff; color: #222; display: flex; align-items: center;
+      justify-content: center; cursor: pointer; z-index: 99;
+      box-shadow: 0 4px 15px rgba(0,0,0,.12); transition: .3s ease;
+    }
+    .mega-close-x:hover { background: var(--primary); color: #fff; transform: rotate(90deg); }
+
+    /* MOBILE MEGA MENU */
+    @media (max-width: 991px) {
+      .navbar-collapse { background: #fff; padding: 15px; border-radius: 18px; margin-top: 15px; box-shadow: 0 10px 35px rgba(0,0,0,.08); }
+      #coursesNav { width: 100%; }
+      #coursesNav .d-flex { width: 100%; justify-content: space-between; align-items: center; }
+      #coursesNav .nav-link { padding: 12px 0 !important; }
+      .courses-caret { padding-right: 0 !important; }
+      .courses-mega-menu { position: static !important; transform: none !important; width: 100% !important; min-width: 100% !important; margin-top: 10px !important; border: none !important; box-shadow: none !important; border-radius: 16px !important; overflow: hidden; background: #f8f9fb; }
+      .courses-mega-menu .d-flex { flex-direction: column !important; gap: 0 !important; padding-top: 0 !important; }
+      .mega-col { width: 100% !important; border-right: none !important; border-bottom: 1px solid rgba(0,0,0,.06); padding: 18px 16px !important; }
+      .mega-col:last-child { border-bottom: none; }
+      .mega-col-title { font-size: 1rem; font-weight: 700; }
+      .mega-col-sub { font-size: .78rem; }
+      .mega-item { width: 100%; display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 10px; font-size: .92rem; }
+      .mega-item:hover { background: #fff; }
+      .mega-item i { width: 18px; text-align: center; }
+    }
+
+    /* ═══════════════════════════════════════
+       NAVBAR
+    ═══════════════════════════════════════ */
+    .navbar { background: rgba(255,255,255,0.97); backdrop-filter: blur(20px); box-shadow: 0 2px 30px rgba(139,0,0,0.12); padding: 7px 0; position: sticky; top: 0; z-index: 1000; transition: all 0.3s ease; }
+    .navbar.scrolled { padding: 8px 0; box-shadow: 0 4px 40px rgba(139,0,0,0.2); }
+    .navbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icon { width: 48px; height: 48px; flex-shrink: 0; }
+    .logo-text { line-height: 1.1; }
+    .logo-text .brand-name { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.3rem; color: var(--primary); letter-spacing: 2px; }
+    .logo-text .brand-sub { font-size: 0.58rem; font-weight: 600; color: #666; letter-spacing: 1.5px; text-transform: uppercase; }
+    .navbar-nav .nav-link { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.8px; text-transform: uppercase; padding: 8px 16px !important; border-radius: 6px; transition: all 0.3s ease; position: relative; }
+    .navbar-nav .nav-link:hover { color: var(--primary); }
+    .btn-nav-enroll { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white !important; padding: 8px 22px !important; border-radius: 25px !important; font-weight: 700 !important; box-shadow: 0 4px 15px var(--primary-glow); transition: all 0.3s ease !important; }
+    .btn-nav-enroll:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--primary-glow) !important; }
+    .btn-nav-enroll::after { display: none !important; }
+
+    /* MEGA DROPDOWN */
+    #coursesNav { position: static !important; }
+    #coursesNav > div { display: flex; align-items: center; }
+    .courses-mega-menu { position: fixed !important; top: auto !important; left: 50% !important; transform: translateX(-50%) translateY(6px) !important; width: min(960px, 96vw) !important; display: block !important; opacity: 0; visibility: hidden; transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s; pointer-events: none; border: none !important; border-radius: 16px !important; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.16), 0 0 0 1px rgba(139,0,0,0.1) !important; padding: 0 !important; }
+    .courses-mega-menu.show { opacity: 1 !important; visibility: visible !important; transform: translateX(-50%) translateY(0) !important; pointer-events: auto !important; }
+    .mega-topbar { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: white; font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.6px; }
+    .mega-viewall { color: #ffd700 !important; font-size: 0.75rem; font-weight: 700; text-decoration: none; transition: opacity 0.2s; }
+    .mega-viewall:hover { opacity: 0.8; }
+    .mega-col { flex: 1; padding: 20px 10px 10px 10px; border-right: 1px solid rgba(139,0,0,0.08); background: white; }
+    .mega-col:last-child { border-right: none; }
+    .mega-col-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid rgba(139,0,0,0.08); }
+    .mega-col-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .mega-col-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.82rem; color: var(--text-dark); letter-spacing: 0.4px; }
+    .mega-col-sub { font-size: 0.68rem; color: #999; font-weight: 500; margin-top: 1px; }
+    .mega-item { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 7px; font-size: 0.8rem; font-weight: 500; color: var(--text-dark); text-decoration: none; transition: background 0.15s, color 0.15s, padding-left 0.15s; margin-bottom: 2px; }
+    .mega-item i { font-size: 0.72rem; width: 16px; text-align: center; color: #aaa; transition: color 0.15s; flex-shrink: 0; }
+    .mega-item:hover { background: rgba(139,0,0,0.07); color: var(--primary); padding-left: 12px; }
+    .mega-item:hover i { color: var(--primary); }
+    #coursesNav .courses-caret { color: var(--text-dark); transition: color 0.2s; }
+    #coursesNav .courses-caret:hover { color: var(--primary); }
+
+    /* ═══════════════════════════════════════
+       BREADCRUMB SLIDER
+    ═══════════════════════════════════════ */
+    .breadcrumb-slider { background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-dark) 100%); padding: 0; overflow: hidden; height: 38px; display: flex; align-items: center; position: relative; }
+    .breadcrumb-slider::before, .breadcrumb-slider::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none; }
+    .breadcrumb-slider::before { left: 0; background: linear-gradient(to right, var(--primary-dark), transparent); }
+    .breadcrumb-slider::after { right: 0; background: linear-gradient(to left, var(--primary-dark), transparent); }
+    .breadcrumb-track { display: flex; animation: scrollBreadcrumb 32s linear infinite; white-space: nowrap; will-change: transform; }
+    .breadcrumb-track:hover { animation-play-state: paused; }
+    .breadcrumb-item-slide { display: inline-flex; align-items: center; gap: 8px; padding: 0 30px; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 1px; text-transform: uppercase; font-family: 'Montserrat', sans-serif; }
+    .breadcrumb-item-slide i { color: rgba(255,255,255,0.6); font-size: 0.7rem; }
+    @keyframes scrollBreadcrumb { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ═══════════════════════════════════════
+       SECTION UTILITIES
+    ═══════════════════════════════════════ */
+    .section-tag { display: inline-flex; align-items: center; gap: 7px; background: rgba(139,0,0,0.07); border: 1px solid rgba(139,0,0,0.2); color: var(--primary); padding: 5px 14px; border-radius: 50px; font-size: 0.72rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; font-family: 'Montserrat', sans-serif; margin-bottom: 14px; }
+    .section-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(1.7rem, 3.5vw, 2.4rem); color: var(--text-dark); line-height: 1.15; }
+    .section-title span { color: var(--primary); }
+    .section-sub { font-size: 1rem; color: var(--text-muted); line-height: 1.8; max-width: 620px; margin: 0 auto; }
+    section { padding: 90px 0; }
+
+    /* ═══════════════════════════════════════
+       HERO SECTION
+    ═══════════════════════════════════════ */
+    .hero-section { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, #c0392b 80%, var(--primary-dark) 100%); min-height: 88vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 80px 0 110px; }
+    .hero-section::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2zm4 0L80 4v2L46 40h-2zm4 0L80 8v2L50 40h-2zm4 0L80 12v2L54 40h-2zm4 0L80 16v2L58 40h-2zm4 0L80 20v2L62 40h-2zm4 0L80 24v2L66 40h-2zm4 0L80 28v2L70 40h-2zm4 0L80 32v2L74 40h-2zm4 0L80 36v2L78 40h-2zm4 0L80 40h-2v-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.4; }
+    .hero-blob { position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.12; pointer-events: none; }
+    .hero-blob-1 { width: 500px; height: 500px; background: #ff4444; top: -150px; right: -100px; animation: blobFloat 8s ease-in-out infinite; }
+    .hero-blob-2 { width: 300px; height: 300px; background: #ffd700; bottom: -80px; left: -80px; animation: blobFloat 10s ease-in-out infinite reverse; }
+    .hero-blob-3 { width: 200px; height: 200px; background: #fff; top: 50%; left: 40%; animation: blobFloat 6s ease-in-out infinite 2s; }
+    @keyframes blobFloat { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(30px,-30px) scale(1.1); } }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(10px); padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+    .hero-badge span { color: #ffd700; }
+    .hero-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(2rem, 4.5vw, 3rem); line-height: 1.1; color: white; margin-bottom: 20px; opacity: 0; transform: translateY(30px); animation: heroFadeUp 0.9s ease 0.4s forwards; }
+    .hero-title .highlight { color: #ffd700; }
+    .hero-desc { font-size: 1rem; color: rgba(255,255,255,0.85); line-height: 1.8; margin-bottom: 28px; max-width: 680px; margin-left: auto; margin-right: auto; opacity: 0; animation: heroFadeUp 0.9s ease 0.7s forwards; }
+    @keyframes heroFadeUp { to { opacity: 1; transform: translateY(0); } }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; opacity: 0; animation: heroFadeUp 0.9s ease 1s forwards; }
+    .btn-hero-primary { background: linear-gradient(135deg, #ffd700, #ffb700); color: var(--primary-dark) !important; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.9rem; letter-spacing: 0.8px; padding: 14px 32px; border-radius: 50px; border: none; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 8px 25px rgba(255,215,0,0.4); transition: all 0.3s ease; position: relative; overflow: hidden; }
+    .btn-hero-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(255,215,0,0.5); }
+    .btn-hero-outline { background: transparent; color: white !important; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem; padding: 13px 28px; border-radius: 50px; border: 2px solid rgba(255,255,255,0.5); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; backdrop-filter: blur(10px); }
+    .btn-hero-outline:hover { border-color: white; background: rgba(255,255,255,0.12); transform: translateY(-3px); }
+    .btn-hero-phone { background: rgba(255,255,255,0.15); color: white !important; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem; padding: 13px 28px; border-radius: 50px; border: 2px solid rgba(255,255,255,0.3); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; backdrop-filter: blur(10px); }
+    .btn-hero-phone:hover { background: rgba(255,255,255,0.25); border-color: white; transform: translateY(-3px); }
+    .hero-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; justify-content: center; opacity: 0; animation: heroFadeUp 0.9s ease 0.85s forwards; }
+    .hero-pill { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.9); padding: 5px 14px; border-radius: 50px; font-size: 0.78rem; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
+    .hero-pill i { color: #ffd700; font-size: 0.7rem; }
+
+    /* ═══════════════════════════════════════
+       ACHIEVEMENT STRIP
+    ═══════════════════════════════════════ */
+    .achievement-strip { background: #8b0000; padding: 70px 0; }
+    .achievement-col { border-right: 1px solid rgba(255,255,255,.2); }
+    .no-border { border-right: none; }
+    .achievement-box { padding: 20px 10px; transition: .4s ease; text-align: center; }
+    .achievement-box:hover { transform: translateY(-8px); }
+    .achievement-box h2 { font-size: 62px; font-weight: 800; color: #ffd400; margin-bottom: 12px; line-height: 1; font-family: 'Montserrat', sans-serif; }
+    .achievement-box p { font-size: 20px; font-weight: 500; color: #fff; margin: 0; }
+    @media(max-width:991px) { .achievement-col { border-right: none; margin-bottom: 30px; } }
+    @media(max-width:576px) { .achievement-strip { padding: 50px 0; } .achievement-box h2 { font-size: 42px; } .achievement-box p { font-size: 16px; } }
+
+    /* ═══════════════════════════════════════
+       COURSE OVERVIEW
+    ═══════════════════════════════════════ */
+    .course-overview-section { background: white; }
+    .overview-img-wrap { position: relative; }
+    .overview-img-wrap img { width: 100%; border-radius: 20px; box-shadow: 0 20px 60px rgba(139,0,0,0.18); }
+    .overview-exp-badge { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; padding: 10px 18px; border-radius: 12px; margin-bottom: 16px; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.85rem; }
+    .feature-list { list-style: none; padding: 0; margin-bottom: 28px; }
+    .feature-list li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 0.9rem; color: var(--text-dark); }
+    .feature-list li i { color: var(--primary); background: rgba(139,0,0,0.08); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; flex-shrink: 0; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════
+       WHY LEARN SECTION
+    ═══════════════════════════════════════ */
+    .why-section { background: var(--light-gray); }
+    .why-card { background: white; border-radius: 20px; padding: 28px 22px; text-align: center; border: 1px solid rgba(139,0,0,0.06); box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: all 0.4s ease; height: 100%; position: relative; overflow: hidden; }
+    .why-card::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 0; height: 4px; background: linear-gradient(90deg, var(--primary-dark), var(--primary)); border-radius: 50px; transition: 0.5s; }
+    .why-card:hover::before { width: 100%; }
+    .why-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(139,0,0,0.14); }
+    .why-icon { width: 72px; height: 72px; background: linear-gradient(135deg, rgba(139,0,0,0.09), rgba(139,0,0,0.15)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 1.8rem; color: var(--primary); transition: all 0.4s ease; }
+    .why-card:hover .why-icon { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; box-shadow: 0 8px 25px var(--primary-glow); transform: scale(1.08) rotate(8deg); }
+    .why-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; margin-bottom: 10px; }
+    .why-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* ═══════════════════════════════════════
+       IMAGE-CONTENT ALTERNATING SECTIONS
+    ═══════════════════════════════════════ */
+    .img-content-section { padding: 90px 0; }
+    .img-content-section.bg-gray { background: var(--light-gray); }
+    .img-content-section.bg-white { background: white; }
+    .ic-img-wrap { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(139,0,0,0.14); position: relative; }
+    .ic-img-wrap img { width: 100%; height: 360px; object-fit: cover; display: block; }
+    .ic-img-wrap svg { width: 100%; height: 360px; display: block; }
+    .ic-badge { position: absolute; bottom: 16px; left: 16px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; padding: 10px 16px; border-radius: 12px; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.8rem; box-shadow: 0 6px 20px var(--primary-glow); }
+    .bullet-list { list-style: none; padding: 0; }
+    .bullet-list li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; font-size: 0.9rem; }
+    .bullet-list li .bi { width: 28px; height: 28px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; flex-shrink: 0; margin-top: 1px; }
+    .bullet-list li strong { font-weight: 700; color: var(--text-dark); display: block; margin-bottom: 2px; font-size: 0.88rem; }
+    .bullet-list li span { color: var(--text-muted); font-size: 0.82rem; line-height: 1.6; }
+    .eplan-visual { width: 100%; height: 360px; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(139,0,0,0.14); }
+
+    /* ═══════════════════════════════════════
+       MODULES SECTION
+    ═══════════════════════════════════════ */
+    .modules-section { background: var(--light-gray); }
+    .module-card { background: white; border-radius: 18px; padding: 28px 22px; height: 100%; border: 1px solid rgba(139,0,0,0.07); box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: all 0.4s ease; position: relative; overflow: hidden; }
+    .module-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(139,0,0,0.15); }
+    .module-num { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.7rem; color: var(--primary); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; background: rgba(139,0,0,0.07); display: inline-block; padding: 3px 10px; border-radius: 50px; }
+    .module-icon { width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 16px; transition: all 0.4s ease; }
+    .module-card:hover .module-icon { transform: scale(1.1) rotate(5deg); box-shadow: 0 8px 25px var(--primary-glow); }
+    .module-card h6 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.92rem; margin-bottom: 14px; color: var(--text-dark); }
+    .module-topics { list-style: none; padding: 0; margin: 0; }
+    .module-topics li { font-size: 0.8rem; color: var(--text-muted); padding: 5px 0; border-bottom: 1px dashed rgba(139,0,0,0.08); display: flex; align-items: center; gap: 8px; }
+    .module-topics li:last-child { border-bottom: none; }
+    .module-topics li::before { content: ''; width: 6px; height: 6px; background: var(--primary); border-radius: 50%; flex-shrink: 0; }
+
+    /* ═══════════════════════════════════════
+       CAREER OPPORTUNITIES
+    ═══════════════════════════════════════ */
+    .careers-section { background: white; }
+    .career-card { background: white; border-radius: 16px; padding: 24px 20px; border: 1px solid rgba(139,0,0,0.08); box-shadow: 0 4px 16px rgba(0,0,0,0.05); transition: all 0.3s ease; height: 100%; display: flex; align-items: flex-start; gap: 16px; }
+    .career-card:hover { transform: translateX(6px); box-shadow: 0 8px 30px rgba(139,0,0,0.12); border-left: 4px solid var(--primary); }
+    .career-icon { width: 50px; height: 50px; background: linear-gradient(135deg, rgba(139,0,0,0.09), rgba(139,0,0,0.15)); color: var(--primary); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; transition: all 0.3s ease; }
+    .career-card:hover .career-icon { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; }
+    .career-card h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem; margin-bottom: 5px; }
+    .career-card p { font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.6; }
+
+    /* ═══════════════════════════════════════
+       LEARNING PROCESS TIMELINE
+    ═══════════════════════════════════════ */
+    .process-section { background: var(--light-gray); }
+    .process-timeline { display: flex; align-items: flex-start; justify-content: center; gap: 0; flex-wrap: nowrap; position: relative; }
+    .process-timeline::before { content: ''; position: absolute; top: 32px; left: 10%; right: 10%; height: 3px; background: linear-gradient(90deg, var(--primary-dark), var(--primary), #ffd700); border-radius: 3px; z-index: 0; }
+    .process-step { text-align: center; flex: 1; position: relative; z-index: 1; padding: 0 12px; }
+    .process-num { width: 64px; height: 64px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.4rem; border: 4px solid white; box-shadow: 0 8px 25px var(--primary-glow); transition: all 0.3s ease; }
+    .process-step:hover .process-num { transform: scale(1.15); box-shadow: 0 12px 35px var(--primary-glow); }
+    .process-step h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.82rem; margin-bottom: 6px; }
+    .process-step p { font-size: 0.75rem; color: var(--text-muted); line-height: 1.6; }
+    @media(max-width:767px) { .process-timeline { flex-direction: column; align-items: center; } .process-timeline::before { display: none; } .process-step { width: 100%; max-width: 280px; margin-bottom: 24px; } }
+
+    /* ═══════════════════════════════════════
+       GLASSMORPHISM FEATURE CARDS
+    ═══════════════════════════════════════ */
+    .glass-section { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, #c0392b 100%); padding: 90px 0; position: relative; overflow: hidden; }
+    .glass-section::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Ccircle cx='40' cy='40' r='30'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); pointer-events: none; }
+    .glass-card { background: rgba(255,255,255,0.1); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 28px 22px; text-align: center; height: 100%; transition: all 0.4s ease; }
+    .glass-card:hover { background: rgba(255,255,255,0.18); transform: translateY(-8px); }
+    .glass-card i { font-size: 2.2rem; color: #ffd700; margin-bottom: 16px; display: block; }
+    .glass-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.92rem; color: white; margin-bottom: 10px; }
+    .glass-card p { font-size: 0.8rem; color: rgba(255,255,255,0.75); line-height: 1.7; }
+
+    /* ═══════════════════════════════════════
+       TESTIMONIALS
+    ═══════════════════════════════════════ */
+    .testimonials-section { background: var(--light-gray); }
+    .testi-track-wrapper { overflow: hidden; position: relative; }
+    .testi-track { display: flex; gap: 24px; transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .testi-card { min-width: calc(33.333% - 16px); background: white; border-radius: 20px; padding: 30px 26px; border: 1px solid rgba(139,0,0,0.08); box-shadow: 0 4px 24px rgba(0,0,0,0.06); flex-shrink: 0; position: relative; border-bottom: 4px solid var(--primary); }
+    .testi-card::before { content: '\201C'; font-size: 5rem; color: rgba(139,0,0,0.07); position: absolute; top: 10px; right: 20px; line-height: 1; font-family: Georgia, serif; }
+    .testi-stars { color: #ffd700; font-size: 0.85rem; margin-bottom: 14px; }
+    .testi-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar { width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--primary-light)); display: flex; align-items: center; justify-content: center; color: white; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; flex-shrink: 0; }
+    .testi-name { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text-dark); }
+    .testi-role { font-size: 0.74rem; color: var(--primary); font-weight: 600; }
+    .testi-nav { display: flex; gap: 12px; justify-content: center; margin-top: 36px; align-items: center; }
+    .testi-btn { width: 44px; height: 44px; border-radius: 50%; border: 2px solid rgba(139,0,0,0.2); background: white; color: var(--primary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; font-size: 0.9rem; }
+    .testi-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+    .testi-dots { display: flex; gap: 8px; align-items: center; }
+    .testi-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(139,0,0,0.2); transition: all 0.3s; cursor: pointer; }
+    .testi-dot.active { width: 24px; border-radius: 4px; background: var(--primary); }
+    @media(max-width:991px) { .testi-card { min-width: calc(50% - 12px); } }
+    @media(max-width:575px) { .testi-card { min-width: 100%; } }
+
+    /* ═══════════════════════════════════════
+       FAQ SECTION
+    ═══════════════════════════════════════ */
+    .faq-section { background: white; }
+    .faq-accordion .accordion-item { border: 1px solid rgba(139,0,0,0.1) !important; border-radius: 12px !important; margin-bottom: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+    .faq-accordion .accordion-button { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--text-dark); background: white; padding: 18px 24px; box-shadow: none !important; }
+    .faq-accordion .accordion-button:not(.collapsed) { color: white; background: var(--primary); }
+    .faq-accordion .accordion-button:not(.collapsed)::after { filter: brightness(0) invert(1); }
+    .faq-accordion .accordion-body { padding: 0 24px 20px; font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; background: white; text-align: justify; }
+
+    /* ═══════════════════════════════════════
+       CTA SECTION
+    ═══════════════════════════════════════ */
+    .cta-section { background: linear-gradient(135deg, var(--primary-dark), var(--primary), #c0392b); padding: 100px 0; text-align: center; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(255,215,0,0.08), transparent 70%); }
+    .cta-section h2 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(2rem, 4vw, 3rem); color: white; margin-bottom: 16px; position: relative; z-index: 1; }
+    .cta-section p { color: rgba(255,255,255,0.82); font-size: 1.05rem; margin-bottom: 36px; position: relative; z-index: 1; }
+    .btn-cta-glow { background: linear-gradient(135deg, #ffd700, #ffb700); color: var(--primary-dark) !important; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; letter-spacing: 0.5px; padding: 16px 40px; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 10px 40px rgba(255,215,0,0.4); transition: all 0.3s ease; position: relative; z-index: 1; animation: pulseGlow 2.5s infinite; }
+    .btn-cta-glow:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(255,215,0,0.5); }
+    @keyframes pulseGlow { 0%,100% { box-shadow: 0 0 0 0 rgba(255,215,0,0.5); } 50% { box-shadow: 0 0 0 18px rgba(255,215,0,0); } }
+    .btn-cta-outline { background: transparent; color: white !important; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; padding: 15px 38px; border-radius: 50px; border: 2px solid rgba(255,255,255,0.4); text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s ease; position: relative; z-index: 1; }
+    .btn-cta-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.8); transform: translateY(-4px); }
+
+    /* ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ */
+    footer { background: #0e0e0e; color: rgba(255,255,255,0.7); padding: 80px 0 0; }
+    .footer-brand { margin-bottom: 20px; }
+    .footer-desc { font-size: 0.85rem; line-height: 1.8; color: rgba(255,255,255,0.5); margin-bottom: 24px; }
+    .footer-socials { display: flex; gap: 10px; }
+    .footer-social-btn { width: 38px; height: 38px; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); font-size: 0.85rem; text-decoration: none; transition: all 0.3s ease; }
+    .footer-social-btn:hover { background: var(--primary); border-color: var(--primary); color: white; transform: translateY(-3px); }
+    .footer-heading { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.88rem; color: white; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid rgba(139,0,0,0.4); }
+    .footer-links { list-style: none; padding: 0; margin: 0; }
+    .footer-links li { margin-bottom: 8px; }
+    .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px; }
+    .footer-links a:hover { color: #ffd700; padding-left: 6px; }
+    .footer-links a i { font-size: 0.6rem; color: var(--primary); }
+    .footer-contact { list-style: none; padding: 0; }
+    .footer-contact li { display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start; font-size: 0.83rem; }
+    .footer-contact li i { color: var(--primary); font-size: 0.9rem; margin-top: 2px; flex-shrink: 0; width: 16px; text-align: center; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding: 20px 0; margin-top: 60px; font-size: 0.82rem; color: rgba(255,255,255,0.35); }
+
+    /* ═══════════════════════════════════════
+       MARQUEE
+    ═══════════════════════════════════════ */
+    .marquee-section { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); padding: 22px 0; overflow: hidden; position: relative; }
+    .marquee-section::before { left: 0; background: linear-gradient(to right, var(--primary-dark), transparent); }
+    .marquee-section::after { right: 0; background: linear-gradient(to left, var(--primary-dark), transparent); }
+    .marquee-section::before, .marquee-section::after { content: ''; position: absolute; top: 0; bottom: 0; width: 100px; z-index: 2; }
+    .marquee-track { display: flex; animation: marqueeScroll 28s linear infinite; will-change: transform; }
+    .marquee-track:hover { animation-play-state: paused; }
+    .marquee-item { display: inline-flex; align-items: center; gap: 12px; padding: 0 28px; white-space: nowrap; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.9); }
+    .marquee-dot { width: 6px; height: 6px; background: #ffd700; border-radius: 50%; flex-shrink: 0; }
+    @keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ═══════════════════════════════════════
+       RIPPLE
+    ═══════════════════════════════════════ */
+    .ripple { position: relative; overflow: hidden; }
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════ */
+    @media (max-width: 991px) {
+      .hero-section { padding: 70px 0 100px; }
+      .process-timeline::before { display: none; }
+    }
+    @media (max-width: 767px) {
+      section { padding: 65px 0; }
+      .hero-btns { flex-direction: column; align-items: center; }
+      .btn-hero-primary, .btn-hero-outline, .btn-hero-phone { width: 240px; justify-content: center; }
+    }
+    .text-justify { text-align: justify; }
+
+    /* ═══════════════════════════════════════
+       EPLAN SVG ILLUSTRATIONS
+    ═══════════════════════════════════════ */
+    .eplan-svg-wrap { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(139,0,0,0.15); }
+
+    /* gradient bg cards for benefits */
+    .benefit-card { background: white; border-radius: 18px; padding: 24px 20px; border-left: 5px solid var(--primary); box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: all 0.3s ease; height: 100%; }
+    .benefit-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(139,0,0,0.13); }
+    .benefit-card h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; margin-bottom: 8px; }
+    .benefit-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; margin: 0; text-align: justify; }
+  
+  
+  /* CURVE DESIGN */
+.hero-curve {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height:50px;
+  line-height: 0;
+}
+
+.hero-curve svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hero-curve path {
+  fill: #ffffff; /* match next section background */
+}
+
+  
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<!-- <div id="loader">
+  <div class="loader-logo">CAD<span>POINT</span></div>
+  <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+</div> -->
+
+<!-- BACK TO TOP -->
+<button id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+<!-- ═══════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════ -->
+<div id="header"></div>
+
+<!-- BREADCRUMB SLIDER -->
+<div class="breadcrumb-slider">
+  <div class="breadcrumb-track">
+    <span class="breadcrumb-item-slide"><i class="fas fa-cogs"></i> EPLAN Mechanical</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-file-alt"></i> Mechanical Documentation</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-industry"></i> Machine Design</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-list-alt"></i> BOM Management</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-certificate"></i> Certification</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-briefcase"></i> Placement Support</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-tools"></i> Manufacturing Docs</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-project-diagram"></i> Industrial Projects</span>
+    <!-- duplicate for loop -->
+    <span class="breadcrumb-item-slide"><i class="fas fa-cogs"></i> EPLAN Mechanical</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-file-alt"></i> Mechanical Documentation</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-industry"></i> Machine Design</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-list-alt"></i> BOM Management</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-certificate"></i> Certification</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-briefcase"></i> Placement Support</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-tools"></i> Manufacturing Docs</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-project-diagram"></i> Industrial Projects</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     HERO SECTION
+═══════════════════════════════════════════ -->
+<section class="hero-section" id="home">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-blob hero-blob-3"></div>
+  <div class="container position-relative" style="z-index:2">
+    <div class="row justify-content-center">
+      <div class="col-lg-9 col-md-11 col-12 text-center">
+        <div class="hero-badge mb-3">
+          <span>&#9733;</span> India's Premier EPLAN Mechanical Training — CADPOINT
+        </div>
+        <h1 class="hero-title" id="heroTitle">
+          Master <span class="highlight">EPLAN Mechanical</span> &amp; Build Your Industrial Design Engineering Career
+        </h1>
+        <p class="hero-desc">
+          From mechanical documentation fundamentals to real-time industrial projects — gain expertise in machine design workflows, BOM management, manufacturing documentation, equipment layout planning, and industry-standard engineering practices with CADPOINT's comprehensive EPLAN Mechanical program.
+        </p>
+        <!-- <div class="hero-pills">
+          <span class="hero-pill"><i class="fas fa-clock"></i> 4–6 Month Program</span>
+          <span class="hero-pill"><i class="fas fa-laptop"></i> Live + Recorded</span>
+          <span class="hero-pill"><i class="fas fa-certificate"></i> ISO Certified</span>
+          <span class="hero-pill"><i class="fas fa-users"></i> Batch Starting Soon</span>
+          <span class="hero-pill"><i class="fas fa-industry"></i> Real Industrial Projects</span>
+        </div> -->
+        <div class="hero-btns">
+          <a href="https://wa.me/919895352624" class="btn-hero-primary ripple">
+            <i class="fas fa-rocket"></i> <span>Start Learning</span>
+          </a>
+          
+          <a href="tel:+919895352624" class="btn-hero-phone">
+            <i class="fas fa-phone-alt"></i> Call Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+   <div class="hero-curve">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+      <path d="M0,30 C360,80 1080,0 1440,40 L1440,60 L0,60 Z"></path>
+    </svg>
+  </div>
+</section>
+
+<!-- ACHIEVEMENT STRIP -->
+<!-- <div class="achievement-strip">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-3 col-6 achievement-col" data-aos="fade-up">
+        <div class="achievement-box">
+          <h2 data-count="5000">0+</h2>
+          <p>Engineers Trained</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 achievement-col" data-aos="fade-up" data-aos-delay="100">
+        <div class="achievement-box">
+          <h2 data-count="15">0+</h2>
+          <p>Years Experience</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 achievement-col" data-aos="fade-up" data-aos-delay="200">
+        <div class="achievement-box">
+          <h2 data-count="92">0+</h2>
+          <p>% Placement Rate</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 no-border" data-aos="fade-up" data-aos-delay="300">
+        <div class="achievement-box">
+          <h2 data-count="120">0+</h2>
+          <p>Hiring Partners</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- MARQUEE -->
+<!-- <div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="marquee-dot"></span> EPLAN Mechanical</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Machine Design Workflow</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> BOM Management</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Manufacturing Documentation</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Equipment Layout</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Industrial Standards</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Plant Engineering</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Project Documentation</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> EPLAN Mechanical</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Machine Design Workflow</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> BOM Management</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Manufacturing Documentation</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Equipment Layout</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Industrial Standards</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Plant Engineering</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Project Documentation</span>
+  </div>
+</div> -->
+
+<!-- ═══════════════════════════════════════════
+     COURSE OVERVIEW
+═══════════════════════════════════════════ -->
+<section class="course-overview-section" id="overview">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-5" data-aos="fade-right">
+        <img src="assets/image/eplan-mechanical.webp">
+      
+      </div>
+      <div class="col-lg-7" data-aos="fade-left">
+        <!-- <div class="section-tag"><i class="fas fa-info-circle"></i> Course Overview</div> -->
+        <h2 class="section-title mb-3">EPLAN <span>Mechanical</span> Course</h2>
+        <p class="text-muted mb-4 text-justify" style="line-height:1.85">The EPLAN Mechanical Course at CADPOINT is a comprehensive, industry-aligned training program designed for mechanical engineers, design engineers, and professionals who want to master engineering documentation workflows. This course covers the complete spectrum of mechanical documentation using EPLAN's powerful platform — from creating machine layouts and equipment arrangement drawings to developing comprehensive Bills of Materials, manufacturing documentation, and plant engineering reports.</p>
+        <ul class="feature-list">
+          <li><i class="fas fa-check"></i><span>Complete machine layout design and equipment arrangement documentation</span></li>
+          <li><i class="fas fa-check"></i><span>Bill of Materials (BOM) creation, management, and export workflows</span></li>
+          <li><i class="fas fa-check"></i><span>Manufacturing documentation — assembly drawings, part lists, specifications</span></li>
+          <li><i class="fas fa-check"></i><span>International engineering standards — ISO, DIN, IEC compliance</span></li>
+          <li><i class="fas fa-check"></i><span>Report generation, workflow automation, and documentation management</span></li>
+          <li><i class="fas fa-check"></i><span>Real-time industrial project training with certified engineering instructors</span></li>
+        </ul>
+        <a href="https://wa.me/919895352624" class="btn-hero-primary ripple">
+          <i class="fas fa-rocket"></i> <span>Start Learning Today</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     WHY LEARN EPLAN MECHANICAL
+═══════════════════════════════════════════ -->
+<section class="why-section" id="why-learn">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-star"></i> Why EPLAN Mechanical?</div>
+      <h2 class="section-title">Why <span>EPLAN Mechanical</span> Drives Industrial Engineering Careers</h2>
+      <p class="section-sub mt-3">EPLAN Mechanical is the global standard for industrial machine documentation — used by manufacturers, plant engineers, and automation companies worldwide.</p>
+    </div>
+    <div class="row gy-4">
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="0"><div class="why-card"><div class="why-icon"><i class="fas fa-globe"></i></div><h5>Global Industry Demand</h5><p>EPLAN Mechanical is mandated by multinational engineering firms for machine documentation and plant design projects across 50+ countries.</p></div></div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100"><div class="why-card"><div class="why-icon"><i class="fas fa-industry"></i></div><h5>Manufacturing Sector Growth</h5><p>India's manufacturing sector is growing at 8%+ annually, creating thousands of openings for certified EPLAN Mechanical engineers.</p></div></div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200"><div class="why-card"><div class="why-icon"><i class="fas fa-file-contract"></i></div><h5>Documentation Standards</h5><p>Mastery of ISO, DIN, and IEC documentation standards makes EPLAN Mechanical engineers indispensable for compliance-driven industries.</p></div></div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300"><div class="why-card"><div class="why-icon"><i class="fas fa-money-bill-wave"></i></div><h5>High Salary Potential</h5><p>Certified EPLAN Mechanical engineers command salaries of ₹4–12 LPA with rapid growth opportunities in global manufacturing companies.</p></div></div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="0"><div class="why-card"><div class="why-icon"><i class="fas fa-project-diagram"></i></div><h5>Engineering Project Requirements</h5><p>All major EPC, automotive, and process plant projects require EPLAN Mechanical documentation for machine design and layout validation.</p></div></div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100"><div class="why-card"><div class="why-icon"><i class="fas fa-certificate"></i></div><h5>Certification Value</h5><p>CADPOINT's ISO-certified EPLAN Mechanical program gives you credentials recognized by top engineering recruiters across India and globally.</p></div></div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200"><div class="why-card"><div class="why-icon"><i class="fas fa-user-graduate"></i></div><h5>Internship Opportunities</h5><p>CADPOINT's industry network connects top-performing students with internships at leading manufacturing and plant engineering firms.</p></div></div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300"><div class="why-card"><div class="why-icon"><i class="fas fa-chart-line"></i></div><h5>Long-Term Career Growth</h5><p>EPLAN Mechanical expertise opens pathways to senior design engineer, documentation lead, and plant engineering manager roles.</p></div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     MACHINE DESIGN WORKFLOW (img-right)
+═══════════════════════════════════════════ -->
+<section class="img-content-section bg-gray" id="machine-design">
+  <div class="container">
+    <div class="row align-items-center gy-5 flex-lg-row-reverse">
+      <div class="col-lg-6" data-aos="fade-left">
+      <img src="assets/image/machine-design.webp">
+      </div>
+      <div class="col-lg-6" data-aos="fade-right">
+        <!-- <div class="section-tag"><i class="fas fa-cogs"></i> Machine Design</div> -->
+        <h2 class="section-title mb-3">Machine <span>Design Workflow</span> in EPLAN</h2>
+        <p class="text-muted mb-4 text-justify" style="line-height:1.85">Effective machine design documentation in EPLAN Mechanical follows a structured workflow from requirement analysis to final drawing release. Our training teaches you the complete machine design documentation process — how to structure project hierarchies, create assembly drawings, define component specifications, and produce documentation packages that meet OEM and EPC contractor requirements.</p>
+        <ul class="bullet-list">
+          <li><div class="bi"><i class="fas fa-check"></i></div><div><strong>Project Structure & Hierarchy Setup</strong><span>Define project structures, machine identifiers, and documentation hierarchies following IEC 81346 reference designation standards.</span></div></li>
+          <li><div class="bi"><i class="fas fa-check"></i></div><div><strong>Sub-Assembly Design Documentation</strong><span>Create detailed sub-assembly documentation for drive systems, conveyor mechanisms, pneumatic circuits, and cooling systems.</span></div></li>
+          <li><div class="bi"><i class="fas fa-check"></i></div><div><strong>Drawing Sheet Management</strong><span>Manage multi-sheet drawing packages with automatic cross-referencing, page numbering, and title block automation.</span></div></li>
+          <li><div class="bi"><i class="fas fa-check"></i></div><div><strong>Component Database Integration</strong><span>Link machine components to EPLAN's centralized parts database for automatic BOM population and specification management.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     WHY CHOOSE EPLAN MECHANICAL — GLASS CARDS
+═══════════════════════════════════════════ -->
+<section class="glass-section" id="why-choose">
+  <div class="container position-relative" style="z-index:1">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto" style="color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.08)"><i class="fas fa-star"></i> Why Choose Us</div>
+      <h2 class="section-title" style="color:white">Why Choose <span style="color:#ffd700">EPLAN Mechanical</span> at CADPOINT?</h2>
+      <p class="section-sub mt-3" style="color:rgba(255,255,255,0.75);max-width:700px">Eight compelling reasons why engineering professionals across India choose CADPOINT for their EPLAN Mechanical training journey.</p>
+    </div>
+    <div class="row gy-4">
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="0"><div class="glass-card"><i class="fas fa-globe-asia"></i><h5>Global Industry Demand</h5><p>EPLAN Mechanical is the preferred documentation standard for 60%+ of multinational manufacturing companies, creating consistent demand for certified engineers.</p></div></div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100"><div class="glass-card"><i class="fas fa-industry"></i><h5>Manufacturing Sector Growth</h5><p>India's Make in India initiative drives manufacturing sector expansion, creating thousands of new EPLAN Mechanical engineering roles annually.</p></div></div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200"><div class="glass-card"><i class="fas fa-file-alt"></i><h5>Documentation Standards</h5><p>Master internationally recognized ISO, DIN, and IEC documentation standards that are mandatory requirements for engineering project compliance and export contracts.</p></div></div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300"><div class="glass-card"><i class="fas fa-building"></i><h5>Multinational Opportunities</h5><p>Certifications open doors to engineering roles at Siemens, ABB, Bosch, L&T, Tata Projects, BHEL, and hundreds of other global engineering firms.</p></div></div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="0"><div class="glass-card"><i class="fas fa-certificate"></i><h5>Certification Value</h5><p>CADPOINT's ISO 9001:2015 certified program gives you credentials validated by industry recruitment teams across India and internationally.</p></div></div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100"><div class="glass-card"><i class="fas fa-money-bill-wave"></i><h5>High Salary Potential</h5><p>EPLAN Mechanical engineers earn ₹4–12 LPA as freshers, with senior engineers commanding ₹15–25 LPA in leading manufacturing companies.</p></div></div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200"><div class="glass-card"><i class="fas fa-briefcase"></i><h5>Placement Assistance</h5><p>CADPOINT's 120+ hiring partners network and dedicated placement team support every graduate with resume building, interviews, and job referrals.</p></div></div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300"><div class="glass-card"><i class="fas fa-chart-line"></i><h5>Long-Term Career Growth</h5><p>EPLAN Mechanical expertise creates a career ladder from junior documentation engineer to senior design lead, project manager, and technical director.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     COURSE MODULES
+═══════════════════════════════════════════ -->
+<section class="modules-section" id="modules">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-th-large"></i> Curriculum</div>
+      <h2 class="section-title">Complete <span>Course Modules</span> Breakdown</h2>
+      <p class="section-sub mt-3">12 comprehensive modules covering everything from EPLAN Mechanical fundamentals to real-time industrial project documentation.</p>
+    </div>
+    <div class="row gy-4">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="module-card">
+          <div class="module-num">Module 01</div>
+          <div class="module-icon"><i class="fas fa-cogs"></i></div>
+          <h6>Introduction to EPLAN Mechanical</h6>
+          <ul class="module-topics">
+            <li>EPLAN platform overview & navigation</li>
+            <li>Mechanical vs Electrical modules</li>
+            <li>User interface & workspace setup</li>
+            <li>Project creation and configuration</li>
+            <li>Template and master data setup</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="module-card">
+          <div class="module-num">Module 02</div>
+          <div class="module-icon"><i class="fas fa-file-alt"></i></div>
+          <h6>Mechanical Documentation Fundamentals</h6>
+          <ul class="module-topics">
+            <li>Drawing standards & sheet formats</li>
+            <li>Title block creation & automation</li>
+            <li>Layer management & CAD settings</li>
+            <li>Dimensioning & annotation tools</li>
+            <li>Symbol library management</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="module-card">
+          <div class="module-num">Module 03</div>
+          <div class="module-icon"><i class="fas fa-th-large"></i></div>
+          <h6>Machine Layout Planning</h6>
+          <ul class="module-topics">
+            <li>Machine arrangement & space planning</li>
+            <li>Floor plan creation and scaling</li>
+            <li>Equipment positioning & clearances</li>
+            <li>Access & maintenance space planning</li>
+            <li>Safety zone documentation</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="module-card">
+          <div class="module-num">Module 04</div>
+          <div class="module-icon"><i class="fas fa-drafting-compass"></i></div>
+          <h6>Equipment Design Documentation</h6>
+          <ul class="module-topics">
+            <li>Mechanical component drawing creation</li>
+            <li>Assembly & sub-assembly drawings</li>
+            <li>Detail views & section cuts</li>
+            <li>Exploded view documentation</li>
+            <li>Tolerance & fit specifications</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="module-card">
+          <div class="module-num">Module 05</div>
+          <div class="module-icon"><i class="fas fa-list-alt"></i></div>
+          <h6>BOM Creation & Management</h6>
+          <ul class="module-topics">
+            <li>Parts database creation & management</li>
+            <li>Automatic BOM generation from drawings</li>
+            <li>BOM structure — multi-level hierarchy</li>
+            <li>Quantity calculation & aggregation</li>
+            <li>BOM export to Excel, PDF, ERP</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="module-card">
+          <div class="module-num">Module 06</div>
+          <div class="module-icon"><i class="fas fa-industry"></i></div>
+          <h6>Manufacturing Documentation</h6>
+          <ul class="module-topics">
+            <li>Production drawing preparation</li>
+            <li>Manufacturing process sheets</li>
+            <li>Quality inspection documentation</li>
+            <li>Material specification sheets</li>
+            <li>Fabrication & welding drawings</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="module-card">
+          <div class="module-num">Module 07</div>
+          <div class="module-icon"><i class="fas fa-balance-scale"></i></div>
+          <h6>Engineering Standards & Compliance</h6>
+          <ul class="module-topics">
+            <li>ISO 10628 process plant diagrams</li>
+            <li>DIN 28004 piping & instrumentation</li>
+            <li>IEC 81346 reference designation</li>
+            <li>ASME & BS drawing standards</li>
+            <li>Compliance checking in EPLAN</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="module-card">
+          <div class="module-num">Module 08</div>
+          <div class="module-icon"><i class="fas fa-project-diagram"></i></div>
+          <h6>Industrial Project Documentation</h6>
+          <ul class="module-topics">
+            <li>P&ID drawing creation & revision</li>
+            <li>Plant equipment list generation</li>
+            <li>Line list & tie-in documentation</li>
+            <li>Isometric drawing preparation</li>
+            <li>Hook-up drawings & details</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="module-card">
+          <div class="module-num">Module 09</div>
+          <div class="module-icon"><i class="fas fa-chart-bar"></i></div>
+          <h6>Report Generation</h6>
+          <ul class="module-topics">
+            <li>Automatic report generation in EPLAN</li>
+            <li>Custom report template creation</li>
+            <li>Equipment lists & specifications</li>
+            <li>Cable & connection reports</li>
+            <li>Project summary documentation</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="module-card">
+          <div class="module-num">Module 10</div>
+          <div class="module-icon"><i class="fas fa-robot"></i></div>
+          <h6>Workflow Automation</h6>
+          <ul class="module-topics">
+            <li>EPLAN scripting & automation basics</li>
+            <li>Macro creation for repetitive tasks</li>
+            <li>Batch processing & drawing generation</li>
+            <li>API integration concepts</li>
+            <li>Automated title block population</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="module-card">
+          <div class="module-num">Module 11</div>
+          <div class="module-icon"><i class="fas fa-archive"></i></div>
+          <h6>Documentation Management</h6>
+          <ul class="module-topics">
+            <li>Document revision control systems</li>
+            <li>Engineering change management</li>
+            <li>Archive & retrieval procedures</li>
+            <li>DMS integration with EPLAN</li>
+            <li>Transmittal & distribution workflow</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="module-card">
+          <div class="module-num">Module 12</div>
+          <div class="module-icon"><i class="fas fa-hard-hat"></i></div>
+          <h6>Real-Time Industrial Projects</h6>
+          <ul class="module-topics">
+            <li>Live project documentation — Oil & Gas</li>
+            <li>Automotive plant machine layout</li>
+            <li>Chemical plant equipment arrangement</li>
+            <li>Manufacturing line documentation</li>
+            <li>Industry presentation & review</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     BENEFITS OF LEARNING
+═══════════════════════════════════════════ -->
+<section style="background:white;padding:90px 0" id="benefits">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-trophy"></i> Benefits</div>
+      <h2 class="section-title">Benefits of Learning <span>EPLAN Mechanical</span></h2>
+      <p class="section-sub mt-3">What you gain from CADPOINT's EPLAN Mechanical training program goes beyond software skills.</p>
+    </div>
+    <div class="row gy-4">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0"><div class="benefit-card"><h6><i class="fas fa-industry me-2" style="color:var(--primary)"></i>High Industry Demand</h6><p>EPLAN Mechanical engineers are in constant demand across oil & gas, automotive, pharma, and manufacturing sectors with job opportunities in 40+ countries.</p></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100"><div class="benefit-card"><h6><i class="fas fa-factory me-2" style="color:var(--primary)"></i>Manufacturing Opportunities</h6><p>India's booming manufacturing sector creates thousands of annual openings for certified EPLAN Mechanical engineers in both domestic and MNC companies.</p></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200"><div class="benefit-card"><h6><i class="fas fa-chart-line me-2" style="color:var(--primary)"></i>Industrial Career Growth</h6><p>A certified EPLAN engineer's career trajectory moves from documentation engineer to design lead and ultimately to project engineering manager roles.</p></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0"><div class="benefit-card"><h6><i class="fas fa-certificate me-2" style="color:var(--primary)"></i>Certification Support</h6><p>CADPOINT provides comprehensive support for professional certification exams and connects students with EPLAN's official certification pathways.</p></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100"><div class="benefit-card"><h6><i class="fas fa-user-tie me-2" style="color:var(--primary)"></i>Internship Opportunities</h6><p>Top-performing students are referred to CADPOINT's partner manufacturing companies for paid internships that frequently convert to full-time employment.</p></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200"><div class="benefit-card"><h6><i class="fas fa-hard-hat me-2" style="color:var(--primary)"></i>Real-Time Project Training</h6><p>Work on actual industrial projects from Oil & Gas, automotive, and process plant sectors to build a professional portfolio that impresses recruiters.</p></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0"><div class="benefit-card"><h6><i class="fas fa-handshake me-2" style="color:var(--primary)"></i>Placement Assistance</h6><p>CADPOINT's dedicated placement team provides resume building, interview preparation, mock technical tests, and direct referrals to 120+ hiring partners.</p></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100"><div class="benefit-card"><h6><i class="fas fa-globe me-2" style="color:var(--primary)"></i>Global Opportunities</h6><p>EPLAN Mechanical certification opens doors to engineering roles in Germany, UAE, Saudi Arabia, Singapore, and other engineering hubs worldwide.</p></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200"><div class="benefit-card"><h6><i class="fas fa-laptop me-2" style="color:var(--primary)"></i>Flexible Learning Modes</h6><p>Choose from offline classroom, online live, or hybrid learning modes with 6-month access to recorded sessions for self-paced revision anytime.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CAREER OPPORTUNITIES
+═══════════════════════════════════════════ -->
+<section class="careers-section" style="background:var(--light-gray);padding:90px 0" id="careers">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-briefcase"></i> Career Paths</div>
+      <h2 class="section-title">Career <span>Opportunities</span> After EPLAN Mechanical</h2>
+      <p class="section-sub mt-3">A certified EPLAN Mechanical engineer qualifies for these high-demand roles across the engineering industry.</p>
+    </div>
+    <div class="row gy-4">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0"><div class="career-card"><div class="career-icon"><i class="fas fa-drafting-compass"></i></div><div><h6>Mechanical Design Engineer</h6><p>Create detailed machine designs, assembly layouts, and technical drawings for manufacturing and plant engineering companies.</p></div></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100"><div class="career-card"><div class="career-icon"><i class="fas fa-file-alt"></i></div><div><h6>Documentation Engineer</h6><p>Manage complete engineering documentation lifecycles for industrial projects, ensuring compliance with international standards.</p></div></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200"><div class="career-card"><div class="career-icon"><i class="fas fa-industry"></i></div><div><h6>Manufacturing Engineer</h6><p>Develop and maintain manufacturing documentation, process sheets, and production drawings for industrial manufacturing plants.</p></div></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0"><div class="career-card"><div class="career-icon"><i class="fas fa-cogs"></i></div><div><h6>Industrial Design Engineer</h6><p>Design industrial equipment, machines, and plant systems with comprehensive EPLAN documentation for EPC and OEM projects.</p></div></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100"><div class="career-card"><div class="career-icon"><i class="fas fa-project-diagram"></i></div><div><h6>Project Documentation Engineer</h6><p>Lead documentation teams on large-scale engineering projects, managing drawing packages, BOMs, and revision control systems.</p></div></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200"><div class="career-card"><div class="career-icon"><i class="fas fa-building"></i></div><div><h6>Plant Design Engineer</h6><p>Create and maintain plant equipment arrangement drawings, layout documentation, and plant engineering reports for industrial facilities.</p></div></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0"><div class="career-card"><div class="career-icon"><i class="fas fa-cube"></i></div><div><h6>Mechanical CAD Engineer</h6><p>Develop 2D and 3D CAD documentation for mechanical components, assemblies, and manufacturing packages using EPLAN and CAD tools.</p></div></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100"><div class="career-card"><div class="career-icon"><i class="fas fa-tools"></i></div><div><h6>Production Engineer</h6><p>Support production operations with accurate manufacturing documentation, process improvement records, and quality inspection sheets.</p></div></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200"><div class="career-card"><div class="career-icon"><i class="fas fa-file-contract"></i></div><div><h6>Technical Documentation Specialist</h6><p>Create technical manuals, installation guides, maintenance documentation, and spare parts lists for industrial equipment manufacturers.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     LEARNING PROCESS TIMELINE
+═══════════════════════════════════════════ -->
+<section class="process-section" style="background:white;padding:90px 0" id="process">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-route"></i> Learning Journey</div>
+      <h2 class="section-title">Your <span>Learning Process</span> at CADPOINT</h2>
+      <p class="section-sub mt-3">A structured six-stage journey from enrollment to placement — designed for maximum career impact.</p>
+    </div>
+    <div class="process-timeline mt-5" data-aos="fade-up" data-aos-delay="100">
+      <div class="process-step">
+        <div class="process-num">1</div>
+        <h6>Enroll</h6>
+        <p>Join CADPOINT's EPLAN Mechanical program and receive course access, learning materials, and student support.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">2</div>
+        <h6>Learn Concepts</h6>
+        <p>Master EPLAN Mechanical fundamentals, documentation standards, and software features through structured live sessions.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">3</div>
+        <h6>Practice Workflows</h6>
+        <p>Apply concepts through guided exercises on BOM creation, machine layouts, manufacturing docs, and P&ID drawings.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">4</div>
+        <h6>Real Projects</h6>
+        <p>Work on live industrial projects from oil & gas, automotive, and manufacturing sectors to build your professional portfolio.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">5</div>
+        <h6>Certification</h6>
+        <p>Receive CADPOINT's ISO-certified EPLAN Mechanical completion certificate and prepare for professional industry exams.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">6</div>
+        <h6>Placement</h6>
+        <p>Access CADPOINT's placement network — resume prep, interview coaching, and direct referrals to 120+ hiring partners.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     STATISTICS COUNTER
+═══════════════════════════════════════════ -->
+<div class="achievement-strip" id="stats-counter">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-3 col-6 achievement-col" data-aos="fade-up">
+        <div class="achievement-box">
+          <h2 data-count="1200">0+</h2>
+          <p>EPLAN Engineers Trained</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 achievement-col" data-aos="fade-up" data-aos-delay="100">
+        <div class="achievement-box">
+          <h2 data-count="50">0+</h2>
+          <p>Industry Partners</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 achievement-col" data-aos="fade-up" data-aos-delay="200">
+        <div class="achievement-box">
+          <h2 data-count="95">0+</h2>
+          <p>% Student Satisfaction</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 no-border" data-aos="fade-up" data-aos-delay="300">
+        <div class="achievement-box">
+          <h2 data-count="200">0+</h2>
+          <p>Real Projects Completed</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     FAQ ACCORDION
+═══════════════════════════════════════════ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-question-circle"></i> FAQ</div>
+      <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+      <p class="section-sub mt-3">Everything you need to know before enrolling in CADPOINT's EPLAN Mechanical course.</p>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-9" data-aos="fade-up">
+        <div class="accordion faq-accordion" id="faqAccordion">
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                What software and system requirements are needed for the EPLAN Mechanical course?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                You need a laptop or desktop with at least 16GB RAM, an i7/Ryzen 7 processor (or better), and a dedicated graphics card. Windows 10/11 (64-bit) is recommended. EPLAN Mechanical requires specific hardware for optimal performance due to its CAD rendering capabilities. CADPOINT provides an EPLAN software license for all enrolled students throughout the course duration. We provide detailed installation guides and technical support to ensure your system is properly configured before the first session.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                Is certification provided upon completing the EPLAN Mechanical course?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Yes! Upon successfully completing the course curriculum and real-time project assignments, you receive CADPOINT's ISO 9001:2015 certified EPLAN Mechanical completion certificate, recognized by engineering recruiters across India and internationally. We also provide guidance and support for EPLAN's official professional certification exams. Your completed project portfolio further strengthens your professional credentials when applying for engineering positions.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                What real-time industrial projects are included in the training?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Our real-time project training covers documentation for actual industrial scenarios including Oil & Gas facility equipment arrangements, Automotive plant machine layouts, Chemical process plant P&ID packages, Pharmaceutical manufacturing equipment documentation, and Power plant mechanical systems. These projects are structured to mirror real client project requirements, complete with BOM generation, revision cycles, and delivery packages. You'll graduate with a portfolio of 3–5 complete industrial documentation packages.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                Is placement support available after completing the course?
+              </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Absolutely. CADPOINT provides comprehensive placement assistance including professional resume building tailored for engineering documentation roles, LinkedIn profile optimization, technical interview preparation specific to EPLAN Mechanical questions, aptitude training, and direct referrals to our 120+ hiring partner network including companies like L&T, Tata Projects, Siemens, ABB, BHEL, and many EPC contractors. Our placement team continues supporting you until you secure your first role.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                What internship opportunities are available during or after training?
+              </button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                CADPOINT has established partnerships with several engineering and EPC companies that offer internship opportunities to high-performing students. These internships are available both during the later stages of training and after course completion. Selected students gain real workplace experience working on live client projects — many of which convert to full-time employment offers. We prioritize top-performing students for these opportunities based on their project work quality and attendance.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                What documentation workflows are covered in the EPLAN Mechanical course?
+              </button>
+            </h2>
+            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                The course covers the complete mechanical engineering documentation lifecycle including: machine layout and equipment arrangement drawings, P&ID (Piping & Instrumentation Diagram) creation and management, Bill of Materials (BOM) generation and ERP integration, manufacturing drawings and production documentation, equipment lists and data sheets, 3D model-based documentation workflows, drawing revision management and change control, engineering report generation, and document management system (DMS) integration. All workflows follow international standards including ISO 10628, DIN 28004, and IEC 81346.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+                Which manufacturing industries hire EPLAN Mechanical engineers?
+              </button>
+            </h2>
+            <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                EPLAN Mechanical engineers are hired across a wide range of industries: Oil & Gas (upstream, midstream, downstream), Petrochemical & Chemical plants, Automotive manufacturing (OEMs and Tier-1 suppliers), Pharmaceutical and Life Sciences, Food & Beverage processing, Power Generation (thermal, nuclear, renewable), EPC and engineering consultancy firms, Industrial machinery OEMs, Mining & Metals, Water & Wastewater treatment, and Paper & Pulp manufacturing. The breadth of industries ensures diverse career options for certified engineers.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq8">
+                What are the career growth opportunities for EPLAN Mechanical engineers?
+              </button>
+            </h2>
+            <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                The career growth trajectory for EPLAN Mechanical engineers is excellent. Starting as a Junior Documentation Engineer or Mechanical Design Engineer (₹3.5–5 LPA), you typically progress to Design Engineer (₹6–9 LPA) within 2–3 years, then to Senior Design Engineer or Lead Documentation Engineer (₹10–16 LPA) within 5 years. At the 8–10 year mark, experienced EPLAN engineers move into Project Engineering Manager, Engineering Team Lead, or Technical Director roles with packages of ₹18–30 LPA. International placements in the Middle East and Europe offer even higher compensation.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FINAL CTA SECTION
+═══════════════════════════════════════════ -->
+<section class="cta-section" id="enroll">
+  <div class="container text-center position-relative" style="z-index:1">
+    <div data-aos="zoom-in">
+      <div class="section-tag mx-auto mb-3" style="color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.08)">
+        <i class="fas fa-rocket"></i> Start Your Journey
+      </div>
+      <h2>Start Your Mechanical Engineering<br><span style="color:#ffd700">Documentation Career Today</span></h2>
+      <p class="mb-4">Join 1,200+ certified EPLAN Mechanical engineers who launched their industrial careers with CADPOINT.<br>New batches starting every month — limited seats available.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center">
+        <a href="https://wa.me/919895352624" class="btn-cta-glow">
+          <i class="fas fa-rocket"></i> Enroll Now — It's Free to Inquire
+        </a>
+        <a href="tel:+919895352624" class="btn-cta-outline">
+          <i class="fas fa-phone-alt"></i> Call Us Today
+        </a>
+      </div>
+      <p class="mt-4" style="font-size:0.82rem;color:rgba(255,255,255,0.5)">
+        <i class="fas fa-shield-alt me-1" style="color:rgba(255,215,0,0.6)"></i> ISO 9001:2015 Certified &nbsp;|&nbsp;
+        <i class="fas fa-check-circle me-1" style="color:rgba(255,215,0,0.6)"></i> Industry-Recognized Certificate &nbsp;|&nbsp;
+        <i class="fas fa-headset me-1" style="color:rgba(255,215,0,0.6)"></i> Lifetime Placement Support
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<div id="footer"></div>
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+function initCaddNav() {
+
+    const coursesNav = document.getElementById('coursesNav');
+    const caret = document.getElementById('coursesCaret');
+    const menu = document.getElementById('coursesMegaMenu');
+    const closeBtn = document.getElementById('closeMegaMenu');
+
+    if (!coursesNav || !caret || !menu) return;
+
+    // X BUTTON CLOSE (Desktop + Mobile)
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.remove('show');
+
+        });
+    }
+
+    // MOBILE
+    if (window.innerWidth <= 991) {
+
+        caret.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!coursesNav.contains(e.target)) {
+                menu.classList.remove('show');
+            }
+        });
+
+        return;
+    }
+
+    // DESKTOP
+    coursesNav.addEventListener('mouseenter', function () {
+        menu.classList.add('show');
+    });
+
+    coursesNav.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+
+    menu.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+}
+</script>
+
+<script>
+fetch("./header.html")
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById("header").innerHTML = html;
+    initCaddNav();
+  });
+
+  fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+      document.getElementById('footer').innerHTML = data;
+  });
+</script>
+
+
+<script>
+// ─── LOADER ─────────────────────────────────
+window.addEventListener('load', () => {
+  setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 1800);
+});
+
+// ─── AOS INIT ───────────────────────────────
+AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });
+
+// ─── NAVBAR SCROLL ──────────────────────────
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  if (nav) { if (window.scrollY > 50) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); }
+  const btn = document.getElementById('backToTop');
+  if (btn) { if (window.scrollY > 400) btn.classList.add('visible'); else btn.classList.remove('visible'); }
+});
+
+// ─── BACK TO TOP ────────────────────────────
+document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// ─── COUNTER ANIMATION ──────────────────────
+function animateCounters() {
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseInt(el.getAttribute('data-count'));
+    let current = 0;
+    const increment = target / 60;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) { current = target; clearInterval(timer); }
+      el.textContent = Math.floor(current) + '+';
+    }, 25);
+  });
+}
+let countersAnimated = false;
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting && !countersAnimated) {
+      countersAnimated = true;
+      animateCounters();
+    }
+  });
+}, { threshold: 0.3 });
+const achievementStrip = document.querySelector('.achievement-strip');
+if (achievementStrip) counterObserver.observe(achievementStrip);
+
+// ─── TESTIMONIALS SLIDER ────────────────────
+let testiIdx = 0;
+const track = document.getElementById('testiTrack');
+const dots = document.querySelectorAll('.testi-dot');
+
+function getVisCount() {
+  return window.innerWidth >= 992 ? 3 : window.innerWidth >= 576 ? 2 : 1;
+}
+function updateSlider() {
+  if (!track) return;
+  const cards = track.querySelectorAll('.testi-card');
+  const visCount = getVisCount();
+  const maxIdx = cards.length - visCount;
+  if (testiIdx > maxIdx) testiIdx = maxIdx;
+  if (testiIdx < 0) testiIdx = 0;
+  const cardW = cards[0].offsetWidth + 24;
+  track.style.transform = `translateX(-${testiIdx * cardW}px)`;
+  dots.forEach((d, i) => d.classList.toggle('active', i === testiIdx));
+}
+document.getElementById('testiNext').addEventListener('click', () => { testiIdx++; updateSlider(); });
+document.getElementById('testiPrev').addEventListener('click', () => { testiIdx--; updateSlider(); });
+window.goToSlide = (i) => { testiIdx = i; updateSlider(); };
+window.addEventListener('resize', updateSlider);
+setInterval(() => {
+  const visCount = getVisCount();
+  const cards = track.querySelectorAll('.testi-card');
+  const maxIdx = cards.length - visCount;
+  testiIdx = testiIdx >= maxIdx ? 0 : testiIdx + 1;
+  updateSlider();
+}, 5000);
+
+// ─── MEGA MENU ──────────────────────────────
+(function () {
+  const coursesNav = document.getElementById('coursesNav');
+  if (!coursesNav) return;
+  const menu = coursesNav.querySelector('.courses-mega-menu');
+  const caret = document.getElementById('coursesDropdown');
+  if (!menu) return;
+  let hideTimer;
+
+  function showMenu() {
+    clearTimeout(hideTimer);
+    const navRect = document.getElementById('mainNav').getBoundingClientRect();
+    menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    menu.classList.add('show');
+    if (caret) caret.querySelector('i').style.transform = 'rotate(180deg)';
+  }
+  function hideMenu() {
+    hideTimer = setTimeout(() => {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }, 120);
+  }
+
+  // Desktop
+  if (window.innerWidth > 991) {
+    coursesNav.addEventListener('mouseenter', showMenu);
+    coursesNav.addEventListener('mouseleave', hideMenu);
+    menu.addEventListener('mouseenter', showMenu);
+    menu.addEventListener('mouseleave', hideMenu);
+  }
+
+  // Mobile
+  if (window.innerWidth <= 991) {
+    const coursesToggle = document.getElementById('coursesCaret') || caret;
+    if (coursesToggle) {
+      coursesToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        menu.classList.toggle('show');
+      });
+    }
+  }
+
+  if (caret) {
+    caret.querySelector('i').style.transition = 'transform 0.25s ease';
+    caret.addEventListener('click', (e) => {
+      if (window.innerWidth > 991) {
+        e.stopPropagation();
+        if (menu.classList.contains('show')) hideMenu(); else showMenu();
+      }
+    });
+  }
+
+  document.addEventListener('click', (e) => {
+    if (!coursesNav.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }
+  });
+
+  window.addEventListener('scroll', () => {
+    if (menu.classList.contains('show') && window.innerWidth > 991) {
+      const navRect = document.getElementById('mainNav').getBoundingClientRect();
+      menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    }
+  });
+})();
+
+// ─── CLOSE MEGA MENU X ──────────────────────
+document.getElementById('closeMegaMenu').addEventListener('click', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  document.querySelector('.courses-mega-menu').classList.remove('show');
+});
+
+// ─── RIPPLE EFFECT ──────────────────────────
+document.querySelectorAll('.ripple').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.style.cssText = `position:absolute;border-radius:50%;background:rgba(255,255,255,0.3);width:10px;height:10px;left:${e.clientX-rect.left-5}px;top:${e.clientY-rect.top-5}px;transform:scale(0);animation:rippleAnim 0.6s ease-out forwards;pointer-events:none;`;
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 700);
+  });
+});
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `@keyframes rippleAnim { to { transform:scale(30); opacity:0; } }`;
+document.head.appendChild(rippleStyle);
+
+// ─── SMOOTH SCROLL FOR ANCHOR LINKS ─────────
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href === '#') return;
+    const target = document.querySelector(href);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>

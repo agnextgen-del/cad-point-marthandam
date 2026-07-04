@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attendance | CADPOINT</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+/* ═══════════════════════════════════════════════════════════════════
+   CADPOINT PORTAL — SHARED STYLESHEET
+   Matches the existing CADPOINT Premium UI theme exactly.
+   Used by every page: login, student portal, admin portal.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Reset & Base ─────────────────────────────────────────────── */
+*{ box-sizing:border-box; margin:0; padding:0; }
+:root{
+  --primary:#8B0000;
+  --primary-light:#A00000;
+  --primary-glow:rgba(139,0,0,0.25);
+  --sidebar-w:240px;
+  --topbar-h:64px;
+  --bg:#f4f6fb;
+  --card-bg:#ffffff;
+  --text:#1f1f1f;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+}
+[data-theme="dark"]{
+  --bg:#111827;
+  --card-bg:#1f2937;
+  --text:#f9fafb;
+  --muted:#9ca3af;
+  --border:#374151;
+}
+body{ font-family:'Poppins',sans-serif; background:var(--bg); color:var(--text); transition:background .3s,color .3s; }
+
+/* ═══════════════════════════════════════════════════════════════
+   AUTH PAGES (Student Login / Admin Login)
+   ═══════════════════════════════════════════════════════════════ */
+body.auth-body{
+  margin:0; min-height:100vh;
+  background:linear-gradient(135deg,#1a1a1a 0%,#2b0a0a 45%,#3a0d0d 100%);
+  display:flex; align-items:center; justify-content:center; padding:20px;
+}
+.auth-card{
+  width:100%; max-width:420px;
+  background:rgba(255,255,255,0.97); border-radius:18px;
+  padding:40px 34px 34px; box-shadow:0 25px 60px rgba(0,0,0,0.45);
+  animation:fadeUp .6s ease both;
+}
+@keyframes fadeUp{ from{opacity:0; transform:translateY(24px);} to{opacity:1; transform:translateY(0);} }
+.auth-logo{ display:flex; align-items:center; justify-content:center; }
+.icon-shield{
+  width:54px; height:54px; border-radius:50%;
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  display:flex; align-items:center; justify-content:center;
+  color:#fff; font-size:1.5rem; box-shadow:0 8px 20px var(--primary-glow);
+}
+h1.auth-title{ font-family:'Montserrat',sans-serif; font-size:1.3rem; font-weight:700; text-align:center; color:#1f1f1f; margin:14px 0 2px; }
+p.auth-sub{ text-align:center; color:#777; font-size:.85rem; margin:0 0 26px; }
+.form-group{ margin-bottom:18px; }
+.form-group label{ display:block; font-size:.8rem; font-weight:600; color:#444; margin-bottom:6px; }
+.input-wrap{ position:relative; }
+.input-wrap i.field-icon{ position:absolute; left:14px; top:50%; transform:translateY(-50%); color:#a0a0a0; font-size:.9rem; }
+.auth-card input[type="text"], .auth-card input[type="password"], .auth-card input[type="email"]{
+  width:100%; padding:12px 14px 12px 38px; border:1.5px solid #e2e2e2; border-radius:10px;
+  font-size:.92rem; font-family:'Poppins',sans-serif; outline:none;
+  transition:border-color .25s, box-shadow .25s;
+}
+.auth-card input:focus{ border-color:var(--primary); box-shadow:0 0 0 3px var(--primary-glow); }
+.auth-card input.error-field{ border-color:#dc3545; box-shadow:0 0 0 3px rgba(220,53,69,0.2); }
+.toggle-pass{ position:absolute; right:12px; top:50%; transform:translateY(-50%); cursor:pointer; color:#999; font-size:.9rem; }
+.toggle-pass:hover{ color:var(--primary); }
+.btn-login{
+  width:100%; padding:12px; border:none; border-radius:10px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  color:#fff; font-weight:600; font-size:.95rem; cursor:pointer;
+  box-shadow:0 10px 24px var(--primary-glow); transition:transform .15s, opacity .2s;
+}
+.btn-login:hover{ transform:translateY(-2px); }
+.btn-login:disabled{ opacity:.65; cursor:not-allowed; transform:none; }
+.alert-error{
+  display:none; background:#fff0f0; border:1px solid #f5c6c6; border-radius:10px;
+  color:#c0392b; font-size:.82rem; padding:10px 14px; margin-bottom:16px; align-items:center; gap:8px;
+}
+.alert-error.show{ display:flex; animation:shake .4s ease; }
+@keyframes shake{ 0%,100%{transform:translateX(0);} 20%,60%{transform:translateX(-6px);} 40%,80%{transform:translateX(6px);} }
+.alert-success{
+  display:none; background:#f0fff4; border:1px solid #b7e6c4; border-radius:10px;
+  color:#0f7b3a; font-size:.82rem; padding:10px 14px; margin-bottom:16px; align-items:center; gap:8px;
+}
+.alert-success.show{ display:flex; }
+.btn-spinner{ display:none; }
+.btn-login.loading .btn-text{ display:none; }
+.btn-login.loading .btn-spinner{ display:inline; }
+.back-link{ display:block; text-align:center; margin-top:16px; font-size:.8rem; color:#888; text-decoration:none; }
+.back-link:hover{ color:var(--primary); }
+.demo-hint{
+  background:#f8f4ff; border:1px dashed #c9b8f0; border-radius:8px;
+  padding:10px 12px; margin-top:16px; font-size:.75rem; color:#666; line-height:1.7;
+}
+.demo-hint strong{ color:var(--primary); }
+.auth-switch{ text-align:center; margin-top:14px; font-size:.8rem; color:#888; }
+.auth-switch a{ color:var(--primary); font-weight:600; text-decoration:none; }
+.auth-switch a:hover{ text-decoration:underline; }
+
+/* ═══════════════════════════════════════════════════════════════
+   PORTAL SHELL (Student & Admin dashboards)
+   ═══════════════════════════════════════════════════════════════ */
+.portal-bg{ position:fixed; inset:0; z-index:-1; background:linear-gradient(135deg,#1a1a1a 0%,#2b0a0a 40%,#3a0d0d 100%); }
+.dash-shell{ display:flex; min-height:100vh; }
+
+/* Sidebar */
+.sidebar{
+  width:var(--sidebar-w); background:rgba(15,15,15,0.92);
+  backdrop-filter:blur(12px); position:fixed; top:0; left:0; height:100vh;
+  display:flex; flex-direction:column; padding:0 0 20px; z-index:300;
+  border-right:1px solid rgba(255,255,255,0.06); transition:transform .3s;
+}
+.brand{ display:flex; align-items:center; gap:10px; padding:22px 20px 18px; border-bottom:1px solid rgba(255,255,255,0.07); }
+.brand span{ color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:.95rem; }
+.brand small{ font-weight:400; font-size:.7rem; display:block; color:#9aa0ab; }
+.nav-section-label{ font-size:.68rem; font-weight:600; letter-spacing:.1em; color:#6b7280; text-transform:uppercase; padding:18px 20px 6px; }
+.nav-link{
+  display:flex; align-items:center; gap:10px; padding:10px 20px; color:#d1d5db; font-size:.88rem; font-weight:500;
+  text-decoration:none; border-radius:0; cursor:pointer; transition:background .2s, color .2s; border-left:3px solid transparent;
+}
+.nav-link i{ width:16px; text-align:center; opacity:.7; }
+.nav-link:hover{ background:rgba(255,255,255,0.06); color:#fff; }
+.nav-link.active{ background:rgba(139,0,0,0.18); color:#ff9999; border-left-color:var(--primary); }
+.logout-link{ margin-top:auto; padding:0 12px; }
+.logout-link a{ display:flex; align-items:center; background: linear-gradient(135deg, var(--primary), var(--primary-light));gap:10px; padding:10px 14px; color:white !important; font-size:.88rem; text-decoration:none; border-radius:8px; transition:background .2s; cursor:pointer; }
+.logout-link a:hover{ background:rgba(239,68,68,0.12); }
+.sidebar-overlay{ display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:200; backdrop-filter:blur(2px); }
+.sidebar-overlay.show{ display:block; }
+
+/* Main area */
+.main-area{ flex:1; margin-left:var(--sidebar-w); display:flex; flex-direction:column; min-height:100vh; }
+
+/* Topbar */
+.topbar{
+  height:var(--topbar-h); background:rgba(255,255,255,0.92); backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border); display:flex; align-items:center; gap:14px; padding:0 24px;
+  position:sticky; top:0; z-index:100;
+}
+[data-theme="dark"] .topbar{ background:rgba(31,41,55,0.92); }
+.menu-burger{ display:none; border:none; background:none; font-size:1.2rem; cursor:pointer; color:var(--text); padding:4px; }
+.topbar-title{ font-family:'Montserrat',sans-serif; font-weight:700; font-size:1rem; color:var(--text); }
+.topbar-right{ margin-left:auto; display:flex; align-items:center; gap:12px; }
+.theme-toggle{
+  border:none; background:rgba(0,0,0,0.06); border-radius:8px; width:36px; height:36px;
+  display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--text); font-size:.95rem; transition:background .2s;
+}
+.theme-toggle:hover{ background:rgba(0,0,0,0.12); }
+[data-theme="dark"] .theme-toggle{ background:rgba(255,255,255,0.08); }
+[data-theme="dark"] .theme-toggle:hover{ background:rgba(255,255,255,0.14); }
+.user-chip{ display:flex; align-items:center; gap:10px; background:rgba(0,0,0,0.04); border-radius:10px; padding:6px 12px; }
+[data-theme="dark"] .user-chip{ background:rgba(255,255,255,0.06); }
+.avatar{
+  width:34px; height:34px; border-radius:50%; background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  color:#fff; font-size:.8rem; font-weight:700; display:flex; align-items:center; justify-content:center; overflow:hidden;
+}
+.avatar img{ width:100%; height:100%; object-fit:cover; }
+.user-chip .name{ font-size:.82rem; font-weight:600; }
+.user-chip .role{ font-size:.72rem; color:var(--muted); }
+
+/* Content */
+.content{ flex:1; padding:32px 28px; max-width:1000px; margin:0 auto; width:100%; }
+.content.wide{ max-width:1200px; }
+.page-title{ font-family:'Montserrat',sans-serif; font-size:1.6rem; font-weight:800; margin-bottom:4px; color:white !important; }
+.page-sub{ color:var(--muted); font-size:.9rem; margin-bottom:28px; }
+
+/* Glass Card */
+.glass-card{ background:var(--card-bg); border-radius:16px; border:1px solid var(--border); box-shadow:0 4px 24px rgba(0,0,0,0.07); padding:28px; transition:background .3s; }
+
+/* Profile Card */
+.student-profile-card{ text-align:center; }
+.student-photo{
+  width:96px; height:96px; border-radius:50%; object-fit:cover; border:3px solid var(--primary);
+  margin-bottom:14px; box-shadow:0 0 0 6px var(--primary-glow);
+}
+.student-photo.lg{ width:120px; height:120px; }
+.student-profile-card h3{ font-size:1.25rem; font-weight:700; margin-bottom:4px; }
+
+/* Badges */
+.badge-status{ display:inline-block; padding:4px 12px; border-radius:20px; font-size:.75rem; font-weight:600; }
+.badge-finished{ background:#d1fae5; color:#065f46; }
+.badge-ongoing{ background:#fef3c7; color:#92400e; }
+.badge-paid{ background:#d1fae5; color:#065f46; }
+.badge-pending{ background:#fee2e2; color:#991b1b; }
+.badge-partial{ background:#fef3c7; color:#92400e; }
+.badge-issued{ background:#d1fae5; color:#065f46; }
+.badge-notissued{ background:#e5e7eb; color:#4b5563; }
+[data-theme="dark"] .badge-finished{ background:rgba(6,95,70,0.3); color:#6ee7b7; }
+[data-theme="dark"] .badge-ongoing{ background:rgba(146,64,14,0.3); color:#fcd34d; }
+[data-theme="dark"] .badge-paid{ background:rgba(6,95,70,0.3); color:#6ee7b7; }
+[data-theme="dark"] .badge-pending{ background:rgba(153,27,27,0.3); color:#fca5a5; }
+[data-theme="dark"] .badge-partial{ background:rgba(146,64,14,0.3); color:#fcd34d; }
+[data-theme="dark"] .badge-issued{ background:rgba(6,95,70,0.3); color:#6ee7b7; }
+[data-theme="dark"] .badge-notissued{ background:rgba(255,255,255,0.08); color:#cbd5e1; }
+
+/* Progress Bars */
+.progress-section{ margin:24px 0 20px; display:flex; gap:20px; flex-wrap:wrap; }
+.mini-progress{ flex:1; min-width:180px; text-align:left; }
+.mini-progress .lbl{ font-size:.78rem; font-weight:600; color:var(--muted); margin-bottom:6px; }
+.progress{ height:8px; background:rgba(0,0,0,0.08); border-radius:4px; overflow:hidden; }
+[data-theme="dark"] .progress{ background:rgba(255,255,255,0.08); }
+.progress-bar{ height:100%; border-radius:4px; background:linear-gradient(90deg,var(--primary),#e05050); transition:width 1s ease; }
+.prog-val{ font-size:.78rem; color:var(--muted); margin-top:4px; }
+
+/* Info Grid */
+.info-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:20px; text-align:left; }
+.info-item{ padding:14px 16px; border-radius:12px; }
+.info-item .lbl{ font-size:.72rem; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin-bottom:4px; }
+.info-item .val{ font-size:.92rem; font-weight:600; color:var(--text); word-break:break-word; }
+
+/* Section Headings */
+.section-head{ font-size:.82rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--primary); margin:28px 0 12px; display:flex; align-items:center; gap:8px; }
+.section-head::after{ content:''; flex:1; height:1px; background:var(--border); }
+
+/* Notice */
+.notice{ font-size:.78rem; color:var(--muted); background:rgba(139,0,0,0.04); border:1px solid rgba(139,0,0,0.12); border-radius:8px; padding:10px 14px; margin-top:20px; }
+.notice.danger{ border-color:rgba(220,53,69,0.2); background:rgba(220,53,69,0.04); color:#dc2626; }
+.notice.success{ border-color:rgba(16,185,129,0.25); background:rgba(16,185,129,0.06); color:#0f7b3a; }
+
+/* Loading / Empty States */
+.loading-state{ text-align:center; padding:60px 20px; color:var(--muted); }
+.loading-state i{ font-size:2rem; margin-bottom:12px; color:var(--primary); animation:spin 1s linear infinite; }
+@keyframes spin{ to{ transform:rotate(360deg); } }
+.empty-state{ text-align:center; padding:40px 20px; color:var(--muted); }
+.empty-state i{ font-size:2.2rem; margin-bottom:10px; color:var(--border); }
+
+/* ═══════════════════════════════════════════════════════════════
+   STAT CARDS (Dashboard summary)
+   ═══════════════════════════════════════════════════════════════ */
+.stat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:8px; }
+.stat-card{
+  background:var(--card-bg); border:1px solid var(--border); border-radius:16px; padding:20px;
+  box-shadow:0 4px 24px rgba(0,0,0,0.06); display:flex; align-items:center; gap:14px;
+  transition:transform .2s, box-shadow .2s;
+}
+.stat-card:hover{ transform:translateY(-3px); box-shadow:0 10px 30px rgba(0,0,0,0.1); }
+.stat-icon{
+  width:46px; height:46px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+  font-size:1.15rem; color:#fff; background:linear-gradient(135deg,var(--primary),var(--primary-light)); flex-shrink:0;
+}
+.stat-icon.blue{ background:linear-gradient(135deg,#1e40af,#3b82f6); }
+.stat-icon.green{ background:linear-gradient(135deg,#065f46,#10b981); }
+.stat-icon.amber{ background:linear-gradient(135deg,#92400e,#f59e0b); }
+.stat-icon.purple{ background:linear-gradient(135deg,#5b21b6,#8b5cf6); }
+.stat-icon.gray{ background:linear-gradient(135deg,#374151,#6b7280); }
+.stat-label{ font-size:.72rem; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
+.stat-value{ font-size:1.15rem; font-weight:700; color:var(--text); margin-top:2px; }
+@media(max-width:900px){ .stat-grid{ grid-template-columns:repeat(2,1fr); } }
+@media(max-width:560px){ .stat-grid{ grid-template-columns:1fr; } }
+
+/* ═══════════════════════════════════════════════════════════════
+   FORMS (Update Profile / Change Password / Admin forms)
+   ═══════════════════════════════════════════════════════════════ */
+.form-label-sm{ font-size:.78rem; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; margin-bottom:6px; display:block; }
+.form-control-portal{
+  width:100%; padding:11px 14px; border:1.5px solid var(--border); border-radius:10px;
+  font-size:.9rem; font-family:'Poppins',sans-serif; outline:none; background:var(--card-bg); color:var(--text);
+  transition:border-color .25s, box-shadow .25s;
+}
+.form-control-portal:focus{ border-color:var(--primary); box-shadow:0 0 0 3px var(--primary-glow); }
+.form-control-portal:disabled{ background:rgba(0,0,0,0.03); color:var(--muted); cursor:not-allowed; }
+[data-theme="dark"] .form-control-portal:disabled{ background:rgba(255,255,255,0.03); }
+.form-control-portal.locked{ background:rgba(0,0,0,0.03); color:var(--muted); }
+textarea.form-control-portal{ resize:vertical; min-height:80px; }
+.lock-note{ font-size:.7rem; color:var(--muted); margin-top:4px; display:flex; align-items:center; gap:5px; }
+
+.btn-portal{
+  padding:10px 22px; border:none; border-radius:10px; font-weight:600; font-size:.88rem; cursor:pointer;
+  background:linear-gradient(135deg,var(--primary),var(--primary-light)); color:#fff;
+  box-shadow:0 8px 20px var(--primary-glow); transition:transform .15s, opacity .2s;
+}
+.btn-portal:hover{ transform:translateY(-2px); }
+.btn-portal:disabled{ opacity:.6; cursor:not-allowed; transform:none; }
+.btn-portal.outline{ background:none; color:var(--primary); border:1.5px solid var(--primary); box-shadow:none; }
+.btn-portal.outline:hover{ background:rgba(139,0,0,0.06); }
+.btn-portal.sm{ padding:6px 14px; font-size:.78rem; }
+.btn-portal.gray{ background:linear-gradient(135deg,#4b5563,#6b7280); box-shadow:0 8px 20px rgba(75,85,99,0.25); }
+.btn-portal.danger{ background:linear-gradient(135deg,#991b1b,#dc2626); box-shadow:0 8px 20px rgba(220,38,38,0.25); }
+
+.upload-photo-box{ display:flex; align-items:center; gap:18px; margin-bottom:22px; flex-wrap:wrap; }
+.upload-photo-box .preview{
+  width:78px; height:78px; border-radius:50%; object-fit:cover; border:3px solid var(--primary);
+  box-shadow:0 0 0 5px var(--primary-glow);
+}
+.upload-btn{
+  display:inline-flex; align-items:center; gap:8px; padding:9px 16px; border-radius:9px;
+  background:rgba(139,0,0,0.07); color:var(--primary); font-size:.82rem; font-weight:600; cursor:pointer; border:1px dashed var(--primary);
+}
+.upload-btn:hover{ background:rgba(139,0,0,0.12); }
+
+/* ═══════════════════════════════════════════════════════════════
+   ADMIN TABLE
+   ═══════════════════════════════════════════════════════════════ */
+.toolbar{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:20px; }
+.toolbar .search-box{ position:relative; flex:1; min-width:220px; }
+.toolbar .search-box i{ position:absolute; left:14px; top:50%; transform:translateY(-50%); color:var(--muted); font-size:.85rem; }
+.toolbar .search-box input{ padding-left:38px; }
+.toolbar select.form-control-portal{ max-width:180px; }
+
+.table-portal-wrap{ overflow-x:auto; }
+.table-portal{ width:100%; border-collapse:collapse; font-size:.85rem; min-width:820px; }
+.table-portal th{
+  background:rgba(139,0,0,0.07); padding:11px 14px; text-align:left; font-weight:600;
+  color:var(--text); border-bottom:2px solid var(--border); white-space:nowrap;
+}
+.table-portal td{ padding:10px 14px; border-bottom:1px solid var(--border); color:var(--text); vertical-align:middle; }
+.table-portal tr:hover td{ background:rgba(139,0,0,0.03); }
+[data-theme="dark"] .table-portal th{ background:rgba(255,255,255,0.04); }
+.table-avatar{ width:34px; height:34px; border-radius:50%; object-fit:cover; }
+.row-actions{ display:flex; gap:6px; flex-wrap:wrap; }
+.icon-btn{
+  width:30px; height:30px; border-radius:8px; border:1px solid var(--border); background:var(--card-bg);
+  color:var(--muted); display:inline-flex; align-items:center; justify-content:center; cursor:pointer; font-size:.78rem;
+  transition:all .15s;
+}
+.icon-btn:hover{ background:rgba(139,0,0,0.08); color:var(--primary); border-color:var(--primary); }
+.icon-btn.danger:hover{ background:rgba(220,38,38,0.08); color:#dc2626; border-color:#dc2626; }
+
+/* Modal tweaks */
+.modal-content{ background:var(--card-bg); color:var(--text); border-radius:16px; border:none; }
+.modal-header{ border-bottom:1px solid var(--border); }
+.modal-footer{ border-top:1px solid var(--border); }
+.modal-title{ font-family:'Montserrat',sans-serif; font-weight:700; }
+.btn-close{ filter:none; }
+[data-theme="dark"] .btn-close{ filter:invert(1); }
+
+/* Certificate cards */
+.cert-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:18px; }
+.cert-card{ background:var(--card-bg); border:1px solid var(--border); border-radius:16px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,0.07); }
+.cert-thumb{ width:100%; height:150px; object-fit:cover; background:rgba(139,0,0,0.05); }
+.cert-thumb-placeholder{
+  width:100%; height:150px; display:flex; align-items:center; justify-content:center;
+  background:rgba(139,0,0,0.05); color:var(--primary); font-size:2rem;
+}
+.cert-body{ padding:16px; }
+.cert-body h4{ font-size:.98rem; font-weight:700; margin-bottom:4px; }
+.cert-meta{ font-size:.78rem; color:var(--muted); margin-bottom:10px; }
+.cert-actions{ display:flex; gap:8px; margin-top:12px; }
+
+/* Fee boxes (reused) */
+.fees-summary{ display:flex; gap:12px; flex-wrap:wrap; margin-top:20px; }
+.fee-box{ flex:1; min-width:140px; border-radius:12px; padding:16px; border:1px solid var(--border); background:var(--card-bg); text-align:center; }
+.fee-box .fee-lbl{ font-size:.72rem; color:var(--muted); font-weight:600; text-transform:uppercase; margin-bottom:6px; }
+.fee-box .fee-val{ font-size:1.1rem; font-weight:700; }
+.fee-box.paid .fee-val{ color:#065f46; }
+.fee-box.due .fee-val{ color:#dc2626; }
+.fee-box.total .fee-val{ color:var(--text); }
+[data-theme="dark"] .fee-box.paid .fee-val{ color:#6ee7b7; }
+[data-theme="dark"] .fee-box.due .fee-val{ color:#fca5a5; }
+
+/* Toast */
+.portal-toast{
+  position:fixed; bottom:24px; right:24px; z-index:2000; background:#1f2937; color:#fff;
+  padding:12px 18px; border-radius:10px; font-size:.85rem; box-shadow:0 10px 30px rgba(0,0,0,0.3);
+  display:flex; align-items:center; gap:10px; transform:translateY(20px); opacity:0; transition:all .3s; pointer-events:none;
+}
+.portal-toast.show{ transform:translateY(0); opacity:1; }
+.portal-toast.success i{ color:#34d399; }
+.portal-toast.error i{ color:#f87171; }
+
+/* Chips for module lists */
+.chip-list{ display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
+.chip{ padding:5px 12px; border-radius:20px; font-size:.78rem; font-weight:500; }
+.chip.done{ background:#d1fae5; color:#065f46; }
+.chip.pending{ background:#fef3c7; color:#92400e; }
+[data-theme="dark"] .chip.done{ background:rgba(6,95,70,0.3); color:#6ee7b7; }
+[data-theme="dark"] .chip.pending{ background:rgba(146,64,14,0.3); color:#fcd34d; }
+
+/* Responsive */
+@media(max-width:768px){
+  .sidebar{ transform:translateX(-100%); }
+  .sidebar.open{ transform:translateX(0); }
+  .main-area{ margin-left:0; }
+  .menu-burger{ display:flex; }
+  .content{ padding:20px 16px; }
+  .info-grid{ grid-template-columns:1fr; }
+  .progress-section{ flex-direction:column; }
+  .stat-grid{ grid-template-columns:1fr 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="portal-bg"></div>
+<div class="sidebar-overlay" id="overlay"></div>
+
+<div class="dash-shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main-area">
+    <div class="topbar" id="topbar"></div>
+    <div class="content">
+      <h2 class="page-title">Attendance</h2>
+      <p class="page-sub">Your class attendance record for the current course.</p>
+
+      <div class="glass-card">
+        <div class="mini-progress" style="min-width:100%;">
+          <div class="lbl"><i class="fas fa-calendar-check me-1"></i>Overall Attendance</div>
+          <div class="progress" style="height:12px;"><div class="progress-bar" id="pb-att" style="width:0%"></div></div>
+          <div class="prog-val mt-2" id="pb-att-val" style="font-size:.85rem;"></div>
+        </div>
+
+        <div class="stat-grid" style="margin-top:26px;">
+          <div class="stat-card">
+            <div class="stat-icon green"><i class="fas fa-circle-check"></i></div>
+            <div><div class="stat-label">Present Days</div><div class="stat-value" id="presentVal"></div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:linear-gradient(135deg,#991b1b,#dc2626);"><i class="fas fa-circle-xmark"></i></div>
+            <div><div class="stat-label">Absent Days</div><div class="stat-value" id="absentVal"></div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon amber"><i class="fas fa-umbrella-beach"></i></div>
+            <div><div class="stat-label">Leave Days</div><div class="stat-value" id="leaveVal"></div></div>
+          </div>
+        </div>
+
+        <p class="notice mt-4"><i class="fas fa-circle-info me-1"></i>Attendance is recorded by faculty and updated by administration. Contact the office if you notice any discrepancy.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════
+   CADPOINT PORTAL — SHARED JAVASCRIPT MODULE
+   Single source of truth for student data (localStorage) and session
+   handling (sessionStorage). Inlined directly into every page's <script> tag.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Storage Keys ─────────────────────────────────────────────── */
+const STUDENTS_KEY      = 'cadpoint_students';        // single source of truth for ALL student data
+const STUDENT_SESS_KEY  = 'cadpoint_student_session'; // sessionStorage: logged-in student
+const ADMIN_SESS_KEY    = 'cadpoint_admin_session';   // sessionStorage: logged-in admin
+const THEME_KEY         = 'cadpoint_theme';
+
+/* Admin credentials (demo only — in production this lives server-side) */
+const ADMIN_CREDENTIALS = { 'ADMIN001': 'admin123' };
+
+/* ═══════════════════════════════════════════════════════════════
+   SEED DATA — created once on first run
+   ═══════════════════════════════════════════════════════════════ */
+function defaultModules(names, doneCount){
+  return names.map((n,i) => ({ name:n, done:i < doneCount }));
+}
+
+function seedStudents(){
+  return [
+    {
+      id:'STU001', password:'pass123', name:'Arjun Ramesh',
+      photo:'', course:'AutoCAD + SolidWorks', department:'Mechanical Design',
+      duration:'6 Months', join:'15 Jan 2025', dob:'12 Aug 2002',
+      mobile:'+91 98765 43210', email:'arjun.r@email.com',
+      address:'12 Anna Nagar, Chennai, TN', emergencyContact:'+91 90000 11111',
+      status:'Ongoing',
+      attendance:{ percent:87, present:52, absent:6, leave:2 },
+      progress:{ percent:62, modules: defaultModules(
+        ['Engineering Drawing Basics','AutoCAD 2D Fundamentals','AutoCAD 3D Modeling','SolidWorks Part Design','SolidWorks Assembly','Final Project'], 3) },
+      fees:{ status:'Partial', total:18000, paid:12000, due:6000, lastPaid:'10 Apr 2025' },
+      certificates:[],
+      remarks:'Consistent performer, needs to improve attendance.'
+    },
+    {
+      id:'STU002', password:'pass123', name:'Priya Suresh',
+      photo:'', course:'CATIA V5 Essentials', department:'Aerospace Engineering',
+      duration:'4 Months', join:'01 Sep 2024', dob:'23 Nov 2001',
+      mobile:'+91 87654 32109', email:'priya.s@email.com',
+      address:'45 Besant Nagar, Chennai, TN', emergencyContact:'+91 90000 22222',
+      status:'Finished',
+      attendance:{ percent:95, present:76, absent:3, leave:1 },
+      progress:{ percent:100, modules: defaultModules(
+        ['Part Design','Assembly Design','Drafting & Annotation','Surface Modelling'], 4) },
+      fees:{ status:'Paid', total:22000, paid:22000, due:0, lastPaid:'28 Dec 2024' },
+      certificates:[
+        { id:'CERT-STU002-1', courseName:'CATIA V5 Essentials', certNumber:'CDP-2024-1187',
+          issueDate:'02 Jan 2025', status:'Issued', image:'' }
+      ],
+      remarks:'Top performer of the batch.'
+    },
+    {
+      id:'STU003', password:'pass123', name:'Karthik Velu',
+      photo:'', course:'Revit Architecture', department:'Civil & Architecture',
+      duration:'3 Months', join:'01 Mar 2025', dob:'05 Feb 2003',
+      mobile:'+91 76543 21098', email:'karthik.v@email.com',
+      address:'8 T Nagar, Chennai, TN', emergencyContact:'+91 90000 33333',
+      status:'Ongoing',
+      attendance:{ percent:74, present:37, absent:9, leave:4 },
+      progress:{ percent:45, modules: defaultModules(
+        ['BIM Concepts','Revit Floor Plans','Elevations & Sections','3D Rendering'], 1) },
+      fees:{ status:'Partial', total:14000, paid:7000, due:7000, lastPaid:'05 Mar 2025' },
+      certificates:[],
+      remarks:'Needs to catch up on pending modules.'
+    },
+    {
+      id:'STU004', password:'pass123', name:'Deepa Krishnan',
+      photo:'', course:'ANSYS Simulation', department:'FEA & CFD',
+      duration:'5 Months', join:'10 Feb 2025', dob:'19 Jun 2002',
+      mobile:'+91 65432 10987', email:'deepa.k@email.com',
+      address:'22 Velachery, Chennai, TN', emergencyContact:'+91 90000 44444',
+      status:'Ongoing',
+      attendance:{ percent:91, present:55, absent:4, leave:1 },
+      progress:{ percent:55, modules: defaultModules(
+        ['FEA Theory','Static Structural','Thermal Analysis','CFD Basics','Final Project'], 2) },
+      fees:{ status:'Partial', total:25000, paid:15000, due:10000, lastPaid:'20 Mar 2025' },
+      certificates:[],
+      remarks:''
+    },
+    {
+      id:'STU005', password:'pass123', name:'Rahul Nair',
+      photo:'', course:'AutoCAD Civil 3D', department:'Civil Engineering',
+      duration:'4 Months', join:'15 Apr 2025', dob:'30 Sep 2003',
+      mobile:'+91 54321 09876', email:'rahul.n@email.com',
+      address:'3 Adyar, Chennai, TN', emergencyContact:'+91 90000 55555',
+      status:'Ongoing',
+      attendance:{ percent:68, present:30, absent:11, leave:3 },
+      progress:{ percent:30, modules: defaultModules(
+        ['Civil 3D Basics','Surface Design','Corridor Modeling'], 0) },
+      fees:{ status:'Pending', total:16000, paid:8000, due:8000, lastPaid:'18 Apr 2025' },
+      certificates:[],
+      remarks:'Attendance below required threshold — please follow up.'
+    }
+  ];
+}
+
+function seedIfEmpty(){
+  if (!localStorage.getItem(STUDENTS_KEY)){
+    localStorage.setItem(STUDENTS_KEY, JSON.stringify(seedStudents()));
+  }
+}
+seedIfEmpty();
+
+/* ═══════════════════════════════════════════════════════════════
+   DATA LAYER — single source of truth: STUDENTS_KEY
+   ═══════════════════════════════════════════════════════════════ */
+function getStudents(){
+  try { return JSON.parse(localStorage.getItem(STUDENTS_KEY)) || []; }
+  catch(e){ return []; }
+}
+function saveStudents(list){
+  localStorage.setItem(STUDENTS_KEY, JSON.stringify(list));
+}
+function getStudentById(id){
+  if (!id) return null;
+  return getStudents().find(s => s.id === id.toUpperCase()) || null;
+}
+function upsertStudent(student){
+  const list = getStudents();
+  const idx = list.findIndex(s => s.id === student.id);
+  if (idx >= 0) list[idx] = student; else list.push(student);
+  saveStudents(list);
+  return student;
+}
+function patchStudent(id, patch){
+  const list = getStudents();
+  const idx = list.findIndex(s => s.id === id);
+  if (idx < 0) return null;
+  list[idx] = Object.assign({}, list[idx], patch);
+  saveStudents(list);
+  return list[idx];
+}
+function deleteStudentById(id){
+  saveStudents(getStudents().filter(s => s.id !== id));
+}
+function nextStudentId(){
+  const nums = getStudents().map(s => parseInt(s.id.replace(/\D/g,''),10)).filter(n=>!isNaN(n));
+  const next = (nums.length ? Math.max(...nums) : 0) + 1;
+  return 'STU' + String(next).padStart(3,'0');
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   AUTH GUARDS
+   ═══════════════════════════════════════════════════════════════ */
+function getStudentSession(){
+  try { return JSON.parse(sessionStorage.getItem(STUDENT_SESS_KEY)); }
+  catch(e){ return null; }
+}
+function getAdminSession(){
+  try { return JSON.parse(sessionStorage.getItem(ADMIN_SESS_KEY)); }
+  catch(e){ return null; }
+}
+/* Redirects to student-login.html if not authenticated as a student.
+   Returns the current student record, or null (after redirecting). */
+function requireStudentAuth(){
+  const session = getStudentSession();
+  if (!session || session.role !== 'student' || !session.studentId){
+    window.location.href = 'student-login.html';
+    return null;
+  }
+  const student = getStudentById(session.studentId);
+  if (!student){
+    sessionStorage.removeItem(STUDENT_SESS_KEY);
+    window.location.href = 'student-login.html';
+    return null;
+  }
+  return student;
+}
+/* Redirects to admin-login.html if not authenticated as admin. */
+function requireAdminAuth(){
+  const session = getAdminSession();
+  if (!session || session.role !== 'admin'){
+    window.location.href = 'admin-login.html';
+    return null;
+  }
+  return session;
+}
+function logoutStudent(){
+  sessionStorage.removeItem(STUDENT_SESS_KEY);
+  window.location.href = 'student-login.html';
+}
+function logoutAdmin(){
+  sessionStorage.removeItem(ADMIN_SESS_KEY);
+  window.location.href = 'admin-login.html';
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   UTILITIES
+   ═══════════════════════════════════════════════════════════════ */
+function escHtml(str){
+  return String(str == null ? '' : str)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function initials(name){
+  return String(name||'').split(' ').filter(Boolean).map(w=>w[0]).slice(0,2).join('').toUpperCase() || 'ST';
+}
+function fmt(n){ return '₹'+Number(n||0).toLocaleString('en-IN'); }
+function photoUrl(student){
+  return student.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(student.name||'Student')}&background=8B0000&color=fff&size=128`;
+}
+function statusBadgeHtml(status){
+  return status === 'Finished'
+    ? `<span class="badge-status badge-finished"><i class="fas fa-circle-check me-1"></i>Finished</span>`
+    : `<span class="badge-status badge-ongoing"><i class="fas fa-circle-play me-1"></i>Ongoing</span>`;
+}
+function feesBadgeHtml(status){
+  const map = {
+    Paid:    `<span class="badge-status badge-paid"><i class="fas fa-circle-check me-1"></i>Paid</span>`,
+    Partial: `<span class="badge-status badge-partial"><i class="fas fa-clock me-1"></i>Partial</span>`,
+    Pending: `<span class="badge-status badge-pending"><i class="fas fa-triangle-exclamation me-1"></i>Pending</span>`
+  };
+  return map[status] || map.Pending;
+}
+function certBadgeHtml(status){
+  return status === 'Issued'
+    ? `<span class="badge-status badge-issued"><i class="fas fa-award me-1"></i>Issued</span>`
+    : `<span class="badge-status badge-notissued"><i class="fas fa-hourglass-half me-1"></i>Not Issued</span>`;
+}
+function overallCertStatus(student){
+  if (!student.certificates || !student.certificates.length) return 'None Issued';
+  return student.certificates.some(c => c.status === 'Issued') ? 'Issued' : 'Pending';
+}
+
+/* Toast notification */
+function toast(msg, type){
+  type = type || 'success';
+  let el = document.getElementById('portalToast');
+  if (!el){
+    el = document.createElement('div');
+    el.id = 'portalToast';
+    el.className = 'portal-toast';
+    document.body.appendChild(el);
+  }
+  const icon = type === 'success' ? 'fa-circle-check' : 'fa-circle-exclamation';
+  el.className = 'portal-toast ' + type;
+  el.innerHTML = `<i class="fas ${icon}"></i><span>${escHtml(msg)}</span>`;
+  requestAnimationFrame(() => el.classList.add('show'));
+  clearTimeout(el._t);
+  el._t = setTimeout(() => el.classList.remove('show'), 2800);
+}
+
+/* Read a File object as a base64 data URL (used for photo / certificate uploads) */
+function readFileAsDataUrl(file, cb){
+  const reader = new FileReader();
+  reader.onload = () => cb(reader.result);
+  reader.onerror = () => cb('');
+  reader.readAsDataURL(file);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   THEME
+   ═══════════════════════════════════════════════════════════════ */
+function initTheme(){
+  const saved = localStorage.getItem(THEME_KEY) || 'light';
+  document.documentElement.setAttribute('data-theme', saved);
+  const btn = document.getElementById('themeToggle');
+  if (btn){
+    btn.querySelector('i').className = saved === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    btn.addEventListener('click', () => {
+      const cur = document.documentElement.getAttribute('data-theme');
+      const next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem(THEME_KEY, next);
+      btn.querySelector('i').className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    });
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   STUDENT PORTAL CHROME (sidebar + topbar), built once per page
+   ═══════════════════════════════════════════════════════════════ */
+const STUDENT_NAV = [
+  { key:'dashboard',       label:'Dashboard',        icon:'fa-gauge-high',    href:'student-dashboard.html' },
+  { key:'profile',         label:'My Profile',       icon:'fa-id-card',       href:'my-profile.html' },
+  { key:'attendance',      label:'Attendance',       icon:'fa-calendar-check',href:'attendance.html' },
+  { key:'progress',        label:'Course Progress',  icon:'fa-chart-line',    href:'course-progress.html' },
+  { key:'certificates',    label:'Certificates',     icon:'fa-award',         href:'certificates.html' },
+//   { key:'update-profile',  label:'Update Profile',   icon:'fa-user-pen',      href:'update-profile.html' },
+//   { key:'change-password', label:'Change Password',  icon:'fa-key',           href:'change-password.html' }
+];
+
+function studentSidebarHtml(activeKey){
+  const links = STUDENT_NAV.map(item => `
+    <a class="nav-link ${item.key===activeKey?'active':''}" href="${item.href}">
+      <i class="fas ${item.icon}"></i>${item.label}
+    </a>`).join('');
+  return `
+    <div class="brand"><span>CADPOINT<small>Student Portal</small></span></div>
+    <div class="nav-section-label">My Account</div>
+    ${links}
+    <div class="logout-link"><a id="logoutBtn"><i class="fas fa-right-from-bracket"></i>Logout</a></div>
+  `;
+}
+
+function topbarHtml(title, entity){
+  const av = entity.photo
+    ? `<img src="${entity.photo}" alt="">`
+    : initials(entity.name);
+  return `
+    <button class="menu-burger" id="burger"><i class="fas fa-bars"></i></button>
+    <div class="topbar-title">${escHtml(title)}</div>
+    <div class="topbar-right">
+      <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+      <div class="user-chip">
+        <div class="avatar">${av}</div>
+        <div class="d-none d-sm-block">
+          <div class="name">${escHtml((entity.name||'').split(' ')[0] || entity.id)}</div>
+          <div class="role">${escHtml(entity.role || 'Student')}</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+/* Wires burger/overlay/logout/theme handlers common to every shell page */
+function wireChrome(logoutFn){
+  const burger = document.getElementById('burger');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+  if (burger && sidebar && overlay){
+    burger.addEventListener('click', () => { sidebar.classList.add('open'); overlay.classList.add('show'); });
+    overlay.addEventListener('click', () => { sidebar.classList.remove('open'); overlay.classList.remove('show'); });
+  }
+  const logoutBtn = document.getElementById('logoutBtn');
+  if (logoutBtn) logoutBtn.addEventListener('click', e => { e.preventDefault(); logoutFn(); });
+  initTheme();
+}
+
+/* Full boot sequence for a student page. Call once per page.
+   Returns the authenticated student record (or null if redirected). */
+function initStudentShell(activeKey, pageTitle){
+  const student = requireStudentAuth();
+  if (!student) return null;
+  document.getElementById('sidebar').innerHTML = studentSidebarHtml(activeKey);
+  document.getElementById('topbar').innerHTML = topbarHtml(pageTitle, Object.assign({role:'Student'}, student));
+  wireChrome(logoutStudent);
+  return student;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ADMIN PORTAL CHROME
+   ═══════════════════════════════════════════════════════════════ */
+function adminSidebarHtml(activeKey){
+  const items = [
+    { key:'students', label:'Manage Students', icon:'fa-users' },
+    { key:'certificates', label:'Certificates', icon:'fa-award' }
+  ];
+  const links = items.map(item => `
+    <a class="nav-link ${item.key===activeKey?'active':''}" data-admin-view="${item.key}">
+      <i class="fas ${item.icon}"></i>${item.label}
+    </a>`).join('');
+  return `
+    <div class="brand"><span>CADPOINT<small>Admin Portal</small></span></div>
+    <div class="nav-section-label">Management</div>
+    ${links}
+    <div class="logout-link"><a id="logoutBtn"><i class="fas fa-right-from-bracket"></i>Logout</a></div>
+  `;
+}
+
+function initAdminShell(pageTitle){
+  const session = requireAdminAuth();
+  if (!session) return null;
+  document.getElementById('sidebar').innerHTML = adminSidebarHtml('students');
+  document.getElementById('topbar').innerHTML = topbarHtml(pageTitle, { name:'Admin', role:'Administrator', photo:'' });
+  wireChrome(logoutAdmin);
+  return session;
+}
+
+</script>
+<script>
+const student = initStudentShell('attendance', 'Attendance');
+
+if (student) {
+  const a = student.attendance;
+  document.getElementById('presentVal').textContent = a.present + ' days';
+  document.getElementById('absentVal').textContent = a.absent + ' days';
+  document.getElementById('leaveVal').textContent = a.leave + ' days';
+  setTimeout(() => {
+    document.getElementById('pb-att').style.width = a.percent + '%';
+    document.getElementById('pb-att-val').textContent = `${a.percent}% attendance (${a.present} present / ${a.absent} absent / ${a.leave} leave)`;
+  }, 150);
+}
+</script>
+</body>
+</html>

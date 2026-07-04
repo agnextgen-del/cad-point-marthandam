@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Login | CADPOINT</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+  :root{
+    --primary:#8B0000;
+    --primary-light:#A00000;
+    --primary-glow:rgba(139,0,0,0.35);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    min-height:100vh;
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#1a1a1a 0%,#2b0a0a 45%,#3a0d0d 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+  }
+  .auth-card{
+    width:100%;
+    max-width:420px;
+    background:rgba(255,255,255,0.97);
+    border-radius:18px;
+    padding:40px 34px 34px;
+    box-shadow:0 25px 60px rgba(0,0,0,0.45);
+    animation:fadeUp .6s ease both;
+  }
+  @keyframes fadeUp{
+    from{opacity:0; transform:translateY(24px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  .auth-logo{ display:flex; align-items:center; justify-content:center; }
+  .icon-shield{
+    width:54px;height:54px;border-radius:50%;
+    background:linear-gradient(135deg,var(--primary),var(--primary-light));
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-size:1.5rem;
+    box-shadow:0 8px 20px var(--primary-glow);
+  }
+  h1.auth-title{
+    font-family:'Montserrat',sans-serif;
+    font-size:1.3rem; font-weight:700; text-align:center;
+    color:#1f1f1f; margin:14px 0 2px;
+  }
+  p.auth-sub{ text-align:center; color:#777; font-size:.85rem; margin:0 0 26px; }
+  .form-group{ margin-bottom:18px; }
+  label{ display:block; font-size:.8rem; font-weight:600; color:#444; margin-bottom:6px; }
+  .input-wrap{ position:relative; }
+  .input-wrap i.field-icon{
+    position:absolute; left:14px; top:50%; transform:translateY(-50%);
+    color:#a0a0a0; font-size:.9rem;
+  }
+  input[type="text"], input[type="password"]{
+    width:100%; padding:12px 14px 12px 38px;
+    border:1.5px solid #e2e2e2; border-radius:10px;
+    font-size:.92rem; font-family:'Poppins',sans-serif; outline:none;
+    transition:border-color .25s, box-shadow .25s;
+  }
+  input:focus{ border-color:var(--primary); box-shadow:0 0 0 3px var(--primary-glow); }
+  input.error-field{ border-color:#dc3545; box-shadow:0 0 0 3px rgba(220,53,69,0.2); }
+  .toggle-pass{
+    position:absolute; right:12px; top:50%; transform:translateY(-50%);
+    cursor:pointer; color:#999; font-size:.9rem;
+  }
+  .toggle-pass:hover{ color:var(--primary); }
+  .btn-login{
+    width:100%; padding:12px; border:none; border-radius:10px;
+    background:linear-gradient(135deg,var(--primary),var(--primary-light));
+    color:#fff; font-weight:600; font-size:.95rem; cursor:pointer;
+    box-shadow:0 10px 24px var(--primary-glow);
+    transition:transform .15s, opacity .2s;
+  }
+  .btn-login:hover{ transform:translateY(-2px); }
+  .btn-login:disabled{ opacity:.65; cursor:not-allowed; transform:none; }
+
+  /* Error alert */
+  .alert-error{
+    display:none;
+    background:#fff0f0; border:1px solid #f5c6c6; border-radius:10px;
+    color:#c0392b; font-size:.82rem; padding:10px 14px;
+    margin-bottom:16px; align-items:center; gap:8px;
+  }
+  .alert-error.show{ display:flex; animation:shake .4s ease; }
+  @keyframes shake{
+    0%,100%{transform:translateX(0);}
+    20%,60%{transform:translateX(-6px);}
+    40%,80%{transform:translateX(6px);}
+  }
+
+  /* Loading spinner inside button */
+  .btn-spinner{ display:none; }
+  .btn-login.loading .btn-text{ display:none; }
+  .btn-login.loading .btn-spinner{ display:inline; }
+
+  .back-link{
+    display:block; text-align:center; margin-top:16px;
+    font-size:.8rem; color:#888; text-decoration:none;
+  }
+  .back-link:hover{ color:var(--primary); }
+
+  /* Demo hint box */
+  .demo-hint{
+    background:#f8f4ff; border:1px dashed #c9b8f0; border-radius:8px;
+    padding:10px 12px; margin-top:16px; font-size:.75rem; color:#666;
+    line-height:1.7;
+  }
+  .demo-hint strong{ color:var(--primary); }
+</style>
+</head>
+<body>
+
+<div class="auth-card">
+  <div class="auth-logo"><div class="icon-shield"><i class="fas fa-graduation-cap"></i></div></div>
+  <h1 class="auth-title">Student Login</h1>
+  <p class="auth-sub">Access your CADPOINT student dashboard</p>
+
+  <div class="alert-error" id="errorAlert">
+    <i class="fas fa-circle-exclamation"></i>
+    <span id="errorMsg">Invalid Student ID or password. Please try again.</span>
+  </div>
+
+  <form id="studentForm" autocomplete="off">
+    <div class="form-group">
+      <label for="studentId">Student ID</label>
+      <div class="input-wrap">
+        <i class="fas fa-user field-icon"></i>
+        <input type="text" id="studentId" placeholder="e.g. STU001" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="studentPassword">Password</label>
+      <div class="input-wrap">
+        <i class="fas fa-key field-icon"></i>
+        <input type="password" id="studentPassword" placeholder="Enter your password" autocomplete="new-password" required style="padding-right:40px;">
+        <span class="toggle-pass" id="toggleStudentPass"><i class="fas fa-eye"></i></span>
+      </div>
+    </div>
+    <button type="submit" class="btn-login" id="loginBtn">
+      <span class="btn-text"><i class="fas fa-right-to-bracket me-1"></i> Login</span>
+      <span class="btn-spinner"><i class="fas fa-spinner fa-spin"></i> Verifying…</span>
+    </button>
+  </form>
+
+  <div class="demo-hint">
+    <strong>Demo Credentials:</strong><br>
+    ID: <strong>STU001</strong> &nbsp;|&nbsp; Password: <strong>pass123</strong><br>
+    ID: <strong>STU002</strong> &nbsp;|&nbsp; Password: <strong>pass123</strong><br>
+    ID: <strong>STU003</strong> &nbsp;|&nbsp; Password: <strong>pass123</strong>
+  </div>
+
+  <a href="index.html" class="back-link"><i class="fas fa-arrow-left me-1"></i>Back to Home</a>
+</div>
+
+<script>
+  // ─── Student credential store ────────────────────────────────────────────────
+  // In production this check happens server-side. Here we keep it in JS for demo.
+  const STUDENT_CREDENTIALS = {
+    'STU001': 'pass123',
+    'STU002': 'pass123',
+    'STU003': 'pass123',
+    'STU004': 'pass123',
+    'STU005': 'pass123'
+  };
+
+  // ─── Redirect if already logged in ──────────────────────────────────────────
+  const existing = sessionStorage.getItem('cadpoint_student_session');
+  if (existing) window.location.href = 'student-dashboard.html';
+
+  // ─── Toggle password visibility ──────────────────────────────────────────────
+  document.getElementById('toggleStudentPass').addEventListener('click', function () {
+    const input = document.getElementById('studentPassword');
+    const show = input.type === 'password';
+    input.type = show ? 'text' : 'password';
+    this.innerHTML = show ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>';
+  });
+
+  // ─── Show / hide error ───────────────────────────────────────────────────────
+  function showError(msg) {
+    const el = document.getElementById('errorAlert');
+    document.getElementById('errorMsg').textContent = msg;
+    el.classList.remove('show');
+    void el.offsetWidth; // reflow to retrigger animation
+    el.classList.add('show');
+    document.getElementById('studentId').classList.add('error-field');
+    document.getElementById('studentPassword').classList.add('error-field');
+  }
+  function clearError() {
+    document.getElementById('errorAlert').classList.remove('show');
+    document.getElementById('studentId').classList.remove('error-field');
+    document.getElementById('studentPassword').classList.remove('error-field');
+  }
+
+  // ─── Clear error on input ────────────────────────────────────────────────────
+  ['studentId','studentPassword'].forEach(id => {
+    document.getElementById(id).addEventListener('input', clearError);
+  });
+
+  // ─── Login handler ───────────────────────────────────────────────────────────
+  document.getElementById('studentForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    clearError();
+
+    const id       = document.getElementById('studentId').value.trim().toUpperCase();
+    const password = document.getElementById('studentPassword').value;
+    const btn      = document.getElementById('loginBtn');
+
+    if (!id || !password) {
+      showError('Please enter both your Student ID and password.');
+      return;
+    }
+
+    // Simulate async verification
+    btn.classList.add('loading');
+    btn.disabled = true;
+
+    setTimeout(() => {
+      btn.classList.remove('loading');
+      btn.disabled = false;
+
+      const expectedPass = STUDENT_CREDENTIALS[id];
+
+      if (!expectedPass) {
+        showError('Student ID not found. Please check your ID and try again.');
+        return;
+      }
+      if (password !== expectedPass) {
+        showError('Incorrect password. Please try again.');
+        return;
+      }
+
+      // ✅ Authenticated — store session and redirect
+      sessionStorage.setItem('cadpoint_student_session', JSON.stringify({
+        role: 'student',
+        studentId: id,
+        loginTime: Date.now()
+      }));
+      window.location.href = 'student-dashboard.html';
+
+    }, 800);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!--
+  header.html — CADPOINT Reusable Header
+  ===============================================================
+  HOW TO INCLUDE ON EVERY PAGE:
+    <div id="site-header"></div>
+    <script>
+      fetch('header.html')
+        .then(r => r.text())
+        .then(html => {
+          document.getElementById('site-header').innerHTML = html;
+          // After injection, run the nav initialiser shipped inside this file.
+          // It is stored as a plain function (not an IIFE) so the fetch
+          // callback can call it AFTER the DOM nodes exist.
+          if (typeof initCaddNav === 'function') initCaddNav();
+        });
+    </script>
+
+  DO NOT include Bootstrap JS or nav scripts again in the page file.
+  Bootstrap CSS + Font Awesome must already be in <head> of every page.
+  ===============================================================
+-->
+
+<nav class="navbar navbar-expand-lg" id="mainNav">
+  <div class="container">
+
+    <!-- BRAND -->
+    <a class="navbar-brand" href="index.html">
+      <div class="logo-text">
+        <img
+          src="../assets/image/caddpoint-logo.webp"
+          alt="CADPOINT"
+          style="height:46px;"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+        >
+        <div style="display:none">
+          <div class="brand-name">CADPOINT</div>
+          <div class="brand-sub">Authorized Training Centre</div>
+        </div>
+      </div>
+    </a>
+
+<!--hamburger-->
+    <button
+      class="navbar-toggler border-0"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navMenu"
+      aria-controls="navMenu"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span style="background:var(--primary);display:block;width:22px;height:2px;margin:5px 0;border-radius:2px;transition:all 0.3s"></span>
+      <span style="background:var(--primary);display:block;width:16px;height:2px;margin:5px 0;border-radius:2px;transition:all 0.3s"></span>
+      <span style="background:var(--primary);display:block;width:22px;height:2px;margin:5px 0;border-radius:2px;transition:all 0.3s"></span>
+    </button>
+
+    <!-- NAV LINKS -->
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+
+        <!--
+          BUG FIX 2 — DUPLICATE ID "coursesDropdown"
+          The original code had id="coursesDropdown" on BOTH the <a> tag AND
+          the caret <span>.  document.getElementById() returns only the FIRST
+          match, so the caret click listener was silently binding to the wrong
+          element on some browsers, and the chevron rotation broke completely.
+          Fix: give each element its own unique id.
+        -->
+        <li class="nav-item dropdown" id="coursesNav">
+          <div class="d-flex align-items-center">
+            <a
+              class="nav-link"
+              href="javascript:void(0)"
+              id="coursesLink"
+            >Courses</a>
+            <span
+              class="nav-link ps-0 pe-2 courses-caret"
+              style="cursor:pointer;"
+              id="coursesCaret"
+              aria-label="Toggle courses menu"
+            >
+              <i class="fas fa-chevron-down" style="font-size:0.65rem;transition:transform 0.25s ease;"></i>
+            </span>
+          </div>
+
+          <!--
+            BUG FIX 3 — position:fixed mega menu was anchored to the viewport
+            at load time (top:auto).  After fetch-injection the navbar is not
+            at y=0, so the menu appeared at a wrong y position or off-screen.
+            Fix: top is set dynamically by JS (see initCaddNav) via
+            getBoundingClientRect() each time the menu opens.
+            Also removed aria-labelledby pointing at the old duplicate id.
+          -->
+          <div
+            class="dropdown-menu courses-mega-menu p-0"
+            id="coursesMegaMenu"
+          >
+            <button type="button" class="mega-close-x" id="closeMegaMenu">
+              <i class="fas fa-times"></i>
+            </button>
+
+            <div class="d-flex" style="padding-top:20px;">
+
+              <!-- Civil -->
+              <div class="mega-col">
+                <div class="mega-col-head">
+                  <span class="mega-col-icon" style="background:rgba(37,99,235,0.12);color:#2563eb;">
+                    <i class="fas fa-hard-hat"></i>
+                  </span>
+                  <div>
+                    <div class="mega-col-title">Civil</div>
+                    <div class="mega-col-sub">Infrastructure &amp; Architecture</div>
+                  </div>
+                </div>
+                <a class="mega-item" href="autocad.html"><i class="fas fa-drafting-compass"></i>AutoCAD 2D &amp; 3D</a>
+                <a class="mega-item" href="revit.html"><i class="fas fa-building"></i>Revit Architecture</a>
+                <a class="mega-item" href="staad-pro.html"><i class="fas fa-project-diagram"></i>STAAD.Pro</a>
+                <a class="mega-item" href="sketchup.html"><i class="fas fa-pencil-ruler"></i>SketchUp</a>
+                <a class="mega-item" href="lumion.html"><i class="fas fa-sun"></i>Lumion</a>
+                <a class="mega-item" href="3dmax-vray.html"><i class="fas fa-film"></i>3DS Max &amp; V-Ray</a>
+                <a class="mega-item" href="civil3d.html"><i class="fas fa-road"></i>Civil 3D</a>
+              </div>
+
+              <!-- Mechanical -->
+              <div class="mega-col">
+                <div class="mega-col-head">
+                  <span class="mega-col-icon" style="background:rgba(234,88,12,0.12);color:#ea580c;">
+                    <i class="fas fa-cogs"></i>
+                  </span>
+                  <div>
+                    <div class="mega-col-title">Mechanical</div>
+                    <div class="mega-col-sub">Design &amp; Manufacturing</div>
+                  </div>
+                </div>
+                <a class="mega-item" href="autocad.html"><i class="fas fa-cog"></i>AutoCAD</a>
+                <a class="mega-item" href="solidworks.html"><i class="fas fa-cog"></i>SolidWorks</a>
+                <a class="mega-item" href="creo.html"><i class="fas fa-cog"></i>Creo</a>
+                <a class="mega-item" href="catia.html"><i class="fas fa-cog"></i>CATIA V5/V6</a>
+                <a class="mega-item" href="nx-cad-cam.html"><i class="fas fa-cog"></i>NX CAD/NX CAM</a>
+                <a class="mega-item" href="ansys.html"><i class="fas fa-cog"></i>ANSYS (FEA/CFD)</a>
+                <a class="mega-item" href="eplan-mechanical.html"><i class="fas fa-plug"></i>EPLAN</a>
+              </div>
+
+              <!-- IT -->
+              <div class="mega-col">
+                <div class="mega-col-head">
+                  <span class="mega-col-icon" style="background:rgba(16,185,129,0.12);color:#059669;">
+                    <i class="fas fa-laptop-code"></i>
+                  </span>
+                  <div>
+                    <div class="mega-col-title">IT Courses</div>
+                    <div class="mega-col-sub">Software &amp; Development</div>
+                  </div>
+                </div>
+                <a class="mega-item" href="web-development.html"><i class="fas fa-code"></i>Web Development</a>
+                <a class="mega-item" href="python.html"><i class="fab fa-python"></i>Python Programming</a>
+                <a class="mega-item" href="java.html"><i class="fab fa-java"></i>Java Development</a>
+                <a class="mega-item" href="datascience.html"><i class="fas fa-brain"></i>Data Science &amp; AI</a>
+                <a class="mega-item" href="ui-ux.html"><i class="fas fa-palette"></i>UI/UX Design</a>
+                <a class="mega-item" href="graphical-designing.html"><i class="fas fa-palette"></i>Graphical Designing</a>
+                <a class="mega-item" href="digital-marketing.html"><i class="fas fa-chart-line"></i>Digital Marketing</a>
+              </div>
+
+              <!-- Electrical -->
+              <div class="mega-col">
+                <div class="mega-col-head">
+                  <span class="mega-col-icon" style="background:rgba(234,88,12,0.12);color:#ea580c;">
+                    <i class="fas fa-bolt"></i>
+                  </span>
+                  <div>
+                    <div class="mega-col-title">Electrical</div>
+                    <div class="mega-col-sub">Design &amp; Manufacturing</div>
+                  </div>
+                </div>
+                <a class="mega-item" href="autocad-electrical.html"><i class="fas fa-cog"></i>AutoCAD Electrical</a>
+                <a class="mega-item" href="revit-mep.html"><i class="fas fa-cog"></i>Revit MEP</a>
+                <a class="mega-item" href="navis-work.html"><i class="fas fa-cog"></i>Navisworks</a>
+                <a class="mega-item" href="eplan-electrical.html"><i class="fas fa-cog"></i>Eplan</a>
+              </div>
+
+              <!-- Non-IT -->
+              <div class="mega-col" style="border-right:none;">
+                <div class="mega-col-head">
+                  <span class="mega-col-icon" style="background:rgba(139,0,0,0.12);color:var(--primary);">
+                    <i class="fas fa-briefcase"></i>
+                  </span>
+                  <div>
+                    <div class="mega-col-title">Non-IT</div>
+                    <div class="mega-col-sub">Business &amp; Management</div>
+                  </div>
+                </div>
+                <a class="mega-item" href="tally.html"><i class="fas fa-calculator"></i>Tally &amp; Accounting</a>
+                <a class="mega-item" href="sap.html"><i class="fas fa-users"></i>SAP</a>
+                <a class="mega-item" href="gst-taxation.html"><i class="fas fa-file-invoice"></i>GST &amp; Taxation</a>
+                <a class="mega-item" href="spoken-english.html"><i class="fas fa-comments"></i>Spoken English</a>
+                <a class="mega-item" href="personality-development.html"><i class="fas fa-user-tie"></i>Personality Development</a>
+              </div>
+
+            </div><!-- /.d-flex -->
+          </div><!-- /#coursesMegaMenu -->
+        </li>
+
+        <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item ms-lg-2">
+          <!-- <a class="nav-link btn-nav-enroll ripple" href="contact.html">Login</a> -->
+           <a class="nav-link btn-nav-enroll ripple" href="login.html">Login</a>
+        </li>
+
+      </ul>
+    </div><!-- /#navMenu -->
+  </div><!-- /.container -->
+</nav>
+
+
+<style>
+    .mega-close-x{
+    position:absolute;
+    top:12px;
+    right:12px;
+    z-index:99999;
+    cursor:pointer;
+}
+</style>
