@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumion Architectural Visualization Course | CADPOINT Authorized Training Centre</title>
+  <meta name="description" content="Master Lumion and create stunning architectural visualizations. Professional training with real-time rendering, landscape design, animation walkthroughs and placement support.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="icon" type="image/x-icon" href="assets/image/cadd-logo.webp">
+  <style>
+    /* ══════════════════════════════════════════
+       CSS VARIABLES — CADPOINT Theme
+    ══════════════════════════════════════════ */
+    :root {
+      --primary:       #8B0000;
+      --primary-light: #A00000;
+      --primary-dark:  #5c0000;
+      --primary-glow:  rgba(139,0,0,0.35);
+      --white:         #ffffff;
+      --light-gray:    #F5F5F5;
+      --text-dark:     #1a1a1a;
+      --text-muted:    #555;
+      --border-light:  rgba(139,0,0,0.15);
+      --glass-bg:      rgba(255,255,255,0.08);
+      --glass-border:  rgba(255,255,255,0.18);
+      --gold:          #ffd700;
+      --lumion-green:  #2ecc71;
+      --lumion-teal:   #1abc9c;
+    }
+
+    html, body { max-width: 100%; overflow-x: hidden; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; color: var(--text-dark); background: var(--white); }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+    /* ══════════════════════════════════════════
+       LOADER
+    ══════════════════════════════════════════ */
+    #loader {
+      position: fixed; inset: 0; background: var(--primary-dark);
+      z-index: 9999; display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 20px;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    #loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-logo { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2rem; color: white; letter-spacing: 4px; }
+    .loader-logo span { color: var(--gold); }
+    .loader-bar { width: 200px; height: 3px; background: rgba(255,255,255,0.15); border-radius: 3px; overflow: hidden; }
+    .loader-bar-inner { height: 100%; background: linear-gradient(90deg, var(--primary-light), var(--gold)); border-radius: 3px; animation: loadBar 1.8s ease-in-out forwards; }
+    @keyframes loadBar { from { width: 0; } to { width: 100%; } }
+
+    /* ── BACK TO TOP ── */
+    #backToTop {
+      position: fixed; bottom: 30px; right: 30px; width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white; border: none; border-radius: 50%; cursor: pointer;
+      box-shadow: 0 6px 20px var(--primary-glow);
+      opacity: 0; transform: translateY(20px); transition: all 0.4s ease;
+      z-index: 999; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+    }
+    #backToTop.visible { opacity: 1; transform: translateY(0); }
+    #backToTop:hover { transform: translateY(-4px); box-shadow: 0 10px 30px var(--primary-glow); }
+
+    /* ══════════════════════════════════════════
+       NAVBAR — exact match from index/homepage
+    ══════════════════════════════════════════ */
+
+    /* X CLOSE BUTTON */
+    .mega-close-x {
+      position: absolute; top: 12px; right: 12px; width: 34px; height: 34px;
+      border: none; border-radius: 50%; background: #fff; color: #222;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 99; box-shadow: 0 4px 15px rgba(0,0,0,.12);
+      transition: .3s ease;
+    }
+    .mega-close-x:hover { background: var(--primary); color: #fff; transform: rotate(90deg); }
+
+    /* MOBILE DROPDOWN FIX */
+    @media (max-width: 991px) {
+      .navbar-collapse { background: #fff; padding: 15px; border-radius: 18px; margin-top: 15px; box-shadow: 0 10px 35px rgba(0,0,0,.08); }
+      #coursesNav { width: 100%; }
+      #coursesNav .d-flex { width: 100%; justify-content: space-between; align-items: center; }
+      #coursesNav .nav-link { padding: 12px 0 !important; }
+      .courses-caret { padding-right: 0 !important; }
+      .courses-mega-menu { position: static !important; transform: none !important; width: 100% !important; min-width: 100% !important; margin-top: 10px !important; border: none !important; box-shadow: none !important; border-radius: 16px !important; overflow: hidden; background: #f8f9fb; }
+      .courses-mega-menu .d-flex { flex-direction: column !important; gap: 0 !important; padding-top: 0 !important; }
+      .mega-col { width: 100% !important; border-right: none !important; border-bottom: 1px solid rgba(0,0,0,.06); padding: 18px 16px !important; }
+      .mega-col:last-child { border-bottom: none; }
+      .mega-col-head { margin-bottom: 14px; }
+      .mega-col-title { font-size: 1rem; font-weight: 700; }
+      .mega-col-sub { font-size: .78rem; }
+      .mega-item { width: 100%; display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 10px; font-size: .92rem; }
+      .mega-item:hover { background: #fff; }
+      .mega-item i { width: 18px; text-align: center; }
+    }
+
+    .navbar {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 2px 30px rgba(139,0,0,0.12);
+      padding: 7px 0;
+      position: sticky; top: 0; z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    .navbar.scrolled { padding: 8px 0; box-shadow: 0 4px 40px rgba(139,0,0,0.2); }
+    .navbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icon { width: 48px; height: 48px; flex-shrink: 0; }
+    .logo-text { line-height: 1.1; }
+    .logo-text .brand-name { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.3rem; color: var(--primary); letter-spacing: 2px; }
+    .logo-text .brand-sub { font-size: 0.58rem; font-weight: 600; color: #666; letter-spacing: 1.5px; text-transform: uppercase; }
+
+    .navbar-nav .nav-link {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600; font-size: 0.82rem;
+      letter-spacing: 0.8px; text-transform: uppercase;
+      padding: 8px 16px !important;
+      border-radius: 6px; transition: all 0.3s ease; position: relative;
+    }
+    .navbar-nav .nav-link:hover { color: var(--primary); }
+
+    .btn-nav-enroll {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white !important; padding: 8px 22px !important; border-radius: 25px !important;
+      font-weight: 700 !important; box-shadow: 0 4px 15px var(--primary-glow);
+      transition: all 0.3s ease !important;
+    }
+    .btn-nav-enroll:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--primary-glow) !important; }
+    .btn-nav-enroll::after { display: none !important; }
+
+    /* COURSES MEGA DROPDOWN */
+    #coursesNav { position: static !important; }
+    #coursesNav > div { display: flex; align-items: center; }
+
+    .courses-mega-menu {
+      position: fixed !important; top: auto !important; left: 50% !important;
+      transform: translateX(-50%) translateY(6px) !important;
+      width: min(960px, 96vw) !important; display: block !important;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+      pointer-events: none; border: none !important; border-radius: 16px !important;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.16), 0 0 0 1px rgba(139,0,0,0.1) !important;
+      padding: 0 !important;
+    }
+    .courses-mega-menu.show {
+      opacity: 1 !important; visibility: visible !important;
+      transform: translateX(-50%) translateY(0) !important; pointer-events: auto !important;
+    }
+
+    .mega-topbar {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: white; font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.6px;
+    }
+    .mega-viewall { color: #ffd700 !important; font-size: 0.75rem; font-weight: 700; text-decoration: none; transition: opacity 0.2s; }
+    .mega-viewall:hover { opacity: 0.8; }
+
+    .mega-col { flex: 1; padding: 20px 10px 10px 10px; border-right: 1px solid rgba(139,0,0,0.08); background: white; }
+    .mega-col:last-child { border-right: none; }
+
+    .mega-col-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid rgba(139,0,0,0.08); }
+    .mega-col-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .mega-col-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.82rem; color: var(--text-dark); letter-spacing: 0.4px; }
+    .mega-col-sub { font-size: 0.68rem; color: #999; font-weight: 500; margin-top: 1px; }
+
+    .mega-item { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 7px; font-size: 0.8rem; font-weight: 500; color: var(--text-dark); text-decoration: none; transition: background 0.15s, color 0.15s, padding-left 0.15s; margin-bottom: 2px; }
+    .mega-item i { font-size: 0.72rem; width: 16px; text-align: center; color: #aaa; transition: color 0.15s; flex-shrink: 0; }
+    .mega-item:hover { background: rgba(139,0,0,0.07); color: var(--primary); padding-left: 12px; }
+    .mega-item:hover i { color: var(--primary); }
+
+    #coursesNav .courses-caret { color: var(--text-dark); transition: color 0.2s; }
+    #coursesNav .courses-caret:hover { color: var(--primary); }
+
+    /* ══════════════════════════════════════════
+       BREADCRUMB SLIDER
+    ══════════════════════════════════════════ */
+    .breadcrumb-slider {
+      background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-dark) 100%);
+      padding: 0; overflow: hidden; height: 38px; display: flex; align-items: center; position: relative;
+    }
+    .breadcrumb-slider::before, .breadcrumb-slider::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none; }
+    .breadcrumb-slider::before { left: 0; background: linear-gradient(to right, var(--primary-dark), transparent); }
+    .breadcrumb-slider::after { right: 0; background: linear-gradient(to left, var(--primary-dark), transparent); }
+    .breadcrumb-track { display: flex; animation: scrollBreadcrumb 28s linear infinite; white-space: nowrap; will-change: transform; }
+    .breadcrumb-track:hover { animation-play-state: paused; }
+    .breadcrumb-item-slide { display: inline-flex; align-items: center; gap: 8px; padding: 0 30px; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 1px; text-transform: uppercase; font-family: 'Montserrat', sans-serif; }
+    .breadcrumb-item-slide i { color: rgba(255,255,255,0.6); font-size: 0.7rem; }
+    @keyframes scrollBreadcrumb { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ══════════════════════════════════════════
+       SECTION HELPERS
+    ══════════════════════════════════════════ */
+    section { padding: 90px 0; }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      border: 1px solid var(--border-light); color: var(--primary);
+      background: rgba(139,0,0,0.05); padding: 6px 16px;
+      border-radius: 50px; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; font-family: 'Montserrat', sans-serif;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 900;
+      font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--text-dark); line-height: 1.18;
+      margin-bottom: 16px;
+    }
+    .section-title span { color: var(--primary); }
+    .section-subtitle { font-size: 1rem; color: var(--text-muted); max-width: 620px; line-height: 1.7; }
+
+    /* ══════════════════════════════════════════
+       1. HERO SECTION
+    ══════════════════════════════════════════ */
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 45%, #b71c1c 80%, var(--primary-dark) 100%);
+      min-height: 92vh; display: flex; align-items: center;
+      position: relative; overflow: hidden; 
+      padding: 60px 0 120px;
+    }
+    .hero-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+    }
+    .hero-blob { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%); pointer-events: none; }
+    .hero-blob-1 { width: 700px; height: 700px; top: -250px; right: -150px; }
+    .hero-blob-2 { width: 400px; height: 400px; bottom: -180px; left: -100px; }
+
+    /* Floating architectural icons */
+    .float-icon {
+      position: absolute; font-size: 1.5rem; opacity: 0.1;
+      animation: floatAnim 7s ease-in-out infinite; color: white; pointer-events: none;
+    }
+    .float-icon:nth-child(2) { animation-delay: 1.2s; font-size: 1.1rem; opacity: 0.07; }
+    .float-icon:nth-child(3) { animation-delay: 2.4s; font-size: 2.2rem; opacity: 0.06; }
+    .float-icon:nth-child(4) { animation-delay: 0.6s; font-size: 1.3rem; opacity: 0.09; }
+    .float-icon:nth-child(5) { animation-delay: 1.8s; font-size: 1.9rem; opacity: 0.05; }
+    .float-icon:nth-child(6) { animation-delay: 3s; font-size: 1.4rem; opacity: 0.08; }
+    @keyframes floatAnim {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-22px) rotate(8deg); }
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px); padding: 6px 18px; border-radius: 50px;
+      font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.9);
+      letter-spacing: 0.5px; margin-bottom: 22px;
+    }
+    .hero-badge i { color: var(--gold); }
+
+    .hero-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 900;
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem); color: white;
+      line-height: 1.12; margin-bottom: 20px; text-align: center;
+    }
+    .hero-title .highlight { color: var(--gold); }
+
+    .hero-desc {
+      font-size: 1.06rem; color: rgba(255,255,255,0.82); line-height: 1.8;
+      max-width: 680px; margin: 0 auto 34px; text-align: center;
+    }
+
+    .hero-btn-group { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+
+    .btn-hero-primary {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: linear-gradient(135deg, #ffd700, #ffb700);
+      color: var(--primary-dark); padding: 14px 32px; border-radius: 50px;
+      font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.88rem;
+      letter-spacing: 0.5px; text-decoration: none;
+      box-shadow: 0 8px 30px rgba(255,215,0,0.4);
+      transition: all 0.35s ease; position: relative; overflow: hidden;
+    }
+    .btn-hero-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 14px 40px rgba(255,215,0,0.55); color: var(--primary-dark); }
+
+    .btn-hero-outline {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: var(--glass-bg); border: 2px solid var(--glass-border);
+      color: white; padding: 13px 28px; border-radius: 50px;
+      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem;
+      letter-spacing: 0.5px; text-decoration: none;
+      backdrop-filter: blur(10px); transition: all 0.35s ease;
+    }
+    .btn-hero-outline:hover { background: rgba(255,255,255,0.18); color: white; transform: translateY(-3px); border-color: rgba(255,255,255,0.4); }
+
+    /* Hero stat pills */
+    .hero-stats-row { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 44px; }
+    .stat-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      color: white; padding: 8px 18px; border-radius: 50px; font-size: 0.8rem; font-weight: 600;
+      backdrop-filter: blur(8px);
+    }
+    .stat-pill i { color: var(--gold); }
+
+    /* Hero wave */
+    .hero-wave { position: absolute; bottom: 0; width: 100%; line-height: 0; }
+    .hero-wave svg { display: block; }
+
+    /* ══════════════════════════════════════════
+       2. COURSE OVERVIEW — split layout
+    ══════════════════════════════════════════ */
+    .overview-section { background: var(--white); }
+
+    .overview-visual {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      border-radius: 24px; padding: 40px 36px; position: relative; overflow: hidden;
+      box-shadow: 0 30px 80px rgba(139,0,0,0.3);
+    }
+    .overview-visual::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .overview-item {
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 14px; padding: 16px 18px; margin-bottom: 14px;
+      display: flex; align-items: center; gap: 14px;
+      transition: all 0.3s ease; backdrop-filter: blur(8px);
+    }
+    .overview-item:hover { background: rgba(255,255,255,0.18); transform: translateX(6px); }
+    .overview-item:last-child { margin-bottom: 0; }
+    .ov-icon { width: 42px; height: 42px; border-radius: 12px; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: var(--gold); flex-shrink: 0; }
+    .ov-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; color: white; margin-bottom: 3px; }
+    .ov-sub { font-size: 0.75rem; color: rgba(255,255,255,0.65); }
+
+    .overview-check-list { list-style: none; padding: 0; margin-top: 24px; }
+    .overview-check-list li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; font-size: 0.95rem; color: var(--text-dark); line-height: 1.6; }
+    .overview-check-list li i { color: var(--primary); font-size: 0.8rem; margin-top: 5px; flex-shrink: 0; }
+
+    /* ══════════════════════════════════════════
+       3. REAL-TIME RENDERING — image+content
+    ══════════════════════════════════════════ */
+    .realtime-section { background: var(--light-gray); }
+
+    .rt-visual {
+      position: relative; border-radius: 22px; overflow: hidden;
+    }
+    .rt-visual-inner {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      border-radius: 22px; padding: 40px 30px;
+      box-shadow: 0 25px 70px rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.08);
+      position: relative; overflow: hidden;
+    }
+    .render-window {
+      background: #0d1117; border-radius: 14px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1); margin-bottom: 16px;
+    }
+    .render-topbar { background: #161b22; padding: 10px 16px; display: flex; align-items: center; gap: 8px; }
+    .rdot { width: 11px; height: 11px; border-radius: 50%; }
+    .rdot-red { background: #ff5f57; } .rdot-yellow { background: #febc2e; } .rdot-green { background: #28c840; }
+    .render-body { padding: 22px; text-align: center; }
+    .render-scene {
+      width: 100%; height: 160px; border-radius: 10px;
+      background: linear-gradient(135deg, #1e3a5f 0%, #2d6a4f 40%, #1e3a5f 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; margin-bottom: 14px;
+    }
+    .render-scene::before {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
+      background: linear-gradient(to top, rgba(0,100,50,0.5), transparent);
+    }
+    .render-scene .building {
+      position: absolute; bottom: 20px; font-size: 3.5rem; opacity: 0.85;
+    }
+    .render-scene .sun {
+      position: absolute; top: 20px; right: 30px; width: 40px; height: 40px;
+      background: radial-gradient(circle, #ffd700, rgba(255,215,0,0)); border-radius: 50%;
+      animation: sunGlow 3s ease-in-out infinite;
+    }
+    @keyframes sunGlow {
+      0%, 100% { box-shadow: 0 0 20px 8px rgba(255,215,0,0.3); }
+      50% { box-shadow: 0 0 35px 15px rgba(255,215,0,0.5); }
+    }
+    .render-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .rtag { display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.8); padding: 4px 11px; border-radius: 20px; font-size: 0.72rem; font-weight: 600; }
+    .rtag i { color: var(--gold); font-size: 0.65rem; }
+
+    .rt-badge-float {
+      position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
+      background: white; border-radius: 12px; padding: 12px 20px;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 12px;
+      min-width: 200px; border-left: 4px solid var(--lumion-green); white-space: nowrap;
+    }
+    .rt-badge-float .num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.6rem; color: var(--lumion-green); }
+    .rt-badge-float .lbl { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; }
+
+    /* ══════════════════════════════════════════
+       4. BENEFITS — image+bullet layout
+    ══════════════════════════════════════════ */
+    .benefits-section { background: var(--white); }
+
+    .benefit-bullet {
+      display: flex; align-items: flex-start; gap: 16px; margin-bottom: 22px;
+      padding: 18px 20px; border-radius: 14px; border: 1px solid rgba(139,0,0,0.08);
+      background: white; transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+    .benefit-bullet:hover { transform: translateX(6px); box-shadow: 0 8px 30px rgba(139,0,0,0.12); border-color: var(--primary); }
+    .benefit-bullet:last-child { margin-bottom: 0; }
+    .bb-icon { width: 46px; height: 46px; border-radius: 13px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; background: linear-gradient(135deg, rgba(139,0,0,0.1), rgba(139,0,0,0.05)); color: var(--primary); }
+    .bb-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--text-dark); margin-bottom: 4px; }
+    .bb-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+    .benefits-visual-card {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      border-radius: 24px; padding: 40px 32px; height: 100%;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; overflow: hidden;
+      box-shadow: 0 30px 70px rgba(139,0,0,0.3);
+    }
+    .benefits-visual-card::after {
+      content: '';
+      position: absolute; top: -60px; right: -60px; width: 250px; height: 250px;
+      border-radius: 50%; background: rgba(255,255,255,0.05);
+    }
+    .bvc-icon { font-size: 5rem; margin-bottom: 24px; display: block; }
+    .bvc-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.6rem; color: white; margin-bottom: 16px; }
+    .bvc-stat { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+    .bvc-pill { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; }
+
+    /* ══════════════════════════════════════════
+       5. COURSE MODULES — hoverable cards
+    ══════════════════════════════════════════ */
+    .modules-section { background: var(--light-gray); }
+
+    .module-card {
+      background: white; border-radius: 18px; padding: 30px 24px; height: 100%;
+      border: 1px solid rgba(139,0,0,0.08);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      transition: all 0.35s ease; position: relative; overflow: hidden; cursor: pointer;
+    }
+    .module-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease;
+    }
+    .module-card::after {
+      content: ''; position: absolute; bottom: 0; right: 0; width: 100px; height: 100px;
+      background: radial-gradient(circle, rgba(139,0,0,0.04), transparent);
+      border-radius: 50%; transition: all 0.4s ease;
+    }
+    .module-card:hover { transform: translateY(-10px); box-shadow: 0 22px 55px rgba(139,0,0,0.18); border-color: rgba(139,0,0,0.2); }
+    .module-card:hover::before { transform: scaleX(1); }
+    .module-card:hover::after { width: 200px; height: 200px; }
+
+    .module-num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 0.7rem; color: var(--primary); opacity: 0.4; letter-spacing: 2px; margin-bottom: 12px; }
+    .module-icon-wrap { width: 60px; height: 60px; border-radius: 16px; background: linear-gradient(135deg, rgba(139,0,0,0.1), rgba(139,0,0,0.05)); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--primary); margin-bottom: 18px; transition: all 0.35s ease; }
+    .module-card:hover .module-icon-wrap { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; transform: scale(1.08) rotate(-5deg); }
+    .module-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; color: var(--text-dark); margin-bottom: 10px; }
+    .module-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 14px; }
+    .module-topics { list-style: none; padding: 0; }
+    .module-topics li { display: flex; align-items: center; gap: 7px; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 5px; }
+    .module-topics li i { color: var(--primary); font-size: 0.65rem; }
+    .module-tag { display: inline-block; background: rgba(139,0,0,0.08); color: var(--primary); font-size: 0.68rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-top: 12px; letter-spacing: 0.5px; }
+
+    /* ══════════════════════════════════════════
+       6. WHY LUMION — glassmorphism on dark
+    ══════════════════════════════════════════ */
+    .why-section {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, #b71c1c 100%);
+      position: relative; overflow: hidden;
+    }
+    .why-section::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px; pointer-events: none;
+    }
+    .why-card {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(16px); border-radius: 20px; padding: 30px 24px;
+      text-align: center; height: 100%;
+      transition: all 0.35s ease; position: relative; overflow: hidden;
+    }
+    .why-card::after { content: ''; position: absolute; inset: 0; border-radius: 20px; background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent); opacity: 0; transition: opacity 0.35s; }
+    .why-card:hover { transform: translateY(-8px); background: rgba(255,255,255,0.14); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+    .why-card:hover::after { opacity: 1; }
+    .why-icon { width: 68px; height: 68px; border-radius: 20px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); transition: transform 0.35s ease; }
+    .why-card:hover .why-icon { transform: scale(1.1) rotate(-5deg); }
+    .why-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 800; color: white; font-size: 1rem; margin-bottom: 10px; }
+    .why-card p { font-size: 0.82rem; color: rgba(255,255,255,0.72); line-height: 1.7; margin: 0; }
+
+    /* ══════════════════════════════════════════
+       7. CAREER OPPORTUNITIES
+    ══════════════════════════════════════════ */
+    .career-section { background: var(--white); }
+
+    .career-card {
+      border: 2px solid rgba(139,0,0,0.1); border-radius: 18px;
+      padding: 32px 24px; text-align: center; height: 100%;
+      transition: all 0.35s ease; background: white; position: relative; overflow: hidden;
+    }
+    .career-card::before {
+      content: ''; position: absolute; inset: 0; border-radius: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      opacity: 0; transition: opacity 0.35s ease; z-index: 0;
+    }
+    .career-card > * { position: relative; z-index: 1; }
+    .career-card:hover { border-color: var(--primary); transform: translateY(-6px); box-shadow: 0 20px 50px rgba(139,0,0,0.2); }
+    .career-card:hover::before { opacity: 1; }
+    .career-card:hover .career-icon, .career-card:hover h5, .career-card:hover p, .career-card:hover .career-salary, .career-card:hover .demand-badge { color: white !important; background: rgba(255,255,255,0.15) !important; border-color: rgba(255,255,255,0.3) !important; }
+    .career-icon { width: 70px; height: 70px; border-radius: 20px; margin: 0 auto 18px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--primary); background: rgba(139,0,0,0.08); border: 1px solid rgba(139,0,0,0.1); transition: all 0.35s ease; }
+    .career-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; color: var(--text-dark); margin-bottom: 8px; transition: color 0.35s; }
+    .career-card p { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 14px; transition: color 0.35s; }
+    .career-salary { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.9rem; color: var(--primary); background: rgba(139,0,0,0.08); padding: 5px 14px; border-radius: 20px; display: inline-block; transition: all 0.35s; margin-bottom: 8px; }
+    .demand-badge { display: inline-flex; align-items: center; gap: 5px; background: rgba(46,204,113,0.1); color: var(--lumion-green); font-size: 0.7rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; transition: all 0.35s; }
+    .demand-badge i { font-size: 0.6rem; }
+
+    /* ══════════════════════════════════════════
+       8. LEARNING PROCESS — timeline
+    ══════════════════════════════════════════ */
+    .process-section { background: var(--light-gray); }
+
+    .process-timeline { position: relative; }
+    .process-timeline::before {
+      content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
+      background: linear-gradient(to bottom, var(--primary), rgba(139,0,0,0.1));
+      transform: translateX(-50%);
+    }
+    @media (max-width: 767px) {
+      .process-timeline::before { left: 28px; }
+    }
+
+    .process-step { display: flex; gap: 30px; margin-bottom: 50px; position: relative; }
+    .process-step:nth-child(even) { flex-direction: row-reverse; }
+    .process-step:last-child { margin-bottom: 0; }
+
+    .step-connector { flex-shrink: 0; width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--primary-light)); display: flex; align-items: center; justify-content: center; color: white; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.1rem; box-shadow: 0 6px 20px var(--primary-glow); z-index: 1; align-self: center; flex-shrink: 0; }
+
+    .step-content { flex: 1; background: white; border-radius: 18px; padding: 28px 26px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid rgba(139,0,0,0.08); transition: all 0.3s ease; }
+    .step-content:hover { box-shadow: 0 12px 40px rgba(139,0,0,0.14); transform: scale(1.02); }
+    .step-icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .step-content h5 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.05rem; color: var(--text-dark); margin-bottom: 8px; }
+    .step-content p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; margin: 0; }
+
+    @media (max-width: 767px) {
+      .process-step { flex-direction: row !important; }
+      .step-connector { width: 42px; height: 42px; font-size: 0.9rem; }
+    }
+
+    /* ══════════════════════════════════════════
+       9. STATISTICS COUNTER
+    ══════════════════════════════════════════ */
+    .stats-band {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      padding: 70px 0;
+    }
+    .stat-box { padding: 20px 10px; transition: 0.4s ease; }
+    .stat-box:hover { transform: translateY(-8px); }
+    .stat-box h2 { font-family: 'Montserrat', sans-serif; font-size: 58px; font-weight: 900; color: var(--gold); margin-bottom: 12px; line-height: 1; }
+    .stat-box p { font-size: 1rem; font-weight: 600; color: rgba(255,255,255,0.9); margin: 0; }
+    .stat-divider { border-right: 1px solid rgba(255,255,255,0.2); }
+    @media (max-width: 991px) { .stat-divider { border-right: none; margin-bottom: 30px; } }
+    @media (max-width: 576px) { .stat-box h2 { font-size: 40px; } .stat-box p { font-size: 0.88rem; } .stats-band { padding: 50px 0; } }
+
+    /* ══════════════════════════════════════════
+       10. TESTIMONIALS
+    ══════════════════════════════════════════ */
+    .testimonials-section { background: var(--white); }
+
+    .testimonial-card {
+      background: white; border-radius: 20px; padding: 32px 28px;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.07);
+      border: 1px solid rgba(139,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%; position: relative;
+    }
+    .testimonial-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(139,0,0,0.14); }
+    .testimonial-quote { font-size: 3rem; color: var(--primary); opacity: 0.15; line-height: 1; margin-bottom: -8px; font-family: Georgia, serif; }
+    .testimonial-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 22px; font-style: italic; }
+    .testimonial-stars { color: var(--gold); font-size: 0.8rem; margin-bottom: 16px; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--primary-light)); display: flex; align-items: center; justify-content: center; font-weight: 800; color: white; font-size: 1.1rem; flex-shrink: 0; font-family: 'Montserrat', sans-serif; }
+    .testimonial-name { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--text-dark); }
+    .testimonial-role { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+    .testimonial-company { display: inline-block; background: rgba(139,0,0,0.07); color: var(--primary); font-size: 0.68rem; font-weight: 700; padding: 2px 9px; border-radius: 20px; margin-top: 4px; }
+
+    /* Testimonial slider nav */
+    .testi-nav { display: flex; justify-content: center; gap: 10px; margin-top: 36px; }
+    .testi-btn { width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--primary); background: transparent; color: var(--primary); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; transition: all 0.3s ease; }
+    .testi-btn:hover, .testi-btn.active { background: var(--primary); color: white; }
+
+    /* ══════════════════════════════════════════
+       11. FAQ
+    ══════════════════════════════════════════ */
+    .faq-section { background: var(--light-gray); }
+
+    .faq-item { border-radius: 14px; border: 1px solid rgba(139,0,0,0.1); overflow: hidden; margin-bottom: 14px; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.04); transition: box-shadow 0.3s ease; }
+    .faq-item:hover { box-shadow: 0 6px 25px rgba(139,0,0,0.1); }
+    .faq-item:last-child { margin-bottom: 0; }
+    .faq-header { padding: 20px 22px; cursor: pointer; display: flex; align-items: center; gap: 14px; user-select: none; }
+    .faq-header.active {
+      background: var(--primary);
+      color:white !important;
+    padding-bottom:20px;
+}
+.faq-item.open .faq-q {
+    color: white !important;
+}
+
+    
+    .faq-icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(139,0,0,0.07); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: var(--primary); flex-shrink: 0; transition: all 0.3s; }
+    .faq-item.open .faq-icon { background: var(--primary); color: white; }
+    .faq-q { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--text-dark); flex: 1; }
+    .faq-caret { color: var(--primary); font-size: 0.8rem; transition: transform 0.3s ease; flex-shrink: 0; }
+    .faq-item.open .faq-caret { transform: rotate(180deg); }
+    .faq-body { padding: 0 22px 0; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; }
+    .faq-item.open .faq-body { max-height: 300px; padding: 0 22px 20px; }
+    .faq-body p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; margin: 0; padding-left: 50px;  padding-top:15px;}
+
+    /* ══════════════════════════════════════════
+       12. CTA SECTION
+    ══════════════════════════════════════════ */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, #c0392b 100%);
+      position: relative; overflow: hidden; padding: 100px 0 120px;
+    }
+    .cta-section::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px; pointer-events: none;
+    }
+    .cta-blob { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%); pointer-events: none; }
+    .cta-blob-1 { width: 500px; height: 500px; top: -200px; left: -100px; }
+    .cta-blob-2 { width: 400px; height: 400px; bottom: -150px; right: -80px; }
+    .cta-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(2rem, 5vw, 3.2rem); color: white; line-height: 1.2; margin-bottom: 16px; }
+    .cta-subtitle { font-size: 1.05rem; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 36px; line-height: 1.7; }
+    .btn-cta-glow {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, #ffd700, #ffb700);
+      color: var(--primary-dark); padding: 16px 38px; border-radius: 50px;
+      font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.95rem;
+      letter-spacing: 0.5px; text-decoration: none;
+      box-shadow: 0 10px 40px rgba(255,215,0,0.5);
+      transition: all 0.35s ease;
+    }
+    .btn-cta-glow:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 18px 50px rgba(255,215,0,0.65); color: var(--primary-dark); }
+    .btn-cta-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; border: 2px solid rgba(255,255,255,0.4);
+      color: white; padding: 15px 32px; border-radius: 50px;
+      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem;
+      text-decoration: none; transition: all 0.35s ease; backdrop-filter: blur(8px);
+    }
+    .btn-cta-outline:hover { background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.6); transform: translateY(-3px); }
+    .cta-wave { position: absolute; bottom: 0; width: 100%; line-height: 0; }
+    .cta-wave svg { display: block; }
+
+    /* ══════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════ */
+    footer { background: linear-gradient(135deg, #0d0d0d, #1a1a1a); padding: 80px 0 0; }
+    .footer-brand { margin-bottom: 20px; }
+    .footer-desc { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.8; margin-bottom: 24px; }
+    .footer-socials { display: flex; gap: 10px; }
+    .footer-social-btn {
+      width: 38px; height: 38px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.6);
+      display: flex; align-items: center; justify-content: center; font-size: 0.85rem;
+      text-decoration: none; transition: all 0.3s ease;
+    }
+    .footer-social-btn:hover { background: var(--primary); color: white; border-color: var(--primary); transform: translateY(-3px); }
+    .footer-heading { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.85rem; color: white; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-links { list-style: none; padding: 0; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: all 0.25s ease; display: flex; align-items: center; gap: 7px; }
+    .footer-links a i { font-size: 0.65rem; color: var(--primary); }
+    .footer-links a:hover { color: white; padding-left: 4px; }
+    .footer-contact a, .footer-contact li { display: flex; align-items: flex-start; gap: 12px; color: rgba(255,255,255,0.5); font-size: 0.85rem; line-height: 1.6; margin-bottom: 12px; }
+    .footer-contact i { color: var(--primary); margin-top: 4px; flex-shrink: 0; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding: 20px 0; margin-top: 60px; font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+
+    /* ══════════════════════════════════════════
+       RESPONSIVE TWEAKS
+    ══════════════════════════════════════════ */
+    @media (max-width: 767px) {
+      section { padding: 60px 0; }
+      .hero-section { padding: 60px 0 100px; min-height: auto; }
+      .process-timeline::before { display: none; }
+    }
+    @media (max-width: 576px) {
+      .hero-title { font-size: 1.9rem; }
+      .section-title { font-size: 1.65rem; }
+    }
+
+
+    @media (max-width: 775px) {
+  .text-m-center {
+    text-align: center !important;
+  }
+}
+  
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<!-- <div id="loader">
+  <div class="loader-logo">CAD<span>POINT</span></div>
+  <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+</div> -->
+
+<!-- BACK TO TOP -->
+<button id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+<!-- ════════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════════ -->
+<div id="header"></div>
+
+
+
+
+
+<!-- BREADCRUMB SLIDER -->
+<div class="breadcrumb-slider">
+  <div class="breadcrumb-track">
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i>  Courses <i class="fas fa-chevron-right sep"></i> Lumion</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-star"></i> Real-Time Architectural Rendering</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-certificate"></i> Industry-Recognized Certification</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-users"></i> 2000+ Students Trained</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-briefcase"></i> 90%+ Placement Record</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i>  Courses <i class="fas fa-chevron-right sep"></i> Lumion</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-star"></i> Real-Time Architectural Rendering</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-certificate"></i> Industry-Recognized Certification</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-users"></i> 2000+ Students Trained</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-briefcase"></i> 90%+ Placement Record</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     1. HERO SECTION
+════════════════════════════════════════════ -->
+<section class="hero-section" id="hero">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+
+  <!-- Floating icons -->
+  <span class="float-icon" style="top:12%;left:6%"><i class="fas fa-building"></i></span>
+  <span class="float-icon" style="top:25%;right:8%"><i class="fas fa-mountain"></i></span>
+  <span class="float-icon" style="bottom:30%;left:12%"><i class="fas fa-cube"></i></span>
+  <span class="float-icon" style="top:60%;right:14%"><i class="fas fa-sun"></i></span>
+  <span class="float-icon" style="bottom:20%;right:6%"><i class="fas fa-film"></i></span>
+  <span class="float-icon" style="top:40%;left:4%"><i class="fas fa-layer-group"></i></span>
+
+  <div class="container text-center position-relative" style="z-index:1">
+    <div data-aos="fade-up" data-aos-duration="700">
+      <div class="hero-badge"><i class="fas fa-star"></i> Lumion Training Centre </div>
+      <h1 class="hero-title" id="heroTitle">
+        Master Lumion &amp;<br>Create <span class="highlight">Stunning Architectural</span><br>Visualizations
+      </h1>
+      <p class="hero-desc">
+        Transform your architectural designs into photorealistic renders and cinematic walkthroughs. Learn real-time rendering, landscape design, interior lighting, and animation workflows — all from industry experts.
+      </p>
+      <div class="hero-btn-group">
+        <a href="tel:+919895352624" class="btn-hero-primary">
+          <i class="fas fa-rocket"></i> Enquiry About Course
+        </a>
+        <!-- <a href="#modules" class="btn-hero-outline">
+          <i class="fas fa-play-circle"></i> View Course
+        </a> -->
+      </div>
+
+      <!-- <div class="hero-stats-row" data-aos="fade-up" data-aos-delay="200">
+        <div class="stat-pill"><i class="fas fa-users"></i> 2,000+ Students</div>
+        <div class="stat-pill"><i class="fas fa-clock"></i> 45 Hours Training</div>
+        <div class="stat-pill"><i class="fas fa-certificate"></i> Certified Course</div>
+        <div class="stat-pill"><i class="fas fa-briefcase"></i> Placement Support</div>
+      </div> -->
+    </div>
+  </div>
+
+  <!-- Wave divider -->
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#ffffff"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     2. COURSE OVERVIEW
+════════════════════════════════════════════ -->
+<section class="overview-section" id="overview">
+  <div class="container">
+    <div class="row gy-5 align-items-center">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="section-tag"><i class="fas fa-info-circle"></i> Course Overview</div>
+        <h2 class="section-title">What is <span>Lumion</span> &amp; Why Master It?</h2>
+        <p class="section-subtitle mb-4">
+          Lumion is the world's leading real-time architectural visualization software. It enables architects, designers, and visualizers to produce high-quality renders, animations, and immersive walkthroughs directly from 3D models — without complex rendering setups.
+        </p>
+        <ul class="overview-check-list">
+          <li><i class="fas fa-check-circle"></i> <span>Real-time render previews that save hours of production time</span></li>
+          <li><i class="fas fa-check-circle"></i> <span>Seamlessly import from AutoCAD, Revit, SketchUp &amp; 3DS Max</span></li>
+          <li><i class="fas fa-check-circle"></i> <span>Create interior, exterior, landscape and aerial visualizations</span></li>
+          <li><i class="fas fa-check-circle"></i> <span>Cinematic animation walkthroughs for client presentations</span></li>
+          <li><i class="fas fa-check-circle"></i> <span>Industry-standard tool used by 70% of architectural firms globally</span></li>
+          <li><i class="fas fa-check-circle"></i> <span>Build a professional portfolio for freelancing &amp; placements</span></li>
+        </ul>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+        <div class="overview-visual">
+          <div class="overview-item">
+            <div class="ov-icon"><i class="fas fa-eye"></i></div>
+            <div><div class="ov-title">Real-Time Rendering Engine</div><div class="ov-sub">Instant visual feedback as you design</div></div>
+          </div>
+          <div class="overview-item">
+            <div class="ov-icon"><i class="fas fa-leaf"></i></div>
+            <div><div class="ov-title">Landscape &amp; Environment Design</div><div class="ov-sub">Trees, water, terrain &amp; weather effects</div></div>
+          </div>
+          <div class="overview-item">
+            <div class="ov-icon"><i class="fas fa-film"></i></div>
+            <div><div class="ov-title">Animation &amp; Walkthrough</div><div class="ov-sub">Cinematic camera paths &amp; motion effects</div></div>
+          </div>
+          <div class="overview-item">
+            <div class="ov-icon"><i class="fas fa-lightbulb"></i></div>
+            <div><div class="ov-title">Interior &amp; Exterior Lighting</div><div class="ov-sub">Sun, sky, artificial &amp; HDRI lighting setup</div></div>
+          </div>
+          <div class="overview-item">
+            <div class="ov-icon"><i class="fas fa-palette"></i></div>
+            <div><div class="ov-title">Materials &amp; Texture Library</div><div class="ov-sub">Thousands of PBR materials included</div></div>
+          </div>
+          <div class="overview-item">
+            <div class="ov-icon"><i class="fas fa-trophy"></i></div>
+            <div><div class="ov-title">Portfolio &amp; Certification</div><div class="ov-sub">Industry-recognized CADPOINT certificate</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     3. REAL-TIME RENDERING SECTION
+════════════════════════════════════════════ -->
+<section class="realtime-section" id="rendering">
+  <div class="container">
+    <div class="row gy-5 align-items-center text-m-center">
+      <div class="col-lg-8 order-lg-2" data-aos="fade-left">
+        <div class="section-tag"><i class="fas fa-bolt"></i> Real-Time Workflow</div>
+        <h2 class="section-title">Lumion Visualization Course</h2>
+        <p class="section-subtitle mb-4">
+          Unlike traditional rendering pipelines that take hours, Lumion delivers photorealistic previews in seconds. Learn the complete workflow from importing your 3D model to delivering a stunning final render.
+        </p>
+        <div class="row g-3 mt-1">
+          <div class="col-6">
+            <div style="background:white;border-radius:14px;padding:18px;border:1px solid rgba(139,0,0,0.08);box-shadow:0 3px 12px rgba(0,0,0,0.06);transition:all 0.3s ease" onmouseenter="this.style.transform='translateY(-4px)'" onmouseleave="this.style.transform='translateY(0)'">
+              <i class="fas fa-clock" style="color:var(--primary);font-size:1.3rem;margin-bottom:10px;display:block"></i>
+              <div style="font-family:Montserrat,sans-serif;font-weight:800;font-size:0.95rem;color:var(--text-dark);margin-bottom:4px">10x Faster</div>
+              <div style="font-size:0.78rem;color:var(--text-muted)">Rendering vs traditional software</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div style="background:white;border-radius:14px;padding:18px;border:1px solid rgba(139,0,0,0.08);box-shadow:0 3px 12px rgba(0,0,0,0.06);transition:all 0.3s ease" onmouseenter="this.style.transform='translateY(-4px)'" onmouseleave="this.style.transform='translateY(0)'">
+              <i class="fas fa-photo-video" style="color:var(--primary);font-size:1.3rem;margin-bottom:10px;display:block"></i>
+              <div style="font-family:Montserrat,sans-serif;font-weight:800;font-size:0.95rem;color:var(--text-dark);margin-bottom:4px">4K Output</div>
+              <div style="font-size:0.78rem;color:var(--text-muted)">Ultra-HD renders &amp; videos</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div style="background:white;border-radius:14px;padding:18px;border:1px solid rgba(139,0,0,0.08);box-shadow:0 3px 12px rgba(0,0,0,0.06);transition:all 0.3s ease" onmouseenter="this.style.transform='translateY(-4px)'" onmouseleave="this.style.transform='translateY(0)'">
+              <i class="fas fa-magic" style="color:var(--primary);font-size:1.3rem;margin-bottom:10px;display:block"></i>
+              <div style="font-family:Montserrat,sans-serif;font-weight:800;font-size:0.95rem;color:var(--text-dark);margin-bottom:4px">600+ Effects</div>
+              <div style="font-size:0.78rem;color:var(--text-muted)">Weather, particles &amp; post-FX</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="boxy" style="background:white;border-radius:14px;padding:18px;border:1px solid rgba(139,0,0,0.08);box-shadow:0 3px 12px rgba(0,0,0,0.06);transition:all 0.3s ease" onmouseenter="this.style.transform='translateY(-4px)'" onmouseleave="this.style.transform='translateY(0)'">
+              <i class="fas fa-link" style="color:var(--primary);font-size:1.3rem;margin-bottom:10px;display:block"></i>
+              <div style="font-family:Montserrat,sans-serif;font-weight:800;font-size:0.95rem;color:var(--text-dark);margin-bottom:4px">Live Sync</div>
+              <div style="font-size:0.78rem;color:var(--text-muted)">Revit, SketchUp, AutoCAD</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 order-lg-1" data-aos="fade-right" data-aos-delay="100">
+
+        <img src="assets/image/lumion-plan.webp" class="w-100">
+        <!-- <div class="rt-visual pb-4">
+          <div class="rt-visual-inner"> -->
+            <!-- <div style="color:rgba(255,255,255,0.6);font-size:0.72rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;font-family:Montserrat,sans-serif">
+              <i class="fas fa-circle" style="color:#28c840;margin-right:6px"></i>Lumion 12 — Real-Time Render Preview
+            </div> -->
+            <!-- <div class="render-window"> -->
+              <!-- <div class="render-topbar">
+                <div class="rdot rdot-red"></div>
+                <div class="rdot rdot-yellow"></div>
+                <div class="rdot rdot-green"></div>
+                <span style="color:rgba(255,255,255,0.4);font-size:0.72rem;margin-left:8px;font-family:Montserrat,sans-serif">Scene_Villa_Exterior.ls12</span>
+              </div> -->
+              <!-- <div class="render-body"> -->
+                <!-- <div class="render-scene">
+                  <div class="sun"></div>
+                  <span class="building">🏛️</span>
+                </div> -->
+                <!-- <div class="render-tags">
+                  <div class="rtag"><i class="fas fa-sun"></i> Daylight</div>
+                  <div class="rtag"><i class="fas fa-leaf"></i> Landscape</div>
+                  <div class="rtag"><i class="fas fa-tint"></i> Water</div>
+                  <div class="rtag"><i class="fas fa-cloud"></i> Sky</div>
+                  <div class="rtag"><i class="fas fa-bolt"></i> Real-Time</div>
+                </div> -->
+              <!-- </div> -->
+            <!-- </div> -->
+            <!-- <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+              <div style="flex:1;background:rgba(255,255,255,0.08);border-radius:10px;padding:12px 16px;border:1px solid rgba(255,255,255,0.12)">
+                <div style="font-size:0.65rem;color:rgba(255,255,255,0.45);margin-bottom:4px;font-family:Montserrat,sans-serif;font-weight:700;letter-spacing:1px">RENDER TIME</div>
+                <div style="font-family:Montserrat,sans-serif;font-weight:900;font-size:1.2rem;color:#2ecc71">3.2s</div>
+              </div>
+              <div style="flex:1;background:rgba(255,255,255,0.08);border-radius:10px;padding:12px 16px;border:1px solid rgba(255,255,255,0.12)">
+                <div style="font-size:0.65rem;color:rgba(255,255,255,0.45);margin-bottom:4px;font-family:Montserrat,sans-serif;font-weight:700;letter-spacing:1px">RESOLUTION</div>
+                <div style="font-family:Montserrat,sans-serif;font-weight:900;font-size:1.2rem;color:#ffd700">4K</div>
+              </div>
+              <div style="flex:1;background:rgba(255,255,255,0.08);border-radius:10px;padding:12px 16px;border:1px solid rgba(255,255,255,0.12)">
+                <div style="font-size:0.65rem;color:rgba(255,255,255,0.45);margin-bottom:4px;font-family:Montserrat,sans-serif;font-weight:700;letter-spacing:1px">QUALITY</div>
+                <div style="font-family:Montserrat,sans-serif;font-weight:900;font-size:1.2rem;color:#e74c3c">Ultra</div>
+              </div>
+            </div> -->
+          <!-- </div> -->
+          <!-- <div class="rt-badge-float">
+            <div class="num">10x</div>
+            <div class="lbl">Faster than<br>V-Ray / Corona</div>
+          </div> -->
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     4. BENEFITS
+════════════════════════════════════════════ -->
+<section class="benefits-section" id="benefits">
+  <div class="container">
+    <div class="row gy-5 align-items-center flex-row-reverse text-m-center">
+      <div class="col-lg-5" data-aos="fade-right">
+        <!-- <div class="benefits-visual-card">
+          
+          <h3 class="bvc-title">Build a Career in Architectural Visualization</h3>
+          <p style="color:rgba(255,255,255,0.72);font-size:0.88rem;line-height:1.8;margin-bottom:16px">Join the fastest-growing field in the AEC industry. Lumion skills are in demand across architecture firms, real estate developers, and visualization studios worldwide.</p>
+          <div class="bvc-stat">
+            <div class="bvc-pill">🎯 ₹4–12 LPA Salary</div>
+            <div class="bvc-pill">🌏 Global Demand</div>
+            <div class="bvc-pill">💼 Freelance Ready</div>
+            <div class="bvc-pill">🏆 Portfolio Support</div>
+          </div>
+        </div> -->
+        <img src="assets/image/lumion-house-plan.webp" class="w-100">
+      </div>
+      <div class="col-lg-7" data-aos="fade-left" data-aos-delay="100">
+        <div class="section-tag"><i class="fas fa-star"></i> Key Benefits</div>
+        <h2 class="section-title mb-4 ">Why Choose Our<br><span>Lumion Training?</span></h2>
+        <div class="benefit-bullet">
+          <div class="bb-icon"><i class="fas fa-bolt"></i></div>
+          <div><div class="bb-title">Fastest Rendering Workflow</div><p class="bb-desc">Produce photorealistic renders 10x faster than traditional software like V-Ray or Corona. Save time and impress clients with instant previews.</p></div>
+        </div>
+        <div class="benefit-bullet">
+          <div class="bb-icon"><i class="fas fa-handshake"></i></div>
+          <div><div class="bb-title">Architectural Presentation Skills</div><p class="bb-desc">Master the art of presenting your designs through stunning still images, panoramas, and animated videos that win client approval.</p></div>
+        </div>
+        <!-- <div class="benefit-bullet">
+          <div class="bb-icon"><i class="fas fa-laptop-house"></i></div>
+          <div><div class="bb-title">Freelancing Opportunities</div><p class="bb-desc">Start accepting visualization projects immediately after training. Build your freelance portfolio with real-world project assignments.</p></div>
+        </div> -->
+        <div class="benefit-bullet">
+          <div class="bb-icon"><i class="fas fa-image"></i></div>
+          <div><div class="bb-title">Project Portfolio Creation</div><p class="bb-desc">Graduate with 5+ portfolio-quality renders and walkthroughs ready to showcase to employers or clients.</p></div>
+        </div>
+        <!-- <div class="benefit-bullet">
+          <div class="bb-icon"><i class="fas fa-handshake"></i></div>
+          <div><div class="bb-title">Placement &amp; Career Support</div><p class="bb-desc">Dedicated placement assistance, resume building, and interview preparation to help you land your dream visualization role.</p></div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     5. COURSE MODULES
+════════════════════════════════════════════ -->
+<section class="modules-section" id="modules">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-book-open"></i> Course Curriculum</div>
+      <h2 class="section-title">Complete <span>Course Modules</span></h2>
+      <p class="section-subtitle mx-auto">A structured curriculum designed by industry professionals to take you from beginner to visualization expert</p>
+    </div>
+
+    <div class="row g-4">
+      <!-- Module 1 -->
+      <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="module-card">
+          <div class="module-num">MODULE 01</div>
+          <div class="module-icon-wrap"><i class="fas fa-desktop"></i></div>
+          <h5>Lumion Interface &amp; Basics</h5>
+          <p>Get comfortable with the Lumion environment, navigation tools, viewport controls, and project setup.</p>
+          <ul class="module-topics">
+            <li><i class="fas fa-circle"></i>Interface layout &amp; panels</li>
+            <li><i class="fas fa-circle"></i>Navigation &amp; viewport tools</li>
+            <li><i class="fas fa-circle"></i>Project file management</li>
+            <li><i class="fas fa-circle"></i>Import 3D models</li>
+          </ul>
+          <!-- <span class="module-tag">4 Hours</span> -->
+        </div>
+      </div>
+      <!-- Module 2 -->
+      <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="60">
+        <div class="module-card">
+          <div class="module-num">MODULE 02</div>
+          <div class="module-icon-wrap"><i class="fas fa-palette"></i></div>
+          <h5>Materials &amp; Textures</h5>
+          <p>Apply and customize a vast library of PBR materials to create realistic surfaces for any architecture style.</p>
+          <ul class="module-topics">
+            <li><i class="fas fa-circle"></i>Material library exploration</li>
+            <li><i class="fas fa-circle"></i>Custom texture mapping</li>
+            <li><i class="fas fa-circle"></i>PBR material settings</li>
+            <li><i class="fas fa-circle"></i>Glass, water &amp; metal</li>
+          </ul>
+          <!-- <span class="module-tag">5 Hours</span> -->
+        </div>
+      </div>
+      <!-- Module 3 -->
+      <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="120">
+        <div class="module-card">
+          <div class="module-num">MODULE 03</div>
+          <div class="module-icon-wrap"><i class="fas fa-sun"></i></div>
+          <h5>Lighting Setup</h5>
+          <p>Master natural and artificial lighting to control mood, shadows, and atmosphere in every scene.</p>
+          <ul class="module-topics">
+            <li><i class="fas fa-circle"></i>Sun &amp; sky lighting</li>
+            <li><i class="fas fa-circle"></i>Interior artificial lights</li>
+            <li><i class="fas fa-circle"></i>HDRI environment maps</li>
+            <li><i class="fas fa-circle"></i>Shadow &amp; ambient settings</li>
+          </ul>
+          <!-- <span class="module-tag">5 Hours</span> -->
+        </div>
+      </div>
+      <!-- Module 4 -->
+      <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="180">
+        <div class="module-card">
+          <div class="module-num">MODULE 04</div>
+          <div class="module-icon-wrap"><i class="fas fa-leaf"></i></div>
+          <h5>Landscape Design</h5>
+          <p>Create lush, realistic outdoor environments with terrain sculpting, vegetation, and water bodies.</p>
+          <ul class="module-topics">
+            <li><i class="fas fa-circle"></i>Terrain sculpting tools</li>
+            <li><i class="fas fa-circle"></i>Trees, grass &amp; plants</li>
+            <li><i class="fas fa-circle"></i>Water bodies &amp; fountains</li>
+            <li><i class="fas fa-circle"></i>Roads &amp; site furnishing</li>
+          </ul>
+          <!-- <span class="module-tag">6 Hours</span> -->
+        </div>
+      </div>
+      <!-- Module 5 -->
+      <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="module-card">
+          <div class="module-num">MODULE 05</div>
+          <div class="module-icon-wrap"><i class="fas fa-film"></i></div>
+          <h5>Animation Walkthrough</h5>
+          <p>Create professional cinematic camera animations and walkthrough videos for client presentations.</p>
+          <ul class="module-topics">
+            <li><i class="fas fa-circle"></i>Camera path creation</li>
+            <li><i class="fas fa-circle"></i>Timeline &amp; keyframes</li>
+            <li><i class="fas fa-circle"></i>Cinematic effects</li>
+            <li><i class="fas fa-circle"></i>Video export settings</li>
+          </ul>
+          <!-- <span class="module-tag">6 Hours</span> -->
+        </div>
+      </div>
+      <!-- Module 6 -->
+      <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="60">
+        <div class="module-card">
+          <div class="module-num">MODULE 06</div>
+          <div class="module-icon-wrap"><i class="fas fa-image"></i></div>
+          <h5>Rendering Techniques</h5>
+          <p>Produce ultra-high-quality still images and 360° panoramas using Lumion's advanced render passes.</p>
+          <ul class="module-topics">
+            <li><i class="fas fa-circle"></i>Still image rendering</li>
+            <li><i class="fas fa-circle"></i>360° panorama render</li>
+            <li><i class="fas fa-circle"></i>Render output settings</li>
+            <li><i class="fas fa-circle"></i>Post-processing basics</li>
+          </ul>
+          <!-- <span class="module-tag">5 Hours</span> -->
+        </div>
+      </div>
+      <!-- Module 7 -->
+      <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="120">
+        <div class="module-card">
+          <div class="module-num">MODULE 07</div>
+          <div class="module-icon-wrap"><i class="fas fa-magic"></i></div>
+          <h5>Effects &amp; Environment</h5>
+          <p>Add weather, seasons, particles, and atmospheric effects to create visually rich and dynamic scenes.</p>
+          <ul class="module-topics">
+            <li><i class="fas fa-circle"></i>Rain, snow, fog effects</li>
+            <li><i class="fas fa-circle"></i>Particle system</li>
+            <li><i class="fas fa-circle"></i>Seasons &amp; time of day</li>
+            <li><i class="fas fa-circle"></i>Lens flares &amp; bloom</li>
+          </ul>
+          <!-- <span class="module-tag">5 Hours</span> -->
+        </div>
+      </div>
+      <!-- Module 8 -->
+      <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="180">
+        <div class="module-card">
+          <div class="module-num">MODULE 08</div>
+          <div class="module-icon-wrap"><i class="fas fa-briefcase"></i></div>
+          <h5>Real-Time Projects</h5>
+          <p>Apply all skills in end-to-end live projects — villa exterior, interior, commercial building and landscape.</p>
+          <ul class="module-topics">
+            <li><i class="fas fa-circle"></i>Villa exterior project</li>
+            <li><i class="fas fa-circle"></i>Interior visualization</li>
+            <li><i class="fas fa-circle"></i>Commercial rendering</li>
+            <li><i class="fas fa-circle"></i>Portfolio compilation</li>
+          </ul>
+          <!-- <span class="module-tag">9 Hours</span> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     6. WHY LEARN LUMION
+════════════════════════════════════════════ -->
+<section class="why-section" id="why">
+  <div class="container position-relative" style="z-index:1">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto" style="color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.1)"><i class="fas fa-question-circle"></i> Why Lumion?</div>
+      <h2 class="section-title" style="color:white">Why Learn <span style="color:var(--gold)">Lumion</span> in 2026?</h2>
+      <p class="section-subtitle mx-auto" style="color:rgba(255,255,255,0.72)">Lumion is reshaping how architectural projects are presented and sold — making visualization professionals indispensable</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-chart-line" style="color:#ffd700"></i></div>
+          <h5>Booming Industry Demand</h5>
+          <p>Architectural visualization is a $4.5B global industry growing at 25% annually. Lumion-skilled professionals command premium salaries.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="80">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-rocket" style="color:#2ecc71"></i></div>
+          <h5>Easy Learning Curve</h5>
+          <p>Lumion's intuitive drag-and-drop interface lets beginners produce stunning results within days — no advanced 3D modeling skills required.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="160">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-laptop-code" style="color:#3498db"></i></div>
+          <h5>Freelance Potential</h5>
+          <p>Earn ₹2,000–₹15,000 per visualization project as a freelancer. One good render can pay for the entire course fee.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="240">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-building" style="color:#e74c3c"></i></div>
+          <h5>Used by Top Firms</h5>
+          <p>Over 1 million architects and designers worldwide use Lumion. Get skills that open doors at top AEC companies in India and abroad.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-certificate" style="color:#ffd700"></i></div>
+          <h5>Certification Value</h5>
+          <p>Our CADPOINT-certified Lumion course is recognized by hiring managers. Add it to your resume and LinkedIn for instant credibility.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="80">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-plug" style="color:#9b59b6"></i></div>
+          <h5>Works with All Tools</h5>
+          <p>Lumion connects seamlessly with Revit, AutoCAD, SketchUp, ArchiCAD, and Rhino — making it perfect for any existing workflow.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="160">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-users" style="color:#2ecc71"></i></div>
+          <h5>Expert Instructors</h5>
+          <p>Learn from certified visualizers with 10+ years of industry experience and real-world project portfolios to guide your learning.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="240">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-handshake" style="color:#e67e22"></i></div>
+          <h5>Placement Support</h5>
+          <p>Dedicated career cell with active industry connections. We work until you get placed in a role that matches your skills and salary goals.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     7. CAREER OPPORTUNITIES
+════════════════════════════════════════════ -->
+<section class="career-section" id="careers">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-briefcase"></i> Career Paths</div>
+      <h2 class="section-title">Exciting <span>Career Opportunities</span></h2>
+      <p class="section-subtitle mx-auto">Your Lumion certification opens doors to multiple high-demand roles in the architectural visualization industry</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-building"></i></div>
+          <h5>Architectural Visualizer</h5>
+          <p>Create photorealistic renders for architecture firms, real estate developers, and design studios</p>
+          <div class="career-salary">₹4 – ₹10 LPA</div><br>
+          <div class="demand-badge"><i class="fas fa-fire"></i> Very High Demand</div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="60">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-paint-brush"></i></div>
+          <h5>3D Rendering Artist</h5>
+          <p>Produce stunning CGI renders for marketing materials, brochures, and digital campaigns</p>
+          <div class="career-salary">₹3.5 – ₹9 LPA</div><br>
+          <div class="demand-badge"><i class="fas fa-fire"></i> High Demand</div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="120">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-couch"></i></div>
+          <h5>Interior Visualization Designer</h5>
+          <p>Specialize in interior renders for furniture brands, interior design firms, and luxury projects</p>
+          <div class="career-salary">₹4 – ₹8 LPA</div><br>
+          <div class="demand-badge"><i class="fas fa-fire"></i> High Demand</div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-tree"></i></div>
+          <h5>Landscape Visualizer</h5>
+          <p>Create landscape design visualizations for urban planners, landscape architects, and townships</p>
+          <div class="career-salary">₹3 – ₹7 LPA</div><br>
+          <div class="demand-badge"><i class="fas fa-chart-line"></i> Growing</div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="60">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-video"></i></div>
+          <h5>Architectural Animator</h5>
+          <p>Produce cinematic walkthrough videos and virtual tours for real estate marketing and presentations</p>
+          <div class="career-salary">₹5 – ₹12 LPA</div><br>
+          <div class="demand-badge"><i class="fas fa-fire"></i> Very High Demand</div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="120">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-laptop"></i></div>
+          <h5>Freelance Visualizer</h5>
+          <p>Work independently with global clients, earn per-project, and build a thriving visualization business</p>
+          <div class="career-salary">₹2K – ₹15K/project</div><br>
+          <div class="demand-badge"><i class="fas fa-globe"></i> Global Market</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     8. LEARNING PROCESS
+════════════════════════════════════════════ -->
+<!-- <section class="process-section" id="process">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-map-signs"></i> Your Journey</div>
+      <h2 class="section-title">Your <span>Learning Path</span></h2>
+      <p class="section-subtitle mx-auto">A clear, guided journey from day one to placement — structured for maximum success</p>
+    </div>
+
+    <div class="process-timeline">
+      <div class="process-step" data-aos="fade-up">
+        <div class="step-connector">1</div>
+        <div class="step-content">
+          <div class="step-icon">🎯</div>
+          <h5>Enroll &amp; Orientation</h5>
+          <p>Register for the course, meet your trainer, understand the curriculum, and get your course materials. Set up Lumion on your system with guidance from our faculty.</p>
+        </div>
+      </div>
+      <div class="process-step" data-aos="fade-up" data-aos-delay="80">
+        <div class="step-connector">2</div>
+        <div class="step-content">
+          <div class="step-icon">📚</div>
+          <h5>Learn Core Concepts</h5>
+          <p>Start with Lumion interface, navigation, and importing 3D models. Build a strong foundation with materials, textures, and basic lighting through hands-on exercises.</p>
+        </div>
+      </div>
+      <div class="process-step" data-aos="fade-up" data-aos-delay="160">
+        <div class="step-connector">3</div>
+        <div class="step-content">
+          <div class="step-icon">🎨</div>
+          <h5>Practice Advanced Rendering</h5>
+          <p>Dive deep into landscape design, advanced lighting setups, effects, and environment styling. Recreate professional renders from industry reference projects.</p>
+        </div>
+      </div>
+      <div class="process-step" data-aos="fade-up" data-aos-delay="0">
+        <div class="step-connector">4</div>
+        <div class="step-content">
+          <div class="step-icon">🎬</div>
+          <h5>Master Animations</h5>
+          <p>Learn to create cinematic camera walkthroughs, time-lapse animations, and atmospheric effects. Export professional-grade video presentations for client delivery.</p>
+        </div>
+      </div>
+      <div class="process-step" data-aos="fade-up" data-aos-delay="80">
+        <div class="step-connector">5</div>
+        <div class="step-content">
+          <div class="step-icon">🗂️</div>
+          <h5>Build Your Portfolio</h5>
+          <p>Complete real-world project assignments — a villa exterior, interior scene, commercial building, and landscape visualization — to build your professional showcase portfolio.</p>
+        </div>
+      </div>
+      <div class="process-step" data-aos="fade-up" data-aos-delay="160">
+        <div class="step-connector">6</div>
+        <div class="step-content">
+          <div class="step-icon">🏆</div>
+          <h5>Certification &amp; Placement</h5>
+          <p>Clear your final assessment, receive your CADPOINT-certified Lumion certificate, and begin the placement process with our dedicated career support team.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- ════════════════════════════════════════════
+     STATISTICS COUNTER
+════════════════════════════════════════════ -->
+<div class="stats-band" id="statsSection">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-6 col-lg-3 stat-divider" data-aos="zoom-in" data-aos-delay="0">
+        <div class="stat-box">
+          <h2 data-count="2000">0+</h2>
+          <p>Students Trained</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3 stat-divider" data-aos="zoom-in" data-aos-delay="100">
+        <div class="stat-box">
+          <h2 data-count="8500">0+</h2>
+          <p>Projects Completed</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3 stat-divider" data-aos="zoom-in" data-aos-delay="200">
+        <div class="stat-box">
+          <h2 data-count="92">0%</h2>
+          <p>Placement Rate</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
+        <div class="stat-box">
+          <h2 data-count="14">0+</h2>
+          <p>Years of Excellence</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     9. TESTIMONIALS
+════════════════════════════════════════════ -->
+<!-- <section class="testimonials-section" id="testimonials">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-comment-alt"></i> Student Reviews</div>
+      <h2 class="section-title">What Our <span>Students Say</span></h2>
+      <p class="section-subtitle mx-auto">Real success stories from professionals who transformed their careers with our Lumion training</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testimonial-text">The Lumion course at CADPOINT completely changed my career trajectory. I went from struggling with V-Ray to producing stunning renders in hours. The hands-on project assignments were invaluable. Got placed within 30 days of completing the course!</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">AR</div>
+            <div>
+              <div class="testimonial-name">Arjun Ramaswamy</div>
+              <div class="testimonial-role">Architectural Visualizer</div>
+              <div class="testimonial-company">Sobha Ltd, Bangalore</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="80">
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testimonial-text">As an architect, I always relied on outsourcing my renders. After this course, I create my own photorealistic presentations. My clients are amazed at the quality. The lighting and landscape modules were exceptional. Worth every rupee!</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">PK</div>
+            <div>
+              <div class="testimonial-name">Priya Krishnamurthy</div>
+              <div class="testimonial-role">Principal Architect</div>
+              <div class="testimonial-company">PKA Design Studio</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="160">
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+          <p class="testimonial-text">The animation walkthrough module was a game-changer for me. I'm now creating video tours for real estate projects and earning ₹8,000 per video. The trainer's real-world experience made complex concepts simple. Highly recommend CADPOINT!</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">VR</div>
+            <div>
+              <div class="testimonial-name">Vignesh Rajan</div>
+              <div class="testimonial-role">Freelance Animator</div>
+              <div class="testimonial-company">Self-Employed, Chennai</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testimonial-text">I was a civil engineering graduate with zero visualization experience. CADPOINT's structured Lumion course gave me a completely new skill set. Now I work as a visualization specialist at a top real estate firm. The placement team was amazing!</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">KM</div>
+            <div>
+              <div class="testimonial-name">Kavya Menon</div>
+              <div class="testimonial-role">Visualization Specialist</div>
+              <div class="testimonial-company">Prestige Group, Coimbatore</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="80">
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testimonial-text">The materials library and PBR workflow section helped me produce renders indistinguishable from real photographs. CADPOINT's trainers are patient, knowledgeable, and always available. The portfolio I built here got me my first interview!</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SP</div>
+            <div>
+              <div class="testimonial-name">Suresh Pandian</div>
+              <div class="testimonial-role">3D Rendering Artist</div>
+              <div class="testimonial-company">ZHA Architects, Dubai</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="160">
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testimonial-text">Before CADPOINT, I spent hours on a single render in 3DS Max. Now I create better results in 30 minutes using Lumion. The landscape design module was my favourite — truly brings buildings to life. Best investment in my career!</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">NI</div>
+            <div>
+              <div class="testimonial-name">Nisha Iyer</div>
+              <div class="testimonial-role">Interior Designer</div>
+              <div class="testimonial-company">Livspace, Hyderabad</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-nav mt-4">
+      <button class="testi-btn active" aria-label="Page 1"><i class="fas fa-circle" style="font-size:0.5rem"></i></button>
+      <button class="testi-btn" aria-label="Page 2"><i class="fas fa-circle" style="font-size:0.5rem"></i></button>
+      <button class="testi-btn" aria-label="Page 3"><i class="fas fa-circle" style="font-size:0.5rem"></i></button>
+    </div>
+  </div>
+</section> -->
+
+<!-- ════════════════════════════════════════════
+     10. FAQ
+════════════════════════════════════════════ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-question-circle"></i> FAQ</div>
+      <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+      <p class="section-subtitle mx-auto">Everything you need to know about our Lumion training program</p>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="0">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <div class="faq-icon"><i class="fas fa-laptop"></i></div>
+            <div class="faq-q">What are the software and hardware requirements for Lumion?</div>
+            <i class="fas fa-chevron-down faq-caret"></i>
+          </div>
+          <div class="faq-body">
+            <p>Lumion requires a Windows PC with a dedicated NVIDIA or AMD GPU (minimum 4GB VRAM, recommended 8GB+), 16GB RAM, and an SSD. Intel/AMD processors from the last 5 years work well. Lumion does not run on Mac natively. We guide you on system requirements and you can also use our lab systems during training.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="40">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <div class="faq-icon"><i class="fas fa-certificate"></i></div>
+            <div class="faq-q">Will I receive a certificate after completing the course?</div>
+            <i class="fas fa-chevron-down faq-caret"></i>
+          </div>
+          <div class="faq-body">
+            <p>Yes! Upon successfully completing all modules and a final assessment, you will receive a CADPOINT-certified Lumion Course Certificate. This is an industry-recognized certification accepted by architectural firms, real estate developers, and visualization studios across India and internationally.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="80">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <div class="faq-icon"><i class="fas fa-user-graduate"></i></div>
+            <div class="faq-q">Do I need prior 3D modeling or rendering experience?</div>
+            <i class="fas fa-chevron-down faq-caret"></i>
+          </div>
+          <div class="faq-body">
+            <p>No prior rendering experience is required. However, basic knowledge of any 3D modeling software (AutoCAD 3D, SketchUp, or Revit) is helpful for importing models. Our course includes model preparation guidance. Complete beginners in visualization are very welcome — Lumion's interface is designed for ease of use.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="120">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <div class="faq-icon"><i class="fas fa-wifi"></i></div>
+            <div class="faq-q">Is online learning available for this Lumion course?</div>
+            <i class="fas fa-chevron-down faq-caret"></i>
+          </div>
+          <div class="faq-body">
+            <p>Yes, we offer both classroom training at our Coimbatore centre and live online sessions via Zoom. Online students get recorded session access, the same project assignments, and 1:1 doubt-clearing sessions. Live interaction is maintained so you don't miss the collaborative learning experience.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="160">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <div class="faq-icon"><i class="fas fa-clock"></i></div>
+            <div class="faq-q">How long does the course take to complete?</div>
+            <i class="fas fa-chevron-down faq-caret"></i>
+          </div>
+          <div class="faq-body">
+            <p>The complete Lumion course is 45 hours of training, typically completed in 6–8 weeks (weekday batches) or 10–12 weeks (weekend batches). Intensive fast-track batches for working professionals are also available. You can discuss flexible scheduling options at the time of enrollment.</p>
+          </div>
+        </div>
+        <!-- <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <div class="faq-icon"><i class="fas fa-briefcase"></i></div>
+            <div class="faq-q">What kind of placement support does CADPOINT provide?</div>
+            <i class="fas fa-chevron-down faq-caret"></i>
+          </div>
+          <div class="faq-body">
+            <p>Our dedicated placement cell provides resume building, LinkedIn profile optimization, interview preparation, and active job referrals to our network of 200+ hiring partners across India. We organize campus drives and connect graduates directly with architectural firms, real estate companies, and visualization studios. We support you until you secure a job.</p>
+          </div>
+        </div> -->
+       <!-- <div class="faq-item" data-aos="fade-up" data-aos-delay="240">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <div class="faq-icon"><i class="fas fa-rupee-sign"></i></div>
+            <div class="faq-q">What is the course fee and are EMI options available?</div>
+            <i class="fas fa-chevron-down faq-caret"></i>
+          </div>
+          <div class="faq-body">
+            <p>Course fees are competitive and vary by batch type (classroom vs online, weekday vs weekend). We offer flexible EMI options through our finance partners with 0% interest plans. Contact our admissions team for the current fee structure, scholarships for students, and corporate training packages for organizations.</p>
+          </div>
+        </div>  -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     11. CTA SECTION
+════════════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="cta-blob cta-blob-1"></div>
+  <div class="cta-blob cta-blob-2"></div>
+  <div class="container text-center position-relative" style="z-index:1">
+    <div data-aos="zoom-in">
+      <div class="section-tag mx-auto mb-3" style="color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.08)"><i class="fas fa-rocket"></i> Start Your Visualization Career</div>
+      <h2 class="cta-title">Start Your Visualization<br>Career <span style="color:var(--gold)">Today.</span></h2>
+      <p class="cta-subtitle">Join 2,000+ professionals who transformed their architectural careers with CADPOINT's Lumion training. Limited seats available in the next batch.</p>
+      <div class="d-flex flex-wrap gap-3 justify-content-center">
+        <a href="https://wa.me/919895352624" class="btn-cta-glow">
+          <i class="fas fa-rocket"></i> Enroll Now — Free Counselling
+        </a>
+        <a href="tel:+919895352624" class="btn-cta-outline">
+          <i class="fas fa-phone-alt"></i> Talk to Our Team
+        </a>
+      </div>
+      
+    </div>
+  </div>
+  <!-- <div class="cta-wave">
+    <svg viewBox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,35 C480,70 960,0 1440,35 L1440,70 L0,70 Z" fill="#0d0d0d"/>
+    </svg>
+  </div> -->
+</section>
+
+<!-- ════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<div id="footer"></div>
+
+<!-- ════════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+function initCaddNav() {
+
+    const coursesNav = document.getElementById('coursesNav');
+    const caret = document.getElementById('coursesCaret');
+    const menu = document.getElementById('coursesMegaMenu');
+    const closeBtn = document.getElementById('closeMegaMenu');
+
+    if (!coursesNav || !caret || !menu) return;
+
+    // X BUTTON CLOSE (Desktop + Mobile)
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.remove('show');
+
+        });
+    }
+
+    // MOBILE
+    if (window.innerWidth <= 991) {
+
+        caret.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!coursesNav.contains(e.target)) {
+                menu.classList.remove('show');
+            }
+        });
+
+        return;
+    }
+
+    // DESKTOP
+    coursesNav.addEventListener('mouseenter', function () {
+        menu.classList.add('show');
+    });
+
+    coursesNav.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+
+    menu.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+}
+</script>
+
+<script>
+fetch("./header.html")
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById("header").innerHTML = html;
+    initCaddNav();
+  });
+
+  fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+      document.getElementById('footer').innerHTML = data;
+  });
+</script>
+
+
+<script>
+// ── LOADER ──────────────────────────────────
+window.addEventListener('load', () => {
+  setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 1800);
+});
+
+// ── AOS INIT ────────────────────────────────
+AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });
+
+// ── NAVBAR SCROLL ───────────────────────────
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  if (window.scrollY > 50) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+  const btn = document.getElementById('backToTop');
+  if (window.scrollY > 400) btn.classList.add('visible'); else btn.classList.remove('visible');
+});
+document.getElementById('backToTop').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+// ── COUNTER ANIMATION ───────────────────────
+function animateCounters() {
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseInt(el.getAttribute('data-count'));
+    const isPercent = el.closest('.stat-box')?.querySelector('p')?.textContent.includes('%') || target < 100;
+    const suffix = target === 92 ? '%' : '+';
+    let current = 0;
+    const increment = target / 70;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) { current = target; clearInterval(timer); }
+      el.textContent = Math.floor(current) + suffix;
+    }, 22);
+  });
+}
+
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) { animateCounters(); statsObserver.disconnect(); } });
+}, { threshold: 0.3 });
+const statsSection = document.getElementById('statsSection');
+if (statsSection) statsObserver.observe(statsSection);
+
+// ── HERO TEXT ANIMATION ─────────────────────
+const heroTitle = document.getElementById('heroTitle');
+if (heroTitle) {
+  heroTitle.style.opacity = '0'; heroTitle.style.transform = 'translateY(30px)';
+  heroTitle.style.transition = 'opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s';
+  setTimeout(() => { heroTitle.style.opacity = '1'; heroTitle.style.transform = 'translateY(0)'; }, 300);
+}
+
+// ── MEGA MENU ───────────────────────────────
+document
+  .getElementById("closeMegaMenu")
+  .addEventListener("click", function () {
+    document
+      .querySelector(".courses-mega-menu")
+      .classList.remove("show");
+  });
+
+// COURSES MEGA DROPDOWN: hover to open
+(function () {
+  const coursesNav = document.getElementById('coursesNav');
+  if (!coursesNav) return;
+  const menu = coursesNav.querySelector('.courses-mega-menu');
+  const caret = document.getElementById('coursesDropdown');
+  if (!menu) return;
+  let hideTimer;
+
+  function showMenu() {
+    clearTimeout(hideTimer);
+    // position the menu below the navbar
+    const navRect = document.getElementById('mainNav').getBoundingClientRect();
+    menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    menu.classList.add('show');
+    if (caret) caret.querySelector('i').style.transform = 'rotate(180deg)';
+  }
+
+  function hideMenu() {
+    hideTimer = setTimeout(function () {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }, 120);
+  }
+
+  coursesNav.addEventListener('mouseenter', showMenu);
+  coursesNav.addEventListener('mouseleave', hideMenu);
+  menu.addEventListener('mouseenter', showMenu);
+  menu.addEventListener('mouseleave', hideMenu);
+
+  if (caret) {
+    caret.querySelector('i').style.transition = 'transform 0.25s ease';
+    caret.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (menu.classList.contains('show')) { hideMenu(); } else { showMenu(); }
+    });
+  }
+
+  document.addEventListener('click', function (e) {
+    if (!coursesNav.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }
+  });
+
+  // reposition on scroll
+  window.addEventListener('scroll', function () {
+    if (menu.classList.contains('show')) {
+      const navRect = document.getElementById('mainNav').getBoundingClientRect();
+      menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    }
+  });
+})();
+
+// ── RIPPLE EFFECT ──────────────────────────
+document.querySelectorAll('.ripple').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.style.cssText = `
+      position:absolute; border-radius:50%;
+      background:rgba(255,255,255,0.3);
+      width:10px; height:10px;
+      left:${e.clientX - rect.left - 5}px;
+      top:${e.clientY - rect.top - 5}px;
+      transform:scale(0); animation:rippleAnim 0.6s ease-out forwards;
+      pointer-events:none;
+    `;
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 700);
+  });
+});
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `@keyframes rippleAnim { to { transform:scale(30); opacity:0; } }`;
+document.head.appendChild(rippleStyle);
+
+// ── FAQ ACCORDION ───────────────────────────
+function toggleFaq(header) {
+  const item = header.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+const faqHeaders = document.querySelectorAll(".faq-header");
+
+faqHeaders.forEach(header => {
+    header.addEventListener("click", () => {
+        header.classList.toggle("active");
+    });
+});
+</script>
+</body>
+</html>

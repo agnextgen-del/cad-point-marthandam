@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Programming Course | CADPOINT Authorized Training Centre</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="icon" type="image/x-icon" href="assets/image/cadd-logo.webp">
+  <style>
+    /* ═══════════════════════════════════════════
+       CSS VARIABLES — same as CADPOINT theme
+    ═══════════════════════════════════════════ */
+    :root {
+      --primary:       #8B0000;
+      --primary-light: #A00000;
+      --primary-dark:  #5c0000;
+      --primary-glow:  rgba(139,0,0,0.35);
+      --white:         #ffffff;
+      --light-gray:    #F5F5F5;
+      --text-dark:     #1a1a1a;
+      --text-muted:    #555;
+      --border-light:  rgba(139,0,0,0.15);
+      --glass-bg:      rgba(255,255,255,0.08);
+      --glass-border:  rgba(255,255,255,0.18);
+      --gold:          #ffd700;
+      --py-blue:       #306998;
+      --py-yellow:     #ffd43b;
+    }
+
+    html, body { max-width: 100%; overflow-x: hidden; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; color: var(--text-dark); background: var(--white); }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+    /* ═══════════════════════════════════════════
+       LOADER
+    ═══════════════════════════════════════════ */
+    #loader {
+      position: fixed; inset: 0; background: var(--primary-dark);
+      z-index: 9999; display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 20px;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    #loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-logo { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2rem; color: white; letter-spacing: 4px; }
+    .loader-logo span { color: var(--gold); }
+    .loader-bar { width: 200px; height: 3px; background: rgba(255,255,255,0.15); border-radius: 3px; overflow: hidden; }
+    .loader-bar-inner { height: 100%; background: linear-gradient(90deg, var(--primary-light), var(--gold)); border-radius: 3px; animation: loadBar 1.8s ease-in-out forwards; }
+    @keyframes loadBar { from { width: 0; } to { width: 100%; } }
+
+    /* ─── BACK TO TOP ─── */
+    #backToTop {
+      position: fixed; bottom: 30px; right: 30px; width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white; border: none; border-radius: 50%; cursor: pointer;
+      box-shadow: 0 6px 20px var(--primary-glow);
+      opacity: 0; transform: translateY(20px); transition: all 0.4s ease;
+      z-index: 999; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+    }
+    #backToTop.visible { opacity: 1; transform: translateY(0); }
+    #backToTop:hover { transform: translateY(-4px); box-shadow: 0 10px 30px var(--primary-glow); }
+
+    /* ═══════════════════════════════════════════
+       NAVBAR — exact copy from index.html
+    ═══════════════════════════════════════════ */
+    .navbar {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 2px 30px rgba(139,0,0,0.12);
+      padding: 12px 0; position: sticky; top: 0; z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    .navbar.scrolled { padding: 8px 0; box-shadow: 0 4px 40px rgba(139,0,0,0.2); }
+    .navbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icon { width: 48px; height: 48px; flex-shrink: 0; }
+    .logo-text { line-height: 1.1; }
+    .logo-text .brand-name { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.3rem; color: var(--primary); letter-spacing: 2px; }
+    .logo-text .brand-sub { font-size: 0.58rem; font-weight: 600; color: #666; letter-spacing: 1.5px; text-transform: uppercase; }
+    .navbar-nav .nav-link {
+      font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.82rem;
+      letter-spacing: 0.8px; text-transform: uppercase; padding: 8px 16px !important;
+      border-radius: 6px; transition: all 0.3s ease; position: relative;
+    }
+    .navbar-nav .nav-link:hover { color: var(--primary); }
+    .btn-nav-enroll {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white !important; padding: 8px 22px !important; border-radius: 25px !important;
+      font-weight: 700 !important; box-shadow: 0 4px 15px var(--primary-glow); transition: all 0.3s ease !important;
+    }
+    .btn-nav-enroll:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--primary-glow) !important; }
+    .btn-nav-enroll::after { display: none !important; }
+
+    /* Mega menu */
+    #coursesNav { position: static !important; }
+    #coursesNav > div { display: flex; align-items: center; }
+    .courses-mega-menu {
+      position: fixed !important; top: auto !important; left: 50% !important;
+      transform: translateX(-50%) translateY(6px) !important;
+      width: min(960px, 96vw) !important; display: block !important;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+      pointer-events: none; border: none !important; border-radius: 16px !important;
+      overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.16), 0 0 0 1px rgba(139,0,0,0.1) !important;
+      padding: 0 !important;
+    }
+    .courses-mega-menu.show {
+      opacity: 1 !important; visibility: visible !important;
+      transform: translateX(-50%) translateY(0) !important; pointer-events: auto !important;
+    }
+    .mega-col { flex: 1; padding: 20px 10px 10px 10px; border-right: 1px solid rgba(139,0,0,0.08); background: white; }
+    .mega-col:last-child { border-right: none; }
+    .mega-col-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid rgba(139,0,0,0.08); }
+    .mega-col-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .mega-col-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.82rem; color: var(--text-dark); letter-spacing: 0.4px; }
+    .mega-col-sub { font-size: 0.68rem; color: #999; font-weight: 500; margin-top: 1px; }
+    .mega-item { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 7px; font-size: 0.8rem; font-weight: 500; color: var(--text-dark); text-decoration: none; transition: background 0.15s, color 0.15s, padding-left 0.15s; margin-bottom: 2px; }
+    .mega-item i { font-size: 0.72rem; width: 16px; text-align: center; color: #aaa; transition: color 0.15s; flex-shrink: 0; }
+    .mega-item:hover { background: rgba(139,0,0,0.07); color: var(--primary); padding-left: 12px; }
+    .mega-item:hover i { color: var(--primary); }
+    #coursesNav .courses-caret { color: var(--text-dark); transition: color 0.2s; }
+    #coursesNav .courses-caret:hover { color: var(--primary); }
+    .mega-close-x { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border: none; border-radius: 50%; background: #fff; color: #222; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 99; box-shadow: 0 4px 15px rgba(0,0,0,.12); transition: .3s ease; }
+    .mega-close-x:hover { background: var(--primary); color: #fff; transform: rotate(90deg); }
+    .dropdown-item:hover { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #fff; border-radius: 5px; }
+
+    /* Mobile navbar */
+    @media (max-width: 991px) {
+      .navbar-collapse { background: #fff; padding: 15px; border-radius: 18px; margin-top: 15px; box-shadow: 0 10px 35px rgba(0,0,0,.08); }
+      #coursesNav { width: 100%; }
+      #coursesNav .d-flex { width: 100%; justify-content: space-between; align-items: center; }
+      #coursesNav .nav-link { padding: 12px 0 !important; }
+      .courses-caret { padding-right: 0 !important; }
+      .courses-mega-menu { transform: none !important; width: 100% !important; min-width: 100% !important; margin-top: 10px !important; border: none !important; box-shadow: none !important; border-radius: 16px !important; overflow: hidden; background: #f8f9fb; }
+      .courses-mega-menu .d-flex { flex-direction: column !important; gap: 0 !important; padding-top: 0 !important; }
+      .mega-col { width: 100% !important; border-right: none !important; border-bottom: 1px solid rgba(0,0,0,.06); padding: 18px 16px !important; }
+      .mega-col:last-child { border-bottom: none; }
+      .mega-col-title { font-size: 1rem; font-weight: 700; }
+      .mega-col-sub { font-size: .78rem; }
+      .mega-item { width: 100%; display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 10px; font-size: .92rem; }
+      .mega-item:hover { background: #fff; }
+      .mega-item i { width: 18px; text-align: center; }
+    }
+
+    /* ═══════════════════════════════════════════
+       BREADCRUMB SLIDER
+    ═══════════════════════════════════════════ */
+    .breadcrumb-slider {
+      background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-dark) 100%);
+      padding: 0; overflow: hidden; height: 38px; display: flex; align-items: center; position: relative;
+    }
+    .breadcrumb-slider::before, .breadcrumb-slider::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none; }
+    .breadcrumb-slider::before { left: 0; background: linear-gradient(to right, var(--primary-dark), transparent); }
+    .breadcrumb-slider::after { right: 0; background: linear-gradient(to left, var(--primary-dark), transparent); }
+    .breadcrumb-track { display: flex; animation: scrollBreadcrumb 28s linear infinite; white-space: nowrap; will-change: transform; }
+    .breadcrumb-track:hover { animation-play-state: paused; }
+    .breadcrumb-item-slide { display: inline-flex; align-items: center; gap: 8px; padding: 0 30px; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 1px; text-transform: uppercase; font-family: 'Montserrat', sans-serif; }
+    .breadcrumb-item-slide i { color: rgba(255,255,255,0.6); font-size: 0.7rem; }
+    @keyframes scrollBreadcrumb { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ═══════════════════════════════════════════
+       SECTION HELPERS
+    ═══════════════════════════════════════════ */
+    section { padding: 90px 0; }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      border: 1px solid var(--border-light); color: var(--primary);
+      background: rgba(139,0,0,0.05); padding: 6px 16px;
+      border-radius: 50px; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; font-family: 'Montserrat', sans-serif;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 900;
+      font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--text-dark); line-height: 1.18;
+      margin-bottom: 16px;
+    }
+    .section-title span { color: var(--primary); }
+    .section-subtitle { font-size: 1rem; color: var(--text-muted); max-width: 600px; line-height: 1.7; }
+
+    /* ═══════════════════════════════════════════
+       1. HERO SECTION
+    ═══════════════════════════════════════════ */
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 45%, #b71c1c 80%, var(--primary-dark) 100%);
+      min-height: 90vh; display: flex; align-items: center;
+      position: relative; overflow: hidden; padding: 80px 0 100px;
+    }
+
+    /* subtle grid pattern overlay */
+    .hero-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+    }
+
+    /* glow blobs */
+    .hero-blob {
+      position: absolute; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.09) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-blob-1 { width: 600px; height: 600px; top: -200px; right: -100px; }
+    .hero-blob-2 { width: 400px; height: 400px; bottom: -150px; left: -80px; }
+
+    /* floating python icons */
+    .float-icon {
+      position: absolute; font-size: 1.4rem; opacity: 0.12;
+      animation: floatAnim 6s ease-in-out infinite;
+      color: white; pointer-events: none;
+    }
+    .float-icon:nth-child(2) { animation-delay: 1s; font-size: 1rem; opacity: 0.08; }
+    .float-icon:nth-child(3) { animation-delay: 2s; font-size: 2rem; opacity: 0.07; }
+    .float-icon:nth-child(4) { animation-delay: 0.5s; font-size: 1.2rem; opacity: 0.1; }
+    .float-icon:nth-child(5) { animation-delay: 1.5s; font-size: 1.8rem; opacity: 0.06; }
+    @keyframes floatAnim {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(10deg); }
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px); padding: 6px 16px; border-radius: 50px;
+      font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.9);
+      letter-spacing: 0.5px; margin-bottom: 22px;
+    }
+    .hero-badge i { color: var(--gold); }
+
+    .hero-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 900;
+      font-size: clamp(2.4rem, 6vw, 4rem); color: white;
+      line-height: 1.12; margin-bottom: 20px;
+    }
+    .hero-title .highlight {
+      color: var(--gold);
+      position: relative;
+      display: inline-block;
+    }
+    /* .hero-title .highlight::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0; width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      border-radius: 2px;
+    } */
+
+    .hero-desc {
+      font-size: 1.05rem; color: rgba(255,255,255,0.82);
+      line-height: 1.8;
+       max-width: 600px; 
+      margin-bottom: 32px;
+    }
+
+    .hero-bullets { list-style: none; padding: 0; margin-bottom: 36px; }
+    .hero-bullets li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.9rem; color: rgba(255,255,255,0.85);
+      margin-bottom: 10px;
+    }
+    .hero-bullets li i { color: var(--gold); font-size: 0.75rem; flex-shrink: 0; }
+
+    /* CTA Buttons */
+    .hero-btn-group { display: flex; flex-wrap: wrap; gap: 14px; }
+
+    .btn-hero-primary {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: linear-gradient(135deg, #ffd700, #ffb700);
+      color: var(--primary-dark); padding: 14px 30px; border-radius: 50px;
+      font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.88rem;
+      letter-spacing: 0.5px; text-decoration: none; cursor: pointer;
+      box-shadow: 0 8px 30px rgba(255,215,0,0.4);
+      transition: all 0.35s ease; position: relative; overflow: hidden;
+    }
+    .btn-hero-primary::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .btn-hero-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 14px 40px rgba(255,215,0,0.55); color: var(--primary-dark); }
+    .btn-hero-primary:hover::before { opacity: 1; }
+
+    .btn-hero-outline {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: var(--glass-bg); border: 2px solid var(--glass-border);
+      color: white; padding: 13px 28px; border-radius: 50px;
+      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem;
+      letter-spacing: 0.5px; text-decoration: none; cursor: pointer;
+      backdrop-filter: blur(10px); transition: all 0.35s ease;
+    }
+    .btn-hero-outline:hover { background: rgba(255,255,255,0.18); color: white; transform: translateY(-3px); border-color: rgba(255,255,255,0.4); }
+
+    /* Python Illustration SVG panel */
+    .python-panel {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(16px);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+      position: relative;
+      overflow: hidden;
+    }
+    .python-panel::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--py-blue), var(--py-yellow), var(--py-blue));
+    }
+
+    .code-window { background: #0d1117; border-radius: 14px; overflow: hidden; font-family: 'Courier New', monospace; }
+    .code-topbar { background: #161b22; padding: 10px 16px; display: flex; align-items: center; gap: 7px; }
+    .dot { width: 11px; height: 11px; border-radius: 50%; }
+    .dot-red { background: #ff5f57; } .dot-yellow { background: #febc2e; } .dot-green { background: #28c840; }
+    .code-body { padding: 20px; font-size: 0.8rem; line-height: 1.8; }
+    .code-kw { color: #ff7b72; } .code-fn { color: #d2a8ff; } .code-str { color: #a5d6ff; }
+    .code-num { color: #79c0ff; } .code-cm { color: #6e7681; } .code-var { color: #ffa657; }
+    .code-op { color: #c9d1d9; } .code-out { color: #56d364; }
+    .code-line { display: block; animation: fadeInLine 0.5s ease forwards; opacity: 0; }
+    @keyframes fadeInLine { to { opacity: 1; } }
+
+    .stat-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      color: white; padding: 8px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 600;
+      backdrop-filter: blur(8px);
+    }
+    .stat-pill i { color: var(--gold); }
+
+    /* hero wave */
+    .hero-wave { position: absolute; bottom: 0; width: 100%; line-height: 0; }
+    .hero-wave svg { display: block; }
+
+    /* ═══════════════════════════════════════════
+       2. ABOUT SECTION
+    ═══════════════════════════════════════════ */
+    .about-section { background: var(--white); }
+    .about-img-wrap { position: relative; }
+    .about-main-img {
+      width: 100%; border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(139,0,0,0.15);
+      border: 4px solid rgba(139,0,0,0.1);
+    }
+    .about-badge-card {
+      position: absolute; bottom: -20px; right: -20px;
+      background: white; border-radius: 16px; padding: 18px 22px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+      border-left: 4px solid var(--primary); min-width: 160px;
+    }
+    .about-badge-card .num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2rem; color: var(--primary); }
+    .about-badge-card .lbl { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; }
+
+    .about-check-list { list-style: none; padding: 0; margin-top: 20px; }
+    .about-check-list li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; font-size: 0.95rem; color: var(--text-dark); }
+    .about-check-list li i { color: var(--primary); font-size: 0.85rem; margin-top: 4px; flex-shrink: 0; }
+
+    /* ═══════════════════════════════════════════
+       3. WHAT YOU'LL LEARN
+    ═══════════════════════════════════════════ */
+    .learn-section { background: var(--light-gray); }
+
+    .learn-card {
+      background: white; border-radius: 18px;
+      padding: 30px 24px; height: 100%;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid rgba(139,0,0,0.08);
+      transition: all 0.35s ease; position: relative; overflow: hidden;
+    }
+    .learn-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease;
+    }
+    .learn-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(139,0,0,0.15); }
+    .learn-card:hover::before { transform: scaleX(1); }
+
+    .learn-icon-wrap {
+      width: 60px; height: 60px; border-radius: 16px;
+      background: linear-gradient(135deg, rgba(139,0,0,0.1), rgba(139,0,0,0.05));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; color: var(--primary); margin-bottom: 18px;
+      transition: all 0.35s ease;
+    }
+    .learn-card:hover .learn-icon-wrap { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; transform: scale(1.08); }
+    .learn-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; color: var(--text-dark); margin-bottom: 10px; }
+    .learn-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; margin: 0; }
+
+    .learn-tag { display: inline-block; background: rgba(139,0,0,0.08); color: var(--primary); font-size: 0.7rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-top: 12px; }
+
+    /* ═══════════════════════════════════════════
+       4. COURSE FEATURES (glassmorphism)
+    ═══════════════════════════════════════════ */
+    .features-section {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, #b71c1c 100%);
+      position: relative; overflow: hidden;
+    }
+    .features-section::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px; pointer-events: none;
+    }
+
+    .feature-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(16px);
+      border-radius: 20px; padding: 30px 24px;
+      text-align: center; height: 100%;
+      transition: all 0.35s ease; position: relative; overflow: hidden;
+    }
+    .feature-card::after {
+      content: ''; position: absolute; inset: 0; border-radius: 20px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent);
+      opacity: 0; transition: opacity 0.35s;
+    }
+    .feature-card:hover { transform: translateY(-8px); background: rgba(255,255,255,0.14); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+    .feature-card:hover::after { opacity: 1; }
+
+    .feature-icon {
+      width: 68px; height: 68px; border-radius: 20px; margin: 0 auto 20px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: transform 0.35s ease;
+    }
+    .feature-card:hover .feature-icon { transform: scale(1.1) rotate(-5deg); }
+    .feature-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 800; color: white; font-size: 1rem; margin-bottom: 10px; }
+    .feature-card p { font-size: 0.82rem; color: rgba(255,255,255,0.72); line-height: 1.7; margin: 0; }
+
+    /* ═══════════════════════════════════════════
+       5. CAREER OPPORTUNITIES
+    ═══════════════════════════════════════════ */
+    .career-section { background: var(--white); }
+
+    .career-card {
+      border: 2px solid rgba(139,0,0,0.1); border-radius: 18px;
+      padding: 32px 24px; text-align: center; height: 100%;
+      transition: all 0.35s ease; background: white; position: relative; overflow: hidden;
+    }
+    .career-card::before {
+      content: ''; position: absolute; inset: 0; border-radius: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      opacity: 0; transition: opacity 0.35s ease; z-index: 0;
+    }
+    .career-card > * { position: relative; z-index: 1; }
+    .career-card:hover { border-color: var(--primary); transform: translateY(-6px); box-shadow: 0 20px 50px rgba(139,0,0,0.2); }
+    .career-card:hover::before { opacity: 1; }
+    .career-card:hover .career-icon, .career-card:hover h5, .career-card:hover p, .career-card:hover .career-salary { color: white !important; }
+    .career-card:hover .career-icon { background: rgba(255,255,255,0.15) !important; border-color: rgba(255,255,255,0.3) !important; }
+
+    .career-icon {
+      width: 70px; height: 70px; border-radius: 20px; margin: 0 auto 18px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; color: var(--primary);
+      background: rgba(139,0,0,0.08); border: 1px solid rgba(139,0,0,0.1);
+      transition: all 0.35s ease;
+    }
+    .career-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; color: var(--text-dark); margin-bottom: 8px; transition: color 0.35s; }
+    .career-card p { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 14px; transition: color 0.35s; }
+    .career-salary { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.9rem; color: var(--primary); background: rgba(139,0,0,0.08); padding: 5px 14px; border-radius: 20px; display: inline-block; transition: all 0.35s; }
+
+    /* ═══════════════════════════════════════════
+       6. TESTIMONIALS
+    ═══════════════════════════════════════════ */
+    .testimonials-section { background: var(--light-gray); }
+
+    .testimonial-card {
+      background: white; border-radius: 20px; padding: 32px 28px;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.07);
+      border: 1px solid rgba(139,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%; position: relative;
+    }
+    .testimonial-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(139,0,0,0.14); }
+    .testimonial-quote { font-size: 3rem; color: var(--primary); opacity: 0.15; line-height: 1; margin-bottom: -10px; font-family: Georgia, serif; }
+    .testimonial-text { font-size: 0.92rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 22px; font-style: italic; }
+    .testimonial-stars { color: var(--gold); font-size: 0.8rem; margin-bottom: 16px; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-avatar {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; color: white; font-size: 1.1rem; flex-shrink: 0;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .testimonial-name { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--text-dark); }
+    .testimonial-role { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+
+    /* Testimonial Carousel Dots */
+    .testi-dots { display: flex; justify-content: center; gap: 8px; margin-top: 30px; }
+    .testi-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(139,0,0,0.2); cursor: pointer;
+      transition: all 0.3s ease; border: none; padding: 0;
+    }
+    .testi-dot.active { background: var(--primary); width: 24px; border-radius: 4px; }
+
+    /* ═══════════════════════════════════════════
+       7. CTA SECTION
+    ═══════════════════════════════════════════ */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, #b71c1c 100%);
+      padding: 100px 0; position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 50px 50px; pointer-events: none;
+    }
+
+    .cta-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 900;
+      font-size: clamp(2rem, 5vw, 3.2rem); color: white; line-height: 1.2; margin-bottom: 16px;
+    }
+    .cta-subtitle { font-size: 1.05rem; color: rgba(255,255,255,0.78); margin-bottom: 40px; }
+    .btn-cta-glow {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, var(--gold), #ffb700);
+      color: var(--primary-dark); padding: 16px 36px; border-radius: 50px;
+      font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 0.95rem;
+      text-decoration: none; box-shadow: 0 10px 40px rgba(255,215,0,0.5);
+      transition: all 0.35s ease; cursor: pointer; position: relative; overflow: hidden; margin: 6px;
+    }
+    .btn-cta-glow::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent); opacity: 0; transition: opacity 0.3s; }
+    .btn-cta-glow:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 18px 55px rgba(255,215,0,0.65); color: var(--primary-dark); }
+    .btn-cta-glow:hover::before { opacity: 1; }
+    .btn-cta-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; border: 2px solid rgba(255,255,255,0.4);
+      color: white; padding: 14px 32px; border-radius: 50px;
+      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem;
+      text-decoration: none; transition: all 0.35s ease; margin: 6px;
+    }
+    .btn-cta-outline:hover { border-color: white; color: white; background: rgba(255,255,255,0.1); transform: translateY(-4px); }
+
+    /* ═══════════════════════════════════════════
+       FOOTER — exact same as index.html
+    ═══════════════════════════════════════════ */
+    footer {
+      background: linear-gradient(135deg, #0f0f0f 0%, #1a0000 100%);
+      padding: 70px 0 0;
+    }
+    .footer-brand { margin-bottom: 22px; }
+    .footer-desc { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.8; margin-bottom: 24px; }
+    .footer-socials { display: flex; gap: 10px; flex-wrap: wrap; }
+    .footer-social-btn {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; text-decoration: none; transition: all 0.3s ease;
+    }
+    .footer-social-btn:hover { background: var(--primary); border-color: var(--primary); color: white; transform: translateY(-3px); }
+    .footer-heading { font-family: 'Montserrat', sans-serif; font-weight: 800; color: white; font-size: 0.88rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; padding-bottom: 10px; position: relative; }
+    .footer-heading::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 2px; background: var(--primary); border-radius: 2px; }
+    .footer-links { list-style: none; padding: 0; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 6px; }
+    .footer-links a:hover { color: var(--primary-light); padding-left: 5px; }
+    .footer-links a i { font-size: 0.65rem; color: var(--primary); }
+    .footer-contact li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; font-size: 0.85rem; color: rgba(255,255,255,0.55); }
+    .footer-contact li i { color: var(--primary-light); margin-top: 3px; flex-shrink: 0; font-size: 0.85rem; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding: 22px 0; margin-top: 50px; font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+
+    /* ═══════════════════════════════════════════
+       RIPPLE
+    ═══════════════════════════════════════════ */
+    .ripple { position: relative; overflow: hidden; }
+
+    /* ═══════════════════════════════════════════
+       RESPONSIVE ADJUSTMENTS
+    ═══════════════════════════════════════════ */
+    @media (max-width: 991px) {
+      .hero-section { padding: 70px 0 80px; }
+      .about-badge-card { right: 0; bottom: -10px; }
+    }
+
+    @media (max-width: 767px) {
+      section { padding: 65px 0; }
+      .hero-btn-group { flex-direction: column; align-items: center; }
+      .btn-hero-primary, .btn-hero-outline { width: 240px; justify-content: center; }
+      .about-badge-card { position: relative; bottom: auto; right: auto; margin-top: 16px; display: inline-block; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     LOADER
+═══════════════════════════════════════════ -->
+<!-- <div id="loader">
+  <div class="loader-logo">CAD<span>POINT</span></div>
+  <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+</div> -->
+
+<!-- BACK TO TOP -->
+<button id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+<!-- ═══════════════════════════════════════════
+     NAVBAR — exact same as index.html
+═══════════════════════════════════════════ -->
+<div id="header"></div>
+
+
+<!-- ═══════════════════════════════════════════
+     BREADCRUMB SLIDER
+═══════════════════════════════════════════ -->
+<div class="breadcrumb-slider">
+  <div class="breadcrumb-track">
+    <div class="breadcrumb-item-slide"><i class="fab fa-python"></i> <strong>Python Programming</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-robot"></i> <strong>Automation</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-database"></i> <strong>Data Structures</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-brain"></i> <strong>AI & ML Ready</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-award"></i> <strong>Certification</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-briefcase"></i> <strong>Placement Support</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-users"></i> <strong>Expert Trainers</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-laptop-code"></i> <strong>Live Projects</strong></div>
+    <!-- Duplicates for seamless loop -->
+    <div class="breadcrumb-item-slide"><i class="fab fa-python"></i> <strong>Python Programming</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-robot"></i> <strong>Automation</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-database"></i> <strong>Data Structures</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-brain"></i> <strong>AI & ML Ready</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-award"></i> <strong>Certification</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-briefcase"></i> <strong>Placement Support</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-users"></i> <strong>Expert Trainers</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-laptop-code"></i> <strong>Live Projects</strong></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SECTION 1: HERO
+═══════════════════════════════════════════ -->
+<section class="hero-section" id="hero">
+  <!-- floating decorative elements -->
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <i class="fab fa-python float-icon" style="top:12%;left:5%;"></i>
+  <i class="fas fa-code float-icon" style="top:25%;right:8%;"></i>
+  <i class="fas fa-terminal float-icon" style="bottom:30%;left:3%;"></i>
+  <i class="fas fa-cogs float-icon" style="top:60%;right:5%;"></i>
+  <i class="fas fa-database float-icon" style="bottom:20%;right:15%;"></i>
+
+  <div class="container position-relative" style="z-index:1;">
+    <div class="row justify-content-center">
+      <!-- CENTER: Full-width Text Content -->
+      <div class="col-lg-12 col-xl-12 text-center" data-aos="fade-up" data-aos-duration="800">
+
+        <div class="hero-badge justify-content-center">
+          <i class="fas fa-star"></i>
+          <span>Python Training Center</span>
+        </div>
+
+        <h1 class="hero-title" id="heroTitle">
+          Master <span class="highlight">Python</span> Programming
+        </h1>
+
+        <p class="hero-desc mx-auto">
+          Learn Python from basics to advanced with real-world projects, problem solving,
+          automation, and modern development techniques. Build a career-ready portfolio from day one.
+        </p>
+
+        <!-- <ul class="hero-bullets justify-content-center flex-wrap" style="display:flex;list-style:none;padding:0;gap:10px 28px;margin-bottom:36px;">
+          <li><i class="fas fa-check-circle"></i> Beginner to Advanced</li>
+          <li><i class="fas fa-check-circle"></i> 60+ Hours Live Training</li>
+          <li><i class="fas fa-check-circle"></i> 10 Real-World Projects</li>
+          <li><i class="fas fa-check-circle"></i> Industry Certification</li>
+        </ul> -->
+
+        <div class="hero-btn-group justify-content-center">
+          <a href="https://wa.me/919895352624" class="btn-hero-primary ripple">
+            <i class="fas fa-rocket"></i> Enroll Now — Free Demo
+          </a>
+          <a href="tel:+919895352624" class="btn-hero-outline">
+            <i class="fas fa-book-open"></i> Contact our Team
+          </a>
+        </div>
+
+        <!-- Stat pills -->
+        <!-- <div class="d-flex flex-wrap gap-3 mt-4 justify-content-center">
+          <span class="stat-pill"><i class="fas fa-users"></i> 3,200+ Students Trained</span>
+          <span class="stat-pill"><i class="fas fa-star"></i> 4.9 / 5 Rating</span>
+          <span class="stat-pill"><i class="fas fa-briefcase"></i> 95% Placement Rate</span>
+        </div> -->
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Wave Divider -->
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style="height:80px;width:100%;">
+      <path d="M0,40 C360,80 1080,0 1440,50 L1440,80 L0,80 Z" fill="#ffffff"/>
+    </svg>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 2: ABOUT COURSE
+═══════════════════════════════════════════ -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+
+      <!-- Image -->
+      <div class="col-lg-5" data-aos="fade-right">
+        <!-- <div class="about-img-wrap pe-lg-4"> -->
+          <img src="assets/image/python-coding.webp">
+          <!-- SVG Illustration substituting for a real image -->
+          
+
+          <!-- <div class="about-badge-card">
+            <div class="num">14+</div>
+            <div class="lbl">Years of<br>Excellence</div>
+          </div>
+        </div> -->
+      </div>
+
+      <!-- Content -->
+      <div class="col-lg-7" data-aos="fade-left" data-aos-delay="100">
+        <div class="section-tag"><i class="fab fa-python"></i> About This Course</div>
+        <h2 class="section-title">Python  <span> Programming </span></h2>
+        <p class="section-subtitle mb-4">
+          Our Python Programming Course is designed for absolute beginners to advanced learners.
+          With a perfect blend of theory, live coding, and industry projects, you'll be job-ready
+          faster than anywhere else.
+        </p>
+
+        <ul class="about-check-list">
+          <li><i class="fas fa-check-circle"></i> Structured curriculum designed by senior Python developers with 10+ years of industry experience</li>
+          <li><i class="fas fa-check-circle"></i> Hands-on training with 10+ real-world projects — automation scripts, web scrapers, APIs, and more</li>
+          <li><i class="fas fa-check-circle"></i> Learn Python for web development, data science, automation, and AI/ML pipelines</li>
+          <li><i class="fas fa-check-circle"></i> Lifetime access to class recordings and study materials — revise at your own pace</li>
+          <li><i class="fas fa-check-circle"></i> Dedicated mock interviews, resume review, and 100% placement assistance</li>
+        </ul>
+
+        <div class="hero-btn-group">
+          <a href="tel:+919895352624" class="btn-hero-primary ripple">
+            <i class="fas fa-rocket"></i> Contact Now
+          </a></div>
+<!-- 
+        <div class="row gy-3 mt-4"> -->
+          <!-- <div class="col-6 col-sm-3">
+            <div style="text-align:center;padding:16px;background:rgba(139,0,0,0.04);border-radius:14px;border:1px solid rgba(139,0,0,0.08);">
+              <div style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.8rem;color:var(--primary);">60+</div>
+              <div style="font-size:0.75rem;color:var(--text-muted);font-weight:600;">Hours Training</div>
+            </div>
+          </div> -->
+          <!-- <div class="col-6 col-sm-3">
+            <div style="text-align:center;padding:16px;background:rgba(139,0,0,0.04);border-radius:14px;border:1px solid rgba(139,0,0,0.08);">
+              <div style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.8rem;color:var(--primary);">10+</div>
+              <div style="font-size:0.75rem;color:var(--text-muted);font-weight:600;">Live Projects</div>
+            </div>
+          </div> -->
+          <!-- <div class="col-6 col-sm-3">
+            <div style="text-align:center;padding:16px;background:rgba(139,0,0,0.04);border-radius:14px;border:1px solid rgba(139,0,0,0.08);">
+              <div style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.8rem;color:var(--primary);">3.2K+</div>
+              <div style="font-size:0.75rem;color:var(--text-muted);font-weight:600;">Students</div>
+            </div>
+          </div> -->
+          <!-- <div class="col-6 col-sm-3">
+            <div style="text-align:center;padding:16px;background:rgba(139,0,0,0.04);border-radius:14px;border:1px solid rgba(139,0,0,0.08);">
+              <div style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.8rem;color:var(--primary);">95%</div>
+              <div style="font-size:0.75rem;color:var(--text-muted);font-weight:600;">Placement</div>
+            </div>
+          </div> -->
+        <!-- </div> -->
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 3: WHAT YOU WILL LEARN
+═══════════════════════════════════════════ -->
+<section class="learn-section" id="syllabus">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-book-open"></i> Course Curriculum</div>
+      <h2 class="section-title">What You Will <span>Learn</span></h2>
+      <p class="section-subtitle mx-auto">A comprehensive, industry-curated curriculum covering everything from Python basics to advanced development.</p>
+    </div>
+
+    <div class="row gy-4">
+
+      <!-- Card 1 -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="learn-card">
+          <div class="learn-icon-wrap"><i class="fab fa-python"></i></div>
+          <h5>Python Fundamentals</h5>
+          <p>Variables, data types, operators, conditionals, loops, functions, and modules. Build a rock-solid foundation.</p>
+          <span class="learn-tag">Beginner</span>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="80">
+        <div class="learn-card">
+          <div class="learn-icon-wrap"><i class="fas fa-cubes"></i></div>
+          <h5>OOP Concepts</h5>
+          <p>Classes, objects, inheritance, polymorphism, encapsulation, and abstraction with real-world examples.</p>
+          <span class="learn-tag">Intermediate</span>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="160">
+        <div class="learn-card">
+          <div class="learn-icon-wrap"><i class="fas fa-folder-open"></i></div>
+          <h5>File Handling & I/O</h5>
+          <p>Read, write, and manipulate files. Work with CSV, JSON, XML formats. Exception handling and debugging.</p>
+          <span class="learn-tag">Intermediate</span>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="learn-card">
+          <div class="learn-icon-wrap"><i class="fas fa-globe"></i></div>
+          <h5>Web Development</h5>
+          <p>Build dynamic web applications using Flask. REST APIs, routing, templates, and database integration.</p>
+          <span class="learn-tag">Advanced</span>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="80">
+        <div class="learn-card">
+          <div class="learn-icon-wrap"><i class="fas fa-sitemap"></i></div>
+          <h5>Data Structures & Algorithms</h5>
+          <p>Lists, tuples, dictionaries, sets, stacks, queues, sorting algorithms, and complexity analysis.</p>
+          <span class="learn-tag">Intermediate</span>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="160">
+        <div class="learn-card">
+          <div class="learn-icon-wrap"><i class="fas fa-rocket"></i></div>
+          <h5>Mini & Capstone Projects</h5>
+          <p>Build automation scripts, web scrapers, data dashboards, APIs, and a full-stack capstone project.</p>
+          <span class="learn-tag">Real-World</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 4: COURSE FEATURES (glassmorphism)
+═══════════════════════════════════════════ -->
+<section class="features-section">
+  <div class="container position-relative" style="z-index:1;">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto" style="color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.25);background:rgba(255,255,255,0.08);"><i class="fas fa-star"></i> Why Choose Us</div>
+      <h2 class="section-title" style="color:white;">Course <span style="color:var(--gold);">Features</span></h2>
+      <p class="section-subtitle mx-auto" style="color:rgba(255,255,255,0.72);">Everything you need to become a Python professional, in one comprehensive package.</p>
+    </div>
+
+    <div class="row gy-4">
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="feature-card">
+          <div class="feature-icon" style="color:#ffd700;"><i class="fas fa-certificate"></i></div>
+          <h5>Industry Certification</h5>
+          <p>Receive a CADPOINT-verified Python Programming Certificate recognized by top employers across India.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="80">
+        <div class="feature-card">
+          <div class="feature-icon" style="color:#56d364;"><i class="fas fa-laptop-code"></i></div>
+          <h5>Real-Time Projects</h5>
+          <p>Work on 10+ industry-grade projects. Build a portfolio that impresses employers from day one.</p>
+        </div>
+      </div>
+
+      <!-- <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="160">
+        <div class="feature-card">
+          <div class="feature-icon" style="color:#79c0ff;"><i class="fas fa-briefcase"></i></div>
+          <h5>Placement Assistance</h5>
+          <p>Dedicated placement cell with tie-ups at 200+ companies. Resume building, mock interviews, and referrals.</p>
+        </div>
+      </div> -->
+
+      <!-- <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="feature-card">
+          <div class="feature-icon" style="color:#ffa657;"><i class="fas fa-clock"></i></div>
+          <h5>Flexible Timing</h5>
+          <p>Morning, evening, and weekend batches. Online and offline options to fit your schedule perfectly.</p>
+        </div>
+      </div> -->
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="80">
+        <div class="feature-card">
+          <div class="feature-icon" style="color:#d2a8ff;"><i class="fas fa-chalkboard-teacher"></i></div>
+          <h5>Expert Trainers</h5>
+          <p>Learn from certified Python developers with 10+ years of hands-on experience at top MNCs.</p>
+        </div>
+      </div>
+
+      <!-- <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="160">
+        <div class="feature-card">
+          <div class="feature-icon" style="color:#ff7b72;"><i class="fas fa-video"></i></div>
+          <h5>Recorded Sessions</h5>
+          <p>Lifetime access to HD recorded sessions. Revise any topic anytime, even after course completion.</p>
+        </div>
+      </div> -->
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 5: CAREER OPPORTUNITIES
+═══════════════════════════════════════════ -->
+<section class="career-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-chart-line"></i> Career Scope</div>
+      <h2 class="section-title">Career <span>Opportunities</span></h2>
+      <p class="section-subtitle mx-auto">Python is the world's most in-demand programming language. Unlock these high-paying career paths.</p>
+    </div>
+
+    <div class="row gy-4">
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="career-card">
+          <div class="career-icon"><i class="fab fa-python"></i></div>
+          <h5>Python Developer</h5>
+          <p>Build scalable backend systems and automation tools using Python's powerful ecosystem.</p>
+          <span class="career-salary"><i class="fas fa-rupee-sign me-1"></i>4–14 LPA</span>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="80">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-server"></i></div>
+          <h5>Backend Developer</h5>
+          <p>Design RESTful APIs and server-side logic for web applications using Flask or Django.</p>
+          <span class="career-salary"><i class="fas fa-rupee-sign me-1"></i>5–18 LPA</span>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="160">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-code"></i></div>
+          <h5>Software Engineer</h5>
+          <p>Work at top tech firms building enterprise-grade software products and platforms.</p>
+          <span class="career-salary"><i class="fas fa-rupee-sign me-1"></i>6–22 LPA</span>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-robot"></i></div>
+          <h5>Automation Engineer</h5>
+          <p>Automate repetitive workflows, testing pipelines, and data processing tasks at scale.</p>
+          <span class="career-salary"><i class="fas fa-rupee-sign me-1"></i>5–16 LPA</span>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="80">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-globe"></i></div>
+          <h5>Web Developer</h5>
+          <p>Create full-stack web applications with Python backends and modern frontend integrations.</p>
+          <span class="career-salary"><i class="fas fa-rupee-sign me-1"></i>4–15 LPA</span>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="160">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-brain"></i></div>
+          <h5>Data Analyst / AI Engineer</h5>
+          <p>Analyze data and build intelligent models using Python's AI/ML libraries like NumPy and Pandas.</p>
+          <span class="career-salary"><i class="fas fa-rupee-sign me-1"></i>6–25 LPA</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 6: TESTIMONIALS
+═══════════════════════════════════════════ -->
+
+
+
+<section class="testimonials-section" id="testimonials">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-tag"><i class="fas fa-star"></i> Student Reviews</div>
+      <h2 class="section-title">What Our <span>Graduates</span> Say</h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Real stories from engineers who launched their infrastructure careers with CADPOINT.</p>
+    </div>
+    <div class="testi-outer">
+      <div class="testi-track-wrap">
+        <div class="testi-track" id="testiTrack">
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">I am currently learning AutoCAD at CADPOINT Marthandam and having a great experience. Divya mam's teaching is clear, friendly, and easy to understand. She patiently explains every concept and clears all doubts. The staff are also very supportive. After completing AutoCAD, I am looking forward to learning Revit here. Highly recommended!</p>
+            <div class="testi-author">
+              <div class="testi-avatar">S</div>
+              <div class="testi-info"><h6>Saran KT</h6></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">I am studying AUTOCAD software at cad point marthandam. All staff are Knowledgeable person and good experience within the field above 5 years. So the lectures are teaching easy way to understand the class. Ex. They are teaching with the live example.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">R</div>
+              <div class="testi-info"><h6>Renish R</h6></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+            <p class="testi-text">CADPOINT is a good training institute with a friendly learning environment and supportive trainers. Both my sister and I had a positive learning experience here. The teaching is clear, practical, and easy to understand. The fee structure is also reasonable and affordable for students. Overall, CADPOINT is a great place to develop skills and gain knowledge.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">A</div>
+              <div class="testi-info"><h6>Ashlin Jega</h6></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">I had an excellent learning experience at CADPOINT Marthandam. The AutoCAD and Tekla courses were highly beneficial and helped me enhance my design skills and technical knowledge. The trainers were supportive, patient, and explained each concept clearly with practical examples. Currently I am working in a company based on design engineer role ...Tq CAD point marthandam and staffs ❤️</p>
+            
+            <div class="testi-author">
+              <div class="testi-avatar">M</div>
+              <div class="testi-info"><h6>Manoj Mano</h6>
+              
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">CAD Point provided me with a great learning experience. The classes were informative, the trainers were supportive, and the practical sessions helped me understand concepts better. The institute also encouraged skill development and boosted my confidence, making it an excellent place for learning and career growth.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">A</div>
+              <div class="testi-info"><h6>Ashika G.R</h6></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">The training centre provides a professional and student-friendly learning environment.
+The trainers are experienced, patient, and explain every topic in a simple way.
+The teaching methods are practical, interactive, and easy to understand.
+Regular guidance and individual attention helped me learn with confidence.
+Overall, it is an excellent place for students who want quality CAD training.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">V</div>
+              <div class="testi-info"><h6>Vijith Ajith</h6></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-dots" id="testiDots">
+        <button class="testi-dot active" data-idx="0"></button>
+        <button class="testi-dot" data-idx="1"></button>
+        <button class="testi-dot" data-idx="2"></button>
+        <button class="testi-dot" data-idx="3"></button>
+      </div>
+      <div class="testi-nav">
+        <button class="testi-btn" id="testiBtnPrev" aria-label="Previous"><i class="fas fa-arrow-left"></i></button>
+        <button class="testi-btn" id="testiBtnNext" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<style>
+  /* ── TESTIMONIALS ── */
+  .testimonials-section { background: var(--light-gray); padding: 80px 0; }
+  .testi-outer { overflow: hidden; }
+  .testi-track-wrap { overflow: hidden; }
+  .testi-track { display: flex; gap: 24px; transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); will-change: transform; }
+  .testi-card { background: #fff; border-radius: 20px; padding: 32px 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); position: relative; flex: 0 0 calc(33.333% - 16px); min-width: calc(33.333% - 16px); border-bottom: 4px solid var(--primary); transition: all 0.35s ease; }
+  .testi-card:hover { transform: translateY(-6px); box-shadow: 0 18px 45px rgba(139,0,0,0.13); }
+  @media(max-width:991px) { .testi-card { flex: 0 0 calc(50% - 12px); min-width: calc(50% - 12px); } }
+  @media(max-width:576px) { .testi-card { flex: 0 0 100%; min-width: 100%; } }
+  .testi-quote { font-size: 3rem; color: rgba(139,0,0,0.12); font-family: Georgia,serif; line-height: 1; margin-bottom: 12px; display: block; }
+  .testi-rating { color: #ffc107; margin-bottom: 14px; font-size: 0.85rem; }
+  .testi-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 18px; }
+  .testi-company { font-size: 0.72rem; color: var(--primary); font-weight: 600; margin-bottom: 18px; display: block; }
+  .testi-author { display: flex; align-items: center; gap: 14px; }
+  .testi-avatar { width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; flex-shrink: 0; }
+  .testi-info h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem; margin: 0; }
+  .testi-info small { color: var(--primary); font-size: 0.74rem; font-weight: 500; }
+  .testi-dots { display: flex; justify-content: center; gap: 8px; margin-top: 30px; }
+  .testi-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(139,0,0,0.2); cursor: pointer; transition: all 0.3s ease; border: none; padding: 0; }
+  .testi-dot.active { background: var(--primary); transform: scale(1.3); }
+  .testi-nav { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+  .testi-btn { width: 44px; height: 44px; border-radius: 50%; border: 2px solid rgba(139,0,0,0.2); background: #fff; color: var(--primary); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; transition: all 0.3s ease; }
+  .testi-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+</style>
+
+
+  <script>
+// ── TESTIMONIAL SLIDER
+(function() {
+  const track   = document.getElementById('testiTrack');
+  const dots    = document.querySelectorAll('.testi-dot');
+  const prevBtn = document.getElementById('testiBtnPrev');
+  const nextBtn = document.getElementById('testiBtnNext');
+  if (!track) return;
+
+  let current = 0;
+  const cards = track.querySelectorAll('.testi-card');
+  const total = cards.length;
+
+  function getVisible() {
+    if (window.innerWidth < 576) return 1;
+    if (window.innerWidth < 992) return 2;
+    return 3;
+  }
+  function getMax() { return total - getVisible(); }
+  function slideTo(idx) {
+    const max = getMax();
+    current = Math.max(0, Math.min(idx, max));
+    const cardW = cards[0].offsetWidth + 24;
+    track.style.transform = `translateX(-${current * cardW}px)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  prevBtn?.addEventListener('click', () => slideTo(current - 1));
+  nextBtn?.addEventListener('click', () => slideTo(current + 1));
+  dots.forEach(d => d.addEventListener('click', () => slideTo(parseInt(d.getAttribute('data-idx')))));
+  window.addEventListener('resize', () => slideTo(current));
+  setInterval(() => slideTo(current < getMax() ? current + 1 : 0), 5000);
+})();
+</script>
+
+
+
+
+
+<!-- <section class="testimonials-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-heart"></i> Student Stories</div>
+      <h2 class="section-title">What Our <span>Students Say</span></h2>
+      <p class="section-subtitle mx-auto">Real feedback from real students who transformed their careers through CADPOINT Python training.</p>
+    </div>
+
+    
+    <div id="testiCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+      <div class="carousel-inner">
+
+      
+        <div class="carousel-item active">
+          <div class="row gy-4 justify-content-center">
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+              <div class="testimonial-card">
+                <div class="testimonial-quote">"</div>
+                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="testimonial-text">CADPOINT's Python course was a game-changer for me. The live projects and expert guidance helped me land a Python Developer role within 2 months of completion. Highly recommend!</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">A</div>
+                  <div>
+                    <div class="testimonial-name">Arjun Mehta</div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+              <div class="testimonial-card">
+                <div class="testimonial-quote">"</div>
+                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="testimonial-text">I had zero coding background. After this course, I built my own automation tool and got hired as a junior developer. The trainers were incredibly patient and supportive.</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">P</div>
+                  <div>
+                    <div class="testimonial-name">Priya Ramesh</div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4 d-none d-lg-block" data-aos="fade-up" data-aos-delay="200">
+              <div class="testimonial-card">
+                <div class="testimonial-quote">"</div>
+                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                <p class="testimonial-text">The Flask web development module was exceptional. I built a complete REST API project during the course, which became the centrepiece of my portfolio. Worth every rupee!</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">K</div>
+                  <div>
+                    <div class="testimonial-name">Karthik Suresh</div>
+                   
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="carousel-item">
+          <div class="row gy-4 justify-content-center">
+            <div class="col-md-6 col-lg-4">
+              <div class="testimonial-card">
+                <div class="testimonial-quote">"</div>
+                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="testimonial-text">Flexible timing and recorded sessions were perfect for me as a working professional. I upgraded from manual testing to automation testing using Python. Salary doubled!</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">S</div>
+                  <div>
+                    <div class="testimonial-name">Sneha Pillai</div>
+                   
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="testimonial-card">
+                <div class="testimonial-quote">"</div>
+                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="testimonial-text">The data structures module was explained so clearly that complex algorithms felt easy. CADPOINT's approach of learning by doing makes all the difference.</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">R</div>
+                  <div>
+                    <div class="testimonial-name">Rohit Nair</div>
+            
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4 d-none d-lg-block">
+              <div class="testimonial-card">
+                <div class="testimonial-quote">"</div>
+                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="testimonial-text">Placement support was genuine and effective. The team connected me with 5 companies in 3 weeks. I got placed with a great package. Thank you CADPOINT!</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">M</div>
+                  <div>
+                    <div class="testimonial-name">Meena Krishnan</div>
+                   
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    
+    <div class="testi-dots mt-4">
+      <button class="testi-dot active" data-bs-target="#testiCarousel" data-bs-slide-to="0"></button>
+      <button class="testi-dot" data-bs-target="#testiCarousel" data-bs-slide-to="1"></button>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 7: FINAL CTA
+═══════════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="container text-center position-relative" style="z-index:1;">
+    <div data-aos="zoom-in" data-aos-duration="700">
+      <div class="section-tag mx-auto mb-3" style="color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.08);">
+        <i class="fab fa-python"></i> Start Today
+      </div>
+      <h2 class="cta-title">
+        Start Your <span style="color:var(--gold);">Coding Journey</span><br>Today
+      </h2>
+      <p class="cta-subtitle">
+        Join 3,200+ students who transformed their careers with CADPOINT's Python course.<br>
+        First demo class is completely <strong style="color:var(--gold);">FREE</strong> — No commitment required.
+      </p>
+      <div>
+        <a href="https://wa.me/919895352624" class="btn-cta-glow ripple">
+          <i class="fas fa-rocket"></i> Enroll Now — It's Free to Inquire
+        </a>
+        <a href="tel:+919895352624" class="btn-cta-outline">
+          <i class="fas fa-phone-alt"></i> Call for Demo Class
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER — exact same as index.html
+═══════════════════════════════════════════ -->
+<div id="footer"></div>
+
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+function initCaddNav() {
+
+    const coursesNav = document.getElementById('coursesNav');
+    const caret = document.getElementById('coursesCaret');
+    const menu = document.getElementById('coursesMegaMenu');
+    const closeBtn = document.getElementById('closeMegaMenu');
+
+    if (!coursesNav || !caret || !menu) return;
+
+    // X BUTTON CLOSE (Desktop + Mobile)
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.remove('show');
+
+        });
+    }
+
+    // MOBILE
+    if (window.innerWidth <= 991) {
+
+        caret.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!coursesNav.contains(e.target)) {
+                menu.classList.remove('show');
+            }
+        });
+
+        return;
+    }
+
+    // DESKTOP
+    coursesNav.addEventListener('mouseenter', function () {
+        menu.classList.add('show');
+    });
+
+    coursesNav.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+
+    menu.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+}
+</script>
+
+
+<script>
+fetch("./header.html")
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById("header").innerHTML = html;
+    initCaddNav();
+  });
+
+  fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+      document.getElementById('footer').innerHTML = data;
+  });
+</script>
+
+
+<!-- Close mega menu button -->
+<script>
+  document.getElementById("closeMegaMenu").addEventListener("click", function () {
+    document.querySelector(".courses-mega-menu").classList.remove("show");
+  });
+</script>
+
+<script>
+// ─── LOADER ─────────────────────────────────
+window.addEventListener('load', () => {
+  setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 1800);
+});
+
+// ─── AOS INIT ───────────────────────────────
+AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });
+
+// ─── NAVBAR SCROLL ──────────────────────────
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+  const btn = document.getElementById('backToTop');
+  btn.classList.toggle('visible', window.scrollY > 400);
+});
+
+// ─── BACK TO TOP ────────────────────────────
+document.getElementById('backToTop').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ─── RIPPLE EFFECT ──────────────────────────
+document.querySelectorAll('.ripple').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.style.cssText = `
+      position:absolute; border-radius:50%; background:rgba(255,255,255,0.3);
+      width:10px; height:10px;
+      left:${e.clientX - rect.left - 5}px; top:${e.clientY - rect.top - 5}px;
+      transform:scale(0); animation:rippleAnim 0.6s ease-out forwards; pointer-events:none;
+    `;
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 700);
+  });
+});
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `@keyframes rippleAnim { to { transform:scale(30); opacity:0; } }`;
+document.head.appendChild(rippleStyle);
+
+// ─── TESTIMONIAL DOT SYNC ───────────────────
+const carousel = document.getElementById('testiCarousel');
+carousel.addEventListener('slid.bs.carousel', function (e) {
+  document.querySelectorAll('.testi-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === e.to);
+  });
+});
+
+// ─── HERO TITLE ANIMATION ───────────────────
+const heroTitle = document.getElementById('heroTitle');
+if (heroTitle) {
+  heroTitle.style.opacity = '0';
+  heroTitle.style.transform = 'translateY(30px)';
+  heroTitle.style.transition = 'opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s';
+  setTimeout(() => { heroTitle.style.opacity = '1'; heroTitle.style.transform = 'translateY(0)'; }, 300);
+}
+</script>
+
+<!-- ─── COURSES MEGA DROPDOWN: hover to open ─── -->
+<script>
+(function () {
+  const coursesNav = document.getElementById('coursesNav');
+  if (!coursesNav) return;
+  const menu = coursesNav.querySelector('.courses-mega-menu');
+  const caret = document.getElementById('coursesDropdown');
+  if (!menu) return;
+  let hideTimer;
+
+  function showMenu() {
+    clearTimeout(hideTimer);
+    const navRect = document.getElementById('mainNav').getBoundingClientRect();
+    menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    menu.classList.add('show');
+    if (caret) caret.querySelector('i').style.transform = 'rotate(180deg)';
+  }
+
+  function hideMenu() {
+    hideTimer = setTimeout(function () {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }, 120);
+  }
+
+  coursesNav.addEventListener('mouseenter', showMenu);
+  coursesNav.addEventListener('mouseleave', hideMenu);
+  menu.addEventListener('mouseenter', showMenu);
+  menu.addEventListener('mouseleave', hideMenu);
+
+  if (caret) {
+    caret.querySelector('i').style.transition = 'transform 0.25s ease';
+    caret.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (menu.classList.contains('show')) { hideMenu(); } else { showMenu(); }
+    });
+  }
+
+  document.addEventListener('click', function (e) {
+    if (!coursesNav.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }
+  });
+
+  window.addEventListener('scroll', function () {
+    if (menu.classList.contains('show')) {
+      const navRect = document.getElementById('mainNav').getBoundingClientRect();
+      menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

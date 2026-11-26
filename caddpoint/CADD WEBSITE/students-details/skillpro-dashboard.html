@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skill Pro Registrations – Dashboard | CADPOINT</title>
+<meta name="robots" content="noindex,nofollow">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--primary:#8B0000;--primary-dark:#5c0000;--navy:#0a1a4f}
+  body{font-family:'Poppins',sans-serif;background:#f4f5f9;color:#1a1a1a}
+  .top{background:linear-gradient(135deg,var(--primary-dark),var(--primary));color:#fff;border-bottom:4px solid #ffc61a}
+  .top h1{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.15rem;margin:0}
+  .stat{background:#fff;border-radius:14px;padding:14px 18px;box-shadow:0 4px 14px rgba(0,0,0,.07);height:100%}
+  .stat b{display:block;font-size:1.7rem;color:var(--primary);line-height:1.1;font-family:'Montserrat',sans-serif}
+  .tablebox{background:#fff;border-radius:14px;box-shadow:0 4px 14px rgba(0,0,0,.07);overflow:hidden}
+  th{background:var(--primary);color:#fff;white-space:nowrap;font-size:.8rem;font-weight:600}
+  td{font-size:.87rem;vertical-align:top}.addr{min-width:200px;max-width:300px}
+  .btn-xl{background:#1d6f42;border-color:#1d6f42;color:#fff}.btn-xl:hover{background:#155a34;color:#fff}
+  .btn-main{background:linear-gradient(135deg,var(--primary),#a00000);border:0;color:#fff;font-weight:600}
+  .btn-main:hover{color:#fff;filter:brightness(1.1)}
+  .login-box{max-width:380px;margin:12vh auto;background:#fff;border-radius:18px;padding:28px;box-shadow:0 20px 50px rgba(0,0,0,.15)}
+  .login-box h2{font-family:'Montserrat',sans-serif;font-size:1.15rem;font-weight:800;color:var(--primary)}
+  .hidden{display:none!important}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginView" class="hidden">
+  <form class="login-box" id="loginForm">
+    <h2>SKILL PRO – Registrations</h2>
+    <p class="text-muted small">Staff login required.</p>
+    <div id="loginErr" class="alert alert-danger py-2 small hidden"></div>
+    <label class="form-label small fw-semibold">Username</label>
+    <input id="u" class="form-control mb-3" autocomplete="username" required autofocus>
+    <label class="form-label small fw-semibold">Password</label>
+    <input id="p" type="password" class="form-control mb-3" autocomplete="current-password" required>
+    <button class="btn btn-main w-100 py-2">LOG IN</button>
+  </form>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashView" class="hidden">
+  <div class="top py-3"><div class="container-xl d-flex flex-wrap justify-content-between align-items-center gap-2">
+    <h1>SKILL PRO EVENT – Registrations Dashboard</h1>
+    <div class="d-flex gap-2 align-items-center small">
+      <span>Logged in as <b id="who"></b></span>
+      <button id="logoutBtn" class="btn btn-sm btn-light">Log out</button>
+    </div>
+  </div></div>
+
+  <div class="container-xl py-4">
+    <div id="msg" class="alert alert-success py-2 small hidden"></div>
+    <div class="row g-3 mb-3">
+      <div class="col-6 col-md-3"><div class="stat"><b id="sTotal">0</b>Total registrations</div></div>
+      <div class="col-6 col-md-3"><div class="stat"><b id="sToday">0</b>Registered today</div></div>
+      <div class="col-6 col-md-3"><div class="stat"><b id="sShown">0</b>Matching current search</div></div>
+      <div class="col-6 col-md-3"><div class="stat"><b id="sTime" style="font-size:.95rem;padding-top:8px">–</b>Last refreshed</div></div>
+    </div>
+
+    <form id="filterForm" class="row g-2 mb-3">
+      <div class="col-12 col-lg-4"><input id="q" class="form-control" placeholder="Search name, college, phone or email"></div>
+      <div class="col-12 col-sm-6 col-lg-3"><select id="dept" class="form-select"><option value="">All departments</option></select></div>
+      <div class="col-12 col-lg-5 d-flex flex-wrap gap-2 align-items-center">
+        <button class="btn btn-main">Search</button>
+        <button type="button" id="resetBtn" class="btn btn-outline-secondary">Reset</button>
+        <button type="button" id="refreshBtn" class="btn btn-outline-danger">⟳ Refresh</button>
+        <a id="xlsxBtn" class="btn btn-xl ms-lg-auto">⬇ Download Excel (.xlsx)</a>
+        <a id="csvBtn" class="btn btn-success">⬇ CSV</a>
+      </div>
+      <div class="col-12 small text-muted"><label><input type="checkbox" id="auto" checked> Auto-refresh every 30 seconds</label></div>
+    </form>
+
+    <div class="tablebox"><div class="table-responsive">
+      <table class="table table-hover mb-0">
+        <thead><tr><th>ID</th><th>Name</th><th>College</th><th>Department</th><th>Phone</th><th>Email</th><th>Address</th><th>Registered on</th><th></th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div></div>
+
+    <nav id="pager" class="d-flex justify-content-center gap-2 mt-3 align-items-center"></nav>
+    <p class="text-muted small mt-4 mb-0">Downloads include only rows matching the current search/department filter. Keep this page private – it contains students' personal details.</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  var API = '/api/skillpro/dash', EXPORT = '/skillpro/registrations/export';
+  var csrf = '', page = 1, timer = null;
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+
+  function call(path, method, body) {
+    var opt = { method: method || 'GET', credentials: 'same-origin', headers: { 'Accept': 'application/json' } };
+    if (method === 'POST') { opt.headers['Content-Type'] = 'application/json'; opt.headers['X-CSRFToken'] = csrf; opt.body = JSON.stringify(body || {}); }
+    return fetch(API + path, opt).then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { d._status = r.status; return d; }); });
+  }
+  function show(view) { $('loginView').classList.toggle('hidden', view !== 'login'); $('dashView').classList.toggle('hidden', view !== 'dash'); }
+  function flash(t) { var m = $('msg'); m.textContent = t; m.classList.remove('hidden'); setTimeout(function () { m.classList.add('hidden'); }, 3500); }
+  function qs() { var p = new URLSearchParams(); if ($('q').value.trim()) p.set('q', $('q').value.trim()); if ($('dept').value) p.set('dept', $('dept').value); return p; }
+
+  function load() {
+    var p = qs(); p.set('page', page);
+    return call('/list?' + p.toString()).then(function (d) {
+      if (d._status === 401) { show('login'); return; }
+      $('sTotal').textContent = d.total; $('sToday').textContent = d.today; $('sShown').textContent = d.shown; $('sTime').textContent = d.refreshed;
+      var cur = $('dept').value, h = '<option value="">All departments</option>';
+      d.departments.forEach(function (x) { h += '<option' + (x === cur ? ' selected' : '') + ' value="' + esc(x) + '">' + esc(x) + '</option>'; });
+      $('dept').innerHTML = h;
+      $('rows').innerHTML = d.rows.length ? d.rows.map(function (r) {
+        return '<tr><td>' + esc(r.code) + '</td><td class="fw-semibold">' + esc(r.student_name) + '</td><td>' + esc(r.college_name) + '</td><td>' + esc(r.department) +
+          '</td><td>' + esc(r.phone_number) + '</td><td>' + esc(r.email) + '</td><td class="addr">' + esc(r.address) + '</td><td class="text-nowrap">' + esc(r.registered_on) +
+          '</td><td><button class="btn btn-sm btn-outline-danger" data-del="' + r.id + '" data-name="' + esc(r.student_name) + '" title="Delete">✕</button></td></tr>';
+      }).join('') : '<tr><td colspan="9" class="text-center text-muted py-5">No registrations found.</td></tr>';
+      var pg = '';
+      if (d.pages > 1) {
+        if (d.page > 1) pg += '<button class="btn btn-sm btn-outline-danger" data-pg="' + (d.page - 1) + '">‹ Previous</button>';
+        pg += '<span class="small text-muted">Page ' + d.page + ' of ' + d.pages + '</span>';
+        if (d.page < d.pages) pg += '<button class="btn btn-sm btn-outline-danger" data-pg="' + (d.page + 1) + '">Next ›</button>';
+      }
+      $('pager').innerHTML = pg;
+      var e = qs().toString(); $('xlsxBtn').href = EXPORT + '.xlsx' + (e ? '?' + e : ''); $('csvBtn').href = EXPORT + '.csv' + (e ? '?' + e : '');
+    }).catch(function () { flash('Could not reach the server. Is Django running?'); });
+  }
+  function startAuto() { clearInterval(timer); if ($('auto').checked) timer = setInterval(function () { if (!document.hidden) load(); }, 30000); }
+  function enter(name) { $('who').textContent = name; show('dash'); page = 1; load(); startAuto(); }
+
+  $('loginForm').addEventListener('submit', function (e) {
+    e.preventDefault(); $('loginErr').classList.add('hidden');
+    call('/login', 'POST', { username: $('u').value, password: $('p').value }).then(function (d) {
+      if (d.success) { csrf = d.csrf; $('p').value = ''; enter(d.username); }
+      else { $('loginErr').textContent = d.message || 'Login failed.'; $('loginErr').classList.remove('hidden'); }
+    }).catch(function () { $('loginErr').textContent = 'Could not reach the server. Open this page through the Django address.'; $('loginErr').classList.remove('hidden'); });
+  });
+  $('logoutBtn').addEventListener('click', function () { call('/logout', 'POST').then(function () { clearInterval(timer); show('login'); }); });
+  $('filterForm').addEventListener('submit', function (e) { e.preventDefault(); page = 1; load(); });
+  $('resetBtn').addEventListener('click', function () { $('q').value = ''; $('dept').value = ''; page = 1; load(); });
+  $('refreshBtn').addEventListener('click', function () { load().then(function () { flash('Refreshed.'); }); });
+  $('auto').addEventListener('change', startAuto);
+  $('dept').addEventListener('change', function () { page = 1; load(); });
+  document.addEventListener('click', function (e) {
+    var g = e.target.closest('[data-pg]'); if (g) { page = +g.dataset.pg; load(); return; }
+    var d = e.target.closest('[data-del]');
+    if (d && confirm('Delete registration SP-' + d.dataset.del + ' for ' + d.dataset.name + '? This cannot be undone.'))
+      call('/delete/' + d.dataset.del, 'POST').then(function (r) { if (r.success) { flash('Registration deleted.'); load(); } });
+  });
+
+  call('/session').then(function (d) { csrf = d.csrf || ''; d.authenticated ? enter(d.username) : show('login'); })
+    .catch(function () { show('login'); });
+})();
+</script>
+</body>
+</html>

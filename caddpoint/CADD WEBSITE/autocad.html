@@ -1,0 +1,2040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AutoCAD 2D &amp; 3D Training Course — CADPOINT</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="icon" type="image/x-icon" href="assets/image/cadd-logo.webp">
+  <style>
+/* ══════════════════════════════════════════
+   ROOT & RESET
+══════════════════════════════════════════ */
+:root {
+  --primary: #8B0000;
+  --primary-light: #A00000;
+  --primary-dark: #5c0000;
+  --primary-glow: rgba(139,0,0,0.35);
+  --primary-soft: rgba(139,0,0,0.08);
+  --white: #ffffff;
+  --light-gray: #F5F5F5;
+  --text-dark: #1a1a1a;
+  --text-muted: #555;
+  --border-light: rgba(139,0,0,0.15);
+  --glass-bg: rgba(255,255,255,0.08);
+  --glass-border: rgba(255,255,255,0.18);
+  --gold: #ffd700;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+/* X CLOSE BUTTON */
+
+.mega-close-x{
+  position:absolute;
+  top:12px;
+  right:12px;
+  width:34px;
+  height:34px;
+  border:none;
+  border-radius:50%;
+  background:#fff;
+  color:#222;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:99;
+  box-shadow:0 4px 15px rgba(0,0,0,.12);
+  transition:.3s ease;
+}
+
+.mega-close-x:hover{
+  background:var(--primary);
+  color:#fff;
+  transform:rotate(90deg);
+}
+
+/* X CLOSE BUTTON */
+
+.mega-close-x{
+  position:absolute;
+  top:12px;
+  right:12px;
+  width:34px;
+  height:34px;
+  border:none;
+  border-radius:50%;
+  background:#fff;
+  color:#222;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:99;
+  box-shadow:0 4px 15px rgba(0,0,0,.12);
+  transition:.3s ease;
+}
+
+.mega-close-x:hover{
+  background:var(--primary);
+  color:#fff;
+  transform:rotate(90deg);
+}
+/* ═══════════════════════════════════════════
+   MOBILE DROPDOWN FIX
+═══════════════════════════════════════════ */
+
+@media (max-width: 991px) {
+
+  /* NAVBAR */
+  .navbar-collapse{
+    background:#fff;
+    padding:15px;
+    border-radius:18px;
+    margin-top:15px;
+    box-shadow:0 10px 35px rgba(0,0,0,.08);
+  }
+
+  /* COURSE NAV ITEM */
+  #coursesNav{
+    width:100%;
+  }
+
+  /* COURSE TITLE + CARET */
+  #coursesNav .d-flex{
+    width:100%;
+    justify-content:space-between;
+    align-items:center;
+  }
+
+  #coursesNav .nav-link{
+    padding:12px 0 !important;
+  }
+
+  .courses-caret{
+    padding-right:0 !important;
+  }
+
+  /* DROPDOWN MENU */
+  .courses-mega-menu{
+    position:static !important;
+    transform:none !important;
+    width:100% !important;
+    min-width:100% !important;
+    margin-top:10px !important;
+    border:none !important;
+    box-shadow:none !important;
+    border-radius:16px !important;
+    overflow:hidden;
+    background:#f8f9fb;
+  }
+
+  /* DROPDOWN INNER LAYOUT */
+  .courses-mega-menu .d-flex{
+    flex-direction:column !important;
+    gap:0 !important;
+    padding-top:0 !important;
+  }
+
+  /* EACH COLUMN */
+  .mega-col{
+    width:100% !important;
+    border-right:none !important;
+    border-bottom:1px solid rgba(0,0,0,.06);
+    padding:18px 16px !important;
+  }
+
+  .mega-col:last-child{
+    border-bottom:none;
+  }
+
+  /* HEADING */
+  .mega-col-head{
+    margin-bottom:14px;
+  }
+
+  .mega-col-title{
+    font-size:1rem;
+    font-weight:700;
+  }
+
+  .mega-col-sub{
+    font-size:.78rem;
+  }
+
+  /* ITEMS */
+  .mega-item{
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 12px;
+    border-radius:10px;
+    font-size:.92rem;
+  }
+
+  .mega-item:hover{
+    background:#fff;
+  }
+
+  /* ICON */
+  .mega-item i{
+    width:18px;
+    text-align:center;
+  }
+
+}
+/* ═══════════════════════════════════════════
+   MOBILE DROPDOWN FIX
+═══════════════════════════════════════════ */
+
+@media (max-width: 991px) {
+
+/* NAVBAR */
+.navbar-collapse{
+  background:#fff;
+  padding:15px;
+  border-radius:18px;
+  margin-top:15px;
+  box-shadow:0 10px 35px rgba(0,0,0,.08);
+}
+
+/* COURSE NAV ITEM */
+#coursesNav{
+  width:100%;
+}
+
+/* COURSE TITLE + CARET */
+#coursesNav .d-flex{
+  width:100%;
+  justify-content:space-between;
+  align-items:center;
+}
+
+#coursesNav .nav-link{
+  padding:12px 0 !important;
+}
+
+.courses-caret{
+  padding-right:0 !important;
+}
+
+/* DROPDOWN MENU */
+.courses-mega-menu{
+  position:static !important;
+  transform:none !important;
+  width:100% !important;
+  min-width:100% !important;
+  margin-top:10px !important;
+  border:none !important;
+  box-shadow:none !important;
+  border-radius:16px !important;
+  overflow:hidden;
+  background:#f8f9fb;
+}
+
+/* DROPDOWN INNER LAYOUT */
+.courses-mega-menu .d-flex{
+  flex-direction:column !important;
+  gap:0 !important;
+  padding-top:0 !important;
+}
+
+/* EACH COLUMN */
+.mega-col{
+  width:100% !important;
+  border-right:none !important;
+  border-bottom:1px solid rgba(0,0,0,.06);
+  padding:18px 16px !important;
+}
+
+.mega-col:last-child{
+  border-bottom:none;
+}
+
+/* HEADING */
+.mega-col-head{
+  margin-bottom:14px;
+}
+
+.mega-col-title{
+  font-size:1rem;
+  font-weight:700;
+}
+
+.mega-col-sub{
+  font-size:.78rem;
+}
+
+/* ITEMS */
+.mega-item{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  border-radius:10px;
+  font-size:.92rem;
+}
+
+.mega-item:hover{
+  background:#fff;
+}
+
+/* ICON */
+.mega-item i{
+  width:18px;
+  text-align:center;
+}
+
+}
+
+html{scroll-behavior:smooth;}
+body{font-family:'Poppins',sans-serif;color:var(--text-dark);background:var(--white);overflow-x:hidden;}
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:#f1f1f1;}
+::-webkit-scrollbar-thumb{background:var(--primary);border-radius:10px;}
+
+/* ── LOADER ── */
+#loader{position:fixed;inset:0;background:var(--primary-dark);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;transition:opacity .5s ease,visibility .5s ease;}
+#loader.hidden{opacity:0;visibility:hidden;}
+.loader-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:2rem;color:white;letter-spacing:4px;}
+.loader-logo span{color:var(--gold);}
+.loader-bar{width:200px;height:3px;background:rgba(255,255,255,.15);border-radius:3px;overflow:hidden;}
+.loader-bar-inner{height:100%;background:linear-gradient(90deg,var(--primary-light),var(--gold));border-radius:3px;animation:loadBar 1.8s ease-in-out forwards;}
+@keyframes loadBar{from{width:0}to{width:100%}}
+
+/* ── BACK TO TOP ── */
+#backToTop{position:fixed;bottom:30px;right:30px;width:44px;height:44px;background:linear-gradient(135deg,var(--primary),var(--primary-light));color:white;border:none;border-radius:50%;cursor:pointer;box-shadow:0 6px 20px var(--primary-glow);opacity:0;transform:translateY(20px);transition:all .4s ease;z-index:999;display:flex;align-items:center;justify-content:center;font-size:.9rem;}
+#backToTop.visible{opacity:1;transform:translateY(0);}
+#backToTop:hover{transform:translateY(-4px);box-shadow:0 10px 30px var(--primary-glow);}
+
+/* ══════════════════════════════════════════
+   NAVBAR (exact copy from contact page)
+══════════════════════════════════════════ */
+.navbar{background:rgba(255,255,255,.97);backdrop-filter:blur(20px);box-shadow:0 2px 30px rgba(139,0,0,.12);padding:12px 0;position:sticky;top:0;z-index:1000;transition:all .3s ease;}
+.navbar.scrolled{padding:8px 0;box-shadow:0 4px 40px rgba(139,0,0,.2);}
+.navbar-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.logo-text{line-height:1.1;}
+.logo-text .brand-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.3rem;color:var(--primary);letter-spacing:2px;}
+.logo-text .brand-sub{font-size:.58rem;font-weight:600;color:#666;letter-spacing:1.5px;text-transform:uppercase;}
+.navbar-nav .nav-link{font-family:'Montserrat',sans-serif;font-weight:600;font-size:.82rem;letter-spacing:.8px;text-transform:uppercase;padding:8px 16px!important;border-radius:6px;transition:all .3s ease;}
+.navbar-nav .nav-link:hover{color:var(--primary);}
+.navbar-nav .nav-link.active{color:var(--primary);}
+.btn-nav-enroll{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:white!important;padding:8px 22px!important;border-radius:25px!important;font-weight:700!important;box-shadow:0 4px 15px var(--primary-glow);transition:all .3s ease!important;}
+.btn-nav-enroll:hover{transform:translateY(-2px);box-shadow:0 8px 25px var(--primary-glow)!important;}
+#coursesNav{position:static!important;}
+#coursesNav>div{display:flex;align-items:center;}
+.courses-mega-menu{position:fixed!important;top:auto!important;left:50%!important;transform:translateX(-50%) translateY(6px)!important;width:min(960px,96vw)!important;display:block!important;opacity:0;visibility:hidden;transition:opacity .22s ease,transform .22s ease,visibility .22s;pointer-events:none;border:none!important;border-radius:16px!important;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.16),0 0 0 1px rgba(139,0,0,.1)!important;padding:0!important;}
+.courses-mega-menu.show{opacity:1!important;visibility:visible!important;transform:translateX(-50%) translateY(0)!important;pointer-events:auto!important;}
+.mega-col{flex:1;padding:20px 10px 10px 10px;border-right:1px solid rgba(139,0,0,.08);background:white;}
+.mega-col:last-child{border-right:none;}
+.mega-col-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(139,0,0,.08);}
+.mega-col-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.mega-col-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:.82rem;color:var(--text-dark);letter-spacing:.4px;}
+.mega-col-sub{font-size:.68rem;color:#999;font-weight:500;margin-top:1px;}
+.mega-item{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:7px;font-size:.8rem;font-weight:500;color:var(--text-dark);text-decoration:none;transition:background .15s,color .15s,padding-left .15s;margin-bottom:2px;}
+.mega-item i{font-size:.72rem;width:16px;text-align:center;color:#aaa;transition:color .15s;flex-shrink:0;}
+.mega-item:hover{background:rgba(139,0,0,.07);color:var(--primary);padding-left:12px;}
+.mega-item:hover i{color:var(--primary);}
+#coursesNav .courses-caret{color:var(--text-dark);transition:color .2s;}
+#coursesNav .courses-caret:hover{color:var(--primary);}
+
+/* ── BREADCRUMB SLIDER ── */
+.breadcrumb-slider{background:linear-gradient(90deg,var(--primary-dark) 0%,var(--primary) 50%,var(--primary-dark) 100%);padding:0;overflow:hidden;height:38px;display:flex;align-items:center;position:relative;}
+.breadcrumb-slider::before,.breadcrumb-slider::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;}
+.breadcrumb-slider::before{left:0;background:linear-gradient(to right,var(--primary-dark),transparent);}
+.breadcrumb-slider::after{right:0;background:linear-gradient(to left,var(--primary-dark),transparent);}
+.breadcrumb-track{display:flex;animation:scrollBreadcrumb 30s linear infinite;white-space:nowrap;will-change:transform;}
+.breadcrumb-track:hover{animation-play-state:paused;}
+.breadcrumb-item-slide{display:inline-flex;align-items:center;gap:8px;padding:0 30px;font-size:.75rem;font-weight:600;color:rgba(255,255,255,.9);letter-spacing:1px;text-transform:uppercase;font-family:'Montserrat',sans-serif;}
+.breadcrumb-item-slide i{color:rgba(255,255,255,.6);font-size:.7rem;}
+@keyframes scrollBreadcrumb{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ══════════════════════════════════════════
+   SECTION COMMONS
+══════════════════════════════════════════ */
+section{padding:90px 0;}
+.section-tag{display:inline-flex;align-items:center;gap:8px;background:var(--primary-soft);border:1px solid var(--border-light);color:var(--primary);font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:14px;}
+.section-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(1.8rem,3.5vw,2.4rem);line-height:1.2;color:var(--text-dark);margin-bottom:14px;}
+.section-title span{color:var(--primary);}
+.section-subtitle{color:var(--text-muted);font-size:1rem;line-height:1.7;max-width:580px;}
+.divider-line{width:60px;height:4px;background:linear-gradient(90deg,var(--primary),var(--primary-light));border-radius:4px;margin:16px 0 24px;}
+.divider-line.mx-auto{margin-left:auto;margin-right:auto;}
+
+/* ══════════════════════════════════════════
+   HERO SECTION
+══════════════════════════════════════════ */
+.hero-section{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 45%,#c0392b 80%,var(--primary-dark) 100%);min-height:88vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:80px 0 110px;}
+.hero-section::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2zm4 0L80 4v2L46 40h-2zm4 0L80 8v2L50 40h-2zm4 0L80 12v2L54 40h-2zm4 0L80 16v2L58 40h-2zm4 0L80 20v2L62 40h-2zm4 0L80 24v2L66 40h-2zm4 0L80 28v2L70 40h-2zm4 0L80 32v2L74 40h-2zm4 0L80 36v2L78 40h-2zm4 0L80 40h-2v-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+.hero-orb{position:absolute;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(255,255,255,.07) 0%,transparent 70%);}
+.hero-orb-1{width:700px;height:700px;top:-300px;right:-180px;}
+.hero-orb-2{width:450px;height:450px;bottom:-120px;left:-150px;animation:orbFloat 7s ease-in-out infinite;}
+.hero-orb-3{width:250px;height:250px;top:15%;left:25%;animation:orbFloat 9s ease-in-out infinite 2s;}
+.hero-orb-4{width:180px;height:180px;bottom:20%;right:20%;animation:orbFloat 6s ease-in-out infinite 1s;}
+@keyframes orbFloat{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-22px) scale(1.05);}}
+.particle{position:absolute;border-radius:50%;animation:particleDrift linear infinite;}
+@keyframes particleDrift{0%{transform:translateY(100vh) rotate(0deg);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateY(-100px) rotate(360deg);opacity:0;}}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:blur(10px);padding:6px 18px;border-radius:50px;font-size:.75rem;font-weight:600;color:rgba(255,255,255,.9);letter-spacing:1px;text-transform:uppercase;margin-bottom:20px;}
+.hero-badge span{color:var(--gold);}
+.hero-title{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(2rem,5vw,3.4rem);line-height:1.1;color:white;margin-bottom:18px;}
+.hero-title .highlight{color:var(--gold);position:relative;}
+/* .hero-title .highlight::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),rgba(255,215,0,.3));border-radius:2px;} */
+.hero-desc{font-size:1rem;color:rgba(255,255,255,.82);line-height:1.8;margin-bottom:36px;max-width:600px;}
+
+
+.btn-cta-glow { background: linear-gradient(135deg, var(--gold), #ffb700); color: var(--primary-dark) !important; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; padding: 16px 42px; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 0 0 0 rgba(255,215,0,0.5); animation: pulseGlow 2.5s infinite; transition: all 0.3s ease; }
+    .btn-cta-glow:hover { transform: translateY(-4px); }
+    @keyframes pulseGlow { 0%,100% { box-shadow: 0 0 0 0 rgba(255,215,0,0.5); } 50% { box-shadow: 0 0 0 18px rgba(255,215,0,0); } }
+
+
+/* hero buttons */
+.btn-hero-primary{background:white;color:var(--primary)!important;font-family:'Montserrat',sans-serif;font-weight:800;font-size:.95rem;letter-spacing:.5px;padding:15px 36px;border-radius:50px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;box-shadow:0 8px 30px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.5);transition:all .4s ease;position:relative;overflow:hidden;}
+.btn-hero-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(139,0,0,.06),transparent);opacity:0;transition:opacity .3s;}
+.btn-hero-primary:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 20px 50px rgba(0,0,0,.3);color:var(--primary-dark)!important;}
+.btn-hero-primary:hover::before{opacity:1;}
+.btn-hero-secondary{background:rgba(255,255,255,.1);backdrop-filter:blur(20px);border:1.5px solid rgba(255,255,255,.3);color:white!important;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.95rem;padding:14px 36px;border-radius:50px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all .4s ease;position:relative;overflow:hidden;}
+.btn-hero-secondary:hover{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.6);transform:translateY(-4px);box-shadow:0 15px 40px rgba(0,0,0,.2);}
+
+/* hero stats strip */
+.hero-stats{display:flex;gap:32px;margin-top:44px;flex-wrap:wrap;}
+.hero-stat{display:flex;flex-direction:column;}
+.hero-stat-num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.6rem;color:white;line-height:1;}
+.hero-stat-num span{color:var(--gold);}
+.hero-stat-label{font-size:.72rem;color:rgba(255,255,255,.6);font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-top:4px;}
+.hero-stat-divider{width:1px;background:rgba(255,255,255,.15);height:40px;align-self:center;}
+
+/* hero illustration */
+.hero-illustration{position:relative;padding:20px;}
+.hero-illustration-inner{background:rgba(255,255,255,.06);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.15);border-radius:24px;padding:40px;text-align:center;position:relative;overflow:hidden;}
+.hero-illustration-inner::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.08),transparent 60%);}
+.hero-cad-svg{position:relative;z-index:1;}
+
+/* floating badges on hero */
+.float-badge{position:absolute;background:white;border-radius:14px;padding:10px 16px;box-shadow:0 10px 30px rgba(0,0,0,.2);display:flex;align-items:center;gap:10px;animation:floatBadge 4s ease-in-out infinite;}
+.float-badge-2{animation-delay:2s;}
+.float-badge-3{animation-delay:1s;}
+@keyframes floatBadge{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+.float-badge-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;}
+.float-badge-text .fb-title{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.75rem;color:var(--text-dark);line-height:1.2;}
+.float-badge-text .fb-sub{font-size:.65rem;color:var(--text-muted);}
+
+/* hero wave */
+.hero-wave{position:absolute;bottom:0;width:100%;height:65px;line-height:0;}
+.hero-wave svg{width:100%;height:100%;display:block;}
+.hero-wave path{fill:var(--white);}
+
+/* ══════════════════════════════════════════
+   COURSE QUICK INFO BAR
+══════════════════════════════════════════ */
+.quick-info-bar{background:white;padding:0;box-shadow:0 4px 30px rgba(139,0,0,.1);border-bottom:1px solid rgba(139,0,0,.06);}
+.quick-info-inner{display:flex;flex-wrap:wrap;justify-content:center;gap:0;}
+.qi-item{display:flex;align-items:center;gap:12px;padding:22px 32px;border-right:1px solid rgba(139,0,0,.07);flex:1;min-width:180px;}
+.qi-item:last-child{border-right:none;}
+.qi-icon{width:44px;height:44px;background:var(--primary-soft);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.1rem;flex-shrink:0;}
+.qi-text .qi-label{font-size:.7rem;color:var(--text-muted);font-weight:600;letter-spacing:.5px;text-transform:uppercase;}
+.qi-text .qi-val{font-family:'Montserrat',sans-serif;font-weight:800;font-size:.95rem;color:var(--text-dark);margin-top:2px;}
+
+/* ══════════════════════════════════════════
+   COURSE OVERVIEW
+══════════════════════════════════════════ */
+.overview-section{background:var(--white);}
+.overview-img-wrap{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 20px 60px rgba(139,0,0,.15);}
+.overview-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(139,0,0,.08),transparent);pointer-events:none;}
+.overview-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease;}
+.overview-img-wrap:hover img{transform:scale(1.04);}
+.overview-badge-abs{position:absolute;bottom:24px;left:24px;background:white;border-radius:14px;padding:14px 18px;box-shadow:0 8px 24px rgba(0,0,0,.15);display:flex;align-items:center;gap:12px;}
+.overview-badge-abs .oba-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--primary),var(--primary-light));border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;}
+.overview-badge-abs .oba-text h6{font-family:'Montserrat',sans-serif;font-weight:800;font-size:.82rem;color:var(--text-dark);margin:0;}
+.overview-badge-abs .oba-text p{font-size:.7rem;color:var(--text-muted);margin:0;}
+
+.check-list{list-style:none;padding:0;margin:0;}
+.check-list li{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;font-size:.92rem;color:var(--text-muted);line-height:1.6;}
+.check-list li i{color:var(--primary);background:var(--primary-soft);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;flex-shrink:0;margin-top:2px;}
+
+/* ══════════════════════════════════════════
+   WHAT YOU WILL LEARN
+══════════════════════════════════════════ */
+.learn-section{background:var(--light-gray);}
+.learn-card{background:white;border-radius:18px;padding:28px 22px;border:1px solid rgba(139,0,0,.06);box-shadow:0 4px 20px rgba(0,0,0,.04);transition:all .4s cubic-bezier(.175,.885,.32,1.275);height:100%;position:relative;overflow:hidden;}
+.learn-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--primary-light));transform:scaleX(0);transition:transform .4s ease;transform-origin:left;}
+.learn-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(139,0,0,.12);border-color:rgba(139,0,0,.15);}
+.learn-card:hover::before{transform:scaleX(1);}
+.learn-card-icon{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,rgba(139,0,0,.1),rgba(200,0,0,.05));display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--primary);margin-bottom:16px;transition:all .4s ease;}
+.learn-card:hover .learn-card-icon{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:white;box-shadow:0 8px 24px var(--primary-glow);}
+.learn-card h5{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.95rem;color:var(--text-dark);margin-bottom:10px;}
+.learn-card p{font-size:.84rem;color:var(--text-muted);line-height:1.7;margin:0;}
+.learn-card .learn-topics{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;}
+.learn-topic-tag{font-size:.7rem;font-weight:600;color:var(--primary);background:var(--primary-soft);padding:3px 10px;border-radius:20px;border:1px solid var(--border-light);}
+
+/* ══════════════════════════════════════════
+   COURSE FEATURES
+══════════════════════════════════════════ */
+.features-section{background:white;}
+.feature-glass-card{background:rgba(255,255,255,.7);backdrop-filter:blur(20px);border:1px solid rgba(139,0,0,.08);border-radius:20px;padding:30px 24px;text-align:center;transition:all .4s ease;height:100%;position:relative;overflow:hidden;}
+.feature-glass-card::before{content:'';position:absolute;inset:0;border-radius:20px;border:2px solid transparent;background:linear-gradient(135deg,rgba(139,0,0,.3),rgba(200,0,0,.1)) border-box;-webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);-webkit-mask-composite:destination-out;mask-composite:exclude;opacity:0;transition:opacity .4s;}
+.feature-glass-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(139,0,0,.12);}
+.feature-glass-card:hover::before{opacity:1;}
+.feature-glass-icon{width:68px;height:68px;border-radius:18px;background:linear-gradient(135deg,rgba(139,0,0,.1),rgba(200,0,0,.05));display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:var(--primary);margin:0 auto 18px;transition:all .4s ease;box-shadow:0 4px 16px rgba(139,0,0,.12);}
+.feature-glass-card:hover .feature-glass-icon{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:white;box-shadow:0 10px 30px var(--primary-glow);transform:scale(1.1);}
+.feature-glass-card h5{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.95rem;color:var(--text-dark);margin-bottom:8px;}
+.feature-glass-card p{font-size:.82rem;color:var(--text-muted);line-height:1.7;margin:0;}
+
+/* ══════════════════════════════════════════
+   SYLLABUS
+══════════════════════════════════════════ */
+.syllabus-section{background:var(--light-gray);}
+.syllabus-panel{background:white;border-radius:20px;padding:36px;box-shadow:0 4px 24px rgba(0,0,0,.05);border:1px solid rgba(139,0,0,.06);}
+.syllabus-tab-btns{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;}
+.syl-tab-btn{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.78rem;padding:8px 20px;border-radius:25px;border:1.5px solid var(--border-light);background:transparent;color:var(--text-muted);cursor:pointer;transition:all .3s ease;letter-spacing:.5px;}
+.syl-tab-btn.active,.syl-tab-btn:hover{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:white;border-color:transparent;box-shadow:0 4px 15px var(--primary-glow);}
+.syl-module{display:none;}
+.syl-module.active{display:block;}
+.syl-module-item{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:10px;border:1px solid rgba(139,0,0,.06);margin-bottom:8px;background:var(--light-gray);transition:all .3s;}
+.syl-module-item:hover{background:var(--primary-soft);border-color:var(--border-light);}
+.syl-module-num{width:28px;height:28px;background:linear-gradient(135deg,var(--primary),var(--primary-light));color:white;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:800;font-size:.72rem;flex-shrink:0;}
+.syl-module-text{font-size:.88rem;color:var(--text-dark);font-weight:500;}
+.syl-module-item i.fa-check{margin-left:auto;color:var(--primary);font-size:.75rem;}
+
+/* ══════════════════════════════════════════
+   SOFTWARE TOOLS
+══════════════════════════════════════════ */
+.tools-section{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 50%,#c0392b 100%);position:relative;overflow:hidden;}
+.tools-section::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 50%,rgba(255,255,255,.06),transparent 60%);}
+.tool-card{background:rgba(255,255,255,.1);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.2);border-radius:18px;padding:28px 20px;text-align:center;transition:all .4s ease;position:relative;overflow:hidden;}
+.tool-card::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.05);opacity:0;transition:opacity .3s;}
+.tool-card:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 20px 50px rgba(0,0,0,.3);border-color:rgba(255,255,255,.4);}
+.tool-card:hover::before{opacity:1;}
+.tool-logo-wrap{width:70px;height:70px;background:white;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;box-shadow:0 8px 20px rgba(0,0,0,.2);font-size:1.8rem;transition:transform .3s;}
+.tool-card:hover .tool-logo-wrap{transform:scale(1.1);}
+.tool-card h5{font-family:'Montserrat',sans-serif;font-weight:800;font-size:.9rem;color:white;margin-bottom:6px;}
+.tool-card p{font-size:.78rem;color:rgba(255,255,255,.7);margin:0;}
+
+/* ══════════════════════════════════════════
+   WHY CHOOSE US
+══════════════════════════════════════════ */
+.why-section{background:white;}
+.why-illustration{background:linear-gradient(135deg,var(--primary-dark),var(--primary));border-radius:24px;padding:50px 40px;position:relative;overflow:hidden;height:100%;display:flex;flex-direction:column;justify-content:center;}
+.why-illustration::before{content:'';position:absolute;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.07),transparent 70%);top:-120px;right:-80px;}
+.why-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;position:relative;z-index:1;}
+.why-stat-item{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:16px;padding:22px 18px;text-align:center;transition:transform .3s;}
+.why-stat-item:hover{transform:translateY(-4px);}
+.why-stat-num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.8rem;color:var(--gold);line-height:1;}
+.why-stat-label{font-size:.72rem;color:rgba(255,255,255,.75);font-weight:600;margin-top:6px;letter-spacing:.3px;}
+.why-il-title{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.4rem;color:white;margin-bottom:8px;position:relative;z-index:1;}
+.why-il-sub{font-size:.85rem;color:rgba(255,255,255,.7);margin-bottom:24px;position:relative;z-index:1;line-height:1.7;}
+.why-feature-row{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;}
+.why-feature-icon{width:44px;height:44px;background:var(--primary-soft);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1rem;flex-shrink:0;transition:all .3s;}
+.why-feature-row:hover .why-feature-icon{background:var(--primary);color:white;box-shadow:0 6px 20px var(--primary-glow);}
+.why-feature-text h6{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.88rem;color:var(--text-dark);margin:0 0 4px;}
+.why-feature-text p{font-size:.8rem;color:var(--text-muted);margin:0;line-height:1.6;}
+
+/* ══════════════════════════════════════════
+   LEARNING PROCESS
+══════════════════════════════════════════ */
+.process-section{background:var(--light-gray);overflow:hidden;}
+.process-step{text-align:center;position:relative;padding:0 10px;}
+.process-step-num{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-light));color:white;font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 8px 24px var(--primary-glow);position:relative;z-index:2;transition:transform .3s;}
+.process-step:hover .process-step-num{transform:scale(1.15);}
+.process-step-line{position:absolute;top:32px;left:calc(50% + 32px);right:calc(-50% + 32px);height:2px;background:linear-gradient(90deg,var(--primary),rgba(139,0,0,.2));z-index:1;}
+.process-step:last-child .process-step-line{display:none;}
+.process-step-icon{width:52px;height:52px;border-radius:14px;background:white;box-shadow:0 4px 16px rgba(139,0,0,.1);display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--primary);margin:0 auto 12px;}
+.process-step h5{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.88rem;color:var(--text-dark);margin-bottom:6px;}
+.process-step p{font-size:.78rem;color:var(--text-muted);line-height:1.6;}
+
+/* ══════════════════════════════════════════
+   CAREER CARDS
+══════════════════════════════════════════ */
+.career-section{background:white;}
+.career-card{background:white;border-radius:18px;padding:28px 22px;border:1px solid rgba(139,0,0,.07);box-shadow:0 4px 20px rgba(0,0,0,.04);transition:all .4s cubic-bezier(.175,.885,.32,1.275);height:100%;position:relative;overflow:hidden;cursor:pointer;}
+.career-card-glow{position:absolute;inset:0;border-radius:18px;border:2px solid transparent;background:linear-gradient(135deg,rgba(139,0,0,.4),rgba(200,0,0,.15)) border-box;-webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);-webkit-mask-composite:destination-out;mask-composite:exclude;opacity:0;transition:opacity .4s;}
+.career-card:hover{transform:translateY(-10px);box-shadow:0 24px 60px rgba(139,0,0,.14);}
+.career-card:hover .career-card-glow{opacity:1;}
+.career-icon{width:60px;height:60px;border-radius:16px;background:var(--primary-soft);display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--primary);margin-bottom:16px;transition:all .4s;}
+.career-card:hover .career-icon{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:white;box-shadow:0 8px 24px var(--primary-glow);}
+.career-card h5{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.95rem;color:var(--text-dark);margin-bottom:8px;}
+.career-card p{font-size:.82rem;color:var(--text-muted);line-height:1.7;margin-bottom:14px;}
+.career-salary{display:inline-flex;align-items:center;gap:6px;background:rgba(0,120,0,.08);color:#006600;font-size:.75rem;font-weight:700;padding:4px 12px;border-radius:20px;font-family:'Montserrat',sans-serif;}
+
+/* ══════════════════════════════════════════
+   GALLERY
+══════════════════════════════════════════ */
+.gallery-section{background:var(--light-gray);}
+.gallery-item{border-radius:16px;overflow:hidden;position:relative;cursor:pointer;}
+.gallery-item img,.gallery-item .gallery-placeholder{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
+.gallery-placeholder{background:linear-gradient(135deg,#f0f0f0,#e0e0e0);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:#aaa;}
+.gallery-item:hover img,.gallery-item:hover .gallery-placeholder{transform:scale(1.08);}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(139,0,0,.85),rgba(0,0,0,.7));opacity:0;transition:opacity .4s;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;}
+.gallery-item:hover .gallery-overlay{opacity:1;}
+.gallery-overlay i{font-size:2rem;color:white;}
+.gallery-overlay span{font-size:.82rem;color:rgba(255,255,255,.9);font-weight:600;font-family:'Montserrat',sans-serif;}
+.gallery-tall{height:300px;}
+.gallery-short{height:220px;}
+
+/* lightbox */
+.lightbox-overlay{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9998;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all .3s;}
+.lightbox-overlay.active{opacity:1;visibility:visible;}
+.lightbox-content{position:relative;max-width:800px;width:90%;background:var(--primary-dark);border-radius:20px;overflow:hidden;transform:scale(.9);transition:transform .3s;}
+.lightbox-overlay.active .lightbox-content{transform:scale(1);}
+.lightbox-close{position:absolute;top:12px;right:12px;width:36px;height:36px;background:rgba(255,255,255,.1);border:none;border-radius:50%;color:white;font-size:1rem;cursor:pointer;z-index:1;display:flex;align-items:center;justify-content:center;}
+.lightbox-body{background:var(--primary-dark);padding:60px 40px;text-align:center;}
+.lightbox-body svg{filter:drop-shadow(0 0 20px rgba(255,215,0,.3));}
+.lightbox-caption{font-family:'Montserrat',sans-serif;font-weight:700;color:white;font-size:1rem;margin-top:16px;}
+
+/* ══════════════════════════════════════════
+   TESTIMONIALS
+══════════════════════════════════════════ */
+.testimonials-section{background:white;}
+.testimonial-card{background:var(--light-gray);border-radius:20px;padding:32px 28px;border:1px solid rgba(139,0,0,.06);position:relative;transition:all .4s ease;height:100%;}
+.testimonial-card::before{content:'\201C';position:absolute;top:16px;left:24px;font-size:5rem;color:rgba(139,0,0,.07);font-family:Georgia,serif;line-height:1;}
+.testimonial-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(139,0,0,.1);background:white;}
+.testimonial-stars{color:var(--gold);font-size:.85rem;margin-bottom:14px;}
+.testimonial-text{font-size:.88rem;color:var(--text-muted);line-height:1.8;font-style:italic;margin-bottom:20px;position:relative;z-index:1;}
+.testimonial-author{display:flex;align-items:center;gap:12px;}
+.ta-avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-light));display:flex;align-items:center;justify-content:center;color:white;font-family:'Montserrat',sans-serif;font-weight:800;font-size:1rem;flex-shrink:0;}
+.ta-info h6{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.88rem;color:var(--text-dark);margin:0 0 2px;}
+.ta-info span{font-size:.75rem;color:var(--text-muted);}
+.ta-badge{margin-left:auto;background:var(--primary-soft);color:var(--primary);font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:20px;font-family:'Montserrat',sans-serif;}
+
+/* ══════════════════════════════════════════
+   FAQ
+══════════════════════════════════════════ */
+.faq-section{background:var(--light-gray);}
+.faq-accordion .accordion-item{background:white;border:1px solid rgba(139,0,0,.08);border-radius:14px!important;margin-bottom:12px;box-shadow:0 2px 12px rgba(0,0,0,.04);overflow:hidden;transition:all .3s;}
+.faq-accordion .accordion-item:hover{box-shadow:0 6px 24px rgba(139,0,0,.1);border-color:rgba(139,0,0,.2);}
+.faq-accordion .accordion-button{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.92rem;color:var(--text-dark);background:white;border-radius:14px!important;padding:18px 22px;box-shadow:none!important;}
+.faq-accordion .accordion-button:not(.collapsed){
+  color:white;
+  background:var(--primary);}
+.faq-accordion .accordion-button::after{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%238B0000'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");}
+.faq-accordion .accordion-body{font-size:.88rem;color:var(--text-muted);line-height:1.8;padding:20px 22px 20px;}
+
+/* ══════════════════════════════════════════
+   ENROLL FORM SECTION
+══════════════════════════════════════════ */
+.enroll-section{background:white;}
+.enroll-panel{background:linear-gradient(135deg,var(--primary-dark),var(--primary));border-radius:24px;padding:20px 40px;position:relative;overflow:hidden;height:100%;}
+.enroll-panel::before{content:'';position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.07),transparent 70%);top:-150px;right:-100px;}
+.enroll-form-card{background:white;border-radius:24px;padding:44px 36px;box-shadow:0 20px 60px rgba(0,0,0,.07);}
+.enroll-form-card h3{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.4rem;color:var(--text-dark);margin-bottom:6px;}
+.enroll-form-card .form-sub{color:var(--text-muted);font-size:.88rem;margin-bottom:28px;}
+.form-field{position:relative;margin-bottom:20px;}
+.form-field input,.form-field select,.form-field textarea{width:100%;padding:16px 18px 8px;border:1.5px solid #e0e0e0;border-radius:12px;font-family:'Poppins',sans-serif;font-size:.9rem;color:var(--text-dark);background:#fafafa;transition:all .3s;outline:none;resize:vertical;}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:var(--primary);background:white;box-shadow:0 0 0 4px rgba(139,0,0,.07);}
+.form-field label{position:absolute;top:50%;left:18px;transform:translateY(-50%);font-size:.88rem;color:#999;pointer-events:none;transition:all .25s;background:transparent;}
+.form-field textarea~label{top:20px;transform:none;}
+.form-field input:focus~label,.form-field input:not(:placeholder-shown)~label,.form-field select:focus~label,.form-field textarea:focus~label,.form-field textarea:not(:placeholder-shown)~label{top:8px;transform:none;font-size:.7rem;color:var(--primary);font-weight:600;}
+.form-field .fi-icon{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:#bbb;transition:color .3s;pointer-events:none;}
+.form-field textarea~.fi-icon{top:20px;transform:none;}
+.form-field input:focus~.fi-icon{color:var(--primary);}
+.btn-enroll-submit{width:100%;background:linear-gradient(135deg,var(--primary-dark),var(--primary),#c0392b);color:white;font-family:'Montserrat',sans-serif;font-weight:800;font-size:.92rem;letter-spacing:.8px;padding:16px 40px;border-radius:50px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 8px 25px var(--primary-glow);transition:all .3s;position:relative;overflow:hidden;}
+.btn-enroll-submit:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(139,0,0,.4);}
+
+/* ══════════════════════════════════════════
+   CTA SECTION
+══════════════════════════════════════════ */
+.cta-section{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 50%,#c0392b 100%);padding:90px 0;position:relative;overflow:hidden;}
+.cta-section::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.06),transparent 70%);top:-250px;right:-150px;}
+.cta-title{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(1.8rem,4vw,3rem);color:white;margin-bottom:16px;}
+.cta-sub{color:rgba(255,255,255,.8);font-size:1rem;margin-bottom:36px;}
+.btn-cta-white{background:white;color:var(--primary)!important;font-family:'Montserrat',sans-serif;font-weight:800;font-size:1rem;padding:16px 42px;border-radius:50px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;box-shadow:0 8px 30px rgba(0,0,0,.2);animation:ctaPulse 2.5s infinite;transition:all .3s ease;}
+.btn-cta-white:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.3);animation:none;}
+@keyframes ctaPulse{0%,100%{box-shadow:0 8px 30px rgba(0,0,0,.2);}50%{box-shadow:0 8px 50px rgba(0,0,0,.35);}}
+.btn-cta-outline{background:rgba(255,255,255,.1);color:white!important;font-family:'Montserrat',sans-serif;font-weight:700;font-size:1rem;padding:15px 42px;border-radius:50px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;border:1.5px solid rgba(255,255,255,.35);transition:all .3s;}
+.btn-cta-outline:hover{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.6);transform:translateY(-4px);}
+
+/* ══════════════════════════════════════════
+   FOOTER (exact copy from contact page)
+══════════════════════════════════════════ */
+footer{background:#0d0d0d;padding:70px 0 0;color:rgba(255,255,255,.75);}
+.footer-brand{margin-bottom:20px;}
+.footer-desc{font-size:.85rem;line-height:1.8;color:rgba(255,255,255,.55);margin-bottom:22px;}
+.footer-socials{display:flex;gap:10px;}
+.footer-social-btn{width:36px;height:36px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:.85rem;transition:all .3s ease;text-decoration:none;}
+.footer-social-btn:hover{background:var(--primary);border-color:var(--primary);color:white;transform:translateY(-3px);}
+.footer-heading{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.9rem;letter-spacing:1.5px;text-transform:uppercase;color:white;margin-bottom:20px;position:relative;padding-bottom:10px;}
+.footer-heading::after{content:'';position:absolute;bottom:0;left:0;width:30px;height:2px;background:var(--primary);border-radius:2px;}
+.footer-links{list-style:none;padding:0;}
+.footer-links li{margin-bottom:10px;}
+.footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.85rem;transition:all .3s ease;display:flex;align-items:center;gap:6px;}
+.footer-links a:hover{color:var(--primary-light);padding-left:5px;}
+.footer-links a i{font-size:.65rem;color:var(--primary);}
+.footer-contact li{display:flex;align-items:flex-start;gap:10px;margin-bottom:14px;font-size:.85rem;}
+.footer-contact li i{color:var(--primary-light);margin-top:3px;flex-shrink:0;font-size:.85rem;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding:22px 0;margin-top:50px;font-size:.8rem;color:rgba(255,255,255,.4);}
+
+/* ── RIPPLE ── */
+.ripple{position:relative;overflow:hidden;}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media(max-width:991px){
+  .hero-section{min-height:auto;padding:70px 0 100px;text-align:center;}
+  .hero-desc{margin:0 auto 36px;}
+  .hero-stats{justify-content:center;}
+  .hero-illustration{margin-top:40px;}
+  .process-step-line{display:none;}
+  .float-badge{display:none;}
+}
+@media(max-width:767px){
+  section{padding:65px 0;}
+  .enroll-form-card{padding:32px 22px;}
+  .enroll-panel{padding:38px 24px;}
+  .qi-item{min-width:140px;padding:16px 20px;}
+  .syllabus-panel{padding:24px 18px;}
+  .why-stat-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:575px){
+  .hero-stats{gap:20px;}
+  .hero-stat-divider{display:none;}
+}
+
+
+  </style>
+</head>
+<body>
+
+<!-- ═══ LOADER ═══ -->
+<!-- <div id="loader">
+  <div class="loader-logo">CAD<span>POINT</span></div>
+  <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+</div> -->
+
+<!-- ═══ BACK TO TOP ═══ -->
+<button id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+<!-- ═══════════════════════════════════════════
+     NAVBAR (exact from contact page)
+═══════════════════════════════════════════ -->
+<div id="header"></div>
+
+
+
+
+<!-- BREADCRUMB SLIDER -->
+<div class="breadcrumb-slider">
+  <div class="breadcrumb-track">
+    <div class="breadcrumb-item-slide"><i class="fas fa-drafting-compass"></i> <strong>AutoCAD 2D &amp; 3D</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-certificate"></i> <strong>Autodesk Certified</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-clock"></i> <strong>3 Months Course</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-rupee-sign"></i> <strong>Affordable Fees</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-briefcase"></i> <strong>100% Placement Support</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-users"></i> <strong>5000+ Students Trained</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-star"></i> <strong>4.9/5 Rating</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-laptop"></i> <strong>Live Projects Included</strong></div>
+    <!-- duplicate -->
+    <div class="breadcrumb-item-slide"><i class="fas fa-drafting-compass"></i> <strong>AutoCAD 2D &amp; 3D</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-certificate"></i> <strong>Autodesk Certified</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-clock"></i> <strong>3 Months Course</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-rupee-sign"></i> <strong>Affordable Fees</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-briefcase"></i> <strong>100% Placement Support</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-users"></i> <strong>5000+ Students Trained</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-star"></i> <strong>4.9/5 Rating</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-laptop"></i> <strong>Live Projects Included</strong></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     HERO SECTION
+═══════════════════════════════════════════ -->
+
+<section class="hero-section">
+
+    <!-- Background Orbs -->
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+    <div class="hero-orb hero-orb-4"></div>
+  
+    <!-- Floating Particles -->
+    <div class="particle" style="left:8%;animation-duration:14s;animation-delay:0s;width:5px;height:5px;background:rgba(255,215,0,.4)"></div>
+    <div class="particle" style="left:22%;animation-duration:17s;animation-delay:3s;width:4px;height:4px;background:rgba(255,255,255,.3)"></div>
+    <div class="particle" style="left:45%;animation-duration:11s;animation-delay:6s;width:6px;height:6px;background:rgba(255,215,0,.3)"></div>
+    <div class="particle" style="left:68%;animation-duration:15s;animation-delay:1s;width:4px;height:4px;background:rgba(255,255,255,.25)"></div>
+    <div class="particle" style="left:88%;animation-duration:12s;animation-delay:4s;width:5px;height:5px;background:rgba(255,215,0,.35)"></div>
+  
+    <div class="container position-relative" style="z-index:2;">
+  
+      <div class="row justify-content-center text-center">
+  
+        <div class="col-lg-9">
+  
+          <!-- Badge -->
+          <div class="hero-badge d-inline-flex align-items-center justify-content-center gap-2"
+               data-aos="fade-down"
+               data-aos-delay="100">
+            <i class="fas fa-certificate"></i>
+            <span>Autocad</span>  Training
+          </div>
+  
+          <!-- Heading -->
+          <h1 class="hero-title"
+              id="heroTitle"
+              data-aos="fade-up"
+              data-aos-delay="200">
+  
+            Master
+            <span class="highlight">AutoCAD</span>
+            2D &amp; 3D Design
+  
+          </h1>
+  
+          <!-- Description -->
+          <p class="hero-desc mx-auto"
+             data-aos="fade-up"
+             data-aos-delay="300">
+  
+            Industry-standard CAD training with live projects,
+            expert mentors, and placement support.
+            Build real-world skills that top engineering firms demand.
+  
+          </p>
+  
+          <!-- Buttons -->
+          <div class="d-flex flex-wrap justify-content-center gap-3"
+               data-aos="fade-up"
+               data-aos-delay="420">
+  
+            <a href="tel:+919895352624"  class="btn-cta-glow" class="btn-hero-primary ripple">
+              <i class="fas fa-rocket"></i>
+              Contact Our Team
+            </a>
+  
+          </div>
+  
+          <!-- Stats -->
+          <div class="hero-stats"
+               data-aos="fade-up"
+               data-aos-delay="520">
+  
+            <!-- <div class="hero-stat">
+              <div class="hero-stat-num">
+                <span id="cnt1">2500</span>+
+              </div>
+              <div class="hero-stat-label">
+                Students Trained
+              </div>
+            </div> -->
+  
+            <!-- <div class="hero-stat-divider"></div>
+  
+            <div class="hero-stat">
+              <div class="hero-stat-num">
+                <span id="cnt2">95</span>%
+              </div>
+              <div class="hero-stat-label">
+                Placement Rate
+              </div>
+            </div> -->
+  
+            <!-- <div class="hero-stat-divider"></div>
+  
+            <div class="hero-stat">
+              <div class="hero-stat-num">
+                <span id="cnt3">120</span>+
+              </div>
+              <div class="hero-stat-label">
+                Live Projects
+              </div>
+            </div> -->
+  
+            <!-- <div class="hero-stat-divider"></div>
+  
+            <div class="hero-stat">
+              <div class="hero-stat-num">
+                <span id="cnt4">80</span>+
+              </div>
+              <div class="hero-stat-label">
+                Hiring Companies
+              </div>
+            </div> -->
+  
+          </div>
+  
+        </div>
+  
+      </div>
+  
+    </div>
+  
+    <!-- Bottom Wave -->
+    <div class="hero-wave">
+      <svg viewBox="0 0 1440 65" preserveAspectRatio="none">
+        <path d="M0,32 C360,64 1080,0 1440,42 L1440,65 L0,65 Z"/>
+      </svg>
+    </div>
+  
+  </section>
+
+
+
+<!-- ═══════════════════════════════════════════
+     QUICK INFO BAR
+═══════════════════════════════════════════ -->
+<!-- <div class="quick-info-bar">
+  <div class="container p-0">
+    <div class="quick-info-inner">
+      <div class="qi-item" data-aos="fade-up" data-aos-delay="0">
+        <div class="qi-icon"><i class="fas fa-clock"></i></div>
+        <div class="qi-text"><div class="qi-label">Duration</div><div class="qi-val">3 Months</div></div>
+      </div>
+      <div class="qi-item" data-aos="fade-up" data-aos-delay="60">
+        <div class="qi-icon"><i class="fas fa-layer-group"></i></div>
+        <div class="qi-text"><div class="qi-label">Level</div><div class="qi-val">Beginner to Advanced</div></div>
+      </div>
+      <div class="qi-item" data-aos="fade-up" data-aos-delay="120">
+        <div class="qi-icon"><i class="fas fa-video"></i></div>
+        <div class="qi-text"><div class="qi-label">Mode</div><div class="qi-val">Classroom + Online</div></div>
+      </div>
+      <div class="qi-item" data-aos="fade-up" data-aos-delay="180">
+        <div class="qi-icon"><i class="fas fa-certificate"></i></div>
+        <div class="qi-text"><div class="qi-label">Certificate</div><div class="qi-val">Autodesk Certified</div></div>
+      </div>
+      <div class="qi-item" data-aos="fade-up" data-aos-delay="240">
+        <div class="qi-icon"><i class="fas fa-rupee-sign"></i></div>
+        <div class="qi-text"><div class="qi-label">Fees</div><div class="qi-val">₹8,000 – ₹14,000</div></div>
+      </div>
+      <div class="qi-item" data-aos="fade-up" data-aos-delay="300">
+        <div class="qi-icon"><i class="fas fa-calendar-alt"></i></div>
+        <div class="qi-text"><div class="qi-label">Next Batch</div><div class="qi-val">June 10, 2026</div></div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- ═══════════════════════════════════════════
+     COURSE OVERVIEW
+═══════════════════════════════════════════ -->
+<section class="overview-section">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-5" data-aos="fade-right">
+        <div class="overview-img-wrap" style="height:490px;">
+
+            <img src="assets/image/autocad.webp">
+          <!-- AutoCAD workspace SVG -->
+          <!-- <div style="width:100%;heipght:100%;background:linear-gradient(135deg,var(--primary-dark),var(--primary),#c0392b);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+            <div style="position:absolute;inset:0;background:url('data:image/svg+xml,%3Csvg width%3D%2260%22 height%3D%2260%22 viewBox%3D%220 0 60 60%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg fill%3D%22none%22 fill-rule%3D%22evenodd%22%3E%3Cg fill%3D%22%23ffffff%22 fill-opacity%3D%220.04%22%3E%3Cpath d%3D%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E');opacity:.5;"></div>
+            <svg width="300" height="280" viewBox="0 0 300 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+               -->
+                <!-- monitor -->
+              <rect x="50" y="40" width="200" height="150" rx="8" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+              <rect x="58" y="48" width="184" height="134" rx="4" fill="rgba(0,0,30,0.5)"/>
+              <!-- CAD drawing on screen -->
+              <!-- <g transform="translate(66,56)">
+                <rect x="0" y="0" width="168" height="118" fill="rgba(0,20,60,0.8)" rx="2"/>
+               
+                <g stroke="rgba(100,150,255,0.15)" stroke-width="0.5">
+                  <line x1="0" y1="20" x2="168" y2="20"/>
+                  <line x1="0" y1="40" x2="168" y2="40"/>
+                  <line x1="0" y1="60" x2="168" y2="60"/>
+                  <line x1="0" y1="80" x2="168" y2="80"/>
+                  <line x1="0" y1="100" x2="168" y2="100"/>
+                  <line x1="28" y1="0" x2="28" y2="118"/>
+                  <line x1="56" y1="0" x2="56" y2="118"/>
+                  <line x1="84" y1="0" x2="84" y2="118"/>
+                  <line x1="112" y1="0" x2="112" y2="118"/>
+                  <line x1="140" y1="0" x2="140" y2="118"/>
+                </g>
+                
+                <rect x="20" y="20" width="70" height="50" fill="none" stroke="rgba(255,215,0,0.8)" stroke-width="1.5"/>
+                <rect x="90" y="20" width="50" height="50" fill="none" stroke="rgba(255,215,0,0.8)" stroke-width="1.5"/>
+                <rect x="20" y="70" width="120" height="35" fill="none" stroke="rgba(255,215,0,0.8)" stroke-width="1.5"/>
+                <line x1="55" y1="20" x2="55" y2="70" stroke="rgba(255,215,0,0.5)" stroke-width="1" stroke-dasharray="3,2"/>
+                
+                <line x1="88" y1="78" x2="88" y2="90" stroke="rgba(255,100,100,0.9)" stroke-width="1.2"/>
+                <line x1="82" y1="84" x2="94" y2="84" stroke="rgba(255,100,100,0.9)" stroke-width="1.2"/>
+              </g> -->
+              <!-- stand -->
+              <!-- <rect x="130" y="190" width="40" height="8" rx="3" fill="rgba(255,255,255,0.2)"/>
+              <rect x="100" y="198" width="100" height="6" rx="3" fill="rgba(255,255,255,0.15)"/> -->
+              <!-- keyboard hint -->
+              <!-- <rect x="90" y="215" width="120" height="20" rx="4" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+              <text x="150" y="228" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="7" font-family="monospace">A U T O C A D</text>
+            </svg> -->
+          <!-- </div> -->
+          <div class="overview-badge-abs">
+            <div class="oba-icon"><i class="fas fa-users"></i></div>
+            <div class="oba-text"><h6>5000+ Students</h6><p>Successfully Trained</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7" data-aos="fade-left" data-aos-delay="100">
+        <!-- <div class="section-tag"><i class="fas fa-info-circle"></i> Course Overview</div> -->
+        <h2 class="section-title"><span>AutoCAD Training</span></h2>
+        
+        <p style="color:var(--text-muted);font-size:.95rem;line-height:1.8;margin-bottom:24px;">
+          AutoCAD is the  computer-aided design software, used by millions of engineers, architects, and designers globally. Our comprehensive 3-month program takes you from the basics of 2D drafting to advanced 3D modeling and rendering, with hands-on practice on real industry projects.
+        </p>
+        <ul class="check-list">
+          <li><i class="fas fa-check"></i>Complete 2D drafting from scratch — lines, shapes, annotations</li>
+          <li><i class="fas fa-check"></i>Advanced 3D solid modeling, surface modeling, and mesh tools</li>
+          <li><i class="fas fa-check"></i>Floor plans, site plans, elevations, and section drawings</li>
+          <li><i class="fas fa-check"></i>Mechanical part drawings and assembly layouts</li>
+          <li><i class="fas fa-check"></i>Rendering basics using AutoCAD's built-in tools</li>
+          <li><i class="fas fa-check"></i>Real-world project work reviewed by industry experts</li>
+          
+        </ul>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a href="https://wa.me/919895352624" class="btn-hero-primary ripple" style="background:linear-gradient(135deg,var(--primary),var(--primary-light));color:white!important;box-shadow:0 8px 25px var(--primary-glow);">
+            <i class="fas fa-rocket"></i> Enroll Now
+          </a>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     WHAT YOU WILL LEARN
+═══════════════════════════════════════════ -->
+<section class="learn-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag"><i class="fas fa-graduation-cap"></i> Curriculum</div>
+      <h2 class="section-title">What You Will <span>Learn</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">A structured curriculum designed by industry professionals covering every aspect of AutoCAD for real-world applications.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="learn-card">
+          <div class="learn-card-icon"><i class="fas fa-pencil-ruler"></i></div>
+          <h5>AutoCAD 2D Drafting</h5>
+          <p>Master the complete 2D environment — draw, edit, annotate, and plot professional drawings to industry standards.</p>
+          <div class="learn-topics">
+            <span class="learn-topic-tag">Draw Tools</span><span class="learn-topic-tag">Modify Tools</span><span class="learn-topic-tag">Layers</span><span class="learn-topic-tag">Blocks</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="80">
+        <div class="learn-card">
+          <div class="learn-card-icon"><i class="fas fa-cube"></i></div>
+          <h5>AutoCAD 3D Modeling</h5>
+          <p>Build complex 3D solids, surfaces, and meshes. Learn extrude, revolve, loft, sweep, and boolean operations.</p>
+          <div class="learn-topics">
+            <span class="learn-topic-tag">Solids</span><span class="learn-topic-tag">Surfaces</span><span class="learn-topic-tag">Mesh</span><span class="learn-topic-tag">Boolean</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="160">
+        <div class="learn-card">
+          <div class="learn-card-icon"><i class="fas fa-building"></i></div>
+          <h5>Floor Plans & Architecture</h5>
+          <p>Create accurate architectural floor plans, elevations, sections, and construction drawing sets.</p>
+          <div class="learn-topics">
+            <span class="learn-topic-tag">Floor Plans</span><span class="learn-topic-tag">Elevations</span><span class="learn-topic-tag">Sections</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="learn-card">
+          <div class="learn-card-icon"><i class="fas fa-cog"></i></div>
+          <h5>Mechanical Drawings</h5>
+          <p>Draft precision mechanical components, assembly drawings, tolerances, GD&T notations to IS/DIN standards.</p>
+          <div class="learn-topics">
+            <span class="learn-topic-tag">Part Drawings</span><span class="learn-topic-tag">Assembly</span><span class="learn-topic-tag">GD&amp;T</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="80">
+        <div class="learn-card">
+          <div class="learn-card-icon"><i class="fas fa-palette"></i></div>
+          <h5>Rendering Basics</h5>
+          <p>Apply materials, lighting, and camera effects to produce photorealistic renders directly from AutoCAD.</p>
+          <div class="learn-topics">
+            <span class="learn-topic-tag">Materials</span><span class="learn-topic-tag">Lighting</span><span class="learn-topic-tag">Camera</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="160">
+        <div class="learn-card">
+          <div class="learn-card-icon"><i class="fas fa-briefcase"></i></div>
+          <h5>Real-World Projects</h5>
+          <p>Apply your skills on actual industry projects — residential buildings, mechanical parts, and civil layouts.</p>
+          <div class="learn-topics">
+            <span class="learn-topic-tag">Residential</span><span class="learn-topic-tag">Mechanical</span><span class="learn-topic-tag">Civil</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SYLLABUS
+═══════════════════════════════════════════ -->
+<section class="syllabus-section" id="syllabus">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag"><i class="fas fa-list-alt"></i> Syllabus</div>
+      <h2 class="section-title">Detailed Course <span>Syllabus</span></h2>
+      <div class="divider-line mx-auto"></div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
+        <div class="syllabus-panel">
+          <div class="syllabus-tab-btns">
+            <button class="syl-tab-btn active" onclick="switchTab('module1',this)">Module 1 — Basics</button>
+            <button class="syl-tab-btn" onclick="switchTab('module2',this)">Module 2 — Intermediate</button>
+            <button class="syl-tab-btn" onclick="switchTab('module3',this)">Module 3 — Advanced 3D</button>
+            <button class="syl-tab-btn" onclick="switchTab('module4',this)">Module 4 — Projects</button>
+          </div>
+          <div class="syl-module active" id="module1">
+            <div class="row g-2">
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">01</div><div class="syl-module-text">AutoCAD Interface & Workspace Setup</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">02</div><div class="syl-module-text">Coordinate System & Units Configuration</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">03</div><div class="syl-module-text">Draw Commands — Line, Arc, Circle, Polyline</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">04</div><div class="syl-module-text">Object Snap, Grid, Ortho & Polar Tracking</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">05</div><div class="syl-module-text">Modify Commands — Trim, Extend, Mirror, Array</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">06</div><div class="syl-module-text">Layer Management & Properties</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">07</div><div class="syl-module-text">Text, Dimensions & Annotations</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">08</div><div class="syl-module-text">Blocks, Attributes & External References (XREF)</div><i class="fas fa-check"></i></div></div>
+            </div>
+          </div>
+          <div class="syl-module" id="module2">
+            <div class="row g-2">
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">09</div><div class="syl-module-text">Layout & Paper Space Setup</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">10</div><div class="syl-module-text">Hatch, Gradient & Section Fills</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">11</div><div class="syl-module-text">Architectural Floor Plans & Site Plans</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">12</div><div class="syl-module-text">Elevation & Section Drawings</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">13</div><div class="syl-module-text">Mechanical Part & Assembly Drawings</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">14</div><div class="syl-module-text">Dynamic Blocks & Parametric Constraints</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">15</div><div class="syl-module-text">Plotting, Printing & PDF Export</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">16</div><div class="syl-module-text">AutoCAD Customization & LISP Intro</div><i class="fas fa-check"></i></div></div>
+            </div>
+          </div>
+          <div class="syl-module" id="module3">
+            <div class="row g-2">
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">17</div><div class="syl-module-text">3D Workspace & UCS (User Coordinate System)</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">18</div><div class="syl-module-text">Extrude, Revolve, Loft, Sweep Operations</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">19</div><div class="syl-module-text">Boolean Operations — Union, Subtract, Intersect</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">20</div><div class="syl-module-text">3D Array, Mirror, Rotate, and Align</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">21</div><div class="syl-module-text">Surface Modeling & Mesh Modeling</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">22</div><div class="syl-module-text">Materials, Lighting & Camera Setup</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">23</div><div class="syl-module-text">Rendering with Advanced Visual Styles</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">24</div><div class="syl-module-text">Drawing Views from 3D Models</div><i class="fas fa-check"></i></div></div>
+            </div>
+          </div>
+          <div class="syl-module" id="module4">
+            <div class="row g-2">
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">25</div><div class="syl-module-text">Project 1: Residential Floor Plan (G+2)</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">26</div><div class="syl-module-text">Project 2: Commercial Building Layout</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">27</div><div class="syl-module-text">Project 3: Mechanical Assembly Drawing</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">28</div><div class="syl-module-text">Project 4: 3D Architectural Model + Render</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">29</div><div class="syl-module-text">Portfolio Preparation & Presentation</div><i class="fas fa-check"></i></div></div>
+              <div class="col-md-6"><div class="syl-module-item"><div class="syl-module-num">30</div><div class="syl-module-text">Autodesk ACU Exam Mock Test</div><i class="fas fa-check"></i></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     COURSE FEATURES
+═══════════════════════════════════════════ -->
+<!-- <section class="features-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag"><i class="fas fa-star"></i> Features</div>
+      <h2 class="section-title">Why This Course <span>Stands Out</span></h2>
+      <div class="divider-line mx-auto"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="0"><div class="feature-glass-card"><div class="feature-glass-icon"><i class="fas fa-certificate"></i></div><h5>Certification</h5><p>Autodesk Certified on completion</p></div></div>
+      <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="60"><div class="feature-glass-card"><div class="feature-glass-icon"><i class="fas fa-project-diagram"></i></div><h5>Live Projects</h5><p>4 real-world industry projects</p></div></div>
+      <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="120"><div class="feature-glass-card"><div class="feature-glass-icon"><i class="fas fa-briefcase"></i></div><h5>Placement</h5><p>100% placement support provided</p></div></div>
+      <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="180"><div class="feature-glass-card"><div class="feature-glass-icon"><i class="fas fa-clock"></i></div><h5>Flexible Timing</h5><p>Morning, evening & weekend batches</p></div></div>
+      <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="240"><div class="feature-glass-card"><div class="feature-glass-icon"><i class="fas fa-chalkboard-teacher"></i></div><h5>Expert Trainers</h5><p>15+ years industry experience</p></div></div>
+      <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="300"><div class="feature-glass-card"><div class="feature-glass-icon"><i class="fas fa-video"></i></div><h5>Recorded Sessions</h5><p>Lifetime access to class recordings</p></div></div>
+    </div>
+  </div>
+</section> -->
+
+<!-- ═══════════════════════════════════════════
+     SOFTWARE TOOLS
+═══════════════════════════════════════════ -->
+<section class="tools-section">
+  <div class="container position-relative" style="z-index:1">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="hero-badge d-inline-flex mb-3"><i class="fas fa-tools"></i> Software <span>Tools</span> Covered</div>
+      <h2 class="section-title" style="color:white;">Industry <span style="color:var(--gold)">Tools</span> You'll Master</h2>
+      <div class="divider-line mx-auto" style="background:linear-gradient(90deg,rgba(255,255,255,.6),rgba(255,215,0,.6));"></div>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="tool-card">
+          <div class="tool-logo-wrap"><i class="fas fa-drafting-compass" style="color:var(--primary);"></i></div>
+          <h5>AutoCAD 2025</h5>
+          <p>Primary design tool — full 2D & 3D workflow</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="80">
+        <div class="tool-card">
+          <div class="tool-logo-wrap"><i class="fas fa-cubes" style="color:#2563eb;"></i></div>
+          <h5>3DS Max</h5>
+          <p>Advanced 3D modeling and rendering workflows</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="160">
+        <div class="tool-card">
+          <div class="tool-logo-wrap"><i class="fas fa-pencil-ruler" style="color:#059669;"></i></div>
+          <h5>SketchUp</h5>
+          <p>Quick concept modeling and 3D visualization</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="240">
+        <div class="tool-card">
+          <div class="tool-logo-wrap"><i class="fas fa-sun" style="color:#ea580c;"></i></div>
+          <h5>V-Ray</h5>
+          <p>Photorealistic rendering and visualization</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     WHY CHOOSE US
+═══════════════════════════════════════════ -->
+<section class="why-section">
+  <div class="container">
+    <div class="row align-items-stretch g-5">
+      <div class="col-lg-5" data-aos="fade-right">
+        <div class="why-illustration">
+          <div style="position:relative;z-index:1;">
+            <div class="hero-badge d-inline-flex mb-3" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);"><i class="fas fa-trophy"></i> Why <span>CADPOINT</span></div>
+          </div>
+          <h3 class="why-il-title">India's Most Trusted<br>AutoCAD Training Partner</h3>
+          <p class="why-il-sub">Authorized by Autocad with 14+ years of delivering career-changing technical education.</p>
+          <div class="why-stat-grid">
+            <div class="why-stat-item"><div class="why-stat-num" data-target="5000">0</div><div class="why-stat-label">Students Placed</div></div>
+            <div class="why-stat-item"><div class="why-stat-num" data-target="98">0</div><div class="why-stat-label">% Placement Rate</div></div>
+            <div class="why-stat-item"><div class="why-stat-num" data-target="200">0</div><div class="why-stat-label">Partner Companies</div></div>
+            <div class="why-stat-item"><div class="why-stat-num" data-target="14">0</div><div class="why-stat-label">Years of Excellence</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7" data-aos="fade-left" data-aos-delay="100">
+        <div class="section-tag"><i class="fas fa-check-circle"></i> Benefits</div>
+        <h2 class="section-title">What Makes<span> Training Superior</span></h2>
+        <div class="divider-line"></div>
+        <div class="why-feature-row" data-aos="fade-up" data-aos-delay="0">
+          <div class="why-feature-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+          <div class="why-feature-text"><h6>Industry Expert Trainers</h6><p>Learn from engineers with 15+ years of real project experience at leading firms. Not just theory — practical field knowledge.</p></div>
+        </div>
+        <div class="why-feature-row" data-aos="fade-up" data-aos-delay="60">
+          <div class="why-feature-icon"><i class="fas fa-laptop-code"></i></div>
+          <div class="why-feature-text"><h6>Live Project Training</h6><p>Work on 4 actual industry-grade projects and build a professional portfolio that impresses employers.</p></div>
+        </div>
+        <!-- <div class="why-feature-row" data-aos="fade-up" data-aos-delay="120">
+          <div class="why-feature-icon"><i class="fas fa-briefcase"></i></div>
+          <div class="why-feature-text"><h6>Dedicated Placement Support</h6><p>Resume review, mock interviews, LinkedIn optimization, and direct job referrals to 200+ hiring partners.</p></div>
+        </div> -->
+        <div class="why-feature-row" data-aos="fade-up" data-aos-delay="180">
+          <div class="why-feature-icon"><i class="fas fa-clock"></i></div>
+          <div class="why-feature-text"><h6>Flexible Batch Timings</h6><p>Morning, afternoon, evening, and weekend batches — designed for students and working professionals alike.</p></div>
+        </div>
+        <div class="why-feature-row" data-aos="fade-up" data-aos-delay="240">
+          <div class="why-feature-icon"><i class="fas fa-tools"></i></div>
+          <div class="why-feature-text"><h6>Fully Equipped CAD Labs</h6><p>Dedicated computer labs with the latest AutoCAD 2025, unlimited practice sessions, and 24/7 lab access.</p></div>
+        </div>
+        <div class="why-feature-row" data-aos="fade-up" data-aos-delay="300">
+          <div class="why-feature-icon"><i class="fas fa-award"></i></div>
+          <div class="why-feature-text"><h6>Globally Recognized Certification</h6><p>Autodesk Certified User (ACU) credential valued by employers across India, Middle East, and beyond.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     LEARNING PROCESS
+═══════════════════════════════════════════ -->
+<!-- <section class="process-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag"><i class="fas fa-route"></i> Journey</div>
+      <h2 class="section-title">Your Learning <span>Journey</span></h2>
+      <div class="divider-line mx-auto"></div>
+    </div>
+    <div class="row row-cols-lg-6 row-cols-md-3 row-cols-2 g-4 position-relative">
+      <div class="col" data-aos="fade-up" data-aos-delay="0">
+        <div class="process-step">
+          <div class="process-step-num">1</div>
+          <div class="process-step-line"></div>
+          <div class="process-step-icon"><i class="fas fa-user-plus"></i></div>
+          <h5>Register</h5>
+          <p>Fill out the enquiry form or call us</p>
+        </div>
+      </div>
+      <div class="col" data-aos="fade-up" data-aos-delay="80">
+        <div class="process-step">
+          <div class="process-step-num">2</div>
+          <div class="process-step-line"></div>
+          <div class="process-step-icon"><i class="fas fa-play-circle"></i></div>
+          <h5>Free Demo</h5>
+          <p>Attend a complimentary demo session</p>
+        </div>
+      </div>
+      <div class="col" data-aos="fade-up" data-aos-delay="160">
+        <div class="process-step">
+          <div class="process-step-num">3</div>
+          <div class="process-step-line"></div>
+          <div class="process-step-icon"><i class="fas fa-chalkboard"></i></div>
+          <h5>Start Learning</h5>
+          <p>Join your batch and begin training</p>
+        </div>
+      </div>
+      <div class="col" data-aos="fade-up" data-aos-delay="240">
+        <div class="process-step">
+          <div class="process-step-num">4</div>
+          <div class="process-step-line"></div>
+          <div class="process-step-icon"><i class="fas fa-project-diagram"></i></div>
+          <h5>Live Projects</h5>
+          <p>Build real projects for your portfolio</p>
+        </div>
+      </div>
+      <div class="col" data-aos="fade-up" data-aos-delay="320">
+        <div class="process-step">
+          <div class="process-step-num">5</div>
+          <div class="process-step-line"></div>
+          <div class="process-step-icon"><i class="fas fa-certificate"></i></div>
+          <h5>Get Certified</h5>
+          <p>Receive Autodesk certification</p>
+        </div>
+      </div>
+      <div class="col" data-aos="fade-up" data-aos-delay="400">
+        <div class="process-step">
+          <div class="process-step-num">6</div>
+          <div class="process-step-icon"><i class="fas fa-briefcase"></i></div>
+          <h5>Get Placed</h5>
+          <p>Land your dream job with our support</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- ═══════════════════════════════════════════
+     CAREER OPPORTUNITIES
+═══════════════════════════════════════════ -->
+<section class="career-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag"><i class="fas fa-briefcase"></i> Careers</div>
+      <h2 class="section-title">Career <span>Opportunities</span> After This Course</h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">AutoCAD-certified professionals are in high demand across multiple industries globally.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="career-card"><div class="career-card-glow"></div><div class="career-icon"><i class="fas fa-drafting-compass"></i></div><h5>CAD Designer</h5><p>Create technical drawings for construction, manufacturing, and product design companies.</p><span class="career-salary"><i class="fas fa-rupee-sign"></i> ₹3–8 LPA</span></div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="80">
+        <div class="career-card"><div class="career-card-glow"></div><div class="career-icon"><i class="fas fa-ruler-combined"></i></div><h5>Drafting Engineer</h5><p>Produce accurate engineering drawings to support civil, mechanical, and electrical projects.</p><span class="career-salary"><i class="fas fa-rupee-sign"></i> ₹4–10 LPA</span></div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="160">
+        <div class="career-card"><div class="career-card-glow"></div><div class="career-icon"><i class="fas fa-cube"></i></div><h5>3D Modeler</h5><p>Build 3D models for architecture firms, game studios, product design, and animation houses.</p><span class="career-salary"><i class="fas fa-rupee-sign"></i> ₹4–12 LPA</span></div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="career-card"><div class="career-card-glow"></div><div class="career-icon"><i class="fas fa-couch"></i></div><h5>Interior Designer</h5><p>Design residential and commercial interiors with AutoCAD space planning and 3D visualization.</p><span class="career-salary"><i class="fas fa-rupee-sign"></i> ₹3–9 LPA</span></div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="80">
+        <div class="career-card"><div class="career-card-glow"></div><div class="career-icon"><i class="fas fa-cog"></i></div><h5>Mechanical CAD Expert</h5><p>Design precision mechanical components and assemblies for auto, aerospace, and machine industries.</p><span class="career-salary"><i class="fas fa-rupee-sign"></i> ₹4–14 LPA</span></div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="160">
+        <div class="career-card"><div class="career-card-glow"></div><div class="career-icon"><i class="fas fa-road"></i></div><h5>Civil CAD Technician</h5><p>Produce infrastructure drawings — roads, bridges, drainage, and utility maps for civil projects.</p><span class="career-salary"><i class="fas fa-rupee-sign"></i> ₹3–8 LPA</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     STUDENT PROJECTS GALLERY
+═══════════════════════════════════════════ -->
+<section class="gallery-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag"><i class="fas fa-images"></i> Gallery</div>
+      <h2 class="section-title"><span>Project Gallery</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Real work done by our students — floor plans, mechanical parts, 3D models, and renders.</p>
+    </div>
+    <div class="row g-3">
+      <div class="col-lg-4 col-md-4" data-aos="zoom-in" data-aos-delay="0">
+        <img src="assets/image/autocad-gallery.webp" style="width:350px;height:300px;">
+        <!-- <div class="gallery-item gallery-tall" onclick="openLightbox('Residential Floor Plan G+2','A complete ground+2 residential building floor plan with all rooms, dimensions, and annotations.')">
+          <div class="gallery-placeholder" style="height:100%;background:linear-gradient(135deg,var(--primary-dark),var(--primary));">
+            <svg width="120" height="100" viewBox="0 0 120 100"><rect x="10" y="10" width="50" height="40" fill="none" stroke="rgba(255,215,0,.8)" stroke-width="2"/><rect x="60" y="10" width="50" height="40" fill="none" stroke="rgba(255,215,0,.8)" stroke-width="2"/><rect x="10" y="50" width="100" height="40" fill="none" stroke="rgba(255,215,0,.8)" stroke-width="2"/><line x1="35" y1="10" x2="35" y2="50" stroke="rgba(255,215,0,.5)" stroke-width="1" stroke-dasharray="3,2"/><line x1="85" y1="10" x2="85" y2="50" stroke="rgba(255,215,0,.5)" stroke-width="1" stroke-dasharray="3,2"/></svg>
+            <span style="color:rgba(255,255,255,.8);font-size:.82rem;font-weight:600;">Residential Floor Plan</span>
+          </div>
+          <div class="gallery-overlay"><i class="fas fa-expand-alt"></i><span>View Project</span></div>
+        </div> -->
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="80">
+        <!-- <div class="gallery-item gallery-short" onclick="openLightbox('Mechanical Assembly Drawing','Precision mechanical assembly drawing with BOM, tolerances, and GD&T notations.')">
+          <div class="gallery-placeholder" style="height:100%;background:linear-gradient(135deg,#1a1a4e,#2a2a7e);">
+            <svg width="100" height="80" viewBox="0 0 100 80"><circle cx="50" cy="40" r="25" fill="none" stroke="#60a5fa" stroke-width="2"/><circle cx="50" cy="40" r="15" fill="none" stroke="#60a5fa" stroke-width="1.5"/><circle cx="50" cy="40" r="5" fill="#60a5fa" opacity=".5"/><line x1="25" y1="40" x2="10" y2="40" stroke="#60a5fa" stroke-width="1.5"/><line x1="75" y1="40" x2="90" y2="40" stroke="#60a5fa" stroke-width="1.5"/></svg>
+            <span style="color:rgba(255,255,255,.8);font-size:.8rem;font-weight:600;">Mechanical Drawing</span>
+          </div>
+          <div class="gallery-overlay"><i class="fas fa-expand-alt"></i><span>View Project</span></div>
+        </div> -->
+        <img src="assets/image/autocad-plans.webp" style="width:350px;height:300px;">
+      </div>
+      <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="160">
+        <div class="row g-3">
+          <div class="col-12">
+             <img src="assets/image/autocad-plan.webp" style="width:350px;height:300px;">
+            <!-- <div class="gallery-item gallery-short" onclick="openLightbox('3D Building Model','Full 3D exterior model of a multi-storey building with materials and rendering.')">
+              <div class="gallery-placeholder" style="height:100%;background:linear-gradient(135deg,#0d3d2c,#1a6b4e);">
+                <svg width="100" height="70" viewBox="0 0 100 70"><rect x="20" y="25" width="60" height="45" fill="none" stroke="#6ee7b7" stroke-width="2"/><polygon points="50,5 20,25 80,25" fill="none" stroke="#6ee7b7" stroke-width="2"/><rect x="38" y="45" width="24" height="25" fill="rgba(110,231,183,.15)"/><rect x="25" y="35" width="14" height="12" fill="rgba(110,231,183,.1)" stroke="#6ee7b7" stroke-width="1"/><rect x="61" y="35" width="14" height="12" fill="rgba(110,231,183,.1)" stroke="#6ee7b7" stroke-width="1"/></svg>
+                <span style="color:rgba(255,255,255,.8);font-size:.8rem;font-weight:600;">3D Building Model</span>
+              </div>
+              <div class="gallery-overlay"><i class="fas fa-expand-alt"></i><span>View Project</span></div>
+            </div> -->
+          </div>
+          <!-- <div class="col-6">
+            <div class="gallery-item" style="height:130px;" onclick="openLightbox('3D Furniture Design','Custom furniture 3D model with detailed joinery and wood material rendering.')">
+              <div class="gallery-placeholder" style="height:100%;background:linear-gradient(135deg,#3d1a00,#7c3b0d);">
+                <svg width="70" height="55" viewBox="0 0 70 55"><rect x="5" y="20" width="60" height="10" rx="2" fill="none" stroke="#fdba74" stroke-width="1.5"/><rect x="10" y="30" width="8" height="20" fill="none" stroke="#fdba74" stroke-width="1.5"/><rect x="52" y="30" width="8" height="20" fill="none" stroke="#fdba74" stroke-width="1.5"/></svg>
+                <span style="color:rgba(255,255,255,.7);font-size:.7rem;font-weight:600;">3D Furniture</span>
+              </div>
+              <div class="gallery-overlay"><i class="fas fa-expand-alt"></i><span>View</span></div>
+            </div>
+          </div> -->
+          <!-- <div class="col-6">
+            <div class="gallery-item" style="height:130px;" onclick="openLightbox('Structural Drawing','Civil structural column/beam layout drawing with reinforcement details.')">
+              <div class="gallery-placeholder" style="height:100%;background:linear-gradient(135deg,#1a0d3d,#3d1a7c);">
+                <svg width="70" height="55" viewBox="0 0 70 55"><line x1="10" y1="5" x2="10" y2="50" stroke="#c4b5fd" stroke-width="2"/><line x1="35" y1="5" x2="35" y2="50" stroke="#c4b5fd" stroke-width="2"/><line x1="60" y1="5" x2="60" y2="50" stroke="#c4b5fd" stroke-width="2"/><line x1="5" y1="20" x2="65" y2="20" stroke="#c4b5fd" stroke-width="2"/><line x1="5" y1="38" x2="65" y2="38" stroke="#c4b5fd" stroke-width="2"/></svg>
+                <span style="color:rgba(255,255,255,.7);font-size:.7rem;font-weight:600;">Structural Plan</span>
+              </div>
+              <div class="gallery-overlay"><i class="fas fa-expand-alt"></i><span>View</span></div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox-content">
+    <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+    <div class="lightbox-body">
+      <svg width="200" height="160" viewBox="0 0 200 160" id="lightboxSvg">
+        <rect x="20" y="20" width="160" height="120" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,215,0,0.4)" stroke-width="1.5"/>
+        <circle cx="100" cy="80" r="40" fill="none" stroke="rgba(255,215,0,0.5)" stroke-width="2" stroke-dasharray="6,4"/>
+        <text x="100" y="85" text-anchor="middle" fill="rgba(255,215,0,0.8)" font-size="28" font-family="monospace">⚙</text>
+      </svg>
+      <div class="lightbox-caption" id="lightboxCaption">Project Name</div>
+      <p style="color:rgba(255,255,255,.6);font-size:.85rem;margin-top:8px;padding:0 20px;" id="lightboxDesc"></p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════════════════ -->
+<!-- <section class="testimonials-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag"><i class="fas fa-star"></i> Reviews</div>
+      <h2 class="section-title">What Our <span>Students Say</span></h2>
+      <div class="divider-line mx-auto"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">The AutoCAD course at CADPOINT completely transformed my career. The trainer was exceptional — practical, patient, and very knowledgeable. Got placed within 2 months of completing the course.</p>
+          <div class="testimonial-author">
+            <div class="ta-avatar">RK</div>
+            <div class="ta-info"><h6>Rahul Kulkarni</h6><span>CAD Designer, L&T</span></div>
+            <span class="ta-badge">Placed ✓</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="80">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">I joined as a complete beginner and now I'm a certified AutoCAD professional. The 3D modeling module was especially amazing. The live projects gave me real confidence. Highly recommended!</p>
+          <div class="testimonial-author">
+            <div class="ta-avatar" style="background:linear-gradient(135deg,#0d3d7c,#1a6bb5)">PM</div>
+            <div class="ta-info"><h6>Priya Mehta</h6><span>Interior Designer, Studio KG</span></div>
+            <span class="ta-badge">Placed ✓</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="160">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">Best investment I made in my career. CADPOINT's placement team was incredible — they prepared my resume, conducted mock interviews, and connected me with the right companies. Joined Tata Projects!</p>
+          <div class="testimonial-author">
+            <div class="ta-avatar" style="background:linear-gradient(135deg,#0d4e1a,#1a8b30)">AS</div>
+            <div class="ta-info"><h6>Amit Sharma</h6><span>Drafting Engineer, Tata Projects</span></div>
+            <span class="ta-badge">Placed ✓</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- ═══════════════════════════════════════════
+     FAQ
+═══════════════════════════════════════════ -->
+<!-- <section class="faq-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag"><i class="fas fa-question-circle"></i> FAQ</div>
+      <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+      <div class="divider-line mx-auto"></div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="enroll-panel">
+            <div style="position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.06),transparent 70%);top:-100px;right:-80px;"></div>
+            <div style="position:relative;z-index:1;">
+              <div class="hero-badge d-inline-flex mb-3"><i class="fas fa-rocket"></i> Next Batch — <span>June 10, 2026</span></div>
+              <h3 style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.6rem;color:white;margin-bottom:12px;">Ready to Start?<br>Seats Are <span style="color:var(--gold)">Filling Fast!</span></h3>
+              <p style="font-size:.88rem;color:rgba(255,255,255,.75);line-height:1.8;margin-bottom:28px;">Register today to secure your seat in the upcoming batch and receive our course brochure plus fee structure instantly.</p>
+              <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:28px;">
+                <div style="display:flex;align-items:center;gap:12px;"><div style="width:38px;height:38px;background:rgba(255,255,255,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--gold);"><i class="fas fa-check"></i></div><span style="font-size:.85rem;color:rgba(255,255,255,.85);">Free demo class before enrollment</span></div>
+                <div style="display:flex;align-items:center;gap:12px;"><div style="width:38px;height:38px;background:rgba(255,255,255,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--gold);"><i class="fas fa-check"></i></div><span style="font-size:.85rem;color:rgba(255,255,255,.85);">Flexible installment payment plans</span></div>
+                <div style="display:flex;align-items:center;gap:12px;"><div style="width:38px;height:38px;background:rgba(255,255,255,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--gold);"><i class="fas fa-check"></i></div><span style="font-size:.85rem;color:rgba(255,255,255,.85);">Autodesk certified on completion</span></div>
+                <div style="display:flex;align-items:center;gap:12px;"><div style="width:38px;height:38px;background:rgba(255,255,255,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--gold);"><i class="fas fa-check"></i></div><span style="font-size:.85rem;color:rgba(255,255,255,.85);">100% placement support guaranteed</span></div>
+              </div>
+              <div style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:16px 18px;display:flex;align-items:center;gap:14px;">
+                <i class="fas fa-phone-alt" style="color:var(--gold);font-size:1.2rem;"></i>
+                <div><div style="font-size:.7rem;color:rgba(255,255,255,.6);font-weight:600;text-transform:uppercase;letter-spacing:.5px;">Call Directly</div><div style="font-family:'Montserrat',sans-serif;font-weight:800;color:white;font-size:1rem;">+91 98765 43210</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+      <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
+        <div class="accordion faq-accordion" id="faqAcc">
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#af1"><i class="fas fa-question me-3" style="color:var(--primary)"></i>Do I need any prior CAD or engineering experience?</button></h2>
+            <div id="af1" class="accordion-collapse collapse show" data-bs-parent="#faqAcc"><div class="accordion-body">No prior experience is needed. Our course starts from absolute basics — interface navigation, coordinate systems, and simple draw commands — and progressively advances to complex 3D modeling. Both fresh graduates and working professionals join successfully.</div></div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#af2"><i class="fas fa-clock me-3" style="color:var(--primary)"></i>What are the available batch timings?</button></h2>
+            <div id="af2" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">We offer 4 batch slots — Morning (8AM–11AM), Afternoon (12PM–3PM), Evening (5PM–8PM), and Weekend (Sat–Sun 9AM–5PM). The 3-month duration applies to all batches. Fast-track 6-week intensive batches are also available.</div></div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#af3"><i class="fas fa-certificate me-3" style="color:var(--primary)"></i>What certificate will I receive after completion?</button></h2>
+            <div id="af3" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">You receive a CADPOINT course completion certificate plus preparation for the Autodesk Certified User (ACU) exam. Our ACU pass rate is 94%. Autodesk certification is globally recognized and highly valued by employers.</div></div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#af4"><i class="fas fa-briefcase me-3" style="color:var(--primary)"></i>How does the placement support work?</button></h2>
+            <div id="af4" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">Our dedicated placement team provides resume building, LinkedIn profile optimization, mock interviews, aptitude test prep, and direct referrals to 200+ hiring companies. We actively follow up until you're placed. Our placement rate is 98%.</div></div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#af5"><i class="fas fa-rupee-sign me-3" style="color:var(--primary)"></i>What is the fee and are there EMI options?</button></h2>
+            <div id="af5" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">The course fee ranges from ₹8,000 to ₹14,000 depending on the batch type (classroom/online/combined). We offer 2–3 installment payment options. Contact our admission team for exact fee details and current scholarship availability.</div></div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#af6"><i class="fas fa-video me-3" style="color:var(--primary)"></i>Can I attend a free demo before enrolling?</button></h2>
+            <div id="af6" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">Absolutely! We encourage all prospective students to attend a free demo session. You'll experience our teaching style, see the lab facilities, and meet the trainer — all before committing. Just call, WhatsApp, or fill our enquiry form to schedule your demo.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- ═══════════════════════════════════════════
+     ENROLL FORM
+═══════════════════════════════════════════ -->
+<section class="enroll-section" id="enroll">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag"><i class="fas fa-user-graduate"></i> Enroll</div>
+      <h2 class="section-title">Start Your <span>AutoCAD Journey</span></h2>
+      <div class="divider-line mx-auto"></div>
+    </div>
+    <div class="row g-4 align-items-stretch">
+      <div class="col-lg-5" data-aos="fade-right">
+        <div class="enroll-panel">
+          <div style="position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.06),transparent 70%);top:-100px;right:-80px;"></div>
+          <div style="position:relative;z-index:1;">
+            <div class="hero-badge d-inline-flex mb-3"><i class="fas fa-rocket"></i> Next Batch — <span>June 10, 2026</span></div>
+            <h3 style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.6rem;color:white;margin-bottom:12px;">Ready to Start?<br>Seats Are <span style="color:var(--gold)">Filling Fast!</span></h3>
+            <p style="font-size:.88rem;color:rgba(255,255,255,.75);line-height:1.8;margin-bottom:28px;">Register today to secure your seat in the upcoming batch and receive our course brochure plus fee structure instantly.</p>
+            <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:28px;">
+              <div style="display:flex;align-items:center;gap:12px;"><div style="width:38px;height:38px;background:rgba(255,255,255,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--gold);"><i class="fas fa-check"></i></div><span style="font-size:.85rem;color:rgba(255,255,255,.85);">Free demo class before enrollment</span></div>
+              <div style="display:flex;align-items:center;gap:12px;"><div style="width:38px;height:38px;background:rgba(255,255,255,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--gold);"><i class="fas fa-check"></i></div><span style="font-size:.85rem;color:rgba(255,255,255,.85);">Flexible installment payment plans</span></div>
+              <div style="display:flex;align-items:center;gap:12px;"><div style="width:38px;height:38px;background:rgba(255,255,255,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--gold);"><i class="fas fa-check"></i></div><span style="font-size:.85rem;color:rgba(255,255,255,.85);">Autodesk certified on completion</span></div>
+              <div style="display:flex;align-items:center;gap:12px;"><div style="width:38px;height:38px;background:rgba(255,255,255,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--gold);"><i class="fas fa-check"></i></div><span style="font-size:.85rem;color:rgba(255,255,255,.85);">100% placement support guaranteed</span></div>
+            </div>
+            <div style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:16px 18px;display:flex;align-items:center;gap:14px;">
+              <i class="fas fa-phone-alt" style="color:var(--gold);font-size:1.2rem;"></i>
+              <div><div style="font-size:.7rem;color:rgba(255,255,255,.6);font-weight:600;text-transform:uppercase;letter-spacing:.5px;">Call Directly</div><div style="font-family:'Montserrat',sans-serif;font-weight:800;color:white;font-size:1rem;"><a href="tel:+919895352624" style="color:white;text-decoration:none;">+919895352624</a></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-lg-7" data-aos="fade-left" data-aos-delay="100"> -->
+        <!-- <div class="enroll-form-card">
+          <h3>Register for Free Demo</h3>
+          <p class="form-sub">Fill in your details and we'll contact you within 2 hours.</p>
+          <div id="enrollFormWrap">
+            <form id="enrollForm" novalidate>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="form-field">
+                    <input type="text" id="ename" placeholder=" " required>
+                    <label for="ename">Full Name *</label>
+                    <i class="fas fa-user fi-icon"></i>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-field">
+                    <input type="email" id="eemail" placeholder=" " required>
+                    <label for="eemail">Email Address *</label>
+                    <i class="fas fa-envelope fi-icon"></i>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-field">
+                    <input type="tel" id="ephone" placeholder=" " required>
+                    <label for="ephone">Phone Number *</label>
+                    <i class="fas fa-phone fi-icon"></i>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-field">
+                    <select id="ebatch">
+                      <option value="" disabled selected></option>
+                      <option>Morning (8AM–11AM)</option>
+                      <option>Afternoon (12PM–3PM)</option>
+                      <option>Evening (5PM–8PM)</option>
+                      <option>Weekend (Sat–Sun)</option>
+                    </select>
+                    <label for="ebatch">Preferred Batch</label>
+                    <i class="fas fa-clock fi-icon"></i>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-field">
+                    <select id="equalif">
+                      <option value="" disabled selected></option>
+                      <option>High School (10th/12th)</option>
+                      <option>Diploma Engineer</option>
+                      <option>B.E./B.Tech</option>
+                      <option>Working Professional</option>
+                      <option>Other</option>
+                    </select>
+                    <label for="equalif">Qualification</label>
+                    <i class="fas fa-graduation-cap fi-icon"></i>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-field">
+                    <select id="ecourse">
+                      <option value="" disabled selected></option>
+                      <option>AutoCAD 2D & 3D</option>
+                      <option>AutoCAD + SolidWorks Combo</option>
+                      <option>AutoCAD + Revit Combo</option>
+                      <option>Fast-Track 6 Weeks</option>
+                    </select>
+                    <label for="ecourse">Course Variant</label>
+                    <i class="fas fa-book fi-icon"></i>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-field">
+                    <textarea id="emsg" rows="3" placeholder=" "></textarea>
+                    <label for="emsg">Any specific requirements? (optional)</label>
+                    <i class="fas fa-pen fi-icon"></i>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn-enroll-submit ripple">
+                    <i class="fas fa-rocket"></i> Register for Free Demo
+                    <span class="enroll-loader" style="display:none;"><i class="fas fa-spinner fa-spin"></i></span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div> -->
+          <!-- <div id="enrollSuccess" style="display:none;text-align:center;padding:30px 0;">
+            <div style="width:80px;height:80px;background:linear-gradient(135deg,var(--primary),var(--primary-light));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;color:white;margin:0 auto 20px;animation:successPop .5s cubic-bezier(.175,.885,.32,1.275);">✓</div>
+            <h4 style="font-family:'Montserrat',sans-serif;font-weight:800;color:var(--text-dark);">Registration Successful!</h4>
+            <p style="color:var(--text-muted);margin-top:8px;font-size:.9rem;">Our team will call you within 2 hours. Check your email for confirmation.</p>
+            <a href="#" onclick="resetEnroll();return false;" style="display:inline-flex;align-items:center;gap:8px;margin-top:16px;color:var(--primary);font-weight:600;text-decoration:none;"><i class="fas fa-redo"></i> Register Again</a>
+          </div>
+          <style>@keyframes successPop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}</style>
+        </div>
+      </div> -->
+      <div class="col-lg-7 mt-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="accordion faq-accordion" id="faqAcc">
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#af1"><i class="fas fa-question me-3" style="color:var(--primary)"></i>Do I need any prior CAD or engineering experience?</button></h2>
+            <div id="af1" class="accordion-collapse collapse show" data-bs-parent="#faqAcc"><div class="accordion-body">No prior experience is needed. Our course starts from absolute basics — interface navigation, coordinate systems, and simple draw commands — and progressively advances to complex 3D modeling. Both fresh graduates and working professionals join successfully.</div></div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#af2"><i class="fas fa-clock me-3" style="color:var(--primary)"></i>What are the available batch timings?</button></h2>
+            <div id="af2" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">We offer 4 batch slots — Morning (8AM–11AM), Afternoon (12PM–3PM), Evening (5PM–8PM), and Weekend (Sat–Sun 9AM–5PM). The 3-month duration applies to all batches. Fast-track 6-week intensive batches are also available.</div></div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#af3"><i class="fas fa-certificate me-3" style="color:var(--primary)"></i>What certificate will I receive after completion?</button></h2>
+            <div id="af3" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">You receive a CADPOINT course completion certificate plus preparation for the Autodesk Certified User (ACU) exam. Our ACU pass rate is 94%. Autodesk certification is globally recognized and highly valued by employers.</div></div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#af4"><i class="fas fa-briefcase me-3" style="color:var(--primary)"></i>How does the placement support work?</button></h2>
+            <div id="af4" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">Our dedicated placement team provides resume building, LinkedIn profile optimization, mock interviews, aptitude test prep, and direct referrals to 200+ hiring companies. We actively follow up until you're placed. Our placement rate is 98%.</div></div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#af5"><i class="fas fa-rupee-sign me-3" style="color:var(--primary)"></i>What is the fee and are there EMI options?</button></h2>
+            <div id="af5" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">The course fee ranges from ₹8,000 to ₹14,000 depending on the batch type (classroom/online/combined). We offer 2–3 installment payment options. Contact our admission team for exact fee details and current scholarship availability.</div></div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#af6"><i class="fas fa-video me-3" style="color:var(--primary)"></i>Can I attend a free demo before enrolling?</button></h2>
+            <div id="af6" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">Absolutely! We encourage all prospective students to attend a free demo session. You'll experience our teaching style, see the lab facilities, and meet the trainer — all before committing. Just call, WhatsApp, or fill our enquiry form to schedule your demo.</div></div>
+          </div>
+        <!-- </div> -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CTA SECTION
+═══════════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="container text-center position-relative" style="z-index:1">
+    <div data-aos="fade-up">
+      <div class="hero-badge d-inline-flex mb-3"><i class="fas fa-star"></i> Limited <span>Seats Available</span></div>
+      <h2 class="cta-title">Start Your Design Career<br><span style="color:var(--gold)">Today!</span></h2>
+      <p class="cta-sub">Join 5000+ students who mastered AutoCAD at CADPOINT and got hired by top firms.</p>
+      <div class="d-flex flex-wrap gap-3 justify-content-center">
+        <a href="https://wa.me/919895352624" class="btn-cta-white ripple"><i class="fas fa-rocket"></i> Enroll Now — It's Affordable</a>
+        <a href="tel:+919895352624" class="btn-cta-outline ripple"><i class="fas fa-phone-alt"></i> Talk to an Advisor</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER (exact from contact page)
+═══════════════════════════════════════════ -->
+<div id="footer"></div>
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+fetch("./header.html")
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById("header").innerHTML = html;
+    initCaddNav();
+  });
+
+  fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+      document.getElementById('footer').innerHTML = data;
+  });
+</script>
+
+<script>
+function initCaddNav() {
+
+    const coursesNav = document.getElementById('coursesNav');
+    const caret = document.getElementById('coursesCaret');
+    const menu = document.getElementById('coursesMegaMenu');
+    const closeBtn = document.getElementById('closeMegaMenu');
+
+    if (!coursesNav || !caret || !menu) return;
+
+    // X BUTTON CLOSE (Desktop + Mobile)
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.remove('show');
+
+        });
+    }
+
+    // MOBILE
+    if (window.innerWidth <= 991) {
+
+        caret.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!coursesNav.contains(e.target)) {
+                menu.classList.remove('show');
+            }
+        });
+
+        return;
+    }
+
+    // DESKTOP
+    coursesNav.addEventListener('mouseenter', function () {
+        menu.classList.add('show');
+    });
+
+    coursesNav.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+
+    menu.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+}
+</script>
+
+
+<script>
+
+    document
+      .getElementById("closeMegaMenu")
+      .addEventListener("click", function () {
+    
+        document
+          .querySelector(".courses-mega-menu")
+          .classList.remove("show");
+    
+      });
+    
+    </script>
+    <script>
+
+// ─── COURSES MEGA DROPDOWN ──────────────────
+(function () {
+  const coursesNav = document.getElementById('coursesNav');
+  if (!coursesNav) return;
+  const menu = coursesNav.querySelector('.courses-mega-menu');
+  const caret = document.getElementById('coursesDropdown');
+  if (!menu) return;
+  let hideTimer;
+
+  function showMenu() {
+    clearTimeout(hideTimer);
+    const navRect = document.getElementById('mainNav').getBoundingClientRect();
+    menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    menu.classList.add('show');
+    if (caret) caret.querySelector('i').style.transform = 'rotate(180deg)';
+  }
+
+  function hideMenu() {
+    hideTimer = setTimeout(function () {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }, 120);
+  }
+
+  coursesNav.addEventListener('mouseenter', showMenu);
+  coursesNav.addEventListener('mouseleave', hideMenu);
+  menu.addEventListener('mouseenter', showMenu);
+  menu.addEventListener('mouseleave', hideMenu);
+
+  if (caret) {
+    caret.querySelector('i').style.transition = 'transform 0.25s ease';
+    caret.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (menu.classList.contains('show')) { hideMenu(); } else { showMenu(); }
+    });
+  }
+
+  document.addEventListener('click', function (e) {
+    if (!coursesNav.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }
+  });
+
+  window.addEventListener('scroll', function () {
+    if (menu.classList.contains('show')) {
+      const navRect = document.getElementById('mainNav').getBoundingClientRect();
+      menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    }
+  });
+})();
+</script>
+
+<script>
+// ── LOADER ──────────────────────────────────
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1800);
+});
+
+// ── AOS ─────────────────────────────────────
+AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });
+
+// ── NAVBAR SCROLL ────────────────────────────
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+  document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 400);
+});
+document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// ── HERO ANIMATED COUNTERS ───────────────────
+function animateCounter(el, target, suffix, duration) {
+  let start = 0; const step = target / (duration / 16);
+  const timer = setInterval(() => {
+    start += step;
+    if (start >= target) { start = target; clearInterval(timer); }
+    el.textContent = Math.floor(start).toLocaleString();
+  }, 16);
+}
+const heroObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      setTimeout(() => animateCounter(document.getElementById('cnt1'), 5000, '+', 1800), 600);
+      setTimeout(() => animateCounter(document.getElementById('cnt2'), 98, '%', 1200), 800);
+      setTimeout(() => animateCounter(document.getElementById('cnt3'), 25, '+', 1000), 1000);
+      setTimeout(() => animateCounter(document.getElementById('cnt4'), 200, '+', 1400), 700);
+    }
+  });
+}, { threshold: 0.3 });
+const heroSection = document.querySelector('.hero-section');
+if (heroSection) heroObserver.observe(heroSection);
+
+// ── WHY SECTION COUNTERS ─────────────────────
+const whyCounters = document.querySelectorAll('.why-stat-num[data-target]');
+const whyObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      whyCounters.forEach((el, i) => {
+        const target = parseInt(el.dataset.target);
+        setTimeout(() => animateCounter(el, target, '', 1500), i * 150);
+      });
+      whyObserver.disconnect();
+    }
+  });
+}, { threshold: 0.3 });
+if (whyCounters.length) whyObserver.observe(whyCounters[0].closest('section'));
+
+// ── HERO TITLE FADE IN ───────────────────────
+const heroTitle = document.getElementById('heroTitle');
+if (heroTitle) {
+  heroTitle.style.cssText = 'opacity:0;transform:translateY(30px);transition:opacity .9s ease .4s,transform .9s ease .4s;';
+  setTimeout(() => { heroTitle.style.opacity = '1'; heroTitle.style.transform = 'translateY(0)'; }, 200);
+}
+
+// ── SYLLABUS TABS ────────────────────────────
+function switchTab(moduleId, btn) {
+  document.querySelectorAll('.syl-module').forEach(m => m.classList.remove('active'));
+  document.querySelectorAll('.syl-tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(moduleId).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── LIGHTBOX ─────────────────────────────────
+function openLightbox(title, desc) {
+  document.getElementById('lightboxCaption').textContent = title;
+  document.getElementById('lightboxDesc').textContent = desc;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(e) {
+  if (!e || e.target === document.getElementById('lightbox') || e.currentTarget.tagName === 'BUTTON') {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+// ── ENROLL FORM ──────────────────────────────
+document.getElementById('enrollForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('.btn-enroll-submit');
+  const loader = btn.querySelector('.enroll-loader');
+  btn.disabled = true;
+  if (loader) loader.style.display = 'inline';
+  setTimeout(() => {
+    document.getElementById('enrollFormWrap').style.display = 'none';
+    document.getElementById('enrollSuccess').style.display = 'block';
+    btn.disabled = false;
+    if (loader) loader.style.display = 'none';
+  }, 1800);
+});
+function resetEnroll() {
+  document.getElementById('enrollFormWrap').style.display = 'block';
+  document.getElementById('enrollSuccess').style.display = 'none';
+  document.getElementById('enrollForm').reset();
+}
+
+// ── RIPPLE ───────────────────────────────────
+document.querySelectorAll('.ripple').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const r = document.createElement('span');
+    r.style.cssText = `position:absolute;border-radius:50%;background:rgba(255,255,255,.3);width:10px;height:10px;left:${e.clientX-rect.left-5}px;top:${e.clientY-rect.top-5}px;transform:scale(0);animation:rippleA .6s ease-out forwards;pointer-events:none;z-index:10;`;
+    this.appendChild(r);
+    setTimeout(() => r.remove(), 700);
+  });
+});
+const rs = document.createElement('style');
+rs.textContent = '@keyframes rippleA{to{transform:scale(30);opacity:0;}}';
+document.head.appendChild(rs);
+
+// ── MEGA DROPDOWN ────────────────────────────
+(function() {
+  const cNav = document.getElementById('coursesNav');
+  if (!cNav) return;
+  const menu = cNav.querySelector('.courses-mega-menu');
+  const caret = document.getElementById('coursesDropdown');
+  if (!menu) return;
+  let t;
+  function show() {
+    clearTimeout(t);
+    const r = document.getElementById('mainNav').getBoundingClientRect();
+    menu.style.top = (r.bottom + window.scrollY) + 'px';
+    menu.classList.add('show');
+    if (caret) caret.querySelector('i').style.transform = 'rotate(180deg)';
+  }
+  function hide() { t = setTimeout(() => { menu.classList.remove('show'); if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)'; }, 120); }
+  cNav.addEventListener('mouseenter', show);
+  cNav.addEventListener('mouseleave', hide);
+  menu.addEventListener('mouseenter', show);
+  menu.addEventListener('mouseleave', hide);
+  if (caret) {
+    caret.querySelector('i').style.transition = 'transform .25s ease';
+    caret.addEventListener('click', (e) => { e.stopPropagation(); menu.classList.contains('show') ? hide() : show(); });
+  }
+  document.addEventListener('click', (e) => { if (!cNav.contains(e.target) && !menu.contains(e.target)) { menu.classList.remove('show'); if (caret) caret.querySelector('i').style.transform = 'rotate(0)'; } });
+  window.addEventListener('scroll', () => { if (menu.classList.contains('show')) { const r = document.getElementById('mainNav').getBoundingClientRect(); menu.style.top = (r.bottom + window.scrollY) + 'px'; } });
+})();
+
+// ── SELECT LABEL FIX ─────────────────────────
+document.querySelectorAll('.form-field select').forEach(sel => {
+  sel.addEventListener('change', function() {
+    if (this.value) {
+      const lbl = this.parentElement.querySelector('label');
+      lbl.style.top = '8px'; lbl.style.transform = 'none'; lbl.style.fontSize = '.7rem'; lbl.style.color = 'var(--primary)'; lbl.style.fontWeight = '600';
+    }
+  });
+});
+</script>
+</body>
+</html>

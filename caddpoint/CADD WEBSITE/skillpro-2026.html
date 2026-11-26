@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skill Pro 2026 — CADPOINT Authorized Training Centre</title>
+  <meta name="description" content="Skill Pro 2K26 by CADPOINT Authorized Training Centre and AG NextGen Technologies: meet the toppers, prizes, colleges and gallery."/>
+
+  <!-- Same libraries as every other page of the site -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="icon" type="image/x-icon" href="assets/image/cadd-logo.webp">
+
+  <!-- Page styles (includes the shared header/footer/ticker styles used by all pages) -->
+  <style>
+/* ==== SHARED SITE CHROME (copied verbatim from existing pages so header.html / footer.html render identically) ==== */
+    :root {
+      --primary: #0B3D91;
+      --primary-light: #1565C0;
+      --primary-dark: #062a66;
+      --primary-glow: rgba(11,61,145,0.35);
+      --gold: #c8963c;
+      --gold-light: #f0b429;
+      --white: #ffffff;
+      --off-white: #fafaf8;
+      --light-gray: #F5F4F0;
+      --text-dark: #1a1a1a;
+      --text-mid: #3d3d3d;
+      --text-muted: #6b6b6b;
+      --border-light: rgba(11,61,145,0.12);
+      --glass-bg: rgba(255,255,255,0.07);
+      --glass-border: rgba(255,255,255,0.18);
+      --shadow-sm: 0 4px 20px rgba(0,0,0,0.06);
+      --shadow-md: 0 8px 40px rgba(0,0,0,0.10);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.14);
+    }
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html, body { max-width:100%; overflow-x:hidden; }
+html { scroll-behavior:smooth; }
+body { font-family:'Poppins',sans-serif; color:var(--text-dark); background:var(--white); overflow-x:hidden; }
+::-webkit-scrollbar { width:6px; }
+::-webkit-scrollbar-track { background:#f1f1f1; }
+::-webkit-scrollbar-thumb { background:var(--primary); border-radius:10px; }
+/* X CLOSE BUTTON */
+
+.mega-close-x{
+  position:absolute;
+  top:12px;
+  right:12px;
+  width:34px;
+  height:34px;
+  border:none;
+  border-radius:50%;
+  background:#fff;
+  color:#222;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:99;
+  box-shadow:0 4px 15px rgba(0,0,0,.12);
+  transition:.3s ease;
+}
+
+.mega-close-x:hover{
+  background:var(--primary);
+  color:#fff;
+  transform:rotate(90deg);
+}
+/* ═══════════════════════════════════════════
+   MOBILE DROPDOWN FIX
+═══════════════════════════════════════════ */
+
+@media (max-width: 991px) {
+
+  /* NAVBAR */
+  .navbar-collapse{
+    background:#fff;
+    padding:15px;
+    border-radius:18px;
+    margin-top:15px;
+    box-shadow:0 10px 35px rgba(0,0,0,.08);
+  }
+
+  /* COURSE NAV ITEM */
+  #coursesNav{
+    width:100%;
+  }
+
+  /* COURSE TITLE + CARET */
+  #coursesNav .d-flex{
+    width:100%;
+    justify-content:space-between;
+    align-items:center;
+  }
+
+  #coursesNav .nav-link{
+    padding:12px 0 !important;
+  }
+
+  .courses-caret{
+    padding-right:0 !important;
+  }
+
+  /* DROPDOWN MENU */
+  .courses-mega-menu{
+    position:static !important;
+    transform:none !important;
+    width:100% !important;
+    min-width:100% !important;
+    margin-top:10px !important;
+    border:none !important;
+    box-shadow:none !important;
+    border-radius:16px !important;
+    overflow:hidden;
+    background:#f8f9fb;
+  }
+
+  /* DROPDOWN INNER LAYOUT */
+  .courses-mega-menu .d-flex{
+    flex-direction:column !important;
+    gap:0 !important;
+    padding-top:0 !important;
+  }
+
+  /* EACH COLUMN */
+  .mega-col{
+    width:100% !important;
+    border-right:none !important;
+    border-bottom:1px solid rgba(0,0,0,.06);
+    padding:18px 16px !important;
+  }
+
+  .mega-col:last-child{
+    border-bottom:none;
+  }
+
+  /* HEADING */
+  .mega-col-head{
+    margin-bottom:14px;
+  }
+
+  .mega-col-title{
+    font-size:1rem;
+    font-weight:700;
+  }
+
+  .mega-col-sub{
+    font-size:.78rem;
+  }
+
+  /* ITEMS */
+  .mega-item{
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 12px;
+    border-radius:10px;
+    font-size:.92rem;
+  }
+
+  .mega-item:hover{
+    background:#fff;
+  }
+
+  /* ICON */
+  .mega-item i{
+    width:18px;
+    text-align:center;
+  }
+
+}
+
+
+    /* ── NAVBAR ── */
+    .navbar {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 2px 30px rgba(11,61,145,0.12);
+      padding: 12px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    .navbar.scrolled { padding: 8px 0; box-shadow: 0 4px 40px rgba(11,61,145,0.2); }
+    .navbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icon { width: 48px; height: 48px; flex-shrink: 0; }
+    .logo-text { line-height: 1.1; }
+    .logo-text .brand-name {
+      font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.3rem;
+      color: var(--primary); letter-spacing: 2px;
+    }
+    .logo-text .brand-sub {
+      font-size: 0.58rem; font-weight: 600; color: #666;
+      letter-spacing: 1.5px; text-transform: uppercase;
+    }
+    .navbar-nav .nav-link {
+      font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.82rem;
+      letter-spacing: 0.8px; text-transform: uppercase;
+      padding: 8px 16px !important; border-radius: 6px; transition: all 0.3s ease; position: relative;
+    }
+    .navbar-nav .nav-link:hover { color: var(--primary); }
+    .btn-nav-enroll {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white !important; padding: 8px 22px !important; border-radius: 25px !important;
+      font-weight: 700 !important; box-shadow: 0 4px 15px var(--primary-glow);
+      transition: all 0.3s ease !important;
+    }
+    .btn-nav-enroll:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--primary-glow) !important; }
+    .btn-nav-enroll::after { display: none !important; }
+
+    /* ── COURSES MEGA DROPDOWN ── */
+    #coursesNav { position: static !important; }
+    #coursesNav > div { display: flex; align-items: center; }
+    .courses-mega-menu {
+      position: fixed !important; top: auto !important; left: 50% !important;
+      transform: translateX(-50%) translateY(6px) !important;
+      width: min(960px, 96vw) !important;
+      display: block !important; opacity: 0; visibility: hidden;
+      transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+      pointer-events: none; border: none !important; border-radius: 16px !important;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.16), 0 0 0 1px rgba(11,61,145,0.1) !important;
+      padding: 0 !important;
+    }
+    .courses-mega-menu.show {
+      opacity: 1 !important; visibility: visible !important;
+      transform: translateX(-50%) translateY(0) !important; pointer-events: auto !important;
+    }
+    .mega-col {
+      flex: 1; padding: 20px 16px 20px 20px;
+      border-right: 1px solid rgba(11,61,145,0.08); background: white;
+    }
+    .mega-col:last-child { border-right: none; }
+    .mega-col-head {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 14px; padding-bottom: 12px;
+      border-bottom: 1px solid rgba(11,61,145,0.08);
+    }
+    .mega-col-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .mega-col-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.82rem;
+      color: var(--text-dark); letter-spacing: 0.4px;
+    }
+    .mega-col-sub { font-size: 0.68rem; color: #999; font-weight: 500; margin-top: 1px; }
+    .mega-item {
+      display: flex; align-items: center; gap: 8px; padding: 6px 8px;
+      border-radius: 7px; font-size: 0.8rem; font-weight: 500; color: var(--text-dark);
+      text-decoration: none; transition: background 0.15s, color 0.15s, padding-left 0.15s; margin-bottom: 2px;
+    }
+    .mega-item i { font-size: 0.72rem; width: 16px; text-align: center; color: #aaa; transition: color 0.15s; flex-shrink: 0; }
+    .mega-item:hover { background: rgba(11,61,145,0.07); color: var(--primary); padding-left: 12px; }
+    .mega-item:hover i { color: var(--primary); }
+    #coursesNav .courses-caret { color: var(--text-dark); transition: color 0.2s; }
+    #coursesNav .courses-caret:hover { color: var(--primary); }
+
+    .dropdown-menu {
+      border-radius: 10px; border: none; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .dropdown-header.text-primary { color: #0a3d62 !important; font-weight: bold; }
+    .dropdown-header.text-danger { color: #2563c9 !important; font-weight: bold; }
+    .dropdown-item:hover {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: #fff; border-radius: 5px;
+    }
+
+    /* ── TICKER ── */
+    .ticker-bar {
+      background:linear-gradient(90deg,var(--primary-dark),var(--primary),var(--primary-dark));
+      height:36px; overflow:hidden; display:flex; align-items:center; position:relative;
+    }
+    .ticker-bar::before,.ticker-bar::after {
+      content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; pointer-events:none;
+    }
+    .ticker-bar::before { left:0; background:linear-gradient(to right,var(--primary-dark),transparent); }
+    .ticker-bar::after  { right:0; background:linear-gradient(to left,var(--primary-dark),transparent); }
+    .ticker-track {
+      display:flex; animation:tickerScroll 30s linear infinite; white-space:nowrap; will-change:transform;
+    }
+    .ticker-track:hover { animation-play-state:paused; }
+    .ticker-item {
+      display:inline-flex; align-items:center; gap:8px; padding:0 28px;
+      font-size:0.72rem; font-weight:600; color:rgba(255,255,255,0.9);
+      letter-spacing:1px; text-transform:uppercase; font-family:'Montserrat',sans-serif;
+    }
+    .ticker-item i { color:var(--gold-light); font-size:0.65rem; }
+    .ticker-sep { color:rgba(255,255,255,0.3); margin:0 4px; }
+    @keyframes tickerScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0d0d0d;
+      padding: 70px 0 0;
+      color: rgba(255,255,255,0.75);
+    }
+    .footer-brand { margin-bottom: 20px; }
+    .footer-desc { font-size: 0.85rem; line-height: 1.8; color: rgba(255,255,255,0.55); margin-bottom: 22px; }
+    .footer-socials { display: flex; gap: 10px; }
+    .footer-social-btn {
+      width: 36px; height: 36px; background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.6); font-size: 0.85rem; transition: all 0.3s ease; text-decoration: none;
+    }
+    .footer-social-btn:hover { background: var(--primary); border-color: var(--primary); color: white; transform: translateY(-3px); }
+    .footer-heading {
+      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem;
+      letter-spacing: 1.5px; text-transform: uppercase; color: white;
+      margin-bottom: 20px; position: relative; padding-bottom: 10px;
+    }
+    .footer-heading::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 30px; height: 2px; background: var(--primary); border-radius: 2px;
+    }
+    .footer-links { list-style: none; padding: 0; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a {
+      color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem;
+      transition: all 0.3s ease; display: flex; align-items: center; gap: 6px;
+    }
+    .footer-links a:hover { color: var(--primary-light); padding-left: 5px; }
+    .footer-links a i { font-size: 0.65rem; color: var(--primary); }
+    .footer-contact li {
+      display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; font-size: 0.85rem;
+    }
+    .footer-contact li i { color: var(--primary-light); margin-top: 3px; flex-shrink: 0; font-size: 0.85rem; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08); padding: 22px 0;
+      margin-top: 50px; font-size: 0.8rem; color: rgba(255,255,255,0.4);
+    }
+    .footer-desc { font-size:0.86rem; color:rgba(255,255,255,0.5); line-height:1.75; margin:20px 0 24px; }
+    .footer-socials { display:flex; gap:10px; flex-wrap:wrap; }
+    .footer-social-btn {
+      width:38px; height:38px; border-radius:50%; border:1px solid rgba(255,255,255,0.12);
+      display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.5);
+      font-size:0.82rem; text-decoration:none; transition:all 0.3s ease;
+    }
+    .footer-social-btn:hover { background:var(--primary); color:white; border-color:var(--primary); transform:translateY(-3px); }
+    .footer-heading {
+      font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.85rem; color:white;
+      letter-spacing:1px; text-transform:uppercase; margin-bottom:20px;
+    }
+    .footer-links { list-style:none; padding:0; margin:0; }
+    .footer-links li { margin-bottom:10px; }
+    .footer-links a {
+      color:rgba(255,255,255,0.5); text-decoration:none; font-size:0.85rem;
+      display:flex; align-items:center; gap:7px; transition:all 0.3s ease;
+    }
+    .footer-links a:hover { color:var(--primary-light); padding-left:4px; }
+    .footer-links a i { font-size:0.65rem; color:var(--primary); flex-shrink:0; }
+    .footer-bottom {
+      margin-top:50px; padding:20px 0; border-top:1px solid rgba(255,255,255,0.06);
+      font-size:0.8rem; color:rgba(255,255,255,0.3);
+    }
+
+    /* ── BACK TO TOP ── */
+    #backToTop {
+      position:fixed; bottom:28px; right:28px; width:46px; height:46px; border-radius:50%;
+      background:linear-gradient(135deg,var(--primary),var(--primary-light));
+      color:white; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center;
+      font-size:1rem; box-shadow:0 6px 20px var(--primary-glow); z-index:999;
+      opacity:0; visibility:hidden; transform:translateY(20px); transition:all 0.3s ease;
+    }
+    #backToTop.visible { opacity:1; visibility:visible; transform:translateY(0); }
+    #backToTop:hover { transform:translateY(-3px); }
+
+/* ==== REUSED COMPONENT STYLES (same as service.html: hero orbs, badge, buttons, stats, section headers, CTA cards) ==== */
+    .hero-orb {
+      position:absolute; border-radius:50%; filter:blur(60px); pointer-events:none; opacity:0.18;
+    }
+    .hero-orb-1 { width:500px; height:500px; background:var(--gold-light); top:-100px; right:-120px; animation:floatOrb 8s ease-in-out infinite; }
+    .hero-orb-2 { width:350px; height:350px; background:white; bottom:-80px; left:-80px; animation:floatOrb 10s ease-in-out infinite reverse; }
+    @keyframes floatOrb { 0%,100%{transform:translate(0,0)} 50%{transform:translate(20px,-20px)} }
+
+    .hero-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(255,255,255,0.12); backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,0.25); border-radius:30px;
+      padding:7px 18px; font-size:0.75rem; font-weight:600; color:rgba(255,255,255,0.9);
+      text-transform:uppercase; letter-spacing:1px; font-family:'Montserrat',sans-serif;
+      margin-bottom:24px;
+    }
+    .hero-badge i { color:var(--gold-light); }
+    .hero-title {
+      font-family:'Montserrat',sans-serif; font-weight:900; font-size:clamp(2.2rem,5vw,4rem);
+      color:white; line-height:1.1; letter-spacing:-1px; margin-bottom:22px;
+    }
+    .hero-title .accent { color:var(--gold-light); position:relative; display:inline-block; }
+    /* .hero-title .accent::after {
+      content:''; position:absolute; left:0; bottom:-4px; width:100%; height:3px;
+      background:var(--gold-light); border-radius:2px;
+    } */
+    .hero-desc {
+      font-size:1.05rem; color:rgba(255,255,255,0.82); line-height:1.75;
+       /* max-width:800px;   */
+       
+       margin-bottom:36px;
+    }
+    .hero-btns { display:flex; flex-wrap:wrap; gap:14px; }
+    .btn-hero-primary {
+      background:linear-gradient(135deg,var(--gold),var(--gold-light));
+      color:var(--primary-dark); font-family:'Montserrat',sans-serif; font-weight:800;
+      font-size:0.9rem; letter-spacing:0.5px; padding:14px 34px; border-radius:30px;
+      border:none; cursor:pointer; transition:all 0.3s ease; display:inline-flex; align-items:center; gap:8px;
+      text-decoration:none; box-shadow:0 6px 25px rgba(200,150,60,0.4);
+    }
+    .btn-hero-primary:hover { transform:translateY(-3px); box-shadow:0 12px 35px rgba(200,150,60,0.5); color:var(--primary-dark); }
+    .btn-hero-outline {
+      border:2px solid rgba(255,255,255,0.5); color:white; font-family:'Montserrat',sans-serif;
+      font-weight:700; font-size:0.9rem; padding:12px 30px; border-radius:30px;
+      background:transparent; cursor:pointer; transition:all 0.3s ease;
+      display:inline-flex; align-items:center; gap:8px; text-decoration:none;
+    }
+    .btn-hero-outline:hover { background:rgba(255,255,255,0.12); border-color:white; color:white; transform:translateY(-2px); }
+
+    .hero-stats {
+      display:flex; flex-wrap:wrap; gap:24px; margin-top:50px; padding-top:40px;
+      border-top:1px solid rgba(255,255,255,0.15);
+    }
+    .hero-stat-item { text-align:center; }
+    .hero-stat-num {
+      font-family:'Montserrat',sans-serif; font-weight:900; font-size:2rem;
+      color:var(--gold-light); display:block; line-height:1;
+    }
+    .hero-stat-lbl { font-size:0.72rem; color:rgba(255,255,255,0.65); text-transform:uppercase; letter-spacing:1px; margin-top:4px; }
+
+    /* ── SECTION HEADERS ── */
+    .section-tag {
+      display:inline-flex; align-items:center; gap:7px;
+      border:1px solid var(--border-light); border-radius:20px;
+      padding:6px 16px; font-size:0.72rem; font-weight:700; color:var(--primary);
+      letter-spacing:1px; text-transform:uppercase; font-family:'Montserrat',sans-serif;
+      background:rgba(11,61,145,0.05); margin-bottom:14px;
+    }
+    .section-title {
+      font-family:'Montserrat',sans-serif; font-weight:900;
+      font-size:clamp(1.7rem,3.5vw,2.8rem); color:var(--text-dark); line-height:1.2;
+      margin-bottom:16px; letter-spacing:-0.5px;
+    }
+    .section-title span { color:var(--primary); }
+    .section-subtitle { font-size:1rem; color:var(--text-muted); max-width:560px; line-height:1.7; }
+    .section-divider {
+      width:60px; height:4px; background:linear-gradient(90deg,var(--primary),var(--gold));
+      border-radius:2px; margin:20px 0;
+    }
+    .section-divider.center { margin:20px auto; }
+
+    /* ── CONTACT CTA ── */
+    .contact-cta { padding:100px 0; background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 50%,#2563c9 100%); position:relative; overflow:hidden; }
+    .contact-cta::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(ellipse at 70% 50%, rgba(200,150,60,0.15) 0%, transparent 60%);
+    }
+    .cta-title {
+      font-family:'Montserrat',sans-serif; font-weight:900; font-size:clamp(1.8rem,4vw,3rem);
+      color:white; line-height:1.2; margin-bottom:16px;
+    }
+    .cta-title span { color:var(--gold-light); }
+    .cta-sub { font-size:1rem; color:rgba(255,255,255,0.78); margin-bottom:36px; max-width:480px; }
+    .cta-cards { display:flex; flex-wrap:wrap; gap:16px; }
+    .cta-info-card {
+      background:rgba(255,255,255,0.10); backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,0.2); border-radius:14px; padding:18px 22px;
+      display:flex; align-items:center; gap:14px; flex:1; min-width:200px; transition:all 0.3s ease;
+    }
+    .cta-info-card:hover { background:rgba(255,255,255,0.15); transform:translateY(-3px); }
+    .cta-info-card i { font-size:1.3rem; color:var(--gold-light); flex-shrink:0; }
+    .cta-info-card-text span { display:block; font-size:0.72rem; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:1px; font-family:'Montserrat',sans-serif; font-weight:600; }
+    .cta-info-card-text strong { font-family:'Montserrat',sans-serif; font-size:0.9rem; color:white; font-weight:700; }
+
+/* ==========================================================================
+   SKILL PRO 2026 — page-specific styles (all selectors prefixed "sp-")
+   Uses the site's existing tokens: --primary, --gold, Montserrat / Poppins.
+   ========================================================================== */
+
+.sp-section { padding: 96px 0; position: relative; }
+.sp-section.alt { background: var(--off-white); }
+.sp-head { max-width: 680px; margin: 0 auto 56px; text-align: center; }
+.sp-head .section-subtitle { margin: 0 auto; }
+.sp-head-left { max-width: 620px; margin-bottom: 36px; }
+.sp-head-left .section-divider { margin: 18px 0; }
+
+/* ---------- HERO ---------- */
+.sp-hero {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 45%, #2563c9 80%, var(--primary-dark) 100%);
+  position: relative; overflow: hidden; padding: 72px 0 84px;
+}
+.sp-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='1' fill='rgba(255,255,255,0.06)'/%3E%3C/svg%3E") repeat;
+}
+.sp-hero .container { position: relative; z-index: 1; }
+.sp-hero .hero-title { font-size: clamp(2.6rem, 7vw, 5rem); margin-bottom: 18px; }
+.sp-tagline {
+  font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: clamp(1.05rem, 2.2vw, 1.4rem);
+  color: var(--gold-light); margin-bottom: 16px; line-height: 1.4;
+}
+.sp-hero .hero-desc { max-width: 560px; margin-bottom: 30px; }
+.sp-hero .hero-stats { margin-top: 40px; padding-top: 30px; gap: 20px 36px; }
+.sp-hero .hero-stat-num { font-size: clamp(1.5rem, 3vw, 2rem); }
+.sp-hero .hero-stat-item { text-align: left; }
+
+.sp-poster-wrap { display: flex; justify-content: center; }
+.sp-poster-frame {
+  position: relative; width: 100%; max-width: 400px;
+  background: rgba(255,255,255,0.10); backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.22); border-radius: 22px; padding: 14px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+  transition: transform .4s ease;
+}
+.sp-poster-frame:hover { transform: translateY(-6px); }
+.sp-poster-frame img { display: block; width: 100%; height: auto; border-radius: 14px; }
+.sp-poster-frame .sp-zoom {
+  position: absolute; right: 26px; bottom: 26px; width: 42px; height: 42px; border-radius: 50%;
+  background: rgba(255,255,255,0.95); color: var(--primary); border: none;
+  display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0,0,0,.25);
+  transition: transform .25s ease, background .25s ease, color .25s ease; cursor: zoom-in;
+}
+.sp-poster-frame .sp-zoom:hover { background: var(--primary); color: #fff; transform: scale(1.08); }
+.sp-poster-caption {
+  text-align: center; margin-top: 14px; font-size: .74rem; color: rgba(255,255,255,0.7);
+  font-family: 'Montserrat', sans-serif; font-weight: 600; letter-spacing: .8px;
+}
+
+/* ---------- ABOUT + AT A GLANCE ---------- */
+.sp-about p { color: var(--text-mid); line-height: 1.85; margin-bottom: 16px; font-size: 1rem; max-width: 62ch; }
+.sp-glance {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  border-radius: 22px; padding: 34px 30px; color: #fff; box-shadow: var(--shadow-lg);
+  position: relative; overflow: hidden;
+}
+.sp-glance::after {
+  content: ''; position: absolute; width: 260px; height: 260px; border-radius: 50%;
+  background: var(--gold-light); opacity: .12; filter: blur(50px); right: -80px; top: -80px; pointer-events: none;
+}
+.sp-glance h3 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.15rem; margin-bottom: 20px; }
+.sp-glance dl { margin: 0; position: relative; z-index: 1; }
+.sp-glance-row { display: flex; gap: 14px; padding: 14px 0; border-top: 1px solid rgba(255,255,255,0.14); }
+.sp-glance-row:first-of-type { border-top: none; padding-top: 0; }
+.sp-glance-row i { color: var(--gold-light); width: 20px; text-align: center; margin-top: 4px; flex-shrink: 0; }
+.sp-glance dt { font-family: 'Montserrat', sans-serif; font-size: .7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,.62); margin-bottom: 3px; }
+.sp-glance dd { margin: 0; font-size: .93rem; line-height: 1.55; color: #fff; }
+.sp-glance dd a { color: var(--gold-light); text-decoration: underline; text-underline-offset: 3px; }
+.sp-glance dd a:hover { color: #fff; }
+
+/* ---------- HIGHLIGHT CARDS ---------- */
+.sp-card {
+  background: #fff; border-radius: 20px; padding: 32px 26px; height: 100%;
+  border: 1px solid rgba(0,0,0,0.06); box-shadow: var(--shadow-sm);
+  position: relative; overflow: hidden; transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+.sp-card::before {
+  content: ''; position: absolute; left: 0; top: 0; width: 100%; height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--gold)); transform: scaleX(0); transform-origin: left; transition: transform .4s ease;
+}
+.sp-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: var(--border-light); }
+.sp-card:hover::before { transform: scaleX(1); }
+.sp-icon {
+  width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center;
+  background: rgba(11,61,145,0.08); color: var(--primary); font-size: 1.35rem; margin-bottom: 20px;
+  transition: background .3s ease, color .3s ease;
+}
+.sp-card:hover .sp-icon { background: var(--primary); color: #fff; }
+.sp-card h3 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.05rem; color: var(--text-dark); margin-bottom: 10px; line-height: 1.35; }
+.sp-card p { font-size: .9rem; color: var(--text-muted); line-height: 1.7; margin: 0; }
+
+/* ---------- TOPPERS PODIUM ---------- */
+.sp-topper {
+  background: #fff; border-radius: 22px; overflow: hidden; height: 100%;
+  border: 1px solid rgba(0,0,0,0.06); box-shadow: var(--shadow-sm);
+  display: flex; flex-direction: column; transition: transform .35s ease, box-shadow .35s ease;
+}
+.sp-topper:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.sp-topper.first { border: 2px solid var(--gold); box-shadow: 0 16px 50px rgba(200,150,60,.28); }
+.sp-topper-media { position: relative; display: block; width: 100%; padding: 0; border: 0; background: #eef2fb; cursor: zoom-in; }
+.sp-topper-media img { display: block; width: 100%; height: auto; }
+.sp-rank {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: #fff;
+  font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: .78rem; padding: 6px 14px; border-radius: 30px;
+  display: inline-flex; align-items: center; gap: 7px; margin-bottom: 14px;
+}
+.sp-topper.first .sp-rank { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--primary-dark); }
+.sp-topper-body { padding: 24px 24px 26px; flex: 1; }
+.sp-topper-body h3 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.25rem; margin-bottom: 4px; color: var(--text-dark); }
+.sp-topper-meta { font-size: .86rem; color: var(--primary); font-weight: 600; margin-bottom: 10px; }
+.sp-topper-college { font-size: .88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
+.sp-prize {
+  display: inline-flex; align-items: baseline; gap: 8px; background: rgba(11,61,145,0.06); border: 1px solid var(--border-light);
+  border-radius: 14px; padding: 8px 16px;
+}
+.sp-prize strong { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.35rem; color: var(--primary); }
+.sp-prize span { font-size: .75rem; color: var(--text-muted); font-weight: 600; }
+@media (min-width: 992px) {
+  .sp-podium .sp-col-1 { order: 2; }
+  .sp-podium .sp-col-2 { order: 1; }
+  .sp-podium .sp-col-3 { order: 3; }
+  .sp-podium .sp-col-1 .sp-topper { transform: translateY(-18px); }
+  .sp-podium .sp-col-1 .sp-topper:hover { transform: translateY(-24px); }
+}
+
+/* ---------- COLLEGES ---------- */
+.sp-college-top { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.sp-college-top .sp-icon { margin: 0; flex-shrink: 0; }
+.sp-college h3 { margin: 0; font-size: 1rem; }
+.sp-facts { list-style: none; padding: 0; margin: 0; }
+.sp-facts li { display: flex; gap: 10px; padding: 10px 0; border-top: 1px solid rgba(0,0,0,0.06); font-size: .87rem; color: var(--text-mid); line-height: 1.5; }
+.sp-facts li i { color: var(--primary); width: 16px; text-align: center; margin-top: 3px; flex-shrink: 0; }
+.sp-facts li b { font-weight: 600; color: var(--text-dark); }
+.sp-organiser {
+  margin-top: 40px; background: #fff; border-radius: 20px; border: 1px solid var(--border-light);
+  padding: 28px 30px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap; box-shadow: var(--shadow-sm);
+}
+.sp-organiser img { height: 54px; width: auto; }
+.sp-organiser h3 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.05rem; margin-bottom: 4px; }
+.sp-organiser p { margin: 0; font-size: .9rem; color: var(--text-muted); line-height: 1.65; max-width: 62ch; }
+
+/* ---------- PROGRAMMES ---------- */
+.sp-why {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: #fff; border-radius: 22px; padding: 34px 30px; height: 100%; box-shadow: var(--shadow-lg);
+}
+.sp-why { display: flex; flex-direction: column; justify-content: center; }
+.sp-why h3 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.2rem; margin-bottom: 20px; }
+.sp-why ul { list-style: none; padding: 0; margin: 0; }
+.sp-why li { display: flex; gap: 12px; padding: 9px 0; font-size: .95rem; line-height: 1.5; }
+.sp-why li i { color: var(--gold-light); margin-top: 4px; flex-shrink: 0; }
+.sp-course { padding: 24px 22px; }
+.sp-course h3 { font-size: .95rem; display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.sp-course h3 i { color: var(--primary); font-size: 1rem; width: 20px; text-align: center; }
+.sp-chips { display: flex; flex-wrap: wrap; gap: 7px; list-style: none; padding: 0; margin: 0; }
+.sp-chips li {
+  font-size: .76rem; font-weight: 500; color: var(--text-mid); background: var(--light-gray);
+  border: 1px solid rgba(0,0,0,0.05); border-radius: 20px; padding: 5px 12px; transition: all .25s ease;
+}
+.sp-chips li:hover { background: rgba(11,61,145,0.08); color: var(--primary); border-color: var(--border-light); }
+
+/* ---------- GALLERY ---------- */
+.sp-gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; align-items: start; }
+.sp-g-item {
+  position: relative; display: block; width: 100%; min-width: 0; padding: 0; border: 0; background: #eef2fb; border-radius: 18px; overflow: hidden;
+  box-shadow: var(--shadow-sm); cursor: zoom-in; text-align: left; transition: transform .35s ease, box-shadow .35s ease;
+}
+.sp-g-item img { display: block; width: 100%; height: auto; transition: transform .5s ease; }
+.sp-g-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+.sp-g-item:hover img { transform: scale(1.03); }
+.sp-g-cap {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 16px 14px;
+  background: linear-gradient(to top, rgba(0,20,60,0.88), transparent); color: #fff;
+  font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: .8rem; line-height: 1.35;
+  display: flex; justify-content: space-between; align-items: flex-end; gap: 10px;
+  opacity: 0; transform: translateY(8px); transition: opacity .3s ease, transform .3s ease;
+}
+.sp-g-item:hover .sp-g-cap, .sp-g-item:focus-visible .sp-g-cap { opacity: 1; transform: none; }
+@media (hover: none) { .sp-g-cap { opacity: 1; transform: none; } }
+
+/* ---------- NEXT EDITION / REGISTER ---------- */
+.contact-cta { padding: 96px 0; }
+.contact-cta .container { position: relative; z-index: 1; }
+.sp-next-poster { max-width: 340px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,.4); border: 1px solid rgba(255,255,255,.25); }
+.sp-next-poster img { display: block; width: 100%; height: auto; }
+.sp-next-list { list-style: none; padding: 0; margin: 0 0 30px; }
+.sp-next-list li { display: flex; gap: 12px; color: rgba(255,255,255,.88); font-size: .98rem; padding: 6px 0; line-height: 1.5; }
+.sp-next-list li i { color: var(--gold-light); margin-top: 5px; flex-shrink: 0; }
+.cta-info-card { text-decoration: none; }
+.sp-note { font-size: .76rem; color: rgba(255,255,255,.6); margin-top: 18px; }
+
+/* ---------- LIGHTBOX ---------- */
+.sp-lb {
+  position: fixed; inset: 0; z-index: 10000; background: rgba(0,10,30,0.92); backdrop-filter: blur(6px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 56px 64px 24px;
+  opacity: 0; visibility: hidden; transition: opacity .25s ease, visibility .25s ease;
+}
+.sp-lb.open { opacity: 1; visibility: visible; }
+.sp-lb-img { max-width: 100%; max-height: calc(100vh - 100px); width: auto; height: auto; object-fit: contain; border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+
+/* .sp-lb-img { max-width: 100%; max-height: calc(100vh - 150px); width: auto; height: auto; object-fit: contain; border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,.5); } */
+.sp-lb-cap { margin-top: 14px; color: rgba(255,255,255,.85); font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: .85rem; text-align: center; }
+.sp-lb-btn {
+  position: absolute; width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(255,255,255,.3);
+  background: rgba(255,255,255,.1); color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .25s ease, transform .25s ease;
+}
+.sp-lb-btn:hover { background: var(--primary); }
+.sp-lb-close { top: 14px; right: 14px; }
+.sp-lb-close:hover { transform: rotate(90deg); }
+.sp-lb-prev { left: 12px; top: 50%; margin-top: -23px; }
+.sp-lb-next { right: 12px; top: 50%; margin-top: -23px; }
+body.sp-lb-lock { overflow: hidden; }
+
+/* ---------- FOCUS ---------- */
+.sp-section a:focus-visible, .sp-section button:focus-visible, .sp-hero a:focus-visible, .sp-hero button:focus-visible,
+.contact-cta a:focus-visible, .sp-lb-btn:focus-visible { outline: 3px solid var(--gold-light); outline-offset: 3px; }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 1199px) { .sp-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 991px) {
+  .sp-section, .contact-cta { padding: 72px 0; }
+  .sp-hero { padding: 48px 0 64px; }
+  .sp-hero .hero-desc, .sp-hero .sp-tagline { max-width: none; }
+  .sp-poster-frame { max-width: 340px; }
+  .sp-head { margin-bottom: 40px; }
+  .sp-podium .sp-topper { max-width: 460px; margin-left: auto; margin-right: auto; }
+}
+@media (max-width: 575px) {
+  .sp-section, .contact-cta { padding: 56px 0; }
+  .sp-gallery { grid-template-columns: minmax(0, 1fr); max-width: 420px; margin: 0 auto; }
+  .sp-hero .hero-btns a { width: 100%; justify-content: center; }
+  .sp-glance, .sp-why { padding: 26px 20px; }
+  .sp-organiser { padding: 22px 20px; gap: 16px; }
+  .cta-info-card { min-width: 100%; }
+  .sp-lb { padding: 56px 12px 20px; }
+  .sp-lb-prev { left: 6px; } .sp-lb-next { right: 6px; }
+  .sp-lb-btn { width: 40px; height: 40px; background: rgba(0,0,0,.45); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .ticker-track { animation: none; }
+  .hero-orb { animation: none !important; }
+  .sp-card, .sp-topper, .sp-g-item, .sp-poster-frame, .sp-g-item img { transition: none !important; }
+}
+
+
+
+/* 
+gallery section css */
+
+/* ==========================================================
+   GALLERY: 2 images per row, full image visible (no cropping)
+   ========================================================== */
+
+/* Keeps tiles a comfortable size on large screens */
+/* ==========================================================
+   GALLERY: 438 x 236 images, 2 per row, responsive
+   ========================================================== */
+
+/* Wrapper: 2 tiles x 438px + 24px gap = 900px max */
+.sp-gallery-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Image tile (the clickable button) */
+.sp-g-item {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 438px;
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  background: #eef2fb;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  cursor: zoom-in;
+  text-align: left;
+  aspect-ratio: 438 / 236;
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+/* Image fills the tile */
+.sp-g-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform .5s ease;
+}
+
+.sp-g-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+.sp-g-item:hover img {
+  transform: scale(1.03);
+}
+
+/* Caption overlay */
+.sp-g-cap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 36px 14px 12px;
+  background: linear-gradient(to top, rgba(0, 20, 60, 0.88), transparent);
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: .8rem;
+  line-height: 1.35;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .3s ease, transform .3s ease;
+}
+.sp-g-item:hover .sp-g-cap,
+.sp-g-item:focus-visible .sp-g-cap {
+  opacity: 1;
+  transform: none;
+}
+
+/* Touch devices have no hover, so always show the caption */
+@media (hover: none) {
+  .sp-g-cap {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Keyboard focus */
+.sp-g-item:focus-visible {
+  outline: 3px solid var(--gold-light);
+  outline-offset: 3px;
+}
+
+/* Tablets */
+@media (max-width: 991px) {
+  .sp-gallery-wrap { max-width: 720px; }
+}
+
+/* Phones */
+@media (max-width: 575px) {
+  .sp-g-item { border-radius: 10px; }
+  .sp-g-cap {
+    font-size: .62rem;
+    padding: 20px 6px 6px;
+  }
+  .sp-g-cap i { display: none; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .sp-g-item,
+  .sp-g-item img {
+    transition: none !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- BACK TO TOP -->
+<button id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+<!-- HEADER (loaded from header.html, same method as the other pages) -->
+<div id="header"></div>
+
+<!-- TICKER -->
+<div class="ticker-bar" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack">
+    <div class="ticker-item"><i class="fas fa-trophy"></i> Skill Pro 2K26 Toppers <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-medal"></i> 1st Prize ₹25,000 <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-medal"></i> 2nd Prize ₹20,000 <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-medal"></i> 3rd Prize ₹15,000 <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-graduation-cap"></i> CADPOINT × AG NextGen Technologies <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-trophy"></i> Skill Pro 2K26 Toppers <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-medal"></i> 1st Prize ₹25,000 <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-medal"></i> 2nd Prize ₹20,000 <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-medal"></i> 3rd Prize ₹15,000 <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-graduation-cap"></i> CADPOINT × AG NextGen Technologies <span class="ticker-sep">◆</span></div>
+  </div>
+</div>
+
+<main>
+
+<!-- ============================ HERO ============================ -->
+<section class="sp-hero" id="top">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="container">
+    <div class="row align-items-center gy-5">
+
+      <div class="col-lg-7">
+        <div class="hero-badge"><i class="fas fa-award"></i> CADPOINT × AG NextGen Technologies</div>
+        <h1 class="hero-title">SKILL PRO <span class="accent">2026</span></h1>
+        <p class="sp-tagline">Celebrating the engineering students who topped Skill Pro 2K26.</p>
+        <p class="hero-desc">
+          Skill Pro 2K26 is presented by CADPOINT Authorized Training Centre with AG NextGen Technologies.
+          Three engineering students from three colleges took the top places and received cash prizes,
+          prize cheques, certificates and trophies.
+        </p>
+        <div class="hero-btns">
+          <a href="#toppers" class="btn-hero-primary"><i class="fas fa-trophy"></i> Meet the toppers</a>
+          <a href="index-poster.html" class="btn-hero-outline"><i class="fas fa-pen-to-square"></i> Register for Skill Pro 2K27</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat-item"><span class="hero-stat-num">₹25,000</span><div class="hero-stat-lbl">1st prize</div></div>
+          <div class="hero-stat-item"><span class="hero-stat-num">₹20,000</span><div class="hero-stat-lbl">2nd prize</div></div>
+          <div class="hero-stat-item"><span class="hero-stat-num">₹15,000</span><div class="hero-stat-lbl">3rd prize</div></div>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="sp-poster-wrap">
+          <div>
+            <div class="sp-poster-frame">
+              <img src="assets/image/course-details.jpeg" width="1136" height="1600"
+                   alt="Skill Pro 2K26 poster showing CADPOINT courses and the three toppers: Sabin, Ashlin F and Shebin Bennichen">
+              <!-- <button type="button" class="sp-zoom" data-lb="assets/image/course-details.jpeg" aria-label="View the poster full size"><i class="fas fa-magnifying-glass-plus"></i></button> -->
+            </div>
+            <!-- <div class="sp-poster-caption">SKILL PRO 2K26 TOPPERS POSTER</div> -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ ABOUT + AT A GLANCE ============================ -->
+<section class="sp-section" id="about">
+  <div class="container">
+    <div class="row gy-5 align-items-center">
+      <div class="col-lg-6 sp-about" data-aos="fade-up">
+        <span class="section-tag"><i class="fas fa-circle-info"></i> About</span>
+        <h2 class="section-title">About <span>Skill Pro 2026</span></h2>
+        <div class="section-divider"></div>
+        <p>
+          Skill Pro 2K26 is an event by CADPOINT Authorized Training Centre, together with AG NextGen Technologies,
+          that recognises top-performing engineering students. The “SkillPro Toppers 2K26” are the three students
+          who finished first, second and third.
+        </p>
+        <p>
+          Each topper received a cash prize, a prize cheque, a certificate and a trophy. The toppers study
+          Electrical and Electronics Engineering and Civil Engineering at three different colleges.
+        </p>
+        <div class="hero-btns mt-4">
+          <a href="#toppers" class="btn-hero-primary"><i class="fas fa-trophy"></i> See the toppers</a>
+          <!-- <a href="#gallery" class="btn-hero-outline" style="color:var(--primary);border-color:var(--primary);"><i class="fas fa-images"></i> Open the gallery</a> -->
+        </div>
+      </div>
+
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100" id="details">
+        <div class="sp-glance">
+          <h3>Event at a glance</h3>
+          <dl>
+            <div class="sp-glance-row"><i class="fas fa-flag-checkered"></i><div><dt>Event</dt><dd>Skill Pro 2K26 (Skill Pro 2026)</dd></div></div>
+            <div class="sp-glance-row"><i class="fas fa-building-columns"></i><div><dt>Presented by</dt><dd>CADPOINT Authorized Training Centre and AG NextGen Technologies</dd></div></div>
+            <div class="sp-glance-row"><i class="fas fa-trophy"></i><div><dt>Results</dt><dd>SkillPro Toppers 2K26: first, second and third place</dd></div></div>
+            <div class="sp-glance-row"><i class="fas fa-indian-rupee-sign"></i><div><dt>Cash prizes</dt><dd>1st ₹25,000, 2nd ₹20,000, 3rd ₹15,000</dd></div></div>
+            <div class="sp-glance-row"><i class="fas fa-calendar-days"></i><div><dt>Date and venue</dt><dd>Not listed on the Skill Pro 2K26 poster. <a href="contact3.html">Contact CADPOINT</a> for details.</dd></div></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ HIGHLIGHTS ============================ -->
+<section class="sp-section alt" id="highlights">
+  <div class="container">
+    <div class="sp-head" data-aos="fade-up">
+      <span class="section-tag"><i class="fas fa-star"></i> Event highlights</span>
+      <h2 class="section-title">Skill Pro 2K26 <span>highlights</span></h2>
+      <div class="section-divider center"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3" data-aos="fade-up">
+        <div class="sp-card">
+          <div class="sp-icon"><i class="fas fa-indian-rupee-sign"></i></div>
+          <h3>₹60,000 in cash prizes</h3>
+          <p>Awarded across the first, second and third places: ₹25,000, ₹20,000 and ₹15,000.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="80">
+        <div class="sp-card">
+          <div class="sp-icon"><i class="fas fa-award"></i></div>
+          <h3>Cheque, certificate and trophy</h3>
+          <p>Every topper received a prize cheque, a certificate and a trophy from CADPOINT.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="160">
+        <div class="sp-card">
+          <div class="sp-icon"><i class="fas fa-bolt"></i></div>
+          <h3>Two departments</h3>
+          <p>Two Electrical and Electronics Engineering students and one Civil Engineering student made the top three.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="240">
+        <div class="sp-card">
+          <div class="sp-icon"><i class="fas fa-building-columns"></i></div>
+          <h3>Three colleges</h3>
+          <p>St. Xavier’s Catholic College of Engineering, Rohini College of Engineering &amp; Technology and Mar Ephraem College of Engineering &amp; Technology.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ TOPPERS ============================ -->
+<section class="sp-section" id="toppers">
+  <div class="container">
+    <div class="sp-head" data-aos="fade-up">
+      <span class="section-tag"><i class="fas fa-trophy"></i> SkillPro Toppers 2K26</span>
+      <h2 class="section-title">Meet the <span>toppers</span></h2>
+      <div class="section-divider center"></div>
+      <p class="section-subtitle">Congratulations to the three students who took the top places. Select a photo to view it full size.</p>
+    </div>
+
+    <div class="row g-4 sp-podium">
+
+      <div class="col-lg-4 sp-col-1" data-aos="fade-up">
+        <article class="sp-topper first">
+          <button type="button" class="sp-topper-media" data-lb="assets/image/img2.jpeg" aria-label="View Sabin’s first place photo full size">
+            <img src="assets/image/img2.jpeg" width="1023" height="1410" loading="lazy"
+                 alt="Sabin, first place at SkillPro Toppers 2K26, holding a ₹25,000 prize cheque, certificate and trophy">
+          </button>
+          <div class="sp-topper-body">
+            <span class="sp-rank"><i class="fas fa-crown"></i> 1st place</span>
+            <h3>Sabin</h3>
+            <div class="sp-topper-meta">EEE, Final Year</div>
+            <p class="sp-topper-college">St. Xavier’s Catholic College of Engineering (Autonomous), Chunkankadai</p>
+            <div class="sp-prize"><strong>₹25,000</strong><span>Cash prize</span></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-lg-4 sp-col-2" data-aos="fade-up" data-aos-delay="100">
+        <article class="sp-topper">
+          <button type="button" class="sp-topper-media" data-lb="assets/image/img3.jpeg" aria-label="View Ashlin F’s second place photo full size">
+            <img src="assets/image/img3.jpeg" width="1023" height="1419" loading="lazy"
+                 alt="Ashlin F, second place at SkillPro Toppers 2K26, holding a ₹20,000 prize cheque, certificate and trophy">
+          </button>
+          <div class="sp-topper-body">
+            <span class="sp-rank"><i class="fas fa-medal"></i> 2nd place</span>
+            <h3>Ashlin F</h3>
+            <div class="sp-topper-meta">EEE, 3rd Year</div>
+            <p class="sp-topper-college">Rohini College of Engineering &amp; Technology</p>
+            <div class="sp-prize"><strong>₹20,000</strong><span>Cash prize</span></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-lg-4 sp-col-3" data-aos="fade-up" data-aos-delay="200">
+        <article class="sp-topper">
+          <button type="button" class="sp-topper-media" data-lb="assets/image/img4.jpeg" aria-label="View Shebin Bennichen’s third place photo full size">
+            <img src="assets/image/img4.jpeg" width="1020" height="1428" loading="lazy"
+                 alt="Shebin Bennichen, third place at SkillPro Toppers 2K26, holding a ₹15,000 prize cheque, certificate and trophy">
+          </button>
+          <div class="sp-topper-body">
+            <span class="sp-rank"><i class="fas fa-medal"></i> 3rd place</span>
+            <h3>Shebin Bennichen</h3>
+            <div class="sp-topper-meta">Civil Engineering, Final Year</div>
+            <p class="sp-topper-college">Mar Ephraem College of Engineering &amp; Technology, Elavuvilai</p>
+            <div class="sp-prize"><strong>₹15,000</strong><span>Cash prize</span></div>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ COLLEGES & DEPARTMENTS ============================ -->
+<section class="sp-section alt" id="colleges">
+  <div class="container">
+    <div class="sp-head" data-aos="fade-up">
+      <span class="section-tag"><i class="fas fa-building-columns"></i> College and department information</span>
+      <h2 class="section-title">Colleges and <span>departments</span></h2>
+      <div class="section-divider center"></div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up">
+        <div class="sp-card sp-college">
+          <div class="sp-college-top"><div class="sp-icon"><i class="fas fa-school"></i></div><h3>St. Xavier’s Catholic College of Engineering (Autonomous)</h3></div>
+          <ul class="sp-facts">
+            <li><i class="fas fa-location-dot"></i><span><b>Location:</b> Chunkankadai</span></li>
+            <li><i class="fas fa-bolt"></i><span><b>Department:</b> Electrical and Electronics Engineering (EEE)</span></li>
+            <li><i class="fas fa-user-graduate"></i><span><b>Topper:</b> Sabin, Final Year</span></li>
+            <li><i class="fas fa-trophy"></i><span><b>Result:</b> 1st place, ₹25,000</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="sp-card sp-college">
+          <div class="sp-college-top"><div class="sp-icon"><i class="fas fa-school"></i></div><h3>Rohini College of Engineering &amp; Technology</h3></div>
+          <ul class="sp-facts">
+            <li><i class="fas fa-bolt"></i><span><b>Department:</b> Electrical and Electronics Engineering (EEE)</span></li>
+            <li><i class="fas fa-user-graduate"></i><span><b>Topper:</b> Ashlin F, 3rd Year</span></li>
+            <li><i class="fas fa-medal"></i><span><b>Result:</b> 2nd place, ₹20,000</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="sp-card sp-college">
+          <div class="sp-college-top"><div class="sp-icon"><i class="fas fa-school"></i></div><h3>Mar Ephraem College of Engineering &amp; Technology</h3></div>
+          <ul class="sp-facts">
+            <li><i class="fas fa-location-dot"></i><span><b>Location:</b> Elavuvilai</span></li>
+            <li><i class="fas fa-helmet-safety"></i><span><b>Department:</b> Civil Engineering</span></li>
+            <li><i class="fas fa-user-graduate"></i><span><b>Topper:</b> Shebin Bennichen, Final Year</span></li>
+            <li><i class="fas fa-medal"></i><span><b>Result:</b> 3rd place, ₹15,000</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sp-organiser" data-aos="fade-up">
+      <img src="assets/image/cadd-logo.webp" width="162" height="54" alt="CADPOINT Authorized Training Centre" loading="lazy">
+      <div>
+        <h3>Presented by CADPOINT and AG NextGen Technologies</h3>
+        <p>CADPOINT is an ISO 9001 certified Authorized Training Centre offering Civil, Mechanical, Electrical and IT courses, with internships, academic projects and placement assistance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- gallery section code -->
+ <!-- ============================ GALLERY ============================ -->
+<section class="sp-section alt" id="gallery">
+  <div class="container">
+
+    <div class="sp-head" data-aos="fade-up">
+      <span class="section-tag"><i class="fas fa-images"></i> Image gallery</span>
+      <h2 class="section-title">Skill Pro 2K26 <span>gallery</span></h2>
+      <div class="section-divider center"></div>
+      <p class="section-subtitle">Select any image to view it full size.</p>
+    </div>
+
+    <div class="sp-gallery-wrap">
+      <!-- Keep id="spGallery" and class="sp-g-item": the lightbox script uses them -->
+      <div class="row g-2 g-md-4 align-items-start" id="spGallery">
+
+        <!-- Row 1 -->
+        <div class="col-6" data-aos="fade-up">
+          <button type="button" class="sp-g-item"
+                  data-full="assets/image/gallery/team1.jpeg"
+                  
+                  aria-label="Open Skill Pro 2K26 toppers poster">
+            <img src="assets/image/gallery/team1.jpeg" loading="lazy" decoding="async"
+                 alt="Skill Pro 2K26 toppers poster">
+          
+          </button>
+        </div>
+
+        <div class="col-6" data-aos="fade-up" data-aos-delay="80">
+          <button type="button" class="sp-g-item"
+                  data-full="assets/image/gallery/boys-team.jpeg"
+                 
+                  aria-label="Open 1st place photo of Sabin">
+            <img src="assets/image/gallery/boys-team.jpeg" loading="lazy" decoding="async"
+                 alt="Sabin with the first place cheque, certificate and trophy">
+          </button>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="col-6" data-aos="fade-up">
+          <button type="button" class="sp-g-item"
+                  data-full="assets/image/gallery/team2.jpeg"
+                  
+                  aria-label="Open 2nd place photo of Ashlin F">
+            <img src="assets/image/gallery/team2.jpeg" loading="lazy" decoding="async"
+                 alt="Ashlin F with the second place cheque, certificate and trophy">
+          </button>
+        </div>
+
+        
+        <div class="col-6" data-aos="fade-up" data-aos-delay="80">
+          <!-- Replace the path, caption and alt text with your 6th image -->
+          <button type="button" class="sp-g-item"
+                  data-full="assets/image/gallery/christmas.jpeg"
+                  
+                  aria-label="Open gallery image 6">
+            <img src="assets/image/gallery/christmas.jpeg" loading="lazy" decoding="async"
+                 alt="Describe your image here">
+          </button>
+        </div>
+
+        <div class="col-6" data-aos="fade-up" data-aos-delay="80">
+          <button type="button" class="sp-g-item"
+                  data-full="assets/image/gallery/onam.jpeg"
+                  
+                  aria-label="Open 3rd place photo of Shebin Bennichen">
+            <img src="assets/image/gallery/onam.jpeg" loading="lazy" decoding="async"
+                 alt="Shebin Bennichen with the third place cheque, certificate and trophy">
+          </button>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="col-6" data-aos="fade-up">
+          <button type="button" class="sp-g-item"
+                  data-full="assets/image/gallery/team-img.jpeg"
+                  
+                  aria-label="Open Skill Pro 2K27 poster">-
+            <img src="assets/image/gallery/team-img.jpeg" loading="lazy" decoding="async"
+                 alt="Skill Pro 2K27 poster">
+          </button>
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+<!-- ============================ PROGRAMMES / WHY CHOOSE US ============================ -->
+<section class="sp-section" id="programmes">
+  <div class="container">
+    <div class="sp-head" data-aos="fade-up">
+      <span class="section-tag"><i class="fas fa-laptop-code"></i> Courses at CADPOINT</span>
+      <h2 class="section-title">Skills behind the <span>scores</span></h2>
+      <div class="section-divider center"></div>
+      <p class="section-subtitle">The courses and services listed on the Skill Pro 2K26 poster.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-4" data-aos="fade-up">
+        <div class="sp-why">
+          <h3>Why choose us?</h3>
+          <ul>
+            <li><i class="fas fa-circle-check"></i> 30+ years of excellence</li>
+            <li><i class="fas fa-circle-check"></i> World class training</li>
+            <li><i class="fas fa-circle-check"></i> Theory &amp; practical sessions</li>
+            <li><i class="fas fa-circle-check"></i> Industrial leading curriculum</li>
+            <li><i class="fas fa-circle-check"></i> Placement assistance</li>
+            <li><i class="fas fa-circle-check"></i> ISO 9001-2015 certified company</li>
+            <li><i class="fas fa-circle-check"></i> 3.5M+ engineers &amp; professionals trained</li>
+            <li><i class="fas fa-circle-check"></i> Certified trainers</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-8">
+        <div class="row g-4">
+          <div class="col-md-6" data-aos="fade-up">
+            <div class="sp-card sp-course">
+              <h3><i class="fas fa-hard-hat"></i> Civil CAD</h3>
+              <ul class="sp-chips"><li>AutoCAD</li><li>Revit Arch / Structure</li><li>3ds Max &amp; VRAY</li><li>SketchUp, Lumion</li><li>TEKLA, BIM</li><li>STAAD Pro, E-tabs</li><li>Primavera, MSP</li><li>AR VR</li></ul>
+            </div>
+          </div>
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="80">
+            <div class="sp-card sp-course">
+              <h3><i class="fas fa-cogs"></i> Mech CAD</h3>
+              <ul class="sp-chips"><li>AutoCAD</li><li>Solidworks</li><li>Creo, CATIA</li><li>Fusion 360</li><li>Plant 3D, ANSYS</li><li>Revit MEP</li><li>Mastercam</li><li>NX CAD, CAM</li></ul>
+            </div>
+          </div>
+          <div class="col-md-6" data-aos="fade-up">
+            <div class="sp-card sp-course">
+              <h3><i class="fas fa-laptop-code"></i> IT</h3>
+              <ul class="sp-chips"><li>C, C++, Java</li><li>Python Full stack</li><li>Java Full stack</li><li>Full Stack-MERN</li><li>Data Analysis</li><li>AI-Data Science</li><li>React, Cyber Security</li><li>UI UX Design</li></ul>
+            </div>
+          </div>
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="80">
+            <div class="sp-card sp-course">
+              <h3><i class="fas fa-bolt"></i> Electrical CAD</h3>
+              <ul class="sp-chips"><li>E-CAD, E-Plan</li><li>Revit MEP</li></ul>
+              <h3 class="mt-4"><i class="fas fa-briefcase"></i> Other courses</h3>
+              <ul class="sp-chips"><li>MS Office, Tally, SAP</li><li>Graphic Design</li></ul>
+            </div>
+          </div>
+          <div class="col-12" data-aos="fade-up">
+            <div class="sp-card sp-course">
+              <h3><i class="fas fa-handshake"></i> Other services</h3>
+              <ul class="sp-chips"><li>Internships</li><li>Academic Projects</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ GALLERY ============================ -->
+<!-- <section class="sp-section alt" id="gallery">
+  <div class="container">
+    <div class="sp-head" data-aos="fade-up">
+      <span class="section-tag"><i class="fas fa-images"></i> Image gallery</span>
+      <h2 class="section-title">Skill Pro 2K26 <span>gallery</span></h2>
+      <div class="section-divider center"></div>
+      <p class="section-subtitle">Select any image to view it full size. Use the arrow keys or swipe to move between images.</p>
+    </div>
+
+    <div class="sp-gallery" id="spGallery">
+      <button type="button" class="sp-g-item" data-full="assets/image/skillpro-2026-poster.webp" data-caption="Skill Pro 2K26 toppers poster" aria-label="Open Skill Pro 2K26 toppers poster" data-aos="fade-up">
+        <img src="assets/image/skillpro-2026-poster.webp" width="1136" height="1600" loading="lazy" alt="Skill Pro 2K26 toppers poster with CADPOINT courses">
+        <span class="sp-g-cap"><span>Toppers poster</span><i class="fas fa-magnifying-glass-plus"></i></span>
+      </button>
+      <button type="button" class="sp-g-item" data-full="assets/image/skillpro-2026-topper-1st-sabin.webp" data-caption="1st place: Sabin, EEE Final Year, ₹25,000" aria-label="Open 1st place photo of Sabin" data-aos="fade-up" data-aos-delay="80">
+        <img src="assets/image/skillpro-2026-topper-1st-sabin.webp" width="1023" height="1410" loading="lazy" alt="Sabin with the first place cheque, certificate and trophy">
+        <span class="sp-g-cap"><span>1st place: Sabin</span><i class="fas fa-magnifying-glass-plus"></i></span>
+      </button>
+      <button type="button" class="sp-g-item" data-full="assets/image/skillpro-2026-topper-2nd-ashlin.webp" data-caption="2nd place: Ashlin F, EEE 3rd Year, ₹20,000" aria-label="Open 2nd place photo of Ashlin F" data-aos="fade-up" data-aos-delay="160">
+        <img src="assets/image/skillpro-2026-topper-2nd-ashlin.webp" width="1023" height="1419" loading="lazy" alt="Ashlin F with the second place cheque, certificate and trophy">
+        <span class="sp-g-cap"><span>2nd place: Ashlin F</span><i class="fas fa-magnifying-glass-plus"></i></span>
+      </button>
+      <button type="button" class="sp-g-item" data-full="assets/image/skillpro-2026-topper-3rd-shebin.webp" data-caption="3rd place: Shebin Bennichen, Civil Engineering Final Year, ₹15,000" aria-label="Open 3rd place photo of Shebin Bennichen" data-aos="fade-up" data-aos-delay="240">
+        <img src="assets/image/skillpro-2026-topper-3rd-shebin.webp" width="1020" height="1428" loading="lazy" alt="Shebin Bennichen with the third place cheque, certificate and trophy">
+        <span class="sp-g-cap"><span>3rd place: Shebin Bennichen</span><i class="fas fa-magnifying-glass-plus"></i></span>
+      </button>
+    </div>
+  </div>
+</section> -->
+
+<!-- ============================ REGISTER / CONTACT ============================ -->
+<section class="contact-cta" id="register">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-7" data-aos="fade-up">
+        <span class="hero-badge"><i class="fas fa-bullhorn"></i> Next up: Skill Pro 2K27</span>
+        <h2 class="cta-title">Want to be the <span>next topper?</span></h2>
+        <p class="cta-sub" style="max-width:560px;">The Skill Pro 2K27 poster announces a Scholarship &amp; Aptitude Examination. Register through the form on the Skill Pro page.</p>
+        <ul class="sp-next-list">
+          <li><i class="fas fa-circle-check"></i> Up to 60% course fee scholarship</li>
+          <li><i class="fas fa-circle-check"></i> ₹1,00,000 total cash prize</li>
+          <li><i class="fas fa-circle-check"></i> Cash prizes, participation certificates and complimentary courses</li>
+        </ul>
+        <div class="hero-btns mb-4">
+          <a href="index-poster.html" class="btn-hero-primary"><i class="fas fa-pen-to-square"></i> Register now</a>
+          <a href="contact3.html" class="btn-hero-outline"><i class="fas fa-envelope"></i> Contact us</a>
+        </div>
+        <!-- <div class="cta-cards">
+          <a class="cta-info-card" href="tel:+919895352624"><i class="fas fa-phone-alt"></i><div class="cta-info-card-text"><span>Call</span><strong>+91 9895352624</strong></div></a>
+          <a class="cta-info-card" href="https://www.agcadpoint.com" target="_blank" rel="noopener"><i class="fas fa-globe"></i><div class="cta-info-card-text"><span>Website</span><strong>www.agcadpoint.com</strong></div></a>
+          <a class="cta-info-card" href="https://www.agnextgen.com" target="_blank" rel="noopener"><i class="fas fa-globe"></i><div class="cta-info-card-text"><span>Website</span><strong>www.agnextgen.com</strong></div></a>
+        </div> -->
+        <!-- <p class="sp-note">Skill Pro 2K27 terms and conditions apply, as stated on its poster.</p> -->
+      </div>
+
+      <div class="col-lg-5" data-aos="fade-up" data-aos-delay="100">
+        <button type="button" class="sp-next-poster d-block p-0 border-0 bg-transparent w-100" data-lb="assets/image/skill-pro-2027.jpeg" aria-label="View the Skill Pro 2K27 poster full size" style="cursor:zoom-in;">
+          <img src="assets/image/skill-pro-2027.jpeg" width="1131" height="1600" loading="lazy" alt="Skill Pro 2K27 poster: Scholarship and Aptitude Examination with up to 60% course fee scholarship and ₹1,00,000 total cash prize">
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER (loaded from footer.html, same method as the other pages) -->
+<div id="footer"></div>
+
+<!-- Lightbox (built by skill-pro-2026.js) -->
+
+<!-- SCRIPTS: same libraries and shared nav.js as the rest of the site -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+/* Shared navbar initialiser for the CADPOINT mega-menu.
+   Used by every page that injects header.html. */
+function initCaddNav() {
+  const coursesNav = document.getElementById('coursesNav');
+  const caret = document.getElementById('coursesCaret');
+  const menu = document.getElementById('coursesMegaMenu');
+  const closeBtn = document.getElementById('closeMegaMenu');
+
+  if (!coursesNav || !caret || !menu) return;
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      menu.classList.remove('show');
+    });
+  }
+
+  if (window.innerWidth <= 991) {
+    caret.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      menu.classList.toggle('show');
+    });
+    document.addEventListener('click', function (e) {
+      if (!coursesNav.contains(e.target)) menu.classList.remove('show');
+    });
+    return;
+  }
+
+  coursesNav.addEventListener('mouseenter', function () { menu.classList.add('show'); });
+  coursesNav.addEventListener('mouseleave', function () { menu.classList.remove('show'); });
+  menu.addEventListener('mouseleave', function () { menu.classList.remove('show'); });
+
+  const nav = document.getElementById('mainNav');
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    });
+  }
+}
+</script>
+<script>
+/* ==========================================================================
+   skill-pro-2026.js
+   1. Loads header.html / footer.html with the same method as the other pages
+      (nav.js provides initCaddNav, shared by the whole site).
+   2. Scroll animations (AOS, already used on the site), back-to-top button.
+   3. Accessible image lightbox for the gallery, toppers and poster images.
+   ========================================================================== */
+(function () {
+  'use strict';
+
+  /* ---------- 1. Header and footer ---------- */
+  function loadPart(url, targetId, after) {
+    var target = document.getElementById(targetId);
+    if (!target) return;
+    fetch(url)
+      .then(function (r) {
+        if (!r.ok) throw new Error(url + ' returned ' + r.status);
+        return r.text();
+      })
+      .then(function (html) {
+        target.innerHTML = html;
+        if (after) after();
+      })
+      .catch(function (err) {
+        // Happens when the page is opened straight from disk (file://). Run it from the site server instead.
+        console.warn('Could not load ' + url + ':', err.message, '- open the site through a web server (e.g. http://127.0.0.1:8000/).');
+      });
+  }
+
+  loadPart('header.html', 'header', function () {
+    if (typeof initCaddNav === 'function') initCaddNav();
+  });
+  loadPart('footer.html', 'footer');
+
+  /* ---------- 2. Animations and back-to-top ---------- */
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (window.AOS) {
+    AOS.init({
+      duration: 600,
+      easing: 'ease-out',
+      once: true,
+      offset: 60,
+      disable: reduceMotion
+    });
+  }
+
+  var backToTop = document.getElementById('backToTop');
+  if (backToTop) {
+    window.addEventListener('scroll', function () {
+      backToTop.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+    backToTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+  }
+
+  /* ---------- 3. Lightbox ---------- */
+  var gallery = Array.prototype.slice.call(document.querySelectorAll('#spGallery .sp-g-item'));
+  var items = gallery.map(function (el) {
+    return { src: el.getAttribute('data-full'), caption: el.getAttribute('data-caption') || '' };
+  });
+
+  // Triggers outside the gallery (hero, toppers, 2K27 poster) can open any image.
+  // Images that are not part of the gallery are added to the list on demand.
+  function indexFor(src, caption) {
+    for (var i = 0; i < items.length; i++) if (items[i].src === src) return i;
+    items.push({ src: src, caption: caption || '' });
+    return items.length - 1;
+  }
+
+  var lb = document.createElement('div');
+  lb.className = 'sp-lb';
+  lb.setAttribute('role', 'dialog');
+  lb.setAttribute('aria-modal', 'true');
+  lb.setAttribute('aria-label', 'Image viewer');
+  lb.innerHTML =
+    '<button type="button" class="sp-lb-btn sp-lb-close" aria-label="Close image"><i class="fas fa-times"></i></button>' +
+    '<button type="button" class="sp-lb-btn sp-lb-prev" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>' +
+    '<img class="sp-lb-img" alt="">' +
+    '<div class="sp-lb-cap" aria-live="polite"></div>' +
+    '<button type="button" class="sp-lb-btn sp-lb-next" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>';
+  document.body.appendChild(lb);
+
+  var imgEl = lb.querySelector('.sp-lb-img');
+  var capEl = lb.querySelector('.sp-lb-cap');
+  var btnClose = lb.querySelector('.sp-lb-close');
+  var btnPrev = lb.querySelector('.sp-lb-prev');
+  var btnNext = lb.querySelector('.sp-lb-next');
+  var current = 0;
+  var lastFocus = null;
+
+  function show(i) {
+    current = (i + items.length) % items.length;
+    var it = items[current];
+    imgEl.src = it.src;
+    imgEl.alt = it.caption;
+    capEl.textContent = it.caption ? it.caption + '  (' + (current + 1) + ' of ' + items.length + ')' : '';
+    var single = items.length < 2;
+    btnPrev.style.display = btnNext.style.display = single ? 'none' : '';
+  }
+
+  function open(i, trigger) {
+    lastFocus = trigger || document.activeElement;
+    show(i);
+    lb.classList.add('open');
+    document.body.classList.add('sp-lb-lock');
+    btnClose.focus();
+  }
+
+  function close() {
+    lb.classList.remove('open');
+    document.body.classList.remove('sp-lb-lock');
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  gallery.forEach(function (el, i) {
+    el.addEventListener('click', function () { open(i, el); });
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-lb]'), function (el) {
+    el.addEventListener('click', function () {
+      var src = el.getAttribute('data-lb');
+      var img = el.querySelector('img');
+      open(indexFor(src, img ? img.alt : ''), el);
+    });
+  });
+
+  btnClose.addEventListener('click', close);
+  btnPrev.addEventListener('click', function () { show(current - 1); });
+  btnNext.addEventListener('click', function () { show(current + 1); });
+  lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+
+  document.addEventListener('keydown', function (e) {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft') show(current - 1);
+    else if (e.key === 'ArrowRight') show(current + 1);
+    else if (e.key === 'Tab') {
+      // keep keyboard focus inside the viewer
+      var f = [btnClose, btnPrev, btnNext].filter(function (b) { return b.style.display !== 'none'; });
+      var idx = f.indexOf(document.activeElement);
+      e.preventDefault();
+      f[(idx + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
+    }
+  });
+
+  // Swipe on touch screens
+  var startX = null;
+  lb.addEventListener('touchstart', function (e) { startX = e.changedTouches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', function (e) {
+    if (startX === null) return;
+    var dx = e.changedTouches[0].clientX - startX;
+    startX = null;
+    if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+})();
+
+</script>
+</body>
+</html>

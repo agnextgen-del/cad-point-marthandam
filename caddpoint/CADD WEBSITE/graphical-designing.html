@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Graphic Designing Course | CADPOINT Training Centre</title>
+  <meta name="description" content="Master Graphic Designing with Photoshop, Illustrator, Figma & more. Get certified and launch your creative career with CADPOINT.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="icon" type="image/x-icon" href="assets/image/cadd-logo.webp">
+  <style>
+    /* =============================================
+       CSS VARIABLES & RESET
+    ============================================= */
+    :root {
+      --primary: #8B0000;
+      --primary-light: #A00000;
+      --primary-dark: #5c0000;
+      --primary-glow: rgba(139,0,0,0.35);
+      --white: #ffffff;
+      --light-gray: #F5F5F5;
+      --text-dark: #1a1a1a;
+      --text-muted: #555;
+      --border-light: rgba(139,0,0,0.15);
+      --glass-bg: rgba(255,255,255,0.08);
+      --glass-border: rgba(255,255,255,0.18);
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    html, body { max-width:100%; overflow-x:hidden; }
+    body { font-family:'Poppins',sans-serif; color:var(--text-dark); background:var(--white); }
+    ::-webkit-scrollbar { width:6px; }
+    ::-webkit-scrollbar-track { background:#f1f1f1; }
+    ::-webkit-scrollbar-thumb { background:var(--primary); border-radius:10px; }
+
+    /* =============================================
+       LOADER
+    ============================================= */
+    #loader {
+      position:fixed; inset:0; background:var(--primary-dark); z-index:9999;
+      display:flex; align-items:center; justify-content:center;
+      flex-direction:column; gap:20px;
+      transition:opacity 0.5s ease, visibility 0.5s ease;
+    }
+    #loader.hidden { opacity:0; visibility:hidden; }
+    .loader-logo { font-family:'Montserrat',sans-serif; font-weight:900; font-size:2rem; color:white; letter-spacing:4px; }
+    .loader-logo span { color:#ffd700; }
+    .loader-bar { width:200px; height:3px; background:rgba(255,255,255,0.15); border-radius:3px; overflow:hidden; }
+    .loader-bar-inner { height:100%; background:linear-gradient(90deg,var(--primary-light),#ffd700); border-radius:3px; animation:loadBar 1.8s ease-in-out forwards; }
+    @keyframes loadBar { from{width:0} to{width:100%} }
+
+    /* =============================================
+       BACK TO TOP
+    ============================================= */
+    #backToTop {
+      position:fixed; bottom:30px; right:30px; width:44px; height:44px;
+      background:linear-gradient(135deg,var(--primary),var(--primary-light));
+      color:white; border:none; border-radius:50%; cursor:pointer;
+      box-shadow:0 6px 20px var(--primary-glow); opacity:0; transform:translateY(20px);
+      transition:all 0.4s ease; z-index:999; display:flex; align-items:center; justify-content:center; font-size:0.9rem;
+    }
+    #backToTop.visible { opacity:1; transform:translateY(0); }
+    #backToTop:hover { transform:translateY(-4px); box-shadow:0 10px 30px var(--primary-glow); }
+
+    @media (max-width:991px) {
+
+.courses-mega-menu{
+  position:relative !important;
+  width:100% !important;
+  left:0 !important;
+  top:0 !important;
+  transform:none !important;
+
+  opacity:1 !important;
+  visibility:visible !important;
+
+  display:none;
+  max-height:0;
+  overflow:hidden;
+
+  transition:max-height .35s ease;
+
+  margin-top:10px !important;
+  border-radius:16px !important;
+
+  box-shadow:none !important;
+  background:#f8f9fb;
+}
+
+.courses-mega-menu.show{
+  display:block;
+}
+}
+
+    /* =============================================
+       NAVBAR
+    ============================================= */
+    .navbar {
+      background:rgba(255,255,255,0.97); backdrop-filter:blur(20px);
+      box-shadow:0 2px 30px rgba(139,0,0,0.12); padding:7px 0;
+      position:sticky; top:0; z-index:1000; transition:all 0.3s ease;
+    }
+    .navbar.scrolled { padding:5px 0; box-shadow:0 4px 40px rgba(139,0,0,0.2); }
+    .navbar-brand { display:flex; align-items:center; gap:12px; text-decoration:none; }
+    .brand-name { font-family:'Montserrat',sans-serif; font-weight:900; font-size:1.3rem; color:var(--primary); letter-spacing:2px; }
+    .brand-sub { font-size:0.58rem; font-weight:600; color:#666; letter-spacing:1.5px; text-transform:uppercase; }
+    .navbar-nav .nav-link {
+      font-family:'Montserrat',sans-serif; font-weight:600; font-size:0.82rem;
+      letter-spacing:0.8px; text-transform:uppercase; padding:8px 16px !important;
+      border-radius:6px; transition:all 0.3s ease;
+    }
+    .navbar-nav .nav-link:hover { color:var(--primary); }
+    .btn-nav-enroll {
+      background:linear-gradient(135deg,var(--primary),var(--primary-light));
+      color:white !important; padding:8px 22px !important; border-radius:25px !important;
+      font-weight:700 !important; box-shadow:0 4px 15px var(--primary-glow); transition:all 0.3s ease !important;
+    }
+    .btn-nav-enroll:hover { transform:translateY(-2px); box-shadow:0 8px 25px var(--primary-glow) !important; }
+    .btn-nav-enroll::after { display:none !important; }
+
+    /* Mega Menu */
+    #coursesNav { position:static !important; }
+    #coursesNav > div { display:flex; align-items:center; }
+    .courses-mega-menu {
+      position:fixed !important; top:auto !important; left:50% !important;
+      transform:translateX(-50%) translateY(6px) !important;
+      width:min(960px,96vw) !important; display:block !important;
+      opacity:0; visibility:hidden;
+      transition:opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+      pointer-events:none; border:none !important; border-radius:16px !important;
+      overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.16), 0 0 0 1px rgba(139,0,0,0.1) !important; padding:0 !important;
+    }
+    .courses-mega-menu.show {
+      opacity:1 !important; visibility:visible !important;
+      /* transform:translateX(-50%) translateY(0) !important;  */
+      pointer-events:auto !important;
+    }
+    .mega-col {
+      flex:1; padding:20px 10px 10px 10px;
+      border-right:1px solid rgba(139,0,0,0.08); background:white;
+    }
+    .mega-col:last-child { border-right:none; }
+    .mega-col-head { display:flex; align-items:center; gap:10px; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid rgba(139,0,0,0.08); }
+    .mega-col-icon { width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+    .mega-col-title { font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.82rem; color:var(--text-dark); letter-spacing:0.4px; }
+    .mega-col-sub { font-size:0.68rem; color:#999; font-weight:500; margin-top:1px; }
+    .mega-item {
+      display:flex; align-items:center; gap:8px; padding:6px 8px;
+      border-radius:7px; font-size:0.8rem; font-weight:500; color:var(--text-dark);
+      text-decoration:none; transition:background 0.15s, color 0.15s, padding-left 0.15s; margin-bottom:2px;
+    }
+    .mega-item i { font-size:0.72rem; width:16px; text-align:center; color:#aaa; transition:color 0.15s; flex-shrink:0; }
+    .mega-item:hover { background:rgba(139,0,0,0.07); color:var(--primary); padding-left:12px; }
+    .mega-item:hover i { color:var(--primary); }
+    #coursesNav .courses-caret { color:var(--text-dark); transition:color 0.2s; }
+    #coursesNav .courses-caret:hover { color:var(--primary); }
+    .mega-close-x {
+      position:absolute; top:12px; right:12px; width:34px; height:34px;
+      border:none; border-radius:50%; background:#fff; color:#222;
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; z-index:99; box-shadow:0 4px 15px rgba(0,0,0,.12); transition:.3s ease;
+    }
+    .mega-close-x:hover { background:var(--primary); color:#fff; transform:rotate(90deg); }
+    .dropdown-item:hover { background:linear-gradient(135deg,var(--primary),var(--primary-light)); color:#fff; border-radius:5px; }
+
+    /* Mobile Navbar */
+    @media (max-width:991px) {
+      .navbar-collapse { background:#fff; padding:15px; border-radius:18px; margin-top:15px; box-shadow:0 10px 35px rgba(0,0,0,.08); }
+      #coursesNav { width:100%; }
+      #coursesNav .d-flex { width:100%; justify-content:space-between; align-items:center; }
+      #coursesNav .nav-link { padding:12px 0 !important; }
+      .courses-mega-menu { position:static !important; transform:none !important; width:100% !important; min-width:100% !important; margin-top:10px !important; border:none !important; box-shadow:none !important; border-radius:16px !important; overflow:hidden; background:#f8f9fb; }
+      .courses-mega-menu .d-flex { flex-direction:column !important; gap:0 !important; padding-top:0 !important; }
+      .mega-col { width:100% !important; border-right:none !important; border-bottom:1px solid rgba(0,0,0,.06); padding:18px 16px !important; }
+      .mega-col:last-child { border-bottom:none; }
+      .mega-item { width:100%; padding:10px 12px; border-radius:10px; font-size:.92rem; }
+    }
+
+    .hero-section{
+    min-height:100vh;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero-desc{
+    max-width:850px;
+}
+
+.hero-badge{
+    width:fit-content;
+}
+
+.hero-btn-group{
+    margin-top:30px;
+}
+
+.hero-pills{
+    margin-top:25px;
+}
+    /* =============================================
+       BREADCRUMB SLIDER
+    ============================================= */
+    .breadcrumb-slider {
+      background:linear-gradient(90deg,var(--primary-dark) 0%,var(--primary) 50%,var(--primary-dark) 100%);
+      padding:0; overflow:hidden; height:38px; display:flex; align-items:center; position:relative;
+    }
+    .breadcrumb-slider::before, .breadcrumb-slider::after { content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; pointer-events:none; }
+    .breadcrumb-slider::before { left:0; background:linear-gradient(to right,var(--primary-dark),transparent); }
+    .breadcrumb-slider::after { right:0; background:linear-gradient(to left,var(--primary-dark),transparent); }
+    .breadcrumb-track { display:flex; animation:scrollBreadcrumb 30s linear infinite; white-space:nowrap; will-change:transform; }
+    .breadcrumb-track:hover { animation-play-state:paused; }
+    .breadcrumb-item-slide { display:inline-flex; align-items:center; gap:8px; padding:0 30px; font-size:0.75rem; font-weight:600; color:rgba(255,255,255,0.9); letter-spacing:1px; text-transform:uppercase; font-family:'Montserrat',sans-serif; }
+    .breadcrumb-item-slide i { color:rgba(255,255,255,0.6); font-size:0.7rem; }
+    @keyframes scrollBreadcrumb { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+     /* Hero wave */
+     .hero-wave { position: absolute; bottom: 0; width: 100%; line-height: 0; }
+    .hero-wave svg { display: block; }
+
+    /* =============================================
+       SECTION UTILITIES
+    ============================================= */
+    section { padding:90px 0; }
+    @media(max-width:767px) { section { padding:65px 0; } }
+    .section-tag {
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(139,0,0,0.08); border:1px solid rgba(139,0,0,0.2);
+      color:var(--primary); font-family:'Montserrat',sans-serif;
+      font-weight:700; font-size:0.75rem; letter-spacing:1.5px;
+      text-transform:uppercase; padding:6px 16px; border-radius:50px; margin-bottom:16px;
+    }
+    .section-title { font-family:'Montserrat',sans-serif; font-weight:900; font-size:clamp(1.8rem,4vw,2.8rem); color:var(--text-dark); line-height:1.2; margin-bottom:16px; }
+    .section-title span { color:var(--primary); }
+    .section-sub { font-size:1rem; color:var(--text-muted); line-height:1.8; max-width:600px; }
+
+    /* =============================================
+       HERO SECTION
+    ============================================= */
+    .hero-section {
+      background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 40%,#c0392b 80%,var(--primary-dark) 100%);
+      min-height:88vh; display:flex; align-items:center;
+      position:relative; overflow:hidden; padding:80px 0 100px;
+    }
+    .hero-section::before {
+      content:''; position:absolute; inset:0;
+      background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity:0.4;
+    }
+    .hero-orb { position:absolute; border-radius:50%; pointer-events:none; background:radial-gradient(circle,rgba(255,255,255,0.07) 0%,transparent 70%); }
+    .hero-orb-1 { width:700px; height:700px; top:-250px; right:-150px; }
+    .hero-orb-2 { width:400px; height:400px; bottom:-150px; left:-100px; }
+    .hero-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      background:var(--glass-bg); border:1px solid var(--glass-border);
+      backdrop-filter:blur(10px); color:rgba(255,255,255,0.9);
+      font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.72rem;
+      letter-spacing:1.5px; text-transform:uppercase; padding:8px 20px; border-radius:50px; margin-bottom:28px;
+    }
+    .badge-dot { width:8px; height:8px; background:#ffd700; border-radius:50%; animation:pulseDot 2s infinite; }
+    @keyframes pulseDot { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.5);opacity:0.7} }
+    .hero-title { font-family:'Montserrat',sans-serif; font-weight:900; font-size:clamp(2rem,5vw,3.8rem); color:white; line-height:1.12; margin-bottom:24px; letter-spacing:-0.5px; }
+    .hero-title .accent { color:#ffd700; }
+    .hero-desc { font-size:1.05rem; color:rgba(255,255,255,0.82); line-height:1.85; margin-bottom:36px; max-width:620px; }
+    .hero-pills { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:36px; }
+    .hero-pill { display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.9); font-size:0.8rem; font-weight:600; padding:6px 14px; border-radius:50px; }
+    .hero-pill i { color:#ffd700; font-size:0.72rem; }
+    .hero-btn-group { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+    .btn-hero-primary {
+      background:linear-gradient(135deg,#ffd700,#ffb700); color:var(--primary-dark) !important;
+      font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.95rem;
+      padding:15px 36px; border-radius:50px; text-decoration:none;
+      display:inline-flex; align-items:center; gap:10px;
+      animation:pulseGlow 2.5s infinite; transition:all 0.3s ease; border:none; cursor:pointer;
+    }
+    .btn-hero-primary:hover { transform:translateY(-3px); color:var(--primary-dark) !important; }
+    .btn-hero-outline {
+      background:transparent; border:2px solid rgba(255,255,255,0.4); color:white !important;
+      font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.9rem;
+      padding:13px 32px; border-radius:50px; text-decoration:none;
+      display:inline-flex; align-items:center; gap:10px; transition:all 0.3s ease;
+    }
+    .btn-hero-outline:hover { background:rgba(255,255,255,0.12); border-color:rgba(255,255,255,0.7); transform:translateY(-3px); color:white !important; }
+    @keyframes pulseGlow { 0%,100%{box-shadow:0 0 0 0 rgba(255,215,0,0.5)} 50%{box-shadow:0 0 0 18px rgba(255,215,0,0)} }
+    .hero-stats { display:flex; gap:36px; margin-top:44px; flex-wrap:wrap; }
+    .hero-stat { text-align:center; }
+    .hero-stat-num { font-family:'Montserrat',sans-serif; font-weight:900; font-size:1.8rem; color:#ffd700; display:block; }
+    .hero-stat-lbl { font-size:0.75rem; color:rgba(255,255,255,0.7); font-weight:600; }
+    .hero-stat-divider { width:1px; background:rgba(255,255,255,0.2); align-self:stretch; }
+    .hero-floating-tools { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; position:relative; }
+    .tool-float-card {
+      background:rgba(255,255,255,0.1); backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,0.2); border-radius:16px; padding:20px 16px;
+      text-align:center; transition:all 0.4s ease; cursor:default;
+    }
+    .tool-float-card:hover { background:rgba(255,255,255,0.18); transform:translateY(-6px); box-shadow:0 20px 40px rgba(0,0,0,0.2); }
+    .tool-float-card .t-icon { font-size:2rem; margin-bottom:8px; display:block; }
+    .tool-float-card .t-name { font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.8rem; color:white; }
+    .tool-float-card.featured { grid-column:span 3; background:rgba(255,215,0,0.15); border-color:rgba(255,215,0,0.4); }
+    @media(max-width:991px) {
+      .hero-section { padding:60px 0 80px; text-align:center; }
+      .hero-desc { margin:0 auto 28px; }
+      .hero-pills { justify-content:center; }
+      .hero-btn-group { justify-content:center; }
+      .hero-stats { justify-content:center; }
+      .hero-floating-tools { margin-top:50px; max-width:400px; margin-left:auto; margin-right:auto; }
+    }
+    @media(max-width:576px) {
+      .hero-btn-group { flex-direction:column; align-items:center; }
+      .btn-hero-primary, .btn-hero-outline { width:220px; justify-content:center; }
+      .hero-stat-divider { display:none; }
+    }
+
+    /* =============================================
+       STATS BAND
+    ============================================= */
+    .stats-band { background:var(--primary); padding:70px 0; }
+    .stat-box { padding:20px 10px; transition:.4s ease; text-align:center; }
+    .stat-box:hover { transform:translateY(-8px); }
+    .stat-box h2 { font-size:62px; font-weight:900; color:#ffd700; margin-bottom:12px; line-height:1; font-family:'Montserrat',sans-serif; }
+    .stat-box p { font-size:20px; font-weight:500; color:#fff; margin:0; }
+    .stat-col { border-right:1px solid rgba(255,255,255,.2); }
+    .stat-col.no-border { border-right:none; }
+    @media(max-width:991px) { .stat-col { border-right:none; margin-bottom:30px; } }
+    @media(max-width:576px) { .stats-band{padding:50px 0;} .stat-box h2{font-size:42px;} .stat-box p{font-size:16px;} }
+
+    /* =============================================
+       OVERVIEW
+    ============================================= */
+    .overview-badge-float {
+      position:absolute; bottom:-20px; right:-20px; background:white;
+      border-radius:16px; padding:16px 22px; box-shadow:0 15px 40px rgba(0,0,0,0.12);
+      display:flex; align-items:center; gap:12px;
+    }
+    .ob-icon { width:44px; height:44px; background:linear-gradient(135deg,var(--primary),var(--primary-light)); border-radius:12px; display:flex; align-items:center; justify-content:center; color:white; font-size:1.1rem; }
+    .ob-num { font-family:'Montserrat',sans-serif; font-weight:900; font-size:1.3rem; color:var(--primary); }
+    .ob-lbl { font-size:0.72rem; color:#777; font-weight:600; display:block; }
+    .check-list { list-style:none; padding:0; }
+    .check-list li { display:flex; align-items:flex-start; gap:12px; margin-bottom:14px; font-size:0.95rem; color:var(--text-muted); }
+    .check-list li i { color:var(--primary); margin-top:3px; flex-shrink:0; }
+    .check-list li strong { color:var(--text-dark); }
+
+    /* =============================================
+       WHY CARDS
+    ============================================= */
+    .why-card {
+      background:white; border-radius:20px; padding:34px 28px;
+      border:1px solid rgba(139,0,0,0.08); box-shadow:0 4px 20px rgba(0,0,0,0.04);
+      transition:all 0.4s ease; height:100%; position:relative; overflow:hidden;
+    }
+    .why-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--primary),var(--primary-light)); transform:scaleX(0); transform-origin:left; transition:transform 0.4s ease; }
+    .why-card:hover::before { transform:scaleX(1); }
+    .why-card:hover { transform:translateY(-8px); box-shadow:0 20px 50px rgba(139,0,0,0.12); }
+    .why-icon { width:62px; height:62px; border-radius:16px; background:rgba(139,0,0,0.08); display:flex; align-items:center; justify-content:center; font-size:1.5rem; color:var(--primary); margin-bottom:20px; transition:all 0.4s ease; }
+    .why-card:hover .why-icon { background:var(--primary); color:white; transform:scale(1.1); }
+    .why-card h5 { font-family:'Montserrat',sans-serif; font-weight:800; font-size:1rem; margin-bottom:10px; }
+    .why-card p { font-size:0.88rem; color:var(--text-muted); line-height:1.7; margin:0; }
+
+    /* =============================================
+       TOOLS SHOWCASE
+    ============================================= */
+    .tool-showcase { display:flex; align-items:center; gap:60px; padding:50px 0; border-bottom:1px solid rgba(139,0,0,0.08); }
+    .tool-showcase:last-child { border-bottom:none; }
+    .tool-showcase.reverse { flex-direction:row-reverse; }
+    .tool-visual { flex-shrink:0; width:360px; height:250px; border-radius:20px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+    .tool-visual-inner { text-align:center; z-index:1; }
+    .tool-visual-icon { font-size:4.5rem; margin-bottom:14px; display:block; }
+    .tool-visual-name { font-family:'Montserrat',sans-serif; font-weight:900; font-size:1.3rem; color:white; }
+    .tool-visual-tag { font-size:0.72rem; color:rgba(255,255,255,0.75); font-weight:600; letter-spacing:1px; text-transform:uppercase; }
+    .tool-content { flex:1; }
+    .tool-content h3 { font-family:'Montserrat',sans-serif; font-weight:900; font-size:1.5rem; margin-bottom:12px; }
+    .tool-content p { color:var(--text-muted); line-height:1.8; margin-bottom:20px; font-size:0.93rem; }
+    .tool-tags { display:flex; flex-wrap:wrap; gap:8px; }
+    .tool-tag { background:rgba(139,0,0,0.07); color:var(--primary); font-size:0.78rem; font-weight:600; padding:5px 14px; border-radius:50px; border:1px solid rgba(139,0,0,0.15); }
+    @media(max-width:991px) { .tool-showcase { flex-direction:column !important; gap:30px; } .tool-visual { width:100%; max-width:400px; height:200px; margin:0 auto; } }
+
+    /* =============================================
+       MODULES
+    ============================================= */
+    .module-card { background:white; border-radius:16px; padding:28px 24px; border:1px solid rgba(139,0,0,0.08); transition:all 0.4s ease; height:100%; }
+    .module-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(139,0,0,0.12); border-color:rgba(139,0,0,0.25); }
+    .module-num { font-family:'Montserrat',sans-serif; font-weight:900; font-size:2.5rem; color:rgba(139,0,0,0.12); line-height:1; margin-bottom:12px; }
+    .module-card h5 { font-family:'Montserrat',sans-serif; font-weight:800; font-size:1rem; margin-bottom:10px; }
+    .module-topics { list-style:none; padding:0; margin:0; }
+    .module-topics li { font-size:0.82rem; color:var(--text-muted); padding:4px 0; display:flex; align-items:center; gap:7px; }
+    .module-topics li::before { content:''; width:5px; height:5px; background:var(--primary); border-radius:50%; flex-shrink:0; }
+    .module-duration { display:inline-flex; align-items:center; gap:6px; margin-top:16px; font-size:0.78rem; font-weight:600; color:var(--primary); }
+
+    /* =============================================
+       CAREER CARDS
+    ============================================= */
+    .career-card { border-radius:20px; padding:30px 24px; border:1px solid rgba(139,0,0,0.1); transition:all 0.4s ease; height:100%; position:relative; overflow:hidden; background:white; }
+    .career-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:4px;  }
+    .career-card:hover { transform:translateY(-8px); box-shadow:0 25px 60px rgba(139,0,0,0.15); }
+    .career-role { font-family:'Montserrat',sans-serif; font-weight:900; font-size:1.05rem; margin-bottom:8px; }
+    .salary-val { font-family:'Montserrat',sans-serif; font-weight:800; color:var(--primary); font-size:1.1rem; }
+    .demand-bar { height:6px; background:rgba(139,0,0,0.1); border-radius:3px; margin-top:10px; overflow:hidden; }
+    .demand-fill { height:100%; background:linear-gradient(90deg,var(--primary),var(--primary-light)); border-radius:3px; transition:width 1.5s ease; width:0; }
+
+    /* =============================================
+       LEARNING PROCESS TIMELINE
+    ============================================= */
+    .process-timeline { position:relative; }
+    .process-timeline::before { content:''; position:absolute; left:50%; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--primary),rgba(139,0,0,0.1)); transform:translateX(-50%); }
+    .process-step { display:flex; align-items:center; gap:40px; margin-bottom:50px; position:relative; }
+    .process-step:last-child { margin-bottom:0; }
+    .process-step.right { flex-direction:row-reverse; }
+    .process-content { flex:1; background:white; border-radius:16px; padding:28px 24px; box-shadow:0 6px 25px rgba(0,0,0,0.06); border:1px solid rgba(139,0,0,0.08); transition:all 0.4s ease; }
+    .process-content:hover { box-shadow:0 15px 40px rgba(139,0,0,0.12); transform:scale(1.02); }
+    .process-dot { width:56px; height:56px; background:linear-gradient(135deg,var(--primary),var(--primary-light)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:1.2rem; flex-shrink:0; z-index:1; box-shadow:0 8px 25px var(--primary-glow); }
+    .process-num { font-family:'Montserrat',sans-serif; font-weight:900; font-size:0.72rem; color:var(--primary); letter-spacing:1px; margin-bottom:6px; }
+    .process-content h5 { font-family:'Montserrat',sans-serif; font-weight:800; font-size:1rem; margin-bottom:8px; }
+    .process-content p { font-size:0.88rem; color:var(--text-muted); margin:0; line-height:1.7; }
+    @media(max-width:768px) {
+      .process-timeline::before { left:28px; }
+      .process-step { flex-direction:row !important; gap:20px; }
+    }
+
+    /* =============================================
+       TESTIMONIALS
+    ============================================= */
+    .testi-slider { overflow:hidden; position:relative; }
+    .testi-track { display:flex; transition:transform 0.5s ease; }
+    .testi-card { min-width:calc(33.333% - 18px); margin-right:26px; background:var(--light-gray); border-radius:20px; padding:32px 28px; border:1px solid rgba(139,0,0,0.08); transition:all 0.4s ease; flex-shrink:0; }
+    .testi-card:hover { box-shadow:0 20px 50px rgba(139,0,0,0.1); transform:translateY(-5px); }
+    .testi-stars { color:#ffd700; margin-bottom:16px; font-size:0.9rem; }
+    .testi-text { font-size:0.88rem; color:var(--text-muted); line-height:1.8; margin-bottom:20px; font-style:italic; }
+    .testi-author { display:flex; align-items:center; gap:12px; }
+    .testi-avatar { width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg,var(--primary),var(--primary-light)); display:flex; align-items:center; justify-content:center; color:white; font-family:'Montserrat',sans-serif; font-weight:900; font-size:0.95rem; flex-shrink:0; }
+    .testi-name { font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.9rem; color:var(--text-dark); }
+    .testi-role { font-size:0.77rem; color:var(--text-muted); }
+    .testi-company { font-size:0.77rem; color:var(--primary); font-weight:600; }
+    .testi-nav { display:flex; gap:10px; justify-content:center; margin-top:30px; }
+    .testi-nav button { width:44px; height:44px; border-radius:50%; border:2px solid rgba(139,0,0,0.2); background:white; color:var(--primary); font-size:0.85rem; transition:all 0.3s ease; display:flex; align-items:center; justify-content:center; cursor:pointer; }
+    .testi-nav button:hover { background:var(--primary); color:white; border-color:var(--primary); }
+    @media(max-width:991px) { .testi-card { min-width:calc(50% - 14px); } }
+    @media(max-width:576px) { .testi-card { min-width:100%; margin-right:0; } }
+
+    /* =============================================
+       FAQ
+    ============================================= */
+    .faq-accordion .accordion-item { border:1px solid rgba(139,0,0,0.1); border-radius:12px !important; margin-bottom:12px; overflow:hidden; }
+    .faq-accordion .accordion-button { font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.93rem; background:white; color:var(--text-dark); padding:20px 24px; border-radius:12px !important; box-shadow:none !important; }
+    .faq-accordion .accordion-button:not(.collapsed) { background:var(--primary); color:white; border-radius:12px 12px 0 0 !important; }
+    .faq-accordion .accordion-button:not(.collapsed)::after { filter:invert(1); }
+    .faq-accordion .accordion-body { font-size:0.9rem; color:var(--text-muted); line-height:1.8; background:white; padding:20px 24px; }
+
+    /* =============================================
+       CTA
+    ============================================= */
+    .cta-section { background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 50%,#c0392b 100%); padding:90px 0; position:relative; overflow:hidden; }
+    .cta-section::before { content:''; position:absolute; width:500px; height:500px; background:radial-gradient(circle,rgba(255,255,255,0.06) 0%,transparent 70%); top:-200px; right:-100px; }
+    .cta-title { font-family:'Montserrat',sans-serif; font-weight:900; font-size:clamp(1.8rem,4vw,3rem); color:white; margin-bottom:16px; }
+    .cta-subtitle { color:rgba(255,255,255,0.8); font-size:1rem; margin-bottom:36px; }
+    .btn-cta-glow {
+      background:linear-gradient(135deg,#ffd700,#ffb700); color:var(--primary-dark) !important;
+      font-family:'Montserrat',sans-serif; font-weight:800; font-size:1rem;
+      padding:16px 42px; border-radius:50px; text-decoration:none;
+      display:inline-flex; align-items:center; gap:10px;
+      animation:pulseGlow 2.5s infinite; transition:all 0.3s ease;
+    }
+    .btn-cta-glow:hover { transform:translateY(-4px); }
+    .btn-cta-outline {
+      background:transparent; border:2px solid rgba(255,255,255,0.5); color:white !important;
+      font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.95rem;
+      padding:14px 36px; border-radius:50px; text-decoration:none;
+      display:inline-flex; align-items:center; gap:10px; transition:all 0.3s ease;
+    }
+    .btn-cta-outline:hover { background:rgba(255,255,255,0.1); border-color:white; transform:translateY(-3px); }
+
+    /* =============================================
+       BENEFITS SECTION
+    ============================================= */
+    .benefits-img {
+      border-radius:20px; background:linear-gradient(135deg,var(--primary-dark),var(--primary));
+      height:100%; min-height:500px; display:flex; align-items:center; justify-content:center;
+      position:relative; overflow:hidden; padding:40px;
+    }
+    .benefit-list-styled { list-style:none; padding:0; margin:0; width:100%; }
+    .benefit-list-styled li { display:flex; align-items:flex-start; gap:14px; margin-bottom:18px; padding:16px; background:rgba(255,255,255,0.08); border-radius:12px; border:1px solid rgba(255,255,255,0.12); transition:all 0.3s ease; }
+    .benefit-list-styled li:hover { background:rgba(255,255,255,0.15); transform:translateX(6px); }
+    .b-icon { width:38px; height:38px; background:rgba(255,215,0,0.2); border-radius:10px; display:flex; align-items:center; justify-content:center; color:#ffd700; font-size:0.95rem; flex-shrink:0; }
+    .b-text strong { display:block; font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.88rem; color:white; margin-bottom:3px; }
+    .b-text span { font-size:0.8rem; color:rgba(255,255,255,0.7); }
+
+    /* =============================================
+       BRANDING VISUAL
+    ============================================= */
+    .branding-visual {
+      background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,var(--primary-dark) 100%);
+      border-radius:24px; padding:50px 40px; height:100%; min-height:460px;
+      display:flex; flex-direction:column; justify-content:center; position:relative; overflow:hidden;
+    }
+    .brand-demo-logo { font-family:'Montserrat',sans-serif; font-weight:900; font-size:3rem; color:white; letter-spacing:4px; margin-bottom:6px; }
+    .brand-demo-tagline { font-size:0.82rem; color:rgba(255,255,255,0.55); letter-spacing:3px; text-transform:uppercase; margin-bottom:28px; }
+    .color-palette { display:flex; gap:8px; margin-bottom:22px; }
+    .palette-swatch { width:40px; height:40px; border-radius:10px; transition:transform 0.3s ease; cursor:pointer; }
+    .palette-swatch:hover { transform:scale(1.2); }
+    .typo-h { font-size:1.3rem; color:white; font-weight:900; margin-bottom:2px; font-family:'Montserrat',sans-serif; }
+    .typo-sub { font-size:0.72rem; color:rgba(255,255,255,0.45); letter-spacing:1px; margin-bottom:12px; text-transform:uppercase; }
+    .typo-body { font-size:0.82rem; color:rgba(255,255,255,0.65); line-height:1.7; }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    footer { background:#0d0d0d; padding:70px 0 0; color:rgba(255,255,255,0.75); }
+    .footer-brand { margin-bottom:20px; }
+    .footer-desc { font-size:0.85rem; line-height:1.8; color:rgba(255,255,255,0.55); margin-bottom:22px; }
+    .footer-socials { display:flex; gap:10px; }
+    .footer-social-btn { width:36px; height:36px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:8px; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.6); font-size:0.85rem; transition:all 0.3s ease; text-decoration:none; }
+    .footer-social-btn:hover { background:var(--primary); border-color:var(--primary); color:white; transform:translateY(-3px); }
+    .footer-heading { font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.9rem; letter-spacing:1.5px; text-transform:uppercase; color:white; margin-bottom:20px; position:relative; padding-bottom:10px; }
+    .footer-heading::after { content:''; position:absolute; bottom:0; left:0; width:30px; height:2px; background:var(--primary); border-radius:2px; }
+    .footer-links { list-style:none; padding:0; }
+    .footer-links li { margin-bottom:10px; }
+    .footer-links a { color:rgba(255,255,255,0.55); text-decoration:none; font-size:0.85rem; transition:all 0.3s ease; display:flex; align-items:center; gap:6px; }
+    .footer-links a:hover { color:var(--primary-light); padding-left:5px; }
+    .footer-links a i { font-size:0.65rem; color:var(--primary); }
+    .footer-contact li { display:flex; align-items:flex-start; gap:10px; margin-bottom:14px; font-size:0.85rem; }
+    .footer-contact li i { color:var(--primary-light); margin-top:3px; flex-shrink:0; font-size:0.85rem; }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,0.08); padding:22px 0; margin-top:50px; font-size:0.8rem; color:rgba(255,255,255,0.4); }
+
+    /* =============================================
+       RIPPLE
+    ============================================= */
+    .ripple { position:relative; overflow:hidden; }
+
+    /* =============================================
+       MISC HELPERS
+    ============================================= */
+    .mini-stat { background:var(--light-gray); border-radius:14px; padding:20px; border:1px solid rgba(139,0,0,0.08); }
+    .mini-stat-num { font-family:'Montserrat',sans-serif; font-weight:900; font-size:1.8rem; color:var(--primary); }
+    .mini-stat-lbl { font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.88rem; margin-bottom:4px; }
+    .mini-stat-sub { font-size:0.8rem; color:#777; margin:0; }
+    .sm-card { border-radius:16px; padding:24px 16px; text-align:center; }
+    .info-row { display:flex; align-items:flex-start; gap:12px; }
+    .info-icon { width:36px; height:36px; background:rgba(139,0,0,0.1); border-radius:10px; display:flex; align-items:center; justify-content:center; color:var(--primary); flex-shrink:0; }
+    .dp-card { background:white; border-radius:20px; padding:34px 28px; border:1px solid rgba(139,0,0,0.08); box-shadow:0 4px 20px rgba(0,0,0,0.04); transition:all 0.4s ease; height:100%; }
+    .dp-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(139,0,0,0.12); }
+    .dp-icon { width:58px; height:58px; border-radius:16px; margin-bottom:18px; display:flex; align-items:center; justify-content:center; font-size:1.35rem; }
+    .dp-card h5 { font-family:'Montserrat',sans-serif; font-weight:800; font-size:1rem; margin-bottom:10px; }
+    .dp-card p { font-size:0.88rem; color:var(--text-muted); line-height:1.7; margin:0; }
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<!-- <div id="loader">
+  <div class="loader-logo">CAD<span>POINT</span></div>
+  <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+</div> -->
+
+<!-- BACK TO TOP -->
+<button id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+<!-- =============================================
+     NAVBAR
+============================================= -->
+<div id="header"></div>
+
+<!-- BREADCRUMB TICKER -->
+<div class="breadcrumb-slider">
+  <div class="breadcrumb-track">
+    <div class="breadcrumb-item-slide"><i class="fas fa-paint-brush"></i> <strong>Graphic Designing</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-palette"></i> <strong>Adobe Photoshop</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-vector-square"></i> <strong>Adobe Illustrator</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-layer-group"></i> <strong>Adobe InDesign</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-pen-nib"></i> <strong>CorelDRAW</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-object-group"></i> <strong>Figma</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-camera"></i> <strong>Lightroom</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-award"></i> <strong>ISO Certified</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-user-tie"></i> <strong>Placement Support</strong></div>
+    <!-- duplicate for seamless loop -->
+    <div class="breadcrumb-item-slide"><i class="fas fa-paint-brush"></i> <strong>Graphic Designing</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-palette"></i> <strong>Adobe Photoshop</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-vector-square"></i> <strong>Adobe Illustrator</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-layer-group"></i> <strong>Adobe InDesign</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-pen-nib"></i> <strong>CorelDRAW</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-object-group"></i> <strong>Figma</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-camera"></i> <strong>Lightroom</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-award"></i> <strong>ISO Certified</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-user-tie"></i> <strong>Placement Support</strong></div>
+  </div>
+</div>
+
+<!-- =============================================
+     HERO SECTION
+============================================= -->
+<section class="hero-section d-flex align-items-center" id="hero">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+
+  <div class="container position-relative" style="z-index:1;">
+    <div class="row justify-content-center align-items-center text-center gy-5">
+
+      <div class="col-lg-10">
+
+        <div class="hero-badge mx-auto" data-aos="fade-down" data-aos-delay="100">
+          <span class="badge-dot"></span> Creative Design Training Centre
+        </div>
+
+        <h1 class="hero-title" id="heroTitle" data-aos="fade-up" data-aos-delay="200">
+          Master <span class="accent">Graphic Designing</span> 
+          & Build Your Creative Career
+        </h1>
+
+        <p class="hero-desc mx-auto" data-aos="fade-up" data-aos-delay="300">
+          Unlock the power of visual communication, branding, digital content creation, and modern marketing design. Learn industry-standard tools and build a portfolio that gets you hired globally.
+        </p>
+
+        <div class="hero-btn-group d-flex flex-wrap justify-content-center gap-3"
+             data-aos="fade-up"
+             data-aos-delay="440">
+
+          <a href="https://wa.me/919895352624" class="btn-hero-primary ripple">
+            <i class="fas fa-rocket"></i> Start Learning
+          </a>
+
+          <a href="tel:+919895352624" class="btn-hero-outline">
+            <i class="fas fa-play-circle"></i> Course Enquiry
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#ffffff"/>
+    </svg>
+  </div>
+</section>
+
+
+<!-- =============================================
+     COURSE OVERVIEW
+============================================= -->
+<section style="background:white;" id="overview">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-5" data-aos="fade-right">
+        <img src="assets/image/graghical-designing.webp" class="w-100">
+        </div>
+      <!-- </div> -->
+      <div class="col-lg-7" data-aos="fade-left">
+        <div class="section-tag"><i class="fas fa-info-circle"></i> Course Overview</div>
+        <h2 class="section-title"><span>Graphical Design</span> Course</h2>
+        <p class="section-sub mb-4">Our Graphic Designing course is a comprehensive, project-based training program covering everything from design fundamentals to advanced branding and digital marketing creatives using industry-standard tools.</p>
+        <ul class="check-list">
+          <li><i class="fas fa-check-circle"></i><div><strong>Design Fundamentals &amp; Visual Hierarchy</strong> — Core principles of layout, balance, contrast, and visual flow that drive effective design.</div></li>
+          <li><i class="fas fa-check-circle"></i><div><strong>Typography &amp; Color Theory</strong> — Typeface selection, font pairing, color psychology, and brand-consistent palettes.</div></li>
+          <li><i class="fas fa-check-circle"></i><div><strong>Branding &amp; Identity Design</strong> — Complete brand identity systems: logos, stationery, brand guides, and style manuals.</div></li>
+          <li><i class="fas fa-check-circle"></i><div><strong>Digital &amp; Print Production</strong> — Social media creatives, posters, packaging, flyers, and print-ready artwork.</div></li>
+          <li><i class="fas fa-check-circle"></i><div><strong>Portfolio Development</strong> — Build a professional portfolio with 10+ real-time client projects ready for employers.</div></li>
+          <li><i class="fas fa-check-circle"></i><div><strong>Placement &amp; Freelancing Guidance</strong> — Resume building, interview prep, and freelancing strategies from industry mentors.</div></li>
+        </ul>
+        <div class="d-flex gap-3 mt-4 flex-wrap align-items-center">
+          <a href="https://wa.me/919895352624" class="btn-hero-primary ripple" style="font-size:0.88rem;padding:12px 28px;"><i class="fas fa-rocket"></i> Enroll Now</a>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     WHY LEARN GRAPHIC DESIGNING
+============================================= -->
+<section style="background:var(--light-gray);" id="why">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-star"></i> Why Graphic Designing</div>
+      <h2 class="section-title">Why Choose a Career in <span>Graphic Designing?</span></h2>
+      <p class="section-sub mx-auto">Graphic Design is one of the fastest-growing creative fields. Every brand, startup, and business needs skilled designers to communicate their story visually.</p>
+    </div>
+    <div class="row gy-4">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="80"><div class="why-card"><div class="why-icon"><i class="fas fa-globe"></i></div><h5>High Industry Demand</h5><p>Every business — from startups to Fortune 500 companies — needs graphic designers. India's digital economy has created millions of design openings across all sectors.</p></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="140"><div class="why-card"><div class="why-icon"><i class="fas fa-laptop-house"></i></div><h5>Remote Work Flexibility</h5><p>Graphic design is one of the most remote-friendly careers. Work from home, freelance globally, and enjoy complete flexibility in your schedule and location.</p></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200"><div class="why-card"><div class="why-icon"><i class="fas fa-rupee-sign"></i></div><h5>High Salary Potential</h5><p>Experienced designers earn ₹4–15 LPA at companies, while skilled freelancers can earn ₹50,000–₹2,00,000+ per month depending on clientele and niche.</p></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="80"><div class="why-card"><div class="why-icon"><i class="fas fa-paint-brush"></i></div><h5>Creative Freedom</h5><p>Design is one of the few careers where your creativity is your currency. Get paid to think creatively, solve visual problems, and express ideas every day.</p></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="140"><div class="why-card"><div class="why-icon"><i class="fas fa-briefcase"></i></div><h5>Freelancing Opportunities</h5><p>Platforms like Fiverr, Upwork, and 99designs offer global clients. Build your freelance career from day one with our dedicated freelancing guidance module.</p></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200"><div class="why-card"><div class="why-icon"><i class="fas fa-rocket"></i></div><h5>Startup Ecosystem Demand</h5><p>India's booming startup ecosystem needs designers for branding, marketing, UI/UX, and digital content. Designers are often hired before developers in early-stage startups.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     TOOLS SHOWCASE
+============================================= -->
+<section style="background:white;" id="tools">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-tools"></i> Professional Tools</div>
+      <h2 class="section-title">Master <span>7 Industry-Standard</span> Design Tools</h2>
+      <p class="section-sub mx-auto">Learn the exact tools used by professional designers at top agencies and companies worldwide.</p>
+    </div>
+
+    <!-- Photoshop -->
+    <div class="tool-showcase" data-aos="fade-up">
+      <div class="tool-visual" style="background:linear-gradient(135deg,#001e36,#0a3d63);"><div class="tool-visual-inner"><span class="tool-visual-icon">🖼️</span><div class="tool-visual-name">Photoshop</div><div class="tool-visual-tag">Adobe · CC 2024</div></div></div>
+      <div class="tool-content">
+        <div class="section-tag" style="font-size:0.7rem;padding:4px 12px;margin-bottom:12px;"><i class="fas fa-star"></i> Core Tool</div>
+        <h3>Adobe Photoshop</h3>
+        <p>The world's most powerful image editing and compositing software. Learn photo retouching, digital painting, photo manipulation, background removal, color grading, and creating stunning visual compositions for print and web.</p>
+        <div class="tool-tags"><span class="tool-tag">Photo Retouching</span><span class="tool-tag">Digital Painting</span><span class="tool-tag">Color Grading</span><span class="tool-tag">Image Compositing</span><span class="tool-tag">Layer Masking</span><span class="tool-tag">Smart Objects</span><span class="tool-tag">Mockup Design</span></div>
+      </div>
+    </div>
+
+    <!-- Illustrator -->
+    <div class="tool-showcase reverse" data-aos="fade-up">
+      <div class="tool-visual" style="background:linear-gradient(135deg,#330e02,#7b2f00);"><div class="tool-visual-inner"><span class="tool-visual-icon">✏️</span><div class="tool-visual-name">Illustrator</div><div class="tool-visual-tag">Adobe · Vector Graphics</div></div></div>
+      <div class="tool-content">
+        <div class="section-tag" style="font-size:0.7rem;padding:4px 12px;margin-bottom:12px;"><i class="fas fa-star"></i> Core Tool</div>
+        <h3>Adobe Illustrator</h3>
+        <p>The gold standard for vector graphics creation. Master logo design, icon creation, infographics, brand identity assets, packaging artwork, and scalable illustrations that look perfect at any size — from business cards to billboards.</p>
+        <div class="tool-tags"><span class="tool-tag">Logo Design</span><span class="tool-tag">Vector Illustration</span><span class="tool-tag">Icon Design</span><span class="tool-tag">Infographics</span><span class="tool-tag">Brand Identity</span><span class="tool-tag">Pen Tool Mastery</span><span class="tool-tag">Typography</span></div>
+      </div>
+    </div>
+
+    <!-- InDesign -->
+    <div class="tool-showcase" data-aos="fade-up">
+      <div class="tool-visual" style="background:linear-gradient(135deg,#1a0033,#49021e);"><div class="tool-visual-inner"><span class="tool-visual-icon">📄</span><div class="tool-visual-name">InDesign</div><div class="tool-visual-tag">Adobe · Page Layout</div></div></div>
+      <div class="tool-content">
+        <div class="section-tag" style="font-size:0.7rem;padding:4px 12px;margin-bottom:12px;"><i class="fas fa-print"></i> Print Design</div>
+        <h3>Adobe InDesign</h3>
+        <p>The professional standard for multi-page publications and print layouts. Learn to design brochures, magazines, annual reports, catalogues, books, and professional documents with precise typography and layout control.</p>
+        <div class="tool-tags"><span class="tool-tag">Brochure Design</span><span class="tool-tag">Magazine Layout</span><span class="tool-tag">Catalogue Design</span><span class="tool-tag">Annual Reports</span><span class="tool-tag">Master Pages</span><span class="tool-tag">Print Production</span></div>
+      </div>
+    </div>
+
+    <!-- Canva -->
+    <div class="tool-showcase reverse" data-aos="fade-up">
+      <div class="tool-visual" style="background:linear-gradient(135deg,#003d4c,#00a8c6);"><div class="tool-visual-inner"><span class="tool-visual-icon">🎯</span><div class="tool-visual-name">Canva Pro</div><div class="tool-visual-tag">Quick Content Creation</div></div></div>
+      <div class="tool-content">
+        <div class="section-tag" style="font-size:0.7rem;padding:4px 12px;margin-bottom:12px;"><i class="fas fa-bolt"></i> Speed Design</div>
+        <h3>Canva Pro</h3>
+        <p>Master Canva for rapid content creation — perfect for social media, marketing teams, and startup branding. Learn brand kit setup, custom templates, presentation design, and high-volume creative production workflows.</p>
+        <div class="tool-tags"><span class="tool-tag">Social Media Posts</span><span class="tool-tag">Presentations</span><span class="tool-tag">Brand Kit</span><span class="tool-tag">Marketing Materials</span><span class="tool-tag">Team Collaboration</span></div>
+      </div>
+    </div>
+
+    <!-- CorelDRAW -->
+    <div class="tool-showcase" data-aos="fade-up">
+      <div class="tool-visual" style="background:linear-gradient(135deg,#1a3300,#4a7700);"><div class="tool-visual-inner"><span class="tool-visual-icon">🖌️</span><div class="tool-visual-name">CorelDRAW</div><div class="tool-visual-tag">Vector &amp; Print Design</div></div></div>
+      <div class="tool-content">
+        <div class="section-tag" style="font-size:0.7rem;padding:4px 12px;margin-bottom:12px;"><i class="fas fa-print"></i> Print Specialist</div>
+        <h3>CorelDRAW</h3>
+        <p>Widely used in the Indian print industry for sign boards, flex printing, visiting cards, packaging, and offset printing. Learn to create print-ready artwork with perfect bleed, crop marks, and CMYK color profiles.</p>
+        <div class="tool-tags"><span class="tool-tag">Flex Printing</span><span class="tool-tag">Visiting Cards</span><span class="tool-tag">Packaging Design</span><span class="tool-tag">Sign Boards</span><span class="tool-tag">CMYK Output</span><span class="tool-tag">Print-Ready Files</span></div>
+      </div>
+    </div>
+
+    <!-- Figma -->
+    <div class="tool-showcase reverse" data-aos="fade-up">
+      <div class="tool-visual" style="background:linear-gradient(135deg,#1a1a2e,#16213e);"><div class="tool-visual-inner"><span class="tool-visual-icon">🔷</span><div class="tool-visual-name">Figma</div><div class="tool-visual-tag">Collaborative Design</div></div></div>
+      <div class="tool-content">
+        <div class="section-tag" style="font-size:0.7rem;padding:4px 12px;margin-bottom:12px;"><i class="fas fa-users"></i> Collaboration</div>
+        <h3>Figma</h3>
+        <p>The leading collaborative design tool for UI/UX and digital product design. Learn wireframing, prototyping, component libraries, and handoff workflows for web and mobile app design — highly valued by tech companies.</p>
+        <div class="tool-tags"><span class="tool-tag">UI Design</span><span class="tool-tag">Wireframing</span><span class="tool-tag">Prototyping</span><span class="tool-tag">Component Libraries</span><span class="tool-tag">Team Collaboration</span><span class="tool-tag">Design Systems</span></div>
+      </div>
+    </div>
+
+    <!-- Lightroom -->
+    <div class="tool-showcase" data-aos="fade-up">
+      <div class="tool-visual" style="background:linear-gradient(135deg,#001a2e,#003669);"><div class="tool-visual-inner"><span class="tool-visual-icon">📸</span><div class="tool-visual-name">Lightroom</div><div class="tool-visual-tag">Adobe · Photo Editing</div></div></div>
+      <div class="tool-content">
+        <div class="section-tag" style="font-size:0.7rem;padding:4px 12px;margin-bottom:12px;"><i class="fas fa-camera"></i> Photography</div>
+        <h3>Adobe Lightroom</h3>
+        <p>Professional photo editing and management for batch processing, colour grading, and creating consistent visual styles for social media, product photography, and brand photography workflows.</p>
+        <div class="tool-tags"><span class="tool-tag">Photo Editing</span><span class="tool-tag">Colour Grading</span><span class="tool-tag">Presets</span><span class="tool-tag">Batch Processing</span><span class="tool-tag">RAW Editing</span><span class="tool-tag">Social Media Export</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     BRANDING SECTION
+============================================= -->
+<section style="background:var(--light-gray);" id="branding">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-5" data-aos="fade-right">
+       <img src="assets/image/brand-design.webp" class="w-100">
+      </div>
+      <div class="col-lg-7" data-aos="fade-left">
+        <div class="section-tag"><i class="fas fa-gem"></i> Branding &amp; Identity</div>
+        <h2 class="section-title">Brand <span>Design Mastery</span> </h2>
+        <p class="section-sub mb-4">Branding is at the heart of every successful business. Create complete brand identity systems that build recognition, trust, and emotional connection with audiences.</p>
+        <div class="row gy-3">
+          <div class="col-sm-6"><div class="info-row"><div class="info-icon"><i class="fas fa-pen-nib"></i></div><div><strong style="font-family:'Montserrat',sans-serif;font-size:0.9rem;display:block;margin-bottom:3px;">Logo Design</strong><span style="font-size:0.82rem;color:#666;">Wordmarks, monograms, pictorial &amp; abstract logos</span></div></div></div>
+          <div class="col-sm-6"><div class="info-row"><div class="info-icon"><i class="fas fa-palette"></i></div><div><strong style="font-family:'Montserrat',sans-serif;font-size:0.9rem;display:block;margin-bottom:3px;">Brand Color System</strong><span style="font-size:0.82rem;color:#666;">Primary, secondary &amp; accent palette creation</span></div></div></div>
+          <div class="col-sm-6"><div class="info-row"><div class="info-icon"><i class="fas fa-font"></i></div><div><strong style="font-family:'Montserrat',sans-serif;font-size:0.9rem;display:block;margin-bottom:3px;">Typography System</strong><span style="font-size:0.82rem;color:#666;">Font hierarchy, pairing &amp; brand typeface selection</span></div></div></div>
+          <div class="col-sm-6"><div class="info-row"><div class="info-icon"><i class="fas fa-book"></i></div><div><strong style="font-family:'Montserrat',sans-serif;font-size:0.9rem;display:block;margin-bottom:3px;">Brand Style Guide</strong><span style="font-size:0.82rem;color:#666;">Complete brand manual &amp; usage guidelines</span></div></div></div>
+          <div class="col-sm-6"><div class="info-row"><div class="info-icon"><i class="fas fa-id-card"></i></div><div><strong style="font-family:'Montserrat',sans-serif;font-size:0.9rem;display:block;margin-bottom:3px;">Brand Stationery</strong><span style="font-size:0.82rem;color:#666;">Business cards, letterheads &amp; corporate identity</span></div></div></div>
+          <div class="col-sm-6"><div class="info-row"><div class="info-icon"><i class="fas fa-mobile-alt"></i></div><div><strong style="font-family:'Montserrat',sans-serif;font-size:0.9rem;display:block;margin-bottom:3px;">Digital Brand Assets</strong><span style="font-size:0.82rem;color:#666;">Social media kits, email templates &amp; banners</span></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =============================================
+     COURSE MODULES
+============================================= -->
+<section style="background:var(--light-gray);" id="modules">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-list-alt"></i> Course Curriculum</div>
+      <h2 class="section-title">Structured <span>Course Modules</span> for Complete Mastery</h2>
+      <p class="section-sub mx-auto">Our curriculum is designed with industry experts — progressing from fundamentals to advanced professional skills.</p>
+    </div>
+    <div class="row gy-4">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50"><div class="module-card"><div class="module-num">01</div><h5>Design Fundamentals</h5><ul class="module-topics"><li>Principles of design &amp; visual hierarchy</li><li>Balance, contrast, repetition &amp; proximity</li><li>Grid systems and layout thinking</li><li>Introduction to design software</li></ul><span class="module-duration"><i class="fas fa-clock"></i> 3 Weeks</span></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100"><div class="module-card"><div class="module-num">02</div><h5>Typography &amp; Color Theory</h5><ul class="module-topics"><li>Font classification &amp; font pairing</li><li>Hierarchy, kerning, leading &amp; tracking</li><li>Color models (RGB, CMYK, HSB)</li><li>Color psychology &amp; brand palettes</li></ul><span class="module-duration"><i class="fas fa-clock"></i> 2 Weeks</span></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150"><div class="module-card"><div class="module-num">03</div><h5>Logo Design</h5><ul class="module-topics"><li>Types: wordmark, lettermark, pictorial</li><li>Logo design process &amp; sketching</li><li>Creating logos in Illustrator</li><li>Logo variations &amp; usage guidelines</li></ul><span class="module-duration"><i class="fas fa-clock"></i> 3 Weeks</span></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50"><div class="module-card"><div class="module-num">04</div><h5>Branding &amp; Identity Design</h5><ul class="module-topics"><li>Brand strategy &amp; positioning</li><li>Brand identity system creation</li><li>Stationery design (card, letterhead)</li><li>Brand style guide development</li></ul><span class="module-duration"><i class="fas fa-clock"></i> 4 Weeks</span></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100"><div class="module-card"><div class="module-num">05</div><h5>Social Media Design</h5><ul class="module-topics"><li>Instagram, Facebook &amp; LinkedIn creatives</li><li>Reels thumbnail &amp; story design</li><li>Ad creative design (Meta, Google)</li><li>Content calendar design planning</li></ul><span class="module-duration"><i class="fas fa-clock"></i> 3 Weeks</span></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150"><div class="module-card"><div class="module-num">06</div><h5>Poster &amp; Advertising Design</h5><ul class="module-topics"><li>Event poster &amp; promotional design</li><li>Advertisement layout composition</li><li>Billboard &amp; hoarding design</li><li>Campaign visual design</li></ul><span class="module-duration"><i class="fas fa-clock"></i> 3 Weeks</span></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50"><div class="module-card"><div class="module-num">07</div><h5>Print Design &amp; Packaging</h5><ul class="module-topics"><li>Brochure, flyer &amp; catalogue design</li><li>Product packaging design</li><li>Print-ready file preparation</li><li>Bleed, crop marks &amp; colour profiles</li></ul><span class="module-duration"><i class="fas fa-clock"></i> 3 Weeks</span></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100"><div class="module-card"><div class="module-num">08</div><h5>Digital Marketing Creatives</h5><ul class="module-topics"><li>Web banner &amp; email template design</li><li>Landing page wireframing basics</li><li>App UI screen concepts</li><li>Digital ads &amp; animated GIF creatives</li></ul><span class="module-duration"><i class="fas fa-clock"></i> 3 Weeks</span></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150"><div class="module-card"><div class="module-num">09</div><h5>Portfolio &amp; Real-Time Projects</h5><ul class="module-topics"><li>10+ real client project assignments</li><li>Portfolio PDF design &amp; Behance setup</li><li>LinkedIn &amp; social media portfolio</li><li>Freelancing profile creation guide</li></ul><span class="module-duration"><i class="fas fa-clock"></i> 4 Weeks</span></div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =============================================
+     STATS BAND
+============================================= -->
+<section class="stats-band" id="stats">
+  <div class="container">
+    <div class="row text-center gy-4">
+      <div class="col-6 col-lg-3 stat-col">
+        <div class="stat-box"><h2 data-count="3200">0+</h2><p>Students Trained</p></div>
+      </div>
+      <div class="col-6 col-lg-3 stat-col">
+        <div class="stat-box"><h2 data-count="8500">0+</h2><p>Projects Completed</p></div>
+      </div>
+      <div class="col-6 col-lg-3 stat-col">
+        <div class="stat-box"><h2 data-count="95">0</h2><p>% Placement Success</p></div>
+      </div>
+      <div class="col-6 col-lg-3 stat-col no-border">
+        <div class="stat-box"><h2 data-count="14">0+</h2><p>Years Excellence</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     CAREER OPPORTUNITIES
+============================================= -->
+<section style="background:var(--light-gray);" id="career">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-briefcase"></i> Career Opportunities</div>
+      <h2 class="section-title">Exciting Career Roles in <span>Graphic Design</span></h2>
+      <p class="section-sub mx-auto">Graphic design opens doors to creative roles across industries — from advertising agencies to tech startups and e-commerce brands.</p>
+    </div>
+    <div class="row gy-4">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+        <div class="career-card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;"><div style="width:50px;height:50px;background:rgba(139,0,0,0.08);border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.2rem;"><i class="fas fa-paint-brush"></i></div><span style="background:rgba(39,174,96,0.1);color:#27ae60;font-size:0.72rem;font-weight:700;padding:4px 10px;border-radius:50px;">High Demand</span></div>
+          <div class="career-role">Graphic Designer</div>
+          <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:14px;">Avg. Salary: <span class="salary-val">₹3.5–8 LPA</span></div>
+          <p style="font-size:0.83rem;color:#666;line-height:1.6;">Create visual content for print and digital media. Work with marketing teams, agencies, or independently.</p>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:0.72rem;"><span style="color:#999;">Industry Demand</span><span style="font-weight:700;color:var(--primary);">92%</span></div>
+          <div class="demand-bar"><div class="demand-fill" data-width="92"></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="career-card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;"><div style="width:50px;height:50px;background:rgba(139,0,0,0.08);border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.2rem;"><i class="fas fa-gem"></i></div><span style="background:rgba(39,174,96,0.1);color:#27ae60;font-size:0.72rem;font-weight:700;padding:4px 10px;border-radius:50px;">High Demand</span></div>
+          <div class="career-role">Brand Designer</div>
+          <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:14px;">Avg. Salary: <span class="salary-val">₹5–12 LPA</span></div>
+          <p style="font-size:0.83rem;color:#666;line-height:1.6;">Develop brand identities, visual systems, and style guides for companies, startups, and agencies.</p>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:0.72rem;"><span style="color:#999;">Industry Demand</span><span style="font-weight:700;color:var(--primary);">88%</span></div>
+          <div class="demand-bar"><div class="demand-fill" data-width="88"></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
+        <div class="career-card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;"><div style="width:50px;height:50px;background:rgba(139,0,0,0.08);border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.2rem;"><i class="fab fa-instagram"></i></div><span style="background:rgba(39,174,96,0.1);color:#27ae60;font-size:0.72rem;font-weight:700;padding:4px 10px;border-radius:50px;">Trending</span></div>
+          <div class="career-role">Social Media Designer</div>
+          <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:14px;">Avg. Salary: <span class="salary-val">₹3–7 LPA</span></div>
+          <p style="font-size:0.83rem;color:#666;line-height:1.6;">Create platform-specific content, ad creatives, and brand campaigns for social media channels.</p>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:0.72rem;"><span style="color:#999;">Industry Demand</span><span style="font-weight:700;color:var(--primary);">95%</span></div>
+          <div class="demand-bar"><div class="demand-fill" data-width="95"></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+        <div class="career-card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;"><div style="width:50px;height:50px;background:rgba(139,0,0,0.08);border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.2rem;"><i class="fas fa-ad"></i></div><span style="background:rgba(230,126,34,0.1);color:#e67e22;font-size:0.72rem;font-weight:700;padding:4px 10px;border-radius:50px;">Growing</span></div>
+          <div class="career-role">Marketing Designer</div>
+          <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:14px;">Avg. Salary: <span class="salary-val">₹4–9 LPA</span></div>
+          <p style="font-size:0.83rem;color:#666;line-height:1.6;">Design marketing collateral, campaigns, and conversion-focused ad creatives for growth teams.</p>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:0.72rem;"><span style="color:#999;">Industry Demand</span><span style="font-weight:700;color:var(--primary);">85%</span></div>
+          <div class="demand-bar"><div class="demand-fill" data-width="85"></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="career-card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;"><div style="width:50px;height:50px;background:rgba(139,0,0,0.08);border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.2rem;"><i class="fas fa-film"></i></div><span style="background:rgba(39,174,96,0.1);color:#27ae60;font-size:0.72rem;font-weight:700;padding:4px 10px;border-radius:50px;">Trending</span></div>
+          <div class="career-role">Digital Content Creator</div>
+          <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:14px;">Avg. Salary: <span class="salary-val">₹3–10 LPA</span></div>
+          <p style="font-size:0.83rem;color:#666;line-height:1.6;">Create diverse digital content across blogs, websites, email, apps, and OTT platforms for brands.</p>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:0.72rem;"><span style="color:#999;">Industry Demand</span><span style="font-weight:700;color:var(--primary);">90%</span></div>
+          <div class="demand-bar"><div class="demand-fill" data-width="90"></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
+        <div class="career-card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;"><div style="width:50px;height:50px;background:rgba(139,0,0,0.08);border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.2rem;"><i class="fas fa-laptop-code"></i></div><span style="background:rgba(39,174,96,0.1);color:#27ae60;font-size:0.72rem;font-weight:700;padding:4px 10px;border-radius:50px;">High Demand</span></div>
+          <div class="career-role">Freelance Design Consultant</div>
+          <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:14px;">Monthly: <span class="salary-val">₹50K–₹2L+</span></div>
+          <p style="font-size:0.83rem;color:#666;line-height:1.6;">Serve clients globally via Fiverr, Upwork, and direct referrals. Build a scalable design business.</p>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:0.72rem;"><span style="color:#999;">Freelance Market</span><span style="font-weight:700;color:var(--primary);">98%</span></div>
+          <div class="demand-bar"><div class="demand-fill" data-width="98"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     FAQ
+============================================= -->
+<section style="background:white;" id="faq">
+  <div class="container">
+    <div class="row gy-5 justify-content-center">
+      <!-- <div class="col-lg-4" data-aos="fade-right">
+        <div class="section-tag"><i class="fas fa-question-circle"></i> FAQ</div>
+        <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+        <p style="color:var(--text-muted);line-height:1.8;margin-bottom:28px;">Have questions about our Graphic Designing course? Find answers below or contact us for a free counselling session.</p>
+        <a href="contact.html" class="btn-hero-primary ripple" style="font-size:0.88rem;padding:12px 26px;"><i class="fas fa-comments"></i> Ask Us Anything</a>
+      </div> -->
+      <div class="col-lg-8" data-aos="fade-left">
+        <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+        <!-- <p style="color:var(--text-muted);line-height:1.8;margin-bottom:28px;">Have questions about our Graphic Designing course? Find answers below or contact us for a free counselling session.</p> -->
+        <div class="accordion faq-accordion" id="faqAccordion">
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">Do I need any prior design experience to join this course?</button></h2><div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion"><div class="accordion-body">Absolutely not! Our Graphic Designing course is designed for complete beginners. We start from the very basics — design principles, understanding software interfaces, and fundamental concepts — before progressing to advanced techniques. Students from any background (arts, science, commerce, engineering) can join.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">What software and computer requirements do I need?</button></h2><div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">All software training happens on our lab computers at the centre. For home practice, a computer with Windows 10/11 or macOS with at least 8GB RAM and a dedicated graphics card is recommended. Canva and Figma run in any web browser. We provide guidance on cost-effective software access options.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">What certification will I receive upon course completion?</button></h2><div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Upon successful completion, you receive the CADPOINT Certified Graphic Designer certificate — an industry-recognised credential accepted by 500+ hiring partners, design studios, agencies, and corporations across India. It validates your proficiency in 7 design tools and core design disciplines.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">How does the placement assistance program work?</button></h2><div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Our dedicated placement cell provides end-to-end career support including portfolio review, resume/CV creation, LinkedIn profile optimization, mock interviews, and direct job referrals to our 500+ hiring partner network. We also conduct monthly placement drives where hiring companies visit our campus.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">Can I learn freelancing along with this course?</button></h2><div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Yes! We have a dedicated freelancing mentorship module. You'll learn how to set up optimised profiles on Fiverr, Upwork, and 99designs, how to write winning proposals, how to price your services, and how to build a client referral system. Many students start earning during the course itself.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">Are weekend or evening batches available?</button></h2><div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Yes, we offer flexible batch timings for working professionals and students. Options include morning batches (9AM–12PM), afternoon batches (2PM–5PM), evening batches (6PM–9PM), and weekend-only batches (Saturday–Sunday). Contact us to check current batch availability.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">Will I get internship opportunities during or after the course?</button></h2><div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Yes! Top-performing students are offered paid internship opportunities with our partner design studios, advertising agencies, and media companies. Internships typically start in month 5 and can convert to full-time roles. Many students have been directly hired by companies where they interned through our program.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     CTA SECTION
+============================================= -->
+<section class="cta-section">
+  <div class="container text-center position-relative" style="z-index:1;">
+    <div data-aos="zoom-in">
+      <div class="section-tag mx-auto mb-3" style="color:rgba(255,255,255,0.85);border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.08);"><i class="fas fa-paint-brush"></i> Start Creating Today</div>
+      <h2 class="cta-title">Start Your <span style="color:#ffd700;">Creative Design Career</span><br>Today</h2>
+      <p class="cta-subtitle">Join 3,200+ graduates who transformed their passion for design into a thriving creative career</p>
+      <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <a href="https://wa.me/919895352624" class="btn-cta-glow ripple"><i class="fas fa-rocket"></i> Enroll Now — Free Counselling</a>
+        <a href="tel:+919895352624" class="btn-cta-outline"><i class="fas fa-phone-alt"></i> Call Us Directly</a>
+      </div>
+      <div style="margin-top:36px;display:flex;justify-content:center;gap:32px;flex-wrap:wrap;">
+        <span style="color:rgba(255,255,255,0.82);font-size:0.87rem;display:flex;align-items:center;gap:8px;"><i class="fas fa-check" style="color:#ffd700;"></i> No prior experience needed</span>
+        <span style="color:rgba(255,255,255,0.82);font-size:0.87rem;display:flex;align-items:center;gap:8px;"><i class="fas fa-check" style="color:#ffd700;"></i> Flexible batch timings</span>
+        <span style="color:rgba(255,255,255,0.82);font-size:0.87rem;display:flex;align-items:center;gap:8px;"><i class="fas fa-check" style="color:#ffd700;"></i> ISO certified programme</span>
+        <span style="color:rgba(255,255,255,0.82);font-size:0.87rem;display:flex;align-items:center;gap:8px;"><i class="fas fa-check" style="color:#ffd700;"></i> 100% placement support</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     FOOTER
+============================================= -->
+<div id="footer"></div>
+<!-- =============================================
+     BOOTSTRAP 5 JS (CDN)
+============================================= -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+fetch("./header.html")
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById("header").innerHTML = html;
+    initCaddNav();
+  });
+
+  fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+      document.getElementById('footer').innerHTML = data;
+  });
+</script>
+<script>
+function initCaddNav() {
+
+    const coursesNav = document.getElementById('coursesNav');
+    const caret = document.getElementById('coursesCaret');
+    const menu = document.getElementById('coursesMegaMenu');
+    const closeBtn = document.getElementById('closeMegaMenu');
+
+    if (!coursesNav || !caret || !menu) return;
+
+    // X BUTTON CLOSE (Desktop + Mobile)
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.remove('show');
+
+        });
+    }
+
+    // MOBILE
+    if (window.innerWidth <= 991) {
+
+        caret.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!coursesNav.contains(e.target)) {
+                menu.classList.remove('show');
+            }
+        });
+
+        return;
+    }
+
+    // DESKTOP
+    coursesNav.addEventListener('mouseenter', function () {
+        menu.classList.add('show');
+    });
+
+    coursesNav.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+
+    menu.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+}
+</script>
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const coursesNav = document.getElementById("coursesNav");
+    const dropdownToggle = document.getElementById("coursesDropdown");
+    const megaMenu = document.querySelector(".courses-mega-menu");
+    const closeBtn = document.getElementById("closeMegaMenu");
+    const navbarCollapse = document.getElementById("navMenu");
+  
+    let isMobile = window.innerWidth < 992;
+    let menuOpen = false;
+  
+    function updateDeviceMode() {
+      isMobile = window.innerWidth < 992;
+  
+      if (!isMobile) {
+        megaMenu.style.display = "block";
+        megaMenu.style.maxHeight = "";
+      } else {
+        megaMenu.style.display = "none";
+        megaMenu.style.maxHeight = "0px";
+      }
+    }
+  
+    function openMenu() {
+      if (isMobile) {
+        megaMenu.style.display = "block";
+  
+        requestAnimationFrame(() => {
+          megaMenu.style.maxHeight = megaMenu.scrollHeight + "px";
+        });
+      }
+  
+      megaMenu.classList.add("show");
+      menuOpen = true;
+    }
+  
+    function closeMenu() {
+      megaMenu.classList.remove("show");
+  
+      if (isMobile) {
+        megaMenu.style.maxHeight = "0px";
+  
+        setTimeout(() => {
+          if (!menuOpen) {
+            megaMenu.style.display = "none";
+          }
+        }, 300);
+      }
+  
+      menuOpen = false;
+    }
+  
+    function toggleMenu(e) {
+      e.preventDefault();
+      e.stopPropagation();
+  
+      if (menuOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    }
+  
+    dropdownToggle.addEventListener("click", toggleMenu);
+  
+    closeBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      closeMenu();
+    });
+  
+    // Desktop Hover
+    coursesNav.addEventListener("mouseenter", () => {
+      if (!isMobile) {
+        openMenu();
+      }
+    });
+  
+    coursesNav.addEventListener("mouseleave", () => {
+      if (!isMobile) {
+        closeMenu();
+      }
+    });
+  
+    // Outside Click
+    document.addEventListener("click", (e) => {
+      if (!coursesNav.contains(e.target)) {
+        closeMenu();
+      }
+    });
+  
+    // ESC Key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeMenu();
+      }
+    });
+  
+    // Close mobile navbar after clicking links
+    megaMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        closeMenu();
+  
+        if (isMobile && navbarCollapse.classList.contains("show")) {
+          bootstrap.Collapse.getInstance(navbarCollapse)?.hide();
+        }
+      });
+    });
+  
+    window.addEventListener("resize", () => {
+      closeMenu();
+      updateDeviceMode();
+    });
+  
+    updateDeviceMode();
+  });
+  </script>
+
+<script>
+/* =============================================
+   LOADER
+============================================= */
+window.addEventListener('load', () => {
+  setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 1800);
+});
+
+/* =============================================
+   AOS INIT
+============================================= */
+AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });
+
+/* =============================================
+   NAVBAR SCROLL
+============================================= */
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+  document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 400);
+});
+
+/* =============================================
+   BACK TO TOP
+============================================= */
+document.getElementById('backToTop').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/* =============================================
+   HERO TITLE ANIMATION
+============================================= */
+const heroTitle = document.getElementById('heroTitle');
+if (heroTitle) {
+  heroTitle.style.cssText = 'opacity:0;transform:translateY(30px);transition:opacity 0.8s ease 0.5s,transform 0.8s ease 0.5s;';
+  setTimeout(() => { heroTitle.style.opacity = '1'; heroTitle.style.transform = 'translateY(0)'; }, 300);
+}
+
+/* =============================================
+   COUNTER ANIMATION
+============================================= */
+function animateCounters() {
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseInt(el.getAttribute('data-count'));
+    const suffix = el.nextElementSibling?.textContent.includes('%') ? '%' : '+';
+    let current = 0, increment = target / 60;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) { current = target; clearInterval(timer); }
+      el.textContent = Math.floor(current) + suffix;
+    }, 25);
+  });
+}
+const statsObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { animateCounters(); statsObserver.disconnect(); } });
+}, { threshold: 0.3 });
+const statsBand = document.querySelector('.stats-band');
+if (statsBand) statsObserver.observe(statsBand);
+
+/* =============================================
+   DEMAND BARS ANIMATION
+============================================= */
+const barObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.demand-fill').forEach(bar => {
+        const w = bar.getAttribute('data-width') + '%';
+        setTimeout(() => { bar.style.width = w; }, 200);
+      });
+      barObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.career-card').forEach(c => barObserver.observe(c));
+
+/* =============================================
+   TESTIMONIALS SLIDER
+============================================= */
+const track = document.getElementById('testiTrack');
+let idx = 0;
+function getVisible() {
+  if (window.innerWidth < 576) return 1;
+  if (window.innerWidth < 992) return 2;
+  return 3;
+}
+function updateSlider() {
+  const vis = getVisible();
+  const cards = track.querySelectorAll('.testi-card');
+  const maxIdx = Math.max(0, cards.length - vis);
+  if (idx > maxIdx) idx = maxIdx;
+  const w = track.parentElement.offsetWidth / vis;
+  cards.forEach(c => { c.style.minWidth = (w - 26) + 'px'; });
+  track.style.transform = `translateX(-${idx * w}px)`;
+}
+document.getElementById('testiNext').addEventListener('click', () => {
+  const vis = getVisible();
+  const max = Math.max(0, track.querySelectorAll('.testi-card').length - vis);
+  idx = Math.min(idx + 1, max); updateSlider();
+});
+document.getElementById('testiPrev').addEventListener('click', () => {
+  idx = Math.max(idx - 1, 0); updateSlider();
+});
+window.addEventListener('resize', updateSlider);
+window.addEventListener('load', updateSlider);
+
+/* =============================================
+   RIPPLE EFFECT
+============================================= */
+document.querySelectorAll('.ripple').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const r = document.createElement('span');
+    r.style.cssText = `position:absolute;border-radius:50%;background:rgba(255,255,255,0.3);width:10px;height:10px;left:${e.clientX-rect.left-5}px;top:${e.clientY-rect.top-5}px;transform:scale(0);animation:rippleAnim 0.6s ease-out forwards;pointer-events:none;`;
+    this.appendChild(r);
+    setTimeout(() => r.remove(), 700);
+  });
+});
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = '@keyframes rippleAnim{to{transform:scale(30);opacity:0;}}';
+document.head.appendChild(rippleStyle);
+
+/* =============================================
+   CLOSE MEGA MENU X BUTTON
+============================================= */
+document.getElementById('closeMegaMenu').addEventListener('click', () => {
+  document.querySelector('.courses-mega-menu').classList.remove('show');
+});
+
+/* =============================================
+   COURSES MEGA DROPDOWN — hover / click
+============================================= */
+(function () {
+  const nav = document.getElementById('coursesNav');
+  if (!nav) return;
+  const menu = nav.querySelector('.courses-mega-menu');
+  const caret = document.getElementById('coursesDropdown');
+  if (!menu) return;
+  let hideTimer;
+
+  const caretIcon = caret ? caret.querySelector('i') : null;
+  if (caretIcon) caretIcon.style.transition = 'transform 0.25s ease';
+
+  function showMenu() {
+    clearTimeout(hideTimer);
+    const navRect = document.getElementById('mainNav').getBoundingClientRect();
+    menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    menu.classList.add('show');
+    if (caretIcon) caretIcon.style.transform = 'rotate(180deg)';
+  }
+  function hideMenu() {
+    hideTimer = setTimeout(() => {
+      menu.classList.remove('show');
+      if (caretIcon) caretIcon.style.transform = 'rotate(0deg)';
+    }, 120);
+  }
+
+  nav.addEventListener('mouseenter', showMenu);
+  nav.addEventListener('mouseleave', hideMenu);
+  menu.addEventListener('mouseenter', showMenu);
+  menu.addEventListener('mouseleave', hideMenu);
+
+  if (caret) {
+    caret.addEventListener('click', e => {
+      e.stopPropagation();
+      menu.classList.contains('show') ? hideMenu() : showMenu();
+    });
+  }
+
+  document.addEventListener('click', e => {
+    if (!nav.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('show');
+      if (caretIcon) caretIcon.style.transform = 'rotate(0deg)';
+    }
+  });
+
+  window.addEventListener('scroll', () => {
+    if (menu.classList.contains('show')) {
+      const navRect = document.getElementById('mainNav').getBoundingClientRect();
+      menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    }
+  });
+})();
+</script>
+</body>
+</html>

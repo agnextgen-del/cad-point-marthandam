@@ -1,0 +1,1739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spoken English Course | CADPOINT Training Centre</title>
+  <meta name="description" content="Master Spoken English with CADPOINT. Build fluency, vocabulary, pronunciation, public speaking, and interview communication skills. Get certified and placed with our expert-led Spoken English program.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="assets/image/cadd-logo.webp">
+  <style>
+    /* ═══════════════════════════════════════
+       CSS VARIABLES — EXACT MATCH TO CADPOINT
+    ═══════════════════════════════════════ */
+    :root {
+      --primary: #8B0000;
+      --primary-light: #A00000;
+      --primary-dark: #5c0000;
+      --primary-glow: rgba(139,0,0,0.35);
+      --white: #ffffff;
+      --light-gray: #F5F5F5;
+      --text-dark: #1a1a1a;
+      --text-muted: #555;
+      --border-light: rgba(139,0,0,0.15);
+      --glass-bg: rgba(255,255,255,0.08);
+      --glass-border: rgba(255,255,255,0.18);
+    }
+
+    html, body { max-width: 100%; overflow-x: hidden; scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; color: var(--text-dark); background: var(--white); }
+    * { box-sizing: border-box; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+    /* ═══ LOADER ═══ */
+    #loader {
+      position: fixed; inset: 0; background: var(--primary-dark);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 20px;
+      z-index: 9999; transition: opacity 0.6s ease, visibility 0.6s;
+    }
+    #loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .loader-logo { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2rem; color: white; letter-spacing: 4px; }
+    .loader-logo span { color: #ffd700; }
+    .loader-bar { width: 200px; height: 3px; background: rgba(255,255,255,0.15); border-radius: 3px; overflow: hidden; }
+    .loader-bar-inner { height: 100%; background: linear-gradient(90deg, var(--primary-light), #ffd700); border-radius: 3px; animation: loadBar 1.8s ease-in-out forwards; }
+    @keyframes loadBar { from { width: 0; } to { width: 100%; } }
+
+    /* ═══ BACK TO TOP ═══ */
+    #backToTop {
+      position: fixed; bottom: 30px; right: 30px; width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white; border: none; border-radius: 50%; cursor: pointer;
+      box-shadow: 0 6px 20px var(--primary-glow); opacity: 0; transform: translateY(20px);
+      transition: all 0.4s ease; z-index: 999; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+    }
+    #backToTop.visible { opacity: 1; transform: translateY(0); }
+    #backToTop:hover { transform: translateY(-4px); box-shadow: 0 10px 30px var(--primary-glow); }
+
+    /* ═══ NAVBAR ═══ */
+    .navbar {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 2px 30px rgba(139,0,0,0.12);
+      padding: 7px 0;
+      position: sticky; top: 0; z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    .navbar.scrolled { padding: 8px 0; box-shadow: 0 4px 40px rgba(139,0,0,0.2); }
+    .navbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icon { width: 48px; height: 48px; flex-shrink: 0; }
+    .logo-text { line-height: 1.1; }
+    .logo-text .brand-name { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.3rem; color: var(--primary); letter-spacing: 2px; }
+    .logo-text .brand-sub { font-size: 0.58rem; font-weight: 600; color: #666; letter-spacing: 1.5px; text-transform: uppercase; }
+    .navbar-nav .nav-link { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.8px; text-transform: uppercase; padding: 8px 16px !important; border-radius: 6px; transition: all 0.3s ease; }
+    .navbar-nav .nav-link:hover { color: var(--primary); }
+    .btn-nav-enroll { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white !important; padding: 8px 22px !important; border-radius: 25px !important; font-weight: 700 !important; box-shadow: 0 4px 15px var(--primary-glow); transition: all 0.3s ease !important; }
+    .btn-nav-enroll:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--primary-glow) !important; }
+    .btn-nav-enroll::after { display: none !important; }
+
+    /* Mega Menu */
+    #coursesNav { position: static !important; }
+    #coursesNav > div { display: flex; align-items: center; }
+    .courses-mega-menu {
+      position: fixed !important; top: auto !important; left: 50% !important;
+      transform: translateX(-50%) translateY(6px) !important;
+      width: min(960px, 96vw) !important; display: block !important;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+      pointer-events: none; border: none !important; border-radius: 16px !important; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.16), 0 0 0 1px rgba(139,0,0,0.1) !important;
+      padding: 0 !important;
+    }
+    .courses-mega-menu.show { opacity: 1 !important; visibility: visible !important; transform: translateX(-50%) translateY(0) !important; pointer-events: auto !important; }
+    .mega-topbar { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: white; font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.6px; }
+    .mega-viewall { color: #ffd700 !important; font-size: 0.75rem; font-weight: 700; text-decoration: none; transition: opacity 0.2s; }
+    .mega-viewall:hover { opacity: 0.8; }
+    .mega-col { flex: 1; padding: 20px 10px 10px 10px; border-right: 1px solid rgba(139,0,0,0.08); background: white; }
+    .mega-col:last-child { border-right: none; }
+    .mega-col-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid rgba(139,0,0,0.08); }
+    .mega-col-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .mega-col-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.82rem; color: var(--text-dark); letter-spacing: 0.4px; }
+    .mega-col-sub { font-size: 0.68rem; color: #999; font-weight: 500; margin-top: 1px; }
+    .mega-item { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 7px; font-size: 0.8rem; font-weight: 500; color: var(--text-dark); text-decoration: none; transition: background 0.15s, color 0.15s, padding-left 0.15s; margin-bottom: 2px; }
+    .mega-item i { font-size: 0.72rem; width: 16px; text-align: center; color: #aaa; transition: color 0.15s; flex-shrink: 0; }
+    .mega-item:hover { background: rgba(139,0,0,0.07); color: var(--primary); padding-left: 12px; }
+    .mega-item:hover i { color: var(--primary); }
+    .mega-close-x { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border: none; border-radius: 50%; background: #fff; color: #222; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 99; box-shadow: 0 4px 15px rgba(0,0,0,.12); transition: .3s ease; }
+    .mega-close-x:hover { background: var(--primary); color: #fff; transform: rotate(90deg); }
+    #coursesNav .courses-caret { color: var(--text-dark); transition: color 0.2s; }
+    #coursesNav .courses-caret:hover { color: var(--primary); }
+    .dropdown-menu { border-radius: 10px; border: none; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    .dropdown-item:hover { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #fff; border-radius: 5px; }
+
+    /* Mobile navbar */
+    @media (max-width: 991px) {
+      .navbar-collapse { background: #fff; padding: 15px; border-radius: 18px; margin-top: 15px; box-shadow: 0 10px 35px rgba(0,0,0,.08); }
+      #coursesNav { width: 100%; }
+      #coursesNav .d-flex { width: 100%; justify-content: space-between; align-items: center; }
+      #coursesNav .nav-link { padding: 12px 0 !important; }
+      .courses-caret { padding-right: 0 !important; }
+      .courses-mega-menu { position: static !important; transform: none !important; width: 100% !important; min-width: 100% !important; margin-top: 10px !important; border: none !important; box-shadow: none !important; border-radius: 16px !important; overflow: hidden; background: #f8f9fb; }
+      .courses-mega-menu .d-flex { flex-direction: column !important; gap: 0 !important; padding-top: 0 !important; }
+      .mega-col { width: 100% !important; border-right: none !important; border-bottom: 1px solid rgba(0,0,0,.06); padding: 18px 16px !important; }
+      .mega-col:last-child { border-bottom: none; }
+      .mega-col-title { font-size: 1rem; font-weight: 700; }
+      .mega-col-sub { font-size: .78rem; }
+      .mega-item { width: 100%; display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 10px; font-size: .92rem; }
+      .mega-item:hover { background: #fff; }
+      .mega-item i { width: 18px; text-align: center; }
+    }
+
+    /* ═══ BREADCRUMB SLIDER ═══ */
+    .breadcrumb-slider { background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-dark) 100%); padding: 0; overflow: hidden; height: 38px; display: flex; align-items: center; position: relative; }
+    .breadcrumb-slider::before, .breadcrumb-slider::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none; }
+    .breadcrumb-slider::before { left: 0; background: linear-gradient(to right, var(--primary-dark), transparent); }
+    .breadcrumb-slider::after { right: 0; background: linear-gradient(to left, var(--primary-dark), transparent); }
+    .breadcrumb-track { display: flex; animation: scrollBreadcrumb 28s linear infinite; white-space: nowrap; will-change: transform; }
+    .breadcrumb-track:hover { animation-play-state: paused; }
+    .breadcrumb-item-slide { display: inline-flex; align-items: center; gap: 8px; padding: 0 30px; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 1px; text-transform: uppercase; font-family: 'Montserrat', sans-serif; }
+    .breadcrumb-item-slide i { color: rgba(255,255,255,0.6); font-size: 0.7rem; }
+    @keyframes scrollBreadcrumb { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ═══ HERO SECTION ═══ */
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, #c0392b 80%, var(--primary-dark) 100%);
+      min-height: 88vh; display: flex; align-items: center;
+      position: relative; overflow: hidden; padding: 80px 0 100px;
+    }
+    .hero-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2zm4 0L80 4v2L46 40h-2zm4 0L80 8v2L50 40h-2zm4 0L80 12v2L54 40h-2zm4 0L80 16v2L58 40h-2zm4 0L80 20v2L62 40h-2zm4 0L80 24v2L66 40h-2zm4 0L80 28v2L70 40h-2zm4 0L80 32v2L74 40h-2zm4 0L80 36v2L78 40h-2zm4 0L80 40h-2v-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.4;
+    }
+    .hero-blob { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
+    .hero-blob-1 { width: 500px; height: 500px; background: rgba(255,255,255,0.05); top: -200px; right: -100px; animation: floatBlob 8s ease-in-out infinite; }
+    .hero-blob-2 { width: 300px; height: 300px; background: rgba(255,215,0,0.06); bottom: -100px; left: -80px; animation: floatBlob 10s ease-in-out infinite reverse; }
+    .hero-blob-3 { width: 200px; height: 200px; background: rgba(255,255,255,0.04); top: 50%; left: 30%; animation: floatBlob 6s ease-in-out infinite 2s; }
+    @keyframes floatBlob { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-30px) scale(1.05); } }
+
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(10px); padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+    .hero-badge span { color: #ffd700; }
+    .hero-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.15; color: white; margin-bottom: 20px; }
+    .hero-title .highlight { color: #ffd700; }
+    .hero-desc { font-size: 1rem; color: rgba(255,255,255,0.82); line-height: 1.8; margin-bottom: 32px; max-width: 700px; }
+    .hero-pills { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 36px; }
+    .hero-pill { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.9); padding: 5px 14px; border-radius: 50px; font-size: 0.8rem; font-weight: 500; backdrop-filter: blur(10px); }
+    .hero-pill i { color: #ffd700; }
+
+    .btn-hero-primary { background: linear-gradient(135deg, #ffd700, #ffb700); color: var(--primary-dark) !important; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.88rem; letter-spacing: 0.8px; padding: 14px 32px; border-radius: 50px; border: none; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 8px 25px rgba(255,215,0,0.4); transition: all 0.3s ease; position: relative; overflow: hidden; }
+    .btn-hero-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(255,215,0,0.5); color: var(--primary-dark) !important; }
+    .btn-hero-primary span { position: relative; z-index: 1; }
+    .btn-hero-outline { background: transparent; color: white !important; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem; letter-spacing: 0.8px; padding: 13px 30px; border-radius: 50px; border: 2px solid rgba(255,255,255,0.5); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; backdrop-filter: blur(10px); }
+    .btn-hero-outline:hover { border-color: white; background: rgba(255,255,255,0.12); transform: translateY(-3px); color: white !important; }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+
+    /* ═══ SECTION COMMONS ═══ */
+    section { padding: 90px 0; }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(139,0,0,0.08); border: 1px solid rgba(139,0,0,0.2); color: var(--primary); font-family: 'Montserrat', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 14px; border-radius: 50px; margin-bottom: 14px; }
+    .section-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.2; color: var(--text-dark); margin-bottom: 14px; }
+    .section-title span { color: var(--primary); }
+    .section-subtitle { color: var(--text-muted); font-size: 1rem; line-height: 1.7; max-width: 600px; }
+    .divider-line { width: 60px; height: 4px; background: linear-gradient(90deg, var(--primary), var(--primary-light)); border-radius: 4px; margin: 16px 0 24px; }
+
+    /* ═══ MARQUEE ═══ */
+    .marquee-section { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); padding: 28px 0; overflow: hidden; position: relative; }
+    .marquee-section::before, .marquee-section::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; }
+    .marquee-section::before { left: 0; background: linear-gradient(to right, var(--primary-dark), transparent); }
+    .marquee-section::after { right: 0; background: linear-gradient(to left, var(--primary-dark), transparent); }
+    .marquee-track { display: flex; animation: marqueeScroll 25s linear infinite; will-change: transform; }
+    .marquee-track:hover { animation-play-state: paused; }
+    .marquee-item { display: inline-flex; align-items: center; gap: 12px; padding: 0 28px; white-space: nowrap; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.9); }
+    .marquee-dot { width: 6px; height: 6px; background: #ffd700; border-radius: 50%; flex-shrink: 0; }
+    @keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ═══ COURSE OVERVIEW ═══ */
+    .course-overview-section { background: var(--light-gray); }
+    .overview-img-wrap { position: relative; }
+    .overview-img-wrap img { width: 100%; border-radius: 20px; box-shadow: 0 20px 60px rgba(139,0,0,0.15); }
+    .overview-badge { position: absolute; bottom: -20px; right: -20px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; padding: 20px; border-radius: 16px; text-align: center; box-shadow: 0 10px 30px var(--primary-glow); }
+    .overview-badge .num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2rem; line-height: 1; display: block; }
+    .overview-badge .lbl { font-size: 0.72rem; font-weight: 600; opacity: 0.9; }
+    .feature-list { list-style: none; padding: 0; margin-bottom: 30px; }
+    .feature-list li { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(139,0,0,0.06); font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+    .feature-list li:last-child { border-bottom: none; }
+    .feature-list li i { color: var(--primary); background: rgba(139,0,0,0.08); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; flex-shrink: 0; margin-top: 2px; }
+    .feature-list li span { flex: 1; }
+
+    /* ═══ WHY LEARN SPOKEN ENGLISH ═══ */
+    .why-section { background: #fff; position: relative; overflow: hidden; }
+    .why-section::before { content: ''; position: absolute; width: 500px; height: 500px; background: rgba(139,0,0,0.03); border-radius: 50%; top: -200px; left: -150px; filter: blur(80px); }
+    .why-card { text-align: center; padding: 36px 24px; border-radius: 22px; transition: all 0.4s ease; position: relative; background: #fff; border: 1px solid rgba(220,220,220,0.6); box-shadow: 0 4px 20px rgba(0,0,0,0.05); height: 100%; overflow: hidden; }
+    .why-card::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 0%; height: 4px; background: linear-gradient(135deg, var(--primary-dark), var(--primary)); border-radius: 50px; transition: .5s; }
+    .why-card:hover::before { width: 100%; }
+    .why-card:hover { transform: translateY(-10px); box-shadow: 0 20px 45px rgba(139,0,0,0.13); }
+    .why-icon { width: 80px; height: 80px; background: linear-gradient(135deg, rgba(139,0,0,0.1), rgba(139,0,0,0.16)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2rem; color: var(--primary); transition: all 0.4s ease; }
+    .why-card:hover .why-icon { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; box-shadow: 0 10px 30px var(--primary-glow); transform: scale(1.1) rotate(8deg); }
+    .why-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 10px; }
+    .why-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; margin: 0; text-align: justify; }
+
+    /* ═══ IMAGE + CONTENT SECTIONS ═══ */
+    .img-content-section { background: #fff; }
+    .img-content-section.alt-bg { background: var(--light-gray); }
+    .img-block { position: relative; }
+    .img-block img { width: 100%; border-radius: 20px; box-shadow: 0 20px 50px rgba(139,0,0,0.12); }
+    .img-block .img-overlay-badge { position: absolute; top: 20px; left: 20px; background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: white; padding: 8px 16px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; }
+    .content-block .about-feature { display: flex; align-items: flex-start; gap: 16px; padding: 16px 18px; background: white; border-radius: 14px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border-left: 4px solid var(--primary); transition: all 0.3s ease; margin-bottom: 14px; }
+    .content-block .about-feature:hover { transform: translateX(5px); box-shadow: 0 8px 25px rgba(139,0,0,0.12); }
+    .content-block .about-feature-icon { width: 46px; height: 46px; background: linear-gradient(135deg, rgba(139,0,0,0.1), rgba(139,0,0,0.16)); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.2rem; flex-shrink: 0; }
+    .content-block .about-feature h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+    .content-block .about-feature p { font-size: 0.8rem; color: var(--text-muted); margin: 0; text-align: justify; }
+
+    /* ═══ GLASSMORPHISM CARDS ═══ */
+    .glass-card { background: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.4); backdrop-filter: blur(20px); border-radius: 20px; padding: 30px 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); transition: all 0.4s ease; height: 100%; }
+    .glass-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(139,0,0,0.15); }
+
+    /* ═══ GRADIENT BANNER SECTION ═══ */
+    .gradient-banner { background: linear-gradient(135deg, var(--primary-dark), var(--primary) 50%, #c0392b); padding: 80px 0; position: relative; overflow: hidden; }
+    .gradient-banner::before { content: ''; position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%); top: -200px; right: -100px; }
+
+    /* ═══ MODULES SECTION ═══ */
+    .modules-section { background: var(--light-gray); }
+    .module-card { background: white; border-radius: 16px; padding: 28px 24px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); border: 1px solid rgba(139,0,0,0.06); transition: all 0.4s ease; height: 100%; position: relative; overflow: hidden; }
+    .module-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--primary), var(--primary-light)); transform: scaleX(0); transition: transform 0.4s ease; }
+    .module-card:hover::after { transform: scaleX(1); }
+    .module-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(139,0,0,0.12); }
+    .module-number { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2.8rem; color: rgba(139,0,0,0.08); line-height: 1; margin-bottom: 12px; }
+    .module-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; color: var(--text-dark); margin-bottom: 10px; }
+    .module-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; margin: 0; text-align: justify; }
+    .module-icon { width: 50px; height: 50px; background: linear-gradient(135deg, rgba(139,0,0,0.1), rgba(139,0,0,0.18)); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.4rem; margin-bottom: 16px; transition: all 0.4s ease; }
+    .module-card:hover .module-icon { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; transform: scale(1.1); }
+
+    /* ═══ CAREER SECTION ═══ */
+    .career-section { background: white; }
+    .career-card { background: var(--light-gray); border-radius: 16px; padding: 26px 20px; text-align: center; transition: all 0.4s ease; height: 100%; border: 1px solid transparent; }
+    .career-card:hover { background: var(--primary); transform: translateY(-8px); box-shadow: 0 16px 40px var(--primary-glow); border-color: var(--primary); }
+    .career-card:hover h5, .career-card:hover p { color: white; }
+    .career-icon { width: 60px; height: 60px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.5rem; color: var(--primary); box-shadow: 0 4px 15px rgba(0,0,0,0.08); transition: all 0.4s ease; }
+    .career-card:hover .career-icon { background: rgba(255,255,255,0.2); color: #ffd700; box-shadow: none; }
+    .career-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.92rem; margin-bottom: 8px; transition: color 0.3s; }
+    .career-card p { font-size: 0.8rem; color: var(--text-muted); margin: 0; transition: color 0.3s; }
+
+    /* ═══ TIMELINE / LEARNING PROCESS ═══ */
+    .process-section { background: var(--light-gray); }
+    .timeline-wrap { position: relative; }
+    .timeline-wrap::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: rgba(139,0,0,0.12); transform: translateX(-50%); }
+    .timeline-item { display: flex; margin-bottom: 48px; position: relative; }
+    .timeline-item:nth-child(odd) { flex-direction: row; }
+    .timeline-item:nth-child(even) { flex-direction: row-reverse; }
+    .timeline-content { width: 45%; }
+    .timeline-item:nth-child(odd) .timeline-content { padding-right: 50px; text-align: right; }
+    .timeline-item:nth-child(even) .timeline-content { padding-left: 50px; text-align: left; }
+    .timeline-dot { position: absolute; left: 50%; transform: translateX(-50%); width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem; box-shadow: 0 6px 20px var(--primary-glow); z-index: 1; }
+    .timeline-step { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.72rem; color: var(--primary); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+    .timeline-card { background: white; border-radius: 16px; padding: 22px 20px; box-shadow: 0 4px 18px rgba(0,0,0,0.07); border: 1px solid rgba(139,0,0,0.06); }
+    .timeline-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 6px; color: var(--text-dark); }
+    .timeline-card p { font-size: 0.82rem; color: var(--text-muted); margin: 0; text-align: justify; line-height: 1.7; }
+    @media (max-width: 767px) {
+      .timeline-wrap::before { left: 24px; }
+      .timeline-item, .timeline-item:nth-child(even) { flex-direction: column; padding-left: 60px; }
+      .timeline-content, .timeline-item:nth-child(odd) .timeline-content, .timeline-item:nth-child(even) .timeline-content { width: 100%; padding: 0; text-align: left; }
+      .timeline-dot { left: 24px; top: 0; transform: none; }
+    }
+
+    /* ═══ STATISTICS ═══ */
+    .stats-band { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); padding: 70px 0; }
+    .stat-item { text-align: center; }
+    .stat-item .num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 3rem; color: #ffd700; line-height: 1; display: block; }
+    .stat-item .lbl { font-size: 0.88rem; color: rgba(255,255,255,0.8); margin-top: 8px; font-weight: 500; }
+    .stat-divider { width: 1px; background: rgba(255,255,255,0.2); margin: auto; height: 60px; }
+    @media (max-width: 991px) { .stat-divider { display: none; } }
+
+    /* ═══ TESTIMONIALS ═══ */
+    /* .testimonials-section { background: var(--light-gray); } */
+    .testi-card { background: white; border-radius: 20px; padding: 32px 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); position: relative; height: 100%; border-bottom: 4px solid var(--primary); }
+    .testi-quote { font-size: 3.5rem; color: rgba(139,0,0,0.1); font-family: Georgia, serif; line-height: 1; margin-bottom: 12px; display: block; }
+    .testi-text { font-size: 0.88rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 20px; text-align: justify; }
+    .testi-rating { color: #ffc107; margin-bottom: 16px; font-size: 0.85rem; }
+    .testi-author { display: flex; align-items: center; gap: 14px; }
+    .testi-avatar { width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; flex-shrink: 0; }
+    .testi-author-info h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem; margin: 0; }
+    .testi-author-info small { color: var(--primary); font-size: 0.75rem; font-weight: 500; }
+
+    /* ═══ BENEFITS SECTION ═══ */
+    .benefits-section { background: white; }
+    .benefit-item { display: flex; align-items: flex-start; gap: 16px; padding: 20px; background: var(--light-gray); border-radius: 14px; margin-bottom: 16px; transition: all 0.3s ease; border-left: 4px solid transparent; }
+    .benefit-item:hover { background: rgb(78, 74, 74); box-shadow: 0 8px 25px rgba(139,0,0,0.1); border-left-color: var(--primary); transform: translateX(5px); }
+    .benefit-icon { width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.3rem; flex-shrink: 0; }
+    .benefit-item h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+    .benefit-item p { font-size: 0.82rem; color: var(--text-muted); margin: 0; text-align: justify; }
+
+    /* ═══ FAQ ═══ */
+    .faq-section { background: var(--light-gray); }
+    .accordion-button { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--text-dark); background: white; }
+    .accordion-button:not(.collapsed) { color: var(--primary); background: rgba(139,0,0,0.04); box-shadow: none; }
+    .accordion-button:focus { box-shadow: none; }
+    .accordion-button::after { filter: none; }
+    .accordion-button:not(.collapsed)::after { filter: none; }
+    .accordion-item { border: 1px solid rgba(139,0,0,0.1); border-radius: 12px !important; margin-bottom: 12px; overflow: hidden; }
+    .accordion-body { font-size: 0.88rem; color: var(--text-muted); line-height: 1.8; text-align: justify; }
+
+    /* ═══ CTA SECTION ═══ */
+    .cta-section { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, #c0392b 100%); padding: 100px 0; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%); top: -200px; right: -100px; }
+    .cta-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(1.8rem, 4vw, 3rem); color: white; margin-bottom: 16px; }
+    .cta-subtitle { color: rgba(255,255,255,0.8); font-size: 1rem; margin-bottom: 36px; }
+    .btn-cta-glow { background: linear-gradient(135deg, #ffd700, #ffb700); color: var(--primary-dark) !important; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; padding: 16px 42px; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 0 0 0 rgba(255,215,0,0.5); animation: pulseGlow 2.5s infinite; transition: all 0.3s ease; }
+    .btn-cta-glow:hover { transform: translateY(-4px); color: var(--primary-dark) !important; }
+    @keyframes pulseGlow { 0%,100% { box-shadow: 0 0 0 0 rgba(255,215,0,0.5); } 50% { box-shadow: 0 0 0 18px rgba(255,215,0,0); } }
+    .btn-cta-outline { background: transparent; color: white !important; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; padding: 15px 36px; border-radius: 50px; border: 2px solid rgba(255,255,255,0.5); text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s ease; }
+    .btn-cta-outline:hover { border-color: white; background: rgba(255,255,255,0.12); transform: translateY(-4px); color: white !important; }
+
+    /* ═══ FOOTER ═══ */
+    footer { background: #0d0d0d; padding: 70px 0 0; color: rgba(255,255,255,0.75); }
+    .footer-brand { margin-bottom: 20px; }
+    .footer-desc { font-size: 0.85rem; line-height: 1.8; color: rgba(255,255,255,0.55); margin-bottom: 22px; }
+    .footer-socials { display: flex; gap: 10px; }
+    .footer-social-btn { width: 36px; height: 36px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); font-size: 0.85rem; transition: all 0.3s ease; text-decoration: none; }
+    .footer-social-btn:hover { background: var(--primary); border-color: var(--primary); color: white; transform: translateY(-3px); }
+    .footer-heading { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 1.5px; text-transform: uppercase; color: white; margin-bottom: 20px; position: relative; padding-bottom: 10px; }
+    .footer-heading::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 2px; background: var(--primary); border-radius: 2px; }
+    .footer-links { list-style: none; padding: 0; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 6px; }
+    .footer-links a:hover { color: var(--primary-light); padding-left: 5px; }
+    .footer-links a i { font-size: 0.65rem; color: var(--primary); }
+    .footer-contact { list-style: none; padding: 0; }
+    .footer-contact li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; font-size: 0.85rem; }
+    .footer-contact li i { color: var(--primary-light); margin-top: 3px; flex-shrink: 0; font-size: 0.85rem; }
+    .footer-newsletter input { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); color: white; border-radius: 10px 0 0 10px; padding: 10px 14px; font-size: 0.85rem; width: 100%; outline: none; }
+    .footer-newsletter input::placeholder { color: rgba(255,255,255,0.35); }
+    .footer-newsletter button { background: var(--primary); color: white; border: none; border-radius: 0 10px 10px 0; padding: 10px 16px; cursor: pointer; transition: background 0.3s; }
+    .footer-newsletter button:hover { background: var(--primary-light); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding: 22px 0; margin-top: 50px; font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+
+    /* ═══ RIPPLE ═══ */
+    .ripple { position: relative; overflow: hidden; }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media (max-width: 991px) {
+      .hero-section { padding: 60px 0 80px; text-align: center; }
+      section { padding: 70px 0; }
+    }
+    @media (max-width: 767px) {
+      section { padding: 60px 0; }
+      .hero-btns { flex-direction: column; align-items: center; }
+      .btn-hero-primary, .btn-hero-outline { width: 230px; justify-content: center; }
+    }
+
+    /* Achievement strip */
+    .achievement-strip { background: #8b0000; padding: 70px 0; }
+    .achievement-col { border-right: 1px solid rgba(255,255,255,.2); }
+    .no-border { border-right: none; }
+    .achievement-box { padding: 20px 10px; transition: .4s ease; }
+    .achievement-box:hover { transform: translateY(-8px); }
+    .achievement-box h2 { font-size: 56px; font-weight: 800; color: #ffd400; margin-bottom: 12px; line-height: 1; font-family: 'Montserrat', sans-serif; }
+    .achievement-box p { font-size: 18px; font-weight: 500; color: #fff; margin: 0; }
+    @media (max-width: 991px) { .achievement-col { border-right: none; margin-bottom: 30px; } }
+    @media (max-width: 576px) { .achievement-strip { padding: 50px 0; } .achievement-box h2 { font-size: 40px; } .achievement-box p { font-size: 15px; } }
+
+    /* ═══ COMMUNICATION SKILLS SECTION ═══ */
+    .skill-pill-section { background: white; }
+    .skill-pill { display: inline-flex; align-items: center; gap: 10px; background: var(--light-gray); border: 1px solid rgba(139,0,0,0.1); border-radius: 50px; padding: 10px 20px; font-size: 0.88rem; font-weight: 600; color: var(--text-dark); transition: all 0.3s ease; margin: 6px; }
+    .skill-pill:hover { background: var(--primary); color: white; border-color: var(--primary); transform: translateY(-3px); box-shadow: 0 8px 20px var(--primary-glow); }
+    .skill-pill:hover i { color: #ffd700; }
+    .skill-pill i { color: var(--primary); transition: color 0.3s; font-size: 0.9rem; }
+
+    /* wave hero bottom */
+    .hero-wave { position: absolute; bottom: 0; left: 0; right: 0; line-height: 0; pointer-events: none; }
+    .hero-wave svg { width: 100%; display: block; }
+  </style>
+</head>
+<body>
+
+<!-- ═══ LOADER ═══ -->
+<!-- <div id="loader">
+  <div class="loader-logo">CAD<span>POINT</span></div>
+  <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+</div> -->
+
+<!-- ═══ BACK TO TOP ═══ -->
+<button id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+<!-- ════════════════════════════════
+     NAVBAR
+════════════════════════════════ -->
+<div id="header"></div>
+
+<!-- ════════════════════════════════
+     BREADCRUMB SLIDER
+════════════════════════════════ -->
+<div class="breadcrumb-slider">
+  <div class="breadcrumb-track">
+    <span class="breadcrumb-item-slide"><i class="fas fa-microphone-alt"></i> Spoken English</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-comments"></i> Communication Skills</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-book-open"></i> Vocabulary Building</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-bullhorn"></i> Public Speaking</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-user-tie"></i> Interview Preparation</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-briefcase"></i> Workplace Communication</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-star"></i> Personality Development</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-certificate"></i> Certification</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-microphone-alt"></i> Spoken English</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-comments"></i> Communication Skills</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-book-open"></i> Vocabulary Building</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-bullhorn"></i> Public Speaking</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-user-tie"></i> Interview Preparation</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-briefcase"></i> Workplace Communication</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-star"></i> Personality Development</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-certificate"></i> Certification</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     HERO SECTION
+════════════════════════════════ -->
+<section class="hero-section" id="home">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-blob hero-blob-3"></div>
+  <div class="container position-relative text-center" style="z-index:2">
+    <div class="row justify-content-center">
+      <div class="col-lg-9 col-md-11">
+        <div class="hero-badge mb-3" data-aos="fade-down">
+          <span>&#9733;</span> Spoken English Training — CADPOINT
+        </div>
+        <h1 class="hero-title" id="heroTitle" data-aos="fade-up" data-aos-delay="100">
+          Master <span class="highlight">Spoken English</span> &amp; Communicate with Confidence
+        </h1>
+        <p class="hero-desc mx-auto" data-aos="fade-up" data-aos-delay="200">
+          Transform your language skills with CADPOINT's comprehensive Spoken English program — covering fluency development, vocabulary enhancement, pronunciation mastery, grammar usage, public speaking, workplace communication, interview preparation, and real-world practice sessions to accelerate your career and personal growth.
+        </p>
+        <!-- <div class="hero-pills mb-4" data-aos="fade-up" data-aos-delay="300">
+          <span class="hero-pill"><i class="fas fa-clock"></i> 3–6 Month Program</span>
+          <span class="hero-pill"><i class="fas fa-users"></i> Small Batch Size</span>
+          <span class="hero-pill"><i class="fas fa-certificate"></i> ISO Certified</span>
+          <span class="hero-pill"><i class="fas fa-briefcase"></i> Placement Support</span>
+        </div> -->
+        <div class="hero-btns" data-aos="fade-up" data-aos-delay="400">
+          <a href="https://wa.me/919895352624" class="btn-hero-primary ripple">
+            <i class="fas fa-rocket"></i> <span>Start Learning</span>
+          </a>
+          <!-- <a href="#course-overview" class="btn-hero-outline">
+            <i class="fas fa-play-circle"></i> View Course
+          </a> -->
+          <a href="tel:+919895352624" class="btn-hero-outline">
+            <i class="fas fa-phone-alt"></i> Call Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#F5F5F5"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     MARQUEE
+════════════════════════════════ -->
+<!-- <div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span> Spoken English</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Communication Skills</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Public Speaking</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Vocabulary Building</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Pronunciation</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Grammar Mastery</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Interview Skills</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Personality Development</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Workplace Communication</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Placement Support</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Spoken English</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Communication Skills</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Public Speaking</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Vocabulary Building</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Pronunciation</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Grammar Mastery</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Interview Skills</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Personality Development</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Workplace Communication</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Placement Support</div>
+  </div>
+</div> -->
+
+<!-- ════════════════════════════════
+     COURSE OVERVIEW
+════════════════════════════════ -->
+<section class="course-overview-section" id="course-overview">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-5" data-aos="fade-right">
+        <img src="assets/image/communication-skill.webp">
+      </div>
+      <div class="col-lg-7" data-aos="fade-left">
+        <div class="section-tag"><i class="fas fa-info-circle"></i> Course Overview</div>
+        <h2 class="section-title">Spoken <span>English Course</span></h2>
+       
+        <p style="color:var(--text-muted);line-height:1.9;text-align:justify;margin-bottom:24px">
+          The Spoken English Course at CADPOINT is a comprehensive, skill-focused program designed for students, working professionals, and job seekers who want to communicate fluently and confidently in English. This course goes beyond grammar rules and textbook learning — it focuses on real-time conversational practice, pronunciation improvement, listening skills, and personality development that together create an impactful communicator.
+        </p>
+        <!-- <p style="color:var(--text-muted);line-height:1.9;text-align:justify;margin-bottom:24px">
+          Through a structured curriculum and interactive sessions, learners progressively develop their ability to express ideas clearly in professional and social settings, handle interviews effectively, participate in group discussions, and present themselves with confidence in any environment.
+        </p> -->
+        <ul class="feature-list mb-4">
+          <li><i class="fas fa-check"></i> <span>English fundamentals — grammar, sentence structure, and tense usage</span></li>
+          <li><i class="fas fa-check"></i> <span>Pronunciation training with accent neutralization and phonetics guidance</span></li>
+          <li><i class="fas fa-check"></i> <span>Vocabulary enhancement — word usage, idioms, and professional terminology</span></li>
+          <li><i class="fas fa-check"></i> <span>Public speaking and presentation skills with live exercises</span></li>
+          <li><i class="fas fa-check"></i> <span>Interview preparation, group discussion, and personality development</span></li>
+        </ul>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="https://wa.me/919895352624" class="btn-hero-primary ripple"><i class="fas fa-rocket"></i><span>Enroll Now</span></a>
+          <a href="tel:+919895352624" class="btn-hero-outline" style="border-color:var(--primary);color:var(--primary)!important"><i class="fas fa-phone-alt"></i>Call Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     WHY LEARN SPOKEN ENGLISH
+════════════════════════════════ -->
+<section class="why-section" id="why-spoken-english">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-lightbulb"></i> Why Learn</div>
+      <h2 class="section-title">Why Learn <span>Spoken English?</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">English is the global language of business, education, and opportunity. Mastering spoken English opens doors to career advancement, higher confidence, and professional success across every industry.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="why-card h-100">
+          <div class="why-icon"><i class="fas fa-globe"></i></div>
+          <h5>Global Communication</h5>
+          <p>English is spoken by over 1.5 billion people worldwide. Fluency gives you the ability to communicate across borders and cultures without barriers in any professional setting.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="why-card h-100">
+          <div class="why-icon"><i class="fas fa-chart-line"></i></div>
+          <h5>Career Advancement</h5>
+          <p>Employers across industries prioritize candidates who can communicate clearly in English. Strong spoken skills directly accelerate promotions, salary growth, and career opportunities.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="why-card h-100">
+          <div class="why-icon"><i class="fas fa-user-shield"></i></div>
+          <h5>Build Confidence</h5>
+          <p>The ability to express yourself fluently in English builds lasting self-confidence in interviews, presentations, team meetings, and everyday professional and social interactions.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="why-card h-100">
+          <div class="why-icon"><i class="fas fa-handshake"></i></div>
+          <h5>Better Opportunities</h5>
+          <p>From multinational companies to global freelancing platforms, English proficiency is a gateway to opportunities that are simply inaccessible without strong communication skills.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     COMMUNICATION SKILLS DEVELOPMENT
+     (Image + Content — Left Image)
+════════════════════════════════ -->
+<section class="img-content-section alt-bg">
+  <div class="container">
+    <div class="row align-items-center gy-5 flex-row-reverse">
+      <div class="col-lg-5" data-aos="fade-right">
+        <img src="assets/image/communication.webp">
+      </div>
+      <div class="col-lg-7 content-block" data-aos="fade-left">
+        <!-- <div class="section-tag"><i class="fas fa-comments"></i> Communication Skills</div> -->
+        <h2 class="section-title">Communication Skills <span>Development</span></h2>
+       
+        <p style="color:var(--text-muted);line-height:1.9;text-align:justify;margin-bottom:24px">
+          Effective communication is the foundation of success in every sphere of life. Our Communication Skills Development module focuses on building the essential abilities that allow you to express thoughts clearly, listen actively, respond appropriately, and engage meaningfully in any conversation — whether casual or professional.
+        </p>
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="fas fa-microphone"></i></div>
+          <div><h6>Active Listening Skills</h6><p>Train your ears to understand different accents, speeds, and tones of English, and respond with clarity and relevance in any conversational scenario.</p></div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="fas fa-exchange-alt"></i></div>
+          <div><h6>Two-Way Conversation Practice</h6><p>Engage in structured daily dialogues, debates, and role-play sessions that simulate real-world communication scenarios in professional and social environments.</p></div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="fas fa-brain"></i></div>
+          <div><h6>Thinking in English</h6><p>Develop the habit of thinking, dreaming, and processing ideas directly in English — eliminating the mental translation delay that hinders fluency and natural expression.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     VOCABULARY BUILDING
+     (Image + Content — Right Image)
+════════════════════════════════ -->
+<!-- <section class="img-content-section">
+  <div class="container">
+    <div class="row align-items-center gy-5 flex-lg-row-reverse">
+      <div class="col-lg-5" data-aos="fade-left">
+        <div class="img-block">
+          <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b6f5b?w=600&q=80" alt="Vocabulary Building" loading="lazy">
+          <div class="img-overlay-badge"><i class="fas fa-book me-1"></i> Vocabulary</div>
+        </div>
+      </div>
+      <div class="col-lg-7 content-block" data-aos="fade-right">
+        <div class="section-tag"><i class="fas fa-book-open"></i> Vocabulary</div>
+        <h2 class="section-title">Vocabulary <span>Building Techniques</span></h2>
+        <div class="divider-line"></div>
+        <p style="color:var(--text-muted);line-height:1.9;text-align:justify;margin-bottom:24px">
+          A rich vocabulary is the cornerstone of eloquent communication. Our vocabulary building module introduces systematic strategies to expand your word bank through contextual learning, word families, synonyms, antonyms, idiomatic expressions, and professional business terminology that elevates your everyday and formal English usage.
+        </p>
+        <ul class="feature-list">
+          <li><i class="fas fa-check"></i><span>Contextual word learning — understanding words through stories and real dialogues</span></li>
+          <li><i class="fas fa-check"></i><span>Idiomatic expressions, phrasal verbs, and power words for professional communication</span></li>
+          <li><i class="fas fa-check"></i><span>Daily vocabulary exercises with spaced repetition for long-term retention</span></li>
+          <li><i class="fas fa-check"></i><span>Business vocabulary — email writing, meeting language, and formal presentations</span></li>
+          <li><i class="fas fa-check"></i><span>Reading comprehension practice to accelerate vocabulary absorption naturally</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- ════════════════════════════════
+     COMMUNICATION SKILLS PILLS
+════════════════════════════════ -->
+<section class="skill-pill-section" style="padding:70px 0">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-layer-group"></i> Skills Covered</div>
+      <h2 class="section-title">Complete <span>Communication Skill Set</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Every skill you need to become a confident, fluent, and professional English communicator is included in our comprehensive program.</p>
+    </div>
+    <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+      <span class="skill-pill"><i class="fas fa-microphone-alt"></i> Spoken Fluency</span>
+      <span class="skill-pill"><i class="fas fa-book-reader"></i> Reading Skills</span>
+      <span class="skill-pill"><i class="fas fa-pen"></i> Writing Skills</span>
+      <span class="skill-pill"><i class="fas fa-headphones"></i> Listening Skills</span>
+      <span class="skill-pill"><i class="fas fa-spell-check"></i> Grammar Mastery</span>
+      <span class="skill-pill"><i class="fas fa-volume-up"></i> Pronunciation</span>
+      <span class="skill-pill"><i class="fas fa-book-open"></i> Vocabulary</span>
+      <span class="skill-pill"><i class="fas fa-bullhorn"></i> Public Speaking</span>
+      <span class="skill-pill"><i class="fas fa-users"></i> Group Discussion</span>
+      <span class="skill-pill"><i class="fas fa-user-tie"></i> Interview Skills</span>
+      <span class="skill-pill"><i class="fas fa-briefcase"></i> Business English</span>
+      <span class="skill-pill"><i class="fas fa-envelope"></i> Email Writing</span>
+      <span class="skill-pill"><i class="fas fa-phone"></i> Telephone Etiquette</span>
+      <span class="skill-pill"><i class="fas fa-handshake"></i> Networking</span>
+      <span class="skill-pill"><i class="fas fa-star"></i> Personality Dev.</span>
+      <span class="skill-pill"><i class="fas fa-heart"></i> Emotional Intelligence</span>
+      <span class="skill-pill"><i class="fas fa-comments"></i> Debate Skills</span>
+      <span class="skill-pill"><i class="fas fa-chalkboard-teacher"></i> Presentation</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     GRAMMAR FOR COMMUNICATION
+     (Image + Content — Left Image)
+════════════════════════════════ -->
+<section class="img-content-section alt-bg">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-5" data-aos="fade-right">
+        <img src="assets/image/grammar.webp">
+      </div>
+      <div class="col-lg-7 content-block" data-aos="fade-left">
+        
+        <h2 class="section-title">Grammar for <span>Effective Communication</span></h2>
+        
+        <p style="color:var(--text-muted);line-height:1.9;text-align:justify;margin-bottom:24px">
+          Grammar is the backbone of every language. Rather than overwhelming you with complex rules, our grammar module focuses on practical, usage-based learning — understanding tenses, sentence structures, articles, prepositions, and modals in the context of real conversations so that grammatical correctness becomes a natural part of your speech.
+        </p>
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="fas fa-list-ol"></i></div>
+          <div><h6>Tenses in Conversation</h6><p>Master all 12 tenses with practical sentence construction, focusing on how tense errors affect meaning in professional conversations and formal communication.</p></div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="fas fa-pen-nib"></i></div>
+          <div><h6>Sentence Structure Mastery</h6><p>Build complex, compound, and compound-complex sentences with clarity and precision, enabling you to articulate thoughts in a structured and professional manner.</p></div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="fas fa-check-double"></i></div>
+          <div><h6>Error-Free Speaking</h6><p>Identify and eliminate common grammatical errors through targeted practice, correction sessions, and feedback that strengthen your grammatical intuition.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     PUBLIC SPEAKING
+     (Image + Content — Left Image)
+════════════════════════════════ -->
+<section class="img-content-section alt-bg" style="background:white;">
+  <div class="container">
+    <div class="row align-items-center gy-5 flex-row-reverse">
+      <div class="col-lg-5" data-aos="fade-right">
+    <img src="assets/image/public-speaking.webp">
+      </div>
+      <div class="col-lg-7 content-block" data-aos="fade-left">
+        <div class="section-tag"><i class="fas fa-bullhorn"></i> Public Speaking</div>
+        <h2 class="section-title">Public Speaking &amp; <span>Presentation Skills</span></h2>
+      
+        <p style="color:var(--text-muted);line-height:1.9;text-align:justify;margin-bottom:24px">
+Professional Public Speaking & Presentation Skills course is designed to enhance communication confidence and presentation effectiveness in professional and academic environments. Participants learn to organize ideas clearly, deliver impactful speeches, and engage audiences with confidence. The course covers voice modulation, body language, storytelling, visual aids, and persuasive communication techniques. Students develop skills to manage stage fear, answer questions effectively, and present information with clarity and professionalism. Through practical activities, presentations, and feedback sessions, learners strengthen verbal and non-verbal communication, improve leadership presence, and build the confidence needed for successful public interactions and career growth.
+        </p>
+       
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     INTERVIEW PREPARATION
+     (Image + Content — Right Image)
+════════════════════════════════ -->
+<!-- <section class="img-content-section">
+  <div class="container">
+    <div class="row align-items-center gy-5 flex-lg-row-reverse">
+      <div class="col-lg-5" data-aos="fade-left">
+        <div class="img-block">
+          <img src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?w=600&q=80" alt="Interview Preparation" loading="lazy">
+          <div class="img-overlay-badge"><i class="fas fa-user-tie me-1"></i> Interview Prep</div>
+        </div>
+      </div>
+      <div class="col-lg-7 content-block" data-aos="fade-right">
+        <div class="section-tag"><i class="fas fa-user-tie"></i> Interview Preparation</div>
+        <h2 class="section-title">Interview <span>Communication Skills</span></h2>
+        <div class="divider-line"></div>
+        <p style="color:var(--text-muted);line-height:1.9;text-align:justify;margin-bottom:24px">
+          Job interviews are won or lost on the strength of your communication. Our dedicated interview preparation module simulates real interview scenarios, teaches strategic answer framing, and builds the English communication skills that help you confidently articulate your strengths, experience, and aspirations to any interviewer across any industry.
+        </p>
+        <ul class="feature-list">
+          <li><i class="fas fa-check"></i><span>HR and technical interview English — structuring answers using the STAR method</span></li>
+          <li><i class="fas fa-check"></i><span>Self-introduction mastery — a compelling 60-second professional self-pitch</span></li>
+          <li><i class="fas fa-check"></i><span>Mock interview sessions with video recording and personalized feedback</span></li>
+          <li><i class="fas fa-check"></i><span>Group discussion techniques — how to enter, contribute, and conclude effectively</span></li>
+          <li><i class="fas fa-check"></i><span>Resume walkthrough and professional email writing for job applications</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- ════════════════════════════════
+     COURSE MODULES
+════════════════════════════════ -->
+<section class="modules-section" id="modules">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-list-alt"></i> Curriculum</div>
+      <h2 class="section-title">Course <span>Modules</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">A structured, progressive curriculum designed to build your English communication skills from the ground up to professional-level fluency.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="module-card">
+          <div class="module-number">01</div>
+          <div class="module-icon"><i class="fas fa-play"></i></div>
+          <h5>Spoken English Basics</h5>
+          <p>Introduction to spoken English — common phrases, sentence starters, everyday expressions, and the building blocks of natural conversational English for beginners.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="50">
+        <div class="module-card">
+          <div class="module-number">02</div>
+          <div class="module-icon"><i class="fas fa-spell-check"></i></div>
+          <h5>Grammar Fundamentals</h5>
+          <p>Core grammar rules — tenses, articles, prepositions, subject-verb agreement, and sentence structures explained through practical conversation examples and exercises.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="module-card">
+          <div class="module-number">03</div>
+          <div class="module-icon"><i class="fas fa-book-open"></i></div>
+          <h5>Vocabulary Development</h5>
+          <p>Systematic vocabulary expansion using word families, synonyms, antonyms, collocations, idioms, and domain-specific professional vocabulary for daily and business use.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+        <div class="module-card">
+          <div class="module-number">04</div>
+          <div class="module-icon"><i class="fas fa-volume-up"></i></div>
+          <h5>Pronunciation Training</h5>
+          <p>Phonetics, stress, intonation, rhythm, and accent neutralization — guided exercises to improve clarity, natural flow, and confidence in English pronunciation and articulation.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="module-card">
+          <div class="module-number">05</div>
+          <div class="module-icon"><i class="fas fa-headphones"></i></div>
+          <h5>Listening Skills</h5>
+          <p>Listening comprehension training with diverse audio materials — lectures, podcasts, interviews, and business conversations to sharpen your ability to understand and respond.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
+        <div class="module-card">
+          <div class="module-number">06</div>
+          <div class="module-icon"><i class="fas fa-book-reader"></i></div>
+          <h5>Reading Skills</h5>
+          <p>Structured reading practice with newspapers, articles, and literature to build reading speed, comprehension, and vocabulary absorption in a natural, immersive way.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="module-card">
+          <div class="module-number">07</div>
+          <div class="module-icon"><i class="fas fa-pen-nib"></i></div>
+          <h5>Writing Skills</h5>
+          <p>Professional writing — emails, reports, letters, and formal documents with focus on clarity, structure, appropriate tone, and error-free written communication in English.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="50">
+        <div class="module-card">
+          <div class="module-number">08</div>
+          <div class="module-icon"><i class="fas fa-bullhorn"></i></div>
+          <h5>Public Speaking</h5>
+          <p>Stage confidence, speech delivery, presentation structure, and audience engagement techniques through live practice sessions, extempore speaking, and structured speech exercises.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="module-card">
+          <div class="module-number">09</div>
+          <div class="module-icon"><i class="fas fa-users"></i></div>
+          <h5>Group Discussions</h5>
+          <p>Techniques to initiate, participate, and conclude group discussions — learning how to express views assertively, handle disagreements, and demonstrate leadership in GDs.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+        <div class="module-card">
+          <div class="module-number">10</div>
+          <div class="module-icon"><i class="fas fa-user-tie"></i></div>
+          <h5>Interview Skills</h5>
+          <p>HR and technical interview preparation with mock sessions, STAR method answer framing, professional self-introduction, and confidence-building under interview pressure.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="module-card">
+          <div class="module-number">11</div>
+          <div class="module-icon"><i class="fas fa-briefcase"></i></div>
+          <h5>Workplace Communication</h5>
+          <p>Professional email writing, meeting etiquette, telephone language, client communication, and business English skills essential for the modern corporate environment.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
+        <div class="module-card">
+          <div class="module-number">12</div>
+          <div class="module-icon"><i class="fas fa-star"></i></div>
+          <h5>Personality Development</h5>
+          <p>Professional grooming, emotional intelligence, leadership communication, positive mindset, and interpersonal skills training for holistic personal and professional growth.</p>
+        </div>
+      </div>
+      <!-- <div class="col-lg-4 col-md-6 offset-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="module-card" style="border-color:var(--primary);border-width:2px">
+          <div class="module-number" style="color:rgba(139,0,0,0.2)">13</div>
+          <div class="module-icon" style="background:linear-gradient(135deg,var(--primary),var(--primary-light));color:white"><i class="fas fa-comments"></i></div>
+          <h5>Real-Time Practice Sessions</h5>
+          <p>Structured real-world practice — debates, role-plays, storytelling, extempore, mock interviews, and interactive speaking sessions that cement all skills into genuine fluency.</p>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     WHY CHOOSE OUR TRAINING
+════════════════════════════════ -->
+<section style="background:#fff;padding:90px 0" id="why-choose">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-trophy"></i> Why Choose Us</div>
+      <h2 class="section-title">Why Choose Our <span>Spoken English Training?</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">At CADPOINT, we don't just teach English — we build confident communicators. Here's what makes our Spoken English program stand apart from the rest.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="module-card text-center">
+          <div class="module-icon mx-auto mb-3"><i class="fas fa-chalkboard-teacher"></i></div>
+          <h5>Experienced Trainers</h5>
+          <p>Learn from certified English trainers with 10+ years of experience coaching students, working professionals, and corporate teams across diverse industries.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="module-card text-center">
+          <div class="module-icon mx-auto mb-3"><i class="fas fa-users"></i></div>
+          <h5>Interactive Environment</h5>
+          <p>Small batches ensure personalized attention. Every class is energized with games, debates, role-plays, and activities that make learning engaging and effective.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="module-card text-center">
+          <div class="module-icon mx-auto mb-3"><i class="fas fa-microphone"></i></div>
+          <h5>Real-Time Speaking Practice</h5>
+          <p>Dedicated daily speaking practice with structured exercises, peer interaction, and trainer-monitored sessions that rapidly accelerate fluency and natural speech patterns.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="module-card text-center">
+          <div class="module-icon mx-auto mb-3"><i class="fas fa-certificate"></i></div>
+          <h5>Recognized Certification</h5>
+          <p>Receive an industry-recognized certificate upon course completion that validates your spoken English proficiency and adds significant value to your professional resume.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="module-card text-center">
+          <div class="module-icon mx-auto mb-3"><i class="fas fa-user-tie"></i></div>
+          <h5>Interview Preparation</h5>
+          <p>Comprehensive mock interview sessions, GD practice, and resume English review to ensure you perform confidently and competently in any job interview or campus selection.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="module-card text-center">
+          <div class="module-icon mx-auto mb-3"><i class="fas fa-chart-line"></i></div>
+          <h5>Career Growth Support</h5>
+          <p>Beyond language skills, we offer career counselling, professional profile building, and job readiness support so every graduate is prepared to enter the workforce confidently.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="module-card text-center">
+          <div class="module-icon mx-auto mb-3"><i class="fas fa-handshake"></i></div>
+          <h5>Placement Assistance</h5>
+          <p>Active placement support connecting graduates with hiring partners across customer service, corporate, BPO, hospitality, and communication-focused roles in leading companies.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="module-card text-center">
+          <div class="module-icon mx-auto mb-3"><i class="fas fa-industry"></i></div>
+          <h5>Industry-Relevant Skills</h5>
+          <p>Our curriculum is continuously updated based on industry communication standards and employer feedback to ensure graduates meet real-world professional expectations from day one.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     BENEFITS WITH IMAGE
+════════════════════════════════ -->
+<section class="benefits-section alt-bg" style="background:var(--light-gray)">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="section-tag"><i class="fas fa-gift"></i> Benefits</div>
+        <h2 class="section-title">Benefits of Learning <span>Spoken English</span></h2>
+        <div class="divider-line"></div>
+        <div class="benefit-item">
+          <div class="benefit-icon"><i class="fas fa-comments"></i></div>
+          <div><h6>Improved Communication Skills</h6><p>Communicate your ideas clearly and persuasively in English across personal, academic, and professional contexts with natural confidence.</p></div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon"><i class="fas fa-briefcase"></i></div>
+          <div><h6>Better Career Opportunities</h6><p>Access a broader range of employment opportunities as English fluency is among the top skills demanded by MNCs, startups, and global employers.</p></div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon"><i class="fas fa-user-shield"></i></div>
+          <div><h6>Increased Confidence</h6><p>Fluent spoken English builds lasting self-confidence that reflects in your body language, decision-making, and ability to handle high-pressure professional situations.</p></div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon"><i class="fas fa-check-circle"></i></div>
+          <div><h6>Interview Readiness</h6><p>Walk into every interview, selection round, or appraisal discussion fully prepared with the communication skills to impress evaluators and secure the role.</p></div>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="benefit-item">
+          <div class="benefit-icon"><i class="fas fa-bullhorn"></i></div>
+          <div><h6>Public Speaking Ability</h6><p>Develop the courage and skill to address audiences ranging from small team meetings to large conference halls with presence, clarity, and impact.</p></div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon"><i class="fas fa-chart-line"></i></div>
+          <div><h6>Professional Growth</h6><p>English communicators are more frequently considered for leadership roles, promotions, and cross-functional projects in modern, globally connected organizations.</p></div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon"><i class="fas fa-certificate"></i></div>
+          <div><h6>Certification Support</h6><p>Receive a recognized Spoken English proficiency certificate from CADPOINT that adds immediate credibility and value to your professional profile and CV.</p></div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon"><i class="fas fa-handshake"></i></div>
+          <div><h6>Placement Assistance</h6><p>Access CADPOINT's placement network and career support services to transition your enhanced English skills into meaningful employment in top organizations.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     STATISTICS COUNTER
+════════════════════════════════ -->
+<div class="achievement-strip stats-band" id="statsSection">
+  <div class="container">
+    <div class="row text-center gy-4">
+      <div class="col-6 col-lg-3 achievement-col" data-aos="zoom-in" data-aos-delay="0">
+        <div class="achievement-box">
+          <h2 data-count="3000">0+</h2>
+          <p>Students Trained</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3 achievement-col" data-aos="zoom-in" data-aos-delay="100">
+        <div class="achievement-box">
+          <h2 data-count="96">0%</h2>
+          <p>Success Rate</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3 achievement-col" data-aos="zoom-in" data-aos-delay="200">
+        <div class="achievement-box">
+          <h2 data-count="2500">0+</h2>
+          <p>Certifications Issued</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3 achievement-col no-border" data-aos="zoom-in" data-aos-delay="300">
+        <div class="achievement-box">
+          <h2 data-count="1800">0+</h2>
+          <p>Placements Achieved</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     CAREER OPPORTUNITIES
+════════════════════════════════ -->
+<section class="career-section" id="careers">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-map-marker-alt"></i> Career Paths</div>
+      <h2 class="section-title">Career <span>Opportunities</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Spoken English fluency unlocks a wide spectrum of rewarding career opportunities across customer service, corporate, hospitality, and communication-led industries.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-headset"></i></div>
+          <h5>Customer Support Executive</h5>
+          <p>Handle customer queries confidently in English across voice and chat support roles</p>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="50">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-users-cog"></i></div>
+          <h5>HR Executive</h5>
+          <p>Conduct interviews, onboarding, and employee communication with professional English</p>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-chart-bar"></i></div>
+          <h5>Business Development Executive</h5>
+          <p>Present products, negotiate deals, and communicate value propositions to clients</p>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="150">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-concierge-bell"></i></div>
+          <h5>Front Office Executive</h5>
+          <p>Welcome guests, manage communications, and represent organizations professionally</p>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+          <h5>Communication Trainer</h5>
+          <p>Coach others in spoken English, soft skills, and professional communication techniques</p>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="250">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-handshake"></i></div>
+          <h5>Customer Relationship Executive</h5>
+          <p>Build and maintain client relationships through effective English communication</p>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-building"></i></div>
+          <h5>Corporate Professional</h5>
+          <p>Excel in MNCs and global corporations where English is the primary working language</p>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="50">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-rocket"></i></div>
+          <h5>Entrepreneur</h5>
+          <p>Pitch ideas, build investor relations, and network globally with confident English skills</p>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-tags"></i></div>
+          <h5>Sales Executive</h5>
+          <p>Persuade clients, close deals, and communicate product benefits in professional English</p>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="150">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-newspaper"></i></div>
+          <h5>Public Relations Executive</h5>
+          <p>Manage media communication, press releases, and brand messaging with English expertise</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════
+     GRADIENT BANNER — REAL-TIME PRACTICE
+════════════════════════════════ -->
+<div class="gradient-banner">
+  <div class="container text-center position-relative" style="z-index:1">
+    <div data-aos="zoom-in">
+      <div class="section-tag mx-auto mb-3" style="color:rgba(255,255,255,0.85);border-color:rgba(255,255,255,0.25);background:rgba(255,255,255,0.1)"><i class="fas fa-clock"></i> Real-Time Practice</div>
+      <h2 style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(1.8rem,3.5vw,2.8rem);color:white;margin-bottom:16px">Real-Time <span style="color:#ffd700">Practice Sessions</span></h2>
+      <p style="color:rgba(255,255,255,0.82);font-size:1rem;line-height:1.8;max-width:700px;margin:0 auto 36px;text-align:justify">
+        Unlike traditional classroom learning, CADPOINT's Spoken English program dedicates significant time to live practice sessions where students speak, interact, debate, and present in real scenarios. These immersive practice sessions are what truly transform language learners into confident, fluent, and professional English communicators.
+      </p>
+      <div class="d-flex flex-wrap gap-4 justify-content-center">
+        <div style="text-align:center;color:white">
+          <div style="font-family:'Montserrat',sans-serif;font-size:2.5rem;font-weight:900;color:#ffd700;line-height:1">500+</div>
+          <div style="font-size:0.85rem;opacity:0.8;margin-top:4px">Practice Hours</div>
+        </div>
+        <div style="width:1px;background:rgba(255,255,255,0.2)"></div>
+        <div style="text-align:center;color:white">
+          <div style="font-family:'Montserrat',sans-serif;font-size:2.5rem;font-weight:900;color:#ffd700;line-height:1">100+</div>
+          <div style="font-size:0.85rem;opacity:0.8;margin-top:4px">Speaking Activities</div>
+        </div>
+        <div style="width:1px;background:rgba(255,255,255,0.2)"></div>
+        <div style="text-align:center;color:white">
+          <div style="font-family:'Montserrat',sans-serif;font-size:2.5rem;font-weight:900;color:#ffd700;line-height:1">50+</div>
+          <div style="font-size:0.85rem;opacity:0.8;margin-top:4px">Mock Interviews</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     STUDENT TESTIMONIALS
+════════════════════════════════ -->
+
+
+
+
+<section class="testimonials-section" id="testimonials">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-tag"><i class="fas fa-star"></i> Student Reviews</div>
+      <h2 class="section-title">What Our <span>Graduates</span> Say</h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Real stories from engineers who launched their infrastructure careers with CADPOINT.</p>
+    </div>
+    <div class="testi-outer">
+      <div class="testi-track-wrap">
+        <div class="testi-track" id="testiTrack">
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">I am currently learning AutoCAD at CADPOINT Marthandam and having a great experience. Divya mam's teaching is clear, friendly, and easy to understand. She patiently explains every concept and clears all doubts. The staff are also very supportive. After completing AutoCAD, I am looking forward to learning Revit here. Highly recommended!</p>
+            <div class="testi-author">
+              <div class="testi-avatar">S</div>
+              <div class="testi-info"><h6>Saran KT</h6></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">I am studying AUTOCAD software at cad point marthandam. All staff are Knowledgeable person and good experience within the field above 5 years. So the lectures are teaching easy way to understand the class. Ex. They are teaching with the live example.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">R</div>
+              <div class="testi-info"><h6>Renish R</h6></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+            <p class="testi-text">CADPOINT is a good training institute with a friendly learning environment and supportive trainers. Both my sister and I had a positive learning experience here. The teaching is clear, practical, and easy to understand. The fee structure is also reasonable and affordable for students. Overall, CADPOINT is a great place to develop skills and gain knowledge.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">A</div>
+              <div class="testi-info"><h6>Ashlin Jega</h6></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">I had an excellent learning experience at CADPOINT Marthandam. The AutoCAD and Tekla courses were highly beneficial and helped me enhance my design skills and technical knowledge. The trainers were supportive, patient, and explained each concept clearly with practical examples. Currently I am working in a company based on design engineer role ...Tq CAD point marthandam and staffs ❤️</p>
+            
+            <div class="testi-author">
+              <div class="testi-avatar">M</div>
+              <div class="testi-info"><h6>Manoj Mano</h6>
+              
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">CAD Point provided me with a great learning experience. The classes were informative, the trainers were supportive, and the practical sessions helped me understand concepts better. The institute also encouraged skill development and boosted my confidence, making it an excellent place for learning and career growth.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">A</div>
+              <div class="testi-info"><h6>Ashika G.R</h6></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">The training centre provides a professional and student-friendly learning environment.
+The trainers are experienced, patient, and explain every topic in a simple way.
+The teaching methods are practical, interactive, and easy to understand.
+Regular guidance and individual attention helped me learn with confidence.
+Overall, it is an excellent place for students who want quality CAD training.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">V</div>
+              <div class="testi-info"><h6>Vijith Ajith</h6></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-dots" id="testiDots">
+        <button class="testi-dot active" data-idx="0"></button>
+        <button class="testi-dot" data-idx="1"></button>
+        <button class="testi-dot" data-idx="2"></button>
+        <button class="testi-dot" data-idx="3"></button>
+      </div>
+      <div class="testi-nav">
+        <button class="testi-btn" id="testiBtnPrev" aria-label="Previous"><i class="fas fa-arrow-left"></i></button>
+        <button class="testi-btn" id="testiBtnNext" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<style>
+  /* ── TESTIMONIALS ── */
+  .testimonials-section { padding: 80px 0; }
+  .testi-outer { overflow: hidden; }
+  .testi-track-wrap { overflow: hidden; }
+  .testi-track { display: flex; gap: 24px; transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); will-change: transform; }
+  .testi-card { background: #fff; border-radius: 20px; padding: 32px 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); position: relative; flex: 0 0 calc(33.333% - 16px); min-width: calc(33.333% - 16px); border-bottom: 4px solid var(--primary); transition: all 0.35s ease; }
+  .testi-card:hover { transform: translateY(-6px); box-shadow: 0 18px 45px rgba(139,0,0,0.13); }
+  @media(max-width:991px) { .testi-card { flex: 0 0 calc(50% - 12px); min-width: calc(50% - 12px); } }
+  @media(max-width:576px) { .testi-card { flex: 0 0 100%; min-width: 100%; } }
+  .testi-quote { font-size: 3rem; color: rgba(139,0,0,0.12); font-family: Georgia,serif; line-height: 1; margin-bottom: 12px; display: block; }
+  .testi-rating { color: #ffc107; margin-bottom: 14px; font-size: 0.85rem; }
+  .testi-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 18px; }
+  .testi-company { font-size: 0.72rem; color: var(--primary); font-weight: 600; margin-bottom: 18px; display: block; }
+  .testi-author { display: flex; align-items: center; gap: 14px; }
+  .testi-avatar { width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; flex-shrink: 0; }
+  .testi-info h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem; margin: 0; }
+  .testi-info small { color: var(--primary); font-size: 0.74rem; font-weight: 500; }
+  .testi-dots { display: flex; justify-content: center; gap: 8px; margin-top: 30px; }
+  .testi-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(139,0,0,0.2); cursor: pointer; transition: all 0.3s ease; border: none; padding: 0; }
+  .testi-dot.active { background: var(--primary); transform: scale(1.3); }
+  .testi-nav { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+  .testi-btn { width: 44px; height: 44px; border-radius: 50%; border: 2px solid rgba(139,0,0,0.2); background: #fff; color: var(--primary); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; transition: all 0.3s ease; }
+  .testi-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+</style>
+
+
+  <script>
+// ── TESTIMONIAL SLIDER
+(function() {
+  const track   = document.getElementById('testiTrack');
+  const dots    = document.querySelectorAll('.testi-dot');
+  const prevBtn = document.getElementById('testiBtnPrev');
+  const nextBtn = document.getElementById('testiBtnNext');
+  if (!track) return;
+
+  let current = 0;
+  const cards = track.querySelectorAll('.testi-card');
+  const total = cards.length;
+
+  function getVisible() {
+    if (window.innerWidth < 576) return 1;
+    if (window.innerWidth < 992) return 2;
+    return 3;
+  }
+  function getMax() { return total - getVisible(); }
+  function slideTo(idx) {
+    const max = getMax();
+    current = Math.max(0, Math.min(idx, max));
+    const cardW = cards[0].offsetWidth + 24;
+    track.style.transform = `translateX(-${current * cardW}px)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  prevBtn?.addEventListener('click', () => slideTo(current - 1));
+  nextBtn?.addEventListener('click', () => slideTo(current + 1));
+  dots.forEach(d => d.addEventListener('click', () => slideTo(parseInt(d.getAttribute('data-idx')))));
+  window.addEventListener('resize', () => slideTo(current));
+  setInterval(() => slideTo(current < getMax() ? current + 1 : 0), 5000);
+})();
+</script>
+
+
+
+
+<!-- 
+<section class="testimonials-section" style="background:white;" id="testimonials">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-quote-left"></i> Testimonials</div>
+      <h2 class="section-title">What Our <span>Students Say</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Real stories from real students who transformed their communication skills and careers with CADPOINT's Spoken English program.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="testi-card">
+          <span class="testi-quote">"</span>
+          <p class="testi-text">Before joining CADPOINT, I hesitated to speak English even in small groups. After completing the Spoken English course, I confidently cleared three HR rounds and landed a job at a leading MNC. The mock interviews and daily practice sessions were the game-changers for me.</p>
+          <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="testi-author">
+            <div class="testi-avatar">RK</div>
+            <div class="testi-author-info">
+              <h6>Rahul Kumar</h6>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="testi-card">
+          <span class="testi-quote">"</span>
+          <p class="testi-text">The pronunciation module completely changed the way I speak. My colleagues at the office now compliment me on my clear English, and I was recently promoted to team lead — a role that requires daily presentations and client meetings. CADPOINT made this possible.</p>
+          <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="testi-author">
+            <div class="testi-avatar">PS</div>
+            <div class="testi-author-info">
+              <h6>Priya Suresh</h6>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="testi-card">
+          <span class="testi-quote">"</span>
+          <p class="testi-text">As a fresh graduate, I struggled with GDs and interviews. The group discussion training and interview preparation at CADPOINT gave me both the language skills and confidence to crack my campus placements. I received two job offers within a month of completing the course.</p>
+          <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+          <div class="testi-author">
+            <div class="testi-avatar">AM</div>
+            <div class="testi-author-info">
+              <h6>Ananya Menon</h6>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+  </div>
+</section> -->
+
+<!-- ════════════════════════════════
+     FAQ ACCORDION
+════════════════════════════════ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <div class="section-tag mx-auto"><i class="fas fa-question-circle"></i> FAQs</div>
+          <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+          <div class="divider-line mx-auto"></div>
+        </div>
+        <div class="accordion" id="spokenEnglishFAQ" data-aos="fade-up" data-aos-delay="100">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                How long is the Spoken English course at CADPOINT?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#spokenEnglishFAQ">
+              <div class="accordion-body">
+                The Spoken English course at CADPOINT is available in flexible durations ranging from 3 to 6 months depending on your current proficiency level, learning goals, and the depth of training selected. Beginners typically benefit from the full 6-month program, while those with basic English foundations can complete their training in 3 months. Batches are available on weekdays and weekends to accommodate both students and working professionals.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                Will I receive a certificate after completing the course?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#spokenEnglishFAQ">
+              <div class="accordion-body">
+                Yes. Upon successful completion of the Spoken English course, all students receive a recognized Spoken English Proficiency Certificate from CADPOINT Authorized Training Centre. This certificate is valued by employers across customer service, corporate, hospitality, and communication-focused industries. It serves as formal validation of your spoken English skills and significantly enhances your professional profile and resume.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                How many speaking practice sessions are included in the course?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#spokenEnglishFAQ">
+              <div class="accordion-body">
+                Real-time speaking practice is a core component of our program, not an afterthought. Every class session includes dedicated speaking activities such as role-plays, pair conversations, group discussions, extempore exercises, and storytelling tasks. In addition, we schedule weekly dedicated practice sessions, debate competitions, and monthly speaking evaluations that track your fluency progress. Over the course duration, students accumulate 500+ hours of structured speaking practice.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                Does the course include interview preparation?
+              </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#spokenEnglishFAQ">
+              <div class="accordion-body">
+                Absolutely. Interview preparation is one of our most emphasized modules. It includes dedicated HR and technical interview mock sessions, STAR method answer structuring, professional self-introduction practice, group discussion simulations, and body language coaching. Students also receive personalized feedback after each mock session to help them refine their answers, improve confidence, and handle challenging interview questions with composure and clarity.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                Is placement support provided after course completion?
+              </button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#spokenEnglishFAQ">
+              <div class="accordion-body">
+                Yes, CADPOINT provides active placement assistance for all Spoken English graduates. Our placement team maintains relationships with hiring partners across BPO, customer service, corporate, hospitality, retail, and communication-focused sectors. We assist with resume building in English, LinkedIn profile setup, job application guidance, and connecting students with job openings that match their profile. Our placement success rate for Spoken English graduates stands at over 85%.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                How long does it take to achieve English fluency?
+              </button>
+            </h2>
+            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#spokenEnglishFAQ">
+              <div class="accordion-body">
+                The time to achieve spoken fluency varies by individual depending on your current English foundation, consistency of practice, and daily exposure outside the classroom. Most students notice a significant improvement in confidence and conversational ability within the first 4–6 weeks. Functional fluency for professional communication is typically achieved by the 3-month mark, while advanced fluency with natural accent and presentation skills develops by the end of the full 6-month program. Consistent daily practice is the single most important factor in accelerating your fluency.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+                Is the course suitable for complete beginners?
+              </button>
+            </h2>
+            <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#spokenEnglishFAQ">
+              <div class="accordion-body">
+                Yes, our Spoken English course is designed to accommodate learners at all proficiency levels — from absolute beginners with minimal English exposure to intermediate speakers who want to refine their communication and professional English skills. Every student begins with an individual assessment so that our trainers can personalize the learning plan and pace to match their starting level. No prior knowledge requirement exists, and our supportive classroom environment ensures that every learner progresses comfortably and confidently.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     FINAL CTA SECTION
+════════════════════════════════ -->
+<section class="cta-section">
+  <div class="container text-center position-relative" style="z-index:1">
+    <div data-aos="zoom-in">
+      <div class="section-tag mx-auto mb-3" style="color:rgba(255,255,255,0.85);border-color:rgba(255,255,255,0.25);background:rgba(255,255,255,0.1)"><i class="fas fa-rocket"></i> Get Started Today</div>
+      <h2 class="cta-title">Start Your Spoken English<br><span style="color:#ffd700">Success Journey Today</span></h2>
+      <p class="cta-subtitle">Join over 3,000 students who have transformed their communication skills and careers with CADPOINT's proven Spoken English program</p>
+      <div class="d-flex flex-wrap gap-4 justify-content-center">
+        <a href="https://wa.me/919895352624" class="btn-cta-glow">
+          <i class="fas fa-rocket"></i> Enroll Now — Free Inquiry
+        </a>
+        <a href="tel:+919895352624" class="btn-cta-outline">
+          <i class="fas fa-phone-alt"></i> Call Us: +91 98953 52624
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     FOOTER
+════════════════════════════════ -->
+<div id="footer"></div>
+
+<!-- ════════════════════════════════
+     SCRIPTS
+════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+function initCaddNav() {
+
+    const coursesNav = document.getElementById('coursesNav');
+    const caret = document.getElementById('coursesCaret');
+    const menu = document.getElementById('coursesMegaMenu');
+    const closeBtn = document.getElementById('closeMegaMenu');
+
+    if (!coursesNav || !caret || !menu) return;
+
+    // X BUTTON CLOSE (Desktop + Mobile)
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.remove('show');
+
+        });
+    }
+
+    // MOBILE
+    if (window.innerWidth <= 991) {
+
+        caret.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!coursesNav.contains(e.target)) {
+                menu.classList.remove('show');
+            }
+        });
+
+        return;
+    }
+
+    // DESKTOP
+    coursesNav.addEventListener('mouseenter', function () {
+        menu.classList.add('show');
+    });
+
+    coursesNav.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+
+    menu.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+}
+</script>
+
+
+<script>
+fetch("./header.html")
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById("header").innerHTML = html;
+    initCaddNav();
+  });
+
+  fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+      document.getElementById('footer').innerHTML = data;
+  });
+</script>
+
+<script>
+// ─── LOADER ────────────────────────────────
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+  }, 1800);
+});
+
+// ─── AOS INIT ───────────────────────────────
+AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });
+
+// ─── NAVBAR SCROLL ──────────────────────────
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  if (window.scrollY > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+  const btn = document.getElementById('backToTop');
+  if (window.scrollY > 400) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+});
+
+// ─── BACK TO TOP ────────────────────────────
+document.getElementById('backToTop').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ─── COUNTER ANIMATION ──────────────────────
+function animateCounters() {
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseInt(el.getAttribute('data-count'));
+    const suffix = el.closest('.achievement-box') ? (el.textContent.includes('%') || target < 100 ? '%' : '+') : '+';
+    const isPercent = target <= 100 && el.parentElement.querySelector('p') && el.parentElement.querySelector('p').textContent.includes('Rate');
+    const finalSuffix = isPercent ? '%' : '+';
+    let current = 0;
+    const increment = target / 60;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) { current = target; clearInterval(timer); }
+      el.textContent = Math.floor(current) + finalSuffix;
+    }, 25);
+  });
+}
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { animateCounters(); statsObserver.disconnect(); }
+  });
+}, { threshold: 0.3 });
+const statsBand = document.getElementById('statsSection');
+if (statsBand) statsObserver.observe(statsBand);
+
+// ─── HERO TITLE ANIMATION ───────────────────
+const heroTitle = document.getElementById('heroTitle');
+if (heroTitle) {
+  heroTitle.style.opacity = '0';
+  heroTitle.style.transform = 'translateY(30px)';
+  heroTitle.style.transition = 'opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s';
+  setTimeout(() => { heroTitle.style.opacity = '1'; heroTitle.style.transform = 'translateY(0)'; }, 300);
+}
+
+// ─── RIPPLE EFFECT ──────────────────────────
+document.querySelectorAll('.ripple').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.style.cssText = `position:absolute;border-radius:50%;background:rgba(255,255,255,0.3);width:10px;height:10px;left:${e.clientX - rect.left - 5}px;top:${e.clientY - rect.top - 5}px;transform:scale(0);animation:rippleAnim 0.6s ease-out forwards;pointer-events:none;`;
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 700);
+  });
+});
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `@keyframes rippleAnim { to { transform:scale(30); opacity:0; } }`;
+document.head.appendChild(rippleStyle);
+
+// ─── MEGA MENU — MOBILE ─────────────────────
+const coursesNav = document.getElementById('coursesNav');
+const caret = document.getElementById('coursesCaret');
+const menu = document.getElementById('coursesMegaMenu');
+const closeBtn = document.getElementById('closeMegaMenu');
+
+if (closeBtn) {
+  closeBtn.addEventListener('click', function(e) {
+    e.preventDefault(); e.stopPropagation();
+    menu.classList.remove('show');
+  });
+}
+
+if (window.innerWidth <= 991) {
+  if (caret) {
+    caret.addEventListener('click', function(e) {
+      e.preventDefault(); e.stopPropagation();
+      menu.classList.toggle('show');
+    });
+  }
+  document.addEventListener('click', function(e) {
+    if (!coursesNav.contains(e.target)) menu.classList.remove('show');
+  });
+} else {
+  // ─── MEGA MENU — DESKTOP ────────────────
+  let hideTimer;
+  function showMenu() {
+    clearTimeout(hideTimer);
+    const navRect = document.getElementById('mainNav').getBoundingClientRect();
+    menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    menu.classList.add('show');
+    const chevron = document.querySelector('#coursesDropdown i');
+    if (chevron) chevron.style.transform = 'rotate(180deg)';
+  }
+  function hideMenu() {
+    hideTimer = setTimeout(function() {
+      menu.classList.remove('show');
+      const chevron = document.querySelector('#coursesDropdown i');
+      if (chevron) chevron.style.transform = 'rotate(0deg)';
+    }, 120);
+  }
+  if (coursesNav) {
+    coursesNav.addEventListener('mouseenter', showMenu);
+    coursesNav.addEventListener('mouseleave', hideMenu);
+  }
+  if (menu) {
+    menu.addEventListener('mouseenter', showMenu);
+    menu.addEventListener('mouseleave', hideMenu);
+  }
+  document.addEventListener('click', function(e) {
+    if (coursesNav && !coursesNav.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('show');
+    }
+  });
+  window.addEventListener('scroll', function() {
+    if (menu && menu.classList.contains('show')) {
+      const navRect = document.getElementById('mainNav').getBoundingClientRect();
+      menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    }
+  });
+  const chevron = document.querySelector('#coursesDropdown i');
+  if (chevron) chevron.style.transition = 'transform 0.25s ease';
+}
+</script>
+</body>
+</html>

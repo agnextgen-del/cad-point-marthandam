@@ -1,0 +1,1935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>3ds Max & V-Ray Training Course — CADPOINT</title>
+  <meta name="description" content="Master 3ds Max and V-Ray for architectural visualization. Professional training with live projects, certification, and placement support at CADPOINT.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ 
+ <link rel="icon" type="image/x-icon" href="assets/image/cadd-logo.webp">
+ <style>
+/* ══════════════════════════════════════════
+   ROOT & RESET
+══════════════════════════════════════════ */
+:root {
+  --primary: #8B0000;
+  --primary-light: #A00000;
+  --primary-dark: #5c0000;
+  --primary-glow: rgba(139,0,0,0.35);
+  --primary-soft: rgba(139,0,0,0.08);
+  --white: #ffffff;
+  --light-gray: #F5F5F5;
+  --text-dark: #1a1a1a;
+  --text-muted: #555;
+  --border-light: rgba(139,0,0,0.15);
+  --glass-bg: rgba(255,255,255,0.08);
+  --glass-border: rgba(255,255,255,0.18);
+  --gold: #ffd700;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{max-width:100%;overflow-x:hidden;}
+html{scroll-behavior:smooth;}
+body{font-family:'Poppins',sans-serif;color:var(--text-dark);background:var(--white);}
+
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:#f1f1f1;}
+::-webkit-scrollbar-thumb{background:var(--primary);border-radius:10px;}
+
+/* ══════════════════════════════════════════
+   LOADER
+══════════════════════════════════════════ */
+#loader{
+  position:fixed;inset:0;background:var(--primary-dark);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  z-index:9999;transition:opacity 0.6s ease,visibility 0.6s ease;
+}
+#loader.hidden{opacity:0;visibility:hidden;}
+.loader-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:2.2rem;color:white;letter-spacing:4px;margin-bottom:24px;}
+.loader-logo span{color:var(--gold);}
+.loader-bar{width:200px;height:3px;background:rgba(255,255,255,0.15);border-radius:10px;overflow:hidden;}
+.loader-bar-inner{height:100%;width:0;background:linear-gradient(90deg,var(--gold),#ffb700);border-radius:10px;animation:loadbar 2s ease forwards;}
+@keyframes loadbar{to{width:100%;}}
+
+
+/* ══════════════════════════════════════════
+   MEGA DROPDOWN CLOSE X
+══════════════════════════════════════════ */
+.mega-close-x{
+  position:absolute;top:12px;right:12px;width:34px;height:34px;
+  border:none;border-radius:50%;background:#fff;color:#222;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;z-index:99;box-shadow:0 4px 15px rgba(0,0,0,.12);
+  transition:.3s ease;
+}
+.mega-close-x:hover{background:var(--primary);color:#fff;transform:rotate(90deg);}
+
+/* ══════════════════════════════════════════
+   MOBILE DROPDOWN FIX
+══════════════════════════════════════════ */
+@media(max-width:991px){
+  .navbar-collapse{background:#fff;padding:15px;border-radius:18px;margin-top:15px;box-shadow:0 10px 35px rgba(0,0,0,.08);}
+  #coursesNav{width:100%;}
+  #coursesNav .d-flex{width:100%;justify-content:space-between;align-items:center;}
+  #coursesNav .nav-link{padding:12px 0!important;}
+  .courses-caret{padding-right:0!important;}
+  .courses-mega-menu{position:static!important;transform:none!important;width:100%!important;min-width:100%!important;margin-top:10px!important;border:none!important;box-shadow:none!important;border-radius:16px!important;overflow:hidden;background:#f8f9fb;}
+  .courses-mega-menu .d-flex{flex-direction:column!important;gap:0!important;padding-top:0!important;}
+  .mega-col{width:100%!important;border-right:none!important;border-bottom:1px solid rgba(0,0,0,.06);padding:18px 16px!important;}
+  .mega-col:last-child{border-bottom:none;}
+  .mega-col-head{margin-bottom:14px;}
+  .mega-col-title{font-size:1rem;font-weight:700;}
+  .mega-col-sub{font-size:.78rem;}
+  .mega-item{width:100%;display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;font-size:.92rem;}
+  .mega-item:hover{background:#fff;}
+  .mega-item i{width:18px;text-align:center;}
+}
+
+/* ══════════════════════════════════════════
+   NAVBAR
+══════════════════════════════════════════ */
+.navbar{
+  background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);
+  box-shadow:0 2px 30px rgba(139,0,0,0.12);padding:12px 0;
+  position:sticky;top:0;z-index:1000;transition:all 0.3s ease;
+}
+.navbar.scrolled{padding:8px 0;box-shadow:0 4px 40px rgba(139,0,0,0.2);}
+.navbar-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.logo-text{line-height:1.1;}
+.brand-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.3rem;color:var(--primary);letter-spacing:2px;}
+.brand-sub{font-size:0.58rem;font-weight:600;color:#666;letter-spacing:1.5px;text-transform:uppercase;}
+.navbar-nav .nav-link{
+  font-family:'Montserrat',sans-serif;font-weight:600;font-size:0.82rem;
+  letter-spacing:0.8px;text-transform:uppercase;padding:8px 16px!important;
+  border-radius:6px;transition:all 0.3s ease;color:var(--text-dark);
+}
+.navbar-nav .nav-link:hover,.navbar-nav .nav-link.active{color:var(--primary);}
+.btn-nav-enroll{
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  color:white!important;padding:8px 22px!important;border-radius:25px!important;
+  font-weight:700!important;box-shadow:0 4px 15px var(--primary-glow);
+  transition:all 0.3s ease!important;
+}
+.btn-nav-enroll:hover{transform:translateY(-2px);box-shadow:0 8px 25px var(--primary-glow)!important;}
+.btn-nav-enroll::after{display:none!important;}
+
+/* MEGA MENU */
+#coursesNav{position:static!important;}
+#coursesNav>div{display:flex;align-items:center;}
+.courses-mega-menu{
+  position:fixed!important;top:auto!important;left:50%!important;
+  transform:translateX(-50%) translateY(6px)!important;
+  width:min(960px,96vw)!important;display:block!important;
+  opacity:0;visibility:hidden;
+  transition:opacity 0.22s ease,transform 0.22s ease,visibility 0.22s;
+  pointer-events:none;border:none!important;border-radius:16px!important;
+  overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.16),0 0 0 1px rgba(139,0,0,0.1)!important;
+  padding:0!important;
+}
+.courses-mega-menu.show{opacity:1!important;visibility:visible!important;transform:translateX(-50%) translateY(0)!important;pointer-events:auto!important;}
+.mega-topbar{background:linear-gradient(135deg,var(--primary-dark),var(--primary));color:white;font-family:'Montserrat',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.6px;}
+.mega-viewall{color:#ffd700!important;font-size:0.75rem;font-weight:700;text-decoration:none;transition:opacity 0.2s;}
+.mega-viewall:hover{opacity:0.8;}
+.mega-col{flex:1;padding:20px 10px 10px 10px;border-right:1px solid rgba(139,0,0,0.08);background:white;}
+.mega-col:last-child{border-right:none;}
+.mega-col-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(139,0,0,0.08);}
+.mega-col-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.mega-col-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.82rem;color:var(--text-dark);letter-spacing:0.4px;}
+.mega-col-sub{font-size:0.68rem;color:#999;font-weight:500;margin-top:1px;}
+.mega-item{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:7px;font-size:0.8rem;font-weight:500;color:var(--text-dark);text-decoration:none;transition:background 0.15s,color 0.15s,padding-left 0.15s;margin-bottom:2px;}
+.mega-item i{font-size:0.72rem;width:16px;text-align:center;color:#aaa;transition:color 0.15s;flex-shrink:0;}
+.mega-item:hover{background:rgba(139,0,0,0.07);color:var(--primary);padding-left:12px;}
+.mega-item:hover i{color:var(--primary);}
+#coursesNav .courses-caret{color:var(--text-dark);transition:color 0.2s;}
+#coursesNav .courses-caret:hover{color:var(--primary);}
+
+
+/* ══════════════════════════════════════════
+   BACK TO TOP
+══════════════════════════════════════════ */
+#backToTop{
+  position:fixed;bottom:28px;right:28px;width:46px;height:46px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  color:white;border:none;border-radius:50%;font-size:1rem;
+  cursor:pointer;box-shadow:0 6px 20px var(--primary-glow);
+  opacity:0;visibility:hidden;transition:all 0.3s ease;z-index:999;
+}
+#backToTop.visible{opacity:1;visibility:visible;}
+#backToTop:hover{transform:translateY(-4px);}
+
+/* ══════════════════════════════════════════
+   MEGA DROPDOWN CLOSE X
+══════════════════════════════════════════ */
+.mega-close-x{
+  position:absolute;top:12px;right:12px;width:34px;height:34px;
+  border:none;border-radius:50%;background:#fff;color:#222;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;z-index:99;box-shadow:0 4px 15px rgba(0,0,0,.12);transition:.3s ease;
+}
+.mega-close-x:hover{background:var(--primary);color:#fff;transform:rotate(90deg);}
+
+/* ══════════════════════════════════════════
+   MOBILE DROPDOWN FIX
+══════════════════════════════════════════ */
+@media(max-width:991px){
+  .navbar-collapse{background:#fff;padding:15px;border-radius:18px;margin-top:15px;box-shadow:0 10px 35px rgba(0,0,0,.08);}
+  #coursesNav{width:100%;}
+  #coursesNav .d-flex{width:100%;justify-content:space-between;align-items:center;}
+  #coursesNav .nav-link{padding:12px 0!important;}
+  .courses-caret{padding-right:0!important;}
+  .courses-mega-menu{position:static!important;transform:none!important;width:100%!important;min-width:100%!important;margin-top:10px!important;border:none!important;box-shadow:none!important;border-radius:16px!important;overflow:hidden;background:#f8f9fb;}
+  .courses-mega-menu .d-flex{flex-direction:column!important;gap:0!important;padding-top:0!important;}
+  .mega-col{width:100%!important;border-right:none!important;border-bottom:1px solid rgba(0,0,0,.06);padding:18px 16px!important;}
+  .mega-col:last-child{border-bottom:none;}
+  .mega-col-head{margin-bottom:14px;}
+  .mega-col-title{font-size:1rem;font-weight:700;}
+  .mega-col-sub{font-size:.78rem;}
+  .mega-item{width:100%;display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;font-size:.92rem;}
+  .mega-item:hover{background:#fff;}
+  .mega-item i{width:18px;text-align:center;}
+}
+
+/* ══════════════════════════════════════════
+   NAVBAR
+══════════════════════════════════════════ */
+.navbar{
+  background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);
+  box-shadow:0 2px 30px rgba(139,0,0,0.12);padding:12px 0;
+  position:sticky;top:0;z-index:1000;transition:all 0.3s ease;
+}
+.navbar.scrolled{padding:8px 0;box-shadow:0 4px 40px rgba(139,0,0,0.2);}
+.navbar-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.logo-text{line-height:1.1;}
+.brand-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.3rem;color:var(--primary);letter-spacing:2px;}
+.brand-sub{font-size:0.58rem;font-weight:600;color:#666;letter-spacing:1.5px;text-transform:uppercase;}
+.navbar-nav .nav-link{
+  font-family:'Montserrat',sans-serif;font-weight:600;font-size:0.82rem;
+  letter-spacing:0.8px;text-transform:uppercase;padding:8px 16px!important;
+  border-radius:6px;transition:all 0.3s ease;color:var(--text-dark);
+}
+.navbar-nav .nav-link:hover,.navbar-nav .nav-link.active{color:var(--primary);}
+.btn-nav-enroll{
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  color:white!important;padding:8px 22px!important;border-radius:25px!important;
+  font-weight:700!important;box-shadow:0 4px 15px var(--primary-glow);transition:all 0.3s ease!important;
+}
+.btn-nav-enroll:hover{transform:translateY(-2px);box-shadow:0 8px 25px var(--primary-glow)!important;}
+.btn-nav-enroll::after{display:none!important;}
+
+/* MEGA MENU */
+#coursesNav{position:static!important;}
+#coursesNav>div{display:flex;align-items:center;}
+.courses-mega-menu{
+  position:fixed!important;top:auto!important;left:50%!important;
+  transform:translateX(-50%) translateY(6px)!important;
+  width:min(960px,96vw)!important;display:block!important;
+  opacity:0;visibility:hidden;
+  transition:opacity 0.22s ease,transform 0.22s ease,visibility 0.22s;
+  pointer-events:none;border:none!important;border-radius:16px!important;
+  overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.16),0 0 0 1px rgba(139,0,0,0.1)!important;
+  padding:0!important;
+}
+.courses-mega-menu.show{opacity:1!important;visibility:visible!important;transform:translateX(-50%) translateY(0)!important;pointer-events:auto!important;}
+.mega-topbar{background:linear-gradient(135deg,var(--primary-dark),var(--primary));color:white;font-family:'Montserrat',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.6px;}
+.mega-viewall{color:#ffd700!important;font-size:0.75rem;font-weight:700;text-decoration:none;transition:opacity 0.2s;}
+.mega-viewall:hover{opacity:0.8;}
+.mega-col{flex:1;padding:20px 10px 10px 10px;border-right:1px solid rgba(139,0,0,0.08);background:white;}
+.mega-col:last-child{border-right:none;}
+.mega-col-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(139,0,0,0.08);}
+.mega-col-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.mega-col-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.82rem;color:var(--text-dark);letter-spacing:0.4px;}
+.mega-col-sub{font-size:0.68rem;color:#999;font-weight:500;margin-top:1px;}
+.mega-item{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:7px;font-size:0.8rem;font-weight:500;color:var(--text-dark);text-decoration:none;transition:background 0.15s,color 0.15s,padding-left 0.15s;margin-bottom:2px;}
+.mega-item i{font-size:0.72rem;width:16px;text-align:center;color:#aaa;transition:color 0.15s;flex-shrink:0;}
+.mega-item:hover{background:rgba(139,0,0,0.07);color:var(--primary);padding-left:12px;}
+.mega-item:hover i{color:var(--primary);}
+#coursesNav .courses-caret{color:var(--text-dark);transition:color 0.2s;}
+#coursesNav .courses-caret:hover{color:var(--primary);}
+
+/* ══════════════════════════════════════════
+   BREADCRUMB SLIDER
+══════════════════════════════════════════ */
+.breadcrumb-slider{
+  background:linear-gradient(90deg,var(--primary-dark) 0%,var(--primary) 50%,var(--primary-dark) 100%);
+  padding:0;overflow:hidden;height:38px;display:flex;align-items:center;position:relative;
+}
+.breadcrumb-slider::before,.breadcrumb-slider::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;}
+.breadcrumb-slider::before{left:0;background:linear-gradient(to right,var(--primary-dark),transparent);}
+.breadcrumb-slider::after{right:0;background:linear-gradient(to left,var(--primary-dark),transparent);}
+.breadcrumb-track{display:flex;animation:scrollBreadcrumb 30s linear infinite;white-space:nowrap;will-change:transform;}
+.breadcrumb-track:hover{animation-play-state:paused;}
+.breadcrumb-item-slide{display:inline-flex;align-items:center;gap:8px;padding:0 30px;font-size:0.75rem;font-weight:600;color:rgba(255,255,255,0.9);letter-spacing:1px;text-transform:uppercase;font-family:'Montserrat',sans-serif;}
+.breadcrumb-item-slide i{color:rgba(255,255,255,0.6);font-size:0.7rem;}
+@keyframes scrollBreadcrumb{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* ══════════════════════════════════════════
+   HERO SECTION
+══════════════════════════════════════════ */
+.hero-section{
+  background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 40%,#c0392b 80%,var(--primary-dark) 100%);
+  min-height:90vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:80px 0;
+}
+.hero-section::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2zm4 0L80 4v2L46 40h-2zm4 0L80 8v2L50 40h-2zm4 0L80 12v2L54 40h-2zm4 0L80 16v2L58 40h-2zm4 0L80 20v2L62 40h-2zm4 0L80 24v2L66 40h-2zm4 0L80 28v2L70 40h-2zm4 0L80 32v2L74 40h-2zm4 0L80 36v2L78 40h-2zm4 0L80 40h-2v-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity:0.4;
+}
+.hero-section::after{content:'';position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(255,255,255,0.06) 0%,transparent 70%);top:-200px;right:-100px;pointer-events:none;}
+
+.particle{position:absolute;border-radius:50%;animation:floatParticle linear infinite;bottom:-10px;opacity:0.6;}
+@keyframes floatParticle{0%{transform:translateY(0) rotate(0deg);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateY(-90vh) rotate(360deg);opacity:0;}}
+
+.hero-orb{position:absolute;border-radius:50%;pointer-events:none;animation:orbPulse 6s ease-in-out infinite alternate;}
+.hero-orb-1{width:400px;height:400px;top:-120px;left:-80px;background:radial-gradient(circle,rgba(255,255,255,0.06),transparent 70%);}
+.hero-orb-2{width:300px;height:300px;bottom:-80px;right:10%;background:radial-gradient(circle,rgba(255,215,0,0.08),transparent 70%);animation-delay:2s;}
+@keyframes orbPulse{0%{transform:scale(1);}100%{transform:scale(1.15);}}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--glass-bg);border:1px solid var(--glass-border);
+  backdrop-filter:blur(10px);padding:6px 18px;border-radius:50px;
+  font-size:0.75rem;font-weight:600;color:rgba(255,255,255,0.9);
+  letter-spacing:1px;text-transform:uppercase;margin-bottom:22px;
+}
+.hero-badge .pulse-dot{width:8px;height:8px;background:#4ade80;border-radius:50%;animation:pulseDot 1.5s ease-in-out infinite;}
+@keyframes pulseDot{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,0.5);}50%{box-shadow:0 0 0 6px rgba(74,222,128,0);}}
+
+.hero-title{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:clamp(2rem,5vw,3.2rem);line-height:1.1;color:white;margin-bottom:22px;
+}
+.hero-title .highlight{color:var(--gold);}
+
+.hero-desc{
+  font-size:1.02rem;color:rgba(255,255,255,0.82);line-height:1.85;
+  margin-bottom:32px;max-width:640px;margin-left:auto;margin-right:auto;
+}
+
+.hero-tags{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:34px;}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);
+  padding:5px 14px;border-radius:20px;font-size:0.78rem;font-weight:600;
+  color:rgba(255,255,255,0.9);
+}
+.hero-tag i{color:var(--gold);font-size:0.7rem;}
+
+.hero-buttons{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+
+.btn-hero-primary{
+  background:linear-gradient(135deg,#ffd700,#ffb700);
+  color:var(--primary-dark)!important;font-family:'Montserrat',sans-serif;
+  font-weight:800;font-size:0.9rem;letter-spacing:0.8px;padding:14px 34px;
+  border-radius:50px;border:none;text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;
+  box-shadow:0 8px 25px rgba(255,215,0,0.4);transition:all 0.3s ease;
+  position:relative;overflow:hidden;
+}
+.btn-hero-primary:hover{transform:translateY(-3px);box-shadow:0 15px 35px rgba(255,215,0,0.5);color:var(--primary-dark)!important;}
+
+.btn-hero-outline{
+  background:transparent;color:white!important;
+  font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.88rem;
+  letter-spacing:0.8px;padding:14px 32px;border-radius:50px;
+  border:2px solid rgba(255,255,255,0.4);text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:all 0.3s ease;backdrop-filter:blur(8px);
+}
+.btn-hero-outline:hover{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.7);transform:translateY(-3px);}
+
+.hero-mini-stats{
+  display:flex;justify-content:center;gap:0;margin-top:44px;
+  background:rgba(255,255,255,0.07);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.15);border-radius:20px;
+  padding:20px 10px;max-width:560px;margin-left:auto;margin-right:auto;
+}
+.hero-mini-stat{flex:1;text-align:center;padding:0 12px;border-right:1px solid rgba(255,255,255,0.15);}
+.hero-mini-stat:last-child{border-right:none;}
+.hero-mini-stat .num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.7rem;color:var(--gold);line-height:1;}
+.hero-mini-stat .lbl{font-size:0.68rem;color:rgba(255,255,255,0.6);font-weight:600;letter-spacing:0.5px;margin-top:4px;text-transform:uppercase;}
+
+.hero-wave{position:absolute;bottom:-1px;left:0;right:0;line-height:0;}
+.hero-wave svg{display:block;width:100%;height:60px;fill:#ffffff;}
+
+/* ══════════════════════════════════════════
+   SHARED SECTION STYLES
+══════════════════════════════════════════ */
+.section-tag{
+  display:inline-flex;align-items:center;gap:8px;background:var(--primary-soft);
+  color:var(--primary);font-family:'Montserrat',sans-serif;font-weight:700;
+  font-size:0.72rem;letter-spacing:1.2px;text-transform:uppercase;
+  padding:5px 16px;border-radius:50px;border:1px solid var(--border-light);margin-bottom:14px;
+}
+.section-title{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:clamp(1.7rem,4vw,2.4rem);color:var(--text-dark);line-height:1.2;margin-bottom:16px;
+}
+.section-title span{color:var(--primary);}
+.section-subtitle{font-size:0.95rem;color:var(--text-muted);line-height:1.8;max-width:640px;margin:0 auto;}
+.text-m-center{text-align:left;}
+@media(max-width:767px){.text-m-center{text-align:center;}}
+
+/* ══════════════════════════════════════════
+   ABOUT SECTION
+══════════════════════════════════════════ */
+.about-section{padding:90px 0;}
+.about-img-wrap{position:relative;border-radius:20px;overflow:hidden;}
+.about-img-wrap img{border-radius:20px;width:100%;display:block;}
+.about-img-badge{
+  position:absolute;bottom:24px;left:24px;
+  background:rgba(255,255,255,0.13);backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,0.25);border-radius:14px;
+  padding:14px 20px;color:white;font-size:0.8rem;font-weight:700;
+  font-family:'Montserrat',sans-serif;letter-spacing:0.5px;line-height:1.4;
+}
+.about-img-badge span{color:var(--gold);}
+.about-img-badge i{color:var(--gold);}
+
+.about-feature-pill{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--primary-soft);border:1px solid var(--border-light);
+  color:var(--primary);font-size:0.78rem;font-weight:600;
+  padding:5px 12px;border-radius:20px;margin:4px 4px 4px 0;transition:all 0.2s;
+}
+.about-feature-pill:hover{background:var(--primary);color:white;}
+.about-feature-pill i{font-size:0.65rem;}
+
+/* ══════════════════════════════════════════
+   BENEFITS SECTION
+══════════════════════════════════════════ */
+.benefits-section{
+  background:var(--light-gray);padding:90px 0;position:relative;overflow:hidden;
+}
+.benefits-section::before{
+  content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;
+  background:radial-gradient(circle,rgba(139,0,0,0.05),transparent 70%);pointer-events:none;
+}
+.benefit-list{list-style:none;padding:0;margin:0;}
+.benefit-list li{display:flex;align-items:flex-start;gap:16px;margin-bottom:22px;padding-bottom:22px;border-bottom:1px solid rgba(139,0,0,0.08);}
+.benefit-list li:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none;}
+.benefit-icon{
+  width:44px;height:44px;border-radius:12px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--primary-dark),var(--primary));
+  display:flex;align-items:center;justify-content:center;color:white;font-size:1rem;
+  box-shadow:0 4px 14px var(--primary-glow);
+}
+.benefit-list h6{font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:5px;color:var(--text-dark);}
+.benefit-list p{font-size:0.83rem;color:var(--text-muted);line-height:1.7;margin:0;}
+
+.benefit-img-wrap{position:relative;border-radius:20px;overflow:hidden;}
+.benefit-img-wrap img{border-radius:20px;width:100%;display:block;}
+.benefit-overlay{
+  position:absolute;inset:0;border-radius:20px;
+  background:linear-gradient(to bottom,transparent 40%,rgba(92,0,0,0.7));
+}
+
+/* ══════════════════════════════════════════
+   STATS BAND
+══════════════════════════════════════════ */
+.stats-band{
+  background:linear-gradient(135deg,var(--primary-dark),var(--primary));
+  padding:60px 0;position:relative;overflow:hidden;
+}
+.stats-band::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+.stat-item{padding:10px;}
+.stat-item .num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:3rem;color:var(--gold);line-height:1;}
+.stat-item .lbl{font-size:0.82rem;color:rgba(255,255,255,0.75);font-weight:600;letter-spacing:0.5px;margin-top:8px;text-transform:uppercase;}
+.stat-divider{border-right:1px solid rgba(255,255,255,0.15);}
+@media(max-width:767px){.stat-divider{border-right:none;}}
+
+/* ══════════════════════════════════════════
+   WORKFLOW / RENDERING SECTION
+══════════════════════════════════════════ */
+.workflow-section{padding:90px 0;background:#fff;}
+.workflow-step-wrap{display:flex;flex-direction:column;gap:0;}
+.workflow-step{
+  display:flex;align-items:flex-start;gap:20px;
+  padding:22px 0;border-bottom:1px solid rgba(139,0,0,0.07);position:relative;
+}
+.workflow-step:last-child{border-bottom:none;}
+.workflow-step-num{
+  width:52px;height:52px;border-radius:14px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--primary-dark),var(--primary));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Montserrat',sans-serif;font-weight:900;font-size:1rem;
+  color:var(--gold);box-shadow:0 4px 14px var(--primary-glow);
+}
+.workflow-step-content h5{font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:5px;color:var(--text-dark);}
+.workflow-step-content p{font-size:0.83rem;color:var(--text-muted);line-height:1.7;margin:0;}
+
+.workflow-visual{
+  background:linear-gradient(135deg,var(--primary-dark),var(--primary),#c0392b);
+  border-radius:24px;padding:40px 30px;position:relative;overflow:hidden;
+  min-height:400px;display:flex;flex-direction:column;justify-content:center;align-items:center;
+}
+.workflow-visual::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.workflow-visual-icon{
+  width:90px;height:90px;border-radius:24px;
+  background:rgba(255,255,255,0.12);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.5rem;color:var(--gold);margin-bottom:20px;
+  box-shadow:0 0 40px rgba(255,215,0,0.15);
+}
+.workflow-visual h3{
+  font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.5rem;
+  color:white;text-align:center;margin-bottom:12px;
+}
+.workflow-visual p{font-size:0.85rem;color:rgba(255,255,255,0.75);text-align:center;line-height:1.7;}
+.workflow-visual-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:20px;}
+.workflow-visual-chip{
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);
+  color:rgba(255,255,255,0.9);font-size:0.72rem;font-weight:600;
+  padding:4px 12px;border-radius:20px;letter-spacing:0.5px;
+}
+
+/* ══════════════════════════════════════════
+   MODULES SECTION
+══════════════════════════════════════════ */
+.modules-section{padding:90px 0;background:var(--light-gray);}
+.module-card{
+  background:white;border-radius:18px;padding:28px 22px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.06);border:1px solid rgba(139,0,0,0.07);
+  height:100%;transition:all 0.3s ease;position:relative;overflow:hidden;
+}
+.module-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--primary),var(--primary-light));
+  transform:scaleX(0);transition:transform 0.3s ease;transform-origin:left;
+}
+.module-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(139,0,0,0.12);}
+.module-card:hover::before{transform:scaleX(1);}
+.module-num{
+  font-family:'Montserrat',sans-serif;font-weight:900;font-size:2.2rem;
+  color:rgba(139,0,0,0.08);line-height:1;margin-bottom:10px;
+}
+.module-icon{
+  width:48px;height:48px;border-radius:12px;
+  background:linear-gradient(135deg,var(--primary-dark),var(--primary));
+  display:flex;align-items:center;justify-content:center;
+  color:white;font-size:1.1rem;margin-bottom:14px;
+  box-shadow:0 4px 14px var(--primary-glow);
+}
+.module-card h5{font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.95rem;margin-bottom:8px;color:var(--text-dark);}
+.module-card>p{font-size:0.82rem;color:var(--text-muted);line-height:1.7;margin-bottom:16px;}
+.module-topics{list-style:none;padding:0;margin:0;}
+.module-topics li{
+  font-size:0.78rem;color:var(--text-muted);padding:4px 0;
+  display:flex;align-items:center;gap:7px;border-bottom:1px solid rgba(0,0,0,0.04);
+}
+.module-topics li:last-child{border-bottom:none;}
+.module-topics li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--primary);flex-shrink:0;}
+
+/* ══════════════════════════════════════════
+   CAREER SECTION
+══════════════════════════════════════════ */
+.career-section{padding:90px 0;background:#fff;}
+.career-card{
+  background:#fff;border-radius:18px;padding:26px 22px;
+  border:1px solid rgba(139,0,0,0.1);box-shadow:0 4px 20px rgba(0,0,0,0.05);
+  transition:all 0.3s ease;height:100%;
+}
+.career-card:hover{transform:translateY(-5px);border-color:var(--primary);box-shadow:0 12px 35px rgba(139,0,0,0.12);}
+.career-card-icon{
+  width:54px;height:54px;border-radius:14px;
+  background:linear-gradient(135deg,var(--primary-dark),var(--primary));
+  display:flex;align-items:center;justify-content:center;
+  color:white;font-size:1.2rem;margin-bottom:16px;
+  box-shadow:0 5px 16px var(--primary-glow);
+}
+.career-card h5{font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.95rem;margin-bottom:6px;color:var(--text-dark);}
+.career-card p{font-size:0.8rem;color:var(--text-muted);line-height:1.7;margin-bottom:14px;}
+.career-salary{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(139,0,0,0.07);border:1px solid rgba(139,0,0,0.15);
+  color:var(--primary);font-size:0.78rem;font-weight:700;
+  padding:4px 12px;border-radius:20px;
+}
+.career-demand{
+  display:flex;align-items:center;gap:6px;margin-top:10px;
+}
+.demand-bar{flex:1;height:5px;background:rgba(0,0,0,0.08);border-radius:5px;overflow:hidden;}
+.demand-fill{height:100%;border-radius:5px;background:linear-gradient(90deg,var(--primary),var(--primary-light));}
+.demand-label{font-size:0.7rem;font-weight:700;color:var(--primary);white-space:nowrap;}
+
+/* ══════════════════════════════════════════
+   LEARNING PROCESS SECTION
+══════════════════════════════════════════ */
+.process-section{padding:90px 0;background:var(--light-gray);}
+.process-timeline{position:relative;padding:0;}
+.process-timeline::before{
+  content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;
+  background:linear-gradient(to bottom,var(--primary),var(--primary-light),var(--primary));
+  transform:translateX(-50%);opacity:0.2;
+}
+.process-step{
+  display:flex;align-items:center;gap:0;margin-bottom:32px;position:relative;
+}
+.process-step:last-child{margin-bottom:0;}
+.process-step-left,.process-step-right{flex:1;padding:0 36px;}
+.process-step-left{text-align:right;}
+.process-step-center{
+  width:56px;height:56px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--primary-dark),var(--primary));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Montserrat',sans-serif;font-weight:900;font-size:1rem;
+  color:var(--gold);box-shadow:0 0 0 6px rgba(139,0,0,0.12),0 4px 16px var(--primary-glow);
+  z-index:2;position:relative;flex-shrink:0;
+}
+.process-card{
+  background:#fff;border-radius:14px;padding:18px 20px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.06);border:1px solid rgba(139,0,0,0.07);
+}
+.process-card h6{font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.9rem;color:var(--primary);margin-bottom:5px;}
+.process-card p{font-size:0.8rem;color:var(--text-muted);line-height:1.6;margin:0;}
+
+@media(max-width:767px){
+  .process-timeline::before{left:28px;}
+  .process-step{flex-direction:column;align-items:flex-start;padding-left:56px;}
+  .process-step-left,.process-step-right{flex:none;width:100%;padding:0;text-align:left;}
+  .process-step-center{position:absolute;left:0;top:0;}
+  .process-step-left{display:none;}
+  .process-step-right{padding-top:4px;}
+}
+
+/* ══════════════════════════════════════════
+   TESTIMONIALS SECTION
+══════════════════════════════════════════ */
+.testimonials-section{padding:90px 0;background:#fff;}
+.testimonial-card{
+  background:#fff;border-radius:20px;padding:28px;
+  box-shadow:0 6px 28px rgba(0,0,0,0.07);border:1px solid rgba(139,0,0,0.07);
+  height:100%;transition:all 0.3s ease;position:relative;
+}
+.testimonial-card::before{
+  content:'\201C';position:absolute;top:16px;right:20px;
+  font-family:Georgia,serif;font-size:5rem;color:rgba(139,0,0,0.07);line-height:1;
+}
+.testimonial-card:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(139,0,0,0.1);}
+.testimonial-stars{color:var(--gold);font-size:0.85rem;margin-bottom:14px;}
+.testimonial-text{font-size:0.88rem;color:var(--text-muted);line-height:1.8;margin-bottom:18px;font-style:italic;}
+.testimonial-author{display:flex;align-items:center;gap:12px;}
+.testimonial-avatar{
+  width:46px;height:46px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--primary-dark),var(--primary));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Montserrat',sans-serif;font-weight:800;font-size:1rem;color:white;
+}
+.testimonial-name{font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.88rem;color:var(--text-dark);}
+.testimonial-role{font-size:0.75rem;color:var(--text-muted);}
+.testimonial-company{font-size:0.72rem;color:var(--primary);font-weight:600;margin-top:2px;}
+
+/* ══════════════════════════════════════════
+   FAQ SECTION
+══════════════════════════════════════════ */
+.faq-section{padding:90px 0;background:var(--light-gray);}
+.accordion-item{border:1px solid rgba(139,0,0,0.1)!important;border-radius:14px!important;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.04);}
+.accordion-button{
+  font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.9rem;
+  color:var(--text-dark)!important;background:#fff!important;
+  border-radius:14px!important;padding:18px 22px;box-shadow:none!important;
+}
+.accordion-button:not(.collapsed){color:var(--primary)!important;background:#fff!important;}
+.accordion-button::after{filter:none;}
+.accordion-button:not(.collapsed)::after{filter:invert(13%) sepia(90%) saturate(3000%) hue-rotate(340deg);}
+.accordion-body{font-size:0.87rem;color:var(--text-muted);line-height:1.8;padding:0 22px 20px;background:#fff;}
+
+/* ══════════════════════════════════════════
+   CTA SECTION
+══════════════════════════════════════════ */
+.cta-section{
+  background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 50%,#c0392b 100%);
+  padding:90px 0;position:relative;overflow:hidden;
+}
+.cta-section::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.cta-title{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:clamp(1.8rem,4vw,2.8rem);color:white;line-height:1.2;margin-bottom:16px;
+}
+.cta-subtitle{font-size:1rem;color:rgba(255,255,255,0.8);margin-bottom:36px;max-width:540px;margin-left:auto;margin-right:auto;}
+.btn-cta-glow{
+  background:linear-gradient(135deg,#ffd700,#ffb700);
+  color:var(--primary-dark)!important;font-family:'Montserrat',sans-serif;
+  font-weight:800;font-size:0.95rem;letter-spacing:1px;
+  padding:16px 40px;border-radius:50px;text-decoration:none;
+  display:inline-flex;align-items:center;gap:10px;
+  box-shadow:0 10px 30px rgba(255,215,0,0.4);transition:all 0.3s ease;
+}
+.btn-cta-glow:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(255,215,0,0.5);color:var(--primary-dark)!important;}
+.cta-wave-top{line-height:0;margin-bottom:-1px;}
+.cta-wave-top svg{display:block;width:100%;fill:var(--light-gray);}
+
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+footer{
+  background:linear-gradient(to bottom,#1a0000,#0d0000);
+  padding:70px 0 0;position:relative;overflow:hidden;
+}
+footer::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.footer-brand{margin-bottom:20px;}
+.footer-desc{font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.8;margin-bottom:22px;}
+.footer-socials{display:flex;gap:10px;}
+.footer-social-btn{
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,0.6);font-size:0.85rem;text-decoration:none;
+  transition:all 0.3s ease;
+}
+.footer-social-btn:hover{background:var(--primary);border-color:var(--primary);color:white;transform:translateY(-3px);}
+.footer-heading{
+  font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.82rem;
+  color:white;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px;
+  padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.footer-links{list-style:none;padding:0;margin:0;}
+.footer-links li{margin-bottom:10px;}
+.footer-links a{
+  font-size:0.82rem;color:rgba(255,255,255,0.5);text-decoration:none;
+  display:flex;align-items:center;gap:8px;transition:all 0.2s;
+}
+.footer-links a i{font-size:0.62rem;color:var(--primary);transition:transform 0.2s;}
+.footer-links a:hover{color:white;padding-left:5px;}
+.footer-links a:hover i{transform:translateX(3px);}
+.footer-contact li{display:flex;align-items:flex-start;gap:10px;margin-bottom:14px;}
+.footer-contact li i{color:var(--primary);font-size:0.85rem;margin-top:3px;flex-shrink:0;}
+.footer-contact li span{font-size:0.82rem;color:rgba(255,255,255,0.5);line-height:1.7;}
+.footer-bottom{
+  margin-top:50px;border-top:1px solid rgba(255,255,255,0.06);
+  padding:20px 0;font-size:0.78rem;color:rgba(255,255,255,0.35);
+}
+
+/* ══════════════════════════════════════════
+   INTERIOR/EXTERIOR VISUALIZATION SECTION
+══════════════════════════════════════════ */
+.viz-section{padding:90px 0;background:#fff;}
+.viz-tab-nav{display:flex;gap:0;background:var(--light-gray);border-radius:14px;padding:6px;margin-bottom:40px;width:fit-content;margin-left:auto;margin-right:auto;}
+.viz-tab{
+  padding:10px 28px;border-radius:10px;font-family:'Montserrat',sans-serif;
+  font-weight:700;font-size:0.82rem;letter-spacing:0.6px;cursor:pointer;
+  transition:all 0.25s;color:var(--text-muted);border:none;background:transparent;
+}
+.viz-tab.active{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:white;box-shadow:0 4px 14px var(--primary-glow);}
+
+.viz-content-panel{display:none;}
+.viz-content-panel.active{display:flex;}
+
+.viz-feature-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;}
+.viz-feature-icon{
+  width:34px;height:34px;border-radius:9px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--primary-dark),var(--primary));
+  display:flex;align-items:center;justify-content:center;color:white;font-size:0.8rem;
+}
+.viz-feature-item h6{font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.85rem;margin-bottom:3px;}
+.viz-feature-item p{font-size:0.78rem;color:var(--text-muted);margin:0;line-height:1.6;}
+
+.viz-image-box{
+  border-radius:20px;overflow:hidden;
+  background:linear-gradient(135deg,var(--primary-dark),var(--primary),#c0392b);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-height:320px;padding:40px;text-align:center;
+}
+.viz-image-icon{
+  width:100px;height:100px;border-radius:24px;
+  background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:3rem;margin-bottom:20px;
+}
+.viz-image-box h4{font-family:'Montserrat',sans-serif;font-weight:800;color:white;font-size:1.3rem;margin-bottom:10px;}
+.viz-image-box p{font-size:0.85rem;color:rgba(255,255,255,0.7);line-height:1.7;}
+
+/* ══════════════════════════════════════════
+   SOFTWARE TOOLS STRIP
+══════════════════════════════════════════ */
+.tools-strip{background:var(--light-gray);padding:50px 0;border-top:1px solid rgba(139,0,0,0.07);}
+.tool-chip{
+  display:inline-flex;align-items:center;gap:10px;
+  background:#fff;border:1px solid rgba(139,0,0,0.1);
+  border-radius:12px;padding:12px 20px;
+  font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.82rem;color:var(--text-dark);
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);transition:all 0.25s;
+}
+.tool-chip:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-3px);box-shadow:0 6px 20px rgba(139,0,0,0.12);}
+.tool-chip i{color:var(--primary);font-size:1rem;}
+.tools-label{font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.75rem;color:var(--text-muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px;}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE UTILITIES
+══════════════════════════════════════════ */
+@media(max-width:767px){
+  .hero-mini-stats{flex-wrap:wrap;}
+  .hero-mini-stat{border-right:none;border-bottom:1px solid rgba(255,255,255,0.15);padding:12px;min-width:50%;}
+  .hero-mini-stat:nth-child(odd){border-right:1px solid rgba(255,255,255,0.15);}
+  .hero-mini-stat:last-child{border-bottom:none;}
+  .hero-mini-stat:nth-last-child(-n+2){border-bottom:none;}
+}
+@media(max-width:575px){
+  .hero-buttons{flex-direction:column;align-items:center;}
+  .btn-hero-primary,.btn-hero-outline{width:100%;justify-content:center;}
+  .viz-tab-nav{width:100%;}
+  .viz-tab{flex:1;text-align:center;padding:10px 12px;}
+}
+.text-lg-justify{
+  text-align:justify;
+}
+@media(max-width:991px){
+
+.courses-mega-menu{
+  display:none !important;
+}
+
+.courses-mega-menu.show{
+  display:block !important;
+}
+
+}
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     LOADER
+═══════════════════════════════════════════ -->
+<!-- <div id="loader">
+  <div class="loader-logo">CAD<span>POINT</span></div>
+  <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+</div> -->
+
+<!-- ═══════════════════════════════════════════
+     BACK TO TOP
+═══════════════════════════════════════════ -->
+<button id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+<!-- ═══════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════ -->
+<div id="header"></div>
+
+
+
+<!-- ═══════════════════════════════════════════
+     BREADCRUMB SLIDER
+═══════════════════════════════════════════ -->
+<div class="breadcrumb-slider">
+  <div class="breadcrumb-track">
+    <span class="breadcrumb-item-slide"><i class="fas fa-cube"></i> 3ds Max Modeling <i class="fas fa-chevron-right sep"></i> Interior & Exterior Design</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-lightbulb"></i> V-Ray Lighting <i class="fas fa-chevron-right sep"></i> Realistic Rendering Techniques</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-layer-group"></i> Material Creation <i class="fas fa-chevron-right sep"></i> Advanced Texturing Workflow</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-camera"></i> Camera Setup <i class="fas fa-chevron-right sep"></i> Photorealistic Visualization</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-building"></i> Architectural Visualization <i class="fas fa-chevron-right sep"></i> Professional Scene Creation</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-video"></i> Walkthrough Animation <i class="fas fa-chevron-right sep"></i> Animation & Flythrough</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-tools"></i> Post Production <i class="fas fa-chevron-right sep"></i> Photoshop Integration</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-briefcase"></i> Portfolio Development <i class="fas fa-chevron-right sep"></i> Job Ready Training</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     HERO SECTION
+═══════════════════════════════════════════ -->
+<section class="hero-section" id="home">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+
+  <!-- Particles -->
+  <div class="particle" style="left:8%;animation-duration:14s;animation-delay:0s;width:5px;height:5px;background:rgba(255,215,0,.4)"></div>
+  <div class="particle" style="left:22%;animation-duration:17s;animation-delay:3s;width:4px;height:4px;background:rgba(255,255,255,.3)"></div>
+  <div class="particle" style="left:45%;animation-duration:11s;animation-delay:6s;width:6px;height:6px;background:rgba(255,215,0,.3)"></div>
+  <div class="particle" style="left:68%;animation-duration:15s;animation-delay:1s;width:4px;height:4px;background:rgba(255,255,255,.25)"></div>
+  <div class="particle" style="left:88%;animation-duration:12s;animation-delay:4s;width:5px;height:5px;background:rgba(255,215,0,.35)"></div>
+
+  <div class="container position-relative" style="z-index:2;">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-9">
+        <!-- Badge -->
+        <div class="hero-badge d-inline-flex align-items-center justify-content-center gap-2" data-aos="fade-down" data-aos-delay="100">
+          <span class="pulse-dot"></span>
+          <i class="fas fa-paint-brush"></i>
+          <span><strong style="color:var(--gold)">Architectural</strong>  Visualization Training</span>
+        </div>
+
+        <!-- Heading -->
+        <h1 class="hero-title" id="heroTitle" data-aos="fade-up" data-aos-delay="200">
+          Master <span class="highlight">3ds Max & V-Ray</span>
+          for Architectural Visualization
+        </h1>
+
+        <!-- Description -->
+        <p class="hero-desc" data-aos="fade-up" data-aos-delay="320">
+          Create photorealistic architectural renders, stunning interior visualizations, and breathtaking exterior scenes. Industry-standard training with live project experience and dedicated placement support.
+        </p>
+
+        <!-- Feature Tags -->
+       
+
+        <!-- CTA Buttons -->
+        <div class="hero-buttons" data-aos="fade-up" data-aos-delay="440">
+          <a href="https://wa.me/919895352624" class="btn-hero-primary ripple">
+            <i class="fas fa-rocket"></i> Contact Now
+          </a>
+          <!-- <a href="#modules" class="btn-hero-outline">
+            <i class="fas fa-play-circle"></i> View Course
+          </a> -->
+        </div>
+
+        <!-- Mini Stats -->
+       
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Wave -->
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 65" preserveAspectRatio="none">
+      <path d="M0,32 C360,64 1080,0 1440,42 L1440,65 L0,65 Z"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     TOOLS STRIP
+═══════════════════════════════════════════ -->
+<!-- <div class="tools-strip">
+  <div class="container text-center">
+    <div class="tools-label">Software & Tools You Will Master</div>
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+      <span class="tool-chip"><i class="fas fa-cube"></i> 3ds Max 2024</span>
+      <span class="tool-chip"><i class="fas fa-sun"></i> V-Ray 6.0</span>
+      <span class="tool-chip"><i class="fas fa-layer-group"></i> Corona Renderer</span>
+      <span class="tool-chip"><i class="fas fa-image"></i> Adobe Photoshop</span>
+      <span class="tool-chip"><i class="fas fa-lightbulb"></i> Lighting Studio</span>
+      <span class="tool-chip"><i class="fas fa-video"></i> Animation Tools</span>
+    </div>
+  </div>
+</div> -->
+
+<!-- ═══════════════════════════════════════════
+     ABOUT SECTION
+═══════════════════════════════════════════ -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <!-- Visual -->
+      <div class="col-lg-5" data-aos="fade-right">
+        <div class="about-img-wrap" style="position:relative;">
+          <img src="assets/image/3dmax.webp" class="w-100">
+
+          <!-- <div style="background:linear-gradient(135deg,var(--primary-dark),var(--primary),#c0392b);border-radius:20px;min-height:400px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center;position:relative;overflow:hidden;">
+            <div style="position:absolute;inset:0;background:url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M0 0h20v20H0V0zm20 20h20v20H20V20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\");"></div>
+            <div style="position:relative;z-index:1;">
+              <div style="width:100px;height:100px;border-radius:24px;background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:3rem;">🎨</div>
+              <h3 style="font-family:'Montserrat',sans-serif;font-weight:900;color:white;font-size:1.4rem;margin-bottom:10px;">3ds Max + V-Ray</h3>
+              <p style="color:rgba(255,255,255,0.75);font-size:0.88rem;line-height:1.7;margin-bottom:20px;">The industry's most powerful combination for architectural visualization and photorealistic rendering.</p>
+              <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
+                <span style="background:rgba(255,215,0,0.15);border:1px solid rgba(255,215,0,0.3);color:var(--gold);font-size:0.72rem;font-weight:700;padding:4px 14px;border-radius:20px;">Photorealistic</span>
+                <span style="background:rgba(255,215,0,0.15);border:1px solid rgba(255,215,0,0.3);color:var(--gold);font-size:0.72rem;font-weight:700;padding:4px 14px;border-radius:20px;">Industry Standard</span>
+                <span style="background:rgba(255,215,0,0.15);border:1px solid rgba(255,215,0,0.3);color:var(--gold);font-size:0.72rem;font-weight:700;padding:4px 14px;border-radius:20px;">Job-Ready Skills</span>
+              </div>
+            </div>
+          </div> -->
+
+
+          <div class="about-img-badge">
+            <i class="fas fa-award me-2"></i>Industry Standard<br><span>Visualization Software</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="col-lg-7 text-m-center" data-aos="fade-left">
+        <div class="section-tag"><i class="fas fa-info-circle"></i> Course Overview</div>
+        <h2 class="section-title">3ds Max &amp; V-Ray<span> Toolkit</span></h2>
+        <p style="font-size:0.95rem;color:var(--text-muted);line-height:1.9;margin-bottom:18px;" class="text-lg-justify">
+          At CADDPOINT Marthandam, we provide advanced 3ds Max and V-Ray learning solutions designed for students, architects, interior designers, and creative professionals who want to build strong skills in architectural visualization and 3D rendering. Our training covers 3D modeling, realistic lighting, texturing, material creation, rendering techniques, camera setup, walkthrough animation, and post-production workflows using industry-standard practices. Students gain practical experience through real-time projects and hands-on training sessions guided by experienced trainers. We focus on helping learners create professional-quality interior and exterior visualizations while improving their creativity, technical knowledge, and career opportunities in the architecture and design industry.
+        </p>
+        <!-- <p style="font-size:0.92rem;color:var(--text-muted);line-height:1.8;margin-bottom:28px;">
+          At CADPOINT, our comprehensive training program takes you from 3ds Max fundamentals all the way to producing stunning portfolio-ready renders for residential interiors, commercial exteriors, and large-scale architectural projects that impress clients and employers alike.
+        </p> -->
+        <a href="contact.html" class="btn-hero-primary ripple">
+          <i class="fas fa-rocket"></i> Start Learning
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     BENEFITS SECTION
+═══════════════════════════════════════════ -->
+<section class="benefits-section" id="benefits">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <!-- Content -->
+      <div class="col-lg-7 order-2 order-lg-1" data-aos="fade-right">
+        <div class="section-tag text-m-center"><i class="fas fa-star"></i> Why Learn 3ds Max & V-Ray</div>
+        <h2 class="section-title text-m-center">Limitless <span>Career Opportunities</span></h2>
+        <p style="font-size:0.92rem;color:var(--text-muted);line-height:1.8;margin-bottom:28px;" class="text-m-center">
+          Architectural visualization is a high-demand, high-paying field. Mastering 3ds Max and V-Ray opens doors to prestigious studios, architecture firms, and lucrative freelancing.
+        </p>
+
+        <ul class="benefit-list">
+          <li>
+            <div class="benefit-icon"><i class="fas fa-camera"></i></div>
+            <div>
+              <h6>3D Visualizer</h6>
+              <p>Create realistic 3D models and presentations for architectural and interior design projects.
+                Work with designing and construction companies to develop professional visual content.</p>
+            </div>
+          </li>
+          <li>
+            <div class="benefit-icon"><i class="fas fa-laptop-house"></i></div>
+            <div>
+              <h6>Architectural Visualizer</h6>
+              <p>Develop photorealistic exterior and interior renderings using 3ds Max and V-Ray tools.
+                Help architects and builders showcase projects before construction begins.</p>
+            </div>
+          </li>
+          <li>
+            <div class="benefit-icon"><i class="fas fa-city"></i></div>
+            <div>
+              <h6>Interior Design Visualizer</h6>
+              <p>Design detailed interior spaces with realistic lighting, textures, and furniture layouts.
+                Present creative concepts for homes, offices, and commercial spaces effectively.</p>
+            </div>
+          </li>
+          <li>
+            <div class="benefit-icon"><i class="fas fa-project-diagram"></i></div>
+            <div>
+              <h6>V-Ray Rendering Artist</h6>
+              <p>Produce high-quality renders with advanced lighting, shading, and material techniques.
+                Enhance visualization projects with cinematic and realistic outputs.</p>
+            </div>
+          </li>
+          <!-- <li>
+            <div class="benefit-icon"><i class="fas fa-medal"></i></div>
+            <div>
+              <h6>Certification & Placement Assistance</h6>
+              <p>Receive an industry-recognized CADPOINT certificate and benefit from our dedicated placement cell with 500+ hiring partner network.</p>
+            </div>
+          </li> -->
+        </ul>
+      </div>
+
+      <!-- Visual -->
+      <div class="col-lg-5 order-1 order-lg-2" data-aos="fade-left">
+        <div style="position:relative;border-radius:20px;overflow:hidden;">
+          <div style="background:linear-gradient(160deg,#1a0000,var(--primary-dark),var(--primary));border-radius:20px;min-height:460px;padding:36px;display:flex;flex-direction:column;justify-content:space-between;">
+            <div>
+              <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.75rem;color:rgba(255,215,0,0.8);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;">🏆 Career Benefits at a Glance</div>
+              <div style="display:flex;flex-direction:column;gap:12px;">
+                <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;">
+                  <i class="fas fa-rupee-sign" style="color:var(--gold);font-size:1.1rem;width:20px;"></i>
+                  <div><div style="color:white;font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.85rem;">₹25,000–₹80,000/month</div><div style="color:rgba(255,255,255,0.6);font-size:0.72rem;">Average salary for visualization artists</div></div>
+                </div>
+                <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;">
+                  <i class="fas fa-chart-line" style="color:var(--gold);font-size:1.1rem;width:20px;"></i>
+                  <div><div style="color:white;font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.85rem;">45% Industry Growth</div><div style="color:rgba(255,255,255,0.6);font-size:0.72rem;">Architectural visualization demand YoY</div></div>
+                </div>
+                <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;">
+                  <i class="fas fa-globe" style="color:var(--gold);font-size:1.1rem;width:20px;"></i>
+                  <div><div style="color:white;font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.85rem;">Global Remote Work</div><div style="color:rgba(255,255,255,0.6);font-size:0.72rem;">Work with international clients from India</div></div>
+                </div>
+                <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;">
+                  <i class="fas fa-users" style="color:var(--gold);font-size:1.1rem;width:20px;"></i>
+                  <div><div style="color:white;font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.85rem;">500+ Hiring Partners</div><div style="color:rgba(255,255,255,0.6);font-size:0.72rem;">Architecture firms across India & abroad</div></div>
+                </div>
+
+
+
+                <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;">
+                  <i class="fas fa-globe" style="color:var(--gold);font-size:1.1rem;width:20px;"></i>
+                  <div><div style="color:white;font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.85rem;">Creative Career Growth</div><div style="color:rgba(255,255,255,0.6);font-size:0.72rem;">strong creative career in 3D modeling, rendering, and animation.</div></div>
+                </div>
+                <!-- <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;">
+                  <i class="fas fa-globe" style="color:var(--gold);font-size:1.1rem;width:20px;"></i>
+                  <div><div style="color:white;font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.85rem;">Global Remote Work</div><div style="color:rgba(255,255,255,0.6);font-size:0.72rem;">Work with international clients from India</div></div>
+                </div> -->
+              </div>
+            </div>
+            <div style="background:rgba(255,255,255,0.1);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.18);border-radius:12px;padding:14px 18px;margin-top:20px;">
+              <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.82rem;color:white;margin-bottom:4px;"><i class="fas fa-fire me-2" style="color:var(--gold);"></i>High Demand Skill</div>
+              <div style="font-size:0.75rem;color:rgba(255,255,255,0.7);">3ds Max + V-Ray expertise listed in 70% of visualization job postings</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     RENDERING WORKFLOW SECTION
+═══════════════════════════════════════════ -->
+<!-- <section class="workflow-section" id="workflow">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-cogs"></i> Rendering Pipeline</div>
+      <h2 class="section-title">The Professional <span>Rendering Workflow</span></h2>
+      <p class="section-subtitle">Our curriculum follows the exact pipeline used by top visualization studios worldwide</p>
+    </div>
+
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="workflow-step-wrap">
+          <div class="workflow-step">
+            <div class="workflow-step-num">01</div>
+            <div class="workflow-step-content">
+              <h5>Scene Setup & Reference Collection</h5>
+              <p>Gather architectural drawings, reference images, and mood boards. Set up units, grid, and scene structure for optimal workflow efficiency.</p>
+            </div>
+          </div>
+          <div class="workflow-step">
+            <div class="workflow-step-num">02</div>
+            <div class="workflow-step-content">
+              <h5>3D Modeling & Geometry Creation</h5>
+              <p>Build precise architectural geometry using splines, extrusions, polygon modeling, and advanced modifiers tailored for architecture.</p>
+            </div>
+          </div>
+          <div class="workflow-step">
+            <div class="workflow-step-num">03</div>
+            <div class="workflow-step-content">
+              <h5>Materials & Texturing with V-Ray</h5>
+              <p>Apply physically accurate V-Ray materials — glass, metal, wood, concrete, fabric — using real-world material properties and UV mapping.</p>
+            </div>
+          </div>
+          <div class="workflow-step">
+            <div class="workflow-step-num">04</div>
+            <div class="workflow-step-content">
+              <h5>Lighting Design & HDRI Setup</h5>
+              <p>Master natural daylight, artificial interior lighting, HDRI environments, and V-Ray dome lights for cinematic, photorealistic illumination.</p>
+            </div>
+          </div>
+          <div class="workflow-step">
+            <div class="workflow-step-num">05</div>
+            <div class="workflow-step-content">
+              <h5>Camera Composition & Rendering</h5>
+              <p>Set up V-Ray Physical Camera with correct exposure, depth-of-field, and composition principles used by professional visualization artists.</p>
+            </div>
+          </div>
+          <div class="workflow-step">
+            <div class="workflow-step-num">06</div>
+            <div class="workflow-step-content">
+              <h5>Post-Production in Photoshop</h5>
+              <p>Complete the render in Photoshop with color grading, sky replacement, entourage, and professional finishing techniques.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="workflow-visual">
+          <div class="workflow-visual-icon"><i class="fas fa-film"></i></div>
+          <h3>Professional Rendering Pipeline</h3>
+          <p>From concept to photorealistic output — the complete visualization workflow used by studios delivering for global architecture firms</p>
+          <div class="workflow-visual-chips">
+            <span class="workflow-visual-chip">3ds Max 2024</span>
+            <span class="workflow-visual-chip">V-Ray 6.0</span>
+            <span class="workflow-visual-chip">HDRI Lighting</span>
+            <span class="workflow-visual-chip">PBR Materials</span>
+            <span class="workflow-visual-chip">GI Rendering</span>
+            <span class="workflow-visual-chip">Post-Production</span>
+          </div>
+          <div style="display:flex;gap:16px;margin-top:28px;flex-wrap:wrap;justify-content:center;">
+            <div style="text-align:center;">
+              <div style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.8rem;color:var(--gold);">4K</div>
+              <div style="font-size:0.72rem;color:rgba(255,255,255,0.6);font-weight:600;text-transform:uppercase;">Render Output</div>
+            </div>
+            <div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+            <div style="text-align:center;">
+              <div style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.8rem;color:var(--gold);">360°</div>
+              <div style="font-size:0.72rem;color:rgba(255,255,255,0.6);font-weight:600;text-transform:uppercase;">Panoramic Views</div>
+            </div>
+            <div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+            <div style="text-align:center;">
+              <div style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.8rem;color:var(--gold);">VR</div>
+              <div style="font-size:0.72rem;color:rgba(255,255,255,0.6);font-weight:600;text-transform:uppercase;">Ready Output</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- ═══════════════════════════════════════════
+     INTERIOR & EXTERIOR VISUALIZATION
+═══════════════════════════════════════════ -->
+<section class="viz-section" id="visualization">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-home"></i> Specializations</div>
+      <h2 class="section-title">Interior &amp; Exterior <span>Visualization</span></h2>
+      <p class="section-subtitle">Master two of the most sought-after specializations in architectural visualization</p>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+      <div class="viz-tab-nav">
+        <button class="viz-tab active" onclick="switchVizTab(this,'interior')"><i class="fas fa-couch me-2"></i>Interior Visualization</button>
+        <button class="viz-tab" onclick="switchVizTab(this,'exterior')"><i class="fas fa-building me-2"></i>Exterior Visualization</button>
+      </div>
+    </div>
+
+    <!-- Interior Panel -->
+    <div class="viz-content-panel active row align-items-center gy-5" id="panel-interior" data-aos="fade-up" data-aos-delay="200">
+      <div class="col-lg-7">
+        <div class="section-tag"><i class="fas fa-couch"></i> Interior Rendering</div>
+        <h3 class="section-title" style="font-size:1.8rem;">Interior <span>Architecture Renders</span></h3>
+        <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.8;margin-bottom:24px;">Learn to create magazine-quality interior renders for residential living spaces, luxury bedrooms, commercial offices, hospitality lobbies, and retail environments.</p>
+
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div class="viz-feature-item">
+            <div class="viz-feature-icon"><i class="fas fa-sun"></i></div>
+            <div><h6>Natural Daylight Simulation</h6><p>Master V-Ray Sun & Sky system and HDRI environments to create beautiful natural light conditions at any time of day.</p></div>
+          </div>
+          <div class="viz-feature-item">
+            <div class="viz-feature-icon"><i class="fas fa-lightbulb"></i></div>
+            <div><h6>Artificial Lighting Design</h6><p>Place spotlights, IES lights, and V-Ray mesh lights to craft warm, inviting interior atmospheres.</p></div>
+          </div>
+          <div class="viz-feature-item">
+            <div class="viz-feature-icon"><i class="fas fa-chair"></i></div>
+            <div><h6>Furniture & Prop Styling</h6><p>Source and place 3D models from premium libraries, style scenes like a professional interior designer.</p></div>
+          </div>
+          <div class="viz-feature-item">
+            <div class="viz-feature-icon"><i class="fas fa-palette"></i></div>
+            <div><h6>Material Realism</h6><p>Create accurate marble, wood, fabric, leather, and polished metal surfaces using V-Ray material library.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <img src="assets/image/interior-design.webp" class="w-100">
+        
+      </div>
+    </div>
+
+    <!-- Exterior Panel -->
+    <div class="viz-content-panel row align-items-center gy-5" id="panel-exterior" data-aos="fade-up" data-aos-delay="200">
+      <div class="col-lg-7">
+        <div class="section-tag"><i class="fas fa-building"></i> Exterior Rendering</div>
+        <h3 class="section-title" style="font-size:1.8rem;">Exterior <span>Architecture Renders</span></h3>
+        <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.8;margin-bottom:24px;">Produce architect-quality exterior visualizations for residential villas, commercial towers, urban master plans, and landscape design presentations.</p>
+
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div class="viz-feature-item">
+            <div class="viz-feature-icon"><i class="fas fa-cloud-sun"></i></div>
+            <div><h6>Environmental Atmosphere</h6><p>Create dramatic sky environments with golden hour, overcast, and twilight lighting conditions that sell architectural concepts.</p></div>
+          </div>
+          <div class="viz-feature-item">
+            <div class="viz-feature-icon"><i class="fas fa-tree"></i></div>
+            <div><h6>Landscape & Entourage</h6><p>Populate scenes with vegetation, cars, people, and environment props using Forest Pack and scatter plugins.</p></div>
+          </div>
+          <div class="viz-feature-item">
+            <div class="viz-feature-icon"><i class="fas fa-eye"></i></div>
+            <div><h6>Aerial & Eye-Level Views</h6><p>Master bird's eye, worm's eye, and street-level camera compositions for maximum architectural impact.</p></div>
+          </div>
+          <div class="viz-feature-item">
+            <div class="viz-feature-icon"><i class="fas fa-reflect-horizontal"></i></div>
+            <div><h6>Reflections & Caustics</h6><p>Achieve realistic water, glass facade, and pool reflections using V-Ray advanced rendering settings.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <img src="assets/image/exterior-design.webp" class="w-100">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     COURSE MODULES
+═══════════════════════════════════════════ -->
+<section class="modules-section" id="modules">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-book-open"></i> Curriculum</div>
+      <h2 class="section-title">Complete Course <span>Modules</span></h2>
+      <p class="section-subtitle">Structured from basics to advanced concepts with hands-on practice at every stage</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="module-card">
+          <div class="module-num">01</div>
+          <div class="module-icon"><i class="fas fa-desktop"></i></div>
+          <h5>3ds Max Interface & Setup</h5>
+          <p>Master the 3ds Max environment, viewport navigation, customize workspace for efficient architectural visualization workflow.</p>
+          <ul class="module-topics">
+            <li>Interface Overview</li>
+            <li>Viewport Navigation</li>
+            <li>Unit Setup & Grid</li>
+            <li>Customizing Workspace</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="60">
+        <div class="module-card">
+          <div class="module-num">02</div>
+          <div class="module-icon"><i class="fas fa-cube"></i></div>
+          <h5>3D Modeling Techniques</h5>
+          <p>Create architectural geometry using primitives, splines, modifiers, and polygon modeling for walls, roofs, and furniture.</p>
+          <ul class="module-topics">
+            <li>Spline Modeling</li>
+            <li>Polygon Editing</li>
+            <li>Architectural Modifiers</li>
+            <li>CAD Import Workflow</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="120">
+        <div class="module-card">
+          <div class="module-num">03</div>
+          <div class="module-icon"><i class="fas fa-palette"></i></div>
+          <h5>V-Ray Materials & Textures</h5>
+          <p>Build physically accurate materials for every surface type — from polished marble to brushed metal, glass, and fabric.</p>
+          <ul class="module-topics">
+            <li>V-Ray Material Editor</li>
+            <li>PBR Material Workflow</li>
+            <li>UV Mapping & Unwrap</li>
+            <li>Displacement & Bump</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="180">
+        <div class="module-card">
+          <div class="module-num">04</div>
+          <div class="module-icon"><i class="fas fa-sun"></i></div>
+          <h5>Lighting Setup & HDRI</h5>
+          <p>Design stunning lighting environments using V-Ray Sun, Sky, dome lights, IES profiles, and HDRI environments.</p>
+          <ul class="module-topics">
+            <li>V-Ray Sun & Sky</li>
+            <li>HDRI Environment</li>
+            <li>Artificial Lighting</li>
+            <li>IES Profiles</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="module-card">
+          <div class="module-num">05</div>
+          <div class="module-icon"><i class="fas fa-camera"></i></div>
+          <h5>Camera Setup & Composition</h5>
+          <p>Master V-Ray Physical Camera settings, exposure control, depth of field, and professional composition principles.</p>
+          <ul class="module-topics">
+            <li>Physical Camera</li>
+            <li>Exposure & ISO</li>
+            <li>Depth of Field</li>
+            <li>Rule of Thirds</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="60">
+        <div class="module-card">
+          <div class="module-num">06</div>
+          <div class="module-icon"><i class="fas fa-film"></i></div>
+          <h5>V-Ray Rendering Settings</h5>
+          <p>Optimize render settings, GI solutions, sampling, denoising, and render elements for maximum quality with efficiency.</p>
+          <ul class="module-topics">
+            <li>GI & Brute Force</li>
+            <li>Light Cache</li>
+            <li>V-Ray Denoiser</li>
+            <li>Render Elements</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="120">
+        <div class="module-card">
+          <div class="module-num">07</div>
+          <div class="module-icon"><i class="fas fa-video"></i></div>
+          <h5>Animation & Walkthrough</h5>
+          <p>Create compelling architectural walkthroughs and animated presentations using 3ds Max timeline and V-Ray rendering.</p>
+          <ul class="module-topics">
+            <li>Keyframe Animation</li>
+            <li>Path Animation</li>
+            <li>Camera Walkthrough</li>
+            <li>Video Output</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="180">
+        <div class="module-card">
+          <div class="module-num">08</div>
+          <div class="module-icon"><i class="fas fa-magic"></i></div>
+          <h5>Post-Production & Portfolio</h5>
+          <p>Complete renders in Photoshop with color grading, sky replacement, entourage, and build a professional portfolio.</p>
+          <ul class="module-topics">
+            <li>Photoshop Post-Work</li>
+            <li>Color Grading</li>
+            <li>Portfolio Building</li>
+            <li>Client Presentation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CAREER OPPORTUNITIES
+═══════════════════════════════════════════ -->
+<section class="career-section" id="careers">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-briefcase"></i> Career Paths</div>
+      <h2 class="section-title">Career <span>Opportunities</span></h2>
+      <p class="section-subtitle">3ds Max & V-Ray opens doors to high-demand roles across architecture, design, and media industries</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="career-card">
+          <div class="career-card-icon"><i class="fas fa-paint-brush"></i></div>
+          <h5>3D Visualization Artist</h5>
+          <p>Create photorealistic renders for architecture firms, real estate developers, and interior design studios worldwide.</p>
+          <div class="career-salary"><i class="fas fa-rupee-sign"></i> ₹25,000 – ₹70,000/month</div>
+          <div class="career-demand">
+            <div class="demand-bar"><div class="demand-fill" style="width:90%;"></div></div>
+            <span class="demand-label">Very High Demand</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="60">
+        <div class="career-card">
+          <div class="career-card-icon"><i class="fas fa-building"></i></div>
+          <h5>Architectural Visualizer</h5>
+          <p>Work directly with architects to visualize building designs for presentations, permits, and client approvals.</p>
+          <div class="career-salary"><i class="fas fa-rupee-sign"></i> ₹30,000 – ₹80,000/month</div>
+          <div class="career-demand">
+            <div class="demand-bar"><div class="demand-fill" style="width:85%;"></div></div>
+            <span class="demand-label">Very High Demand</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="120">
+        <div class="career-card">
+          <div class="career-card-icon"><i class="fas fa-sun"></i></div>
+          <h5>Rendering Artist</h5>
+          <p>Specialize in lighting and rendering for visualization studios, handling multiple client projects simultaneously.</p>
+          <div class="career-salary"><i class="fas fa-rupee-sign"></i> ₹22,000 – ₹60,000/month</div>
+          <div class="career-demand">
+            <div class="demand-bar"><div class="demand-fill" style="width:80%;"></div></div>
+            <span class="demand-label">High Demand</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="career-card">
+          <div class="career-card-icon"><i class="fas fa-couch"></i></div>
+          <h5>Interior Visualization Designer</h5>
+          <p>Collaborate with interior designers to create stunning room visualizations for residential and commercial projects.</p>
+          <div class="career-salary"><i class="fas fa-rupee-sign"></i> ₹25,000 – ₹65,000/month</div>
+          <div class="career-demand">
+            <div class="demand-bar"><div class="demand-fill" style="width:85%;"></div></div>
+            <span class="demand-label">Very High Demand</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="60">
+        <div class="career-card">
+          <div class="career-card-icon"><i class="fas fa-video"></i></div>
+          <h5>Animation & Walkthrough Artist</h5>
+          <p>Produce architectural animation videos and virtual tours used in real estate marketing, investor presentations, and exhibitions.</p>
+          <div class="career-salary"><i class="fas fa-rupee-sign"></i> ₹28,000 – ₹75,000/month</div>
+          <div class="career-demand">
+            <div class="demand-bar"><div class="demand-fill" style="width:75%;"></div></div>
+            <span class="demand-label">High Demand</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="120">
+        <div class="career-card">
+          <div class="career-card-icon"><i class="fas fa-laptop-house"></i></div>
+          <h5>Freelance Visualization Consultant</h5>
+          <p>Build your independent visualization practice working with global clients on platforms like Upwork, Fiverr, and direct referrals.</p>
+          <div class="career-salary"><i class="fas fa-rupee-sign"></i> ₹500 – ₹3,000/render</div>
+          <div class="career-demand">
+            <div class="demand-bar"><div class="demand-fill" style="width:92%;"></div></div>
+            <span class="demand-label">Extremely High</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     LEARNING PROCESS
+═══════════════════════════════════════════ -->
+<section class="process-section" id="process">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-map-marked-alt"></i> Your Journey</div>
+      <h2 class="section-title">The Learning <span>Process</span></h2>
+      <p class="section-subtitle">A clear, structured path from enrollment to your dream visualization career</p>
+    </div>
+
+    <div class="process-timeline">
+      <!-- Step 1 -->
+      <div class="process-step" data-aos="fade-up" data-aos-delay="0">
+        <div class="process-step-left">
+          <div class="process-card">
+            <h6>Step 01: Enroll & Orientation</h6>
+            <p>Join CADPOINT, meet your faculty, get your software setup, and understand the course roadmap and project expectations.</p>
+          </div>
+        </div>
+        <div class="process-step-center">01</div>
+        <div class="process-step-right"></div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="process-step" data-aos="fade-up" data-aos-delay="80">
+        <div class="process-step-left"></div>
+        <div class="process-step-center">02</div>
+        <div class="process-step-right">
+          <div class="process-card">
+            <h6>Step 02: Learn Core Concepts</h6>
+            <p>Master 3ds Max interface, modeling tools, V-Ray materials, lighting, and camera setup through structured classroom sessions.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="process-step" data-aos="fade-up" data-aos-delay="160">
+        <div class="process-step-left">
+          <div class="process-card">
+            <h6>Step 03: Practice Projects</h6>
+            <p>Apply concepts on guided mini-projects — simple room renders, material studies, and lighting exercises to build confidence.</p>
+          </div>
+        </div>
+        <div class="process-step-center">03</div>
+        <div class="process-step-right"></div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="process-step" data-aos="fade-up" data-aos-delay="240">
+        <div class="process-step-left"></div>
+        <div class="process-step-center">04</div>
+        <div class="process-step-right">
+          <div class="process-card">
+            <h6>Step 04: Real-Time Projects</h6>
+            <p>Work on actual architectural projects under mentor guidance — interior scenes, exterior renders, and walkthroughs for your portfolio.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="process-step" data-aos="fade-up" data-aos-delay="320">
+        <div class="process-step-left">
+          <div class="process-card">
+            <h6>Step 05: Portfolio Building</h6>
+            <p>Compile your best renders into a professional portfolio with guidance on presentation, branding, and online presence.</p>
+          </div>
+        </div>
+        <div class="process-step-center">05</div>
+        <div class="process-step-right"></div>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="process-step" data-aos="fade-up" data-aos-delay="400">
+        <div class="process-step-left"></div>
+        <div class="process-step-center">06</div>
+        <div class="process-step-right">
+          <div class="process-card">
+            <h6>Step 06: Certification & Placement</h6>
+            <p>Receive your CADPOINT certificate, prepare for interviews, and get placed through our 500+ partner network within 60 days.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FAQ SECTION
+═══════════════════════════════════════════ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-question-circle"></i> FAQ</div>
+      <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+      <p class="section-subtitle">Everything you need to know about our 3ds Max & V-Ray training program</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-9" data-aos="fade-up" data-aos-delay="100">
+        <div class="accordion" id="faqAccordion">
+
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true">What computer or system requirements are needed for 3ds Max & V-Ray training?</button></h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">For 3ds Max and V-Ray, you need a PC or laptop with at least an Intel i5/i7 (or AMD Ryzen 5/7) processor, 16GB RAM (32GB recommended), a dedicated GPU (NVIDIA GTX 1060 or better for GPU rendering), and at least 100GB of SSD storage. CADPOINT's lab computers are fully equipped, so you can practice in class even if your personal system doesn't meet these specs yet.</div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">Do I need prior 3D modeling or design experience to join this course?</button></h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">No prior 3D experience is required. Our 3ds Max & V-Ray course is designed for complete beginners as well as those with some CAD background. We start from the absolute basics — software installation, interface navigation — and gradually progress to advanced rendering techniques. Students from architecture, interior design, engineering, and even non-technical backgrounds have successfully completed this program.</div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">What certification will I receive after completing this course?</button></h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Upon successful completion of the program and your final project, you receive the CADPOINT Architectural Visualization Professional Certificate. This certificate is recognized by 500+ companies in our hiring partner network. We also guide you through preparing for Autodesk Certified Professional (ACP) exams and Chaos Group V-Ray certifications if you wish to pursue those industry credentials.</div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">Are online classes available for the 3ds Max & V-Ray course?</button></h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Yes, CADPOINT offers both classroom (at our center) and online live instructor-led training for 3ds Max & V-Ray. Online students receive the same curriculum, live sessions via Zoom, recorded session access for revision, and dedicated support through our student portal. Portfolio review and placement support are also provided to online students.</div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">How long is the course and what are the batch timings?</button></h2>
+            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">The comprehensive 3ds Max & V-Ray course runs for approximately 4–5 months with 2-hour sessions per day. We offer morning (9 AM – 11 AM), afternoon (2 PM – 4 PM), and evening (6 PM – 8 PM) batches to accommodate working professionals and students. Weekend-only batches are also available. Contact us to find the batch that fits your schedule.</div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">Can I start freelancing during or immediately after the course?</button></h2>
+            <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Absolutely. By the 3rd month, most students have a strong enough portfolio to start taking on freelance projects. We dedicate a full session to freelancing strategy — setting up profiles on Upwork and Fiverr, pricing your work, communicating with clients, and managing projects. Many of our students are earning from freelancing before they even complete the course.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CTA SECTION
+═══════════════════════════════════════════ -->
+<div class="cta-wave-top">
+</div>
+<section class="cta-section">
+  <div class="container text-center position-relative" style="z-index:1;">
+    <div data-aos="zoom-in">
+      <div class="section-tag mx-auto mb-3" style="color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.08);">
+        <i class="fas fa-rocket"></i> Begin Your Journey
+      </div>
+      <h2 class="cta-title">Start Your Visualization<br>Career <span style="color:var(--gold);">Today</span></h2>
+      <p class="cta-subtitle">Join 2,500+ professionals who have launched their architectural visualization careers with CADPOINT's expert training. Your dream project is one enrollment away.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;">
+        <a href="contact.html" class="btn-cta-glow">
+          <i class="fas fa-rocket"></i> Enroll Now Free Counselling
+        </a>
+        <a href="tel:+919895352624" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:white;font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.9rem;padding:16px 32px;border-radius:50px;border:2px solid rgba(255,255,255,0.4);text-decoration:none;transition:all 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.12)'" onmouseout="this.style.background='transparent'">
+          <i class="fas fa-phone-alt"></i> Call Us Now
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<div id="footer"></div>
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+fetch("./header.html")
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById("header").innerHTML = html;
+    initCaddNav();
+  });
+
+  fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+      document.getElementById('footer').innerHTML = data;
+  });
+</script>
+
+<script>
+function initCaddNav() {
+
+    const coursesNav = document.getElementById('coursesNav');
+    const caret = document.getElementById('coursesCaret');
+    const menu = document.getElementById('coursesMegaMenu');
+    const closeBtn = document.getElementById('closeMegaMenu');
+
+    if (!coursesNav || !caret || !menu) return;
+
+    // X BUTTON CLOSE (Desktop + Mobile)
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.remove('show');
+
+        });
+    }
+
+    // MOBILE
+    if (window.innerWidth <= 991) {
+
+        caret.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!coursesNav.contains(e.target)) {
+                menu.classList.remove('show');
+            }
+        });
+
+        return;
+    }
+
+    // DESKTOP
+    coursesNav.addEventListener('mouseenter', function () {
+        menu.classList.add('show');
+    });
+
+    coursesNav.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+
+    menu.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+}
+</script>
+
+
+
+<script id="hoverfix1">
+  // ─── COURSES MEGA DROPDOWN: hover to open ───
+  (function () {
+    const coursesNav = document.getElementById('coursesNav');
+    if (!coursesNav) return;
+    const menu = coursesNav.querySelector('.courses-mega-menu');
+    const caret = document.getElementById('coursesDropdown');
+    if (!menu) return;
+    let hideTimer;
+
+    function showMenu() {
+      clearTimeout(hideTimer);
+      // position the menu below the navbar
+      const navRect = document.getElementById('mainNav').getBoundingClientRect();
+      menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+      menu.classList.add('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(180deg)';
+    }
+
+    function hideMenu() {
+      hideTimer = setTimeout(function () {
+        menu.classList.remove('show');
+        if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+      }, 120);
+    }
+
+    coursesNav.addEventListener('mouseenter', showMenu);
+    coursesNav.addEventListener('mouseleave', hideMenu);
+    menu.addEventListener('mouseenter', showMenu);
+    menu.addEventListener('mouseleave', hideMenu);
+
+    if (caret) {
+      caret.querySelector('i').style.transition = 'transform 0.25s ease';
+      caret.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (menu.classList.contains('show')) { hideMenu(); } else { showMenu(); }
+      });
+    }
+
+    document.addEventListener('click', function (e) {
+      if (!coursesNav.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.remove('show');
+        if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+      }
+    });
+
+    // reposition on scroll
+    window.addEventListener('scroll', function () {
+      if (menu.classList.contains('show')) {
+        const navRect = document.getElementById('mainNav').getBoundingClientRect();
+        menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+      }
+    });
+  })();
+</script>
+
+
+<script>
+/* ─── LOADER ─── */
+window.addEventListener('load', () => {
+  setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 1800);
+});
+
+/* ─── AOS ─── */
+AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });
+
+/* ─── NAVBAR SCROLL ─── */
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  if (window.scrollY > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+  const btn = document.getElementById('backToTop');
+  if (window.scrollY > 400) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+});
+
+/* ─── BACK TO TOP ─── */
+document.getElementById('backToTop').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/* ─── CLOSE MEGA MENU ─── */
+document.getElementById('closeMegaMenu').addEventListener('click', function () {
+  document.querySelector('.courses-mega-menu').classList.remove('show');
+});
+
+
+/* ─── COUNTER ANIMATION ─── */
+function animateCounters() {
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseInt(el.getAttribute('data-count'));
+    let current = 0;
+    const increment = target / 60;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) { current = target; clearInterval(timer); }
+      el.textContent = Math.floor(current);
+    }, 25);
+  });
+}
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { animateCounters(); statsObserver.disconnect(); }
+  });
+}, { threshold: 0.3 });
+const statsBand = document.querySelector('.stats-band');
+if (statsBand) statsObserver.observe(statsBand);
+
+/* ─── HERO ANIMATION ─── */
+const heroTitle = document.getElementById('heroTitle');
+if (heroTitle) {
+  heroTitle.style.opacity = '0';
+  heroTitle.style.transform = 'translateY(30px)';
+  heroTitle.style.transition = 'opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s';
+  setTimeout(() => { heroTitle.style.opacity = '1'; heroTitle.style.transform = 'translateY(0)'; }, 300);
+}
+
+/* ─── VIZ TAB SWITCHER ─── */
+function switchVizTab(btn, panelId) {
+  document.querySelectorAll('.viz-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.viz-content-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('panel-' + panelId).classList.add('active');
+}
+
+/* ─── MEGA DROPDOWN: HOVER ─── */
+(function() {
+  const coursesNav = document.getElementById('coursesNav');
+  if (!coursesNav) return;
+  const menu = coursesNav.querySelector('.courses-mega-menu');
+  const caret = document.getElementById('coursesDropdown');
+  if (!menu) return;
+  let hideTimer;
+
+  function showMenu() {
+    clearTimeout(hideTimer);
+    const navRect = document.getElementById('mainNav').getBoundingClientRect();
+    menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    menu.classList.add('show');
+    if (caret) caret.querySelector('i').style.transform = 'rotate(180deg)';
+  }
+
+  function hideMenu() {
+    hideTimer = setTimeout(function() {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }, 120);
+  }
+
+  coursesNav.addEventListener('mouseenter', showMenu);
+  coursesNav.addEventListener('mouseleave', hideMenu);
+  menu.addEventListener('mouseenter', showMenu);
+  menu.addEventListener('mouseleave', hideMenu);
+
+  if (caret) {
+    caret.querySelector('i').style.transition = 'transform 0.25s ease';
+    caret.addEventListener('click', function(e) {
+      e.stopPropagation();
+      if (menu.classList.contains('show')) { hideMenu(); } else { showMenu(); }
+    });
+  }
+
+  document.addEventListener('click', function(e) {
+    if (!coursesNav.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }
+  });
+
+  window.addEventListener('scroll', function() {
+    if (menu.classList.contains('show')) {
+      const navRect = document.getElementById('mainNav').getBoundingClientRect();
+      menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    }
+  });
+})();
+
+/* ─── RIPPLE EFFECT ─── */
+document.querySelectorAll('.ripple').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.style.cssText = `
+      position:absolute;border-radius:50%;background:rgba(255,255,255,0.3);
+      width:10px;height:10px;left:${e.clientX - rect.left - 5}px;top:${e.clientY - rect.top - 5}px;
+      transform:scale(0);animation:rippleAnim 0.6s ease-out forwards;pointer-events:none;
+    `;
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 700);
+  });
+});
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `@keyframes rippleAnim{to{transform:scale(30);opacity:0;}}`;
+document.head.appendChild(rippleStyle);
+</script>
+</body>
+</html>

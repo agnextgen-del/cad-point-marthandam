@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revit Architecture Course | CADPOINT Authorized Training Centre</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="icon" type="image/x-icon" href="assets/image/cadd-logo.webp">
+  <style>
+    /* ═══════════════════════════════════════════
+       ROOT VARIABLES (same as Home Page)
+    ═══════════════════════════════════════════ */
+    :root {
+      --primary: #8B0000;
+      --primary-light: #A00000;
+      --primary-dark: #5c0000;
+      --primary-glow: rgba(139,0,0,0.35);
+      --white: #ffffff;
+      --light-gray: #F5F5F5;
+      --text-dark: #1a1a1a;
+      --text-muted: #555;
+      --border-light: rgba(139,0,0,0.15);
+      --glass-bg: rgba(255,255,255,0.08);
+      --glass-border: rgba(255,255,255,0.18);
+    }
+
+    html, body { max-width: 100%; overflow-x: hidden; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; color: var(--text-dark); background: var(--white); overflow-x: hidden; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+    /* ═══════════════════════════════════════════
+       LOADER
+    ═══════════════════════════════════════════ */
+
+  /* ── PRELOADER ── */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #5c0000;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+#loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.loader-logo {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+  letter-spacing: 6px;
+  color: #ffffff;
+  line-height: 1;
+  margin-bottom: 28px;
+  text-transform: uppercase;
+}
+.loader-logo span {
+  color: #ffd700;
+}
+.loader-bar {
+  width: 220px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+.loader-bar-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #cc0000 0%, #ffd700 100%);
+  animation: loaderAnim 1.8s ease-in-out infinite;
+}
+@keyframes loaderAnim {
+  0%   { width: 0%;  margin-left: 0;    opacity: 1; }
+  50%  { width: 70%; margin-left: 0;    opacity: 1; }
+  100% { width: 0%;  margin-left: 100%; opacity: 0; }
+}
+
+    /* #loader {
+      position: fixed; inset: 0; background: #fff; z-index: 9999;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    #loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .loader-logo { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2rem; color: var(--primary); letter-spacing: 4px; margin-bottom: 20px; }
+    .loader-logo span { color: var(--text-dark); }
+    .loader-bar { width: 200px; height: 3px; background: #f0f0f0; border-radius: 3px; overflow: hidden; }
+    .loader-bar-inner { height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-light)); border-radius: 3px; animation: loaderAnim 1.8s ease-in-out infinite; }
+    @keyframes loaderAnim { 0% { width:0; margin-left:0; } 50% { width:70%; margin-left:0; } 100% { width:0; margin-left:100%; } } */
+
+    /* ═══════════════════════════════════════════
+       BACK TO TOP
+    ═══════════════════════════════════════════ */
+    #backToTop {
+      position: fixed; bottom: 30px; right: 30px; width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white; border: none; border-radius: 50%; cursor: pointer;
+      box-shadow: 0 6px 20px var(--primary-glow); opacity: 0; transform: translateY(20px);
+      transition: all 0.4s ease; z-index: 999; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+    }
+    #backToTop.visible { opacity: 1; transform: translateY(0); }
+    #backToTop:hover { transform: translateY(-4px); box-shadow: 0 10px 30px var(--primary-glow); }
+
+    /* ═══════════════════════════════════════════
+       NAVBAR (EXACT COPY FROM HOME PAGE)
+    ═══════════════════════════════════════════ */
+    .navbar {
+      background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
+      box-shadow: 0 2px 30px rgba(139,0,0,0.12); padding: 12px 0;
+      position: sticky; top: 0; z-index: 1000; transition: all 0.3s ease;
+    }
+    .navbar.scrolled { padding: 8px 0; box-shadow: 0 4px 40px rgba(139,0,0,0.2); }
+    .navbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icon { width: 48px; height: 48px; flex-shrink: 0; }
+    .logo-text { line-height: 1.1; }
+    .logo-text .brand-name { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.3rem; color: var(--primary); letter-spacing: 2px; }
+    .logo-text .brand-sub { font-size: 0.58rem; font-weight: 600; color: #666; letter-spacing: 1.5px; text-transform: uppercase; }
+    .navbar-nav .nav-link { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.8px; text-transform: uppercase; padding: 8px 16px !important; border-radius: 6px; transition: all 0.3s ease; position: relative; }
+    .navbar-nav .nav-link:hover { color: var(--primary); }
+    .btn-nav-enroll { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white !important; padding: 8px 22px !important; border-radius: 25px !important; font-weight: 700 !important; box-shadow: 0 4px 15px var(--primary-glow); transition: all 0.3s ease !important; }
+    .btn-nav-enroll:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--primary-glow) !important; }
+    .btn-nav-enroll::after { display: none !important; }
+    #coursesNav { position: static !important; }
+    #coursesNav > div { display: flex; align-items: center; }
+    .courses-mega-menu { position: fixed !important; top: auto !important; left: 50% !important; transform: translateX(-50%) translateY(6px) !important; width: min(960px, 96vw) !important; display: block !important; opacity: 0; visibility: hidden; transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s; pointer-events: none; border: none !important; border-radius: 16px !important; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.16), 0 0 0 1px rgba(139,0,0,0.1) !important; padding: 0 !important; }
+    .courses-mega-menu.show { opacity: 1 !important; visibility: visible !important; transform: translateX(-50%) translateY(0) !important; pointer-events: auto !important; }
+    .mega-topbar { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: white; font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.6px; }
+    .mega-col { flex: 1; padding: 20px 16px 20px 20px; border-right: 1px solid rgba(139,0,0,0.08); background: white; }
+    .mega-col:last-child { border-right: none; }
+    .mega-col-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid rgba(139,0,0,0.08); }
+    .mega-col-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .mega-col-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.82rem; color: var(--text-dark); letter-spacing: 0.4px; }
+    .mega-col-sub { font-size: 0.68rem; color: #999; font-weight: 500; margin-top: 1px; }
+    .mega-item { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 7px; font-size: 0.8rem; font-weight: 500; color: var(--text-dark); text-decoration: none; transition: background 0.15s, color 0.15s, padding-left 0.15s; margin-bottom: 2px; }
+    .mega-item i { font-size: 0.72rem; width: 16px; text-align: center; color: #aaa; transition: color 0.15s; flex-shrink: 0; }
+    .mega-item:hover { background: rgba(139,0,0,0.07); color: var(--primary); padding-left: 12px; }
+    .mega-item:hover i { color: var(--primary); }
+    #coursesNav .courses-caret { color: var(--text-dark); transition: color 0.2s; }
+    #coursesNav .courses-caret:hover { color: var(--primary); }
+    .mega-close-x { position:absolute; top:12px; right:12px; width:34px; height:34px; border:none; border-radius:50%; background:#fff; color:#222; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:99; box-shadow:0 4px 15px rgba(0,0,0,.12); transition:.3s ease; }
+    .mega-close-x:hover { background:var(--primary); color:#fff; transform:rotate(90deg); }
+    .dropdown-item:hover { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #fff; border-radius: 5px; }
+    @media (max-width: 991px) {
+      .navbar-collapse { background:#fff; padding:15px; border-radius:18px; margin-top:15px; box-shadow:0 10px 35px rgba(0,0,0,.08); }
+      #coursesNav { width:100%; }
+      #coursesNav .d-flex { width:100%; justify-content:space-between; align-items:center; }
+      #coursesNav .nav-link { padding:12px 0 !important; }
+      .courses-caret { padding-right:0 !important; }
+     
+      .courses-mega-menu { 
+      /* position:static !important;  */
+      transform:none !important; 
+      width:100% !important; min-width:100% !important; 
+      margin-top:10px !important; border:none !important; 
+      box-shadow:none !important; border-radius:16px !important; 
+      overflow:hidden; background:#f8f9fb; }
+      
+      .courses-mega-menu .d-flex { flex-direction:column !important; gap:0 !important; padding-top:0 !important; }
+      .mega-col { width:100% !important; border-right:none !important; border-bottom:1px solid rgba(0,0,0,.06); padding:18px 16px !important; }
+      .mega-col:last-child { border-bottom:none; }
+      .mega-col-title { font-size:1rem; font-weight:700; }
+      .mega-col-sub { font-size:.78rem; }
+      .mega-item { width:100%; display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:10px; font-size:.92rem; }
+      .mega-item:hover { background:#fff; }
+      .mega-item i { width:18px; text-align:center; }
+    }
+
+    
+    /* ═══════════════════════════════════════════
+       BREADCRUMB SLIDER
+    ═══════════════════════════════════════════ */
+    .breadcrumb-slider { background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-dark) 100%); padding: 0; overflow: hidden; height: 38px; display: flex; align-items: center; position: relative; }
+    .breadcrumb-slider::before, .breadcrumb-slider::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none; }
+    .breadcrumb-slider::before { left: 0; background: linear-gradient(to right, var(--primary-dark), transparent); }
+    .breadcrumb-slider::after { right: 0; background: linear-gradient(to left, var(--primary-dark), transparent); }
+    .breadcrumb-track { display: flex; animation: scrollBreadcrumb 28s linear infinite; white-space: nowrap; will-change: transform; }
+    .breadcrumb-track:hover { animation-play-state: paused; }
+    .breadcrumb-item-slide { display: inline-flex; align-items: center; gap: 8px; padding: 0 30px; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 1px; text-transform: uppercase; font-family: 'Montserrat', sans-serif; }
+    .breadcrumb-item-slide .sep { color: rgba(255,255,255,0.4); font-size: 0.65rem; }
+    .breadcrumb-item-slide i { color: rgba(255,255,255,0.6); font-size: 0.7rem; }
+    @keyframes scrollBreadcrumb { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ═══════════════════════════════════════════
+       SECTION COMMON
+    ═══════════════════════════════════════════ */
+    section { padding: 90px 0; }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(139,0,0,0.08); border: 1px solid rgba(139,0,0,0.2); color: var(--primary); font-family: 'Montserrat', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 14px; border-radius: 50px; margin-bottom: 14px; }
+    .section-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.2; color: var(--text-dark); margin-bottom: 14px; }
+    .section-title span { color: var(--primary); }
+    .section-subtitle { color: var(--text-muted); font-size: 1rem; line-height: 1.7; max-width: 560px; }
+    .divider-line { width: 60px; height: 4px; background: linear-gradient(90deg, var(--primary), var(--primary-light)); border-radius: 4px; margin: 16px 0 24px; }
+
+    /* ═══════════════════════════════════════════
+       HERO SECTION
+    ═══════════════════════════════════════════ */
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, #c0392b 80%, var(--primary-dark) 100%);
+      min-height: 90vh; display: flex; align-items: center; position: relative; overflow: hidden; padding: 70px 0 0;
+    }
+    .hero-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2zm4 0L80 4v2L46 40h-2zm4 0L80 8v2L50 40h-2zm4 0L80 12v2L54 40h-2zm4 0L80 16v2L58 40h-2zm4 0L80 20v2L62 40h-2zm4 0L80 24v2L66 40h-2zm4 0L80 28v2L70 40h-2zm4 0L80 32v2L74 40h-2zm4 0L80 36v2L78 40h-2zm4 0L80 40h-2v-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.4;
+    }
+
+    /* Floating BIM shapes */
+    .hero-float-shapes { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    .fshape { position: absolute; border-radius: 50%; opacity: 0.07; animation: floatShape 6s ease-in-out infinite; }
+    .fshape-1 { width: 320px; height: 320px; background: white; top: -80px; right: 10%; animation-delay: 0s; }
+    .fshape-2 { width: 180px; height: 180px; background: #ffd700; bottom: 20%; left: 5%; animation-delay: 2s; }
+    .fshape-3 { width: 100px; height: 100px; background: white; top: 40%; right: 5%; animation-delay: 1s; }
+    @keyframes floatShape { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(10deg); } }
+
+    /* Hero grid lines overlay */
+    .hero-grid { position: absolute; inset: 0; pointer-events: none;
+      background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-content { position: relative; z-index: 2; text-align: center; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(10px); padding: 6px 18px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 22px; }
+    .hero-badge span { color: #ffd700; }
+    .hero-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(2.2rem, 5.5vw, 3.8rem); line-height: 1.08; color: white; margin-bottom: 22px; }
+    .hero-title .highlight { color: #ffd700; }
+    .hero-desc { font-size: 1.05rem; color: rgba(255,255,255,0.82); line-height: 1.8; margin-bottom: 36px; max-width: 640px; margin-left: auto; margin-right: auto; }
+    .hero-meta { display: flex; justify-content: center; flex-wrap: wrap; gap: 24px; margin-bottom: 40px; }
+    .hero-meta-item { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.85); font-size: 0.88rem; font-weight: 500; }
+    .hero-meta-item i { color: #ffd700; }
+    .hero-btn-group { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin-bottom: 60px; }
+    .btn-hero-primary { background: linear-gradient(135deg, #ffd700, #ffb700); color: var(--primary-dark) !important; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.92rem; letter-spacing: 0.8px; padding: 16px 36px; border-radius: 50px; border: none; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 8px 30px rgba(255,215,0,0.45); transition: all 0.3s ease; position: relative; overflow: hidden; }
+    .btn-hero-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(255,215,0,0.55); color: var(--primary-dark) !important; }
+    .btn-hero-outline { background: transparent; color: white !important; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.92rem; letter-spacing: 0.8px; padding: 14px 32px; border-radius: 50px; border: 2px solid rgba(255,255,255,0.5); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; backdrop-filter: blur(10px); }
+    .btn-hero-outline:hover { border-color: white; background: rgba(255,255,255,0.12); transform: translateY(-3px); color: white !important; }
+
+    /* Hero stat band */
+    .hero-stats-band { background: rgba(0,0,0,0.25); backdrop-filter: blur(20px); border-top: 1px solid rgba(255,255,255,0.12); padding: 24px 0; }
+    .hero-stat { text-align: center; padding: 0 20px; border-right: 1px solid rgba(255,255,255,0.15); }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat .num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2rem; color: #ffd700; line-height: 1; }
+    .hero-stat .lbl { font-size: 0.72rem; color: rgba(255,255,255,0.75); font-weight: 500; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* SVG divider */
+    .section-divider { display: block; line-height: 0; overflow: hidden; }
+    .section-divider svg { display: block; width: 100%; }
+
+    /* ═══════════════════════════════════════════
+       COURSE SLIDER SECTION (IMAGE GALLERY)
+    ═══════════════════════════════════════════ */
+    .course-slider-section { background: var(--light-gray); padding: 70px 0 90px; }
+    .slider-wrapper { position: relative; overflow: hidden; border-radius: 20px; }
+    .slider-track { display: flex; transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .slide-item { min-width: 100%; position: relative; border-radius: 20px; overflow: hidden; }
+    .slide-item img { width: 100%; height: 480px; object-fit: cover; display: block; }
+    .slide-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(92,0,0,0.92) 0%, rgba(139,0,0,0.4) 50%, transparent 100%); }
+    .slide-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 40px; color: white; }
+    .slide-caption h3 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.6rem; margin-bottom: 8px; }
+    .slide-caption p { font-size: 0.92rem; color: rgba(255,255,255,0.8); margin: 0; }
+    .slide-tag { display: inline-block; background: #ffd700; color: var(--primary-dark); font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.65rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 12px; border-radius: 50px; margin-bottom: 12px; }
+    .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 52px; height: 52px; background: rgba(255,255,255,0.92); backdrop-filter: blur(10px); border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; color: var(--primary); box-shadow: 0 8px 25px rgba(0,0,0,0.18); transition: all 0.3s ease; z-index: 10; }
+    .slider-btn:hover { background: var(--primary); color: white; transform: translateY(-50%) scale(1.1); }
+    .slider-btn.prev { left: 20px; }
+    .slider-btn.next { right: 20px; }
+    .slider-dots { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: #ccc; border: none; cursor: pointer; transition: all 0.3s ease; padding: 0; }
+    .dot.active { background: var(--primary); width: 28px; border-radius: 5px; }
+
+    /* ═══════════════════════════════════════════
+       ABOUT REVIT SECTION
+    ═══════════════════════════════════════════ */
+    .about-revit-section { background: white; }
+    .about-img-wrapper { position: relative; }
+    .about-img-main { width: 100%; border-radius: 20px; box-shadow: 0 20px 60px rgba(139,0,0,0.2); }
+    .about-badge-box { position: absolute; bottom: -20px; right: -20px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; padding: 22px; border-radius: 16px; text-align: center; box-shadow: 0 10px 30px var(--primary-glow); }
+    .about-badge-box .num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2.2rem; line-height: 1; display: block; }
+    .about-badge-box .lbl { font-size: 0.7rem; font-weight: 600; opacity: 0.9; }
+    .about-feature { display: flex; align-items: flex-start; gap: 14px; padding: 16px 18px; background: white; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border-left: 4px solid var(--primary); transition: all 0.3s ease; margin-bottom: 14px; }
+    .about-feature:hover { transform: translateX(5px); box-shadow: 0 8px 25px rgba(139,0,0,0.12); }
+    .about-feature-icon { width: 44px; height: 44px; background: linear-gradient(135deg, rgba(139,0,0,0.1), rgba(139,0,0,0.16)); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.1rem; flex-shrink: 0; }
+    .about-feature h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text-dark); margin-bottom: 2px; }
+    .about-feature p { font-size: 0.8rem; color: var(--text-muted); margin: 0; line-height: 1.5; }
+
+    /* ═══════════════════════════════════════════
+       WHAT YOU WILL LEARN (CURRICULUM CARDS)
+    ═══════════════════════════════════════════ */
+    .learn-section { background: var(--light-gray); }
+    .learn-card { background: white; border-radius: 18px; padding: 30px 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid rgba(139,0,0,0.06); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); height: 100%; position: relative; overflow: hidden; }
+    .learn-card::before { content: ''; position: absolute; inset: 0; border-radius: 18px; border: 2px solid transparent; transition: border-color 0.4s ease; }
+    .learn-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(139,0,0,0.15); }
+    .learn-card:hover::before { border-color: var(--primary); }
+    .learn-icon { width: 68px; height: 68px; background: linear-gradient(135deg, rgba(139,0,0,0.08), rgba(139,0,0,0.14)); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--primary); margin-bottom: 20px; transition: all 0.4s ease; }
+    .learn-card:hover .learn-icon { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; transform: scale(1.1) rotate(5deg); box-shadow: 0 10px 25px var(--primary-glow); }
+    .learn-card h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; color: var(--text-dark); margin-bottom: 10px; }
+    .learn-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; margin: 0; }
+    .learn-card .module-num { position: absolute; top: 18px; right: 22px; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2.2rem; color: rgba(139,0,0,0.06); line-height: 1; }
+
+    /* ═══════════════════════════════════════════
+       COURSE FEATURES (GLASSMORPHISM)
+    ═══════════════════════════════════════════ */
+    .features-section { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, #c0392b 100%); position: relative; overflow: hidden; }
+    .features-section::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+    .glass-card { background: rgba(255,255,255,0.08); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.18); border-radius: 20px; padding: 32px 24px; text-align: center; transition: all 0.4s ease; height: 100%; position: relative; z-index: 1; }
+    .glass-card:hover { background: rgba(255,255,255,0.14); transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.2); }
+    .glass-card-icon { width: 70px; height: 70px; background: rgba(255,255,255,0.12); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: #ffd700; margin: 0 auto 18px; transition: all 0.4s ease; }
+    .glass-card:hover .glass-card-icon { background: rgba(255,215,0,0.2); transform: scale(1.1); }
+    .glass-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; color: white; margin-bottom: 8px; }
+    .glass-card p { font-size: 0.82rem; color: rgba(255,255,255,0.72); line-height: 1.6; margin: 0; }
+
+    /* ═══════════════════════════════════════════
+       SOFTWARE SKILLS
+    ═══════════════════════════════════════════ */
+    .skills-section { background: white; }
+    .skill-tool-card { background: white; border-radius: 16px; padding: 24px 20px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.07); border: 2px solid rgba(139,0,0,0.06); transition: all 0.4s ease; cursor: pointer; }
+    .skill-tool-card:hover { border-color: var(--primary); transform: translateY(-8px); box-shadow: 0 20px 45px rgba(139,0,0,0.15); }
+    .skill-tool-icon { width: 80px; height: 80px; margin: 0 auto 16px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+    .skill-tool-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--text-dark); margin-bottom: 6px; }
+    .skill-tool-card p { font-size: 0.78rem; color: var(--text-muted); margin: 0; }
+    .skill-bar-wrap { margin-top: 10px; }
+    .skill-bar-bg { background: #f0f0f0; border-radius: 10px; height: 5px; overflow: hidden; }
+    .skill-bar-fill { height: 100%; border-radius: 10px; background: linear-gradient(90deg, var(--primary), var(--primary-light)); transition: width 1.5s ease; width: 0; }
+
+    /* ═══════════════════════════════════════════
+       CAREER OPPORTUNITIES
+    ═══════════════════════════════════════════ */
+    .career-section { background: var(--light-gray); }
+    .career-card { background: white; border-radius: 18px; padding: 28px 22px; box-shadow: 0 4px 18px rgba(0,0,0,0.07); transition: all 0.4s ease; height: 100%; position: relative; overflow: hidden; border-bottom: 4px solid transparent; }
+    .career-card:hover { transform: translateY(-10px); box-shadow: 0 24px 55px rgba(139,0,0,0.14); border-bottom-color: var(--primary); }
+    .career-icon { width: 62px; height: 62px; background: linear-gradient(135deg, rgba(139,0,0,0.08), rgba(139,0,0,0.14)); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; color: var(--primary); margin-bottom: 18px; transition: all 0.4s ease; }
+    .career-card:hover .career-icon { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; box-shadow: 0 8px 20px var(--primary-glow); }
+    .career-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; color: var(--text-dark); margin-bottom: 8px; }
+    .career-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px; }
+    .salary-tag { display: inline-block; background: rgba(139,0,0,0.08); color: var(--primary); font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.72rem; padding: 3px 10px; border-radius: 50px; }
+
+    /* ═══════════════════════════════════════════
+       GALLERY SECTION
+    ═══════════════════════════════════════════ */
+    .gallery-section { background: white; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .gallery-item { border-radius: 14px; overflow: hidden; position: relative; cursor: pointer; }
+    .gallery-item img { width: 100%; height: 220px; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .gallery-item:hover img { transform: scale(1.1); }
+    .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(92,0,0,0.85), transparent); opacity: 0; transition: opacity 0.4s ease; display: flex; align-items: flex-end; padding: 20px; }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-overlay span { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem; color: white; }
+    .gallery-item.tall { grid-row: span 2; }
+    .gallery-item.tall img { height: 456px; }
+    @media (max-width: 767px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } .gallery-item.tall { grid-row: span 1; } .gallery-item.tall img { height: 220px; } }
+    @media (max-width: 480px) { .gallery-grid { grid-template-columns: 1fr; } }
+
+    /* Lightbox */
+    .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.94); z-index: 9000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+    .lightbox.open { opacity: 1; visibility: visible; }
+    .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 10px; box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
+    .lightbox-close { position: absolute; top: 20px; right: 24px; width: 42px; height: 42px; background: rgba(255,255,255,0.12); border: none; border-radius: 50%; color: white; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+    .lightbox-close:hover { background: var(--primary); }
+
+    /* ═══════════════════════════════════════════
+       TESTIMONIALS
+    ═══════════════════════════════════════════ */
+    .testimonials-section { background: var(--light-gray); }
+    .testimonial-card { background: white; border-radius: 20px; padding: 36px 30px; box-shadow: 0 6px 25px rgba(0,0,0,0.07); border-top: 4px solid var(--primary); transition: all 0.4s ease; height: 100%; }
+    .testimonial-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(139,0,0,0.12); }
+    .testi-stars { color: #ffd700; font-size: 0.9rem; margin-bottom: 16px; }
+    .testi-text { font-size: 0.92rem; color: var(--text-muted); line-height: 1.8; font-style: italic; margin-bottom: 24px; }
+    .testi-author { display: flex; align-items: center; gap: 14px; }
+    .testi-avatar { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--primary-light)); display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.1rem; color: white; flex-shrink: 0; }
+    .testi-name { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.92rem; color: var(--text-dark); }
+    .testi-role { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* ═══════════════════════════════════════════
+       FAQ SECTION
+    ═══════════════════════════════════════════ */
+    .faq-section { background: white; }
+    .faq-accordion .accordion-item { border: 1px solid rgba(139,0,0,0.1); border-radius: 14px !important; margin-bottom: 12px; overflow: hidden; }
+    .faq-accordion .accordion-button { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--text-dark); background: white; padding: 20px 24px; border-radius: 14px !important; }
+    .faq-accordion .accordion-button:not(.collapsed) { background: var(--primary);
+      color: white; box-shadow: none; }
+    .faq-accordion .accordion-button::after { filter: none; color: var(--primary); }
+    .faq-accordion .accordion-body { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; padding: 20px 24px 20px; }
+    .faq-accordion .accordion-button:focus { box-shadow: none; border-color: rgba(139,0,0,0.2); }
+
+    /* ═══════════════════════════════════════════
+       ACHIEVEMENT STRIP
+    ═══════════════════════════════════════════ */
+    .achievement-strip { background: #8b0000; padding: 70px 0; }
+    .achievement-col { border-right: 1px solid rgba(255,255,255,.2); }
+    .no-border { border-right: none; }
+    .achievement-box { padding: 20px 10px; transition: .4s ease; }
+    .achievement-box:hover { transform: translateY(-8px); }
+    .achievement-box h2 { font-size: 62px; font-weight: 800; color: #ffd400; margin-bottom: 12px; line-height: 1; }
+    .achievement-box p { font-size: 20px; font-weight: 500; color: #fff; margin: 0; }
+    @media(max-width:991px) { .achievement-col { border-right: none; margin-bottom: 30px; } }
+    @media(max-width:576px) { .achievement-strip { padding: 50px 0; } .achievement-box h2 { font-size: 42px; } .achievement-box p { font-size: 16px; } }
+
+    /* ═══════════════════════════════════════════
+       CTA SECTION
+    ═══════════════════════════════════════════ */
+    .cta-section { background: linear-gradient(135deg, var(--primary-dark), var(--primary), #c0392b); padding: 90px 0; position: relative; overflow: hidden; text-align: center; }
+    .cta-section::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23fff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+    .cta-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(1.8rem, 4vw, 3rem); color: white; margin-bottom: 18px; line-height: 1.2; }
+    .cta-subtitle { font-size: 1.05rem; color: rgba(255,255,255,0.82); margin-bottom: 36px; max-width: 580px; margin-left: auto; margin-right: auto; }
+    .btn-cta-glow { background: linear-gradient(135deg, #ffd700, #ffb700); color: var(--primary-dark) !important; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; letter-spacing: 0.8px; padding: 18px 44px; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 10px 35px rgba(255,215,0,0.45); transition: all 0.3s ease; animation: ctaPulse 2.5s infinite; }
+    @keyframes ctaPulse { 0%,100% { box-shadow: 0 10px 35px rgba(255,215,0,0.45); } 50% { box-shadow: 0 15px 50px rgba(255,215,0,0.65); } }
+    .btn-cta-glow:hover { transform: translateY(-4px); }
+
+    /* ═══════════════════════════════════════════
+       MARQUEE STRIP
+    ═══════════════════════════════════════════ */
+    .marquee-section { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); padding: 28px 0; overflow: hidden; position: relative; }
+    .marquee-section::before { left: 0; background: linear-gradient(to right, var(--primary-dark), transparent); }
+    .marquee-section::after { right: 0; background: linear-gradient(to left, var(--primary-dark), transparent); }
+    .marquee-section::before, .marquee-section::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; }
+    .marquee-track { display: flex; animation: marqueeScroll 25s linear infinite; will-change: transform; }
+    .marquee-track:hover { animation-play-state: paused; }
+    .marquee-item { display: inline-flex; align-items: center; gap: 12px; padding: 0 28px; white-space: nowrap; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.9); }
+    .marquee-dot { width: 6px; height: 6px; background: #ffd700; border-radius: 50%; flex-shrink: 0; }
+    @keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ═══════════════════════════════════════════
+       FOOTER (EXACT COPY FROM HOME PAGE)
+    ═══════════════════════════════════════════ */
+    footer { background: #111; padding: 70px 0 0; }
+    .footer-brand { margin-bottom: 22px; }
+    .footer-desc { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.8; margin-bottom: 24px; }
+    .footer-socials { display: flex; gap: 10px; }
+    .footer-social-btn { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); font-size: 0.85rem; text-decoration: none; transition: all 0.3s ease; }
+    .footer-social-btn:hover { background: var(--primary); border-color: var(--primary); color: white; transform: translateY(-3px); }
+    .footer-heading { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.82rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-links { list-style: none; padding: 0; margin: 0; }
+    .footer-links li { margin-bottom: 8px; }
+    .footer-links a { font-size: 0.83rem; color: rgba(255,255,255,0.48); text-decoration: none; transition: all 0.2s ease; display: flex; align-items: center; gap: 6px; }
+    .footer-links a:hover { color: rgba(255,255,255,0.9); padding-left: 4px; }
+    .footer-links a i { font-size: 0.65rem; color: var(--primary); }
+    .footer-contact a, .footer-contact li { display: flex; gap: 12px; color: rgba(255,255,255,0.48); font-size: 0.83rem; margin-bottom: 12px; }
+    .footer-contact i { color: var(--primary); margin-top: 3px; flex-shrink: 0; }
+    .footer-contact span { line-height: 1.6; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding: 20px 0; margin-top: 50px; font-size: 0.8rem; color: rgba(255,255,255,0.32); }
+
+    /* ═══════════════════════════════════════════
+       RIPPLE EFFECT
+    ═══════════════════════════════════════════ */
+    .ripple { position: relative; overflow: hidden; }
+
+    /* ═══════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════ */
+    @media (max-width: 991px) { .hero-section { min-height: auto; padding: 70px 0 0; text-align: center; } .hero-meta { justify-content: center; } }
+    @media (max-width: 767px) { section { padding: 65px 0; } .hero-btn-group { flex-direction: column; align-items: center; } .btn-hero-primary, .btn-hero-outline { width: 240px; justify-content: center; } .about-badge-box { right: 0; } }
+ 
+ 
+ 
+ </style>
+</head>
+<body>
+
+<!-- ═══ LOADER ═══ -->
+<!-- <div id="loader">
+  <div class="loader-logo">CAD<span>POINT</span></div>
+  <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+</div> -->
+
+<!-- ═══ BACK TO TOP ═══ -->
+<button id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+<!-- ═══════════════════════════════════════════
+     NAVBAR (EXACT FROM HOME PAGE)
+═══════════════════════════════════════════ -->
+<div id="header"></div>
+
+
+<!-- ═══ BREADCRUMB SLIDER ═══ -->
+<div class="breadcrumb-slider">
+  <div class="breadcrumb-track">
+    <div class="breadcrumb-item-slide"><i class="fas fa-building"></i> <strong>Revit Architecture</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-cubes"></i> <strong>BIM Design</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-drafting-compass"></i> <strong>Architectural Drafting</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-layer-group"></i> <strong>3D Modeling</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-award"></i> <strong>Industry Certification</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-user-tie"></i> <strong>Placement Support</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-sun"></i> <strong>Rendering &amp; Visualization</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-file-alt"></i> <strong>Construction Docs</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-building"></i> <strong>Revit Architecture</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-cubes"></i> <strong>BIM Design</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-drafting-compass"></i> <strong>Architectural Drafting</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-layer-group"></i> <strong>3D Modeling</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-award"></i> <strong>Industry Certification</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-user-tie"></i> <strong>Placement Support</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-sun"></i> <strong>Rendering &amp; Visualization</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-file-alt"></i> <strong>Construction Docs</strong></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     HERO SECTION
+═══════════════════════════════════════════ -->
+<section class="hero-section">
+  <!-- Floating BG shapes -->
+  <div class="hero-float-shapes">
+    <div class="fshape fshape-1"></div>
+    <div class="fshape fshape-2"></div>
+    <div class="fshape fshape-3"></div>
+  </div>
+  <div class="hero-grid"></div>
+
+  <div class="container position-relative" style="z-index:2;">
+    <div class="hero-content" data-aos="fade-up" data-aos-duration="900">
+      <div class="hero-badge mb-3">
+        <i class="fas fa-star" style="color:#ffd700;"></i>
+        <span>Industry-Grade</span> &nbsp;·&nbsp;  BIM Training
+      </div>
+      <h1 class="hero-title" id="heroTitle">
+        Master <span class="highlight">Revit Architecture</span><br>&amp; BIM Design
+      </h1>
+      <p class="hero-desc">
+        Learn professional architectural modeling, BIM workflows, drafting, rendering, and real-world project design with industry experts. Get certified and job-ready.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><i class="fas fa-clock"></i> 3 Months Course</div>
+        <div class="hero-meta-item"><i class="fas fa-laptop"></i> Online &amp; Offline</div>
+        <div class="hero-meta-item"><i class="fas fa-certificate"></i> Certification Included</div>
+        <div class="hero-meta-item"><i class="fas fa-users"></i> 500+ Students Placed</div>
+      </div>
+      <div class="hero-btn-group">
+        <a href="https://wa.me/919895352624" class="btn-hero-primary ripple">
+          <i class="fas fa-rocket"></i> <span>Enroll Now</span>
+        </a>
+        <!-- <a href="#syllabus" class="btn-hero-outline ripple">
+          <i class="fas fa-download"></i> Download Syllabus
+        </a> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero stats band -->
+  <!-- <div class="hero-stats-band w-100 mt-4" style="position:relative;z-index:2;">
+    <div class="container">
+      <div class="row g-0">
+        <div class="col-6 col-md-3 hero-stat" data-aos="fade-up" data-aos-delay="100">
+          <div class="num" data-count="500">0+</div>
+          <div class="lbl">Students Placed</div>
+        </div>
+        <div class="col-6 col-md-3 hero-stat" data-aos="fade-up" data-aos-delay="200">
+          <div class="num" data-count="14">0+</div>
+          <div class="lbl">Years Experience</div>
+        </div>
+        <div class="col-6 col-md-3 hero-stat" data-aos="fade-up" data-aos-delay="300">
+          <div class="num" data-count="98">0%</div>
+          <div class="lbl">Placement Rate</div>
+        </div>
+        <div class="col-6 col-md-3 hero-stat" data-aos="fade-up" data-aos-delay="400">
+          <div class="num" data-count="50">0+</div>
+          <div class="lbl">Live Projects</div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- SVG wave divider -->
+  <div class="section-divider" style="position:absolute;bottom:0;left:0;width:100%;z-index:3;">
+    <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" fill="#F5F5F5"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     COURSE IMAGE SLIDER
+═══════════════════════════════════════════ -->
+<section class="course-slider-section" id="gallery-slider">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-images"></i> Course Highlights</div>
+      <h2 class="section-title mt-2">Explore Our <span>Revit Training</span> Experience</h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Real classroom sessions, student projects, and industry-level BIM outputs from our Revit Architecture program.</p>
+    </div>
+    <div class="position-relative" data-aos="fade-up" data-aos-delay="100">
+      <div class="slider-wrapper">
+        <div class="slider-track" id="sliderTrack">
+
+          <!-- Slide 1: BIM Architecture SVG Illustration -->
+          <div class="slide-item">
+            <div style="width:100%;height:480px;background:linear-gradient(135deg,#5c0000 0%,#8B0000 50%,#a52a2a 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+              <!-- Animated grid lines -->
+              <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.06) 1px,transparent 1px);background-size:50px 50px;"></div>
+              <!-- Architectural Blueprint SVG -->
+             <img src="assets/image/bim-design-plan.webp">
+            </div>
+            <div class="slide-overlay"></div>
+            <div class="slide-caption">
+              <div class="slide-tag">BIM Modeling</div>
+              <h3>Architectural BIM Design</h3>
+              <p>Master complete building information modeling from concept to construction documentation</p>
+            </div>
+          </div>
+
+          <!-- Slide 2: Floor Plan SVG -->
+          <div class="slide-item">
+            <div style="width:100%;height:480px;background:linear-gradient(135deg,#1a1a2e 0%,#2d1515 50%,#5c0000 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+              <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(139,0,0,0.1) 1px,transparent 1px),linear-gradient(90deg,rgba(139,0,0,0.1) 1px,transparent 1px);background-size:40px 40px;"></div>
+             <img src="assets/image/floor-plan.webp">
+            </div>
+            <div class="slide-overlay"></div>
+            <div class="slide-caption">
+              <div class="slide-tag">Floor Plan Design</div>
+              <h3>Professional Floor Plan Creation</h3>
+              <p>Design detailed residential and commercial floor plans with accurate dimensions and annotations</p>
+            </div>
+          </div>
+
+          <!-- Slide 3: 3D Perspective Render SVG -->
+          <div class="slide-item">
+            <div style="width:100%;height:480px;background:linear-gradient(160deg,#0d1117 0%,#1a0505 40%,#3d0000 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+              <!-- Stars/particle bg -->
+              <!-- <div style="position:absolute;inset:0;">
+                <div style="position:absolute;width:2px;height:2px;background:rgba(255,215,0,0.6);border-radius:50%;top:15%;left:20%;"></div>
+                <div style="position:absolute;width:3px;height:3px;background:rgba(255,255,255,0.3);border-radius:50%;top:25%;left:70%;"></div>
+                <div style="position:absolute;width:2px;height:2px;background:rgba(255,215,0,0.4);border-radius:50%;top:60%;left:85%;"></div>
+              </div> -->
+              <img src="assets/image/3d-visualization.webp">
+             
+            </div>
+            <div class="slide-overlay"></div>
+            <div class="slide-caption">
+              <div class="slide-tag">3D Modeling</div>
+              <h3>3D Architectural Visualization</h3>
+              <p>Create stunning 3D models and photorealistic renders using Revit with Lumion and Enscape integration</p>
+            </div>
+          </div>
+
+          <!-- Slide 4: Construction Documentation SVG -->
+          <div class="slide-item">
+            <div style="width:100%;height:480px;background:linear-gradient(135deg,#111 0%,#2a0a0a 60%,#8B0000 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+              
+              <img src="assets/image/construction-design.webp">
+            </div>
+            <div class="slide-overlay"></div>
+            <div class="slide-caption">
+              <div class="slide-tag">Construction Docs</div>
+              <h3>Construction Documentation</h3>
+              <p>Generate accurate technical drawings, sections, elevations, and schedules directly from your BIM model</p>
+            </div>
+          </div>
+
+        </div><!-- end slider-track -->
+      </div>
+      <button class="slider-btn prev" id="sliderPrev"><i class="fas fa-chevron-left"></i></button>
+      <button class="slider-btn next" id="sliderNext"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    <div class="slider-dots" id="sliderDots">
+      <button class="dot active" data-idx="0"></button>
+      <button class="dot" data-idx="1"></button>
+      <button class="dot" data-idx="2"></button>
+      <button class="dot" data-idx="3"></button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     MARQUEE STRIP
+═══════════════════════════════════════════ -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span> BIM Modeling</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Floor Plan Design</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> 3D Visualization</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Rendering</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Construction Docs</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Revit MEP</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Lumion Integration</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> AutoCAD</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Site Planning</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Placement Support</div>
+    <!-- duplicate -->
+    <div class="marquee-item"><span class="marquee-dot"></span> BIM Modeling</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Floor Plan Design</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> 3D Visualization</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Rendering</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Construction Docs</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Revit MEP</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Lumion Integration</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> AutoCAD</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Site Planning</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> Placement Support</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     ABOUT REVIT SECTION
+═══════════════════════════════════════════ -->
+<section class="about-revit-section">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6" data-aos="fade-right">
+       <img src="assets/image/revit-plan.webp" class="img-fluid">
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="section-tag"><i class="fas fa-building"></i> About The Course</div>
+        <h2 class="section-title mt-2"><span>Revit Architecture</span></h2>
+       
+        <p class="mb-4" style="color:var(--text-muted);font-size:0.95rem;line-height:1.8;">Revit Architecture  is the  leading BIM software used by top architectural firms globally. It enables you to design, document, and manage building projects with precision and efficiency — making it an essential skill for modern architects and designers.</p>
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="fas fa-layer-group"></i></div>
+          <div><h6>Industry-Standard BIM Platform</h6><p>Used by 90% of top AEC firms worldwide. Revit is the gold standard for Building Information Modeling.</p></div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="fas fa-briefcase"></i></div>
+          <div><h6>High Demand Career Skill</h6><p>BIM modelers and Revit architects command premium salaries with global job opportunities.</p></div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-icon"><i class="fas fa-project-diagram"></i></div>
+          <div><h6>End-to-End Project Workflow</h6><p>From concept design to construction documentation — one integrated workflow in a single software platform.</p></div>
+        </div>
+        <!-- <div class="about-feature">
+          <div class="about-feature-icon"><i class="fas fa-certificate"></i></div>
+          <div><h6>Autodesk Certified Training</h6><p>CADPOINT is an Autodesk Authorized Training Centre. Your certificate carries international recognition.</p></div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     WHAT YOU WILL LEARN
+═══════════════════════════════════════════ -->
+<section class="learn-section" id="syllabus">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-graduation-cap"></i> Curriculum</div>
+      <h2 class="section-title mt-2">What You Will <span>Learn</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Our comprehensive curriculum is designed by industry experts to cover every aspect of Revit Architecture and BIM workflows.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+        <div class="learn-card">
+          <div class="module-num">01</div>
+          <div class="learn-icon"><i class="fas fa-cubes"></i></div>
+          <h4>BIM Modeling & Concepts</h4>
+          <p>Understand Building Information Modeling principles. Learn how Revit handles parametric families, levels, grids, and the BIM database model.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="learn-card">
+          <div class="module-num">02</div>
+          <div class="learn-icon"><i class="fas fa-drafting-compass"></i></div>
+          <h4>Architectural Drafting</h4>
+          <p>Create precise 2D architectural drawings including plans, elevations, sections with professional annotation and drafting standards.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
+        <div class="learn-card">
+          <div class="module-num">03</div>
+          <div class="learn-icon"><i class="fas fa-home"></i></div>
+          <h4>Floor Plan Design</h4>
+          <p>Design detailed residential and commercial floor plans with walls, doors, windows, rooms, area calculations, and zoning layouts.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="learn-card">
+          <div class="module-num">04</div>
+          <div class="learn-icon"><i class="fas fa-cube"></i></div>
+          <h4>3D Modeling & Massing</h4>
+          <p>Build intelligent 3D architectural models with parametric families, custom components, roofs, curtain walls, and complex geometry.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="250">
+        <div class="learn-card">
+          <div class="module-num">05</div>
+          <div class="learn-icon"><i class="fas fa-sun"></i></div>
+          <h4>Rendering & Visualization</h4>
+          <p>Produce photorealistic renderings using Revit's built-in renderer plus integration with Lumion, Enscape, and V-Ray for stunning visuals.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="learn-card">
+          <div class="module-num">06</div>
+          <div class="learn-icon"><i class="fas fa-file-alt"></i></div>
+          <h4>Construction Documentation</h4>
+          <p>Generate complete construction drawing sets including sheets, schedules, material takeoffs, and coordinated documentation packages.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     COURSE FEATURES (GLASSMORPHISM)
+═══════════════════════════════════════════ -->
+<section class="features-section">
+  <div class="container position-relative" style="z-index:1;">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto" style="color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.08);"><i class="fas fa-star"></i> Why Choose Us</div>
+      <h2 class="section-title mt-2" style="color:white;">Premium <span style="color:#ffd700;">Course Features</span></h2>
+      <div class="divider-line mx-auto" style="background:linear-gradient(90deg,#ffd700,#ffb700);"></div>
+      <p class="section-subtitle mx-auto" style="color:rgba(255,255,255,0.72);">Everything you need to transform your architectural career with world-class training facilities and support.</p>
+    </div>
+    <div class="row g-4">
+      <!-- <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+        <div class="glass-card"><div class="glass-card-icon"><i class="fas fa-certificate"></i></div><h5>Industry Certification</h5><p>Receive an Autodesk-recognized certificate upon completion, valued by employers across India and globally.</p></div></div> -->
+      
+        <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="100"><div class="glass-card"><div class="glass-card-icon"><i class="fas fa-laptop-code"></i></div><h5>Real-Time Projects</h5><p>Work on 10+ live industry projects — residential bungalows, commercial complexes, and mixed-use developments.</p></div></div>
+      <!-- <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="150"><div class="glass-card"><div class="glass-card-icon"><i class="fas fa-users"></i></div><h5>Placement Support</h5><p>Dedicated placement cell with 200+ hiring partners. Resume building, mock interviews, and job referrals included.</p></div></div> -->
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="200"><div class="glass-card"><div class="glass-card-icon"><i class="fas fa-chalkboard-teacher"></i></div><h5>Expert Trainers</h5><p>Learn from certified  instructors with 10+ years of real-world architectural project experience.</p></div></div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="250"><div class="glass-card"><div class="glass-card-icon"><i class="fas fa-clock"></i></div><h5>Flexible Timings</h5><p>Morning, evening, and weekend batches available. Switch batches anytime without extra charges.</p></div></div>
+      <!-- <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="300"><div class="glass-card"><div class="glass-card-icon"><i class="fas fa-video"></i></div><h5>Recorded Sessions</h5><p>Access lifetime recorded class videos, study materials, and project files from our student learning portal.</p></div></div> -->
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SOFTWARE SKILLS
+═══════════════════════════════════════════ -->
+<section class="skills-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-tools"></i> Tools & Software</div>
+      <h2 class="section-title mt-2">Software <span>Skills</span> You'll Master</h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Beyond Revit, you'll gain proficiency in the complete suite of architectural visualization tools used in top firms.</p>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-6 col-md-4 col-lg-2dot4" data-aos="fade-up" data-aos-delay="50">
+        <div class="skill-tool-card">
+          <div class="skill-tool-icon" style="background:linear-gradient(135deg,rgba(139,0,0,0.1),rgba(139,0,0,0.18));">
+            <i class="fas fa-building" style="color:var(--primary);font-size:2rem;"></i>
+          </div>
+          <h5>Revit Architecture</h5>
+          <p>Core Software</p>
+          <div class="skill-bar-wrap"><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95"></div></div></div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2dot4" data-aos="fade-up" data-aos-delay="100">
+        <div class="skill-tool-card">
+          <div class="skill-tool-icon" style="background:linear-gradient(135deg,rgba(0,80,160,0.1),rgba(0,80,160,0.18));">
+            <i class="fas fa-drafting-compass" style="color:#0050a0;font-size:2rem;"></i>
+          </div>
+          <h5>AutoCAD</h5>
+          <p>2D Drafting</p>
+          <div class="skill-bar-wrap"><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85"></div></div></div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2dot4" data-aos="fade-up" data-aos-delay="150">
+        <div class="skill-tool-card">
+          <div class="skill-tool-icon" style="background:linear-gradient(135deg,rgba(0,160,80,0.1),rgba(0,160,80,0.18));">
+            <i class="fas fa-sun" style="color:#00a050;font-size:2rem;"></i>
+          </div>
+          <h5>Lumion</h5>
+          <p>Rendering & Animation</p>
+          <div class="skill-bar-wrap"><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="78"></div></div></div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2dot4" data-aos="fade-up" data-aos-delay="200">
+        <div class="skill-tool-card">
+          <div class="skill-tool-icon" style="background:linear-gradient(135deg,rgba(200,120,0,0.1),rgba(200,120,0,0.18));">
+            <i class="fas fa-pencil-ruler" style="color:#c87800;font-size:2rem;"></i>
+          </div>
+          <h5>SketchUp</h5>
+          <p>Concept Modeling</p>
+          <div class="skill-bar-wrap"><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="72"></div></div></div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2dot4" data-aos="fade-up" data-aos-delay="250">
+        <div class="skill-tool-card">
+          <div class="skill-tool-icon" style="background:linear-gradient(135deg,rgba(80,0,160,0.1),rgba(80,0,160,0.18));">
+            <i class="fas fa-eye" style="color:#5000a0;font-size:2rem;"></i>
+          </div>
+          <h5>Enscape</h5>
+          <p>Real-time Rendering</p>
+          <div class="skill-bar-wrap"><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="70"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!--  ═══════════════════════════════════════════
+     ACHIEVEMENT STRIP
+═══════════════════════════════════════════ -->
+
+<!-- <section class="achievement-strip">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-6 col-md-3 achievement-col" data-aos="fade-up" data-aos-delay="50">
+        <div class="achievement-box">
+          <h2 data-count="500">0+</h2>
+          <p>Students Placed</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 achievement-col" data-aos="fade-up" data-aos-delay="100">
+        <div class="achievement-box">
+          <h2 data-count="14">0+</h2>
+          <p>Years Experience</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 achievement-col" data-aos="fade-up" data-aos-delay="150">
+        <div class="achievement-box">
+          <h2 data-count="50">0+</h2>
+          <p>Live Projects</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 achievement-col no-border" data-aos="fade-up" data-aos-delay="200">
+        <div class="achievement-box">
+          <h2 data-count="200">0+</h2>
+          <p>Hiring Partners</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>  -->
+
+<!-- ═══════════════════════════════════════════
+     CAREER OPPORTUNITIES
+═══════════════════════════════════════════ -->
+<section class="career-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-briefcase"></i> Career Paths</div>
+      <h2 class="section-title mt-2">Career <span>Opportunities</span> After This Course</h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Revit-skilled professionals are among the most sought-after in the Architecture, Engineering & Construction industry.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-cubes"></i></div>
+          <h5>BIM Modeler</h5>
+          <p>Create and manage intelligent 3D building models for architectural and engineering firms using BIM methodologies.</p>
+          <span class="salary-tag">₹4L – ₹10L / year</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-building"></i></div>
+          <h5>Revit Architect</h5>
+          <p>Design and document complete architectural projects from schematic design through construction documents in Revit.</p>
+          <span class="salary-tag">₹5L – ₹14L / year</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-pencil-ruler"></i></div>
+          <h5>Architectural Designer</h5>
+          <p>Conceptualize and design buildings and spaces for residential, commercial, and institutional projects globally.</p>
+          <span class="salary-tag">₹4L – ₹12L / year</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-drafting-compass"></i></div>
+          <h5>CAD Engineer</h5>
+          <p>Produce detailed technical drawings, specifications, and documentation for construction and manufacturing projects.</p>
+          <span class="salary-tag">₹3.5L – ₹8L / year</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="250">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-project-diagram"></i></div>
+          <h5>Project Coordinator</h5>
+          <p>Coordinate multidisciplinary design teams, manage BIM models, and ensure project delivery on time and budget.</p>
+          <span class="salary-tag">₹6L – ₹16L / year</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-sun"></i></div>
+          <h5>Visualization Artist</h5>
+          <p>Create photorealistic architectural renders, walkthroughs, and presentations for real estate and design marketing.</p>
+          <span class="salary-tag">₹4L – ₹11L / year</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     STUDENT PROJECTS GALLERY
+═══════════════════════════════════════════ -->
+
+<!-- ═══════════════════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════════════════ -->
+<!-- <section class="testimonials-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-quote-left"></i> Testimonials</div>
+      <h2 class="section-title mt-2">What Our <span>Students Say</span></h2>
+      <div class="divider-line mx-auto"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+        <div class="testimonial-card">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-text">"CADPOINT's Revit course completely transformed my career. The real-project approach and expert trainers gave me the confidence to crack interviews at top architectural firms."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">AK</div>
+            <div><div class="testi-name">Arjun Kumar</div>
+            
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="testimonial-card">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-text">"The trainers here have actual industry experience. I learned Revit, Lumion, and AutoCAD together in a structured way. Got placed within 2 months of completing the course."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">PM</div>
+            <div><div class="testi-name">Priya Mehta</div>
+           
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
+        <div class="testimonial-card">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+          <p class="testi-text">"Excellent course with hands-on project work from day one. The recorded sessions are a lifesaver for revision. I highly recommend CADPOINT for anyone serious about architecture."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">RS</div>
+            <div><div class="testi-name">Rahul Sharma</div>
+            
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+
+<!-- ═══════════════════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════════════════ -->
+
+
+<section class="testimonials-section" id="testimonials">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-tag"><i class="fas fa-star"></i> Student Reviews</div>
+      <h2 class="section-title">What Our <span>Graduates</span> Say</h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Real stories from engineers who launched their infrastructure careers with CADPOINT.</p>
+    </div>
+    <div class="testi-outer">
+      <div class="testi-track-wrap">
+        <div class="testi-track" id="testiTrack">
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">I am currently learning AutoCAD at CADPOINT Marthandam and having a great experience. Divya mam's teaching is clear, friendly, and easy to understand. She patiently explains every concept and clears all doubts. The staff are also very supportive. After completing AutoCAD, I am looking forward to learning Revit here. Highly recommended!</p>
+            <div class="testi-author">
+              <div class="testi-avatar">S</div>
+              <div class="testi-info"><h6>Saran KT</h6></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">I am studying AUTOCAD software at cad point marthandam. All staff are Knowledgeable person and good experience within the field above 5 years. So the lectures are teaching easy way to understand the class. Ex. They are teaching with the live example.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">R</div>
+              <div class="testi-info"><h6>Renish R</h6></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+            <p class="testi-text">CADPOINT is a good training institute with a friendly learning environment and supportive trainers. Both my sister and I had a positive learning experience here. The teaching is clear, practical, and easy to understand. The fee structure is also reasonable and affordable for students. Overall, CADPOINT is a great place to develop skills and gain knowledge.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">A</div>
+              <div class="testi-info"><h6>Ashlin Jega</h6></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">I had an excellent learning experience at CADPOINT Marthandam. The AutoCAD and Tekla courses were highly beneficial and helped me enhance my design skills and technical knowledge. The trainers were supportive, patient, and explained each concept clearly with practical examples. Currently I am working in a company based on design engineer role ...Tq CAD point marthandam and staffs ❤️</p>
+            
+            <div class="testi-author">
+              <div class="testi-avatar">M</div>
+              <div class="testi-info"><h6>Manoj Mano</h6>
+              
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">CAD Point provided me with a great learning experience. The classes were informative, the trainers were supportive, and the practical sessions helped me understand concepts better. The institute also encouraged skill development and boosted my confidence, making it an excellent place for learning and career growth.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">A</div>
+              <div class="testi-info"><h6>Ashika G.R</h6></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">The training centre provides a professional and student-friendly learning environment.
+The trainers are experienced, patient, and explain every topic in a simple way.
+The teaching methods are practical, interactive, and easy to understand.
+Regular guidance and individual attention helped me learn with confidence.
+Overall, it is an excellent place for students who want quality CAD training.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">V</div>
+              <div class="testi-info"><h6>Vijith Ajith</h6></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-dots" id="testiDots">
+        <button class="testi-dot active" data-idx="0"></button>
+        <button class="testi-dot" data-idx="1"></button>
+        <button class="testi-dot" data-idx="2"></button>
+        <button class="testi-dot" data-idx="3"></button>
+      </div>
+      <div class="testi-nav">
+        <button class="testi-btn" id="testiBtnPrev" aria-label="Previous"><i class="fas fa-arrow-left"></i></button>
+        <button class="testi-btn" id="testiBtnNext" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<style>
+  /* ── TESTIMONIALS ── */
+  .testimonials-section { background: var(--light-gray); padding: 80px 0; }
+  .testi-outer { overflow: hidden; }
+  .testi-track-wrap { overflow: hidden; }
+  .testi-track { display: flex; gap: 24px; transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); will-change: transform; }
+  .testi-card { background: #fff; border-radius: 20px; padding: 32px 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); position: relative; flex: 0 0 calc(33.333% - 16px); min-width: calc(33.333% - 16px); border-bottom: 4px solid var(--primary); transition: all 0.35s ease; }
+  .testi-card:hover { transform: translateY(-6px); box-shadow: 0 18px 45px rgba(139,0,0,0.13); }
+  @media(max-width:991px) { .testi-card { flex: 0 0 calc(50% - 12px); min-width: calc(50% - 12px); } }
+  @media(max-width:576px) { .testi-card { flex: 0 0 100%; min-width: 100%; } }
+  .testi-quote { font-size: 3rem; color: rgba(139,0,0,0.12); font-family: Georgia,serif; line-height: 1; margin-bottom: 12px; display: block; }
+  .testi-rating { color: #ffc107; margin-bottom: 14px; font-size: 0.85rem; }
+  .testi-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 18px; }
+  .testi-company { font-size: 0.72rem; color: var(--primary); font-weight: 600; margin-bottom: 18px; display: block; }
+  .testi-author { display: flex; align-items: center; gap: 14px; }
+  .testi-avatar { width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; flex-shrink: 0; }
+  .testi-info h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem; margin: 0; }
+  .testi-info small { color: var(--primary); font-size: 0.74rem; font-weight: 500; }
+  .testi-dots { display: flex; justify-content: center; gap: 8px; margin-top: 30px; }
+  .testi-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(139,0,0,0.2); cursor: pointer; transition: all 0.3s ease; border: none; padding: 0; }
+  .testi-dot.active { background: var(--primary); transform: scale(1.3); }
+  .testi-nav { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+  .testi-btn { width: 44px; height: 44px; border-radius: 50%; border: 2px solid rgba(139,0,0,0.2); background: #fff; color: var(--primary); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; transition: all 0.3s ease; }
+  .testi-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+</style>
+
+
+  <script>
+// ── TESTIMONIAL SLIDER
+(function() {
+  const track   = document.getElementById('testiTrack');
+  const dots    = document.querySelectorAll('.testi-dot');
+  const prevBtn = document.getElementById('testiBtnPrev');
+  const nextBtn = document.getElementById('testiBtnNext');
+  if (!track) return;
+
+  let current = 0;
+  const cards = track.querySelectorAll('.testi-card');
+  const total = cards.length;
+
+  function getVisible() {
+    if (window.innerWidth < 576) return 1;
+    if (window.innerWidth < 992) return 2;
+    return 3;
+  }
+  function getMax() { return total - getVisible(); }
+  function slideTo(idx) {
+    const max = getMax();
+    current = Math.max(0, Math.min(idx, max));
+    const cardW = cards[0].offsetWidth + 24;
+    track.style.transform = `translateX(-${current * cardW}px)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  prevBtn?.addEventListener('click', () => slideTo(current - 1));
+  nextBtn?.addEventListener('click', () => slideTo(current + 1));
+  dots.forEach(d => d.addEventListener('click', () => slideTo(parseInt(d.getAttribute('data-idx')))));
+  window.addEventListener('resize', () => slideTo(current));
+  setInterval(() => slideTo(current < getMax() ? current + 1 : 0), 5000);
+})();
+</script>
+
+
+
+
+
+<!-- ═══════════════════════════════════════════
+     FAQ SECTION
+═══════════════════════════════════════════ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <div class="section-tag mx-auto"><i class="fas fa-question-circle"></i> FAQ</div>
+        <h2 class="section-title mt-2">Frequently Asked <span>Questions</span></h2>
+       
+      </div>
+      <div class="col-lg-4">
+        <img src="assets/image/revit-faq.webp" class="img-fluid  w-100" style="border-radius:20px;">
+      </div>
+      
+      <div class="col-lg-8">
+        <!-- <div class=" mb-5" data-aos="fade-up">
+          <div class="section-tag mx-auto"><i class="fas fa-question-circle"></i> FAQ</div>
+          <h2 class="section-title mt-2">Frequently Asked <span>Questions</span></h2>
+         
+        </div> -->
+        <div class="accordion faq-accordion" id="faqAccordion" data-aos="fade-up" data-aos-delay="100">
+          <div class="accordion-item mt-2">
+            <h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">Who is this Revit Architecture course suitable for?</button></h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">This course is ideal for architecture students, civil engineering graduates, interior designers, and working professionals who want to upskill in BIM technology. No prior Revit experience is required — we start from the basics and take you to an advanced, industry-ready level.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">What is the duration and fee structure?</button></h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">The course runs for 3 months (weekend or weekday batches available). Fee details and batch schedules are shared upon inquiry. We offer flexible EMI options. Contact us for the latest fee structure and available discounts.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">Is the certificate recognized ?</button></h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Yes. CADPOINT is a Training Centre (ATC). Students receive CADPOINT's completion certificate along with eligibility, which are internationally recognized by employers worldwide.</div>
+            </div>
+          </div>
+          <!-- <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">What kind of placement support is provided?</button></h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Our dedicated placement cell provides resume preparation, mock interview sessions, LinkedIn profile optimization, and direct referrals to our 200+ hiring partners across construction, real estate, and consulting firms.</div>
+            </div>
+          </div> -->
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">Is online training available?</button></h2>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Absolutely. We offer both classroom training at our institute and live online sessions via Zoom/Teams. Online students receive the same recorded sessions, project files, and placement support as classroom students.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">What software will be provided for practice?</button></h2>
+            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Students get access to Autodesk Revit, AutoCAD, and supporting visualization software during the training period. Guidance on installing student versions at home is also provided. Our lab is equipped with the latest licensed software.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FINAL CTA BANNER
+═══════════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="container text-center position-relative" style="z-index:1;">
+    <div data-aos="zoom-in">
+      <div class="section-tag mx-auto mb-3" style="color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.08);"><i class="fas fa-rocket"></i> Get Started Today</div>
+      <h2 class="cta-title">Build Your Career in <span style="color:#ffd700;">Architecture</span> Today</h2>
+      <p class="cta-subtitle">Join 500+ professionals who have accelerated their careers with CADPOINT's Revit Architecture program.</p>
+      <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <a href="https://wa.me/919895352624" class="btn-cta-glow"><i class="fas fa-rocket"></i> Enroll Now — It's Free to Inquire</a>
+        <a href="tel:+919895352624" style="background:rgba(255,255,255,0.12);color:white;border:2px solid rgba(255,255,255,0.4);font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.95rem;padding:16px 36px;border-radius:50px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .3s;backdrop-filter:blur(10px);" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'"><i class="fas fa-phone-alt"></i> Call Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER (EXACT FROM HOME PAGE)
+═══════════════════════════════════════════ -->
+<div id="footer"></div>
+
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+function initCaddNav() {
+
+    const coursesNav = document.getElementById('coursesNav');
+    const caret = document.getElementById('coursesCaret');
+    const menu = document.getElementById('coursesMegaMenu');
+    const closeBtn = document.getElementById('closeMegaMenu');
+
+    if (!coursesNav || !caret || !menu) return;
+
+    // X BUTTON CLOSE (Desktop + Mobile)
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.remove('show');
+
+        });
+    }
+
+    // MOBILE
+    if (window.innerWidth <= 991) {
+
+        caret.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!coursesNav.contains(e.target)) {
+                menu.classList.remove('show');
+            }
+        });
+
+        return;
+    }
+
+    // DESKTOP
+    coursesNav.addEventListener('mouseenter', function () {
+        menu.classList.add('show');
+    });
+
+    coursesNav.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+
+    menu.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+}
+</script>
+
+<script>
+fetch("./header.html")
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById("header").innerHTML = html;
+    initCaddNav();
+  });
+
+  fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+      document.getElementById('footer').innerHTML = data;
+  });
+</script>
+
+
+<script>
+/* ─── LOADER ─── */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+  }, 1800);
+});
+
+/* ─── AOS ─── */
+AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });
+
+/* ─── NAVBAR SCROLL ─── */
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  if (window.scrollY > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+  const btn = document.getElementById('backToTop');
+  if (window.scrollY > 400) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+});
+
+/* ─── BACK TO TOP ─── */
+document.getElementById('backToTop').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/* ─── MEGA MENU ─── */
+document.getElementById('closeMegaMenu').addEventListener('click', function () {
+  document.querySelector('.courses-mega-menu').classList.remove('show');
+});
+
+(function () {
+  const coursesNav = document.getElementById('coursesNav');
+  if (!coursesNav) return;
+  const menu = coursesNav.querySelector('.courses-mega-menu');
+  const caret = document.getElementById('coursesDropdown');
+  if (!menu) return;
+  let hideTimer;
+  function showMenu() {
+    clearTimeout(hideTimer);
+    const navRect = document.getElementById('mainNav').getBoundingClientRect();
+    menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    menu.classList.add('show');
+    if (caret) caret.querySelector('i').style.transform = 'rotate(180deg)';
+  }
+  function hideMenu() {
+    hideTimer = setTimeout(function () {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }, 120);
+  }
+  coursesNav.addEventListener('mouseenter', showMenu);
+  coursesNav.addEventListener('mouseleave', hideMenu);
+  menu.addEventListener('mouseenter', showMenu);
+  menu.addEventListener('mouseleave', hideMenu);
+  if (caret) {
+    caret.querySelector('i').style.transition = 'transform 0.25s ease';
+    caret.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (menu.classList.contains('show')) { hideMenu(); } else { showMenu(); }
+    });
+  }
+  document.addEventListener('click', function (e) {
+    if (!coursesNav.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }
+  });
+  window.addEventListener('scroll', function () {
+    if (menu.classList.contains('show')) {
+      const navRect = document.getElementById('mainNav').getBoundingClientRect();
+      menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    }
+  });
+})();
+
+/* ─── COURSE IMAGE SLIDER ─── */
+(function () {
+  const track = document.getElementById('sliderTrack');
+  const dots = document.querySelectorAll('.dot');
+  const total = dots.length;
+  let current = 0;
+  let autoTimer;
+
+  function goTo(idx) {
+    current = (idx + total) % total;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  document.getElementById('sliderNext').addEventListener('click', () => { clearInterval(autoTimer); goTo(current + 1); startAuto(); });
+  document.getElementById('sliderPrev').addEventListener('click', () => { clearInterval(autoTimer); goTo(current - 1); startAuto(); });
+  dots.forEach(d => d.addEventListener('click', () => { clearInterval(autoTimer); goTo(+d.dataset.idx); startAuto(); }));
+
+  function startAuto() { autoTimer = setInterval(() => goTo(current + 1), 4500); }
+  startAuto();
+})();
+
+/* ─── HERO TITLE ANIMATION ─── */
+const heroTitle = document.getElementById('heroTitle');
+if (heroTitle) {
+  heroTitle.style.opacity = '0';
+  heroTitle.style.transform = 'translateY(30px)';
+  heroTitle.style.transition = 'opacity 0.9s ease 0.4s, transform 0.9s ease 0.4s';
+  setTimeout(() => { heroTitle.style.opacity = '1'; heroTitle.style.transform = 'translateY(0)'; }, 200);
+}
+
+/* ─── COUNTER ANIMATION ─── */
+function animateCounters(scope) {
+  (scope || document).querySelectorAll('[data-count]').forEach(el => {
+    if (el.dataset.animated) return;
+    el.dataset.animated = '1';
+    const target = parseInt(el.getAttribute('data-count'));
+    const isSuffix = el.textContent.includes('%') ? '%' : '+';
+    let current = 0;
+    const increment = target / 60;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) { current = target; clearInterval(timer); }
+      el.textContent = Math.floor(current) + isSuffix;
+    }, 25);
+  });
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) animateCounters(entry.target); });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.hero-stats-band, .achievement-strip').forEach(el => counterObserver.observe(el));
+
+/* ─── SKILL BARS ─── */
+const skillObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+        bar.style.width = bar.dataset.width + '%';
+      });
+      skillObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.4 });
+
+const skillsSection = document.querySelector('.skills-section');
+if (skillsSection) skillObserver.observe(skillsSection);
+
+/* ─── GALLERY LIGHTBOX ─── */
+function openLightbox(el) {
+  const content = el.querySelector('div:first-child').innerHTML;
+  document.getElementById('lightboxContent').innerHTML = `<div style="max-width:700px;border-radius:12px;overflow:hidden;">${content}</div>`;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+/* ─── RIPPLE EFFECT ─── */
+document.querySelectorAll('.ripple').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.style.cssText = `position:absolute;border-radius:50%;background:rgba(255,255,255,0.3);width:10px;height:10px;left:${e.clientX-rect.left-5}px;top:${e.clientY-rect.top-5}px;transform:scale(0);animation:rippleAnim 0.6s ease-out forwards;pointer-events:none;`;
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 700);
+  });
+});
+const rStyle = document.createElement('style');
+rStyle.textContent = `@keyframes rippleAnim{to{transform:scale(30);opacity:0;}}`;
+document.head.appendChild(rStyle);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

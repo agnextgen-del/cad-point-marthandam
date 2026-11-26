@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CATIA V5/V6 Course | CADPOINT Authorized Training Centre</title>
+  <meta name="description" content="Master CATIA V5/V6 at CADPOINT. Advanced 3D modeling, surface design, automotive & aerospace engineering. 100% placement support. Enroll now!"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ <link rel="icon" type="image/x-icon" href="assets/image/cadd-logo.webp">
+ <style>
+    /* ═══════════════════════════════════════════
+       CSS VARIABLES & RESET
+    ═══════════════════════════════════════════ */
+    :root {
+      --primary: #8B0000;
+      --primary-light: #A00000;
+      --primary-dark: #5c0000;
+      --primary-glow: rgba(139,0,0,0.35);
+      --white: #ffffff;
+      --light-gray: #F5F5F5;
+      --text-dark: #1a1a1a;
+      --text-muted: #555;
+      --border-light: rgba(139,0,0,0.15);
+      --glass-bg: rgba(255,255,255,0.08);
+      --glass-border: rgba(255,255,255,0.18);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    html,body{max-width:100%;overflow-x:hidden}
+    body{font-family:'Poppins',sans-serif;color:var(--text-dark);background:var(--white)}
+    ::-webkit-scrollbar{width:6px}
+    ::-webkit-scrollbar-track{background:#f1f1f1}
+    ::-webkit-scrollbar-thumb{background:var(--primary);border-radius:10px}
+    p{text-align:justify}
+
+    /* ═══════════════════════════════════════════
+       LOADER
+    ═══════════════════════════════════════════ */
+    #loader{position:fixed;inset:0;background:#fff;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .5s ease,visibility .5s ease}
+    #loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+    .loader-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:2rem;color:var(--primary);letter-spacing:3px}
+    .loader-logo span{color:#ffd700}
+    .loader-bar{width:180px;height:3px;background:#f0f0f0;border-radius:3px;margin-top:16px;overflow:hidden}
+    .loader-bar-inner{height:100%;width:0;background:linear-gradient(90deg,var(--primary),#ffd700);border-radius:3px;animation:loadBar 1.8s ease forwards}
+    @keyframes loadBar{to{width:100%}}
+
+    /* ═══════════════════════════════════════════
+       BACK TO TOP
+    ═══════════════════════════════════════════ */
+    #backToTop{position:fixed;bottom:30px;right:30px;width:44px;height:44px;background:linear-gradient(135deg,var(--primary),var(--primary-light));color:white;border:none;border-radius:50%;cursor:pointer;box-shadow:0 6px 20px var(--primary-glow);opacity:0;transform:translateY(20px);transition:all .4s ease;z-index:999;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+    #backToTop.visible{opacity:1;transform:translateY(0)}
+    #backToTop:hover{transform:translateY(-4px);box-shadow:0 10px 30px var(--primary-glow)}
+
+    /* ═══════════════════════════════════════════
+       NAVBAR
+    ═══════════════════════════════════════════ */
+    .navbar{background:rgba(255,255,255,.97);backdrop-filter:blur(20px);box-shadow:0 2px 30px rgba(139,0,0,.12);padding:7px 0;position:sticky;top:0;z-index:1000;transition:all .3s ease}
+    .navbar.scrolled{padding:8px 0;box-shadow:0 4px 40px rgba(139,0,0,.2)}
+    .navbar-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .logo-icon{width:48px;height:48px;flex-shrink:0}
+    .logo-text{line-height:1.1}
+    .logo-text .brand-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.3rem;color:var(--primary);letter-spacing:2px}
+    .logo-text .brand-sub{font-size:.58rem;font-weight:600;color:#666;letter-spacing:1.5px;text-transform:uppercase}
+    .navbar-nav .nav-link{font-family:'Montserrat',sans-serif;font-weight:600;font-size:.82rem;letter-spacing:.8px;text-transform:uppercase;padding:8px 16px !important;border-radius:6px;transition:all .3s ease;position:relative}
+    .navbar-nav .nav-link:hover{color:var(--primary)}
+    .btn-nav-enroll{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:white !important;padding:8px 22px !important;border-radius:25px !important;font-weight:700 !important;box-shadow:0 4px 15px var(--primary-glow);transition:all .3s ease !important}
+    .btn-nav-enroll:hover{transform:translateY(-2px);box-shadow:0 8px 25px var(--primary-glow) !important}
+    .btn-nav-enroll::after{display:none !important}
+    #coursesNav{position:static !important}
+    #coursesNav>div{display:flex;align-items:center}
+    .courses-mega-menu{position:fixed !important;top:auto !important;left:50% !important;transform:translateX(-50%) translateY(6px) !important;width:min(960px,96vw) !important;display:block !important;opacity:0;visibility:hidden;transition:opacity .22s ease,transform .22s ease,visibility .22s;pointer-events:none;border:none !important;border-radius:16px !important;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.16),0 0 0 1px rgba(139,0,0,.1) !important;padding:0 !important}
+    .courses-mega-menu.show{opacity:1 !important;visibility:visible !important;transform:translateX(-50%) translateY(0) !important;pointer-events:auto !important}
+    .mega-col{flex:1;padding:20px 10px 10px 10px;border-right:1px solid rgba(139,0,0,.08);background:white}
+    .mega-col:last-child{border-right:none}
+    .mega-col-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(139,0,0,.08)}
+    .mega-col-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+    .mega-col-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:.82rem;color:var(--text-dark);letter-spacing:.4px}
+    .mega-col-sub{font-size:.68rem;color:#999;font-weight:500;margin-top:1px}
+    .mega-item{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:7px;font-size:.8rem;font-weight:500;color:var(--text-dark);text-decoration:none;transition:background .15s,color .15s,padding-left .15s;margin-bottom:2px}
+    .mega-item i{font-size:.72rem;width:16px;text-align:center;color:#aaa;transition:color .15s;flex-shrink:0}
+    .mega-item:hover{background:rgba(139,0,0,.07);color:var(--primary);padding-left:12px}
+    .mega-item:hover i{color:var(--primary)}
+    #coursesNav .courses-caret{color:var(--text-dark);transition:color .2s}
+    #coursesNav .courses-caret:hover{color:var(--primary)}
+    .mega-close-x{position:absolute;top:12px;right:12px;width:34px;height:34px;border:none;border-radius:50%;background:#fff;color:#222;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:99;box-shadow:0 4px 15px rgba(0,0,0,.12);transition:.3s ease}
+    .mega-close-x:hover{background:var(--primary);color:#fff;transform:rotate(90deg)}
+    .dropdown-item:hover{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;border-radius:5px}
+
+    /* Mobile Navbar */
+    @media(max-width:991px){
+      .navbar-collapse{background:#fff;padding:15px;border-radius:18px;margin-top:15px;box-shadow:0 10px 35px rgba(0,0,0,.08)}
+      #coursesNav{width:100%}
+      #coursesNav .d-flex{width:100%;justify-content:space-between;align-items:center}
+      #coursesNav .nav-link{padding:12px 0 !important}
+      .courses-caret{padding-right:0 !important}
+      .courses-mega-menu{position:static !important;transform:none !important;width:100% !important;min-width:100% !important;margin-top:10px !important;border:none !important;box-shadow:none !important;border-radius:16px !important;overflow:hidden;background:#f8f9fb}
+      .courses-mega-menu .d-flex{flex-direction:column !important;gap:0 !important;padding-top:0 !important}
+      .mega-col{width:100% !important;border-right:none !important;border-bottom:1px solid rgba(0,0,0,.06);padding:18px 16px !important}
+      .mega-col:last-child{border-bottom:none}
+      .mega-col-title{font-size:1rem;font-weight:700}
+      .mega-col-sub{font-size:.78rem}
+      .mega-item{width:100%;display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;font-size:.92rem}
+      .mega-item:hover{background:#fff}
+      .mega-item i{width:18px;text-align:center}
+    }
+
+    /* ═══════════════════════════════════════════
+       BREADCRUMB SLIDER
+    ═══════════════════════════════════════════ */
+    .breadcrumb-slider{background:linear-gradient(90deg,var(--primary-dark) 0%,var(--primary) 50%,var(--primary-dark) 100%);padding:0;overflow:hidden;height:38px;display:flex;align-items:center;position:relative}
+    .breadcrumb-slider::before,.breadcrumb-slider::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
+    .breadcrumb-slider::before{left:0;background:linear-gradient(to right,var(--primary-dark),transparent)}
+    .breadcrumb-slider::after{right:0;background:linear-gradient(to left,var(--primary-dark),transparent)}
+    .breadcrumb-track{display:flex;animation:scrollBreadcrumb 30s linear infinite;white-space:nowrap;will-change:transform}
+    .breadcrumb-track:hover{animation-play-state:paused}
+    .breadcrumb-item-slide{display:inline-flex;align-items:center;gap:8px;padding:0 30px;font-size:.75rem;font-weight:600;color:rgba(255,255,255,.9);letter-spacing:1px;text-transform:uppercase;font-family:'Montserrat',sans-serif}
+    .breadcrumb-item-slide i{color:rgba(255,255,255,.6);font-size:.7rem}
+    @keyframes scrollBreadcrumb{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    /* ═══════════════════════════════════════════
+       HERO SECTION
+    ═══════════════════════════════════════════ */
+    .hero-section{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 40%,#c0392b 80%,var(--primary-dark) 100%);min-height:88vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:80px 0 60px}
+    .hero-section::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2zm4 0L80 4v2L46 40h-2zm4 0L80 8v2L50 40h-2zm4 0L80 12v2L54 40h-2zm4 0L80 16v2L58 40h-2zm4 0L80 20v2L62 40h-2zm4 0L80 24v2L66 40h-2zm4 0L80 28v2L70 40h-2zm4 0L80 32v2L74 40h-2zm4 0L80 36v2L78 40h-2zm4 0L80 40h-2v-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");opacity:.4}
+    .hero-section::after{content:'';position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(255,255,255,.06) 0%,transparent 70%);top:-200px;right:-100px;pointer-events:none}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:blur(10px);padding:6px 16px;border-radius:50px;font-size:.75rem;font-weight:600;color:rgba(255,255,255,.9);letter-spacing:1px;text-transform:uppercase;margin-bottom:20px}
+    .hero-badge span{color:#ffd700}
+    .hero-title{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(2rem,4.5vw,3rem);line-height:1.1;color:white;margin-bottom:20px}
+    .hero-title .highlight{color:#ffd700}
+    .hero-desc{font-size:1rem;color:rgba(255,255,255,.82);line-height:1.8;margin:0 auto 28px;max-width:680px;text-align:center !important}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-bottom:32px}
+    .hero-chip{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px);padding:6px 14px;border-radius:50px;font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9)}
+    .hero-chip i{color:#ffd700;font-size:.72rem}
+    .btn-hero-primary{background:linear-gradient(135deg,#ffd700,#ffb700);color:var(--primary-dark) !important;font-family:'Montserrat',sans-serif;font-weight:800;font-size:.88rem;letter-spacing:.8px;padding:14px 32px;border-radius:50px;border:none;text-decoration:none;display:inline-flex;align-items:center;gap:8px;box-shadow:0 8px 25px rgba(255,215,0,.4);transition:all .3s ease;position:relative;overflow:hidden}
+    .btn-hero-primary:hover{transform:translateY(-3px);box-shadow:0 15px 35px rgba(255,215,0,.5)}
+    .btn-hero-outline{background:transparent;color:white !important;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.88rem;letter-spacing:.8px;padding:13px 30px;border-radius:50px;border:2px solid rgba(255,255,255,.5);text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .3s ease;backdrop-filter:blur(10px)}
+    .btn-hero-outline:hover{border-color:white;background:rgba(255,255,255,.12);transform:translateY(-3px)}
+    .hero-curve{position:absolute;bottom:0;width:100%;line-height:0}
+    .hero-curve svg{width:100%;height:100%;display:block}
+    .hero-floating-cards{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:40px}
+    .hero-f-card{background:rgba(255,255,255,.1);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:12px 20px;text-align:center;animation:floatCard 3s ease-in-out infinite}
+    .hero-f-card:nth-child(2){animation-delay:.6s}
+    .hero-f-card:nth-child(3){animation-delay:1.2s}
+    .hero-f-card:nth-child(4){animation-delay:1.8s}
+    @keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    .hero-f-card .num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.5rem;color:#ffd700;line-height:1}
+    .hero-f-card .lbl{font-size:.68rem;color:rgba(255,255,255,.8);font-weight:500;margin-top:2px}
+
+    /* ═══════════════════════════════════════════
+       SECTION COMMON
+    ═══════════════════════════════════════════ */
+    section{padding:90px 0}
+    .section-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(139,0,0,.08);border:1px solid rgba(139,0,0,.2);color:var(--primary);font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:14px}
+    .section-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(1.8rem,3.5vw,2.6rem);line-height:1.2;color:var(--text-dark);margin-bottom:14px}
+    .section-title span{color:var(--primary)}
+    .section-sub{color:var(--text-muted);font-size:.97rem;line-height:1.8;max-width:640px}
+    .divider-line{width:60px;height:4px;background:linear-gradient(90deg,var(--primary),#ffd700);border-radius:4px;margin:14px 0 30px}
+    .divider-line.mx-auto{margin-left:auto;margin-right:auto}
+
+    /* ═══════════════════════════════════════════
+       COURSE OVERVIEW
+    ═══════════════════════════════════════════ */
+    .overview-section{background:#fff;padding:90px 0;position:relative;overflow:hidden}
+    .overview-section::before{content:'';position:absolute;width:500px;height:500px;background:rgba(255,0,0,.04);border-radius:50%;top:-220px;left:-180px;filter:blur(80px)}
+    .overview-img-box{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(139,0,0,.15)}
+    .overview-img-box img{width:100%;border-radius:20px;transition:transform .5s ease}
+    .overview-img-box:hover img{transform:scale(1.04)}
+    .overview-badge-float{position:absolute;bottom:-16px;left:-16px;background:white;border-radius:14px;padding:14px 20px;box-shadow:0 10px 40px rgba(0,0,0,.12);display:flex;align-items:center;gap:10px}
+    .overview-badge-float .icon{width:42px;height:42px;background:linear-gradient(135deg,var(--primary),var(--primary-light));border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;font-size:1.1rem}
+    .overview-badge-float .info strong{display:block;font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.1rem;color:var(--primary)}
+    .overview-badge-float .info span{font-size:.72rem;color:#888}
+    .overview-list li{display:flex;align-items:flex-start;gap:10px;font-size:.93rem;color:var(--text-muted);margin-bottom:10px;line-height:1.6;text-align:left}
+    .overview-list li i{color:var(--primary);margin-top:3px;flex-shrink:0;font-size:.82rem}
+
+    /* ═══════════════════════════════════════════
+       WHY CATIA
+    ═══════════════════════════════════════════ */
+    .why-catia-section{background:var(--light-gray);padding:90px 0;position:relative;overflow:hidden}
+    .why-card{background:#fff;border-radius:20px;padding:30px 22px;height:100%;border:1px solid rgba(220,220,220,.6);box-shadow:0 8px 30px rgba(0,0,0,.05);transition:all .4s ease;position:relative;overflow:hidden}
+    .why-card::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:0;height:4px;background:linear-gradient(135deg,var(--primary-dark),var(--primary));border-radius:50px;transition:.5s}
+    .why-card:hover::before{width:100%}
+    .why-card:hover{transform:translateY(-10px);box-shadow:0 18px 50px rgba(139,0,0,.12)}
+    .why-icon{width:72px;height:72px;background:linear-gradient(135deg,var(--primary-dark),var(--primary));border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:white;margin-bottom:18px;transition:.4s}
+    .why-card:hover .why-icon{transform:scale(1.08) rotate(6deg)}
+    .why-card h5{font-family:'Montserrat',sans-serif;font-weight:700;font-size:1rem;color:var(--text-dark);margin-bottom:10px}
+
+    /* ═══════════════════════════════════════════
+       COURSE MODULES
+    ═══════════════════════════════════════════ */
+    .modules-section{background:#fff;padding:90px 0}
+    .module-card{background:#fff;border:1px solid rgba(139,0,0,.1);border-radius:16px;padding:24px;height:100%;transition:all .35s ease;cursor:default;position:relative;overflow:hidden}
+    .module-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),#ffd700);transform:scaleX(0);transition:transform .35s ease;transform-origin:left}
+    .module-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(139,0,0,.1)}
+    .module-card:hover::after{transform:scaleX(1)}
+    .module-num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:2.5rem;color:rgba(139,0,0,.08);line-height:1;margin-bottom:8px}
+    .module-icon{width:48px;height:48px;background:rgba(139,0,0,.08);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--primary);margin-bottom:12px;transition:.3s}
+    .module-card:hover .module-icon{background:var(--primary);color:white}
+    .module-card h5{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.95rem;color:var(--text-dark);margin-bottom:8px}
+    .module-topics{list-style:none;padding:0;margin:0}
+    .module-topics li{font-size:.8rem;color:var(--text-muted);padding:3px 0;display:flex;align-items:center;gap:6px;text-align:left}
+    .module-topics li::before{content:'';width:5px;height:5px;background:var(--primary);border-radius:50%;flex-shrink:0}
+
+    /* ═══════════════════════════════════════════
+       DESIGN SECTIONS (ALT LAYOUT)
+    ═══════════════════════════════════════════ */
+    .design-section{padding:90px 0;background:#fff}
+    .design-section.bg-alt{background:var(--light-gray)}
+    .design-img-wrap{border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(139,0,0,.12);position:relative}
+    .design-img-wrap img{width:100%;display:block;transition:transform .5s}
+    .design-img-wrap:hover img{transform:scale(1.04)}
+    .design-label{position:absolute;top:20px;left:20px;background:var(--primary);color:white;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;border-radius:50px}
+    .design-feature-list{list-style:none;padding:0;margin:0 0 24px}
+    .design-feature-list li{display:flex;align-items:flex-start;gap:12px;padding:9px 0;border-bottom:1px solid rgba(139,0,0,.06);font-size:.9rem;color:var(--text-muted);text-align:left}
+    .design-feature-list li:last-child{border-bottom:none}
+    .design-feature-list li .icon{width:32px;height:32px;background:rgba(139,0,0,.08);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.78rem;color:var(--primary);flex-shrink:0;margin-top:1px}
+    .design-feature-list li .content strong{display:block;font-weight:600;font-size:.88rem;color:var(--text-dark);margin-bottom:1px}
+
+    /* ═══════════════════════════════════════════
+       GLASS CARDS (CAREER)
+    ═══════════════════════════════════════════ */
+    .career-section{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 60%,#c0392b 100%);padding:90px 0;position:relative;overflow:hidden}
+    .career-section::before{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(255,255,255,.05),transparent 70%);top:-200px;right:-200px}
+    .career-card{background:rgba(255,255,255,.1);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.2);border-radius:16px;padding:24px 20px;height:100%;transition:all .35s ease;text-align:center}
+    .career-card:hover{transform:translateY(-8px);background:rgba(255,255,255,.18);box-shadow:0 20px 50px rgba(0,0,0,.2)}
+    .career-card .c-icon{width:60px;height:60px;background:rgba(255,215,0,.15);border:1px solid rgba(255,215,0,.3);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#ffd700;margin:0 auto 14px}
+    .career-card h5{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.9rem;color:white;margin-bottom:8px}
+    .career-card p{font-size:.78rem;color:rgba(255,255,255,.75);text-align:center !important;margin:0}
+
+    /* ═══════════════════════════════════════════
+       LEARNING PROCESS TIMELINE
+    ═══════════════════════════════════════════ */
+    .process-section{background:#fff;padding:90px 0}
+    .process-timeline{position:relative}
+    .process-timeline::before{content:'';position:absolute;top:50px;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--primary),#ffd700,var(--primary));opacity:.3}
+    @media(max-width:767px){.process-timeline::before{display:none}}
+    .process-step{text-align:center;position:relative}
+    .process-num{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-light));color:white;font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;box-shadow:0 8px 25px var(--primary-glow);position:relative;z-index:1;transition:.3s}
+    .process-step:hover .process-num{transform:scale(1.12)}
+    .process-step h6{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.88rem;color:var(--text-dark);margin-bottom:6px}
+    .process-step p{font-size:.78rem;color:var(--text-muted);text-align:center !important;margin:0}
+
+    /* ═══════════════════════════════════════════
+       STATS COUNTER
+    ═══════════════════════════════════════════ */
+    .stats-section{background:var(--primary);padding:70px 0}
+    .stat-col{border-right:1px solid rgba(255,255,255,.2)}
+    .no-border{border-right:none}
+    .stat-box{padding:20px 10px;transition:.4s}
+    .stat-box:hover{transform:translateY(-8px)}
+    .stat-box h2{font-size:clamp(2.5rem,5vw,3.8rem);font-weight:800;color:#ffd700;margin-bottom:10px;line-height:1}
+    .stat-box p{font-size:1rem;font-weight:500;color:#fff;margin:0;text-align:center !important}
+    @media(max-width:991px){.stat-col{border-right:none;margin-bottom:30px}}
+
+    /* ═══════════════════════════════════════════
+       TESTIMONIALS
+    ═══════════════════════════════════════════ */
+    .testimonials-section{background:var(--light-gray);padding:90px 0}
+    .testi-card{background:#fff;border-radius:20px;padding:30px;height:100%;box-shadow:0 8px 30px rgba(0,0,0,.06);border:1px solid rgba(139,0,0,.06);transition:all .35s;position:relative}
+    .testi-card::before{content:'❝';position:absolute;top:20px;right:24px;font-size:4rem;color:rgba(139,0,0,.06);line-height:1;font-family:Georgia,serif}
+    .testi-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(139,0,0,.1)}
+    .testi-stars{color:#ffd700;font-size:.85rem;margin-bottom:14px}
+    .testi-text{font-size:.9rem;color:var(--text-muted);line-height:1.8;margin-bottom:20px}
+    .testi-author{display:flex;align-items:center;gap:12px}
+    .testi-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-light));display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:800;font-size:1rem;color:white;flex-shrink:0}
+    .testi-name{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.88rem;color:var(--text-dark)}
+    .testi-role{font-size:.75rem;color:#999}
+
+    /* ═══════════════════════════════════════════
+       FAQ
+    ═══════════════════════════════════════════ */
+    .faq-section{background:#fff;padding:90px 0}
+    .accordion-item{border:1px solid rgba(139,0,0,.1) !important;border-radius:12px !important;margin-bottom:10px;overflow:hidden}
+    .accordion-button{font-family:'Montserrat',sans-serif;font-weight:600;font-size:.92rem;color:var(--text-dark) !important;background:#fff !important;padding:18px 22px}
+    .accordion-button:not(.collapsed){color:var(--primary) !important;box-shadow:none !important;background:rgba(139,0,0,.03) !important}
+    .accordion-button::after{filter:none}
+    .accordion-button:not(.collapsed)::after{filter:invert(18%) sepia(90%) saturate(5000%) hue-rotate(350deg)}
+    .accordion-body{font-size:.88rem;color:var(--text-muted);line-height:1.8;padding:0 22px 18px}
+
+    /* ═══════════════════════════════════════════
+       CTA SECTION
+    ═══════════════════════════════════════════ */
+    .cta-section{background:linear-gradient(135deg,var(--primary-dark),var(--primary),#c0392b);padding:90px 0;position:relative;overflow:hidden}
+    .cta-section::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");opacity:.5}
+    .cta-title{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(1.8rem,4vw,2.8rem);color:white;line-height:1.2;margin-bottom:16px}
+    .cta-title span{color:#ffd700}
+    .cta-sub{font-size:1rem;color:rgba(255,255,255,.82);margin-bottom:36px;text-align:center !important}
+    .btn-cta-glow{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#ffd700,#ffb700);color:var(--primary-dark);font-family:'Montserrat',sans-serif;font-weight:800;font-size:.92rem;padding:16px 38px;border-radius:50px;border:none;text-decoration:none;box-shadow:0 8px 30px rgba(255,215,0,.4),0 0 60px rgba(255,215,0,.15);transition:all .3s;letter-spacing:.5px}
+    .btn-cta-glow:hover{transform:translateY(-4px);box-shadow:0 16px 50px rgba(255,215,0,.5);color:var(--primary-dark)}
+
+    /* ═══════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════ */
+    footer{background:linear-gradient(160deg,#1a0000 0%,#2d0000 50%,#1a0000 100%);padding:70px 0 0;color:rgba(255,255,255,.7)}
+    .footer-brand{margin-bottom:20px}
+    .footer-desc{font-size:.85rem;line-height:1.8;color:rgba(255,255,255,.55);margin-bottom:22px}
+    .footer-heading{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;color:white;margin-bottom:18px;position:relative;padding-bottom:10px}
+    .footer-heading::after{content:'';position:absolute;bottom:0;left:0;width:30px;height:2px;background:var(--primary);border-radius:2px}
+    .footer-links{list-style:none;padding:0;margin:0}
+    .footer-links li{margin-bottom:8px}
+    .footer-links a{font-size:.83rem;color:rgba(255,255,255,.55);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s,padding-left .2s}
+    .footer-links a i{font-size:.65rem;color:rgba(139,0,0,.8)}
+    .footer-links a:hover{color:white;padding-left:4px}
+    .footer-contact li{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
+    .footer-contact i{color:var(--primary);margin-top:3px;flex-shrink:0}
+    .footer-contact span{font-size:.82rem;color:rgba(255,255,255,.55);line-height:1.6;text-align:left}
+    .footer-socials{display:flex;gap:10px;flex-wrap:wrap}
+    .footer-social-btn{width:36px;height:36px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:.82rem;text-decoration:none;transition:all .3s}
+    .footer-social-btn:hover{background:var(--primary);border-color:var(--primary);color:white;transform:translateY(-3px)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.07);margin-top:50px;padding:20px 0;font-size:.78rem;color:rgba(255,255,255,.35)}
+
+    /* ═══════════════════════════════════════════
+       RIPPLE & MISC
+    ═══════════════════════════════════════════ */
+    .ripple{position:relative;overflow:hidden}
+    @media(max-width:991px){section{padding:70px 0}.hero-desc{text-align:center !important}}
+    @media(max-width:767px){section{padding:55px 0}.hero-btn-group{flex-direction:column;align-items:center}.btn-hero-primary,.btn-hero-outline{width:220px;justify-content:center}.stat-box h2{font-size:2.5rem}.process-timeline::before{display:none}}
+
+    /* ── Inline SVG illustrations ── */
+    .catia-svg-box{background:linear-gradient(135deg,#fdf0f0,#fff5f5);border-radius:20px;padding:30px;display:flex;align-items:center;justify-content:center;min-height:280px;box-shadow:0 10px 40px rgba(139,0,0,.08);border:1px solid rgba(139,0,0,.08)}
+    .catia-svg-box svg{max-width:100%;height:auto}
+
+    /* ── highlight accent ── */
+    .accent-box{background:linear-gradient(135deg,rgba(139,0,0,.05),rgba(255,215,0,.05));border-left:4px solid var(--primary);border-radius:0 12px 12px 0;padding:18px 22px;margin:20px 0}
+    .accent-box p{margin:0;font-size:.88rem;color:var(--text-muted)}
+
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<!-- <div id="loader">
+  <div class="loader-logo">CAD<span>POINT</span></div>
+  <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+</div> -->
+
+<!-- BACK TO TOP -->
+<button id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+<!-- ═══════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════ -->
+<!-- <nav class="navbar navbar-expand-lg" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <div class="logo-text">
+        <div class="brand-name">CADPOINT</div>
+        <div class="brand-sub">Authorized Training Centre</div>
+      </div>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span style="background:var(--primary);display:block;width:22px;height:2px;margin:5px 0;border-radius:2px;transition:all .3s"></span>
+      <span style="background:var(--primary);display:block;width:16px;height:2px;margin:5px 0;border-radius:2px;transition:all .3s"></span>
+      <span style="background:var(--primary);display:block;width:22px;height:2px;margin:5px 0;border-radius:2px;transition:all .3s"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item dropdown" id="coursesNav">
+          <div class="d-flex align-items-center">
+            <a href="course.html" class="nav-link pe-1" style="white-space:nowrap;">Courses</a>
+            <span class="nav-link ps-0 pe-2 courses-caret" style="cursor:pointer;" id="coursesDropdown">
+              <i class="fas fa-chevron-down" style="font-size:.65rem;"></i>
+            </span>
+          </div>
+          <div class="dropdown-menu courses-mega-menu p-0" aria-labelledby="coursesDropdown" style="margin-top:20px;">
+            <button type="button" class="mega-close-x" id="closeMegaMenu"><i class="fas fa-times"></i></button>
+            <div class="d-flex" style="padding-top:20px;">
+              <div class="mega-col">
+                <div class="mega-col-head">
+                  <span class="mega-col-icon" style="background:rgba(37,99,235,.12);color:#2563eb;"><i class="fas fa-hard-hat"></i></span>
+                  <div><div class="mega-col-title">Civil</div><div class="mega-col-sub">Infrastructure &amp; Architecture</div></div>
+                </div>
+                <a class="mega-item" href="autocad.html"><i class="fas fa-drafting-compass"></i>AutoCAD 2D &amp; 3D</a>
+                <a class="mega-item" href="revit.html"><i class="fas fa-building"></i>Revit Architecture</a>
+                <a class="mega-item" href="course-staadpro.html"><i class="fas fa-project-diagram"></i>STAAD.Pro</a>
+                <a class="mega-item" href="course-sketchup.html"><i class="fas fa-pencil-ruler"></i>SketchUp</a>
+                <a class="mega-item" href="course-lumion.html"><i class="fas fa-sun"></i>Lumion</a>
+                <a class="mega-item" href="course-3dsmax.html"><i class="fas fa-film"></i>3DS Max &amp; V-Ray</a>
+                <a class="mega-item" href="course-civil3d.html"><i class="fas fa-road"></i>Civil 3D</a>
+              </div>
+              <div class="mega-col">
+                <div class="mega-col-head">
+                  <span class="mega-col-icon" style="background:rgba(234,88,12,.12);color:#ea580c;"><i class="fas fa-cogs"></i></span>
+                  <div><div class="mega-col-title">Mechanical</div><div class="mega-col-sub">Design &amp; Manufacturing</div></div>
+                </div>
+                <a class="mega-item" href="#"><i class="fas fa-cog"></i>AutoCAD</a>
+                <a class="mega-item" href="#"><i class="fas fa-cog"></i>SolidWorks</a>
+                <a class="mega-item" href="#"><i class="fas fa-cog"></i>Creo</a>
+                <a class="mega-item active" href="course-catia.html"><i class="fas fa-cube"></i>CATIA V5/V6</a>
+                <a class="mega-item" href="#"><i class="fas fa-cog"></i>NX CAD/NX CAM</a>
+                <a class="mega-item" href="#"><i class="fas fa-cog"></i>ANSYS (FEA/CFD)</a>
+                <a class="mega-item" href="course-eplan.html"><i class="fas fa-plug"></i>EPLAN</a>
+              </div>
+              <div class="mega-col">
+                <div class="mega-col-head">
+                  <span class="mega-col-icon" style="background:rgba(16,185,129,.12);color:#059669;"><i class="fas fa-laptop-code"></i></span>
+                  <div><div class="mega-col-title">IT Courses</div><div class="mega-col-sub">Software &amp; Development</div></div>
+                </div>
+                <a class="mega-item" href="course-webdev.html"><i class="fas fa-code"></i>Web Development</a>
+                <a class="mega-item" href="python.html"><i class="fab fa-python"></i>Python Programming</a>
+                <a class="mega-item" href="course-java.html"><i class="fab fa-java"></i>Java Development</a>
+                <a class="mega-item" href="course-datascience.html"><i class="fas fa-brain"></i>Data Science &amp; AI</a>
+                <a class="mega-item" href="course-uiux.html"><i class="fas fa-palette"></i>UI/UX Design</a>
+                <a class="mega-item" href="course-uiux.html"><i class="fas fa-palette"></i>Graphical Designing</a>
+                <a class="mega-item" href="course-uiux.html"><i class="fas fa-palette"></i>Digital Marketing</a>
+              </div>
+              <div class="mega-col">
+                <div class="mega-col-head">
+                  <span class="mega-col-icon" style="background:rgba(234,88,12,.12);color:#ea580c;"><i class="fas fa-bolt"></i></span>
+                  <div><div class="mega-col-title">Electrical</div><div class="mega-col-sub">Design &amp; Manufacturing</div></div>
+                </div>
+                <a class="mega-item" href="#"><i class="fas fa-cog"></i>AutoCAD Electrical</a>
+                <a class="mega-item" href="#"><i class="fas fa-cog"></i>Revit MEP</a>
+                <a class="mega-item" href="#"><i class="fas fa-cog"></i>Naviswork</a>
+                <a class="mega-item" href="#"><i class="fas fa-cog"></i>Eplan</a>
+              </div>
+              <div class="mega-col" style="border-right:none;">
+                <div class="mega-col-head">
+                  <span class="mega-col-icon" style="background:rgba(139,0,0,.12);color:var(--primary);"><i class="fas fa-briefcase"></i></span>
+                  <div><div class="mega-col-title">Non-IT</div><div class="mega-col-sub">Business &amp; Management</div></div>
+                </div>
+                <a class="mega-item" href="tally.html"><i class="fas fa-calculator"></i>Tally &amp; Accounting</a>
+                <a class="mega-item" href="course-hr.html"><i class="fas fa-users"></i>SAP</a>
+                <a class="mega-item" href="course-gst.html"><i class="fas fa-file-invoice"></i>GST &amp; Taxation</a>
+                <a class="mega-item" href="course-spoken-english.html"><i class="fas fa-comments"></i>Spoken English</a>
+                <a class="mega-item" href="course-personality.html"><i class="fas fa-user-tie"></i>Personality Development</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+        <li class="nav-item ms-lg-2"><a class="nav-link btn-nav-enroll ripple" href="tel:">Call Now</a></li>
+      </ul>
+    </div>
+  </div>
+</nav> -->
+
+<div id="header"></div>
+
+
+<!-- BREADCRUMB SLIDER -->
+<div class="breadcrumb-slider">
+  <div class="breadcrumb-track">
+    <div class="breadcrumb-item-slide"><i class="fas fa-cube"></i><strong>CATIA V5/V6</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-car"></i><strong>Automotive Design</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-plane"></i><strong>Aerospace Engineering</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-industry"></i><strong>Surface Modeling</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-cogs"></i><strong>Assembly Design</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-award"></i><strong>ISO Certified</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-user-tie"></i><strong>100% Placement</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-drafting-compass"></i><strong>Sheet Metal</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-cube"></i><strong>CATIA V5/V6</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-car"></i><strong>Automotive Design</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-plane"></i><strong>Aerospace Engineering</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-industry"></i><strong>Surface Modeling</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-cogs"></i><strong>Assembly Design</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-award"></i><strong>ISO Certified</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-user-tie"></i><strong>100% Placement</strong></div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-drafting-compass"></i><strong>Sheet Metal</strong></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     HERO SECTION
+═══════════════════════════════════════════ -->
+<section class="hero-section" id="home">
+  <div class="container position-relative text-center" style="z-index:1">
+    <div class="hero-badge" style="display:inline-flex;margin:0 auto 20px;" data-aos="fade-down">
+      <i class="fas fa-star"></i> <span>CATIA V5/V6 Training</span> 
+    </div>
+    <h1 class="hero-title" id="heroTitle" data-aos="fade-up" data-aos-delay="100">
+      Master <span class="highlight">CATIA V5/V6</span> &amp; Build Your<br>Product Design Engineering Career
+    </h1>
+    <p class="hero-desc" data-aos="fade-up" data-aos-delay="200">
+      Unlock the power of advanced 3D modeling, automotive and aerospace engineering workflows, surface modeling, assembly design, and industrial product development — the skills the world's top manufacturers demand.
+    </p>
+    <div class="hero-meta" data-aos="fade-up" data-aos-delay="300">
+      <span class="hero-chip"><i class="fas fa-clock"></i> 6 Months Program</span>
+      <span class="hero-chip"><i class="fas fa-certificate"></i> Industry Certification</span>
+      <span class="hero-chip"><i class="fas fa-briefcase"></i> 100% Placement Support</span>
+      <span class="hero-chip"><i class="fas fa-users"></i> Live + Recorded Classes</span>
+    </div>
+    <div class="d-flex flex-wrap gap-3 justify-content-center mb-3" data-aos="fade-up" data-aos-delay="400">
+      <a href="https://wa.me/919895352624" class="btn-hero-primary ripple"><i class="fas fa-rocket"></i> Enroll Catia Course</a>
+      <!-- <a href="#modules" class="btn-hero-outline"><i class="fas fa-play-circle"></i> View Course</a> -->
+    </div>
+    <!-- <div class="hero-floating-cards" data-aos="fade-up" data-aos-delay="500">
+      <div class="hero-f-card"><div class="num">5000+</div><div class="lbl">Students Trained</div></div>
+      <div class="hero-f-card"><div class="num">98%</div><div class="lbl">Success Rate</div></div>
+      <div class="hero-f-card"><div class="num">200+</div><div class="lbl">Projects Done</div></div>
+      <div class="hero-f-card"><div class="num">14+</div><div class="lbl">Years Excellence</div></div>
+    </div> -->
+  </div>
+  <div class="hero-curve"><svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,30 C360,70 1080,0 1440,40 L1440,60 L0,60 Z" fill="#ffffff"/></svg></div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     COURSE OVERVIEW
+═══════════════════════════════════════════ -->
+<section class="overview-section" id="overview">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-5" data-aos="fade-right">
+    <img src="assets/image/catia.webp">
+      </div>
+      <div class="col-lg-7" data-aos="fade-left">
+        <div class="section-tag"><i class="fas fa-cube"></i> Course Overview</div>
+        <h2 class="section-title"> <span>CATIA V5/V6</span> Course</h2>
+     
+        <p style="color:var(--text-muted);font-size:.93rem;line-height:1.9;margin-bottom:20px;">CATIA (Computer Aided Three-dimensional Interactive Application) is a world-class multi-platform software suite developed by Dassault Systèmes. It is the industry standard for product design and development in automotive, aerospace, industrial machinery, and consumer goods manufacturing sectors worldwide. Mastering CATIA V5/V6 opens doors to high-paying engineering roles in global MNCs.</p>
+       
+        <ul class="overview-list mt-3">
+          <li><i class="fas fa-check-circle"></i> <span>Industry-standard parametric solid and surface modeling environment trusted by Fortune 500 companies</span></li>
+          <li><i class="fas fa-check-circle"></i> <span>Complete product lifecycle management from concept design to manufacturing drawings</span></li>
+          <li><i class="fas fa-check-circle"></i> <span>Advanced assembly design, constraints management, and digital mockup capabilities</span></li>
+          <li><i class="fas fa-check-circle"></i> <span>Integrated simulation, kinematics, and stress analysis modules for robust product validation</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     WHY LEARN CATIA
+═══════════════════════════════════════════ -->
+<section class="why-catia-section" id="why-catia">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-star"></i> Why Choose CATIA?</div>
+      <h2 class="section-title">The <span>Industry Advantage</span> You Need</h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-sub mx-auto text-center">CATIA professionals command premium salaries and are sought-after by the world's most prestigious engineering companies. Here's why investing in CATIA skills is a career-defining decision.</p>
+    </div>
+    <div class="row gy-4">
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="50">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-car"></i></div>
+          <h5>Automotive Industry Demand</h5>
+          <p style="font-size:.88rem;color:var(--text-muted);line-height:1.8;">Every major automotive OEM — BMW, Mercedes-Benz, Toyota, Renault, Tata Motors — mandates CATIA proficiency for product designers and CAD engineers across their global design centers.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-plane"></i></div>
+          <h5>Aerospace Engineering Standard</h5>
+          <p style="font-size:.88rem;color:var(--text-muted);line-height:1.8;">Airbus, Boeing, GE Aviation, and ISRO use CATIA for aircraft structural design, engine component modeling, and avionics integration, making it the undisputed aerospace CAD standard.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-chart-line"></i></div>
+          <h5>High Salary Growth</h5>
+          <p style="font-size:.88rem;color:var(--text-muted);line-height:1.8;">CATIA-certified engineers earn 40–60% more than general CAD designers. Entry-level roles start at ₹3.5–5 LPA while senior CATIA engineers command ₹12–22 LPA in top MNCs.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-globe"></i></div>
+          <h5>Global MNC Requirement</h5>
+          <p style="font-size:.88rem;color:var(--text-muted);line-height:1.8;">CATIA skills are a prerequisite in job descriptions from Mahindra, L&amp;T, Bosch, Siemens, Honeywell, HAL, and hundreds of Tier-1 automotive and aerospace suppliers worldwide.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-award"></i></div>
+          <h5>Certification Value</h5>
+          <p style="font-size:.88rem;color:var(--text-muted);line-height:1.8;">A CATIA certification from a Dassault Systèmes carries global recognition and significantly improves your chances of shortlisting in competitive engineering job markets.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-infinity"></i></div>
+          <h5>Long-Term Career Path</h5>
+          <p style="font-size:.88rem;color:var(--text-muted);line-height:1.8;">CATIA expertise opens advancement pathways to Design Lead, CAE Analyst, PLM Consultant, and Engineering Manager roles — ensuring a sustainable, high-value engineering career trajectory.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     COURSE MODULES
+═══════════════════════════════════════════ -->
+<section class="modules-section" id="modules">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-book-open"></i> Course Curriculum</div>
+      <h2 class="section-title">Comprehensive <span>CATIA V5/V6</span> Modules</h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-sub mx-auto text-center">Our structured curriculum is designed in collaboration with industry professionals to ensure you learn every tool and workflow demanded by top engineering employers.</p>
+    </div>
+    <div class="row gy-4">
+      <!-- Module 1 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="50">
+        <div class="module-card">
+          <div class="module-num">01</div>
+          <div class="module-icon"><i class="fas fa-cube"></i></div>
+          <h5>CATIA Fundamentals</h5>
+          <ul class="module-topics">
+            <li>Introduction to CATIA V5/V6 Interface</li>
+            <li>Workbenches and Toolbars Overview</li>
+            <li>File Management and Templates</li>
+            <li>Units, Grid Settings &amp; Preferences</li>
+            <li>3D Navigation and View Manipulation</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Module 2 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="module-card">
+          <div class="module-num">02</div>
+          <div class="module-icon"><i class="fas fa-pencil-ruler"></i></div>
+          <h5>Sketching Techniques</h5>
+          <ul class="module-topics">
+            <li>Sketcher Workbench Tools</li>
+            <li>Profiles, Lines, Arcs and Splines</li>
+            <li>Geometric and Dimensional Constraints</li>
+            <li>Sketch Analysis and Diagnostics</li>
+            <li>3D-Driven Parametric Sketches</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Module 3 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+        <div class="module-card">
+          <div class="module-num">03</div>
+          <div class="module-icon"><i class="fas fa-layer-group"></i></div>
+          <h5>Part Design</h5>
+          <ul class="module-topics">
+            <li>Pad, Pocket, Shaft, Groove Operations</li>
+            <li>Draft, Shell, Rib and Slot Features</li>
+            <li>Boolean Operations and Body Management</li>
+            <li>Fillet, Chamfer and Hole Features</li>
+            <li>Parametric Design Table Integration</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Module 4 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="module-card">
+          <div class="module-num">04</div>
+          <div class="module-icon"><i class="fas fa-water"></i></div>
+          <h5>Surface Modeling (GSD)</h5>
+          <ul class="module-topics">
+            <li>Wireframe and Surface Design</li>
+            <li>Swept, Revolved and Filled Surfaces</li>
+            <li>Blend, Offset and Extract Operations</li>
+            <li>Join, Heal and Trim Surface Tools</li>
+            <li>Class-A Surface Modeling Concepts</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Module 5 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
+        <div class="module-card">
+          <div class="module-num">05</div>
+          <div class="module-icon"><i class="fas fa-sitemap"></i></div>
+          <h5>Assembly Design</h5>
+          <ul class="module-topics">
+            <li>Bottom-up and Top-down Assembly Strategies</li>
+            <li>Coincident, Offset and Angular Constraints</li>
+            <li>Interference and Clash Detection</li>
+            <li>Bill of Materials (BOM) Management</li>
+            <li>Digital Mockup and DMU Navigator</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Module 6 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="module-card">
+          <div class="module-num">06</div>
+          <div class="module-icon"><i class="fas fa-cut"></i></div>
+          <h5>Sheet Metal Design</h5>
+          <ul class="module-topics">
+            <li>Sheet Metal Workbench Setup</li>
+            <li>Walls, Flanges and Bends Creation</li>
+            <li>Unfolding and Flat Pattern Generation</li>
+            <li>Stampings, Cuts and Corner Relief</li>
+            <li>Sheet Metal DXF Export for Manufacturing</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Module 7 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="350">
+        <div class="module-card">
+          <div class="module-num">07</div>
+          <div class="module-icon"><i class="fas fa-file-alt"></i></div>
+          <h5>Drafting &amp; Documentation</h5>
+          <ul class="module-topics">
+            <li>Drawing Workbench and Sheet Setup</li>
+            <li>Generative Views and Section Cuts</li>
+            <li>GD&amp;T: Tolerances and Annotations</li>
+            <li>Title Block and BOM Automation</li>
+            <li>ISO/ASME Standards Compliance</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Module 8 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+        <div class="module-card">
+          <div class="module-num">08</div>
+          <div class="module-icon"><i class="fas fa-atom"></i></div>
+          <h5>Product Simulation</h5>
+          <ul class="module-topics">
+            <li>CATIA Generative Structural Analysis (GSA)</li>
+            <li>Mesh Generation and Material Assignment</li>
+            <li>Static Case Definition and Solving</li>
+            <li>Von Mises Stress and Displacement Results</li>
+            <li>Design Optimization from FEA Insights</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Module 9 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="450">
+        <div class="module-card">
+          <div class="module-num">09</div>
+          <div class="module-icon"><i class="fas fa-project-diagram"></i></div>
+          <h5>Real-Time Industry Projects</h5>
+          <ul class="module-topics">
+            <li>Automotive Hood Panel Surface Modeling</li>
+            <li>Aerospace Bracket Component Design</li>
+            <li>Engine Assembly with Full BOM</li>
+            <li>Sheet Metal Enclosure with Flat Pattern</li>
+            <li>Complete Product Drawing Package</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SURFACE MODELING DETAIL
+═══════════════════════════════════════════ -->
+<!-- <section class="design-section bg-alt" id="surface-modeling">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="section-tag"><i class="fas fa-water"></i> Surface Modeling</div>
+        <h2 class="section-title">Advanced <span> Shape Design</span></h2>
+       
+        <p style="color:var(--text-muted);font-size:.93rem;line-height:1.9;margin-bottom:20px;">Generative Shape Design (GSD) in CATIA is the premier environment for creating complex, mathematically precise free-form surfaces used in automotive body styling, consumer electronics, and aerospace aerodynamic profiles. Our curriculum takes you from fundamental surface primitives to advanced Class-A surface continuity management.</p>
+        <ul class="design-feature-list">
+          <li><div class="icon"><i class="fas fa-bezier-curve"></i></div><div class="content"><strong>Swept & Revolved Surfaces</strong>Multi-section sweeps, revolutions, and adaptive swept surfaces for complex body shapes.</div></li>
+          <li><div class="icon"><i class="fas fa-vector-square"></i></div><div class="content"><strong>Surface Continuity Control</strong>G0, G1, G2 continuity analysis and management for Class-A automotive surfaces.</div></li>
+          <li><div class="icon"><i class="fas fa-object-group"></i></div><div class="content"><strong>Blend & Fill Operations</strong>Multi-element blends, skin surfaces, and fill operations to close complex surface boundaries.</div></li>
+          <li><div class="icon"><i class="fas fa-tools"></i></div><div class="content"><strong>Shape Analysis Tools</strong>Curvature, highlight and isophote analysis for verifying surface quality to styling standards.</div></li>
+        </ul>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="design-img-wrap">
+          <div class="catia-svg-box" style="min-height:320px;">
+            <svg viewBox="0 0 380 280" xmlns="http://www.w3.org/2000/svg" width="380">
+              <defs>
+                <linearGradient id="sg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#8B0000"/><stop offset="100%" style="stop-color:#ff6b6b"/></linearGradient>
+              </defs>
+              
+              <path d="M40,200 C90,170 130,120 190,110 C250,100 310,140 340,180" fill="none" stroke="url(#sg1)" stroke-width="2.5"/>
+              <path d="M40,220 C90,190 130,140 190,130 C250,120 310,160 340,200" fill="none" stroke="url(#sg1)" stroke-width="2" opacity=".7"/>
+              <path d="M40,240 C90,210 130,160 190,150 C250,140 310,180 340,220" fill="none" stroke="url(#sg1)" stroke-width="1.5" opacity=".4"/>
+           
+              <line x1="40" y1="200" x2="40" y2="240" stroke="#8B0000" stroke-width="1.5" opacity=".5"/>
+              <line x1="100" y1="175" x2="100" y2="215" stroke="#8B0000" stroke-width="1.5" opacity=".5"/>
+              <line x1="160" y1="118" x2="160" y2="158" stroke="#8B0000" stroke-width="1.5" opacity=".5"/>
+              <line x1="220" y1="113" x2="220" y2="153" stroke="#8B0000" stroke-width="1.5" opacity=".5"/>
+              <line x1="280" y1="147" x2="280" y2="187" stroke="#8B0000" stroke-width="1.5" opacity=".5"/>
+              <line x1="340" y1="180" x2="340" y2="220" stroke="#8B0000" stroke-width="1.5" opacity=".5"/>
+             
+              <circle cx="190" cy="110" r="6" fill="#ffd700" stroke="#8B0000" stroke-width="2"/>
+              <circle cx="40" cy="200" r="5" fill="#8B0000"/>
+              <circle cx="340" cy="180" r="5" fill="#8B0000"/>
+            
+              <polyline points="40,200 115,80 190,60 265,75 340,180" fill="none" stroke="#ffd700" stroke-width="1.5" stroke-dasharray="5,4" opacity=".6"/>
+
+              <text x="190" y="50" font-family="Montserrat" font-weight="700" font-size="10" fill="#8B0000" text-anchor="middle">NURBS Control Point</text>
+              <text x="190" y="265" font-family="Poppins" font-size="8" fill="#999" text-anchor="middle">Generative Shape Design — Class-A Surface Workflow</text>
+          
+              <line x1="100" y1="175" x2="95" y2="150" stroke="#c0392b" stroke-width="1" opacity=".5"/>
+              <line x1="160" y1="118" x2="155" y2="90" stroke="#c0392b" stroke-width="1" opacity=".5"/>
+              <line x1="220" y1="113" x2="218" y2="86" stroke="#c0392b" stroke-width="1" opacity=".5"/>
+              <line x1="280" y1="147" x2="278" y2="118" stroke="#c0392b" stroke-width="1" opacity=".5"/>
+            </svg>
+          </div>
+          <div class="design-label">Generative Shape Design</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- ═══════════════════════════════════════════
+     ASSEMBLY DESIGN DETAIL
+═══════════════════════════════════════════ -->
+<section class="design-section"  style="background: var(--light-gray);" id="assembly-design">
+  <div class="container">
+    <div class="row align-items-center gy-5 flex-lg-row-reverse">
+      <div class="col-lg-7" data-aos="fade-left">
+        <div class="section-tag"><i class="fas fa-sitemap"></i> Assembly Design</div>
+        <h2 class="section-title">Mastering <span>Product Assembly</span> Workflows</h2>
+       
+        <p style="color:var(--text-muted);font-size:.93rem;line-height:1.9;margin-bottom:20px;">CATIA's Assembly Design workbench allows engineers to create complex multi-component product assemblies with precision mechanical constraints, motion simulation, and interference detection — essential for validating product designs before physical prototyping.</p>
+        <ul class="design-feature-list">
+          <li><div class="icon"><i class="fas fa-link"></i></div><div class="content"><strong>Mechanical Constraints System</strong>Coincident, offset, contact, angular, and fix constraints for accurate part positioning.</div></li>
+          <li><div class="icon"><i class="fas fa-eye"></i></div><div class="content"><strong>Digital Mockup (DMU)</strong>Virtual product validation through DMU Navigator, Kinematics, and Fitting simulation.</div></li>
+          <li><div class="icon"><i class="fas fa-exclamation-triangle"></i></div><div class="content"><strong>Clash &amp; Clearance Analysis</strong>Automatic interference detection and clearance measurement between assembly components.</div></li>
+          <li><div class="icon"><i class="fas fa-list-alt"></i></div><div class="content"><strong>BOM &amp; Properties Management</strong>Automated Bill of Materials generation and component properties for manufacturing documentation.</div></li>
+        </ul>
+      </div>
+      <div class="col-lg-5" data-aos="fade-right">
+        <img src="assets/image/structure-design.webp">
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     AUTOMOTIVE DESIGN
+═══════════════════════════════════════════ -->
+<!-- <section class="design-section bg-alt" id="automotive">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="section-tag"><i class="fas fa-car"></i> Automotive Design</div>
+        <h2 class="section-title"><span>Automotive</span> Engineering Workflow</h2>
+        <div class="divider-line"></div>
+        <p style="color:var(--text-muted);font-size:.93rem;line-height:1.9;margin-bottom:20px;">The automotive industry relies on CATIA for the complete vehicle development cycle — from initial Class-A surface styling through body-in-white (BIW) structural design, interior trim modeling, powertrain component development, to final manufacturing documentation. Our training covers real-world automotive design processes used in major OEMs.</p>
+        <div class="row gy-3">
+          <div class="col-6">
+            <div style="background:#fff;border-radius:12px;padding:16px;border:1px solid rgba(139,0,0,.1);height:100%">
+              <i class="fas fa-car-side text-danger mb-2" style="font-size:1.3rem"></i>
+              <h6 style="font-family:Montserrat;font-weight:700;font-size:.82rem;margin-bottom:6px">Body-in-White Design</h6>
+              <p style="font-size:.78rem;color:#888;margin:0;text-align:left">Structural panels, pillars, floor pan and door skin modeling workflows</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div style="background:#fff;border-radius:12px;padding:16px;border:1px solid rgba(139,0,0,.1);height:100%">
+              <i class="fas fa-palette text-danger mb-2" style="font-size:1.3rem"></i>
+              <h6 style="font-family:Montserrat;font-weight:700;font-size:.82rem;margin-bottom:6px">Styling Surface Work</h6>
+              <p style="font-size:.78rem;color:#888;margin:0;text-align:left">Exterior hood, fender, door and bumper Class-A surface modeling</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div style="background:#fff;border-radius:12px;padding:16px;border:1px solid rgba(139,0,0,.1);height:100%">
+              <i class="fas fa-cog text-danger mb-2" style="font-size:1.3rem"></i>
+              <h6 style="font-family:Montserrat;font-weight:700;font-size:.82rem;margin-bottom:6px">Powertrain Components</h6>
+              <p style="font-size:.78rem;color:#888;margin:0;text-align:left">Engine brackets, mounts, manifolds and transmission housing design</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div style="background:#fff;border-radius:12px;padding:16px;border:1px solid rgba(139,0,0,.1);height:100%">
+              <i class="fas fa-chair text-danger mb-2" style="font-size:1.3rem"></i>
+              <h6 style="font-family:Montserrat;font-weight:700;font-size:.82rem;margin-bottom:6px">Interior Trim Design</h6>
+              <p style="font-size:.78rem;color:#888;margin:0;text-align:left">Dashboard, door panels, console and seating system component modeling</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="design-img-wrap">
+          <div class="catia-svg-box" style="min-height:320px">
+            <svg viewBox="0 0 380 260" xmlns="http://www.w3.org/2000/svg" width="380">
+             
+              <path d="M40,180 L80,180 L100,150 L130,110 L200,100 L270,110 L300,135 L340,145 L340,180 Z" fill="rgba(139,0,0,.06)" stroke="#8B0000" stroke-width="2"/>
+             
+              <path d="M100,150 C140,140 180,135 220,135 C260,135 285,138 300,143" fill="none" stroke="#8B0000" stroke-width="1.5" stroke-dasharray="5,3" opacity=".5"/>
+              <path d="M120,125 C155,118 190,115 225,116 C255,117 275,121 295,128" fill="none" stroke="#c0392b" stroke-width="1.5" opacity=".4"/>
+         
+              <circle cx="120" cy="180" r="22" fill="none" stroke="#8B0000" stroke-width="2.5"/>
+              <circle cx="120" cy="180" r="10" fill="rgba(139,0,0,.15)" stroke="#8B0000" stroke-width="2"/>
+              <circle cx="268" cy="180" r="22" fill="none" stroke="#8B0000" stroke-width="2.5"/>
+              <circle cx="268" cy="180" r="10" fill="rgba(139,0,0,.15)" stroke="#8B0000" stroke-width="2"/>
+    
+              <path d="M138,112 L175,103 L225,103 L258,118 L220,125 L158,125 Z" fill="rgba(37,99,235,.08)" stroke="#2563eb" stroke-width="1.5"/>
+          
+              <line x1="200" y1="90" x2="200" y2="100" stroke="#ffd700" stroke-width="2"/>
+              <circle cx="200" cy="86" r="4" fill="#ffd700"/>
+              <text x="200" y="82" font-family="Poppins" font-size="8" fill="#b8860b" text-anchor="middle">Roof Line</text>
+              <line x1="345" y1="140" x2="338" y2="144" stroke="#ffd700" stroke-width="1.5"/>
+              <text x="355" y="138" font-family="Poppins" font-size="8" fill="#b8860b">C-Pillar</text>
+              <text x="190" y="248" font-family="Poppins" font-size="8" fill="#999" text-anchor="middle">Automotive Body Design — Class-A Surface Workflow</text>
+            </svg>
+          </div>
+          <div class="design-label">Automotive Design</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+
+
+<!-- ═══════════════════════════════════════════
+     CAREER OPPORTUNITIES (Glass Cards)
+═══════════════════════════════════════════ -->
+<section class="career-section" id="careers">
+  <div class="container position-relative" style="z-index:1">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto" style="color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.08)"><i class="fas fa-briefcase"></i> Career Opportunities</div>
+      <h2 class="section-title" style="color:white">Launch Your <span style="color:#ffd700">Engineering Career</span></h2>
+      <div class="divider-line mx-auto" style="background:linear-gradient(90deg,#ffd700,white)"></div>
+      <p class="section-sub mx-auto text-center" style="color:rgba(255,255,255,.78)">CATIA expertise opens doors to premium roles across the global product design and engineering industry. Here are the most in-demand career paths for CATIA professionals.</p>
+    </div>
+    <div class="row gy-4">
+      <div class="col-lg-3 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="50">
+        <div class="career-card">
+          <div class="c-icon"><i class="fas fa-drafting-compass"></i></div>
+          <h5>Product Design Engineer</h5>
+          <p>Design and develop industrial products using CATIA Part and Assembly workbenches for OEM suppliers.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="100">
+        <div class="career-card">
+          <div class="c-icon"><i class="fas fa-cube"></i></div>
+          <h5>CATIA Design Engineer</h5>
+          <p>Specialize in CATIA V5/V6 modeling for product-centric companies across manufacturing sectors.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="150">
+        <div class="career-card">
+          <div class="c-icon"><i class="fas fa-car"></i></div>
+          <h5>Automotive Design Engineer</h5>
+          <p>Model body panels, interior trim, BIW structures, and chassis components for automotive OEMs.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="200">
+        <div class="career-card">
+          <div class="c-icon"><i class="fas fa-plane"></i></div>
+          <h5>Aerospace CAD Engineer</h5>
+          <p>Design aircraft structural components, brackets, and aerodynamic surfaces for defense and civil aviation.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="250">
+        <div class="career-card">
+          <div class="c-icon"><i class="fas fa-cogs"></i></div>
+          <h5>Mechanical Design Engineer</h5>
+          <p>Create precision mechanical components, assemblies, and manufacturing drawings for general industry.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="300">
+        <div class="career-card">
+          <div class="c-icon"><i class="fas fa-layer-group"></i></div>
+          <h5>CAD Modeling Engineer</h5>
+          <p>Reverse engineer and recreate complex parts using scan data and reference drawings in CATIA.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="350">
+        <div class="career-card">
+          <div class="c-icon"><i class="fas fa-lightbulb"></i></div>
+          <h5>Product Development Engineer</h5>
+          <p>Lead end-to-end product development from concept sketching through final manufacturing documentation.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="400">
+        <div class="career-card">
+          <div class="c-icon"><i class="fas fa-database"></i></div>
+          <h5>PLM Consultant</h5>
+          <p>Configure and administer CATIA V6/3DEXPERIENCE PLM platforms for enterprise engineering organizations.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     LEARNING PROCESS TIMELINE
+═══════════════════════════════════════════ -->
+<section class="process-section" id="process">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-route"></i> Learning Process</div>
+      <h2 class="section-title">Your <span>Journey</span> to Mastery</h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-sub mx-auto text-center">A structured, step-by-step path designed to take you from zero to job-ready CATIA professional.</p>
+    </div>
+    <div class="process-timeline">
+      <div class="row gy-4">
+        <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="50">
+          <div class="process-step">
+            <div class="process-num">01</div>
+            <h6>Enroll</h6>
+            <p>Register online or visit our training centre and select your batch timing</p>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="process-step">
+            <div class="process-num">02</div>
+            <h6>Learn Concepts</h6>
+            <p>Expert-led live sessions covering every CATIA module from fundamentals to advanced</p>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="150">
+          <div class="process-step">
+            <div class="process-num">03</div>
+            <h6>Practice Modeling</h6>
+            <p>Hands-on lab exercises building 50+ real components in every module</p>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="process-step">
+            <div class="process-num">04</div>
+            <h6>Real Projects</h6>
+            <p>Work on 5 capstone projects replicating actual automotive and aerospace workflows</p>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="250">
+          <div class="process-step">
+            <div class="process-num">05</div>
+            <h6>Certification</h6>
+            <p>Receive CADPOINT industry-recognized CATIA certification upon successful completion</p>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="process-step">
+            <div class="process-num">06</div>
+            <h6>Placement Prep</h6>
+            <p>Resume building, mock interviews, and dedicated placement coordination with hiring partners</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     STATS COUNTER
+═══════════════════════════════════════════ -->
+<section class="stats-section" id="stats">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-lg-3 col-md-6 stat-col" data-aos="zoom-in" data-aos-delay="50">
+        <div class="stat-box">
+          <h2 data-count="5000">0+</h2>
+          <p>Students Trained</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 stat-col" data-aos="zoom-in" data-aos-delay="150">
+        <div class="stat-box">
+          <h2 data-count="200">0+</h2>
+          <p>Projects Completed</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 stat-col" data-aos="zoom-in" data-aos-delay="250">
+        <div class="stat-box">
+          <h2 data-count="4500">0+</h2>
+          <p>Successful Placements</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 stat-col no-border" data-aos="zoom-in" data-aos-delay="350">
+        <div class="stat-box">
+          <h2 data-count="98">0%</h2>
+          <p>Student Success Rate</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════════════════ -->
+
+
+
+
+<section class="testimonials-section" id="testimonials">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-tag"><i class="fas fa-star"></i> Student Reviews</div>
+      <h2 class="section-title">What Our <span>Graduates</span> Say</h2>
+      <div class="divider-line mx-auto"></div>
+    </div>
+    <div class="testi-outer">
+      <div class="testi-track-wrap">
+        <div class="testi-track" id="testiTrack">
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">I am currently learning AutoCAD at CADPOINT Marthandam and having a great experience. Divya mam's teaching is clear, friendly, and easy to understand. She patiently explains every concept and clears all doubts. The staff are also very supportive. After completing AutoCAD, I am looking forward to learning Revit here. Highly recommended!</p>
+            <div class="testi-author">
+              <div class="testi-avatar">S</div>
+              <div class="testi-info"><h6>Saran KT</h6></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">I am studying AUTOCAD software at cad point marthandam. All staff are Knowledgeable person and good experience within the field above 5 years. So the lectures are teaching easy way to understand the class. Ex. They are teaching with the live example.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">R</div>
+              <div class="testi-info"><h6>Renish R</h6></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+            <p class="testi-text">CADPOINT is a good training institute with a friendly learning environment and supportive trainers. Both my sister and I had a positive learning experience here. The teaching is clear, practical, and easy to understand. The fee structure is also reasonable and affordable for students. Overall, CADPOINT is a great place to develop skills and gain knowledge.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">A</div>
+              <div class="testi-info"><h6>Ashlin Jega</h6></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">I had an excellent learning experience at CADPOINT Marthandam. The AutoCAD and Tekla courses were highly beneficial and helped me enhance my design skills and technical knowledge. The trainers were supportive, patient, and explained each concept clearly with practical examples. Currently I am working in a company based on design engineer role ...Tq CAD point marthandam and staffs ❤️</p>
+            
+            <div class="testi-author">
+              <div class="testi-avatar">M</div>
+              <div class="testi-info"><h6>Manoj Mano</h6>
+              
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">CAD Point provided me with a great learning experience. The classes were informative, the trainers were supportive, and the practical sessions helped me understand concepts better. The institute also encouraged skill development and boosted my confidence, making it an excellent place for learning and career growth.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">A</div>
+              <div class="testi-info"><h6>Ashika G.R</h6></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">The training centre provides a professional and student-friendly learning environment.
+The trainers are experienced, patient, and explain every topic in a simple way.
+The teaching methods are practical, interactive, and easy to understand.
+Regular guidance and individual attention helped me learn with confidence.
+Overall, it is an excellent place for students who want quality CAD training.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">V</div>
+              <div class="testi-info"><h6>Vijith Ajith</h6></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-dots" id="testiDots">
+        <button class="testi-dot active" data-idx="0"></button>
+        <button class="testi-dot" data-idx="1"></button>
+        <button class="testi-dot" data-idx="2"></button>
+        <button class="testi-dot" data-idx="3"></button>
+      </div>
+      <div class="testi-nav">
+        <button class="testi-btn" id="testiBtnPrev" aria-label="Previous"><i class="fas fa-arrow-left"></i></button>
+        <button class="testi-btn" id="testiBtnNext" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<style>
+  /* ── TESTIMONIALS ── */
+  .testimonials-section { background: var(--light-gray); padding: 80px 0; }
+  .testi-outer { overflow: hidden; }
+  .testi-track-wrap { overflow: hidden; }
+  .testi-track { display: flex; gap: 24px; transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); will-change: transform; }
+  .testi-card { background: #fff; border-radius: 20px; padding: 32px 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); position: relative; flex: 0 0 calc(33.333% - 16px); min-width: calc(33.333% - 16px); border-bottom: 4px solid var(--primary); transition: all 0.35s ease; }
+  .testi-card:hover { transform: translateY(-6px); box-shadow: 0 18px 45px rgba(139,0,0,0.13); }
+  @media(max-width:991px) { .testi-card { flex: 0 0 calc(50% - 12px); min-width: calc(50% - 12px); } }
+  @media(max-width:576px) { .testi-card { flex: 0 0 100%; min-width: 100%; } }
+  .testi-quote { font-size: 3rem; color: rgba(139,0,0,0.12); font-family: Georgia,serif; line-height: 1; margin-bottom: 12px; display: block; }
+  .testi-rating { color: #ffc107; margin-bottom: 14px; font-size: 0.85rem; }
+  .testi-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 18px; }
+  .testi-company { font-size: 0.72rem; color: var(--primary); font-weight: 600; margin-bottom: 18px; display: block; }
+  .testi-author { display: flex; align-items: center; gap: 14px; }
+  .testi-avatar { width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; flex-shrink: 0; }
+  .testi-info h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem; margin: 0; }
+  .testi-info small { color: var(--primary); font-size: 0.74rem; font-weight: 500; }
+  .testi-dots { display: flex; justify-content: center; gap: 8px; margin-top: 30px; }
+  .testi-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(139,0,0,0.2); cursor: pointer; transition: all 0.3s ease; border: none; padding: 0; }
+  .testi-dot.active { background: var(--primary); transform: scale(1.3); }
+  .testi-nav { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+  .testi-btn { width: 44px; height: 44px; border-radius: 50%; border: 2px solid rgba(139,0,0,0.2); background: #fff; color: var(--primary); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; transition: all 0.3s ease; }
+  .testi-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+</style>
+
+
+  <script>
+// ── TESTIMONIAL SLIDER
+(function() {
+  const track   = document.getElementById('testiTrack');
+  const dots    = document.querySelectorAll('.testi-dot');
+  const prevBtn = document.getElementById('testiBtnPrev');
+  const nextBtn = document.getElementById('testiBtnNext');
+  if (!track) return;
+
+  let current = 0;
+  const cards = track.querySelectorAll('.testi-card');
+  const total = cards.length;
+
+  function getVisible() {
+    if (window.innerWidth < 576) return 1;
+    if (window.innerWidth < 992) return 2;
+    return 3;
+  }
+  function getMax() { return total - getVisible(); }
+  function slideTo(idx) {
+    const max = getMax();
+    current = Math.max(0, Math.min(idx, max));
+    const cardW = cards[0].offsetWidth + 24;
+    track.style.transform = `translateX(-${current * cardW}px)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  prevBtn?.addEventListener('click', () => slideTo(current - 1));
+  nextBtn?.addEventListener('click', () => slideTo(current + 1));
+  dots.forEach(d => d.addEventListener('click', () => slideTo(parseInt(d.getAttribute('data-idx')))));
+  window.addEventListener('resize', () => slideTo(current));
+  setInterval(() => slideTo(current < getMax() ? current + 1 : 0), 5000);
+})();
+</script>
+
+
+
+<!-- <section class="testimonials-section" id="testimonials">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-quote-left"></i> Student Reviews</div>
+      <h2 class="section-title">What Our <span>Students Say</span></h2>
+      <div class="divider-line mx-auto"></div>
+    </div>
+    <div class="row gy-4">
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="50">
+        <div class="testi-card">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-text">The CATIA V5 training at CADPOINT is exceptionally well-structured. The instructor's automotive industry experience made complex surface modeling concepts clear and practical. I landed a role at a Tier-1 auto supplier within 3 weeks of completing the course.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">AR</div>
+            <div>
+              <div class="testi-name">Arjun Ramesh</div>
+              <div class="testi-role">CATIA Design Engineer — Mahindra & Mahindra</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="testi-card">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-text">I enrolled for the CATIA aerospace module specifically targeting HAL. The real-time project on bracket design and the aerospace documentation module gave me a massive edge in interviews. Got placed in HAL Nashik within 2 months of course completion.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">PK</div>
+            <div>
+              <div class="testi-name">Priya Krishnamurthy</div>
+              <div class="testi-role">Aerospace CAD Engineer — HAL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+        <div class="testi-card">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+          <p class="testi-text">Coming from a mechanical background, CATIA seemed intimidating at first. The step-by-step curriculum and personalized mentorship made all the difference. The surface modeling and assembly modules are extremely industry-relevant. Highly recommend CADPOINT.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">SM</div>
+            <div>
+              <div class="testi-name">Sanjay Mehta</div>
+              <div class="testi-role">Product Design Engineer — Bosch India</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="testi-card">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-text">The live project experience building an engine assembly with full BOM was invaluable. My interviewer at L&T was very impressed by my ability to discuss assembly constraint strategy and interference detection workflows from real experience, not just theory.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">VN</div>
+            <div>
+              <div class="testi-name">Vijay Nair</div>
+              <div class="testi-role">Mechanical Design Engineer — L&T</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
+        <div class="testi-card">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-text">CADPOINT's CATIA sheet metal module is the best I've seen. The instructor's hands-on approach covering flat pattern generation, k-factor calculations and DXF export prepared me perfectly for my current role. Best training investment of my career.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">DT</div>
+            <div>
+              <div class="testi-name">Deepak Thakur</div>
+              <div class="testi-role">Sheet Metal Design Engineer — Tata AutoComp</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="testi-card">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-text">After completing BEng, I was struggling to break into product design. CATIA V6 training at CADPOINT was the turning point. The placement team arranged 8 interviews in a month. Received 2 offers and joined Siemens as a Graduate Design Engineer.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">NG</div>
+            <div>
+              <div class="testi-name">Nithya Gopalan</div>
+              <div class="testi-role">Graduate Design Engineer — Siemens India</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- ═══════════════════════════════════════════
+     FAQ SECTION
+═══════════════════════════════════════════ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-question-circle"></i> FAQ</div>
+      <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+      <div class="divider-line mx-auto"></div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-9" data-aos="fade-up" data-aos-delay="50">
+        <div class="accordion" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                What are the prerequisites for joining the CATIA V5/V6 course?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">There are no strict prerequisites for our CATIA training program. Students from any engineering or science background can join. Basic computer literacy is sufficient. We begin with absolute fundamentals covering the CATIA interface, file management, and 3D navigation before progressing to advanced modules, ensuring all students are comfortable regardless of prior CAD experience.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                What certification will I receive upon completing the course?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Upon successful completion, you will receive CADPOINT's industry-recognized CATIA V5/V6 Professional Certification. This certificate is widely accepted by automotive and aerospace employers across India. We also assist students in preparing for official Dassault Systèmes certification exams, which carry global recognition and can significantly strengthen your international job applications.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                Do you provide 100% placement assistance after the course?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Yes, CADPOINT provides dedicated 100% placement support to all certified students. Our placement team maintains active relationships with 200+ hiring companies in the automotive, aerospace, and manufacturing sectors. Services include resume building, LinkedIn profile optimization, mock technical interviews, and direct interview coordination with our hiring partner companies until you secure a suitable placement.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                What software version is used during the training?
+              </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Our training lab is equipped with the latest licensed version of CATIA V5 (R30) and CATIA V6 (3DEXPERIENCE platform). Students work on the same software used by industry professionals, ensuring a seamless transition to professional environments. Each student gets dedicated workstation access during lab sessions with high-performance systems optimized for complex 3D modeling operations.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                Are real-time industry projects included in the course?
+              </button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Absolutely. Our course includes 5 capstone real-world projects that simulate actual industry workflows. Projects include an automotive hood panel surface model, aerospace bracket design, complete engine assembly with BOM, sheet metal enclosure with flat pattern export, and a full manufacturing drawing package. These projects form your professional design portfolio, which is crucial for securing engineering placements.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                Is internship or industrial training available along with the course?
+              </button>
+            </h2>
+            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Yes, CADPOINT facilitates optional internship programs with select partner companies for eligible students who complete at least 60% of the curriculum. Industrial training arrangements are available for students requiring institutional internships as part of their degree programs. These practical exposures provide hands-on industry experience and often lead directly to full-time employment offers from the same companies.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+                What is the course duration and are there flexible batch timings?
+              </button>
+            </h2>
+            <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">The comprehensive CATIA V5/V6 course runs for 4 to 6 months depending on the modules selected. We offer morning batches (9 AM–12 PM), afternoon batches (2 PM–5 PM), evening batches (6 PM–9 PM), and weekend-only batches for working professionals. Fast-track intensive programs covering core modules can be completed in 2.5 to 3 months. Online live training is also available for students outside our city.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq8">
+                What salary can I expect after completing CATIA training?
+              </button>
+            </h2>
+            <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Entry-level CATIA Design Engineers typically earn between ₹3 LPA to ₹5.5 LPA in their first role. With 2–3 years of industry experience, professionals command ₹6–10 LPA. Senior CATIA engineers and lead designers at automotive or aerospace MNCs earn ₹12–22 LPA. International opportunities in Germany, UK, South Korea, and Japan offer significantly higher compensation for experienced CATIA professionals with strong portfolios.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CTA SECTION
+═══════════════════════════════════════════ -->
+<section class="cta-section" id="enroll">
+  <div class="container text-center position-relative" style="z-index:1">
+    <div data-aos="zoom-in">
+      <div class="section-tag mx-auto mb-3" style="color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.08)"><i class="fas fa-rocket"></i> Start Today</div>
+      <h2 class="cta-title">Start Your <span>Product Design Engineering</span><br>Career Today</h2>
+      <p class="cta-sub">Join over 5,000 professionals who have accelerated their engineering careers with CADPOINT's world-class CATIA V5/V6 training. Your dream role in automotive or aerospace design is one course away.</p>
+      <div class="d-flex flex-wrap gap-3 justify-content-center">
+        <a href="https://wa.me/919895352624" class="btn-cta-glow">
+          <i class="fas fa-rocket"></i> Book a Free Demo 
+        </a>
+        <a href="tel:+919895352624" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);color:white;font-family:Montserrat;font-weight:700;font-size:.88rem;padding:15px 30px;border-radius:50px;text-decoration:none;border:2px solid rgba(255,255,255,.4);transition:all .3s;backdrop-filter:blur(10px)">
+          <i class="fas fa-phone-alt"></i> Call Us Now
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<div id="footer"></div>
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+fetch("./header.html")
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById("header").innerHTML = html;
+    initCaddNav();
+  });
+
+  fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+      document.getElementById('footer').innerHTML = data;
+  });
+</script>
+<script>
+function initCaddNav() {
+
+    const coursesNav = document.getElementById('coursesNav');
+    const caret = document.getElementById('coursesCaret');
+    const menu = document.getElementById('coursesMegaMenu');
+    const closeBtn = document.getElementById('closeMegaMenu');
+
+    if (!coursesNav || !caret || !menu) return;
+
+    // X BUTTON CLOSE (Desktop + Mobile)
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.remove('show');
+
+        });
+    }
+
+    // MOBILE
+    if (window.innerWidth <= 991) {
+
+        caret.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!coursesNav.contains(e.target)) {
+                menu.classList.remove('show');
+            }
+        });
+
+        return;
+    }
+
+    // DESKTOP
+    coursesNav.addEventListener('mouseenter', function () {
+        menu.classList.add('show');
+    });
+
+    coursesNav.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+
+    menu.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+}
+</script>
+
+
+<script>
+// ─── LOADER ──────────────────────────────────
+window.addEventListener('load', () => {
+  setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 1800);
+});
+
+// ─── AOS ─────────────────────────────────────
+AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });
+
+// ─── NAVBAR SCROLL ───────────────────────────
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  if (window.scrollY > 50) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+  const btn = document.getElementById('backToTop');
+  if (window.scrollY > 400) btn.classList.add('visible'); else btn.classList.remove('visible');
+});
+
+// ─── BACK TO TOP ─────────────────────────────
+document.getElementById('backToTop').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ─── COUNTER ─────────────────────────────────
+function animateCounters() {
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseInt(el.getAttribute('data-count'));
+    const isPercent = el.parentElement.querySelector('p')?.textContent.includes('%');
+    let current = 0;
+    const increment = target / 60;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) { current = target; clearInterval(timer); }
+      const suffix = isPercent ? '%' : '+';
+      el.textContent = Math.floor(current) + suffix;
+    }, 25);
+  });
+}
+const statsObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { animateCounters(); statsObs.disconnect(); } });
+}, { threshold: 0.3 });
+const statsSection = document.querySelector('.stats-section');
+if (statsSection) statsObs.observe(statsSection);
+
+// ─── HERO FADE-IN ────────────────────────────
+const heroTitle = document.getElementById('heroTitle');
+if (heroTitle) {
+  heroTitle.style.opacity = '0';
+  heroTitle.style.transform = 'translateY(30px)';
+  heroTitle.style.transition = 'opacity .8s ease .5s, transform .8s ease .5s';
+  setTimeout(() => { heroTitle.style.opacity = '1'; heroTitle.style.transform = 'translateY(0)'; }, 300);
+}
+
+// ─── RIPPLE ──────────────────────────────────
+document.querySelectorAll('.ripple').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const r = document.createElement('span');
+    r.style.cssText = `position:absolute;border-radius:50%;background:rgba(255,255,255,.3);width:10px;height:10px;left:${e.clientX-rect.left-5}px;top:${e.clientY-rect.top-5}px;transform:scale(0);animation:rippleAnim .6s ease-out forwards;pointer-events:none`;
+    this.appendChild(r);
+    setTimeout(() => r.remove(), 700);
+  });
+});
+const rs = document.createElement('style');
+rs.textContent = `@keyframes rippleAnim{to{transform:scale(30);opacity:0}}`;
+document.head.appendChild(rs);
+
+// ─── MEGA DROPDOWN ───────────────────────────
+(function () {
+  const coursesNav = document.getElementById('coursesNav');
+  if (!coursesNav) return;
+  const menu = coursesNav.querySelector('.courses-mega-menu');
+  const caret = document.getElementById('coursesDropdown');
+  if (!menu) return;
+  let hideTimer;
+  function showMenu() {
+    clearTimeout(hideTimer);
+    const navRect = document.getElementById('mainNav').getBoundingClientRect();
+    menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    menu.classList.add('show');
+    if (caret) caret.querySelector('i').style.transform = 'rotate(180deg)';
+  }
+  function hideMenu() {
+    hideTimer = setTimeout(function () {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }, 120);
+  }
+  coursesNav.addEventListener('mouseenter', showMenu);
+  coursesNav.addEventListener('mouseleave', hideMenu);
+  menu.addEventListener('mouseenter', showMenu);
+  menu.addEventListener('mouseleave', hideMenu);
+  if (caret) {
+    caret.querySelector('i').style.transition = 'transform .25s ease';
+    caret.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (menu.classList.contains('show')) { hideMenu(); } else { showMenu(); }
+    });
+  }
+  document.addEventListener('click', function (e) {
+    if (!coursesNav.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }
+  });
+  window.addEventListener('scroll', function () {
+    if (menu.classList.contains('show')) {
+      const navRect = document.getElementById('mainNav').getBoundingClientRect();
+      menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    }
+  });
+  document.getElementById('closeMegaMenu')?.addEventListener('click', function () {
+    menu.classList.remove('show');
+    if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+  });
+})();
+</script>
+</body>
+</html>

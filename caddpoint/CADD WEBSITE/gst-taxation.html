@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GST & Taxation Course | CADPOINT Authorized Training Centre</title>
+  <meta name="description" content="Master GST & Taxation with CADPOINT. Learn GST filing, Income Tax, TDS, Payroll, Tally Integration, Financial Accounting and more. Get certified with  training centre.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ <link rel="icon" type="image/x-icon" href="assets/image/cadd-logo.webp">
+ <style>
+    /* ═══════════════════════════════════════
+       CSS VARIABLES
+    ═══════════════════════════════════════ */
+    :root {
+      --primary: #8B0000;
+      --primary-light: #A00000;
+      --primary-dark: #5c0000;
+      --primary-glow: rgba(139,0,0,0.35);
+      --white: #ffffff;
+      --light-gray: #F5F5F5;
+      --text-dark: #1a1a1a;
+      --text-muted: #555;
+      --border-light: rgba(139,0,0,0.15);
+      --glass-bg: rgba(255,255,255,0.08);
+      --glass-border: rgba(255,255,255,0.18);
+    }
+
+    html, body { max-width: 100%; overflow-x: hidden; scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; color: var(--text-dark); background: var(--white); }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+    /* ─── DESKTOP MEGA MENU ─── */
+    @media(min-width:992px){
+      .courses-mega-menu { display: none; position: absolute; }
+      .courses-mega-menu.show { display: block; }
+    }
+
+    /* ─── MOBILE MEGA MENU ─── */
+    @media(max-width:991px){
+      .courses-mega-menu { display: none; position: fixed !important; top: 0; left: 0; width: 100% !important; height: 100vh !important; background: #fff; z-index: 999999; overflow-y: auto !important; overflow-x: hidden !important; padding: 80px 20px 40px; }
+      .courses-mega-menu.show { display: block !important; }
+      .courses-mega-menu .d-flex { display: flex !important; flex-direction: column !important; gap: 20px !important; width: 100% !important; }
+      .mega-col { width: 100% !important; min-width: 100% !important; display: block !important; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+      .mega-col a { display: block !important; width: 100% !important; padding: 10px 0; white-space: normal !important; }
+      .mega-close-x { position: fixed; top: 15px; right: 20px; z-index: 1000000; border: none; background: none; font-size: 30px; cursor: pointer; }
+      .navbar-collapse { background:#fff; padding:15px; border-radius:18px; margin-top:15px; box-shadow:0 10px 35px rgba(0,0,0,.08); }
+      #coursesNav { width:100%; }
+      #coursesNav .d-flex { width:100%; justify-content:space-between; align-items:center; }
+      #coursesNav .nav-link { padding:12px 0 !important; }
+    }
+
+    /* ─── LOADER ─── */
+    #loader { position:fixed; inset:0; background:var(--primary-dark); display:flex; align-items:center; justify-content:center; z-index:9999; transition:opacity 0.6s ease, visibility 0.6s; }
+    #loader.hidden { opacity:0; visibility:hidden; }
+    .loader-inner { text-align:center; }
+    .loader-logo { font-family:'Montserrat',sans-serif; font-weight:900; font-size:2rem; color:#fff; letter-spacing:3px; margin-bottom:16px; }
+    .loader-logo span { color:#ffd700; }
+    .loader-bar { width:200px; height:3px; background:rgba(255,255,255,0.15); border-radius:2px; overflow:hidden; margin:0 auto; }
+    .loader-bar-fill { height:100%; background:linear-gradient(90deg,#ffd700,#ffb700); animation:loaderAnim 1.8s ease forwards; }
+    @keyframes loaderAnim { 0%{width:0} 100%{width:100%} }
+
+    /* ─── SCROLL TO TOP ─── */
+    #backToTop { position:fixed; bottom:30px; right:30px; width:44px; height:44px; background:var(--primary); color:white; border:none; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:999; opacity:0; visibility:hidden; transition:all 0.3s ease; box-shadow:0 4px 20px var(--primary-glow); }
+    #backToTop.visible { opacity:1; visibility:visible; }
+    #backToTop:hover { transform:translateY(-4px); }
+
+    /* ─── CLOSE BUTTON ─── */
+    .mega-close-x { position:absolute; top:12px; right:12px; width:34px; height:34px; border:none; border-radius:50%; background:#fff; color:#222; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:99; box-shadow:0 4px 15px rgba(0,0,0,.12); transition:.3s ease; }
+    .mega-close-x:hover { background:var(--primary); color:#fff; transform:rotate(90deg); }
+
+    /* ─── NAVBAR ─── */
+    .navbar { background:rgba(255,255,255,0.97); backdrop-filter:blur(20px); box-shadow:0 2px 30px rgba(139,0,0,0.12); padding:7px 0; position:sticky; top:0; z-index:1000; transition:all 0.3s ease; }
+    .navbar.scrolled { padding:8px 0; box-shadow:0 4px 40px rgba(139,0,0,0.2); }
+    .navbar-brand { display:flex; align-items:center; gap:12px; text-decoration:none; }
+    .logo-icon { width:48px; height:48px; flex-shrink:0; }
+    .logo-text { line-height:1.1; }
+    .logo-text .brand-name { font-family:'Montserrat',sans-serif; font-weight:900; font-size:1.3rem; color:var(--primary); letter-spacing:2px; }
+    .logo-text .brand-sub { font-size:0.58rem; font-weight:600; color:#666; letter-spacing:1.5px; text-transform:uppercase; }
+    .navbar-nav .nav-link { font-family:'Montserrat',sans-serif; font-weight:600; font-size:0.82rem; letter-spacing:0.8px; text-transform:uppercase; padding:8px 16px !important; border-radius:6px; transition:all 0.3s ease; position:relative; }
+    .navbar-nav .nav-link:hover { color:var(--primary); }
+    .btn-nav-enroll { background:linear-gradient(135deg,var(--primary),var(--primary-light)); color:white !important; padding:8px 22px !important; border-radius:25px !important; font-weight:700 !important; box-shadow:0 4px 15px var(--primary-glow); transition:all 0.3s ease !important; }
+    .btn-nav-enroll:hover { transform:translateY(-2px); box-shadow:0 8px 25px var(--primary-glow) !important; }
+    .btn-nav-enroll::after { display:none !important; }
+
+    /* ─── MEGA MENU DESKTOP ─── */
+    #coursesNav { position:static !important; }
+    #coursesNav > div { display:flex; align-items:center; }
+    .courses-mega-menu { position:fixed !important; top:auto !important; left:50% !important; transform:translateX(-50%) translateY(6px) !important; width:min(960px,96vw) !important; display:block !important; opacity:0; visibility:hidden; transition:opacity 0.22s ease, transform 0.22s ease, visibility 0.22s; pointer-events:none; border:none !important; border-radius:16px !important; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.16),0 0 0 1px rgba(139,0,0,0.1) !important; padding:0 !important; }
+    .courses-mega-menu.show { opacity:1 !important; visibility:visible !important; transform:translateX(-50%) translateY(0) !important; pointer-events:auto !important; }
+    .mega-topbar { background:linear-gradient(135deg,var(--primary-dark),var(--primary)); color:white; font-family:'Montserrat',sans-serif; font-size:0.78rem; font-weight:700; letter-spacing:0.6px; }
+    .mega-viewall { color:#ffd700 !important; font-size:0.75rem; font-weight:700; text-decoration:none; transition:opacity 0.2s; }
+    .mega-viewall:hover { opacity:0.8; }
+    .mega-col { flex:1; padding:20px 10px 10px 10px; border-right:1px solid rgba(139,0,0,0.08); background:white; }
+    .mega-col:last-child { border-right:none; }
+    .mega-col-head { display:flex; align-items:center; gap:10px; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid rgba(139,0,0,0.08); }
+    .mega-col-icon { width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+    .mega-col-title { font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.82rem; color:var(--text-dark); letter-spacing:0.4px; }
+    .mega-col-sub { font-size:0.68rem; color:#999; font-weight:500; margin-top:1px; }
+    .mega-item { display:flex; align-items:center; gap:8px; padding:6px 8px; border-radius:7px; font-size:0.8rem; font-weight:500; color:var(--text-dark); text-decoration:none; transition:background 0.15s,color 0.15s,padding-left 0.15s; margin-bottom:2px; }
+    .mega-item i { font-size:0.72rem; width:16px; text-align:center; color:#aaa; transition:color 0.15s; flex-shrink:0; }
+    .mega-item:hover { background:rgba(139,0,0,0.07); color:var(--primary); padding-left:12px; }
+    .mega-item:hover i { color:var(--primary); }
+    #coursesNav .courses-caret { color:var(--text-dark); transition:color 0.2s; }
+    #coursesNav .courses-caret:hover { color:var(--primary); }
+
+    /* ─── BREADCRUMB SLIDER ─── */
+    .breadcrumb-slider { background:linear-gradient(90deg,var(--primary-dark) 0%,var(--primary) 50%,var(--primary-dark) 100%); padding:0; overflow:hidden; height:38px; display:flex; align-items:center; position:relative; }
+    .breadcrumb-slider::before,.breadcrumb-slider::after { content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; pointer-events:none; }
+    .breadcrumb-slider::before { left:0; background:linear-gradient(to right,var(--primary-dark),transparent); }
+    .breadcrumb-slider::after { right:0; background:linear-gradient(to left,var(--primary-dark),transparent); }
+    .breadcrumb-track { display:flex; animation:scrollBreadcrumb 30s linear infinite; white-space:nowrap; will-change:transform; }
+    .breadcrumb-track:hover { animation-play-state:paused; }
+    .breadcrumb-item-slide { display:inline-flex; align-items:center; gap:8px; padding:0 30px; font-size:0.75rem; font-weight:600; color:rgba(255,255,255,0.9); letter-spacing:1px; text-transform:uppercase; font-family:'Montserrat',sans-serif; }
+    .breadcrumb-item-slide i { color:rgba(255,255,255,0.6); font-size:0.7rem; }
+    @keyframes scrollBreadcrumb { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+    /* ─── SECTION UTILITIES ─── */
+    .section-tag { display:inline-flex; align-items:center; gap:7px; background:rgba(139,0,0,0.07); border:1px solid rgba(139,0,0,0.2); color:var(--primary); padding:5px 14px; border-radius:50px; font-size:0.72rem; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; font-family:'Montserrat',sans-serif; margin-bottom:14px; }
+    .section-title { font-family:'Montserrat',sans-serif; font-weight:900; font-size:clamp(1.7rem,3.5vw,2.4rem); color:var(--text-dark); line-height:1.15; }
+    .section-title span { color:var(--primary); }
+    .section-sub { font-size:1rem; color:var(--text-muted); line-height:1.8; max-width:620px; margin:0 auto; }
+
+    /* ─── HERO ─── */
+    .hero-section { background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 40%,#c0392b 80%,var(--primary-dark) 100%); min-height:88vh; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; padding:50px; }
+    .hero-section::before { content:''; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2zm4 0L80 4v2L46 40h-2zm4 0L80 8v2L50 40h-2zm4 0L80 12v2L54 40h-2zm4 0L80 16v2L58 40h-2zm4 0L80 20v2L62 40h-2zm4 0L80 24v2L66 40h-2zm4 0L80 28v2L70 40h-2zm4 0L80 32v2L74 40h-2zm4 0L80 36v2L78 40h-2zm4 0L80 40h-2v-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity:0.4; }
+    .hero-blob { position:absolute; border-radius:50%; filter:blur(60px); opacity:0.15; pointer-events:none; }
+    .hero-blob-1 { width:500px; height:500px; background:#ff4444; top:-150px; right:-100px; animation:blobFloat 8s ease-in-out infinite; }
+    .hero-blob-2 { width:300px; height:300px; background:#ffd700; bottom:-80px; left:-80px; animation:blobFloat 10s ease-in-out infinite reverse; }
+    .hero-blob-3 { width:200px; height:200px; background:#fff; top:50%; left:40%; animation:blobFloat 6s ease-in-out infinite 2s; }
+    @keyframes blobFloat { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(30px,-30px) scale(1.1)} }
+    .hero-badge { display:inline-flex; align-items:center; gap:8px; background:var(--glass-bg); border:1px solid var(--glass-border); backdrop-filter:blur(10px); padding:6px 16px; border-radius:50px; font-size:0.75rem; font-weight:600; color:rgba(255,255,255,0.9); letter-spacing:1px; text-transform:uppercase; margin-bottom:20px; }
+    .hero-badge span { color:#ffd700; }
+    .hero-title { font-family:'Montserrat',sans-serif; font-weight:900; font-size:clamp(2rem,4.5vw,3.1rem); line-height:1.1; color:white; margin-bottom:20px; opacity:0; transform:translateY(30px); animation:heroFadeUp 0.9s ease 0.4s forwards; }
+    .hero-title .highlight { color:#ffd700; }
+    .hero-desc { font-size:1rem; color:rgba(255,255,255,0.85); line-height:1.8; margin-bottom:28px; max-width:640px; opacity:0; animation:heroFadeUp 0.9s ease 0.7s forwards; }
+    @keyframes heroFadeUp { to{opacity:1;transform:translateY(0)} }
+    .hero-pills { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:30px; opacity:0; animation:heroFadeUp 0.9s ease 1s forwards; }
+    .hero-pill { display:inline-flex; align-items:center; gap:6px; background:var(--glass-bg); border:1px solid var(--glass-border); color:rgba(255,255,255,0.9); padding:5px 14px; border-radius:50px; font-size:0.75rem; font-weight:600; }
+    .hero-btns { display:flex; flex-wrap:wrap; gap:14px; opacity:0; animation:heroFadeUp 0.9s ease 1.2s forwards; }
+    .btn-hero-primary { display:inline-flex; align-items:center; gap:8px; background:white; color:var(--primary); padding:13px 28px; border-radius:50px; font-weight:700; font-size:0.92rem; text-decoration:none; transition:all 0.3s ease; box-shadow:0 8px 30px rgba(0,0,0,0.2); position:relative; overflow:hidden; }
+    .btn-hero-primary:hover { transform:translateY(-3px); box-shadow:0 12px 40px rgba(0,0,0,0.3); color:var(--primary-dark); }
+    .btn-hero-outline { display:inline-flex; align-items:center; gap:8px; background:transparent; color:white; padding:12px 28px; border-radius:50px; font-weight:700; font-size:0.92rem; text-decoration:none; border:2px solid rgba(255,255,255,0.5); transition:all 0.3s ease; }
+    .btn-hero-outline:hover { background:rgba(255,255,255,0.12); border-color:white; color:white; transform:translateY(-3px); }
+    .hero-wave { line-height:0; overflow:hidden; margin-top:60px; }
+    .hero-wave svg { display:block; width:100%; }
+    .hero-float-badge { display:inline-flex; align-items:center; gap:10px; background:rgba(255,255,255,0.13); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.2); padding:10px 20px; border-radius:50px; margin-top:20px; font-size:0.82rem; color:white; opacity:0; animation:heroFadeUp 0.9s ease 1.4s forwards; }
+    .hero-float-badge i { color:#ffd700; }
+
+    /* ─── ACHIEVEMENT STRIP ─── */
+    .achievement-strip { background:#8b0000; padding:70px 0; }
+    .achievement-col { border-right:1px solid rgba(255,255,255,.2); }
+    .no-border { border-right:none; }
+    .achievement-box { padding:20px 10px; transition:.4s ease; }
+    .achievement-box:hover { transform:translateY(-8px); }
+    .achievement-box h2 { font-size:62px; font-weight:800; color:#ffd400; margin-bottom:12px; line-height:1; }
+    .achievement-box p { font-size:20px; font-weight:500; color:#fff; margin:0; }
+    @media(max-width:991px){ .achievement-col{border-right:none;margin-bottom:30px;} }
+    @media(max-width:576px){ .achievement-strip{padding:50px 0;} .achievement-box h2{font-size:42px;} .achievement-box p{font-size:16px;} }
+
+    /* ─── OVERVIEW ─── */
+    .overview-section { padding:90px 0; background:#fff; }
+    .overview-img-wrap { position:relative; border-radius:20px; overflow:hidden; box-shadow:0 20px 60px rgba(139,0,0,0.15); }
+    .overview-img-wrap img { width:100%; height:400px; object-fit:cover; }
+    .overview-stat-badge { position:absolute; bottom:20px; left:20px; background:white; border-radius:12px; padding:14px 20px; display:flex; gap:20px; box-shadow:0 8px 30px rgba(0,0,0,0.15); }
+    .overview-stat-badge .num { font-family:'Montserrat',sans-serif; font-weight:900; font-size:1.4rem; color:var(--primary); line-height:1; }
+    .overview-stat-badge .lbl { font-size:0.7rem; color:var(--text-muted); font-weight:500; }
+    .feature-list { list-style:none; padding:0; margin:0 0 25px; }
+    .feature-list li { display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:0.92rem; color:var(--text-muted); line-height:1.6; }
+    .feature-list li i { color:var(--primary); font-size:0.75rem; margin-top:5px; flex-shrink:0; width:18px; height:18px; background:rgba(139,0,0,0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; }
+
+    /* ─── WHY SECTION ─── */
+    .why-section { padding:90px 0; background:var(--light-gray); }
+    .why-card { background:white; border-radius:16px; padding:32px 24px; height:100%; transition:all 0.3s ease; border:1px solid transparent; box-shadow:0 4px 20px rgba(0,0,0,0.05); }
+    .why-card:hover { transform:translateY(-8px); border-color:var(--border-light); box-shadow:0 16px 40px rgba(139,0,0,0.12); }
+    .why-icon { width:56px; height:56px; background:linear-gradient(135deg,rgba(139,0,0,0.12),rgba(139,0,0,0.06)); border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; color:var(--primary); margin-bottom:18px; transition:all 0.3s; }
+    .why-card:hover .why-icon { background:linear-gradient(135deg,var(--primary),var(--primary-light)); color:white; }
+    .why-card h5 { font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.98rem; margin-bottom:10px; color:var(--text-dark); }
+    .why-card p { font-size:0.87rem; color:var(--text-muted); line-height:1.7; margin:0; text-align:justify; }
+
+    /* ─── IMAGE+CONTENT SECTIONS ─── */
+    .img-content-section { padding:90px 0; }
+    .img-content-section.alt-bg { background:var(--light-gray); }
+    .img-block { position:relative; border-radius:20px; overflow:hidden; box-shadow:0 20px 60px rgba(139,0,0,0.12); }
+    .img-block img { width:100%; height:420px; object-fit:cover; display:block; }
+    .img-block-overlay { position:absolute; inset:0; background:linear-gradient(180deg,transparent 50%,rgba(92,0,0,0.6) 100%); }
+    .img-block-badge { position:absolute; bottom:18px; left:18px; background:white; border-radius:10px; padding:10px 16px; font-family:'Montserrat',sans-serif; font-size:0.8rem; font-weight:800; color:var(--primary); box-shadow:0 4px 20px rgba(0,0,0,0.15); }
+    .benefit-item { display:flex; gap:18px; margin-bottom:24px; align-items:flex-start; }
+    .benefit-num { width:42px; height:42px; background:linear-gradient(135deg,var(--primary),var(--primary-light)); color:white; border-radius:12px; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:900; font-size:0.85rem; flex-shrink:0; }
+    .benefit-item h6 { font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.95rem; margin-bottom:5px; color:var(--text-dark); }
+    .benefit-item p { font-size:0.87rem; color:var(--text-muted); line-height:1.7; margin:0; text-align:justify; }
+    .bullet-check-list { list-style:none; padding:0; margin:0 0 28px; }
+    .bullet-check-list li { display:flex; align-items:flex-start; gap:12px; margin-bottom:14px; font-size:0.9rem; color:var(--text-muted); line-height:1.6; }
+    .bullet-check-list li .chk { width:22px; height:22px; background:var(--primary); color:white; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:0.62rem; flex-shrink:0; margin-top:1px; }
+    .btn-section-primary { display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg,var(--primary),var(--primary-light)); color:white; padding:13px 28px; border-radius:50px; font-weight:700; font-size:0.92rem; text-decoration:none; transition:all 0.3s ease; box-shadow:0 8px 25px var(--primary-glow); position:relative; overflow:hidden; }
+    .btn-section-primary:hover { transform:translateY(-3px); box-shadow:0 12px 35px var(--primary-glow); color:white; }
+    .btn-section-outline { display:inline-flex; align-items:center; gap:8px; background:transparent; color:var(--primary); padding:12px 26px; border-radius:50px; font-weight:700; font-size:0.92rem; text-decoration:none; border:2px solid var(--primary); transition:all 0.3s ease; margin-left:14px; }
+    .btn-section-outline:hover { background:var(--primary); color:white; transform:translateY(-3px); }
+
+    /* ─── MODULES ─── */
+    .modules-section { padding:90px 0; background:#fff; }
+    .module-card { background:white; border-radius:14px; padding:24px 20px; border:1.5px solid rgba(139,0,0,0.1); transition:all 0.3s ease; height:100%; }
+    .module-card:hover { transform:translateY(-6px); border-color:var(--primary); box-shadow:0 16px 40px rgba(139,0,0,0.12); }
+    .module-icon { width:48px; height:48px; background:linear-gradient(135deg,rgba(139,0,0,0.1),rgba(139,0,0,0.05)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; color:var(--primary); margin-bottom:14px; transition:all 0.3s; }
+    .module-card:hover .module-icon { background:linear-gradient(135deg,var(--primary),var(--primary-light)); color:white; }
+    .module-card h6 { font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.9rem; margin-bottom:8px; color:var(--text-dark); }
+    .module-card p { font-size:0.82rem; color:var(--text-muted); line-height:1.6; margin:0; text-align:justify; }
+    .module-tag { display:inline-block; background:rgba(139,0,0,0.08); color:var(--primary); font-size:0.68rem; font-weight:700; padding:3px 10px; border-radius:50px; margin-bottom:12px; font-family:'Montserrat',sans-serif; letter-spacing:0.5px; }
+
+    /* ─── WORKFLOW CARDS ─── */
+    .workflow-section { padding:90px 0; background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 60%,#c0392b 100%); position:relative; overflow:hidden; }
+    .workflow-section::before { content:''; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+    .workflow-card { background:rgba(255,255,255,0.08); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.15); border-radius:16px; padding:28px 22px; transition:all 0.3s ease; height:100%; cursor:default; }
+    .workflow-card:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.3); transform:translateY(-6px); box-shadow:0 16px 40px rgba(0,0,0,0.2); }
+    .workflow-icon { width:56px; height:56px; background:rgba(255,215,0,0.15); border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; color:#ffd700; margin-bottom:16px; transition:all 0.3s; }
+    .workflow-card:hover .workflow-icon { background:rgba(255,215,0,0.25); }
+    .workflow-card h5 { font-family:'Montserrat',sans-serif; font-weight:800; font-size:1rem; color:white; margin-bottom:10px; }
+    .workflow-card p { font-size:0.86rem; color:rgba(255,255,255,0.78); line-height:1.7; margin:0; text-align:justify; }
+
+    /* ─── CAREER ─── */
+    .career-section { padding:90px 0; background:var(--light-gray); }
+    .career-card { background:white; border-radius:16px; padding:28px 22px; border:1.5px solid rgba(139,0,0,0.08); transition:all 0.3s ease; height:100%; }
+    .career-card:hover { transform:translateY(-6px); border-color:var(--primary); box-shadow:0 16px 40px rgba(139,0,0,0.12); }
+    .career-role { font-family:'Montserrat',sans-serif; font-weight:900; font-size:0.95rem; color:var(--text-dark); margin-bottom:8px; }
+    .career-salary { font-family:'Montserrat',sans-serif; font-weight:800; font-size:1.1rem; color:var(--primary); margin-bottom:10px; }
+    .career-demand { display:flex; align-items:center; gap:8px; margin-bottom:14px; }
+    .demand-bar { flex:1; height:6px; background:rgba(139,0,0,0.12); border-radius:3px; overflow:hidden; }
+    .demand-fill { height:100%; background:linear-gradient(90deg,var(--primary),var(--primary-light)); border-radius:3px; transition:width 1.2s ease; }
+    .demand-label { font-size:0.72rem; font-weight:700; color:var(--primary); font-family:'Montserrat',sans-serif; white-space:nowrap; }
+    .career-tags { display:flex; flex-wrap:wrap; gap:6px; }
+    .career-tag { background:rgba(139,0,0,0.07); color:var(--primary); font-size:0.7rem; font-weight:600; padding:3px 10px; border-radius:50px; }
+    .career-icon { width:48px; height:48px; background:linear-gradient(135deg,rgba(139,0,0,0.1),rgba(139,0,0,0.05)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; color:var(--primary); margin-bottom:14px; transition:all 0.3s; }
+    .career-card:hover .career-icon { background:linear-gradient(135deg,var(--primary),var(--primary-light)); color:white; }
+
+    /* ─── LEARNING PROCESS ─── */
+    .learning-section { padding:90px 0; background:#fff; }
+    .timeline-wrap { position:relative; padding:20px 0; }
+    .timeline-wrap::before { content:''; position:absolute; left:50%; top:0; bottom:0; width:2px; background:linear-gradient(180deg,var(--primary),rgba(139,0,0,0.2)); transform:translateX(-50%); }
+    .timeline-step { display:flex; gap:40px; align-items:center; margin-bottom:48px; position:relative; }
+    .timeline-step:last-child { margin-bottom:0; }
+    .timeline-step.right { flex-direction:row-reverse; }
+    .timeline-content { flex:1; background:white; border-radius:16px; padding:28px 26px; box-shadow:0 8px 30px rgba(0,0,0,0.07); border:1.5px solid rgba(139,0,0,0.08); transition:all 0.3s; }
+    .timeline-content:hover { border-color:var(--primary); box-shadow:0 12px 40px rgba(139,0,0,0.1); transform:translateY(-3px); }
+    .timeline-num { width:54px; height:54px; background:linear-gradient(135deg,var(--primary),var(--primary-light)); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:900; font-size:1.1rem; flex-shrink:0; box-shadow:0 6px 20px var(--primary-glow); z-index:2; position:relative; }
+    .timeline-content h5 { font-family:'Montserrat',sans-serif; font-weight:800; font-size:1rem; color:var(--text-dark); margin-bottom:8px; }
+    .timeline-content p { font-size:0.87rem; color:var(--text-muted); line-height:1.7; margin:0; text-align:justify; }
+    .step-icon { font-size:1.5rem; color:var(--primary); margin-bottom:10px; }
+    @media(max-width:768px){
+      .timeline-wrap::before{display:none;}
+      .timeline-step,.timeline-step.right{flex-direction:column;gap:16px;}
+      .timeline-num{margin:0 auto;}
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    .testi-section { padding:90px 0; background:var(--light-gray); }
+    .testi-wrapper { overflow:hidden; position:relative; }
+    .testi-track { display:flex; gap:24px; transition:transform 0.5s cubic-bezier(0.4,0,0.2,1); }
+    .testi-card { background:white; border-radius:20px; padding:32px 28px; flex:0 0 calc(33.333% - 16px); box-shadow:0 8px 30px rgba(0,0,0,0.06); border:1.5px solid rgba(139,0,0,0.06); transition:all 0.3s; position:relative; overflow:hidden; }
+    .testi-card::before { content:'"'; position:absolute; top:-10px; right:20px; font-size:8rem; color:rgba(139,0,0,0.06); font-family:'Montserrat',sans-serif; font-weight:900; line-height:1; pointer-events:none; }
+    .testi-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(139,0,0,0.12); border-color:var(--border-light); }
+    .testi-stars { color:#ffc107; font-size:0.85rem; margin-bottom:14px; }
+    .testi-text { font-size:0.9rem; color:var(--text-muted); line-height:1.8; margin-bottom:22px; font-style:italic; text-align:justify; }
+    .testi-author { display:flex; align-items:center; gap:14px; }
+    .testi-avatar { width:46px; height:46px; border-radius:50%; background:linear-gradient(135deg,var(--primary),var(--primary-light)); display:flex; align-items:center; justify-content:center; color:white; font-weight:800; font-size:1.1rem; font-family:'Montserrat',sans-serif; flex-shrink:0; }
+    .testi-name { font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.9rem; color:var(--text-dark); }
+    .testi-role { font-size:0.75rem; color:var(--text-muted); }
+    .testi-company { font-size:0.72rem; color:var(--primary); font-weight:700; font-family:'Montserrat',sans-serif; }
+    .testi-controls { display:flex; align-items:center; gap:14px; margin-top:32px; }
+    .testi-btn { width:44px; height:44px; border:2px solid var(--border-light); border-radius:50%; background:white; color:var(--primary); cursor:pointer; transition:all 0.3s; display:flex; align-items:center; justify-content:center; }
+    .testi-btn:hover { background:var(--primary); color:white; border-color:var(--primary); transform:scale(1.1); }
+    .testi-dots { display:flex; gap:8px; }
+    .testi-dot { width:8px; height:8px; border-radius:50%; background:rgba(139,0,0,0.2); cursor:pointer; transition:all 0.3s; }
+    .testi-dot.active { background:var(--primary); transform:scale(1.3); }
+    @media(max-width:991px){ .testi-card{flex:0 0 calc(50% - 12px);} }
+    @media(max-width:575px){ .testi-card{flex:0 0 100%;} }
+
+    /* ─── FAQ ─── */
+    .faq-section { padding:90px 0; background:#fff; }
+    .accordion-button { font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.95rem; color:var(--text-dark); background:#fff; border-radius:12px !important; padding:18px 22px; }
+    .accordion-button:not(.collapsed) { color:var(--primary); background:rgba(139,0,0,0.04); box-shadow:none; }
+    .accordion-button::after { filter:none; }
+    .accordion-button:not(.collapsed)::after { color:var(--primary); }
+    .accordion-button:focus { box-shadow:none; border-color:rgba(139,0,0,0.2); }
+    .accordion-item { border:1.5px solid rgba(139,0,0,0.1); border-radius:12px !important; margin-bottom:12px; overflow:hidden; }
+    .accordion-body { font-size:0.9rem; color:var(--text-muted); line-height:1.8; padding:0 22px 20px; text-align:justify; }
+
+    /* ─── CTA ─── */
+    .cta-section { background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 50%,#c0392b 100%); padding:100px 0; position:relative; overflow:hidden; }
+    .cta-section::before { content:''; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='40' cy='40' r='30'/%3E%3C/g%3E%3C/svg%3E"); }
+    .cta-title { font-family:'Montserrat',sans-serif; font-weight:900; font-size:clamp(2rem,4vw,2.8rem); color:white; line-height:1.15; margin-bottom:18px; }
+    .cta-subtitle { font-size:1.05rem; color:rgba(255,255,255,0.85); line-height:1.7; max-width:600px; margin:0 auto 36px; }
+    .btn-cta-glow { display:inline-flex; align-items:center; gap:10px; background:white; color:var(--primary); padding:15px 38px; border-radius:50px; font-weight:800; font-size:1rem; text-decoration:none; transition:all 0.3s ease; box-shadow:0 8px 40px rgba(0,0,0,0.25); font-family:'Montserrat',sans-serif; letter-spacing:0.5px; }
+    .btn-cta-glow:hover { transform:translateY(-4px) scale(1.03); box-shadow:0 16px 50px rgba(0,0,0,0.35); color:var(--primary-dark); }
+
+    /* ─── FOOTER ─── */
+    footer { background:linear-gradient(135deg,#1a0000 0%,#2d0000 100%); padding:70px 0 0; }
+    .footer-brand { margin-bottom:20px; }
+    .footer-desc { font-size:0.87rem; color:rgba(255,255,255,0.5); line-height:1.8; margin-bottom:24px; }
+    .footer-socials { display:flex; gap:10px; }
+    .footer-social-btn { width:38px; height:38px; border-radius:10px; background:rgba(255,255,255,0.07); color:rgba(255,255,255,0.6); display:flex; align-items:center; justify-content:center; font-size:0.85rem; text-decoration:none; transition:all 0.3s; }
+    .footer-social-btn:hover { background:var(--primary); color:white; transform:translateY(-3px); }
+    .footer-heading { font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.85rem; color:rgba(255,255,255,0.85); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:20px; position:relative; padding-bottom:12px; }
+    .footer-heading::after { content:''; position:absolute; bottom:0; left:0; width:30px; height:2px; background:var(--primary); border-radius:2px; }
+    .footer-links { list-style:none; padding:0; margin:0; }
+    .footer-links li { margin-bottom:10px; }
+    .footer-links a { color:rgba(255,255,255,0.5); text-decoration:none; font-size:0.87rem; transition:all 0.3s; display:flex; align-items:center; gap:8px; }
+    .footer-links a:hover { color:white; padding-left:4px; }
+    .footer-links a i { font-size:0.65rem; color:var(--primary); }
+    .footer-contact li { display:flex; gap:14px; align-items:flex-start; margin-bottom:14px; color:rgba(255,255,255,0.5); font-size:0.87rem; line-height:1.6; }
+    .footer-contact li i { color:var(--primary); margin-top:3px; flex-shrink:0; }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,0.07); margin-top:50px; padding:22px 0; font-size:0.83rem; color:rgba(255,255,255,0.35); }
+    .footer-newsletter { margin-top:24px; }
+    .footer-newsletter h6 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.85rem; color:rgba(255,255,255,0.7); margin-bottom:12px; }
+    .newsletter-form { display:flex; gap:8px; }
+    .newsletter-form input { flex:1; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); border-radius:8px; padding:10px 14px; color:white; font-size:0.85rem; outline:none; }
+    .newsletter-form input::placeholder { color:rgba(255,255,255,0.35); }
+    .newsletter-form button { background:var(--primary); color:white; border:none; border-radius:8px; padding:10px 16px; cursor:pointer; transition:all 0.3s; }
+    .newsletter-form button:hover { background:var(--primary-light); transform:scale(1.05); }
+
+    /* ─── GLASSMORPHISM HIGHLIGHT ─── */
+    .glass-card { background:rgba(255,255,255,0.08); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.15); border-radius:16px; padding:28px 24px; }
+    .glow-border { border:1.5px solid rgba(139,0,0,0.2); box-shadow:0 0 20px rgba(139,0,0,0.08); }
+
+    /* ─── SKILLS BAR ─── */
+    .skill-row { margin-bottom:18px; }
+    .skill-label { display:flex; justify-content:space-between; font-size:0.85rem; font-weight:600; color:var(--text-dark); margin-bottom:6px; }
+    .skill-bar { height:8px; background:rgba(139,0,0,0.1); border-radius:4px; overflow:hidden; }
+    .skill-bar-fill { height:100%; background:linear-gradient(90deg,var(--primary),var(--primary-light)); border-radius:4px; width:0; transition:width 1.2s ease; }
+
+    /* ─── GRADIENT CONTAINER ─── */
+    .gradient-band { background:linear-gradient(135deg,rgba(139,0,0,0.05) 0%,rgba(92,0,0,0.03) 100%); border:1px solid rgba(139,0,0,0.1); border-radius:20px; padding:40px 36px; }
+
+    /* ─── RESPONSIVE FIXES ─── */
+    @media(max-width:768px){
+      .img-block img{height:280px;}
+      .overview-img-wrap img{height:280px;}
+      .hero-title{font-size:1.8rem;}
+      .hero-desc{font-size:0.92rem;}
+    }
+    @media(max-width:576px){
+      .btn-section-outline{margin-left:0;margin-top:12px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<!-- <div id="loader">
+  <div class="loader-inner">
+    <div class="loader-logo">CAD<span>POINT</span></div>
+    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+  </div>
+</div> -->
+
+<!-- BACK TO TOP -->
+<button id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+<!-- ═══════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════ -->
+<div id="header"></div>
+
+
+
+<!-- BREADCRUMB SLIDER -->
+<div class="breadcrumb-slider">
+  <div class="breadcrumb-track">
+    <span class="breadcrumb-item-slide"><i class="fas fa-file-invoice-dollar"></i> GST Filing</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-landmark"></i> Income Tax</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-users"></i> Payroll Management</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-percentage"></i> TDS Concepts</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-calculator"></i> Tally Integration</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-chart-bar"></i> Financial Reporting</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-certificate"></i> Certification</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-briefcase"></i> Placement Support</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-file-invoice-dollar"></i> GST Filing</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-landmark"></i> Income Tax</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-users"></i> Payroll Management</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-percentage"></i> TDS Concepts</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-calculator"></i> Tally Integration</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-chart-bar"></i> Financial Reporting</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-certificate"></i> Certification</span>
+    <span class="breadcrumb-item-slide"><i class="fas fa-briefcase"></i> Placement Support</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     HERO SECTION
+═══════════════════════════════════════════ -->
+<section class="hero-section" id="home">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-blob hero-blob-3"></div>
+  <div class="container position-relative" style="z-index:2">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10 col-12 text-center">
+        <div class="hero-badge">
+          <span>&#9733;</span>  GST &amp; Taxation Training — CADPOINT
+        </div>
+        <h1 class="hero-title" id="heroTitle">
+          Master <span class="highlight">GST &amp; Taxation</span> and Build Your Finance Career
+        </h1>
+        <p class="hero-desc" style="margin-left:auto;margin-right:auto;">
+          From GST filing systems and taxation workflows to accounting principles, financial compliance, payroll management, and business finance operations — gain complete expertise to excel in India's booming finance and accounting sector.
+        </p>
+        <!-- <div class="hero-pills justify-content-center">
+          <span class="hero-pill"><i class="fas fa-clock"></i> 4–6 Months Program</span>
+          <span class="hero-pill"><i class="fas fa-laptop"></i> Live + Practical Training</span>
+          <span class="hero-pill"><i class="fas fa-certificate"></i> Industry Certification</span>
+          <span class="hero-pill"><i class="fas fa-briefcase"></i> Placement Support</span>
+        </div> -->
+        <div class="hero-btns justify-content-center">
+          <a href="https://wa.me/919895352624" class="btn-hero-primary ripple"><i class="fas fa-rocket"></i> Start Learning</a>
+          <a href="tel:+919895352624" class="btn-hero-outline"><i class="fas fa-eye"></i> Course Enquiry</a>
+        </div>
+        <!-- <div class="hero-float-badge justify-content-center">
+          <i class="fas fa-shield-alt"></i> ISO Certified Training &nbsp;|&nbsp; <i class="fas fa-star"></i> 14+ Years Excellence &nbsp;|&nbsp; <i class="fas fa-users"></i> 5,000+ Students Trained
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <!-- Wave divider ONLY here -->
+  <div class="hero-wave w-100" style="position:absolute;bottom:0;left:0;right:0;">
+    <svg viewBox="0 0 1440 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,60 C360,100 1080,20 1440,60 L1440,90 L0,90 Z" fill="#ffffff"/>
+    </svg>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     COURSE OVERVIEW
+═══════════════════════════════════════════ -->
+<section class="overview-section" id="overview">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-5" data-aos="fade-right">
+        
+          <img src="assets/image/gst-taxation.webp" alt="GST Taxation Course Overview" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80';this.onerror=null;">
+          
+       
+      </div>
+      <div class="col-lg-7" data-aos="fade-left">
+        <div class="section-tag"><i class="fas fa-info-circle"></i> Course Overview</div>
+        <h2 class="section-title mb-3">GST &amp; <span>Taxation</span> Course</h2>
+        <p class="text-muted mb-4" style="line-height:1.8;text-align:justify;">The GST & Taxation Course at CADPOINT is a comprehensive program designed for students, graduates, and professionals seeking expertise in taxation and accounting. The course covers GST fundamentals including CGST, SGST, IGST, input tax credit, and GST return filing, along with Income Tax, TDS, payroll management, PF, ESI, and statutory compliance. Participants receive practical training in Tally Prime, GST portal operations, financial reporting, MIS preparation, and audit handling. Hands-on experience in filing GSTR-1, GSTR-3B, and income tax returns ensures job readiness for accounting and finance roles across industries with strong practical and compliance-oriented knowledge.</p>
+        <!-- <ul class="feature-list">
+          <li><i class="fas fa-check"></i><span>Complete GST fundamentals — CGST, SGST, IGST, input tax credit, and return filing</span></li>
+          <li><i class="fas fa-check"></i><span>Income Tax Act basics, ITR filing, deductions, exemptions, and tax planning</span></li>
+          <li><i class="fas fa-check"></i><span>TDS concepts, TDS deduction, TDS returns, and Form 26AS reconciliation</span></li>
+          <li><i class="fas fa-check"></i><span>Payroll processing, salary structures, PF, ESI, and statutory compliance</span></li>
+          <li><i class="fas fa-check"></i><span>Tally Prime integration for GST accounting, billing, and financial reporting</span></li>
+          <li><i class="fas fa-check"></i><span>Financial statement preparation, MIS reports, and business compliance auditing</span></li>
+        </ul> -->
+        <div class="d-flex flex-wrap gap-2 mt-2">
+          <a href="tel:+919895352624" class="btn-section-primary ripple"><i class="fas fa-rocket"></i> Enroll Now</a>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     WHY LEARN GST & TAXATION
+═══════════════════════════════════════════ -->
+<section class="why-section" id="why-gst">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-star"></i> Why GST &amp; Taxation?</div>
+      <h2 class="section-title">Why <span>GST &amp; Taxation</span> is the Most In-Demand Finance Skill</h2>
+      <p class="section-sub mt-3">Every business in India must comply with GST and taxation regulations — creating permanent, massive demand for skilled finance and accounting professionals.</p>
+    </div>
+    <div class="row gy-4">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-chart-line"></i></div>
+          <h5>Booming Finance &amp; Accounting Sector</h5>
+          <p>India's finance sector employs over 30 lakh professionals with consistent 15% annual growth. Every startup, MSME, and corporation needs GST-trained accountants and tax consultants to remain compliant.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-rupee-sign"></i></div>
+          <h5>Stable &amp; High-Paying Career Growth</h5>
+          <p>GST Executives and Tax Consultants earn ₹3–12 LPA with rapid salary growth based on experience, certifications, and specializations in direct and indirect taxation domains.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-building"></i></div>
+          <h5>Demand Across All Industries</h5>
+          <p>From manufacturing companies to IT firms, e-commerce platforms, healthcare, retail, and real estate — every industry segment requires GST compliance specialists and financial accountants.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-briefcase"></i></div>
+          <h5>Freelance &amp; Independent Consulting</h5>
+          <p>Certified GST practitioners and tax consultants enjoy lucrative freelance opportunities — filing returns for multiple clients, managing payroll systems, and providing financial advisory services.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-balance-scale"></i></div>
+          <h5>Mandatory Business Compliance</h5>
+          <p>GST compliance is legally mandatory for businesses with annual turnover above ₹20 lakh — creating permanent, crisis-proof demand for GST professionals across India's 6 crore+ registered businesses.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-certificate"></i></div>
+          <h5>Certification &amp; Professional Value</h5>
+          <p>A recognized GST and Taxation certification adds significant value to your resume — opening doors to MNC finance roles, CA firm placements, government accounting positions, and corporate finance careers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     GST FILING SECTION — IMAGE + CONTENT
+═══════════════════════════════════════════ -->
+<section class="img-content-section" id="gst-filing">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-5" data-aos="fade-right">
+        <!-- <div class="img-block"> -->
+          <img src="assets/image/gst-filling.webp" alt="GST Filing System" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80';this.onerror=null;">
+          <!-- <div class="img-block-overlay"></div>
+          <div class="img-block-badge"><i class="fas fa-file-invoice-dollar me-1"></i> GST Portal Filing</div>
+        </div> -->
+      </div>
+      <div class="col-lg-7" data-aos="fade-left">
+        <div class="section-tag"><i class="fas fa-file-invoice-dollar"></i> GST Filing Systems</div>
+        <h2 class="section-title mb-3"> <span>GST Filing</span> &amp; Management</h2>
+        <p class="text-muted mb-4" style="line-height:1.8;text-align:justify;">Master India's GST portal workflow from registration to quarterly and monthly return filing. This module covers GSTIN registration, invoice management under GST, input tax credit (ITC) reconciliation, e-way bill generation, GSTR-1, GSTR-3B, GSTR-9 filing, and handling GST notices.</p>
+        <div class="benefit-item">
+          <div class="benefit-num">01</div>
+          <div>
+            <h6>GSTR-1 &amp; GSTR-3B Monthly Return Filing</h6>
+            <p>Learn to file outward supply returns (GSTR-1) and summary returns (GSTR-3B) accurately — including adjustments, amendments, and nil returns for small businesses.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-num">02</div>
+          <div>
+            <h6>Input Tax Credit (ITC) Reconciliation</h6>
+            <p>Understand ITC eligibility rules, GSTR-2A/2B reconciliation with purchase registers, and reversal provisions to ensure maximum tax benefit for businesses.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-num">03</div>
+          <div>
+            <h6>E-Way Bill &amp; Invoice Management</h6>
+            <p>Master e-way bill generation, invoice formats under GST, debit/credit note procedures, and reverse charge mechanism applicable to various business transactions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     INCOME TAX — IMAGE + BULLETS
+═══════════════════════════════════════════ -->
+<!-- <section class="img-content-section alt-bg" id="income-tax">
+  <div class="container">
+    <div class="row align-items-center gy-5 flex-lg-row-reverse">
+      <div class="col-lg-5" data-aos="fade-left">
+        <div class="img-block">
+          <img src="assets/image/income-tax.webp" alt="Income Tax Training" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1591696205602-2f950c417cb9?w=600&q=80';this.onerror=null;">
+          <div class="img-block-overlay"></div>
+          <div class="img-block-badge"><i class="fas fa-landmark me-1"></i> Income Tax ITR Filing</div>
+        </div>
+      </div>
+      <div class="col-lg-7" data-aos="fade-right">
+        <div class="section-tag"><i class="fas fa-landmark"></i> Income Tax</div>
+        <h2 class="section-title mb-3">Income Tax Concepts &amp; <span>ITR Filing</span></h2>
+        <p class="text-muted mb-4" style="line-height:1.8;text-align:justify;">Develop thorough knowledge of the Indian Income Tax Act, tax slabs, deductions under Chapter VI-A, TDS procedures, and advance tax calculations. Learn to file ITR-1 through ITR-4 for individuals, salaried employees, and small businesses — covering practical cases like House Rent Allowance, 80C deductions, 80D health insurance, and capital gains reporting.</p>
+        <ul class="bullet-check-list">
+          <li><span class="chk"><i class="fas fa-check"></i></span><span>Income Tax slabs, exemptions, and deduction planning for salaried and business taxpayers</span></li>
+          <li><span class="chk"><i class="fas fa-check"></i></span><span>ITR-1, ITR-2, ITR-3, and ITR-4 filing for different taxpayer categories with real examples</span></li>
+          <li><span class="chk"><i class="fas fa-check"></i></span><span>Chapter VI-A deductions — 80C, 80D, 80E, 80G, 80TTA for tax optimization strategies</span></li>
+          <li><span class="chk"><i class="fas fa-check"></i></span><span>Advance tax calculation, self-assessment tax, and interest provisions under sections 234A/B/C</span></li>
+          <li><span class="chk"><i class="fas fa-check"></i></span><span>Capital gains taxation on property, mutual funds, and equity shares with indexation benefits</span></li>
+          <li><span class="chk"><i class="fas fa-check"></i></span><span>Income Tax notices, scrutiny assessments, and appeal procedures handling</span></li>
+        </ul>
+        <a href="contact.html" class="btn-section-primary ripple"><i class="fas fa-rocket"></i> Start Income Tax Training</a>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- ═══════════════════════════════════════════
+     PAYROLL PROCESSING — IMAGE + CONTENT
+═══════════════════════════════════════════ -->
+<section class="img-content-section" id="payroll">
+  <div class="container">
+    <div class="row align-items-center gy-5 flex-row-reverse">
+      <div class="col-lg-5" data-aos="fade-right">
+        <!-- <div class="img-block"> -->
+          <img src="assets/image/payroll.webp" alt="Payroll Management" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80';this.onerror=null;">
+          <!-- <div class="img-block-overlay"></div>
+          <div class="img-block-badge"><i class="fas fa-users me-1"></i> Payroll Systems</div>
+        </div> -->
+       </div> 
+      <div class="col-lg-7" data-aos="fade-left">
+        <div class="section-tag"><i class="fas fa-users"></i> Payroll Management</div>
+        <h2 class="section-title mb-3"><span>Payroll Processing</span></h2>
+        <p class="text-muted mb-4" style="line-height:1.8;text-align:justify;">Master complete payroll management workflows including salary structure design, CTC breakdowns, statutory deductions, and payslip generation. This module covers PF, ESI, Professional Tax, Gratuity calculations, leave management, Form 16 generation, and full-and-final settlement procedures — essential knowledge for payroll executives and HR finance professionals.</p>
+        <div class="benefit-item">
+          <div class="benefit-num">01</div>
+          <div>
+            <h6>Salary Structure &amp; CTC Breakdown</h6>
+            <p>Design comprehensive salary structures with Basic Pay, HRA, Conveyance, Medical, Special Allowances, and variable components aligned with company policies and statutory requirements.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-num">02</div>
+          <div>
+            <h6>PF, ESI &amp; Statutory Compliance</h6>
+            <p>Process Provident Fund contributions, ESIC deductions, Professional Tax, and Labour Welfare Fund accurately while filing monthly ECR returns and generating challan payments.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-num">03</div>
+          <div>
+            <h6>Form 16 &amp; Full &amp; Final Settlement</h6>
+            <p>Generate Part A and Part B of Form 16 for employees, handle full and final settlements, gratuity calculations, and process TDS on salary as per IT Act provisions.</p>
+          </div>
+        </div>
+        <a href="https://wa.me/919895352624" class="btn-section-primary ripple mt-2"><i class="fas fa-graduation-cap"></i> Contact for Course Enquiry</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     STATS STRIP
+═══════════════════════════════════════════ -->
+<section class="achievement-strip">
+  <div class="container">
+    <div class="row text-center gy-4">
+      <div class="col-6 col-md-3 achievement-col" data-aos="fade-up" data-aos-delay="0">
+        <div class="achievement-box">
+          <h2 data-count="5000">0+</h2>
+          <p>Students Trained</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 achievement-col" data-aos="fade-up" data-aos-delay="100">
+        <div class="achievement-box">
+          <h2 data-count="1200">0+</h2>
+          <p>Projects Completed</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 achievement-col" data-aos="fade-up" data-aos-delay="200">
+        <div class="achievement-box">
+          <h2 data-count="92">0+</h2>
+          <p>Placement Rate %</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 no-border" data-aos="fade-up" data-aos-delay="300">
+        <div class="achievement-box">
+          <h2 data-count="14">0+</h2>
+          <p>Years Excellence</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     TDS + TALLY — IMAGE + BULLETS
+═══════════════════════════════════════════ -->
+<section class="img-content-section alt-bg" id="tds-tally">
+  <div class="container">
+    <div class="row align-items-center gy-5 flex-lg-row-reverse">
+      <div class="col-lg-5" data-aos="fade-left">
+        <!-- <div class="img-block"> -->
+          <img src="assets/image/tally-prime.webp" alt="Tally GST Accounting" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80';this.onerror=null;">
+          <!-- <div class="img-block-overlay"></div>
+          <div class="img-block-badge"><i class="fas fa-calculator me-1"></i> Tally Prime + TDS</div>
+        </div> -->
+      </div>
+      <div class="col-lg-7" data-aos="fade-right">
+        <div class="section-tag"><i class="fas fa-percentage"></i> TDS &amp; Tally Integration</div>
+        <h2 class="section-title mb-3">TDS Management &amp; <span>Tally Prime</span> Integration</h2>
+        <p class="text-muted mb-4" style="line-height:1.8;text-align:justify;">Gain comprehensive knowledge of Tax Deducted at Source (TDS) provisions under the Income Tax Act alongside hands-on Tally Prime training for GST accounting, billing, inventory management, and financial reporting. Learn to manage TDS deductions, deposit challans, file TDS returns (24Q/26Q), and generate Form 16/16A using Tally Prime's integrated tax accounting platform.</p>
+        <ul class="bullet-check-list">
+          
+          <li><span class="chk"><i class="fas fa-check"></i></span><span>Tally Prime setup, GST accounting configuration, ledger creation, and voucher entries</span></li>
+          <li><span class="chk"><i class="fas fa-check"></i></span><span>GST-compliant billing, credit/debit notes, and e-invoice generation in Tally Prime</span></li>
+          <li><span class="chk"><i class="fas fa-check"></i></span><span>Bank reconciliation, outstanding reports, daybook analysis, and MIS dashboard in Tally</span></li>
+          <li><span class="chk"><i class="fas fa-check"></i></span><span>Balance sheet, profit &amp; loss account, and cash flow statement preparation in Tally Prime</span></li>
+        </ul>
+        <a href="https://wa.me/919895352624" class="btn-section-primary ripple"><i class="fas fa-rocket"></i> Course Enquiry</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ═══════════════════════════════════════════
+     COURSE MODULES
+═══════════════════════════════════════════ -->
+<section class="modules-section" id="modules">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-book-open"></i> Course Curriculum</div>
+      <h2 class="section-title">Complete GST &amp; Taxation <span>Course Modules</span></h2>
+      <p class="section-sub mt-3">A structured, industry-aligned curriculum covering every aspect of GST, taxation, payroll, accounting, and financial compliance.</p>
+    </div>
+    <div class="row gy-4">
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="module-card">
+          <span class="module-tag">Module 01</span>
+          <div class="module-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+          <h6>GST Fundamentals</h6>
+          <p>Concept of GST, types (CGST/SGST/IGST/UTGST), GST registration, composition scheme, taxable supply, exempt supply, and GST council structure.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+        <div class="module-card">
+          <span class="module-tag">Module 02</span>
+          <div class="module-icon"><i class="fas fa-upload"></i></div>
+          <h6>GST Return Filing</h6>
+          <p>GSTR-1, GSTR-3B, GSTR-4, GSTR-9, GSTR-9C filing on the GST portal — monthly, quarterly, and annual return workflows with late fees and penalties.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="module-card">
+          <span class="module-tag">Module 03</span>
+          <div class="module-icon"><i class="fas fa-landmark"></i></div>
+          <h6>Income Tax Concepts</h6>
+          <p>Income heads, assessment year vs financial year, residential status, taxable income computation, deductions, exemptions, and advance tax provisions.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="module-card">
+          <span class="module-tag">Module 04</span>
+          <div class="module-icon"><i class="fas fa-file-alt"></i></div>
+          <h6>ITR Filing Systems</h6>
+          <p>Practical ITR-1 to ITR-4 filing for salaried employees, professionals, and small businesses on the Income Tax portal with all schedules and declarations.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+        <div class="module-card">
+          <span class="module-tag">Module 05</span>
+          <div class="module-icon"><i class="fas fa-percentage"></i></div>
+          <h6>TDS &amp; TCS Management</h6>
+          <p>TDS provisions under key sections, TDS deduction and deposit, 24Q/26Q return filing, Form 16/16A generation, and lower deduction certificate procedures.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="module-card">
+          <span class="module-tag">Module 06</span>
+          <div class="module-icon"><i class="fas fa-users"></i></div>
+          <h6>Payroll Management</h6>
+          <p>Salary structure design, CTC computation, PF/ESIC/PT deductions, payslip generation, Form 16 preparation, and full &amp; final settlement processing.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="module-card">
+          <span class="module-tag">Module 07</span>
+          <div class="module-icon"><i class="fas fa-calculator"></i></div>
+          <h6>Financial Accounting</h6>
+          <p>Double-entry bookkeeping, journal entries, ledger posting, trial balance, Trading &amp; P&amp;L Account, Balance Sheet, and depreciation accounting.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+        <div class="module-card">
+          <span class="module-tag">Module 08</span>
+          <div class="module-icon"><i class="fas fa-receipt"></i></div>
+          <h6>Invoice Management</h6>
+          <p>GST invoice formats, credit/debit notes, reverse charge mechanism, e-invoice generation, e-way bill procedures, and invoice reconciliation techniques.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="module-card">
+          <span class="module-tag">Module 09</span>
+          <div class="module-icon"><i class="fas fa-search-dollar"></i></div>
+          <h6>Auditing Basics</h6>
+          <p>Audit concepts, types of audits, statutory vs internal audit, vouching &amp; verification techniques, audit trail, CARO requirements, and audit report structure.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="module-card">
+          <span class="module-tag">Module 10</span>
+          <div class="module-icon"><i class="fas fa-laptop"></i></div>
+          <h6>Tally Prime Integration</h6>
+          <p>Tally Prime configuration for GST, ledger groups, voucher entries, bank reconciliation, reports generation, inventory management, and payroll in Tally.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+        <div class="module-card">
+          <span class="module-tag">Module 11</span>
+          <div class="module-icon"><i class="fas fa-balance-scale"></i></div>
+          <h6>Business Compliance</h6>
+          <p>ROC filing basics, MCA portal, Companies Act compliance, annual return filing, statutory registers, GST audit, and business compliance checklist management.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="module-card">
+          <span class="module-tag">Module 12</span>
+          <div class="module-icon"><i class="fas fa-project-diagram"></i></div>
+          <h6>Real-Time Projects</h6>
+          <p>Work on live business scenarios — filing GSTR-1 for a manufacturing company, preparing payroll for 50+ employees, and building complete financial statements from scratch.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     GST WORKFLOW — DARK HOVERABLE CARDS
+═══════════════════════════════════════════ -->
+<section class="workflow-section" id="workflow">
+  <div class="container position-relative" style="z-index:1">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto" style="color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.08)"><i class="fas fa-sitemap"></i> Workflow Training</div>
+      <h2 class="section-title" style="color:white;">GST &amp; Financial <span style="color:#ffd700;">Workflow Systems</span></h2>
+      <p class="section-sub mt-3" style="color:rgba(255,255,255,0.75);max-width:680px;">Master the end-to-end processes that real finance professionals use every day in Indian businesses.</p>
+    </div>
+    <div class="row gy-4">
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="workflow-card">
+          <div class="workflow-icon"><i class="fas fa-file-invoice"></i></div>
+          <h5>Invoice &amp; Billing Systems</h5>
+          <p>Design GST-compliant invoices, manage series numbering, generate e-invoices, handle credit/debit notes, and maintain proper invoice records for reconciliation and audit compliance.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="workflow-card">
+          <div class="workflow-icon"><i class="fas fa-book"></i></div>
+          <h5>Accounting Process Flows</h5>
+          <p>Implement complete accounting cycles from source document processing, journal entries, ledger management, trial balance extraction to final financial statement preparation and sign-off.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="workflow-card">
+          <div class="workflow-icon"><i class="fas fa-users-cog"></i></div>
+          <h5>Payroll Workflow Systems</h5>
+          <p>Execute end-to-end payroll — from employee onboarding and salary structure creation to monthly processing, statutory filings, Form 16 generation, and year-end reconciliation.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="workflow-card">
+          <div class="workflow-icon"><i class="fas fa-percent"></i></div>
+          <h5>Taxation Compliance Systems</h5>
+          <p>Manage complete tax compliance calendar — GST deadlines, TDS deposit dates, advance tax installments, ITR filing timelines, and assessment proceedings for multiple clients.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="workflow-card">
+          <div class="workflow-icon"><i class="fas fa-shield-check"></i></div>
+          <h5>Compliance Management</h5>
+          <p>Understand statutory compliance frameworks covering GST, Income Tax, PF, ESIC, Professional Tax, and ROC requirements — maintaining error-free compliance records for businesses.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="workflow-card">
+          <div class="workflow-icon"><i class="fas fa-chart-pie"></i></div>
+          <h5>Reporting Dashboards &amp; MIS</h5>
+          <p>Create comprehensive MIS reports, financial dashboards, variance analyses, and management reports that help business owners and CFOs make informed strategic decisions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CAREER OPPORTUNITIES
+═══════════════════════════════════════════ -->
+<section class="career-section" id="careers">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-briefcase"></i> Career Opportunities</div>
+      <h2 class="section-title">Finance <span>Career Roles</span> After This Course</h2>
+      <p class="section-sub mt-3">Unlock high-demand, well-paying roles in India's finance and accounting ecosystem after completing CADPOINT's GST &amp; Taxation program.</p>
+    </div>
+    <div class="row gy-4">
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+          <div class="career-role">GST Executive</div>
+          <div class="career-salary">₹3–7 LPA</div>
+          <div class="career-demand">
+            <div class="demand-bar"><div class="demand-fill" style="width:90%"></div></div>
+            <span class="demand-label">Very High</span>
+          </div>
+          <div class="career-tags">
+            <span class="career-tag">Return Filing</span>
+            <span class="career-tag">ITC Mgmt</span>
+            <span class="career-tag">E-Invoicing</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="50">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-user-tie"></i></div>
+          <div class="career-role">Tax Consultant</div>
+          <div class="career-salary">₹4–12 LPA</div>
+          <div class="career-demand">
+            <div class="demand-bar"><div class="demand-fill" style="width:85%"></div></div>
+            <span class="demand-label">High</span>
+          </div>
+          <div class="career-tags">
+            <span class="career-tag">ITR Filing</span>
+            <span class="career-tag">Tax Planning</span>
+            <span class="career-tag">Advisory</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-calculator"></i></div>
+          <div class="career-role">Accountant</div>
+          <div class="career-salary">₹2.5–6 LPA</div>
+          <div class="career-demand">
+            <div class="demand-bar"><div class="demand-fill" style="width:95%"></div></div>
+            <span class="demand-label">Extremely High</span>
+          </div>
+          <div class="career-tags">
+            <span class="career-tag">Bookkeeping</span>
+            <span class="career-tag">Tally</span>
+            <span class="career-tag">MIS</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="150">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-users"></i></div>
+          <div class="career-role">Payroll Executive</div>
+          <div class="career-salary">₹3–6 LPA</div>
+          <div class="career-demand">
+            <div class="demand-bar"><div class="demand-fill" style="width:80%"></div></div>
+            <span class="demand-label">High</span>
+          </div>
+          <div class="career-tags">
+            <span class="career-tag">Salary Process</span>
+            <span class="career-tag">PF/ESI</span>
+            <span class="career-tag">Form 16</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="career-role">Finance Executive</div>
+          <div class="career-salary">₹3.5–8 LPA</div>
+          <div class="career-demand">
+            <div class="demand-bar"><div class="demand-fill" style="width:88%"></div></div>
+            <span class="demand-label">Very High</span>
+          </div>
+          <div class="career-tags">
+            <span class="career-tag">Reporting</span>
+            <span class="career-tag">Budgeting</span>
+            <span class="career-tag">Analysis</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="50">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-search-dollar"></i></div>
+          <div class="career-role">Audit Assistant</div>
+          <div class="career-salary">₹2.5–5.5 LPA</div>
+          <div class="career-demand">
+            <div class="demand-bar"><div class="demand-fill" style="width:75%"></div></div>
+            <span class="demand-label">High</span>
+          </div>
+          <div class="career-tags">
+            <span class="career-tag">Vouching</span>
+            <span class="career-tag">Verification</span>
+            <span class="career-tag">Reports</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-balance-scale"></i></div>
+          <div class="career-role">Compliance Analyst</div>
+          <div class="career-salary">₹4–9 LPA</div>
+          <div class="career-demand">
+            <div class="demand-bar"><div class="demand-fill" style="width:82%"></div></div>
+            <span class="demand-label">Very High</span>
+          </div>
+          <div class="career-tags">
+            <span class="career-tag">Regulatory</span>
+            <span class="career-tag">ROC Filing</span>
+            <span class="career-tag">Audits</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="150">
+        <div class="career-card">
+          <div class="career-icon"><i class="fas fa-file-chart-pie"></i></div>
+          <div class="career-role">Financial Reporting Exec</div>
+          <div class="career-salary">₹4–10 LPA</div>
+          <div class="career-demand">
+            <div class="demand-bar"><div class="demand-fill" style="width:78%"></div></div>
+            <span class="demand-label">High</span>
+          </div>
+          <div class="career-tags">
+            <span class="career-tag">Financials</span>
+            <span class="career-tag">MIS</span>
+            <span class="career-tag">Dashboards</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     LEARNING PROCESS — TIMELINE
+═══════════════════════════════════════════ -->
+<section class="learning-section" id="learning-process">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-map-signs"></i> Learning Journey</div>
+      <h2 class="section-title">Your <span>6-Step Learning</span> Process</h2>
+      <p class="section-sub mt-3">A structured, outcome-focused journey from enrollment to job placement in just 4–6 months.</p>
+    </div>
+    <div class="timeline-wrap">
+      <div class="timeline-step" data-aos="fade-right">
+        <div class="timeline-content">
+          <div class="step-icon"><i class="fas fa-door-open"></i></div>
+          <h5>Step 1 — Enroll &amp; Orientation</h5>
+          <p>Join CADPOINT's GST &amp; Taxation batch. Attend an industry orientation session to understand the course structure, tools required (Tally, GST portal, Income Tax portal), and expected outcomes for your finance career path.</p>
+        </div>
+        <div class="timeline-num">01</div>
+        <div class="flex-fill d-none d-lg-block"></div>
+      </div>
+      <div class="timeline-step right" data-aos="fade-left">
+        <div class="timeline-content">
+          <div class="step-icon"><i class="fas fa-book-reader"></i></div>
+          <h5>Step 2 — Learn Core Concepts</h5>
+          <p>Build strong theoretical foundations in GST law, Income Tax Act, TDS provisions, payroll regulations, and financial accounting principles — explained in simple, practical language with real Indian business examples.</p>
+        </div>
+        <div class="timeline-num">02</div>
+        <div class="flex-fill d-none d-lg-block"></div>
+      </div>
+      <div class="timeline-step" data-aos="fade-right">
+        <div class="timeline-content">
+          <div class="step-icon"><i class="fas fa-tools"></i></div>
+          <h5>Step 3 — Practice Accounting Workflows</h5>
+          <p>Gain hands-on practice filing returns on the GST portal, preparing ITR online, processing payroll in Tally Prime, and creating complete financial statements from scratch with real accounting data.</p>
+        </div>
+        <div class="timeline-num">03</div>
+        <div class="flex-fill d-none d-lg-block"></div>
+      </div>
+      <div class="timeline-step right" data-aos="fade-left">
+        <div class="timeline-content">
+          <div class="step-icon"><i class="fas fa-project-diagram"></i></div>
+          <h5>Step 4 — Real-Time Industry Projects</h5>
+          <p>Work on live business scenarios — filing GST returns for a manufacturing company, managing payroll for 50+ employees, preparing audit-ready financial statements, and handling TDS compliance for a CA firm client portfolio.</p>
+        </div>
+        <div class="timeline-num">04</div>
+        <div class="flex-fill d-none d-lg-block"></div>
+      </div>
+      <div class="timeline-step" data-aos="fade-right">
+        <div class="timeline-content">
+          <div class="step-icon"><i class="fas fa-certificate"></i></div>
+          <h5>Step 5 — Certification</h5>
+          <p>Receive CADPOINT's industry-recognized GST &amp; Taxation certification upon successful course completion, along with a detailed transcript and digital credentials that validate your expertise to employers.</p>
+        </div>
+        <div class="timeline-num">05</div>
+        <div class="flex-fill d-none d-lg-block"></div>
+      </div>
+      <div class="timeline-step right" data-aos="fade-left">
+        <div class="timeline-content">
+          <div class="step-icon"><i class="fas fa-handshake"></i></div>
+          <h5>Step 6 — Placement Preparation</h5>
+          <p>Access dedicated placement support including resume building, mock interviews, aptitude tests, career counseling, and direct corporate referrals to CADPOINT's hiring partner network across 200+ companies in finance and accounting.</p>
+        </div>
+        <div class="timeline-num">06</div>
+        <div class="flex-fill d-none d-lg-block"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════════════════ -->
+
+
+
+<section class="testimonials-section" id="testimonials">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-tag"><i class="fas fa-star"></i> Student Reviews</div>
+      <h2 class="section-title">What Our <span>Graduates</span> Say</h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Real stories from engineers who launched their infrastructure careers with CADPOINT.</p>
+    </div>
+    <div class="testi-outer">
+      <div class="testi-track-wrap">
+        <div class="testi-track" id="testiTrack">
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">I am currently learning AutoCAD at CADPOINT Marthandam and having a great experience. Divya mam's teaching is clear, friendly, and easy to understand. She patiently explains every concept and clears all doubts. The staff are also very supportive. After completing AutoCAD, I am looking forward to learning Revit here. Highly recommended!</p>
+            <div class="testi-author">
+              <div class="testi-avatar">S</div>
+              <div class="testi-info"><h6>Saran KT</h6></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">I am studying AUTOCAD software at cad point marthandam. All staff are Knowledgeable person and good experience within the field above 5 years. So the lectures are teaching easy way to understand the class. Ex. They are teaching with the live example.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">R</div>
+              <div class="testi-info"><h6>Renish R</h6></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+            <p class="testi-text">CADPOINT is a good training institute with a friendly learning environment and supportive trainers. Both my sister and I had a positive learning experience here. The teaching is clear, practical, and easy to understand. The fee structure is also reasonable and affordable for students. Overall, CADPOINT is a great place to develop skills and gain knowledge.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">A</div>
+              <div class="testi-info"><h6>Ashlin Jega</h6></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">I had an excellent learning experience at CADPOINT Marthandam. The AutoCAD and Tekla courses were highly beneficial and helped me enhance my design skills and technical knowledge. The trainers were supportive, patient, and explained each concept clearly with practical examples. Currently I am working in a company based on design engineer role ...Tq CAD point marthandam and staffs ❤️</p>
+            
+            <div class="testi-author">
+              <div class="testi-avatar">M</div>
+              <div class="testi-info"><h6>Manoj Mano</h6>
+              
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">CAD Point provided me with a great learning experience. The classes were informative, the trainers were supportive, and the practical sessions helped me understand concepts better. The institute also encouraged skill development and boosted my confidence, making it an excellent place for learning and career growth.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">A</div>
+              <div class="testi-info"><h6>Ashika G.R</h6></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">The training centre provides a professional and student-friendly learning environment.
+The trainers are experienced, patient, and explain every topic in a simple way.
+The teaching methods are practical, interactive, and easy to understand.
+Regular guidance and individual attention helped me learn with confidence.
+Overall, it is an excellent place for students who want quality CAD training.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">V</div>
+              <div class="testi-info"><h6>Vijith Ajith</h6></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-dots" id="testiDots">
+        <button class="testi-dot active" data-idx="0"></button>
+        <button class="testi-dot" data-idx="1"></button>
+        <button class="testi-dot" data-idx="2"></button>
+        <button class="testi-dot" data-idx="3"></button>
+      </div>
+      <div class="testi-nav">
+        <button class="testi-btn" id="testiBtnPrev" aria-label="Previous"><i class="fas fa-arrow-left"></i></button>
+        <button class="testi-btn" id="testiBtnNext" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<style>
+  /* ── TESTIMONIALS ── */
+  .testimonials-section { background: var(--light-gray); padding: 80px 0; }
+  .testi-outer { overflow: hidden; }
+  .testi-track-wrap { overflow: hidden; }
+  .testi-track { display: flex; gap: 24px; transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); will-change: transform; }
+  .testi-card { background: #fff; border-radius: 20px; padding: 32px 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); position: relative; flex: 0 0 calc(33.333% - 16px); min-width: calc(33.333% - 16px); border-bottom: 4px solid var(--primary); transition: all 0.35s ease; }
+  .testi-card:hover { transform: translateY(-6px); box-shadow: 0 18px 45px rgba(139,0,0,0.13); }
+  @media(max-width:991px) { .testi-card { flex: 0 0 calc(50% - 12px); min-width: calc(50% - 12px); } }
+  @media(max-width:576px) { .testi-card { flex: 0 0 100%; min-width: 100%; } }
+  .testi-quote { font-size: 3rem; color: rgba(139,0,0,0.12); font-family: Georgia,serif; line-height: 1; margin-bottom: 12px; display: block; }
+  .testi-rating { color: #ffc107; margin-bottom: 14px; font-size: 0.85rem; }
+  .testi-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 18px; }
+  .testi-company { font-size: 0.72rem; color: var(--primary); font-weight: 600; margin-bottom: 18px; display: block; }
+  .testi-author { display: flex; align-items: center; gap: 14px; }
+  .testi-avatar { width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; flex-shrink: 0; }
+  .testi-info h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem; margin: 0; }
+  .testi-info small { color: var(--primary); font-size: 0.74rem; font-weight: 500; }
+  .testi-dots { display: flex; justify-content: center; gap: 8px; margin-top: 30px; }
+  .testi-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(139,0,0,0.2); cursor: pointer; transition: all 0.3s ease; border: none; padding: 0; }
+  .testi-dot.active { background: var(--primary); transform: scale(1.3); }
+  .testi-nav { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+  .testi-btn { width: 44px; height: 44px; border-radius: 50%; border: 2px solid rgba(139,0,0,0.2); background: #fff; color: var(--primary); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; transition: all 0.3s ease; }
+  .testi-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+</style>
+
+
+  <script>
+// ── TESTIMONIAL SLIDER
+(function() {
+  const track   = document.getElementById('testiTrack');
+  const dots    = document.querySelectorAll('.testi-dot');
+  const prevBtn = document.getElementById('testiBtnPrev');
+  const nextBtn = document.getElementById('testiBtnNext');
+  if (!track) return;
+
+  let current = 0;
+  const cards = track.querySelectorAll('.testi-card');
+  const total = cards.length;
+
+  function getVisible() {
+    if (window.innerWidth < 576) return 1;
+    if (window.innerWidth < 992) return 2;
+    return 3;
+  }
+  function getMax() { return total - getVisible(); }
+  function slideTo(idx) {
+    const max = getMax();
+    current = Math.max(0, Math.min(idx, max));
+    const cardW = cards[0].offsetWidth + 24;
+    track.style.transform = `translateX(-${current * cardW}px)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  prevBtn?.addEventListener('click', () => slideTo(current - 1));
+  nextBtn?.addEventListener('click', () => slideTo(current + 1));
+  dots.forEach(d => d.addEventListener('click', () => slideTo(parseInt(d.getAttribute('data-idx')))));
+  window.addEventListener('resize', () => slideTo(current));
+  setInterval(() => slideTo(current < getMax() ? current + 1 : 0), 5000);
+})();
+</script>
+
+
+
+
+<!-- <section class="testi-section" id="testimonials">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag mx-auto"><i class="fas fa-comments"></i> Student Reviews</div>
+      <h2 class="section-title">What Our <span>Finance Students</span> Say</h2>
+      <p class="section-sub mt-3">Real success stories from CADPOINT graduates who are now thriving in their finance and accounting careers.</p>
+    </div>
+    <div class="testi-wrapper" data-aos="fade-up">
+      <div class="testi-track" id="testiTrack">
+        <div class="testi-card">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-text">"CADPOINT's GST course gave me complete practical knowledge of filing returns, managing ITC, and using the GST portal. I got placed as a GST Executive within 3 weeks of completing the course. The trainers explained everything so clearly — even TDS was made simple!"</p>
+          <div class="testi-author">
+            <div class="testi-avatar">P</div>
+            <div>
+              <div class="testi-name">Priya Sharma</div>
+              
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-text">"I was a commerce graduate with no work experience. After completing CADPOINT's GST &amp; Taxation program, I joined a CA firm as an Accounts Executive. The real-time project training on filing ITRs and GST returns for actual clients was the best part of the course."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">R</div>
+            <div>
+              <div class="testi-name">Rahul Desai</div>
+              
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+          <p class="testi-text">"The Tally Prime integration module was excellent — I can now handle complete accounting, payroll, and GST filing in Tally. CADPOINT's trainers have practical CA firm experience, so every concept was taught with real business scenarios. Highly recommend for finance aspirants!"</p>
+          <div class="testi-author">
+            <div class="testi-avatar">A</div>
+            <div>
+              <div class="testi-name">Anita Krishnan</div>
+              
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-text">"I completed this course while working as a data entry operator. Now I handle full payroll for 80 employees, file monthly GST returns, and assist with TDS compliance at my company. CADPOINT completely transformed my career trajectory in just 5 months."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">M</div>
+            <div>
+              <div class="testi-name">Mohammed Irfan</div>
+              
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testi-text">"As a freelance tax consultant, CADPOINT's GST &amp; Taxation course helped me expand my practice significantly. I now handle GST filing for 25+ business clients per month. The income tax and TDS modules are incredibly detailed and practical for real consulting work."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">S</div>
+            <div>
+              <div class="testi-name">Suresh Patel</div>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-controls" data-aos="fade-up">
+      <button class="testi-btn" id="testiPrev"><i class="fas fa-arrow-left"></i></button>
+      <div class="testi-dots">
+        <div class="testi-dot active" onclick="goToSlide(0)"></div>
+        <div class="testi-dot" onclick="goToSlide(1)"></div>
+        <div class="testi-dot" onclick="goToSlide(2)"></div>
+      </div>
+      <button class="testi-btn" id="testiNext"><i class="fas fa-arrow-right"></i></button>
+    </div>
+  </div>
+</section> -->
+
+<!-- ═══════════════════════════════════════════
+     FAQ SECTION
+═══════════════════════════════════════════ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="row gy-5 align-items-start">
+      <div class="col-lg-4" data-aos="fade-right">
+        <div class="section-tag"><i class="fas fa-question-circle"></i> FAQ</div>
+        <h2 class="section-title mb-3">Frequently Asked <span>Questions</span></h2>
+        <p class="text-muted mb-4" style="line-height:1.8;text-align:justify;">Got questions about our GST &amp; Taxation course? Here are answers to the most common questions from our prospective students and industry professionals.</p>
+        <div class="gradient-band">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div style="width:44px;height:44px;background:var(--primary);border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;font-size:1.1rem;flex-shrink:0;"><i class="fas fa-phone"></i></div>
+            <div>
+              <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:0.9rem;color:var(--text-dark);">Still have questions?</div>
+              <div style="font-size:0.82rem;color:var(--text-muted);">Call us anytime</div>
+            </div>
+          </div>
+          <a href="tel:+919895352624" class="btn-section-primary w-100 justify-content-center" style="border-radius:10px;"><i class="fas fa-phone-alt"></i> Call Now</a>
+        </div>
+      </div>
+      <div class="col-lg-8" data-aos="fade-left">
+        <div class="accordion" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                Do I need any prior accounting knowledge to join this course?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">No prior accounting background is required. The course is structured from the very basics — starting with fundamental accounting concepts, GST overview, and taxation basics — and gradually progressing to advanced practical workflows. Students from any commerce, non-commerce, or professional background can successfully complete this program.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                What software tools will I learn during this course?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">You will gain hands-on expertise in Tally Prime (the industry-standard accounting software), GST Portal, Income Tax e-filing portal, TRACES (for TDS filings), EPFO portal, ESIC portal, and basic MS Excel for MIS reporting. All practical sessions are conducted on the latest versions of these professional tools.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                Does CADPOINT provide placement support after GST course completion?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Yes. CADPOINT provides comprehensive placement assistance including resume preparation, interview skills training, aptitude test preparation, and direct referrals to our network of 200+ hiring partners including CA firms, accounting agencies, manufacturing companies, retail chains, and MNC finance departments. Our placement team works with each student individually until they secure a suitable position.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                Are internship opportunities available during the course?
+              </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Yes, CADPOINT facilitates internship placements with CA firms, accounting agencies, and corporate finance departments for eligible students. Internships typically span 1–2 months and provide real-world experience in GST filing, payroll management, and tax compliance operations that significantly enhance your employability.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                What certification will I receive after completing this course?
+              </button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Upon successful completion, you will receive CADPOINT's industry-recognized GST &amp; Taxation Professional certification along with a detailed course completion transcript. This certification is acknowledged by employers across India and validates your practical competency in GST filing, income tax, payroll management, and financial accounting.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                How long does the GST &amp; Taxation course take to complete?
+              </button>
+            </h2>
+            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">The complete GST &amp; Taxation course spans 4 to 6 months depending on your chosen batch schedule — weekday batches (4 months), weekend batches (6 months), and fast-track batches (2.5 months) are available. Each format covers the full curriculum with the same practical training quality and placement support.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+                Can I do GST &amp; Taxation as a freelance career after this course?
+              </button>
+            </h2>
+            <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Absolutely. Many of our graduates successfully build freelance practices in GST filing, tax consulting, payroll management, and bookkeeping services. CADPOINT provides dedicated guidance on setting up a GST/tax consultancy, client acquisition strategies, fee structures, and the GST Practitioner enrollment process to help you launch a thriving independent practice.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CALL TO ACTION
+═══════════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="container text-center position-relative" style="z-index:1">
+    <div data-aos="zoom-in">
+      <div class="section-tag mx-auto mb-3" style="color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.08)"><i class="fas fa-rocket"></i> Start Your Journey Today</div>
+      <h2 class="cta-title">Start Your <span style="color:#ffd700">Finance Career</span> Today</h2>
+      <p class="cta-subtitle">Join 5,000+ students who have launched thriving careers in GST, Taxation, Payroll, and Financial Accounting with CADPOINT's industry-proven training program.</p>
+      <div class="d-flex flex-wrap gap-3 justify-content-center">
+        <a href="https://wa.me/919895352624" class="btn-cta-glow ripple">
+          <i class="fas fa-rocket"></i> Enroll Now — Free Inquiry
+        </a>
+        <a href="tel:+919895352624" class="btn-hero-outline" style="padding:14px 32px;">
+          <i class="fas fa-phone-alt"></i> Contact Our Team
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<div id="footer"></div>
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+fetch("./header.html")
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById("header").innerHTML = html;
+    initCaddNav();
+  });
+
+  fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+      document.getElementById('footer').innerHTML = data;
+  });
+</script>
+
+
+<script>
+function initCaddNav() {
+
+    const coursesNav = document.getElementById('coursesNav');
+    const caret = document.getElementById('coursesCaret');
+    const menu = document.getElementById('coursesMegaMenu');
+    const closeBtn = document.getElementById('closeMegaMenu');
+
+    if (!coursesNav || !caret || !menu) return;
+
+    // X BUTTON CLOSE (Desktop + Mobile)
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.remove('show');
+
+        });
+    }
+
+    // MOBILE
+    if (window.innerWidth <= 991) {
+
+        caret.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!coursesNav.contains(e.target)) {
+                menu.classList.remove('show');
+            }
+        });
+
+        return;
+    }
+
+    // DESKTOP
+    coursesNav.addEventListener('mouseenter', function () {
+        menu.classList.add('show');
+    });
+
+    coursesNav.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+
+    menu.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+}
+</script>
+
+
+<script>
+// ─── LOADER ─────────────────────────────────
+window.addEventListener('load', () => {
+  setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 1800);
+});
+
+// ─── AOS INIT ───────────────────────────────
+AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });
+
+// ─── NAVBAR SCROLL ──────────────────────────
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  if (window.scrollY > 50) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+  const btn = document.getElementById('backToTop');
+  if (window.scrollY > 400) btn.classList.add('visible'); else btn.classList.remove('visible');
+});
+
+// ─── BACK TO TOP ────────────────────────────
+document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// ─── COUNTER ANIMATION ──────────────────────
+function animateCounters() {
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseInt(el.getAttribute('data-count'));
+    let current = 0;
+    const increment = target / 60;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) { current = target; clearInterval(timer); }
+      el.textContent = Math.floor(current) + '+';
+    }, 25);
+  });
+}
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { animateCounters(); statsObserver.disconnect(); } });
+}, { threshold: 0.3 });
+const strip = document.querySelector('.achievement-strip');
+if (strip) statsObserver.observe(strip);
+
+// ─── DEMAND BAR ANIMATION ──────────────────
+const demandObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.demand-fill').forEach(bar => {
+        const w = bar.style.width;
+        bar.style.width = '0';
+        setTimeout(() => { bar.style.width = w; }, 200);
+      });
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.career-section').forEach(s => demandObserver.observe(s));
+
+// ─── TESTIMONIALS SLIDER ────────────────────
+let testiIdx = 0;
+const track = document.getElementById('testiTrack');
+const dots = document.querySelectorAll('.testi-dot');
+function getVisCount() {
+  return window.innerWidth >= 992 ? 3 : window.innerWidth >= 576 ? 2 : 1;
+}
+function updateSlider() {
+  const cards = track.querySelectorAll('.testi-card');
+  const visCount = getVisCount();
+  const maxIdx = cards.length - visCount;
+  if (testiIdx > maxIdx) testiIdx = maxIdx;
+  if (testiIdx < 0) testiIdx = 0;
+  const cardW = cards[0].offsetWidth + 24;
+  track.style.transform = `translateX(-${testiIdx * cardW}px)`;
+  dots.forEach((d, i) => d.classList.toggle('active', i === testiIdx));
+}
+document.getElementById('testiNext').addEventListener('click', () => { testiIdx++; updateSlider(); });
+document.getElementById('testiPrev').addEventListener('click', () => { testiIdx--; updateSlider(); });
+window.goToSlide = (i) => { testiIdx = i; updateSlider(); };
+window.addEventListener('resize', updateSlider);
+setInterval(() => {
+  const visCount = getVisCount();
+  const cards = track.querySelectorAll('.testi-card');
+  const maxIdx = cards.length - visCount;
+  testiIdx = testiIdx >= maxIdx ? 0 : testiIdx + 1;
+  updateSlider();
+}, 5000);
+
+// ─── MEGA MENU ──────────────────────────────
+document.addEventListener("DOMContentLoaded", function () {
+  const coursesNav = document.getElementById("coursesNav");
+  const coursesBtn = document.getElementById("coursesDropdown");
+  const megaMenu = document.getElementById("coursesMegaMenu");
+  const closeBtn = document.getElementById("closeMegaMenu");
+  if (!coursesNav || !coursesBtn || !megaMenu) return;
+
+  if (window.innerWidth > 991) {
+    let hideTimer;
+    function showMenu() {
+      clearTimeout(hideTimer);
+      const navRect = document.getElementById('mainNav').getBoundingClientRect();
+      megaMenu.style.top = (navRect.bottom + window.scrollY) + 'px';
+      megaMenu.classList.add("show");
+      const caret = coursesNav.querySelector('.fa-chevron-down');
+      if(caret) caret.style.transform='rotate(180deg)';
+    }
+    function hideMenu() {
+      hideTimer = setTimeout(() => {
+        megaMenu.classList.remove("show");
+        const caret = coursesNav.querySelector('.fa-chevron-down');
+        if(caret) caret.style.transform='rotate(0deg)';
+      }, 120);
+    }
+    coursesNav.addEventListener("mouseenter", showMenu);
+    coursesNav.addEventListener("mouseleave", hideMenu);
+    megaMenu.addEventListener("mouseenter", showMenu);
+    megaMenu.addEventListener("mouseleave", hideMenu);
+    coursesBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (megaMenu.classList.contains('show')) hideMenu(); else showMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!coursesNav.contains(e.target) && !megaMenu.contains(e.target)) {
+        megaMenu.classList.remove('show');
+        const caret = coursesNav.querySelector('.fa-chevron-down');
+        if(caret) caret.style.transform='rotate(0deg)';
+      }
+    });
+    window.addEventListener('scroll', () => {
+      if (megaMenu.classList.contains('show')) {
+        const navRect = document.getElementById('mainNav').getBoundingClientRect();
+        megaMenu.style.top = (navRect.bottom + window.scrollY) + 'px';
+      }
+    });
+  } else {
+    coursesBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      megaMenu.classList.toggle("show");
+    });
+    megaMenu.addEventListener("click", (e) => e.stopPropagation());
+    if (closeBtn) closeBtn.addEventListener("click", () => megaMenu.classList.remove("show"));
+    document.addEventListener("click", (e) => {
+      if (!megaMenu.contains(e.target) && !coursesBtn.contains(e.target)) megaMenu.classList.remove("show");
+    });
+  }
+});
+
+// ─── CLOSE MEGA X ───────────────────────────
+document.getElementById('closeMegaMenu').addEventListener('click', () => {
+  document.querySelector('.courses-mega-menu').classList.remove('show');
+});
+
+// ─── RIPPLE EFFECT ──────────────────────────
+document.querySelectorAll('.ripple').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.style.cssText = `position:absolute;border-radius:50%;background:rgba(255,255,255,0.3);width:10px;height:10px;left:${e.clientX-rect.left-5}px;top:${e.clientY-rect.top-5}px;transform:scale(0);animation:rippleAnim 0.6s ease-out forwards;pointer-events:none;`;
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 700);
+  });
+});
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `@keyframes rippleAnim{to{transform:scale(30);opacity:0}}`;
+document.head.appendChild(rippleStyle);
+
+// ─── FA SHIELD CHECK FIX ────────────────────
+// Fallback for fa-shield-check
+document.querySelectorAll('.fa-shield-check').forEach(el => {
+  el.classList.remove('fa-shield-check');
+  el.classList.add('fa-shield-alt');
+});
+document.querySelectorAll('.fa-file-chart-pie').forEach(el => {
+  el.classList.remove('fa-file-chart-pie');
+  el.classList.add('fa-chart-bar');
+});
+</script>
+</body>
+</html>

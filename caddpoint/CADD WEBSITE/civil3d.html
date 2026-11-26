@@ -1,0 +1,1923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Civil 3D Course | CADPOINT Authorized Training Centre</title>
+  <meta name="description" content="Master  caddpoint Civil 3D at CADPOINT — India's ISO 9001:2015 certified training centre. Road design, corridor modeling, drainage systems, and placement support.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="assets/image/cadd-logo.webp">
+  <style>
+    :root {
+      --primary:       #8B0000;
+      --primary-light: #A00000;
+      --primary-dark:  #5c0000;
+      --primary-glow:  rgba(139,0,0,0.35);
+      --white:         #ffffff;
+      --light-gray:    #F5F5F5;
+      --off-white:     #fafafa;
+      --text-dark:     #1a1a1a;
+      --text-muted:    #555;
+      --border-light:  rgba(139,0,0,0.15);
+      --glass-bg:      rgba(255,255,255,0.08);
+      --glass-border:  rgba(255,255,255,0.18);
+    }
+
+    html, body { max-width: 100%; overflow-x: hidden; scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; color: var(--text-dark); background: var(--white); }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+    /* ── LOADER ── */
+    #loader { position: fixed; inset: 0; background: var(--primary-dark); z-index: 9999; display: flex; align-items: center; justify-content: center; transition: opacity 0.6s ease, visibility 0.6s ease; }
+    #loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-ring { width: 56px; height: 56px; border: 4px solid rgba(255,255,255,0.15); border-top-color: #ffd700; border-radius: 50%; animation: spin 0.9s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── NAVBAR ── */
+    /* .navbar { background: rgba(255,255,255,0.97); backdrop-filter: blur(20px); box-shadow: 0 2px 30px rgba(139,0,0,0.12); padding: 12px 0; position: sticky; top: 0; z-index: 1000; transition: all 0.3s ease; }
+    .navbar.scrolled { padding: 8px 0; box-shadow: 0 4px 40px rgba(139,0,0,0.2); }
+    .navbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-text .brand-name { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.3rem; color: var(--primary); letter-spacing: 2px; }
+    .logo-text .brand-sub { font-size: 0.58rem; font-weight: 600; color: #666; letter-spacing: 1.5px; text-transform: uppercase; display: block; }
+    .navbar-nav .nav-link { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.8px; text-transform: uppercase; padding: 8px 16px !important; border-radius: 6px; transition: all 0.3s ease; color: var(--text-dark); }
+    .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { color: var(--primary); }
+    .btn-nav-enroll { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white !important; padding: 8px 22px !important; border-radius: 25px !important; font-weight: 700 !important; box-shadow: 0 4px 15px var(--primary-glow); transition: all 0.3s ease !important; }
+    .btn-nav-enroll:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--primary-glow) !important; }
+    .btn-nav-enroll::after { display: none !important; } */
+
+    /* ── NAVBAR ── */
+    .navbar {
+      background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
+      box-shadow: 0 2px 30px rgba(139,0,0,0.12); padding: 7px 0;
+      position: sticky; top: 0; z-index: 1000; transition: all 0.3s ease;
+    }
+    .navbar.scrolled { padding: 8px 0; box-shadow: 0 4px 40px rgba(139,0,0,0.2); }
+    .navbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-text img { height: 48px; }
+    .logo-text .brand-name { font-family: 'Montserrat',sans-serif; font-weight: 900; font-size: 1.3rem; color: var(--primary); letter-spacing: 2px; }
+    .logo-text .brand-sub { font-size: 0.58rem; font-weight: 600; color: #666; letter-spacing: 1.5px; text-transform: uppercase; }
+    .navbar-nav .nav-link { font-family: 'Montserrat',sans-serif; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.8px; text-transform: uppercase; padding: 8px 16px !important; border-radius: 6px; transition: all 0.3s ease; }
+    .navbar-nav .nav-link:hover { color: var(--primary); }
+    .btn-nav-enroll { background: linear-gradient(135deg,var(--primary),var(--primary-light)); color: white !important; padding: 8px 22px !important; border-radius: 25px !important; font-weight: 700 !important; box-shadow: 0 4px 15px var(--primary-glow); transition: all 0.3s ease !important; }
+    .btn-nav-enroll:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--primary-glow) !important; }
+    .btn-nav-enroll::after { display: none !important; }
+
+    /* Mega Close X */
+    .mega-close-x { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border: none; border-radius: 50%; background: #fff; color: #222; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 99; box-shadow: 0 4px 15px rgba(0,0,0,.12); transition: .3s ease; }
+    .mega-close-x:hover { background: var(--primary); color: #fff; transform: rotate(90deg); }
+
+    /* Mega Dropdown */
+    #coursesNav { position: static !important; }
+    #coursesNav > div { display: flex; align-items: center; }
+    .courses-mega-menu {
+      position: fixed !important; top: auto !important; left: 50% !important;
+      transform: translateX(-50%) translateY(6px) !important;
+      width: min(960px,96vw) !important; display: block !important;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+      pointer-events: none; border: none !important; border-radius: 16px !important;
+      overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.16), 0 0 0 1px rgba(139,0,0,0.1) !important;
+      padding: 0 !important;
+    }
+    .courses-mega-menu.show { opacity: 1 !important; visibility: visible !important; transform: translateX(-50%) translateY(0) !important; pointer-events: auto !important; }
+    .mega-col { flex: 1; padding: 20px 10px 10px 10px; border-right: 1px solid rgba(139,0,0,0.08); background: white; }
+    .mega-col:last-child { border-right: none; }
+    .mega-col-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid rgba(139,0,0,0.08); }
+    .mega-col-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .mega-col-title { font-family: 'Montserrat',sans-serif; font-weight: 800; font-size: 0.82rem; color: var(--text-dark); }
+    .mega-col-sub { font-size: 0.68rem; color: #999; font-weight: 500; margin-top: 1px; }
+    .mega-item { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 7px; font-size: 0.8rem; font-weight: 500; color: var(--text-dark); text-decoration: none; transition: background 0.15s, color 0.15s, padding-left 0.15s; margin-bottom: 2px; }
+    .mega-item i { font-size: 0.72rem; width: 16px; text-align: center; color: #aaa; transition: color 0.15s; flex-shrink: 0; }
+    .mega-item:hover { background: rgba(139,0,0,0.07); color: var(--primary); padding-left: 12px; }
+    .mega-item:hover i { color: var(--primary); }
+    #coursesNav .courses-caret { color: var(--text-dark); transition: color 0.2s; }
+    #coursesNav .courses-caret:hover { color: var(--primary); }
+    .dropdown-item:hover { background: linear-gradient(135deg,var(--primary),var(--primary-light)); color: #fff; border-radius: 5px; }
+
+    /* Mobile dropdown */
+    @media(max-width:991px){
+      .navbar-collapse { background:#fff; padding:15px; border-radius:18px; margin-top:15px; box-shadow:0 10px 35px rgba(0,0,0,.08); }
+      #coursesNav { width:100%; }
+      #coursesNav .d-flex { width:100%; justify-content:space-between; align-items:center; }
+      #coursesNav .nav-link { padding:12px 0 !important; }
+      .courses-caret { padding-right:0 !important; }
+      .courses-mega-menu { 
+        /* position:static !important; */
+         transform:none !important; width:100% !important; min-width:100% !important; margin-top:10px !important; border:none !important; box-shadow:none !important; border-radius:16px !important; overflow:hidden; background:#f8f9fb; }
+      .courses-mega-menu .d-flex { flex-direction:column !important; gap:0 !important; padding-top:0 !important; }
+      .mega-col { width:100% !important; border-right:none !important; border-bottom:1px solid rgba(0,0,0,.06); padding:18px 16px !important; }
+      .mega-col:last-child { border-bottom:none; }
+    }
+
+   
+
+    /* Mobile */
+    @media (max-width: 991px) {
+      .navbar-collapse { background: #fff; padding: 15px; border-radius: 18px; margin-top: 15px; box-shadow: 0 10px 35px rgba(0,0,0,.08); }
+      #coursesNav { width: 100%; }
+      .courses-mega-menu { position: static !important; transform: none !important; width: 100% !important; min-width: 100% !important; margin-top: 10px !important; border: none !important; box-shadow: none !important; border-radius: 16px !important; overflow: hidden; background: #f8f9fb; }
+      .courses-mega-menu .d-flex { flex-direction: column !important; gap: 0 !important; }
+      .mega-col { width: 100% !important; border-right: none !important; border-bottom: 1px solid rgba(0,0,0,.06); padding: 18px 16px !important; }
+      .mega-col:last-child { border-bottom: none; }
+    }
+
+    /* Mega Menu */
+    #coursesNav { position: static !important; }
+    #coursesNav > div { display: flex; align-items: center; }
+    .courses-mega-menu { position: fixed !important; top: auto !important; left: 50% !important; transform: translateX(-50%) translateY(6px) !important; width: min(960px, 96vw) !important; display: block !important; opacity: 0; visibility: hidden; transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s; pointer-events: none; border: none !important; border-radius: 16px !important; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.16), 0 0 0 1px rgba(139,0,0,0.1) !important; padding: 0 !important; }
+    .courses-mega-menu.show { opacity: 1 !important; visibility: visible !important; transform: translateX(-50%) translateY(0) !important; pointer-events: auto !important; }
+    .mega-col { flex: 1; padding: 20px 16px 20px 20px; border-right: 1px solid rgba(139,0,0,0.08); background: white; }
+    .mega-col:last-child { border-right: none; }
+    .mega-col-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid rgba(139,0,0,0.08); }
+    .mega-col-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .mega-col-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.82rem; color: var(--text-dark); }
+    .mega-col-sub { font-size: 0.68rem; color: #999; font-weight: 500; margin-top: 1px; }
+    .mega-item { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 7px; font-size: 0.8rem; font-weight: 500; color: var(--text-dark); text-decoration: none; transition: background 0.15s, color 0.15s, padding-left 0.15s; margin-bottom: 2px; }
+    .mega-item i { font-size: 0.72rem; width: 16px; text-align: center; color: #aaa; transition: color 0.15s; flex-shrink: 0; }
+    .mega-item:hover { background: rgba(139,0,0,0.07); color: var(--primary); padding-left: 12px; }
+    .mega-item:hover i { color: var(--primary); }
+    #coursesNav .courses-caret { color: var(--text-dark); transition: color 0.2s; cursor: pointer; }
+
+    /* ── BREADCRUMB SLIDER ── */
+    .breadcrumb-slider { background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-dark) 100%); padding: 0; overflow: hidden; height: 38px; display: flex; align-items: center; position: relative; }
+    .breadcrumb-slider::before, .breadcrumb-slider::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none; }
+    .breadcrumb-slider::before { left: 0; background: linear-gradient(to right, var(--primary-dark), transparent); }
+    .breadcrumb-slider::after { right: 0; background: linear-gradient(to left, var(--primary-dark), transparent); }
+    .breadcrumb-track { display: flex; animation: scrollBreadcrumb 28s linear infinite; white-space: nowrap; }
+    .breadcrumb-track:hover { animation-play-state: paused; }
+    .breadcrumb-item-slide { display: inline-flex; align-items: center; gap: 8px; padding: 0 30px; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 1px; text-transform: uppercase; font-family: 'Montserrat', sans-serif; }
+    .breadcrumb-item-slide i { color: rgba(255,255,255,0.6); font-size: 0.7rem; }
+    @keyframes scrollBreadcrumb { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ── HERO ── */
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, #c0392b 80%, var(--primary-dark) 100%);
+      min-height: 90vh; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; padding: 80px 0 120px; text-align: center;
+    }
+    .hero-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40z'/%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5;
+    }
+    .hero-blob { position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.12; pointer-events: none; }
+    .hero-blob-1 { width: 600px; height: 600px; background: #ff4444; top: -200px; right: -150px; animation: blobMove 9s ease-in-out infinite; }
+    .hero-blob-2 { width: 350px; height: 350px; background: #ffd700; bottom: -100px; left: -80px; animation: blobMove 11s ease-in-out infinite reverse; }
+    .hero-blob-3 { width: 250px; height: 250px; background: #fff; top: 40%; left: 45%; animation: blobMove 7s ease-in-out infinite 1.5s; }
+    @keyframes blobMove { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(25px,-25px) scale(1.08); } }
+
+    .hero-chip { position: absolute; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.22); backdrop-filter: blur(12px); border-radius: 12px; padding: 10px 16px; color: white; font-size: 0.76rem; font-weight: 600; display: flex; align-items: center; gap: 7px; animation: floatChip 4s ease-in-out infinite; }
+    .hero-chip i { color: #ffd700; }
+    .chip-1 { top: 18%; left: 5%; animation-delay: 0s; }
+    .chip-2 { top: 22%; right: 5%; animation-delay: 1.2s; }
+    .chip-3 { bottom: 28%; left: 4%; animation-delay: 2.2s; }
+    .chip-4 { bottom: 24%; right: 4%; animation-delay: 0.8s; }
+    @keyframes floatChip { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+    @media(max-width:991px) { .hero-chip { display: none; } }
+
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(10px); padding: 6px 18px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 22px; }
+    .hero-badge .pulse { width: 8px; height: 8px; background: #ffd700; border-radius: 50%; animation: pulseRing 2s ease-in-out infinite; display: inline-block; }
+    @keyframes pulseRing { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.6; } }
+    .hero-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(2.1rem, 5.5vw, 3.4rem); line-height: 1.08; color: white; margin-bottom: 22px; }
+    .hero-title .highlight { color: #ffd700; position: relative; }
+    /* .hero-title .highlight::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #ffd700, transparent); border-radius: 2px; } */
+    .hero-desc { font-size: 1.05rem; color: rgba(255,255,255,0.82); line-height: 1.8; margin: 0 auto 32px; max-width: 660px; }
+    .hero-pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 36px; }
+    .hero-pill { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; padding: 6px 16px; font-size: 0.8rem; color: rgba(255,255,255,0.92); font-weight: 500; display: inline-flex; align-items: center; gap: 7px; backdrop-filter: blur(8px); transition: all 0.3s ease; }
+    .hero-pill:hover { background: rgba(255,255,255,0.18); transform: translateY(-2px); }
+    .hero-pill i { color: #ffd700; font-size: 0.72rem; }
+    .btn-hero-primary { background: linear-gradient(135deg, #ffd700, #ffb700); color: var(--primary-dark) !important; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.9rem; letter-spacing: 0.8px; padding: 15px 36px; border-radius: 50px; border: none; text-decoration: none; display: inline-flex; align-items: center; gap: 9px; box-shadow: 0 8px 28px rgba(255,215,0,0.45); transition: all 0.3s ease; position: relative; overflow: hidden; animation: pulseGoldBtn 2.5s ease-in-out infinite; }
+    @keyframes pulseGoldBtn { 0%,100% { box-shadow: 0 8px 28px rgba(255,215,0,0.45); } 50% { box-shadow: 0 8px 42px rgba(255,215,0,0.7), 0 0 0 12px rgba(255,215,0,0.07); } }
+    .btn-hero-primary:hover { transform: translateY(-3px) scale(1.02); color: var(--primary-dark) !important; }
+    .btn-hero-outline { background: transparent; color: white !important; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.8px; padding: 14px 34px; border-radius: 50px; border: 2px solid rgba(255,255,255,0.45); text-decoration: none; display: inline-flex; align-items: center; gap: 9px; transition: all 0.3s ease; backdrop-filter: blur(10px); }
+    .btn-hero-outline:hover { border-color: white; background: rgba(255,255,255,0.12); transform: translateY(-3px); color: white !important; }
+    .hero-btn-group { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .hero-wave { position: absolute; bottom: 0; width: 100%; line-height: 0; overflow: hidden; }
+    .hero-wave svg { display: block; width: 100%; height: 70px; }
+
+    /* ── SECTION COMMONS ── */
+    section { padding: 90px 0; }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(139,0,0,0.08); border: 1px solid rgba(139,0,0,0.2); color: var(--primary); font-family: 'Montserrat', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 14px; border-radius: 50px; margin-bottom: 14px; }
+    .section-tag-white { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.9); font-family: 'Montserrat', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 14px; border-radius: 50px; margin-bottom: 14px; }
+    .section-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.2; color: var(--text-dark); margin-bottom: 14px; }
+    .section-title span { color: var(--primary); }
+    .section-title-white { color: white; }
+    .section-title-white span { color: #ffd700; }
+    .section-subtitle { color: var(--text-muted); font-size: 1rem; line-height: 1.7; max-width: 580px; }
+    .divider-line { width: 60px; height: 4px; background: linear-gradient(90deg, var(--primary), var(--primary-light)); border-radius: 4px; margin: 16px 0 24px; }
+    .divider-gold { width: 60px; height: 4px; background: linear-gradient(90deg, #ffd700, #ffb700); border-radius: 4px; margin: 16px 0 24px; }
+
+    /* ── MARQUEE ── */
+    .marquee-section { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); padding: 26px 0; overflow: hidden; position: relative; }
+    .marquee-section::before, .marquee-section::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none; }
+    .marquee-section::before { left: 0; background: linear-gradient(to right, var(--primary-dark), transparent); }
+    .marquee-section::after { right: 0; background: linear-gradient(to left, var(--primary-dark), transparent); }
+    .marquee-track { display: flex; animation: marqueeAnim 22s linear infinite; will-change: transform; }
+    .marquee-track:hover { animation-play-state: paused; }
+    .marquee-item { display: inline-flex; align-items: center; gap: 12px; padding: 0 26px; white-space: nowrap; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.9); }
+    .marquee-dot { width: 6px; height: 6px; background: #ffd700; border-radius: 50%; flex-shrink: 0; }
+    @keyframes marqueeAnim { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ═══════════════════════════════════════════
+       SPLIT SECTIONS — Premium Layout System
+    ═══════════════════════════════════════════ */
+
+    /* Shared image panel style */
+    .split-img-panel {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(139,0,0,0.2);
+    }
+    .split-img-panel img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      min-height: 420px;
+      transition: transform 0.6s ease;
+    }
+    .split-img-panel:hover img { transform: scale(1.04); }
+    .split-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, rgba(92,0,0,0.55) 100%);
+    }
+    .split-img-badge {
+      position: absolute; bottom: 24px; left: 24px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: #fff; padding: 14px 20px; border-radius: 14px;
+      box-shadow: 0 10px 30px var(--primary-glow);
+      text-align: center;
+    }
+    .split-img-badge .sib-num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.6rem; color: #ffd700; line-height: 1; display: block; }
+    .split-img-badge .sib-lbl { font-size: 0.7rem; font-weight: 600; opacity: 0.92; }
+    .split-img-badge2 {
+      position: absolute; top: 24px; right: 24px;
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
+      color: var(--primary-dark); padding: 10px 16px; border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.78rem;
+    }
+    .split-img-badge2 i { color: var(--primary); }
+
+    /* Feature list rows used in split sections */
+    .feat-list-item { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; }
+    .fli-icon { width: 48px; height: 48px; border-radius: 13px; flex-shrink: 0; background: linear-gradient(135deg, rgba(139,0,0,0.09), rgba(139,0,0,0.16)); display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.2rem; transition: all 0.3s ease; }
+    .feat-list-item:hover .fli-icon { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #fff; box-shadow: 0 6px 18px var(--primary-glow); }
+    .fli-text h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; margin-bottom: 3px; }
+    .fli-text p { font-size: 0.82rem; color: var(--text-muted); margin: 0; line-height: 1.6; }
+
+    /* ── OVERVIEW SECTION ── */
+    .overview-section { background: #fff; }
+
+    /* ── ACHIEVEMENT STRIP ── */
+    .achievement-strip { background: #8b0000; padding: 70px 0; }
+    .achievement-col { border-right: 1px solid rgba(255,255,255,0.2); }
+    .no-border { border-right: none; }
+    .achievement-box { padding: 20px 10px; transition: .4s ease; text-align: center; }
+    .achievement-box:hover { transform: translateY(-8px); }
+    .achievement-box h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(42px,6vw,62px); font-weight: 800; color: #ffd400; margin-bottom: 12px; line-height: 1; }
+    .achievement-box p { font-size: clamp(16px,2vw,20px); font-weight: 500; color: #fff; margin: 0; }
+    @media(max-width:991px) { .achievement-col { border-right: none; margin-bottom: 30px; } }
+
+    /* ── WHY CIVIL 3D — Wide Strip Layout ── */
+    .why-section { background: var(--light-gray); }
+    .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(139,0,0,0.08); border-radius: 20px; overflow: hidden; }
+    @media(max-width: 991px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(max-width: 576px) { .why-grid { grid-template-columns: 1fr 1fr; } }
+    .why-cell { background: #fff; padding: 36px 24px; text-align: center; transition: all 0.35s ease; position: relative; overflow: hidden; }
+    .why-cell::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--primary), #ffd700); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
+    .why-cell:hover { background: #fff8f8; }
+    .why-cell:hover::after { transform: scaleX(1); }
+    .why-cell:hover .wc-icon { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #fff; box-shadow: 0 10px 28px var(--primary-glow); transform: scale(1.1); }
+    .wc-icon { width: 68px; height: 68px; border-radius: 50%; margin: 0 auto 18px; background: linear-gradient(135deg, rgba(139,0,0,0.08), rgba(139,0,0,0.15)); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--primary); transition: all 0.4s ease; }
+    .why-cell h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.92rem; margin-bottom: 8px; }
+    .why-cell p { font-size: 0.8rem; color: var(--text-muted); margin: 0; line-height: 1.6; }
+
+    /* ── MODULES ── */
+    .modules-section { background: #fff; }
+    .module-card { background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid rgba(139,0,0,0.08); transition: all 0.4s ease; height: 100%; position: relative; }
+    .module-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--primary), #ffd700); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
+    .module-card:hover { transform: translateY(-10px); box-shadow: 0 22px 55px rgba(139,0,0,0.18); }
+    .module-card:hover::after { transform: scaleX(1); }
+    .module-img { height: 155px; background: linear-gradient(135deg, var(--primary-dark), var(--primary)); display: flex; align-items: center; justify-content: center; font-size: 3.2rem; color: rgba(255,255,255,0.5); position: relative; overflow: hidden; }
+    .module-img img { width: 100%; height: 100%; object-fit: cover; }
+    .module-img-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(92,0,0,0.7), rgba(139,0,0,0.5)); display: flex; align-items: center; justify-content: center; font-size: 3rem; color: rgba(255,255,255,0.75); }
+    .module-card:hover .module-img-overlay { background: linear-gradient(135deg, rgba(92,0,0,0.85), rgba(192,57,43,0.7)); }
+    .module-card:hover .module-img-overlay i { transform: scale(1.1) rotate(-5deg); }
+    .module-img-overlay i { transition: all 0.4s ease; }
+    .module-body { padding: 22px 20px; }
+    .module-badge { display: inline-block; background: rgba(139,0,0,0.08); color: var(--primary); font-size: 0.68rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 50px; margin-bottom: 9px; }
+    .module-body h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; margin-bottom: 7px; }
+    .module-body p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 14px; }
+    .module-meta { display: flex; gap: 14px; font-size: 0.76rem; color: var(--text-muted); }
+    .module-meta span { display: flex; align-items: center; gap: 5px; }
+    .module-meta i { color: var(--primary); }
+
+    /* ── COURSE FEATURES CARD SECTION (Card Section 1) ── */
+    .features-card-section {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, #c0392b 100%);
+      position: relative; overflow: hidden; padding: 90px 0;
+    }
+    .features-card-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .feature-glass-card {
+      background: rgba(255,255,255,0.08); backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 20px;
+      padding: 32px 24px; text-align: center; height: 100%; transition: all 0.4s ease;
+    }
+    .feature-glass-card:hover { background: rgba(255,255,255,0.14); transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.2); }
+    .fgc-icon { width: 70px; height: 70px; border-radius: 50%; background: rgba(255,215,0,0.15); border: 2px solid rgba(255,215,0,0.3); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: #ffd700; margin: 0 auto 18px; transition: all 0.4s ease; }
+    .feature-glass-card:hover .fgc-icon { background: rgba(255,215,0,0.25); transform: scale(1.1); }
+    .feature-glass-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; color: #fff; margin-bottom: 10px; }
+    .feature-glass-card p { font-size: 0.82rem; color: rgba(255,255,255,0.72); line-height: 1.7; margin: 0; }
+
+    /* ── PROCESS SECTION — dark split banner ── */
+    .process-section { background: linear-gradient(135deg, var(--primary-dark), var(--primary), #c0392b); position: relative; overflow: hidden; }
+    .process-section::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='0.02'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/svg%3E"); }
+    .process-step { text-align: center; padding: 0 8px; position: relative; }
+    .process-step:not(:last-child)::after { content: '→'; position: absolute; right: -16px; top: 22px; font-size: 1.4rem; color: rgba(255,215,0,0.4); }
+    @media(max-width:767px) { .process-step:not(:last-child)::after { display: none; } }
+    .step-num { width: 70px; height: 70px; border-radius: 50%; margin: 0 auto 16px; background: rgba(255,255,255,0.12); border: 2px solid rgba(255,215,0,0.5); display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.5rem; color: #ffd700; transition: all 0.4s ease; backdrop-filter: blur(8px); }
+    .process-step:hover .step-num { background: rgba(255,255,255,0.22); transform: scale(1.12); }
+    .step-icon-top { font-size: 1.4rem; color: rgba(255,255,255,0.55); margin-bottom: 14px; display: block; transition: all 0.4s ease; }
+    .process-step:hover .step-icon-top { color: rgba(255,215,0,0.9); }
+    .process-step h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; color: #fff; margin-bottom: 8px; }
+    .process-step p { font-size: 0.78rem; color: rgba(255,255,255,0.65); line-height: 1.65; }
+
+    /* ── SYLLABUS ── */
+    .syllabus-section { background: var(--light-gray); }
+    .syllabus-card { background: #fff; border-radius: 16px; padding: 26px 22px; box-shadow: 0 4px 18px rgba(0,0,0,0.05); border-left: 4px solid var(--primary); height: 100%; transition: all 0.35s ease; }
+    .syllabus-card:hover { transform: translateX(5px); box-shadow: 0 10px 35px rgba(139,0,0,0.12); }
+    .syllabus-card h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--primary); margin-bottom: 14px; font-size: 0.9rem; }
+    .syllabus-card ul { list-style: none; padding: 0; margin: 0; }
+    .syllabus-card ul li { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 7px; }
+    .syllabus-card ul li i { color: #ffd700; font-size: 0.6rem; flex-shrink: 0; }
+
+    /* ── CAREER SECTION — Split image layout ── */
+    .career-section { background: var(--off-white); }
+    .career-card { background: #fff; border-radius: 18px; padding: 28px 24px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); border: 1px solid rgba(139,0,0,0.08); transition: all 0.4s ease; height: 100%; position: relative; overflow: hidden; }
+    .career-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(to bottom, var(--primary), #ffd700); border-radius: 4px 0 0 4px; transition: width 0.35s ease; }
+    .career-card:hover { transform: translateY(-8px); box-shadow: 0 22px 55px rgba(139,0,0,0.18); }
+    .career-card:hover::before { width: 6px; }
+    .career-role { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; margin-bottom: 8px; }
+    .career-badge2 { display: inline-block; background: rgba(139,0,0,0.08); color: var(--primary); font-size: 0.68rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 50px; margin-bottom: 16px; }
+    .career-stats { display: flex; gap: 18px; flex-wrap: wrap; }
+    .cs-val { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.2rem; color: var(--primary); display: block; line-height: 1; }
+    .cs-key { font-size: 0.68rem; color: var(--text-muted); font-weight: 500; margin-top: 2px; }
+
+    /* ── PLACEMENT SUPPORT — Card Section 2 ── */
+    .placement-section { background: #fff; }
+    .placement-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    @media(max-width:991px) { .placement-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(max-width:576px) { .placement-grid { grid-template-columns: 1fr; } }
+    .placement-card { background: #fff; border-radius: 20px; padding: 36px 28px; box-shadow: 0 6px 30px rgba(0,0,0,0.07); border: 1px solid rgba(139,0,0,0.09); transition: all 0.4s ease; position: relative; overflow: hidden; }
+    .placement-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--primary), #ffd700); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
+    .placement-card:hover { transform: translateY(-10px); box-shadow: 0 24px 60px rgba(139,0,0,0.14); }
+    .placement-card:hover::before { transform: scaleX(1); }
+    .pc-num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 2.4rem; color: var(--primary); line-height: 1; margin-bottom: 4px; }
+    .pc-icon { width: 60px; height: 60px; border-radius: 16px; background: linear-gradient(135deg, rgba(139,0,0,0.08), rgba(139,0,0,0.15)); display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.5rem; margin-bottom: 18px; transition: all 0.3s ease; }
+    .placement-card:hover .pc-icon { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #fff; box-shadow: 0 8px 24px var(--primary-glow); }
+    .placement-card h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 10px; }
+    .placement-card p { font-size: 0.84rem; color: var(--text-muted); line-height: 1.7; margin: 0; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-section { background: var(--light-gray); }
+    .testi-outer { overflow: hidden; }
+    .testi-track-wrap { overflow: hidden; }
+    .testi-track { display: flex; gap: 24px; transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); will-change: transform; }
+    .testi-card { background: #fff; border-radius: 20px; padding: 32px 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); position: relative; flex: 0 0 calc(33.333% - 16px); min-width: calc(33.333% - 16px); border-bottom: 4px solid var(--primary); transition: all 0.35s ease; }
+    .testi-card:hover { transform: translateY(-6px); box-shadow: 0 18px 45px rgba(139,0,0,0.13); }
+    @media(max-width:991px) { .testi-card { flex: 0 0 calc(50% - 12px); min-width: calc(50% - 12px); } }
+    @media(max-width:576px) { .testi-card { flex: 0 0 100%; min-width: 100%; } }
+    .testi-quote { font-size: 3rem; color: rgba(139,0,0,0.12); font-family: Georgia,serif; line-height: 1; margin-bottom: 12px; display: block; }
+    .testi-rating { color: #ffc107; margin-bottom: 14px; font-size: 0.85rem; }
+    .testi-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 18px; }
+    .testi-company { font-size: 0.72rem; color: var(--primary); font-weight: 600; margin-bottom: 18px; display: block; }
+    .testi-author { display: flex; align-items: center; gap: 14px; }
+    .testi-avatar { width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; flex-shrink: 0; }
+    .testi-info h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem; margin: 0; }
+    .testi-info small { color: var(--primary); font-size: 0.74rem; font-weight: 500; }
+    .testi-dots { display: flex; justify-content: center; gap: 8px; margin-top: 30px; }
+    .testi-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(139,0,0,0.2); cursor: pointer; transition: all 0.3s ease; border: none; padding: 0; }
+    .testi-dot.active { background: var(--primary); transform: scale(1.3); }
+    .testi-nav { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+    .testi-btn { width: 44px; height: 44px; border-radius: 50%; border: 2px solid rgba(139,0,0,0.2); background: #fff; color: var(--primary); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; transition: all 0.3s ease; }
+    .testi-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    /* ── FAQ ── */
+    .faq-section { background: #fff; }
+    .accordion-item { border: 1px solid rgba(139,0,0,0.1) !important; border-radius: 12px !important; margin-bottom: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+    .accordion-button { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--text-dark); background: white; padding: 18px 24px; box-shadow: none !important; }
+    .accordion-button:not(.collapsed) { color: white; background: var(--primary); }
+    .accordion-button::after { filter: none; }
+    .accordion-button:not(.collapsed)::after { filter: brightness(0) invert(1); }
+    .accordion-body { padding: 0 24px 20px; font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; background: white; }
+
+    /* ── CTA ── */
+    .cta-section { background: linear-gradient(135deg, var(--primary-dark), var(--primary), #c0392b); padding: 100px 0; text-align: center; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(255,215,0,0.08), transparent 70%); }
+    .cta-section h2 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(2rem, 4vw, 3rem); color: white; margin-bottom: 18px; }
+    .cta-section h2 span { color: #ffd700; }
+    .cta-section p { color: rgba(255,255,255,0.8); font-size: 1.05rem; max-width: 600px; margin: 0 auto 38px; line-height: 1.7; }
+    .btn-cta-glow { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #ffd700, #ffb700); color: var(--primary-dark) !important; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; padding: 16px 40px; border-radius: 50px; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 10px 35px rgba(255,215,0,0.4); transition: all 0.3s ease; position: relative; overflow: hidden; }
+    .btn-cta-glow:hover { transform: translateY(-3px); box-shadow: 0 16px 45px rgba(255,215,0,0.55); color: var(--primary-dark) !important; }
+    .btn-cta-outline-white { display: inline-flex; align-items: center; gap: 10px; background: transparent; color: white !important; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; padding: 15px 38px; border-radius: 50px; border: 2px solid rgba(255,255,255,0.45); text-decoration: none; transition: all 0.3s ease; margin-left: 14px; }
+    .btn-cta-outline-white:hover { background: rgba(255,255,255,0.12); border-color: white; color: white !important; transform: translateY(-3px); }
+    @media(max-width:576px) { .btn-cta-outline-white { margin-left: 0; margin-top: 14px; } }
+    .cta-trust-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+    .cta-trust-pill { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 6px 16px; border-radius: 50px; font-size: 0.78rem; color: rgba(255,255,255,0.9); font-weight: 500; display: inline-flex; align-items: center; gap: 7px; }
+    .cta-trust-pill i { color: #ffd700; }
+
+    /* ── FOOTER ── */
+    footer { background: #0d0d0d; padding: 80px 0 0; }
+    .footer-brand { margin-bottom: 22px; }
+    .footer-desc { font-size: 0.84rem; color: rgba(255,255,255,0.45); line-height: 1.8; margin-bottom: 22px; max-width: 320px; }
+    .footer-socials { display: flex; gap: 10px; }
+    .footer-social-btn { width: 40px; height: 40px; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); font-size: 0.88rem; text-decoration: none; transition: all 0.3s ease; }
+    .footer-social-btn:hover { background: var(--primary); border-color: var(--primary); color: white; transform: translateY(-3px); }
+    .footer-heading { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.82rem; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.9); margin-bottom: 20px; }
+    .footer-links { list-style: none; padding: 0; margin: 0; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { font-size: 0.84rem; color: rgba(255,255,255,0.45); text-decoration: none; display: flex; align-items: center; gap: 8px; transition: all 0.25s ease; }
+    .footer-links a i { font-size: 0.65rem; color: var(--primary); }
+    .footer-links a:hover { color: white; padding-left: 5px; }
+    .footer-contact li { display: flex; gap: 12px; margin-bottom: 12px; font-size: 0.84rem; color: rgba(255,255,255,0.45); align-items: flex-start; }
+    .footer-contact li i { color: var(--primary); margin-top: 3px; flex-shrink: 0; }
+    .footer-newsletter { display: flex; background: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+    .footer-newsletter input { flex: 1; background: transparent; border: none; padding: 12px 16px; color: white; font-size: 0.84rem; outline: none; }
+    .footer-newsletter input::placeholder { color: rgba(255,255,255,0.3); }
+    .footer-newsletter button { background: var(--primary); color: white; border: none; padding: 12px 18px; font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: background 0.3s; font-family: 'Montserrat', sans-serif; letter-spacing: 0.5px; }
+    .footer-newsletter button:hover { background: var(--primary-light); }
+    .footer-bottom { margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.07); padding: 20px 0; font-size: 0.8rem; color: rgba(255,255,255,0.3); }
+
+    /* ── BACK TO TOP ── */
+    #backToTop { position: fixed; bottom: 28px; right: 28px; width: 46px; height: 46px; border-radius: 12px; background: var(--primary); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; box-shadow: 0 8px 24px var(--primary-glow); opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 999; }
+    #backToTop.visible { opacity: 1; visibility: visible; }
+    #backToTop:hover { transform: translateY(-4px); background: var(--primary-dark); }
+
+    /* ── REAL IMAGE DISPLAY ── */
+    .real-img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 24px; }
+
+    /* ── WIDE BANNER ── */
+    .wide-banner { background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 60%); padding: 56px 0; overflow: hidden; position: relative; }
+    .wide-banner::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40z'/%3E%3C/g%3E%3C/svg%3E"); }
+    .banner-stat { text-align: center; position: relative; }
+    .banner-stat + .banner-stat { border-left: 1px solid rgba(255,255,255,0.15); }
+    @media(max-width:576px) { .banner-stat + .banner-stat { border-left: none; border-top: 1px solid rgba(255,255,255,0.12); } }
+    .bs-num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(2.4rem,5vw,3.6rem); color: #ffd700; line-height: 1; display: block; }
+    .bs-lbl { font-size: clamp(0.78rem,1.5vw,0.95rem); color: rgba(255,255,255,0.8); font-weight: 500; margin-top: 6px; }
+
+    /* ── OVERVIEW IMAGE RIGHT → CONTENT LEFT ALT ── */
+    .alt-split { background: var(--light-gray); }
+
+    /* Responsive */
+    @media(max-width:991px) {
+      .split-img-panel img { min-height: 300px; }
+      section { padding: 70px 0; }
+      .placement-grid { gap: 18px; }
+    }
+    @media(max-width:767px) {
+      .hero-btn-group { flex-direction: column; align-items: center; }
+      .btn-cta-outline-white { margin-left: 0; margin-top: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Loader -->
+<!-- <div id="loader"><div class="loader-ring"></div></div> -->
+
+<!-- Back to Top -->
+<button id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+<!-- ═══════ NAVBAR ═══════ -->
+<div id="header"></div>
+
+
+
+
+<!-- ═══ BREADCRUMB SLIDER ═══ -->
+<div class="breadcrumb-slider">
+  <div class="breadcrumb-track">
+    <!-- <div class="breadcrumb-item-slide"><i class="fas fa-home"></i> Home</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-chevron-right"></i> Courses</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-chevron-right"></i> Civil 3D</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-map-marker-alt"></i> Tiruppur, Tamil Nadu</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-award"></i> ISO 9001:2015 Certified</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-certificate"></i>  caddpoint Authorized</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-briefcase"></i> 98% Placement Rate</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-users"></i> 5000+ Students</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i> Home</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-chevron-right"></i> Courses</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-chevron-right"></i> Civil 3D</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-map-marker-alt"></i> Tiruppur, Tamil Nadu</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-award"></i> ISO 9001:2015 Certified</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-certificate"></i>  caddpoint Authorized</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-briefcase"></i> 98% Placement Rate</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-users"></i> 5000+ Students</div> -->
+
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i>Civil 3D</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i>Road Design</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i>Drainage Systems</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i>Corridor Modeling</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i>Pipe Networks</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i>Surface Modeling</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i>Earthwork Calc</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i> caddpoint Authorized</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i>Infrastructure Design</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i>Placement Support</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i>Civil 3D</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i>Road Design</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i>Drainage Systems</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i>Corridor Modeling</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i>Pipe Networks</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i>Surface Modeling</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i>Earthwork Calc</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i> caddpoint Authorized</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i>Infrastructure Design</div>
+    <div class="breadcrumb-item-slide"><i class="fas fa-home"></i>Placement Support</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     HERO SECTION
+═══════════════════════════════════════════ -->
+<section class="hero-section" id="home">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-blob hero-blob-3"></div>
+
+  <!-- <div class="hero-chip chip-1"><i class="fas fa-certificate"></i>  caddpoint Authorized</div>
+  <div class="hero-chip chip-2"><i class="fas fa-award"></i> ISO 9001:2015</div>
+  <div class="hero-chip chip-3"><i class="fas fa-briefcase"></i> 98% Placement</div>
+  <div class="hero-chip chip-4"><i class="fas fa-users"></i> 5000+ Trained</div> -->
+
+  <div class="container position-relative" style="z-index:2">
+    <div class="hero-badge"><span class="pulse"></span> Civil 3D Training </div>
+    <h1 class="hero-title" id="heroTitle">
+      Master <span class="highlight">Civil 3D</span><br>
+      Design Infrastructure<br>
+      Like a Professional
+    </h1>
+    <p class="hero-desc">India's most comprehensive  Civil 3D certification program — road design, corridor modeling, drainage networks, and live project training backed by 98% placement support.</p>
+    <!-- <div class="hero-pills">
+      <span class="hero-pill"><i class="fas fa-road"></i> Road &amp; Highway Design</span>
+      <span class="hero-pill"><i class="fas fa-water"></i> Drainage Systems</span>
+      <span class="hero-pill"><i class="fas fa-mountain"></i> Surface Modeling</span>
+      <span class="hero-pill"><i class="fas fa-project-diagram"></i> Corridor Modeling</span>
+      <span class="hero-pill"><i class="fas fa-map-marked-alt"></i> Land Development</span>
+    </div> -->
+    <div class="hero-btn-group">
+      <a href="https://wa.me/919895352624" class="btn-hero-primary ripple"><i class="fas fa-rocket"></i> Book a Free Demo</a>
+      <!-- <a href="#syllabus" class="btn-hero-outline"><i class="fas fa-book-open"></i> View Syllabus</a> -->
+    </div>
+  </div>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,35 C300,70 900,0 1440,50 L1440,70 L0,70 Z" fill="#ffffff"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══ MARQUEE ═══ -->
+<!-- <div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span>Civil 3D</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Road Design</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Drainage Systems</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Corridor Modeling</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Pipe Networks</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Surface Modeling</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Earthwork Calc</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> caddpoint Authorized</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Infrastructure Design</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Placement Support</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Civil 3D</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Road Design</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Drainage Systems</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Corridor Modeling</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Pipe Networks</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Surface Modeling</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Earthwork Calc</div>
+    <div class="marquee-item"><span class="marquee-dot"></span> caddpoint Authorized</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Infrastructure Design</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Placement Support</div>
+  </div>
+</div> -->
+
+<!-- ═══════════════════════════════════════════
+     SECTION 1: COURSE OVERVIEW — Image LEFT + Content RIGHT
+═══════════════════════════════════════════ -->
+<section class="overview-section" id="overview">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-5" data-aos="fade-right">
+        <div class="split-img-panel" >
+          <img src="assets/image/3d-civil.webp" alt="Civil 3D infrastructure design training" loading="lazy" style="min-height:500px">
+          <div class="split-img-overlay"></div>
+          <div class="split-img-badge">
+            <span class="sib-num"> caddpoint</span>
+            <div class="sib-lbl">Authorized Course</div>
+          </div>
+          <div class="split-img-badge2"><i class="fas fa-certificate"></i> ISO 9001:2015</div>
+        </div>
+      </div>
+      <div class="col-lg-7 ps-lg-5" data-aos="fade-left">
+        <div class="section-tag"><i class="fas fa-info-circle"></i> Course Overview</div>
+        <h2 class="section-title"><span>Civil 3D</span> Course</h2>
+        
+        <p style="color:var(--text-muted);font-size:0.96rem;line-height:1.8;margin-bottom:32px">
+          AutoCAD Civil 3D is  caddpoint's industry-standard BIM solution for civil engineering design. It empowers engineers to design, analyse, and document complex infrastructure projects — from highways and roads to drainage networks, land development, and surveying.
+        </p>
+        <div class="feat-list-item">
+          <div class="fli-icon"><i class="fas fa-road"></i></div>
+          <div class="fli-text">
+            <h6>Road &amp; Highway Design</h6>
+            <p>Alignments, profiles, cross-sections and complete road design workflows for national and state highways.</p>
+          </div>
+        </div>
+        <div class="feat-list-item">
+          <div class="fli-icon"><i class="fas fa-water"></i></div>
+          <div class="fli-text">
+            <h6>Drainage &amp; Pipe Networks</h6>
+            <p>Storm drain and sanitary sewer design with pipe rules, structure tools, and analysis reports.</p>
+          </div>
+        </div>
+        <div class="feat-list-item">
+          <div class="fli-icon"><i class="fas fa-mountain"></i></div>
+          <div class="fli-text">
+            <h6>Surface &amp; Terrain Modeling</h6>
+            <p>TIN surfaces, contour analysis, grading and earthwork volumes from real survey data.</p>
+          </div>
+        </div>
+        <div class="feat-list-item">
+          <div class="fli-icon"><i class="fas fa-map-marked-alt"></i></div>
+          <div class="fli-text">
+            <h6>Land Development &amp; Surveying</h6>
+            <p>Site grading, parcel design, survey data processing and cadastral mapping workflows.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ACHIEVEMENT STRIP ═══ -->
+<section class="achievement-strip">
+  <div class="container">
+    <div class="row text-center g-0">
+      <div class="col-6 col-lg-3 achievement-col">
+        <div class="achievement-box"><h2 data-count="5000">0+</h2><p>Students Trained</p></div>
+      </div>
+      <div class="col-6 col-lg-3 achievement-col">
+        <div class="achievement-box"><h2 data-count="1200">0+</h2><p>Placements</p></div>
+      </div>
+      <div class="col-6 col-lg-3 achievement-col">
+        <div class="achievement-box"><h2 data-count="200">0+</h2><p>Projects Completed</p></div>
+      </div>
+      <div class="col-6 col-lg-3 achievement-col no-border">
+        <div class="achievement-box"><h2 data-count="98">0%</h2><p>Success Rate</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SECTION 2: WHY CIVIL 3D — Grid Strip (no repeated cards)
+═══════════════════════════════════════════ -->
+<section class="why-section" id="features">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag"><i class="fas fa-star"></i> Why Civil 3D?</div>
+      <h2 class="section-title">Why Learn <span>Civil 3D?</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Civil 3D is the global standard for civil engineering design. Mastering it gives you a decisive career advantage in one of the world's fastest-growing industries.</p>
+    </div>
+    <div class="why-grid" data-aos="fade-up" data-aos-delay="80">
+      <div class="why-cell">
+        <div class="wc-icon"><i class="fas fa-globe"></i></div>
+        <h5>Global Industry Standard</h5>
+        <p>Used by top engineering firms across 150+ countries for infrastructure projects.</p>
+      </div>
+      <div class="why-cell">
+        <div class="wc-icon"><i class="fas fa-rupee-sign"></i></div>
+        <h5>High Salary Packages</h5>
+        <p>Civil 3D certified engineers earn ₹4–15 LPA, well above standard drafting roles.</p>
+      </div>
+      <div class="why-cell">
+        <div class="wc-icon"><i class="fas fa-briefcase"></i></div>
+        <h5>Massive Job Demand</h5>
+        <p>India's infrastructure boom creates 100,000+ Civil 3D job openings annually.</p>
+      </div>
+      <div class="why-cell">
+        <div class="wc-icon"><i class="fas fa-certificate"></i></div>
+        <h5> caddpoint Certification</h5>
+        <p>Earn globally recognized  caddpoint credentials valued by every major employer.</p>
+      </div>
+      <div class="why-cell">
+        <div class="wc-icon"><i class="fas fa-project-diagram"></i></div>
+        <h5>Project-Based Learning</h5>
+        <p>Work on real infrastructure projects to build an impressive professional portfolio.</p>
+      </div>
+      <div class="why-cell">
+        <div class="wc-icon"><i class="fas fa-building"></i></div>
+        <h5>BIM Integration</h5>
+        <p>Civil 3D integrates seamlessly with the full  caddpoint BIM 360 workflow.</p>
+      </div>
+      <div class="why-cell">
+        <div class="wc-icon"><i class="fas fa-handshake"></i></div>
+        <h5>Placement Support</h5>
+        <p>100% placement assistance with 200+ industry partners across India and Middle East.</p>
+      </div>
+      <div class="why-cell">
+        <div class="wc-icon"><i class="fas fa-user-graduate"></i></div>
+        <h5>Expert Trainers</h5>
+        <p>Learn from professionals with 10+ years of live infrastructure design experience.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SECTION 3: REAL PROJECT TRAINING — Content LEFT + Image RIGHT
+═══════════════════════════════════════════ -->
+<section style="background:#fff; padding:90px 0;">
+  <div class="container">
+    <div class="row align-items-center gy-5 flex-lg-row-reverse">
+      <div class="col-lg-5" data-aos="fade-left">
+        <div class="split-img-panel">
+          <img src="assets/image/civil-work.webp"  class="w-100" alt="Real infrastructure project training" loading="lazy" style="min-height:480px">
+          <div class="split-img-overlay"></div>
+          <div class="split-img-badge">
+            <span class="sib-num">120+</span>
+            <div class="sib-lbl">Training Hours</div>
+          </div>
+          <div class="split-img-badge2"><i class="fas fa-star" style="color:#ffd700"></i> Live Projects</div>
+        </div>
+      </div>
+      <div class="col-lg-7 pe-lg-5" data-aos="fade-right">
+        <div class="section-tag"><i class="fas fa-hard-hat"></i> Real Project Training</div>
+        <h2 class="section-title"><span>Infrastructure</span> Drafting</h2>
+        <!-- <div class="divider-line"></div> -->
+        <p style="color:var(--text-muted);font-size:0.96rem;line-height:1.8;margin-bottom:32px">
+          Infrastructure Drafting course at CADD Point helps students and professionals master  caddpoint Civil 3D with practical training in road design, surface modeling, contour creation, alignment, corridor design, grading, pipe networks, and land development projects. This industry-focused Civil 3D course includes real-time project practice, expert guidance, and hands-on learning to improve drafting and infrastructure design skills for civil engineering careers.
+                </p>
+        <div class="feat-list-item">
+          <div class="fli-icon"><i class="fas fa-route"></i></div>
+          <div class="fli-text">
+            <h6>Highway Corridor Projects</h6>
+            <p>Design full road corridors with alignments, profiles, assemblies, and superelevation diagrams.</p>
+          </div>
+        </div>
+        <!-- <div class="feat-list-item">
+          <div class="fli-icon"><i class="fas fa-calculator"></i></div>
+          <div class="fli-text">
+            <h6>Earthwork Volume Reports</h6>
+            <p>Generate cut &amp; fill reports, mass haul analysis, and quantity takeoffs using corridor surfaces.</p>
+          </div>
+        </div> -->
+        <div class="feat-list-item">
+          <div class="fli-icon"><i class="fas fa-file-alt"></i></div>
+          <div class="fli-text">
+            <h6>Plan &amp; Profile Sheet Sets</h6>
+            <p>Produce professional documentation packages ready for client submission and tender preparation.</p>
+          </div>
+        </div>
+        <a href="contact.html" class="btn-hero-primary ripple mt-2" style="display:inline-flex">
+          <i class="fas fa-play-circle"></i> Book Free Demo
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     COURSE FEATURES CARD SECTION (Card Section 1)
+═══════════════════════════════════════════ -->
+<section class="features-card-section" id="course-features">
+  <div class="container position-relative" style="z-index:2">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag-white"><i class="fas fa-gem"></i> Course Features</div>
+      <h2 class="section-title section-title-white">What Makes CADPOINT's<br><span>Civil 3D Course</span> Different</h2>
+      <div class="divider-gold mx-auto"></div>
+      <p class="section-subtitle mx-auto" style="color:rgba(255,255,255,0.72)">14+ years of  caddpoint authorized training, tailored for India's infrastructure engineering professionals.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="feature-glass-card">
+          <div class="fgc-icon"><i class="fas fa-certificate"></i></div>
+          <h5> caddpoint Authorized</h5>
+          <p>Official  caddpoint ATC — your certificate is recognized globally by engineering employers.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="80">
+        <div class="feature-glass-card">
+          <div class="fgc-icon"><i class="fas fa-laptop-code"></i></div>
+          <h5>Licensed Lab Access</h5>
+          <p>Practice on fully licensed Civil 3D workstations during and after class hours.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="160">
+        <div class="feature-glass-card">
+          <div class="fgc-icon"><i class="fas fa-video"></i></div>
+          <h5>Recorded Sessions</h5>
+          <p>Every class is recorded. Revisit any topic anytime during your course duration.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="240">
+        <div class="feature-glass-card">
+          <div class="fgc-icon"><i class="fas fa-clock"></i></div>
+          <h5>Flexible Batches</h5>
+          <p>Regular, fast-track, and weekend batches — pick the schedule that fits your life.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="feature-glass-card">
+          <div class="fgc-icon"><i class="fas fa-wifi"></i></div>
+          <h5>Online + Offline</h5>
+          <p>Live online sessions with the same curriculum, lab software, and placement support.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="80">
+        <div class="feature-glass-card">
+          <div class="fgc-icon"><i class="fas fa-user-tie"></i></div>
+          <h5>Industry Trainers</h5>
+          <p>Learn from engineers with 10+ years of live highway and drainage project experience.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="160">
+        <div class="feature-glass-card">
+          <div class="fgc-icon"><i class="fas fa-project-diagram"></i></div>
+          <h5>Live Project Portfolio</h5>
+          <p>Graduate with a professional project portfolio ready to impress any employer.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="240">
+        <div class="feature-glass-card">
+          <div class="fgc-icon"><i class="fas fa-rupee-sign"></i></div>
+          <h5>EMI Options</h5>
+          <p>Flexible fee structure with early-bird discounts, group concessions, and EMI plans.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SECTION 4: CAD DRAFTING — Image LEFT + Content RIGHT
+═══════════════════════════════════════════ -->
+<!-- <section style="background:var(--light-gray); padding:90px 0;">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="split-img-panel" style="height:480px">
+          <img src="https://images.unsplash.com/photo-1581092335397-9583eb92d232?w=800&q=80&auto=format&fit=crop" alt="CAD drafting and engineering workflow" loading="lazy" style="min-height:480px">
+          <div class="split-img-overlay"></div>
+          <div class="split-img-badge">
+            <span class="sib-num">14+</span>
+            <div class="sib-lbl">Years of Excellence</div>
+          </div>
+          <div class="split-img-badge2"><i class="fas fa-award"></i>  caddpoint ATC</div>
+        </div>
+      </div>
+      <div class="col-lg-6 ps-lg-5" data-aos="fade-left">
+        <div class="section-tag"><i class="fas fa-drafting-compass"></i> CAD Drafting Excellence</div>
+        <h2 class="section-title">From <span>AutoCAD Basics</span> to Advanced Civil 3D Mastery</h2>
+        <div class="divider-line"></div>
+        <p style="color:var(--text-muted);font-size:0.96rem;line-height:1.8;margin-bottom:32px">
+          Our curriculum is structured to accommodate both fresh graduates and experienced AutoCAD users. Begin with Civil 3D's fundamentals and progress systematically through every advanced tool used in India's top infrastructure firms.
+        </p>
+        <div class="row g-3">
+          <div class="col-6">
+            <div style="background:#fff;border-radius:14px;padding:18px 16px;border:1px solid rgba(139,0,0,0.09);box-shadow:0 4px 16px rgba(0,0,0,0.05)">
+              <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.6rem;color:var(--primary)">8</div>
+              <div style="font-size:0.82rem;color:var(--text-muted)">Structured Modules</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div style="background:#fff;border-radius:14px;padding:18px 16px;border:1px solid rgba(139,0,0,0.09);box-shadow:0 4px 16px rgba(0,0,0,0.05)">
+              <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.6rem;color:var(--primary)">120+</div>
+              <div style="font-size:0.82rem;color:var(--text-muted)">Training Hours</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div style="background:#fff;border-radius:14px;padding:18px 16px;border:1px solid rgba(139,0,0,0.09);box-shadow:0 4px 16px rgba(0,0,0,0.05)">
+              <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.6rem;color:var(--primary)">2</div>
+              <div style="font-size:0.82rem;color:var(--text-muted)">Certifications</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div style="background:#fff;border-radius:14px;padding:18px 16px;border:1px solid rgba(139,0,0,0.09);box-shadow:0 4px 16px rgba(0,0,0,0.05)">
+              <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.6rem;color:var(--primary)">200+</div>
+              <div style="font-size:0.82rem;color:var(--text-muted)">Hiring Partners</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- ═══════════════════════════════════════════
+     COURSE MODULES
+═══════════════════════════════════════════ -->
+<section class="modules-section" id="modules">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag"><i class="fas fa-th-large"></i> Course Modules</div>
+      <h2 class="section-title">Civil 3D <span>Course Modules</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">A structured, industry-aligned curriculum taking you from Civil 3D fundamentals to advanced infrastructure design workflows.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="module-card">
+         
+          <div class="module-body">
+            <div class="module-badge">Module 01</div>
+            <h5>Introduction to Civil 3D</h5>
+            <p>Interface setup, project templates, coordinate systems, point groups, and Civil 3D object model fundamentals.</p>
+            <div class="module-meta"><span><i class="fas fa-clock"></i> 12 Hrs</span><span><i class="fas fa-signal"></i> Beginner</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="80">
+        <div class="module-card">
+          
+          <div class="module-body">
+            <div class="module-badge">Module 02</div>
+            <h5>Surface Creation &amp; Analysis</h5>
+            <p>TIN surfaces from survey data, contour analysis, slope analysis, volume surfaces, and grading tools.</p>
+            <div class="module-meta"><span><i class="fas fa-clock"></i> 16 Hrs</span><span><i class="fas fa-signal"></i> Intermediate</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="160">
+        <div class="module-card">
+          
+          <div class="module-body">
+            <div class="module-badge">Module 03</div>
+            <h5>Alignment Design</h5>
+            <p>Horizontal and vertical alignments, PI-based design, superelevation, design criteria, and alignment reports.</p>
+            <div class="module-meta"><span><i class="fas fa-clock"></i> 14 Hrs</span><span><i class="fas fa-signal"></i> Intermediate</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="240">
+        <div class="module-card">
+         
+          <div class="module-body">
+            <div class="module-badge">Module 04</div>
+            <h5>Corridor Modeling</h5>
+            <p>Assembly &amp; subassembly design, corridor creation, target mapping, daylight regions, multi-baseline corridors.</p>
+            <div class="module-meta"><span><i class="fas fa-clock"></i> 18 Hrs</span><span><i class="fas fa-signal"></i> Advanced</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="module-card">
+         
+          <div class="module-body">
+            <div class="module-badge">Module 05</div>
+            <h5>Road Design &amp; Profiles</h5>
+            <p>Full road design — profiles, cross-sections, finished grade, material layers, superelevation diagrams.</p>
+            <div class="module-meta"><span><i class="fas fa-clock"></i> 20 Hrs</span><span><i class="fas fa-signal"></i> Advanced</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="80">
+        <div class="module-card">
+          
+          <div class="module-body">
+            <div class="module-badge">Module 06</div>
+            <h5>Pipe Networks</h5>
+            <p>Storm drain and sanitary sewer design, pipe rules, structure design, pressure pipe networks and profiles.</p>
+            <div class="module-meta"><span><i class="fas fa-clock"></i> 16 Hrs</span><span><i class="fas fa-signal"></i> Advanced</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="160">
+        <div class="module-card">
+         
+          <div class="module-body">
+            <div class="module-badge">Module 07</div>
+            <h5>Earthwork Calculation</h5>
+            <p>Cut &amp; fill volumes using corridor surfaces, quantity takeoff, mass haul analysis, and earthwork reporting.</p>
+            <div class="module-meta"><span><i class="fas fa-clock"></i> 12 Hrs</span><span><i class="fas fa-signal"></i> Advanced</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="240">
+        <div class="module-card">
+          
+          <div class="module-body">
+            <div class="module-badge">Module 08</div>
+            <h5>Project Workflow &amp; Output</h5>
+            <p>Plan &amp; profile sheets, quantity reports, data shortcuts, vault collaboration, and complete project delivery.</p>
+            <div class="module-meta"><span><i class="fas fa-clock"></i> 14 Hrs</span><span><i class="fas fa-signal"></i> Advanced</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SECTION 5: STUDENTS LEARNING — Content RIGHT + Image LEFT
+═══════════════════════════════════════════ -->
+<section style="background:var(--light-gray); padding:90px 0;">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-5" data-aos="fade-right">
+        <div class="split-img-panel" style="height:500px">
+          <img src="assets/image/civil-course.webp" class="w-100" alt="Students learning Civil 3D" loading="lazy" style="min-height:500px">
+          <div class="split-img-overlay"></div>
+          
+          <div class="split-img-badge2"><i class="fas fa-users"></i> 5000+ Alumni</div>
+        </div>
+      </div>
+      <div class="col-lg-7 ps-lg-5" data-aos="fade-left">
+        <div class="section-tag"><i class="fas fa-graduation-cap"></i> Learning Environment</div>
+        <h2 class="section-title"><span>Best</span> Learning Experience</h2>
+        
+        <p style="color:var(--text-muted);font-size:0.96rem;line-height:1.8;margin-bottom:32px;text-align:justify;">
+          At CADD Point, students gain the Best Learning Experience through industry-focused training, practical sessions, and expert guidance from highly experienced trainers. Our Civil 3D course is designed to help students understand real-time engineering concepts with hands-on project experience and professional teaching methods. We focus on making every session interactive, easy to understand, and career-oriented so that students can build strong technical knowledge and confidence. With personalized support, updated course materials, and a friendly learning environment, CADD Point helps students develop the skills required to succeed in the civil engineering and design industry.
+                </p>
+        <!-- <div class="feat-list-item">
+          <div class="fli-icon"><i class="fas fa-desktop"></i></div>
+          <div class="fli-text">
+            <h6>Fully Licensed Workstations</h6>
+            <p>Practice on genuine  caddpoint Civil 3D software — no pirated tools, ever.</p>
+          </div>
+        </div>
+        <div class="feat-list-item">
+          <div class="fli-icon"><i class="fas fa-users"></i></div>
+          <div class="fli-text">
+            <h6>Small Batch Sizes</h6>
+            <p>Maximum 15 students per batch ensures personalized trainer attention for every learner.</p>
+          </div>
+        </div>
+        <div class="feat-list-item">
+          <div class="fli-icon"><i class="fas fa-headset"></i></div>
+          <div class="fli-text">
+            <h6>Lifetime Doubt Support</h6>
+            <p>Post-course WhatsApp support group with trainers to resolve doubts anytime.</p>
+          </div>
+        </div>
+        <div class="feat-list-item">
+          <div class="fli-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+          <div class="fli-text">
+            <h6>Guest Industry Lectures</h6>
+            <p>Regular sessions by AECOM, L&amp;T, and NHAI project engineers sharing field insights.</p>
+          </div>
+        </div>
+      </div> -->
+      <a href="contact.html" class="btn-hero-primary ripple " style="display:inline-flex">
+         Book Free Demo
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SYLLABUS SECTION
+═══════════════════════════════════════════ -->
+<section class="syllabus-section" id="syllabus">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag"><i class="fas fa-list-alt"></i> Syllabus</div>
+      <h2 class="section-title">Detailed Course <span>Syllabus</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Topic-by-topic breakdown of everything you will master in this Civil 3D certification course.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="syllabus-card">
+          <h6><i class="fas fa-layer-group me-2"></i>Civil 3D Fundamentals</h6>
+          <ul>
+            <li><i class="fas fa-check-circle"></i>Interface &amp; Workspace Setup</li>
+            <li><i class="fas fa-check-circle"></i>Project Templates &amp; Settings</li>
+            <li><i class="fas fa-check-circle"></i>Coordinate Systems &amp; Projections</li>
+            <li><i class="fas fa-check-circle"></i>Points &amp; Survey Data Import</li>
+            <li><i class="fas fa-check-circle"></i>Object Styles &amp; Label Styles</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="60">
+        <div class="syllabus-card">
+          <h6><i class="fas fa-mountain me-2"></i>Surface &amp; Terrain</h6>
+          <ul>
+            <li><i class="fas fa-check-circle"></i>TIN Surface Creation</li>
+            <li><i class="fas fa-check-circle"></i>Contour Generation</li>
+            <li><i class="fas fa-check-circle"></i>Slope &amp; Elevation Analysis</li>
+            <li><i class="fas fa-check-circle"></i>Volume Surfaces</li>
+            <li><i class="fas fa-check-circle"></i>Grading &amp; Feature Lines</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="120">
+        <div class="syllabus-card">
+          <h6><i class="fas fa-route me-2"></i>Alignments &amp; Profiles</h6>
+          <ul>
+            <li><i class="fas fa-check-circle"></i>Horizontal Alignment Design</li>
+            <li><i class="fas fa-check-circle"></i>Vertical Profile Creation</li>
+            <li><i class="fas fa-check-circle"></i>Superelevation Design</li>
+            <li><i class="fas fa-check-circle"></i>Design Speed &amp; Criteria</li>
+            <li><i class="fas fa-check-circle"></i>Alignment Reports</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="syllabus-card">
+          <h6><i class="fas fa-road me-2"></i>Corridors &amp; Cross Sections</h6>
+          <ul>
+            <li><i class="fas fa-check-circle"></i>Assembly &amp; Subassembly Design</li>
+            <li><i class="fas fa-check-circle"></i>Corridor Creation &amp; Editing</li>
+            <li><i class="fas fa-check-circle"></i>Target Mapping</li>
+            <li><i class="fas fa-check-circle"></i>Daylight Regions</li>
+            <li><i class="fas fa-check-circle"></i>Multi-Baseline Corridors</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="60">
+        <div class="syllabus-card">
+          <h6><i class="fas fa-water me-2"></i>Pipe Networks</h6>
+          <ul>
+            <li><i class="fas fa-check-circle"></i>Storm Drain Design</li>
+            <li><i class="fas fa-check-circle"></i>Sanitary Sewer Layouts</li>
+            <li><i class="fas fa-check-circle"></i>Pipe Rules &amp; Structure Design</li>
+            <li><i class="fas fa-check-circle"></i>Pressure Pipe Networks</li>
+            <li><i class="fas fa-check-circle"></i>Network Profile &amp; Analysis</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="120">
+        <div class="syllabus-card">
+          <h6><i class="fas fa-file-alt me-2"></i>Outputs &amp; Documentation</h6>
+          <ul>
+            <li><i class="fas fa-check-circle"></i>Plan &amp; Profile Sheet Sets</li>
+            <li><i class="fas fa-check-circle"></i>Earthwork Reports</li>
+            <li><i class="fas fa-check-circle"></i>Data Shortcuts &amp; References</li>
+            <li><i class="fas fa-check-circle"></i> caddpoint Vault Collaboration</li>
+            <li><i class="fas fa-check-circle"></i>Project Delivery Workflow</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     LEARNING PROCESS — dark background strip
+═══════════════════════════════════════════ -->
+<section class="process-section">
+  <div class="container position-relative" style="z-index:2">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag-white"><i class="fas fa-map-signs"></i> Your Journey</div>
+      <h2 class="section-title section-title-white">Your <span>Learning Path</span> to Civil 3D Mastery</h2>
+      <div class="divider-gold mx-auto"></div>
+    </div>
+    <div class="row g-4" data-aos="fade-up" data-aos-delay="80">
+      <div class="col-6 col-lg-2">
+        <div class="process-step">
+          <span class="step-icon-top"><i class="fas fa-phone-alt"></i></span>
+          <div class="step-num">01</div>
+          <h5>Free Counselling</h5>
+          <p>Discuss your goals with our expert team and choose the right batch.</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <div class="process-step">
+          <span class="step-icon-top"><i class="fas fa-clipboard-check"></i></span>
+          <div class="step-num">02</div>
+          <h5>Enrollment</h5>
+          <p>Complete enrollment, get your lab credentials and study materials.</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <div class="process-step">
+          <span class="step-icon-top"><i class="fas fa-laptop-code"></i></span>
+          <div class="step-num">03</div>
+          <h5>Hands-On Training</h5>
+          <p>120+ hours of structured training with live project exercises.</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <div class="process-step">
+          <span class="step-icon-top"><i class="fas fa-tasks"></i></span>
+          <div class="step-num">04</div>
+          <h5>Project Work</h5>
+          <p>Build a complete portfolio of real infrastructure design projects.</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <div class="process-step">
+          <span class="step-icon-top"><i class="fas fa-certificate"></i></span>
+          <div class="step-num">05</div>
+          <h5>Certification</h5>
+          <p>Earn your CADPOINT &amp;  caddpoint globally recognized certificates.</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <div class="process-step">
+          <span class="step-icon-top"><i class="fas fa-briefcase"></i></span>
+          <div class="step-num">06</div>
+          <h5>Job Placement</h5>
+          <p>Interview prep, resume building, and referrals to 200+ partners.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     STUDENT BENEFITS & PLACEMENT SUPPORT (Card Section 2)
+═══════════════════════════════════════════ -->
+<!-- <section class="placement-section" id="placement">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag"><i class="fas fa-handshake"></i> Placement Support</div>
+      <h2 class="section-title">Student Benefits &amp; <span>Placement Support</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">CADPOINT's placement team works with you from day one — not just at the end of the course. Our 98% placement record speaks for itself.</p>
+    </div>
+    <div class="placement-grid" data-aos="fade-up" data-aos-delay="60">
+      <div class="placement-card">
+        <div class="pc-icon"><i class="fas fa-file-user"></i></div>
+        <div class="pc-num">100%</div>
+        <h5>Resume Building</h5>
+        <p>Professionally crafted Civil 3D resume tailored for infrastructure engineering job applications.</p>
+      </div>
+      <div class="placement-card">
+        <div class="pc-icon"><i class="fas fa-comments"></i></div>
+        <div class="pc-num">10+</div>
+        <h5>Mock Interviews</h5>
+        <p>Simulated HR and technical interviews by industry professionals to build your confidence.</p>
+      </div>
+      <div class="placement-card">
+        <div class="pc-icon"><i class="fas fa-building"></i></div>
+        <div class="pc-num">200+</div>
+        <h5>Hiring Partners</h5>
+        <p>Direct referrals to L&T, AECOM, Jacobs, Atkins, NHAI contractors, and 200+ firms.</p>
+      </div>
+      <div class="placement-card">
+        <div class="pc-icon"><i class="fas fa-globe-asia"></i></div>
+        <div class="pc-num">Gulf</div>
+        <h5>Middle East Jobs</h5>
+        <p>Dedicated placement support for UAE, Saudi Arabia, Qatar, and Kuwait infrastructure roles.</p>
+      </div>
+      <div class="placement-card">
+        <div class="pc-icon"><i class="fas fa-star"></i></div>
+        <div class="pc-num">98%</div>
+        <h5>Placement Success</h5>
+        <p>Consistent 98% placement rate maintained over 14 years with rigorous post-course follow-up.</p>
+      </div>
+      <div class="placement-card">
+        <div class="pc-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div class="pc-num">2x</div>
+        <h5>Salary Jump</h5>
+        <p>Most graduates double their salary within 12 months of  caddpoint certification from CADPOINT.</p>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- ═══════════════════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════════════════ -->
+<!-- <section class="testimonials-section" id="testimonials">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag"><i class="fas fa-star"></i> Student Reviews</div>
+      <h2 class="section-title">What Our <span>Graduates</span> Say</h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Real stories from engineers who launched their infrastructure careers with CADPOINT.</p>
+    </div>
+    <div class="testi-outer" data-aos="fade-up" data-aos-delay="80">
+      <div class="testi-track-wrap">
+        <div class="testi-track" id="testiTrack">
+          <div class="testi-card">
+            <span class="testi-quote">"</span>
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">CADPOINT's corridor modeling sessions were phenomenal. The trainer walked us through a real highway project from scratch. I got placed at L&T within 3 weeks of certification!</p>
+            <span class="testi-company">📍 Placed at: L&T Construction · Highway CAD Designer</span>
+            <div class="testi-author">
+              <div class="testi-avatar">RK</div>
+              <div class="testi-info"><h6>Ravi Kumar</h6>
+                
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <span class="testi-quote">"</span>
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">The pipe network and drainage design training was exactly what my job needed. CADPOINT's trainers have real project experience — not just theory. Best investment I've made in my career!</p>
+            <span class="testi-company">📍 Placed at: AECOM India · Drainage Design Engineer</span>
+            <div class="testi-author">
+              <div class="testi-avatar">PS</div>
+              <div class="testi-info"><h6>Priya Subramaniam</h6>
+               
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <span class="testi-quote">"</span>
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+            <p class="testi-text">The surface modeling and earthwork calculation modules were outstanding.  caddpoint certification from CADPOINT opened doors at major EPC firms that standard AutoCAD training never could.</p>
+            <span class="testi-company">📍 Placed at: Shapoorji Pallonji · Site &amp; Design Engineer</span>
+            <div class="testi-author">
+              <div class="testi-avatar">AM</div>
+              <div class="testi-info"><h6>Arun Mehta</h6>
+               
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <span class="testi-quote">"</span>
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">I switched from manual drafting to Civil 3D after CADPOINT. The training was structured perfectly. My salary doubled within a year of  caddpoint certification. Highly recommend this course!</p>
+            <span class="testi-company">📍 Placed at: NHAI Contractor · Highway CAD Designer</span>
+            <div class="testi-author">
+              <div class="testi-avatar">VN</div>
+              <div class="testi-info"><h6>Vijay Nair</h6><small>Civil 3D Graduate · Mumbai</small></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <span class="testi-quote">"</span>
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">CADPOINT's placement team arranged 4 interviews in 2 weeks after my course. Mock interviews and resume guidance were invaluable. I'm now a BIM Coordinator at Jacobs Engineering!</p>
+            <span class="testi-company">📍 Placed at: Jacobs Engineering · BIM Coordinator</span>
+            <div class="testi-author">
+              <div class="testi-avatar">DK</div>
+              <div class="testi-info"><h6>Divya Krishnan</h6>
+                
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <span class="testi-quote">"</span>
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">As a fresh civil engineering graduate, CADPOINT's training gave me a massive advantage over peers. The project-based curriculum built confidence and the  caddpoint certificate validated my skills nationally.</p>
+            <span class="testi-company">📍 Placed at: Atkins India · Infrastructure Planner</span>
+            <div class="testi-author">
+              <div class="testi-avatar">ST</div>
+              <div class="testi-info"><h6>Suresh Thiyagarajan</h6>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-dots" id="testiDots">
+        <button class="testi-dot active" data-idx="0"></button>
+        <button class="testi-dot" data-idx="1"></button>
+        <button class="testi-dot" data-idx="2"></button>
+        <button class="testi-dot" data-idx="3"></button>
+      </div>
+      <div class="testi-nav">
+        <button class="testi-btn" id="testiBtnPrev" aria-label="Previous"><i class="fas fa-arrow-left"></i></button>
+        <button class="testi-btn" id="testiBtnNext" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<section class="testimonials-section" id="testimonials">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-tag"><i class="fas fa-star"></i> Student Reviews</div>
+      <h2 class="section-title">What Our <span>Graduates</span> Say</h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Real stories from engineers who launched their infrastructure careers with CADPOINT.</p>
+    </div>
+    <div class="testi-outer">
+      <div class="testi-track-wrap">
+        <div class="testi-track" id="testiTrack">
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">I am currently learning AutoCAD at CADPOINT Marthandam and having a great experience. Divya mam's teaching is clear, friendly, and easy to understand. She patiently explains every concept and clears all doubts. The staff are also very supportive. After completing AutoCAD, I am looking forward to learning Revit here. Highly recommended!</p>
+            <div class="testi-author">
+              <div class="testi-avatar">S</div>
+              <div class="testi-info"><h6>Saran KT</h6></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">I am studying AUTOCAD software at cad point marthandam. All staff are Knowledgeable person and good experience within the field above 5 years. So the lectures are teaching easy way to understand the class. Ex. They are teaching with the live example.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">R</div>
+              <div class="testi-info"><h6>Renish R</h6></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+            <p class="testi-text">CADPOINT is a good training institute with a friendly learning environment and supportive trainers. Both my sister and I had a positive learning experience here. The teaching is clear, practical, and easy to understand. The fee structure is also reasonable and affordable for students. Overall, CADPOINT is a great place to develop skills and gain knowledge.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">A</div>
+              <div class="testi-info"><h6>Ashlin Jega</h6></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">I had an excellent learning experience at CADPOINT Marthandam. The AutoCAD and Tekla courses were highly beneficial and helped me enhance my design skills and technical knowledge. The trainers were supportive, patient, and explained each concept clearly with practical examples. Currently I am working in a company based on design engineer role ...Tq CAD point marthandam and staffs ❤️</p>
+            
+            <div class="testi-author">
+              <div class="testi-avatar">M</div>
+              <div class="testi-info"><h6>Manoj Mano</h6>
+              
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">CAD Point provided me with a great learning experience. The classes were informative, the trainers were supportive, and the practical sessions helped me understand concepts better. The institute also encouraged skill development and boosted my confidence, making it an excellent place for learning and career growth.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">A</div>
+              <div class="testi-info"><h6>Ashika G.R</h6></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <!-- <span class="testi-quote">"</span> -->
+            <div class="testi-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testi-text">The training centre provides a professional and student-friendly learning environment.
+The trainers are experienced, patient, and explain every topic in a simple way.
+The teaching methods are practical, interactive, and easy to understand.
+Regular guidance and individual attention helped me learn with confidence.
+Overall, it is an excellent place for students who want quality CAD training.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">V</div>
+              <div class="testi-info"><h6>Vijith Ajith</h6></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-dots" id="testiDots">
+        <button class="testi-dot active" data-idx="0"></button>
+        <button class="testi-dot" data-idx="1"></button>
+        <button class="testi-dot" data-idx="2"></button>
+        <button class="testi-dot" data-idx="3"></button>
+      </div>
+      <div class="testi-nav">
+        <button class="testi-btn" id="testiBtnPrev" aria-label="Previous"><i class="fas fa-arrow-left"></i></button>
+        <button class="testi-btn" id="testiBtnNext" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<style>
+  /* ── TESTIMONIALS ── */
+  .testimonials-section { background: var(--light-gray); padding: 80px 0; }
+  .testi-outer { overflow: hidden; }
+  .testi-track-wrap { overflow: hidden; }
+  .testi-track { display: flex; gap: 24px; transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); will-change: transform; }
+  .testi-card { background: #fff; border-radius: 20px; padding: 32px 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); position: relative; flex: 0 0 calc(33.333% - 16px); min-width: calc(33.333% - 16px); border-bottom: 4px solid var(--primary); transition: all 0.35s ease; }
+  .testi-card:hover { transform: translateY(-6px); box-shadow: 0 18px 45px rgba(139,0,0,0.13); }
+  @media(max-width:991px) { .testi-card { flex: 0 0 calc(50% - 12px); min-width: calc(50% - 12px); } }
+  @media(max-width:576px) { .testi-card { flex: 0 0 100%; min-width: 100%; } }
+  .testi-quote { font-size: 3rem; color: rgba(139,0,0,0.12); font-family: Georgia,serif; line-height: 1; margin-bottom: 12px; display: block; }
+  .testi-rating { color: #ffc107; margin-bottom: 14px; font-size: 0.85rem; }
+  .testi-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 18px; }
+  .testi-company { font-size: 0.72rem; color: var(--primary); font-weight: 600; margin-bottom: 18px; display: block; }
+  .testi-author { display: flex; align-items: center; gap: 14px; }
+  .testi-avatar { width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; flex-shrink: 0; }
+  .testi-info h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem; margin: 0; }
+  .testi-info small { color: var(--primary); font-size: 0.74rem; font-weight: 500; }
+  .testi-dots { display: flex; justify-content: center; gap: 8px; margin-top: 30px; }
+  .testi-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(139,0,0,0.2); cursor: pointer; transition: all 0.3s ease; border: none; padding: 0; }
+  .testi-dot.active { background: var(--primary); transform: scale(1.3); }
+  .testi-nav { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+  .testi-btn { width: 44px; height: 44px; border-radius: 50%; border: 2px solid rgba(139,0,0,0.2); background: #fff; color: var(--primary); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; transition: all 0.3s ease; }
+  .testi-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+</style>
+
+
+  <script>
+// ── TESTIMONIAL SLIDER
+(function() {
+  const track   = document.getElementById('testiTrack');
+  const dots    = document.querySelectorAll('.testi-dot');
+  const prevBtn = document.getElementById('testiBtnPrev');
+  const nextBtn = document.getElementById('testiBtnNext');
+  if (!track) return;
+
+  let current = 0;
+  const cards = track.querySelectorAll('.testi-card');
+  const total = cards.length;
+
+  function getVisible() {
+    if (window.innerWidth < 576) return 1;
+    if (window.innerWidth < 992) return 2;
+    return 3;
+  }
+  function getMax() { return total - getVisible(); }
+  function slideTo(idx) {
+    const max = getMax();
+    current = Math.max(0, Math.min(idx, max));
+    const cardW = cards[0].offsetWidth + 24;
+    track.style.transform = `translateX(-${current * cardW}px)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  prevBtn?.addEventListener('click', () => slideTo(current - 1));
+  nextBtn?.addEventListener('click', () => slideTo(current + 1));
+  dots.forEach(d => d.addEventListener('click', () => slideTo(parseInt(d.getAttribute('data-idx')))));
+  window.addEventListener('resize', () => slideTo(current));
+  setInterval(() => slideTo(current < getMax() ? current + 1 : 0), 5000);
+})();
+</script>
+
+
+
+<!-- ═══════════════════════════════════════════
+     FAQ SECTION
+═══════════════════════════════════════════ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-tag"><i class="fas fa-question-circle"></i> FAQ</div>
+      <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Everything you need to know before enrolling in our Civil 3D certification course.</p>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-9" data-aos="fade-up" data-aos-delay="80">
+        <div class="accordion" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                <i class="fas fa-clock me-2" style="color:var(--primary)"></i>What is the course duration?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">The Civil 3D course is available in <strong>3-month regular batch</strong> (weekdays, 2 hours/day), <strong>45-day fast-track</strong> (daily 4 hours), and <strong>4-month weekend batch</strong>. Total: 120+ hours of guided training plus dedicated lab practice time.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                <i class="fas fa-laptop me-2" style="color:var(--primary)"></i>What are the software requirements?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body"> caddpoint Civil 3D requires <strong>Windows 10/11 (64-bit), 16GB RAM minimum, and a dedicated GPU</strong>. Our lab provides fully licensed software during class hours. Students can also access a free  caddpoint Education license (1-year) for home practice.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                <i class="fas fa-certificate me-2" style="color:var(--primary)"></i>What certification will I receive?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">You receive two certificates: (1) <strong>CADPOINT ISO 9001:2015 Course Completion Certificate</strong> and (2) <strong> caddpoint Certified User (ACU)</strong> or <strong> caddpoint Certified Professional (ACP)</strong> — both globally recognized by engineering employers.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                <i class="fas fa-briefcase me-2" style="color:var(--primary)"></i>Is placement support guaranteed?
+              </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Yes. We provide <strong>100% placement assistance</strong> including resume building, mock interviews, aptitude coaching, and referrals to 200+ industry partners including L&amp;T, AECOM, Jacobs, Atkins, and NHAI contractors. Our placement rate is 98%.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                <i class="fas fa-wifi me-2" style="color:var(--primary)"></i>Are online classes available?
+              </button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Yes! We offer <strong>live online classes via Zoom/Google Meet</strong> with full curriculum coverage, recorded session access for revision, the same  caddpoint Education license for home practice, and complete placement support. Online students receive all study materials digitally.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                <i class="fas fa-user-graduate me-2" style="color:var(--primary)"></i>Who is this course suitable for?
+              </button>
+            </h2>
+            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">This course is ideal for <strong>Civil Engineering graduates and diploma holders, AutoCAD users upgrading to Civil 3D, working engineers in infrastructure firms, and government project professionals</strong>. Basic AutoCAD knowledge is helpful but not mandatory — prerequisites are covered in Module 01.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+                <i class="fas fa-rupee-sign me-2" style="color:var(--primary)"></i>What are the course fees?
+              </button>
+            </h2>
+            <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Our fees are among the most competitive for  caddpoint-authorized Civil 3D training in India. <strong>Contact us for the current fee structure</strong> — we also offer early-bird discounts, group concessions, and EMI options. A free demo class is available before enrollment commitment.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CTA SECTION
+═══════════════════════════════════════════ -->
+<section class="cta-section" id="cta">
+  <div class="container position-relative" style="z-index:2">
+    <div data-aos="zoom-in">
+      <div class="section-tag-white mb-3" style="display:inline-flex"><i class="fas fa-rocket"></i>&nbsp;Enroll Today</div>
+      <h2>Start Your <span>Civil Engineering</span><br>Career Today</h2>
+      <p>Join 5,000+ engineers who launched their careers through CADPOINT's  caddpoint authorized Civil 3D training.<br>Free demo class available — no commitment required!</p>
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <a href="https://wa.me/919895352624" class="btn-cta-glow ripple"><i class="fas fa-rocket"></i> Join Now — Free Demo</a>
+        <a href="tel:+919895352624" class="btn-cta-outline-white"><i class="fas fa-phone-alt"></i> Contact Us</a>
+      </div>
+      <!-- <div class="cta-trust-row">
+        <span class="cta-trust-pill"><i class="fas fa-check-circle"></i> Free Counselling</span>
+        <span class="cta-trust-pill"><i class="fas fa-certificate"></i>  caddpoint Authorized</span>
+        <span class="cta-trust-pill"><i class="fas fa-award"></i> ISO 9001:2015</span>
+        <span class="cta-trust-pill"><i class="fas fa-briefcase"></i> 98% Placement</span>
+        <span class="cta-trust-pill"><i class="fas fa-clock"></i> Flexible Batches</span>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<div id="footer"></div>
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+fetch("./header.html")
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById("header").innerHTML = html;
+    initCaddNav();
+  });
+
+  fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+      document.getElementById('footer').innerHTML = data;
+  });
+</script>
+<script>
+function initCaddNav() {
+
+    const coursesNav = document.getElementById('coursesNav');
+    const caret = document.getElementById('coursesCaret');
+    const menu = document.getElementById('coursesMegaMenu');
+    const closeBtn = document.getElementById('closeMegaMenu');
+
+    if (!coursesNav || !caret || !menu) return;
+
+    // X BUTTON CLOSE (Desktop + Mobile)
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.remove('show');
+
+        });
+    }
+
+    // MOBILE
+    if (window.innerWidth <= 991) {
+
+        caret.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            menu.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!coursesNav.contains(e.target)) {
+                menu.classList.remove('show');
+            }
+        });
+
+        return;
+    }
+
+    // DESKTOP
+    coursesNav.addEventListener('mouseenter', function () {
+        menu.classList.add('show');
+    });
+
+    coursesNav.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+
+    menu.addEventListener('mouseleave', function () {
+        menu.classList.remove('show');
+    });
+}
+</script>
+
+
+<script>
+  document
+    .getElementById("closeMegaMenu")
+    .addEventListener("click", function () {
+  
+      document
+        .querySelector(".courses-mega-menu")
+        .classList.remove("show");
+  
+    });
+  
+  </script>
+
+
+<script>
+// ── LOADER
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1800);
+});
+
+// ── AOS
+AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });
+
+// ── NAVBAR SCROLL
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 50);
+  document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 400);
+  highlightNav();
+});
+
+// ── BACK TO TOP
+document.getElementById('backToTop').addEventListener('click', () =>
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+);
+
+// ── ACTIVE NAV HIGHLIGHT
+function highlightNav() {
+  const sections = document.querySelectorAll('section[id]');
+  const links    = document.querySelectorAll('.navbar-nav .nav-link');
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 130) current = s.id; });
+  links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
+}
+
+// ── HERO TITLE ANIMATION
+const heroTitle = document.getElementById('heroTitle');
+if (heroTitle) {
+  heroTitle.style.cssText = 'opacity:0;transform:translateY(28px);transition:opacity 0.85s ease 0.45s,transform 0.85s ease 0.45s';
+  setTimeout(() => { heroTitle.style.opacity = '1'; heroTitle.style.transform = 'translateY(0)'; }, 300);
+}
+
+// ── COUNTER ANIMATION
+function animateCounters() {
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseInt(el.getAttribute('data-count'));
+    let current  = 0;
+    const inc    = target / 60;
+    const suffix = target === 98 ? '%' : '+';
+    const timer  = setInterval(() => {
+      current += inc;
+      if (current >= target) { current = target; clearInterval(timer); }
+      el.textContent = Math.floor(current) + suffix;
+    }, 25);
+  });
+}
+const achieveObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { animateCounters(); achieveObs.disconnect(); } });
+}, { threshold: 0.3 });
+const strip = document.querySelector('.achievement-strip');
+if (strip) achieveObs.observe(strip);
+
+// ── RIPPLE
+document.querySelectorAll('.ripple').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const r = document.createElement('span');
+    r.style.cssText = `position:absolute;border-radius:50%;background:rgba(255,255,255,0.3);width:10px;height:10px;left:${e.clientX-rect.left-5}px;top:${e.clientY-rect.top-5}px;transform:scale(0);animation:rippleAnim 0.6s ease-out forwards;pointer-events:none;z-index:10;`;
+    this.appendChild(r);
+    setTimeout(() => r.remove(), 700);
+  });
+});
+const rs = document.createElement('style');
+rs.textContent = '@keyframes rippleAnim{to{transform:scale(30);opacity:0}}';
+document.head.appendChild(rs);
+
+// ── TESTIMONIAL SLIDER
+(function() {
+  const track   = document.getElementById('testiTrack');
+  const dots    = document.querySelectorAll('.testi-dot');
+  const prevBtn = document.getElementById('testiBtnPrev');
+  const nextBtn = document.getElementById('testiBtnNext');
+  if (!track) return;
+
+  let current = 0;
+  const cards = track.querySelectorAll('.testi-card');
+  const total = cards.length;
+
+  function getVisible() {
+    if (window.innerWidth < 576) return 1;
+    if (window.innerWidth < 992) return 2;
+    return 3;
+  }
+  function getMax() { return total - getVisible(); }
+  function slideTo(idx) {
+    const max = getMax();
+    current = Math.max(0, Math.min(idx, max));
+    const cardW = cards[0].offsetWidth + 24;
+    track.style.transform = `translateX(-${current * cardW}px)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  prevBtn?.addEventListener('click', () => slideTo(current - 1));
+  nextBtn?.addEventListener('click', () => slideTo(current + 1));
+  dots.forEach(d => d.addEventListener('click', () => slideTo(parseInt(d.getAttribute('data-idx')))));
+  window.addEventListener('resize', () => slideTo(current));
+  setInterval(() => slideTo(current < getMax() ? current + 1 : 0), 5000);
+})();
+
+// ── MEGA DROPDOWN
+(function() {
+  const coursesNav = document.getElementById('coursesNav');
+  if (!coursesNav) return;
+  const menu  = coursesNav.querySelector('.courses-mega-menu');
+  const caret = document.getElementById('coursesDropdown');
+  if (!menu) return;
+  let hideTimer;
+
+  function showMenu() {
+    clearTimeout(hideTimer);
+    const navRect = document.getElementById('mainNav').getBoundingClientRect();
+    menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    menu.classList.add('show');
+    if (caret) caret.querySelector('i').style.transform = 'rotate(180deg)';
+  }
+  function hideMenu() {
+    hideTimer = setTimeout(() => {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }, 120);
+  }
+
+  coursesNav.addEventListener('mouseenter', showMenu);
+  coursesNav.addEventListener('mouseleave', hideMenu);
+  menu.addEventListener('mouseenter', showMenu);
+  menu.addEventListener('mouseleave', hideMenu);
+  if (caret) {
+    caret.querySelector('i').style.transition = 'transform 0.25s ease';
+    caret.addEventListener('click', e => {
+      e.stopPropagation();
+      menu.classList.contains('show') ? hideMenu() : showMenu();
+    });
+  }
+  document.addEventListener('click', e => {
+    if (!coursesNav.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('show');
+      if (caret) caret.querySelector('i').style.transform = 'rotate(0deg)';
+    }
+  });
+  window.addEventListener('scroll', () => {
+    if (menu.classList.contains('show')) {
+      const navRect = document.getElementById('mainNav').getBoundingClientRect();
+      menu.style.top = (navRect.bottom + window.scrollY) + 'px';
+    }
+  });
+})();
+
+// ── SKILL BAR ANIMATION (if any)
+const skillObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+        bar.style.width = bar.getAttribute('data-width') || bar.style.width;
+      });
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.skills-section').forEach(s => skillObs.observe(s));
+</script>
+</body>
+</html>

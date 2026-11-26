@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SKILL PRO 2K27 | CADPOINT Scholarship Examination</title>
+<meta name="description" content="SKILL PRO 2K27: CADPOINT's 25-question MCQ scholarship exam. Your Skill! Your Scholarship! Up to 60% course-fee scholarship.">
+<link rel="icon" href="assets/image/cadd-logo.webp">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* SKILL PRO 2K27 - blue premium theme */
+:root{--navy:#061a45;--royal:#0b3d91;--blue:#1565c0;--sky:#38b6ff;--gold:#f0b429;--ink:#0f1b33;--mute:#5b6781;--bg:#f4f8ff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+html,body{max-width:100%;overflow-x:hidden}
+body{font-family:'Poppins',sans-serif;color:var(--ink);line-height:1.7}
+h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
+img{max-width:100%;height:auto}
+a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+/* buttons */
+.btn-gold{background:linear-gradient(135deg,#e0a21b,var(--gold));color:var(--navy);font-weight:700;border-radius:30px;padding:12px 32px;border:0;transition:.3s;box-shadow:0 6px 22px rgba(240,180,41,.4)}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(240,180,41,.55);color:var(--navy)}
+.btn-ghost{border:2px solid rgba(255,255,255,.6);color:#fff;border-radius:30px;font-weight:600;padding:10px 30px;transition:.3s}
+.btn-ghost:hover{background:rgba(255,255,255,.14);color:#fff;transform:translateY(-2px)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;color:#fff;padding:72px 0 90px;background:linear-gradient(120deg,var(--navy),var(--royal),#1d6fd6,var(--navy));background-size:300% 300%;animation:grad 16s ease infinite}
+@keyframes grad{50%{background-position:100% 50%}}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.28;animation:float 9s ease-in-out infinite}
+.o1{width:420px;height:420px;background:var(--sky);top:-120px;right:-100px}
+.o2{width:300px;height:300px;background:var(--gold);bottom:-100px;left:-80px;animation-delay:-4s;opacity:.15}
+@keyframes float{50%{transform:translate(24px,-24px)}}
+.pill{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(10px);padding:6px 16px;border-radius:30px;font-size:.8rem;font-weight:500}
+.pill i{color:var(--gold)}
+.hero h1{font-weight:900;font-size:clamp(2.6rem,8vw,5rem);line-height:1.05;margin:18px 0 10px}
+.hero h1 span{color:var(--sky)}
+.tagline{font-family:'Montserrat';font-weight:700;color:var(--gold);font-size:clamp(1.1rem,2.6vw,1.5rem)}
+.lead-text{max-width:540px;color:rgba(255,255,255,.85);margin:0 auto 28px}
+@media(min-width:992px){.lead-text{margin-left:0}}
+.facts{display:grid;grid-template-columns:repeat(4,auto);gap:18px 34px;justify-content:center;margin-top:40px;padding-top:28px;border-top:1px solid rgba(255,255,255,.2)}
+@media(min-width:992px){.facts{justify-content:start}}
+@media(max-width:575px){.facts{grid-template-columns:repeat(2,1fr)}}
+.facts b{display:block;font-family:'Montserrat';font-weight:800;font-size:1.35rem;color:var(--gold);line-height:1.2}
+.facts span{font-size:.72rem;opacity:.75;text-transform:uppercase;letter-spacing:1px}
+.logo-card{max-width:400px;margin:0 auto;background:rgba(255,255,255,.96);border-radius:28px;padding:22px;box-shadow:0 30px 70px rgba(0,0,0,.4);animation:float 7s ease-in-out infinite;transition:transform .4s}
+.logo-card img{display:block;width:100%;border-radius:14px}
+
+/* sections */
+.sec{padding:96px 0}
+.sec.alt{background:var(--bg)}
+@media(max-width:767px){.sec{padding:64px 0;text-align:center}}
+.sec-title{font-weight:900;font-size:clamp(1.7rem,4vw,2.6rem);color:var(--royal);margin-bottom:16px}
+.sub{color:var(--mute);max-width:560px;margin:0 auto}
+.note{color:var(--royal);font-weight:500}
+.card-x{background:#fff;border-radius:22px;padding:30px 26px;height:100%;border:1px solid rgba(11,61,145,.08);box-shadow:0 8px 30px rgba(11,61,145,.08);transition:.35s}
+.card-x:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(11,61,145,.18)}
+.card-x>i{display:inline-flex;width:56px;height:56px;border-radius:16px;align-items:center;justify-content:center;background:rgba(21,101,192,.1);color:var(--blue);font-size:1.5rem;margin-bottom:16px;transition:.3s}
+.card-x:hover>i{background:var(--blue);color:#fff}
+.card-x h3{font-size:1.08rem;font-weight:800;color:var(--ink)}
+.card-x p{color:var(--mute);font-size:.92rem;margin:0 0 8px}
+.glass-dark{background:linear-gradient(135deg,var(--navy),var(--royal));color:#fff;border-radius:22px;padding:32px 28px;box-shadow:0 20px 50px rgba(11,61,145,.3)}
+.glass-dark h3{font-weight:800;font-size:1.2rem;margin-bottom:16px}
+.ticks{list-style:none;padding:0;margin:0;text-align:left}
+.ticks li{position:relative;padding:8px 0 8px 30px}
+.ticks li::before{content:"\F26A";font-family:bootstrap-icons;position:absolute;left:0;top:8px;color:var(--gold)}
+
+/* timeline */
+.timeline{max-width:760px;margin:auto;position:relative;padding-left:0}
+.tl{display:flex;gap:18px;background:#fff;border-radius:18px;padding:22px;margin-bottom:18px;border:1px solid rgba(11,61,145,.1);box-shadow:0 6px 24px rgba(11,61,145,.07);text-align:left;transition:.3s}
+.tl:hover{transform:translateX(6px)}
+.tl>i{flex:0 0 52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--sky));color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.tl h3{font-size:1.05rem;font-weight:800;margin:0}
+.tl p{margin:0;color:var(--mute);font-size:.9rem}
+.tbd{display:inline-block;margin-top:6px;background:#fff6dc;color:#8a6200;border:1px dashed #e0a21b;border-radius:8px;padding:2px 10px;font-size:.8rem;font-weight:500}
+
+/* table */
+.table{--bs-table-bg:transparent}
+.table thead th{background:var(--royal);color:#fff;border:0}
+.table .total td{font-weight:800;color:var(--royal);background:rgba(21,101,192,.08)}
+
+/* cash */
+.cash-box{background:#fff;border:1px solid rgba(11,61,145,.12);border-radius:20px;padding:22px 12px;text-align:center;height:100%;box-shadow:0 8px 26px rgba(11,61,145,.08);transition:.3s}
+.cash-box:hover{transform:translateY(-6px)}
+.cash-box span{display:block;font-size:.78rem;font-weight:600;color:var(--mute);text-transform:uppercase;letter-spacing:1px}
+.cash-box b{font-family:'Montserrat';font-weight:900;font-size:clamp(1.1rem,2.4vw,1.6rem);color:var(--royal)}
+.cash-box.gold{background:linear-gradient(135deg,var(--navy),var(--royal))}
+.cash-box.gold span{color:rgba(255,255,255,.7)}.cash-box.gold b{color:var(--gold)}
+.notice{margin-top:28px;background:#fff6dc;border-left:4px solid var(--gold);border-radius:10px;padding:14px 18px;font-size:.88rem;color:#6d4c00;text-align:left}
+
+/* register */
+.register{padding:90px 0;color:#fff;text-align:center;background:linear-gradient(135deg,var(--navy),var(--royal) 55%,#2563c9)}
+.register img{background:#fff;border-radius:50%;padding:6px}
+.register h2{font-weight:900;font-size:clamp(1.7rem,4vw,2.6rem)}
+.register p{opacity:.88}
+
+/* faq */
+.accordion-item{border:0;border-radius:16px!important;margin-bottom:12px;box-shadow:0 6px 22px rgba(11,61,145,.09);overflow:hidden}
+.accordion-button{font-weight:600;padding:18px 22px;color:var(--ink)}
+.accordion-button:not(.collapsed){background:rgba(21,101,192,.08);color:var(--royal);box-shadow:none}
+.accordion-button:focus{box-shadow:0 0 0 3px rgba(56,182,255,.4)}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
+
+
+/* highlighted cash rewards */
+.prize-band{background:linear-gradient(90deg,#e0a21b,var(--gold),#e0a21b);color:var(--navy);padding:16px 0;box-shadow:0 8px 30px rgba(240,180,41,.35);position:relative;z-index:2}
+.pb-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 34px;text-align:center}
+.pb-row span{display:flex;flex-direction:column;line-height:1.2}
+.pb-row small{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;opacity:.8}
+.pb-row b{font-family:'Montserrat';font-weight:900;font-size:1.2rem}
+.pb-row .pb-title{flex-direction:row;gap:8px;align-items:center;font-family:'Montserrat';font-weight:800;font-size:1rem}
+@media(max-width:767px){.pb-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.pb-row .pb-title{grid-column:1/-1;justify-content:center}}
+.cash{align-items:stretch}
+.cash-box{position:relative;overflow:hidden;padding:30px 12px}
+.cash-box>i{display:block;font-size:2rem;margin-bottom:6px;color:var(--blue)}
+.cash-box b{display:block;margin-top:4px}
+.cash-box.gold{background:linear-gradient(135deg,var(--navy),var(--royal));border:2px solid var(--gold);box-shadow:0 20px 55px rgba(240,180,41,.4);animation:pulseGold 3s ease-in-out infinite}
+.cash-box.gold>i{color:var(--gold);font-size:2.6rem}
+.cash-box.gold b{font-size:clamp(1.6rem,3.2vw,2.3rem)}
+.cash-box.silver>i{color:#8d9bb5}.cash-box.bronze>i{color:#c98a4b}
+.cash-box.college{border:2px dashed var(--blue)}
+@media(min-width:992px){.cash-box.gold{transform:translateY(-14px);padding:40px 12px}.cash-box.gold:hover{transform:translateY(-20px)}}
+@keyframes pulseGold{50%{box-shadow:0 20px 70px rgba(240,180,41,.65)}}
+
+/* poster & perks */
+.poster-btn{position:relative;display:block;width:100%;max-width:420px;margin:0 auto;padding:10px;border:0;border-radius:24px;background:#fff;box-shadow:0 24px 60px rgba(11,61,145,.25);cursor:zoom-in;transition:.35s}
+.poster-btn:hover{transform:translateY(-6px)}
+.poster-btn img{display:block;width:100%;border-radius:16px}
+.poster-btn .zoom{position:absolute;right:22px;bottom:22px;width:44px;height:44px;border-radius:50%;background:var(--royal);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.perk{background:#fff;border:1px solid rgba(11,61,145,.1);border-radius:18px;padding:20px 12px;text-align:center;height:100%;box-shadow:0 6px 22px rgba(11,61,145,.08);transition:.3s}
+.perk:hover{transform:translateY(-5px)}
+.perk i{display:block;font-size:2rem;color:var(--blue);margin-bottom:6px}
+.perk b{font-family:'Montserrat';font-size:.92rem;color:var(--ink)}
+.total-prize{display:inline-flex;align-items:center;gap:16px;background:linear-gradient(135deg,var(--navy),var(--royal));color:#fff;border:2px solid var(--gold);border-radius:20px;padding:14px 28px;box-shadow:0 14px 36px rgba(240,180,41,.35)}
+.total-prize i{font-size:2.2rem;color:var(--gold)}
+.total-prize small{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:1px;opacity:.8;line-height:1.2}
+.total-prize b{font-family:'Montserrat';font-weight:900;font-size:1.8rem;color:var(--gold);line-height:1.2}
+.pb-row .pb-total{background:var(--navy);color:var(--gold);border-radius:12px;padding:6px 16px}
+
+/* ==== SHARED SITE CHROME: header, ticker, footer, back-to-top (same as Skill Pro 2026 page) ==== */
+:root{--primary:#0B3D91;--primary-light:#1565C0;--primary-dark:#062a66;--primary-glow:rgba(11,61,145,.35);--gold-light:#f0b429;--text-dark:#1a1a1a}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:#f1f1f1}::-webkit-scrollbar-thumb{background:var(--primary);border-radius:10px}
+.mega-close-x{position:absolute;top:12px;right:12px;width:34px;height:34px;border:none;border-radius:50%;background:#fff;color:#222;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:99;box-shadow:0 4px 15px rgba(0,0,0,.12);transition:.3s ease}
+.mega-close-x:hover{background:var(--primary);color:#fff;transform:rotate(90deg)}
+@media(max-width:991px){
+ .navbar-collapse{background:#fff;padding:15px;border-radius:18px;margin-top:15px;box-shadow:0 10px 35px rgba(0,0,0,.08)}
+ #coursesNav{width:100%}
+ #coursesNav .d-flex{width:100%;justify-content:space-between;align-items:center}
+ #coursesNav .nav-link{padding:12px 0!important}
+ .courses-caret{padding-right:0!important}
+ .courses-mega-menu{position:static!important;transform:none!important;width:100%!important;min-width:100%!important;margin-top:10px!important;border:none!important;box-shadow:none!important;border-radius:16px!important;overflow:hidden;background:#f8f9fb}
+ .courses-mega-menu .d-flex{flex-direction:column!important;gap:0!important;padding-top:0!important}
+ .mega-col{width:100%!important;border-right:none!important;border-bottom:1px solid rgba(0,0,0,.06);padding:18px 16px!important}
+ .mega-col:last-child{border-bottom:none}
+ .mega-col-head{margin-bottom:14px}.mega-col-title{font-size:1rem;font-weight:700}.mega-col-sub{font-size:.78rem}
+ .mega-item{width:100%;display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;font-size:.92rem}
+ .mega-item:hover{background:#fff}.mega-item i{width:18px;text-align:center}
+}
+.navbar{background:rgba(255,255,255,.97);backdrop-filter:blur(20px);box-shadow:0 2px 30px rgba(11,61,145,.12);
+  /* padding:12px 0; */
+  position:sticky;top:0;z-index:1000;transition:all .3s ease}
+.navbar.scrolled{padding:8px 0;box-shadow:0 4px 40px rgba(11,61,145,.2)}
+.navbar-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-icon{width:48px;height:48px;flex-shrink:0}
+.logo-text{line-height:1.1}
+.logo-text .brand-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.3rem;color:var(--primary);letter-spacing:2px}
+.logo-text .brand-sub{font-size:.58rem;font-weight:600;color:#666;letter-spacing:1.5px;text-transform:uppercase}
+.navbar-nav .nav-link{font-family:'Montserrat',sans-serif;font-weight:600;font-size:.82rem;letter-spacing:.8px;text-transform:uppercase;padding:8px 16px!important;border-radius:6px;transition:all .3s ease;position:relative}
+.navbar-nav .nav-link:hover{color:var(--primary)}
+.btn-nav-enroll{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff!important;padding:8px 22px!important;border-radius:25px!important;font-weight:700!important;box-shadow:0 4px 15px var(--primary-glow);transition:all .3s ease!important}
+.btn-nav-enroll:hover{transform:translateY(-2px);box-shadow:0 8px 25px var(--primary-glow)!important}
+.btn-nav-enroll::after{display:none!important}
+#coursesNav{position:static!important}
+#coursesNav>div{display:flex;align-items:center}
+.courses-mega-menu{position:fixed!important;top:auto!important;left:50%!important;transform:translateX(-50%) translateY(6px)!important;width:min(960px,96vw)!important;display:block!important;opacity:0;visibility:hidden;transition:opacity .22s ease,transform .22s ease,visibility .22s;pointer-events:none;border:none!important;border-radius:16px!important;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.16),0 0 0 1px rgba(11,61,145,.1)!important;padding:0!important}
+.courses-mega-menu.show{opacity:1!important;visibility:visible!important;transform:translateX(-50%) translateY(0)!important;pointer-events:auto!important}
+.mega-col{flex:1;padding:20px 16px 20px 20px;border-right:1px solid rgba(11,61,145,.08);background:#fff}
+.mega-col:last-child{border-right:none}
+.mega-col-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(11,61,145,.08)}
+.mega-col-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.mega-col-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:.82rem;color:var(--text-dark);letter-spacing:.4px}
+.mega-col-sub{font-size:.68rem;color:#999;font-weight:500;margin-top:1px}
+.mega-item{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:7px;font-size:.8rem;font-weight:500;color:var(--text-dark);text-decoration:none;transition:background .15s,color .15s,padding-left .15s;margin-bottom:2px}
+.mega-item i{font-size:.72rem;width:16px;text-align:center;color:#aaa;transition:color .15s;flex-shrink:0}
+.mega-item:hover{background:rgba(11,61,145,.07);color:var(--primary);padding-left:12px}
+.mega-item:hover i{color:var(--primary)}
+#coursesNav .courses-caret{color:var(--text-dark);transition:color .2s}
+#coursesNav .courses-caret:hover{color:var(--primary)}
+.dropdown-menu{border-radius:10px;border:none;box-shadow:0 10px 25px rgba(0,0,0,.1)}
+.dropdown-header.text-primary{color:#0a3d62!important;font-weight:bold}
+.dropdown-header.text-danger{color:#2563c9!important;font-weight:bold}
+.dropdown-item:hover{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;border-radius:5px}
+/* ticker */
+.ticker-bar{background:linear-gradient(90deg,var(--primary-dark),var(--primary),var(--primary-dark));height:36px;overflow:hidden;display:flex;align-items:center;position:relative}
+.ticker-bar::before,.ticker-bar::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
+.ticker-bar::before{left:0;background:linear-gradient(to right,var(--primary-dark),transparent)}
+.ticker-bar::after{right:0;background:linear-gradient(to left,var(--primary-dark),transparent)}
+.ticker-track{display:flex;animation:tickerScroll 30s linear infinite;white-space:nowrap;will-change:transform}
+.ticker-track:hover{animation-play-state:paused}
+.ticker-item{display:inline-flex;align-items:center;gap:8px;padding:0 28px;font-size:.72rem;font-weight:600;color:rgba(255,255,255,.9);letter-spacing:1px;text-transform:uppercase;font-family:'Montserrat',sans-serif}
+.ticker-item i{color:var(--gold-light);font-size:.65rem}
+.ticker-sep{color:rgba(255,255,255,.3);margin:0 4px}
+@keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+/* footer */
+footer{background:#0d0d0d;padding:70px 0 0;color:rgba(255,255,255,.75)}
+.footer-brand{margin-bottom:20px}
+.footer-desc{font-size:.86rem;color:rgba(255,255,255,.5);line-height:1.75;margin:20px 0 24px}
+.footer-socials{display:flex;gap:10px;flex-wrap:wrap}
+.footer-social-btn{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);font-size:.82rem;text-decoration:none;transition:all .3s ease}
+.footer-social-btn:hover{background:var(--primary);color:#fff;border-color:var(--primary);transform:translateY(-3px)}
+.footer-heading{font-family:'Montserrat',sans-serif;font-weight:800;font-size:.85rem;color:#fff;letter-spacing:1px;text-transform:uppercase;margin-bottom:20px}
+.footer-links{list-style:none;padding:0;margin:0}
+.footer-links li{margin-bottom:10px}
+.footer-links a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem;display:flex;align-items:center;gap:7px;transition:all .3s ease}
+.footer-links a:hover{color:var(--primary-light);padding-left:4px}
+.footer-links a i{font-size:.65rem;color:var(--primary);flex-shrink:0}
+.footer-contact{list-style:none;padding:0}
+.footer-contact li{display:flex;align-items:flex-start;gap:10px;margin-bottom:14px;font-size:.85rem}
+.footer-contact li i{color:var(--primary-light);margin-top:3px;flex-shrink:0;font-size:.85rem}
+.footer-bottom{margin-top:50px;padding:20px 0;border-top:1px solid rgba(255,255,255,.06);font-size:.8rem;color:rgba(255,255,255,.3)}
+/* back to top */
+#backToTop{position:fixed;bottom:28px;right:28px;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;box-shadow:0 6px 20px var(--primary-glow);z-index:999;opacity:0;visibility:hidden;transform:translateY(20px);transition:all .3s ease}
+#backToTop.visible{opacity:1;visibility:visible;transform:translateY(0)}
+#backToTop:hover{transform:translateY(-3px)}
+
+
+
+
+/* ===== INTRO SECTION (logo + content) ===== */
+.intro{
+  background:#f4f8ff;
+  padding:80px 0;
+}
+.intro .pill-light{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#fff;border:1px solid rgba(11,61,145,.15);
+  color:var(--royal);font-size:.8rem;font-weight:600;
+  padding:6px 16px;border-radius:30px;margin-bottom:14px;
+  box-shadow:0 4px 14px rgba(11,61,145,.08);
+}
+.intro .pill-light i{color:var(--blue)}
+.intro h1{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.05;
+  color:var(--navy);margin:0 0 10px;
+}
+.intro h1 span{color:var(--blue)}
+.intro .intro-tagline{
+  font-family:'Montserrat',sans-serif;font-weight:700;
+  font-size:clamp(1.1rem,2.4vw,1.5rem);
+  color:#c98a00;margin-bottom:14px;
+}
+.intro .intro-text{
+  color:var(--mute);max-width:540px;margin:0 0 26px;
+}
+.intro .btn-outline-blue{
+  border:2px solid var(--royal);color:var(--royal);
+  border-radius:30px;font-weight:600;padding:10px 30px;transition:.3s;
+}
+.intro .btn-outline-blue:hover{background:var(--royal);color:#fff;transform:translateY(-2px)}
+.intro .intro-logo{
+  display:block;width:100%;max-width:420px;height:auto;margin:0 auto;
+  filter:drop-shadow(0 18px 30px rgba(11,61,145,.18));
+}
+
+/* Tablet and mobile: stack and centre */
+@media(max-width:991px){
+  .intro{padding:56px 0}
+  .intro .intro-text{margin-left:auto;margin-right:auto}
+  .intro .intro-logo{max-width:300px}
+}
+
+
+
+/* header banner */
+/* ===== FULL-WIDTH BANNER ===== */
+.top-banner{
+  width:100%;
+  background:var(--navy);
+  line-height:0;
+}
+.top-banner img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+/* Very large monitors only: limit the height */
+@media (min-width:1920px){
+  .top-banner img{
+    max-height:760px;
+    object-fit:cover;
+    object-position:center;
+  }
+}
+
+</style>
+</head>
+<body>
+<!-- BACK TO TOP -->
+<button id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+<!-- HEADER (loaded from header.html, same method as the Skill Pro 2026 page) -->
+<div id="header"></div>
+
+<!-- TICKER -->
+<div class="ticker-bar" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack">
+    <div class="ticker-item"><i class="fas fa-trophy"></i> Skill Pro 2K27 <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-medal"></i> Topper ₹25,000 <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-medal"></i> 2nd Topper ₹15,000 <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-medal"></i> 3rd Topper ₹10,000 <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-star"></i> College Topper ₹1,000 <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-graduation-cap"></i> Up to 60% Course Fee Scholarship <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-graduation-cap"></i> CADPOINT × AG NextGen Technologies <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-trophy"></i> Skill Pro 2K27 <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-medal"></i> Topper ₹25,000 <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-medal"></i> 2nd Topper ₹15,000 <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-medal"></i> 3rd Topper ₹10,000 <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-star"></i> College Topper ₹1,000 <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-graduation-cap"></i> Up to 60% Course Fee Scholarship <span class="ticker-sep">◆</span></div>
+    <div class="ticker-item"><i class="fas fa-graduation-cap"></i> CADPOINT × AG NextGen Technologies <span class="ticker-sep">◆</span></div>
+  </div>
+</div>
+
+
+<!-- FULL-WIDTH BANNER -->
+<section class="top-banner" aria-label="Skill Pro 2K27 banner">
+  <img src="assets/image/skillpro-banner.png"
+       width="1672" height="941"
+       alt="Skill Pro 2K27: Scholarship and Aptitude Examination, up to 60% course fee scholarship, Rs.1,00,000 total cash prize">
+</section>
+<!-- <div class="prize-band" aria-label="Cash rewards">
+ <div class="container"><div class="pb-row">
+  <span class="pb-title"><i class="bi bi-cash-coin"></i> Cash rewards</span>
+  <span><small>Topper</small><b>Rs.25,000/-</b></span>
+  <span><small>2nd topper</small><b>Rs.15,000/-</b></span>
+  <span><small>3rd topper</small><b>Rs.10,000/-</b></span>
+  <span><small>College topper</small><b>Rs.1,000/-</b></span>
+  <span class="pb-total"><small>Total cash prize</small><b>Rs.1,00,000/-</b></span>
+ </div></div>
+</div> -->
+
+<!-- HERO -->
+<!-- <header class="hero" id="home">
+ <span class="orb o1"></span><span class="orb o2"></span>
+ <div class="container position-relative">
+  <div class="row align-items-center gy-5">
+   <div class="col-lg-7 text-center text-lg-start">
+    <p class="pill"><i class="bi bi-patch-check-fill"></i> CADPOINT Marthandam &amp; Nagercoil</p>
+    <h1>SKILL PRO <span>2K27</span></h1>
+    <p class="tagline">Your Skill! Your Scholarship!</p>
+    <p class="lead-text">A 25-question MCQ scholarship exam from CADPOINT for students who want industry-relevant skills but may find course fees hard to afford. No prior CAD or software knowledge is needed.</p>
+    <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+     <a href="index-poster.html" class="btn btn-gold">Register now</a>
+     <a href="#about" class="btn btn-ghost">Explore event</a>
+    </div>
+   
+   </div>
+   <div class="col-lg-5">
+    <div class="logo-card"><img src="assets/image/Skillpro-2027-logo.png" alt="Skill Pro 2K27: Your Skill! Your Scholarship!" width="480" height="480"></div>
+   </div>
+  </div>
+ </div>
+</header> -->
+
+<!-- INTRO: LOGO + CONTENT -->
+<section class="intro" id="home">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+
+      <!-- Content -->
+      <div class="col-lg-7 order-2 order-lg-1 text-center text-lg-start">
+        <p class="pill-light"><i class="bi bi-patch-check-fill"></i> CADPOINT Marthandam &amp; Nagercoil</p>
+        <h1>SKILL PRO <span>2K27</span></h1>
+        <p class="intro-tagline">Your Skill! Your Scholarship!</p>
+        <p class="intro-text">A 25-question MCQ scholarship exam from CADPOINT for students who want industry-relevant skills but may find course fees hard to afford. No prior CAD or software knowledge is needed.</p>
+        <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+          <a href="index-poster.html" class="btn btn-gold">Register now</a>
+          <a href="#about" class="btn btn-outline-blue">Explore event</a>
+        </div>
+      </div>
+
+      <!-- Logo -->
+      <div class="col-lg-5 order-1 order-lg-2">
+        <img class="intro-logo" src="assets/image/Skillpro-2027-logo.png" style="border-radius:20px"
+             alt="Skill Pro 2K27: Your Skill! Your Scholarship!" width="480" height="480">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<main>
+<!-- ABOUT -->
+<section class="sec" id="about">
+ <div class="container">
+  <div class="row gy-4 align-items-stretch">
+   <div class="col-lg-6 reveal">
+    <h2 class="sec-title">About the event</h2>
+    <p style="text-align: justify;">SKILL PRO 2K27 is CADPOINT's scholarship campaign. It is designed to identify and encourage students who want to develop industry-relevant skills but may face difficulty paying course fees.</p>
+    <!-- <p>The campaign keeps last year's simple MCQ examination model, while improving promotion, student engagement, result presentation and follow-up.</p> -->
+  <P style="text-align: justify;">Through SKILL PRO 2K27, CADPOINT aims to recognise student talent, reduce financial barriers to technical education and create opportunities for skill development. The campaign is not just about conducting a scholarship examination; it is about motivating students to learn new skills, build confidence and prepare themselves for future career opportunities.</P>
+    <!-- <p class="note"><i class="bi bi-info-circle"></i> Organised by CADPOINT, Marthandam &amp; Nagercoil.</p> -->
+   </div>
+   <div class="col-lg-6 reveal">
+    <div class="glass-dark h-100">
+     <h3>Main objectives</h3>
+     <ul class="ticks">
+      <li>Support deserving students through course-fee scholarships.</li>
+      <li>Increase awareness of CADPOINT courses and career-oriented training.</li>
+      <li>Reach more schools, colleges and student communities.</li>
+      <li>Generate qualified enquiries and admissions through transparent personal counselling.</li>
+      <li>Build SKILL PRO into a recognizable annual CADPOINT initiative.</li>
+     </ul>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- HIGHLIGHTS -->
+<section class="sec alt" id="highlights">
+ <div class="container">
+  <div class="text-center mb-5 reveal"><h2 class="sec-title">Event highlights</h2></div>
+  <div class="row g-4">
+   <div class="col-sm-6 col-lg-3 reveal"><div class="card-x"><i class="bi bi-ui-checks-grid"></i><h3>25 MCQs</h3><p>Multiple-choice questions across six sections.</p></div></div>
+   <div class="col-sm-6 col-lg-3 reveal"><div class="card-x"><i class="bi bi-stopwatch"></i><h3>30 minutes</h3><p>A short, simple exam format.</p></div></div>
+   <div class="col-sm-6 col-lg-3 reveal"><div class="card-x"><i class="bi bi-mortarboard"></i><h3>Up to 60% scholarship</h3><p>Course-fee scholarship for eligible participants.</p></div></div>
+   <div class="col-sm-6 col-lg-3 reveal"><div class="card-x"><i class="bi bi-cash-coin"></i><h3>Cash rewards</h3><p>Rs.25,000 for the topper, plus 2nd, 3rd and college toppers.</p></div></div>
+  </div>
+ </div>
+</section>
+
+<!-- POSTER & PERKS -->
+<section class="sec" id="poster">
+ <div class="container">
+  <div class="row gy-5 align-items-center">
+   <div class="col-lg-5 reveal">
+    <button type="button" class="poster-btn" data-bs-toggle="modal" data-bs-target="#posterModal" aria-label="View the Skill Pro 2K27 poster full size">
+     <img src="assets/image/skillpro-poster.png" width="1000" height="1413" loading="lazy" alt="Skill Pro 2K27 poster: Scholarship and Aptitude Examination, up to 60% course fee scholarship, Rs.1,00,000 total cash prize">
+     <!-- <span class="zoom"><i class="bi bi-zoom-in"></i></span> -->
+    </button>
+   </div>
+   <div class="col-lg-7 reveal text-center text-lg-start">
+    <h2 class="sec-title">Exam. Win. Unlock.</h2>
+    <p class="sub mx-lg-0 mb-4">Scholarship &amp; Aptitude Examination with up to 60% course fee scholarship, presented by CADPOINT Authorized Training Centre with AG NextGen Technologies.</p>
+    <div class="row g-3">
+     <div class="col-sm-4"><div class="perk"><i class="bi bi-trophy"></i><b>Exciting cash prizes</b></div></div>
+     <div class="col-sm-4"><div class="perk"><i class="bi bi-patch-check"></i><b>Participation certificates</b></div></div>
+     <div class="col-sm-4"><div class="perk"><i class="bi bi-mortarboard"></i><b>Complimentary courses</b></div></div>
+    </div>
+    <div class="total-prize mt-4"><i class="bi bi-cash-stack"></i><div><small>Total cash prize</small><b>Rs.1,00,000/-</b></div>
+
+ <a href="index-poster.html" class="btn btn-gold">Register now</a></div>
+  
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- SCHEDULE -->
+<!-- <section class="sec" id="schedule">
+ <div class="container">
+  <div class="text-center mb-5 reveal"><h2 class="sec-title">Schedule</h2><p class="sub">Dates are still being finalised by CADPOINT. Placeholders are marked below.</p></div>
+  <div class="timeline">
+   <div class="tl reveal"><i class="bi bi-pencil-square"></i><div><h3>Registration</h3><p>Fee: Rs.100/-</p><span class="tbd">Registration deadline: [To be announced]</span></div></div>
+   <div class="tl reveal"><i class="bi bi-laptop"></i><div><h3>Examination</h3><p>25 MCQs in 30 minutes</p><span class="tbd">Exam date and venue: [To be announced]</span></div></div>
+   <div class="tl reveal"><i class="bi bi-bar-chart-line"></i><div><h3>Results</h3><p>Results and scholarship letters are issued after the exam.</p><span class="tbd">Result date: [To be announced]</span></div></div>
+   <div class="tl reveal"><i class="bi bi-trophy"></i><div><h3>Award ceremony</h3><p>Prizes and certificates for winners.</p><span class="tbd">Ceremony date: [To be announced]</span></div></div>
+  </div>
+ </div>
+</section> -->
+
+<!-- GUIDELINES -->
+<section class="sec alt" id="guidelines">
+ <div class="container">
+  <div class="text-center mb-5 reveal"><h2 class="sec-title">Exam structure &amp; guidelines</h2></div>
+  <div class="row g-4">
+   <div class="col-lg-7 reveal">
+    <div class="card-x">
+     <h3>Recommended pattern</h3>
+     <p>25 multiple-choice questions, 30 minutes. No prior CAD or software knowledge required.</p>
+     <div class="table-responsive">
+      <table class="table align-middle mb-0">
+       <thead><tr><th>Section</th><th class="text-end">Questions</th></tr></thead>
+       <tbody>
+        <tr><td>Aptitude</td><td class="text-end">6</td></tr>
+        <tr><td>Logical reasoning</td><td class="text-end">6</td></tr>
+        <tr><td>Educational awareness</td><td class="text-end">4</td></tr>
+        <tr><td>Technology &amp; AI awareness</td><td class="text-end">3</td></tr>
+        <tr><td>General knowledge</td><td class="text-end">3</td></tr>
+        <tr><td>Career &amp; industry awareness</td><td class="text-end">3</td></tr>
+        <tr class="total"><td>Total</td><td class="text-end">25</td></tr>
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="col-lg-5 reveal">
+    <div class="glass-dark h-100">
+     <h3>Good to know</h3>
+     <ul class="ticks">
+      <li>Exam format: 25 MCQs.</li>
+      <li>Duration: 30 minutes.</li>
+      <li>Registration fee: Rs.100/-.</li>
+      <li>No prior CAD or software knowledge is required.</li>
+     </ul>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- REWARDS / IMPORTANT INFO -->
+<section class="sec" id="rewards">
+ <div class="container">
+  <div class="text-center mb-5 reveal"><h2 class="sec-title">Scholarship &amp; cash rewards</h2><p class="sub">Cash prizes for the toppers of SKILL PRO 2K27.</p></div>
+  <div class="row g-4 mb-4">
+   <div class="col-md-4 reveal"><div class="card-x"><i class="bi bi-award"></i><h3>Top rank holders</h3><p>Scholarship plus cash reward.</p></div></div>
+   <div class="col-md-4 reveal"><div class="card-x"><i class="bi bi-percent"></i><h3>Eligible participants</h3><p>Up to 60% course-fee scholarship.</p></div></div>
+   <div class="col-md-4 reveal"><div class="card-x"><i class="bi bi-file-earmark-check"></i><h3>Participants / winners</h3><p>Participation or achievement certificate.</p></div></div>
+  </div>
+  <div class="row g-3 g-lg-4 cash reveal">
+   <div class="col-12 col-lg-3 order-lg-1"><div class="cash-box gold"><i class="bi bi-1-circle-fill"></i><span>Topper</span><b>Rs.25,000/-</b></div></div>
+   <div class="col-6 col-lg-3 order-lg-2"><div class="cash-box silver"><i class="bi bi-2-circle-fill"></i><span>2nd topper</span><b>Rs.15,000/-</b></div></div>
+   <div class="col-6 col-lg-3 order-lg-3"><div class="cash-box bronze"><i class="bi bi-3-circle-fill"></i><span>3rd topper</span><b>Rs.10,000/-</b></div></div>
+   <div class="col-12 col-lg-3 order-lg-4"><div class="cash-box college"><i class="bi bi-star-fill"></i><span>College topper</span><b>Rs.1,000/-</b></div></div>
+  </div>
+  <!-- <p class="notice reveal"><i class="bi bi-exclamation-triangle"></i> Exact prize amounts, scholarship tiers, number of winners, eligible courses and validity period are subject to final CADPOINT approval before public promotion. Confirm these before launch.</p> -->
+ </div>
+</section>
+
+<!-- REGISTER -->
+<section class="register" id="register">
+ <div class="container text-center reveal">
+  <img src="assets/image/Skillpro-2027-logo.png" alt="" width="110" height="110" class="mb-3">
+  <h2>Ready to earn your scholarship?</h2>
+  <P>Your talent deserves a chance to shine! Take part in SKILL PRO 2K27, showcase your knowledge through an exciting MCQ examination and grab the opportunity to receive a scholarship for your dream technical course.</P>
+  <!-- <p>Registration fee Rs.100/-. Registration QR and link will be shared by CADPOINT. Call for details: Marthandam | Nagercoil.</p> -->
+  <!-- TODO: replace "#" with the actual registration link -->
+  <div class="d-flex flex-wrap gap-3 justify-content-center">
+    <a href="index-poster.html" class="btn btn-gold btn-lg" id="regBtn">Register now</a>
+    <a href="tel:+919895352624" class="btn btn-ghost btn-lg"><i class="bi bi-telephone-fill"></i> 9895352624</a></div>
+ </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+ <div class="container" style="max-width:820px">
+  <div class="text-center mb-5 reveal"><h2 class="sec-title">Frequently asked questions</h2></div>
+  <div class="accordion reveal" id="faqList">
+   <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#f1">Who is SKILL PRO 2K27 for?</button></h3><div id="f1" class="accordion-collapse collapse show" data-bs-parent="#faqList"><div class="accordion-body">Students who want industry-relevant skills but may find it difficult to pay course fees.</div></div></div>
+   <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f2">Do I need CAD or software knowledge?</button></h3><div id="f2" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">No. The exam requires no prior CAD or software knowledge.</div></div></div>
+   <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f3">What is the exam format?</button></h3><div id="f3" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">25 multiple-choice questions in 30 minutes, covering aptitude, logical reasoning, engineering awareness, technology and AI awareness, general knowledge, and career and industry awareness.</div></div></div>
+   <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f4">How much does registration cost?</button></h3><div id="f4" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">The registration fee is Rs.100/-.</div></div></div>
+   <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f5">What can I win?</button></h3><div id="f5" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">Top rank holders receive a scholarship plus a cash reward, eligible participants can receive up to 60% course-fee scholarship, and participants and winners receive a certificate. Exact terms will be confirmed by CADPOINT.</div></div></div>
+   <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f6">When and where is the exam?</button></h3><div id="f6" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">The exam date, venue, registration deadline and result date are not yet announced. [Placeholder: to be updated by CADPOINT]</div></div></div>
+  </div>
+ </div>
+</section>
+</main>
+
+<!-- FOOTER (loaded from footer.html, same as the Skill Pro 2026 page) -->
+<div id="footer"></div>
+<div class="modal fade" id="posterModal" tabindex="-1" aria-label="Skill Pro 2K27 poster" aria-hidden="true">
+ <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:640px">
+  <div class="modal-content bg-transparent border-0">
+   <button type="button" class="btn-close btn-close-white ms-auto mb-2" data-bs-dismiss="modal" aria-label="Close"></button>
+   <img src="assets/poster.jpg" class="rounded-4" alt="Skill Pro 2K27 poster">
+  </div>
+ </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+/* Shared navbar initialiser for the CADPOINT mega-menu (same as the Skill Pro 2026 page). */
+function initCaddNav() {
+  const coursesNav = document.getElementById('coursesNav');
+  const caret = document.getElementById('coursesCaret');
+  const menu = document.getElementById('coursesMegaMenu');
+  const closeBtn = document.getElementById('closeMegaMenu');
+  if (!coursesNav || !caret || !menu) return;
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); menu.classList.remove('show'); });
+  }
+  if (window.innerWidth <= 991) {
+    caret.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); menu.classList.toggle('show'); });
+    document.addEventListener('click', function (e) { if (!coursesNav.contains(e.target)) menu.classList.remove('show'); });
+    return;
+  }
+  coursesNav.addEventListener('mouseenter', function () { menu.classList.add('show'); });
+  coursesNav.addEventListener('mouseleave', function () { menu.classList.remove('show'); });
+  menu.addEventListener('mouseleave', function () { menu.classList.remove('show'); });
+  const nav = document.getElementById('mainNav');
+  if (nav) {
+    window.addEventListener('scroll', function () { nav.classList.toggle('scrolled', window.scrollY > 50); });
+  }
+}
+</script>
+<script>
+/* SKILL PRO 2K27 - header/footer loader and page interactions */
+(function () {
+  'use strict';
+
+  /* Header and footer: loaded from header.html / footer.html like the other pages */
+  function loadPart(url, targetId, after) {
+    var target = document.getElementById(targetId);
+    if (!target) return;
+    fetch(url)
+      .then(function (r) { if (!r.ok) throw new Error(url + ' returned ' + r.status); return r.text(); })
+      .then(function (html) { target.innerHTML = html; if (after) after(); })
+      .catch(function (err) {
+        // Happens when the page is opened straight from disk (file://). Run it from the site server instead.
+        console.warn('Could not load ' + url + ':', err.message, '- open the site through a web server.');
+      });
+  }
+  loadPart('header.html', 'header', function () { if (typeof initCaddNav === 'function') initCaddNav(); });
+  loadPart('footer.html', 'footer');
+
+  /* Back to top */
+  var backToTop = document.getElementById('backToTop');
+  backToTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  window.addEventListener('scroll', function () { backToTop.classList.toggle('visible', window.scrollY > 400); }, { passive: true });
+
+  /* Scroll reveal */
+  var els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    els.forEach(function (el) { io.observe(el); });
+  } else els.forEach(function (el) { el.classList.add('in'); });
+
+  /* Hero counters (real numbers only: 25 MCQs, 30 minutes) */
+  document.querySelectorAll('[data-count]').forEach(function (el) {
+    var end = +el.dataset.count, n = 0;
+    var t = setInterval(function () { n += Math.ceil(end / 25); if (n >= end) { n = end; clearInterval(t); } el.textContent = n; }, 40);
+  });
+
+  /* Registration placeholder: no link supplied yet */
+  document.getElementById('regBtn').addEventListener('click', function (e) {
+    if (e.currentTarget.getAttribute('href') === '#') e.preventDefault();
+  });
+})();
+</script>
+</body>
+</html>

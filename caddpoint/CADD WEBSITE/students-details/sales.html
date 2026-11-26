@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sales Department | CADPOINT</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+/* ═══════════════════════════════════════════════════════════════════
+   CADPOINT PORTAL — SALES DEPARTMENT STYLESHEET
+   Mirrors the shared CADPOINT Premium UI theme used by the Admin
+   Dashboard exactly, so the Sales portal looks and feels identical.
+   ═══════════════════════════════════════════════════════════════════ */
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+:root{
+  --primary:#8B0000;
+  --primary-light:#A00000;
+  --primary-glow:rgba(139,0,0,0.25);
+  --sidebar-w:240px;
+  --topbar-h:64px;
+  --bg:#f4f6fb;
+  --card-bg:#ffffff;
+  --text:#1f1f1f;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+}
+[data-theme="dark"]{
+  --bg:#111827;
+  --card-bg:#1f2937;
+  --text:#f9fafb;
+  --muted:#9ca3af;
+  --border:#374151;
+}
+body{ font-family:'Poppins',sans-serif; background:var(--bg); color:var(--text); transition:background .3s,color .3s; }
+
+/* ── Auth / Login Screen ─────────────────────────────────────── */
+body.auth-mode{ overflow:hidden; }
+#loginScreen{
+  margin:0; min-height:100vh; width:100%;
+  background:linear-gradient(135deg,#1a1a1a 0%,#2b0a0a 45%,#3a0d0d 100%);
+  display:flex; align-items:center; justify-content:center; padding:20px; position:fixed; inset:0; z-index:1000;
+}
+.auth-card{
+  width:100%; max-width:420px;
+  background:rgba(255,255,255,0.97); border-radius:18px;
+  padding:40px 34px 34px; box-shadow:0 25px 60px rgba(0,0,0,0.45);
+  animation:fadeUp .6s ease both;
+}
+@keyframes fadeUp{ from{opacity:0; transform:translateY(24px);} to{opacity:1; transform:translateY(0);} }
+.auth-logo{ display:flex; align-items:center; justify-content:center; }
+.icon-shield{
+  width:54px; height:54px; border-radius:50%;
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  display:flex; align-items:center; justify-content:center;
+  color:#fff; font-size:1.5rem; box-shadow:0 8px 20px var(--primary-glow);
+}
+h1.auth-title{ font-family:'Montserrat',sans-serif; font-size:1.3rem; font-weight:700; text-align:center; color:#1f1f1f; margin:14px 0 2px; }
+p.auth-sub{ text-align:center; color:#777; font-size:.85rem; margin:0 0 26px; }
+.form-group{ margin-bottom:18px; }
+.form-group label{ display:block; font-size:.8rem; font-weight:600; color:#444; margin-bottom:6px; }
+.input-wrap{ position:relative; }
+.input-wrap i.field-icon{ position:absolute; left:14px; top:50%; transform:translateY(-50%); color:#a0a0a0; font-size:.9rem; }
+.auth-card input[type="text"], .auth-card input[type="password"]{
+  width:100%; padding:12px 14px 12px 38px; border:1.5px solid #e2e2e2; border-radius:10px;
+  font-size:.92rem; font-family:'Poppins',sans-serif; outline:none;
+  transition:border-color .25s, box-shadow .25s;
+}
+.auth-card input:focus{ border-color:var(--primary); box-shadow:0 0 0 3px var(--primary-glow); }
+.toggle-pass{ position:absolute; right:12px; top:50%; transform:translateY(-50%); cursor:pointer; color:#999; font-size:.9rem; }
+.toggle-pass:hover{ color:var(--primary); }
+.btn-login{
+  width:100%; padding:12px; border:none; border-radius:10px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  color:#fff; font-weight:600; font-size:.95rem; cursor:pointer;
+  box-shadow:0 10px 24px var(--primary-glow); transition:transform .15s, opacity .2s;
+}
+.btn-login:hover{ transform:translateY(-2px); }
+.btn-login:disabled{ opacity:.65; cursor:not-allowed; transform:none; }
+.alert-error{
+  display:none; background:#fff0f0; border:1px solid #f5c6c6; border-radius:10px;
+  color:#c0392b; font-size:.82rem; padding:10px 14px; margin-bottom:16px; align-items:center; gap:8px;
+}
+.alert-error.show{ display:flex; animation:shake .4s ease; }
+@keyframes shake{ 0%,100%{transform:translateX(0);} 20%,60%{transform:translateX(-6px);} 40%,80%{transform:translateX(6px);} }
+.btn-spinner{ display:none; }
+.btn-login.loading .btn-text{ display:none; }
+.btn-login.loading .btn-spinner{ display:inline; }
+.back-link{ display:block; text-align:center; margin-top:16px; font-size:.8rem; color:#888; text-decoration:none; }
+.back-link:hover{ color:var(--primary); }
+.demo-hint{
+  background:#f8f4ff; border:1px dashed #c9b8f0; border-radius:8px;
+  padding:10px 12px; margin-top:16px; font-size:.75rem; color:#666; line-height:1.7;
+}
+.demo-hint strong{ color:var(--primary); }
+
+/* ── Portal Shell ─────────────────────────────────────────────── */
+.portal-bg{ position:fixed; inset:0; z-index:-1; background:linear-gradient(135deg,#1a1a1a 0%,#2b0a0a 40%,#3a0d0d 100%); }
+.dash-shell{ display:flex; min-height:100vh; }
+
+.sidebar{
+  width:var(--sidebar-w); background:rgba(15,15,15,0.92);
+  backdrop-filter:blur(12px); position:fixed; top:0; left:0; height:100vh;
+  display:flex; flex-direction:column; padding:0 0 20px; z-index:300;
+  border-right:1px solid rgba(255,255,255,0.06); transition:transform .3s;
+}
+.brand{ display:flex; align-items:center; gap:10px; padding:22px 20px 18px; border-bottom:1px solid rgba(255,255,255,0.07); }
+.brand span{ color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:.95rem; }
+.brand small{ font-weight:400; font-size:.7rem; display:block; color:#9aa0ab; }
+.nav-section-label{ font-size:.68rem; font-weight:600; letter-spacing:.1em; color:#6b7280; text-transform:uppercase; padding:18px 20px 6px; }
+.nav-link{
+  display:flex; align-items:center; gap:10px; padding:10px 20px; color:#d1d5db; font-size:.88rem; font-weight:500;
+  text-decoration:none; border-radius:0; cursor:pointer; transition:background .2s, color .2s; border-left:3px solid transparent;
+}
+.nav-link i{ width:16px; text-align:center; opacity:.7; }
+.nav-link:hover{ background:rgba(255,255,255,0.06); color:#fff; }
+.nav-link.active{ background:rgba(139,0,0,0.18); color:#ff9999; border-left-color:var(--primary); }
+.logout-link{ margin-top:auto; padding:0 12px; }
+.logout-link a{ display:flex; align-items:center; gap:10px; padding:10px 14px; background: linear-gradient(135deg, var(--primary), var(--primary-light));color:white !important; font-size:.88rem; text-decoration:none; border-radius:8px; transition:background .2s; cursor:pointer; }
+.logout-link a:hover{ background:rgba(239,68,68,0.12); }
+.sidebar-overlay{ display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:200; backdrop-filter:blur(2px); }
+.sidebar-overlay.show{ display:block; }
+
+.main-area{ flex:1; margin-left:var(--sidebar-w); display:flex; flex-direction:column; min-height:100vh; }
+
+.topbar{
+  height:var(--topbar-h); background:rgba(255,255,255,0.92); backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border); display:flex; align-items:center; gap:14px; padding:0 24px;
+  position:sticky; top:0; z-index:100;
+}
+[data-theme="dark"] .topbar{ background:rgba(31,41,55,0.92); }
+.menu-burger{ display:none; border:none; background:none; font-size:1.2rem; cursor:pointer; color:var(--text); padding:4px; }
+.topbar-title{ font-family:'Montserrat',sans-serif; font-weight:700; font-size:1rem; color:var(--text); }
+.topbar-right{ margin-left:auto; display:flex; align-items:center; gap:12px; }
+.theme-toggle{
+  border:none; background:rgba(0,0,0,0.06); border-radius:8px; width:36px; height:36px;
+  display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--text); font-size:.95rem; transition:background .2s;
+}
+.theme-toggle:hover{ background:rgba(0,0,0,0.12); }
+[data-theme="dark"] .theme-toggle{ background:rgba(255,255,255,0.08); }
+[data-theme="dark"] .theme-toggle:hover{ background:rgba(255,255,255,0.14); }
+.user-chip{ display:flex; align-items:center; gap:10px; background:rgba(0,0,0,0.04); border-radius:10px; padding:6px 12px; }
+[data-theme="dark"] .user-chip{ background:rgba(255,255,255,0.06); }
+.avatar{
+  width:34px; height:34px; border-radius:50%; background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  color:#fff; font-size:.8rem; font-weight:700; display:flex; align-items:center; justify-content:center; overflow:hidden;
+}
+.user-chip .name{ font-size:.82rem; font-weight:600; }
+.user-chip .role{ font-size:.72rem; color:var(--muted); }
+
+.content{ flex:1; padding:32px 28px; max-width:1200px; margin:0 auto; width:100%; }
+.page-title{ font-family:'Montserrat',sans-serif; font-size:1.6rem; font-weight:800; margin-bottom:4px; color:var(--text); }
+.page-sub{ color:var(--muted); font-size:.9rem; margin-bottom:28px; }
+
+.glass-card{ margin-top:16px; background:var(--card-bg); border-radius:16px; border:1px solid var(--border); box-shadow:0 4px 24px rgba(0,0,0,0.07); padding:28px; transition:background .3s; }
+.info-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:20px; text-align:left; }
+.info-item{ padding:14px 16px; border-radius:12px; }
+.info-item .lbl{ font-size:.72rem; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin-bottom:4px; }
+.info-item .val{ font-size:.92rem; font-weight:600; color:var(--text); word-break:break-word; }
+.student-profile-card{ text-align:center; }
+.student-profile-card h3{ font-size:1.25rem; font-weight:700; margin-bottom:4px; }
+
+.section-head{ font-size:.82rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--primary); margin:28px 0 12px; display:flex; align-items:center; gap:8px; }
+.section-head::after{ content:''; flex:1; height:1px; background:var(--border); }
+.notice{ font-size:.78rem; color:var(--muted); background:rgba(139,0,0,0.04); border:1px solid rgba(139,0,0,0.12); border-radius:8px; padding:10px 14px; margin-top:20px; }
+.notice.danger{ border-color:rgba(220,53,69,0.2); background:rgba(220,53,69,0.04); color:#dc2626; }
+.notice.success{ border-color:rgba(16,185,129,0.25); background:rgba(16,185,129,0.06); color:#0f7b3a; }
+.empty-state{ text-align:center; padding:40px 20px; color:var(--muted); }
+.empty-state i{ font-size:2.2rem; margin-bottom:10px; color:var(--border); }
+
+.stat-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:8px; }
+.stat-card{
+  background:var(--card-bg); border:1px solid var(--border); border-radius:16px; padding:20px;
+  box-shadow:0 4px 24px rgba(0,0,0,0.06); display:flex; align-items:center; gap:14px;
+  transition:transform .2s, box-shadow .2s;
+}
+.stat-card:hover{ transform:translateY(-3px); box-shadow:0 10px 30px rgba(0,0,0,0.1); }
+.stat-icon{
+  width:46px; height:46px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+  font-size:1.15rem; color:#fff; background:linear-gradient(135deg,var(--primary),var(--primary-light)); flex-shrink:0;
+}
+.stat-icon.blue{ background:linear-gradient(135deg,#1e40af,#3b82f6); }
+.stat-icon.green{ background:linear-gradient(135deg,#065f46,#10b981); }
+.stat-icon.amber{ background:linear-gradient(135deg,#92400e,#f59e0b); }
+.stat-icon.purple{ background:linear-gradient(135deg,#5b21b6,#8b5cf6); }
+.stat-icon.gray{ background:linear-gradient(135deg,#374151,#6b7280); }
+.stat-label{ font-size:.72rem; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
+.stat-value{ font-size:1.15rem; font-weight:700; color:var(--text); margin-top:2px; }
+@media(max-width:900px){ .stat-grid{ grid-template-columns:repeat(2,1fr); } }
+
+.form-label-sm{ font-size:.78rem; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; margin-bottom:6px; display:block; }
+.form-control-portal{
+  width:100%; padding:11px 14px; border:1.5px solid var(--border); border-radius:10px;
+  font-size:.9rem; font-family:'Poppins',sans-serif; outline:none; background:var(--card-bg); color:var(--text);
+  transition:border-color .25s, box-shadow .25s;
+}
+.form-control-portal:focus{ border-color:var(--primary); box-shadow:0 0 0 3px var(--primary-glow); }
+.form-control-portal:disabled, .form-control-portal.locked{ background:rgba(0,0,0,0.03); color:var(--muted); cursor:not-allowed; }
+[data-theme="dark"] .form-control-portal:disabled, [data-theme="dark"] .form-control-portal.locked{ background:rgba(255,255,255,0.03); }
+.lock-note{ font-size:.7rem; color:var(--muted); margin-top:4px; display:flex; align-items:center; gap:5px; }
+
+.btn-portal{
+  padding:10px 22px; border:none; border-radius:10px; font-weight:600; font-size:.88rem; cursor:pointer;
+  background:linear-gradient(135deg,var(--primary),var(--primary-light)); color:#fff;
+  box-shadow:0 8px 20px var(--primary-glow); transition:transform .15s, opacity .2s;
+}
+.btn-portal:hover{ transform:translateY(-2px); }
+.btn-portal:disabled{ opacity:.6; cursor:not-allowed; transform:none; }
+.btn-portal.outline{ background:none; color:var(--primary); border:1.5px solid var(--primary); box-shadow:none; }
+.btn-portal.outline:hover{ background:rgba(139,0,0,0.06); }
+.btn-portal.sm{ padding:6px 14px; font-size:.78rem; }
+.btn-portal.gray{ background:linear-gradient(135deg,#4b5563,#6b7280); box-shadow:0 8px 20px rgba(75,85,99,0.25); }
+.btn-portal.danger{ background:linear-gradient(135deg,#991b1b,#dc2626); box-shadow:0 8px 20px rgba(220,38,38,0.25); }
+
+.toolbar{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:20px; }
+.toolbar .search-box{ position:relative; flex:1; min-width:220px; }
+.toolbar .search-box i{ position:absolute; left:14px; top:50%; transform:translateY(-50%); color:var(--muted); font-size:.85rem; }
+.toolbar .search-box input{ padding-left:38px; }
+.toolbar select.form-control-portal{ max-width:180px; }
+
+.table-portal-wrap{ overflow-x:auto; }
+.table-portal{ width:100%; border-collapse:collapse; font-size:.85rem; min-width:760px; }
+.table-portal th{
+  background:rgba(139,0,0,0.07); padding:11px 14px; text-align:left; font-weight:600;
+  color:var(--text); border-bottom:2px solid var(--border); white-space:nowrap;
+}
+.table-portal td{ padding:10px 14px; border-bottom:1px solid var(--border); color:var(--text); vertical-align:middle; }
+.table-portal tr:hover td{ background:rgba(139,0,0,0.03); }
+[data-theme="dark"] .table-portal th{ background:rgba(255,255,255,0.04); }
+.row-actions{ display:flex; gap:6px; flex-wrap:wrap; }
+.icon-btn{
+  width:30px; height:30px; border-radius:8px; border:1px solid var(--border); background:var(--card-bg);
+  color:var(--muted); display:inline-flex; align-items:center; justify-content:center; cursor:pointer; font-size:.78rem;
+  transition:all .15s;
+}
+.icon-btn:hover{ background: linear-gradient(135deg, var(--primary), var(--primary-light)); color:white; border-color:var(--primary); }
+.icon-btn.danger:hover{ background:rgba(220,38,38,0.08); color:#dc2626; border-color:#dc2626; }
+.icon-btn:disabled{ opacity:.4; cursor:not-allowed; }
+.icon-btn:disabled:hover{ background:var(--card-bg); color:var(--muted); border-color:var(--border); }
+
+.modal-content{ background:var(--card-bg); color:var(--text); border-radius:16px; border:none; }
+.modal-header{ border-bottom:1px solid var(--border); }
+.modal-footer{ border-top:1px solid var(--border); }
+.modal-title{ font-family:'Montserrat',sans-serif; font-weight:700; }
+.btn-close{ filter:none; }
+[data-theme="dark"] .btn-close{ filter:invert(1); }
+
+.badge-status{ display:inline-block; padding:4px 12px; border-radius:20px; font-size:.75rem; font-weight:600; }
+.badge-issued{ background:#d1fae5; color:#065f46; }
+.badge-notissued{ background:#e5e7eb; color:#4b5563; }
+[data-theme="dark"] .badge-issued{ background:rgba(6,95,70,0.3); color:#6ee7b7; }
+[data-theme="dark"] .badge-notissued{ background:rgba(255,255,255,0.08); color:#cbd5e1; }
+
+.cert-thumb-mini{ width:36px;height:36px;border-radius:8px;object-fit:cover;background:rgba(139,0,0,0.06); }
+
+.upload-btn{
+  display:inline-flex; align-items:center; gap:8px; padding:9px 16px; border-radius:9px;
+  background:rgba(139,0,0,0.07); color:var(--primary); font-size:.82rem; font-weight:600; cursor:pointer; border:1px dashed var(--primary);
+}
+.upload-btn:hover{ background:rgba(139,0,0,0.12); }
+
+.portal-toast{
+  position:fixed; bottom:24px; right:24px; z-index:2000; background:#1f2937; color:#fff;
+  padding:12px 18px; border-radius:10px; font-size:.85rem; box-shadow:0 10px 30px rgba(0,0,0,0.3);
+  display:flex; align-items:center; gap:10px; transform:translateY(20px); opacity:0; transition:all .3s; pointer-events:none;
+}
+.portal-toast.show{ transform:translateY(0); opacity:1; }
+.portal-toast.success i{ color:#34d399; }
+.portal-toast.error i{ color:#f87171; }
+
+.chip-list{ display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
+.chip{ padding:5px 12px; border-radius:20px; font-size:.78rem; font-weight:500; cursor:pointer; border:1px solid var(--border); background:var(--card-bg); color:var(--muted); }
+.chip.active{ background:var(--primary); color:#fff; border-color:var(--primary); }
+
+.perm-note{ display:flex; align-items:center; gap:8px; font-size:.76rem; color:var(--muted); background:rgba(139,0,0,0.04); border:1px solid rgba(139,0,0,0.1); border-radius:8px; padding:8px 12px; margin-bottom:14px; }
+.perm-note i{ color:var(--primary); }
+
+.activity-row{ display:flex; gap:12px; align-items:flex-start; padding:12px 0; border-bottom:1px solid var(--border); }
+.activity-dot{ width:8px; height:8px; border-radius:50%; background:var(--primary); margin-top:6px; flex-shrink:0; }
+.activity-dot.self{ background:#2563eb; }
+
+.table-portal-wrap{ -webkit-overflow-scrolling:touch; }
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — Laptop / Tablet / Mobile
+   Breakpoints: ≥1200 desktop · 992–1199 small laptop · 768–991
+   tablet · 576–767 large mobile · ≤575 mobile · ≤400 small mobile
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Small laptops / large tablets (landscape) ── */
+@media(max-width:1199px){
+  .content{ max-width:100%; padding:28px 24px; }
+  .stat-grid{ gap:14px; }
+}
+
+/* ── Tablets (portrait) ── */
+@media(max-width:991px){
+  :root{ --sidebar-w:220px; }
+  .content{ padding:26px 20px; }
+  .table-portal{ min-width:680px; }
+  .cert-thumb{ height:130px; }
+  .stat-value{ font-size:1.05rem; }
+}
+
+/* ── Sidebar collapses to an off-canvas drawer from here down ── */
+@media(max-width:768px){
+  :root{ --sidebar-w:250px; }
+  .sidebar{ transform:translateX(-100%); box-shadow:0 0 40px rgba(0,0,0,0.35); }
+  .sidebar.open{ transform:translateX(0); }
+  .main-area{ margin-left:0; }
+  .menu-burger{ display:flex; }
+  .content{ padding:20px 16px; }
+  .info-grid{ grid-template-columns:1fr; }
+  .stat-grid{ grid-template-columns:1fr 1fr; gap:12px; }
+  .page-title{ font-size:1.32rem; }
+  .page-sub{ font-size:.82rem; margin-bottom:20px; }
+  .glass-card{ padding:18px; border-radius:14px; }
+  .toolbar{ flex-direction:column; align-items:stretch; gap:10px; }
+  .toolbar .search-box{ min-width:100%; }
+  .toolbar select.form-control-portal{ max-width:100%; }
+  .d-flex.justify-content-between.align-items-start{ align-items:stretch !important; }
+  .d-flex.justify-content-between.align-items-start > .btn-portal,
+  .d-flex.justify-content-between.align-items-start > div.d-flex{ width:100%; }
+  .d-flex.justify-content-between.align-items-start .btn-portal{ width:100%; justify-content:center; display:flex; align-items:center; }
+  .stat-card{ padding:14px; gap:10px; }
+  .stat-icon{ width:38px; height:38px; font-size:1rem; border-radius:10px; }
+  .stat-label{ font-size:.66rem; }
+  .stat-value{ font-size:1rem; }
+  .topbar{ padding:0 16px; gap:10px; }
+  .topbar-title{ font-size:.9rem; max-width:150px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .chip-list{ gap:6px; }
+  .chip{ font-size:.72rem; padding:4px 10px; }
+}
+
+/* ── Large mobile phones ── */
+@media(max-width:576px){
+  .content{ padding:16px 12px; }
+  .auth-card{ padding:30px 22px 24px; max-width:92vw; }
+  .stat-grid{ grid-template-columns:1fr 1fr; gap:10px; }
+  .table-portal{ font-size:.78rem; min-width:560px; }
+  .row-actions{ gap:4px; }
+  .icon-btn{ width:28px; height:28px; font-size:.72rem; }
+  .modal-dialog{ margin:12px; }
+  .brand span{ font-size:.85rem; }
+  .page-title{ font-size:1.18rem; }
+  .glass-card{ padding:16px; }
+  .form-control-portal{ padding:10px 12px; font-size:.86rem; }
+  .btn-portal{ padding:10px 16px; font-size:.84rem; }
+  .info-item{ padding:12px; }
+  .cert-thumb{ height:110px; }
+  .table-portal th, .table-portal td{ padding:9px 10px; }
+  .perm-note{ font-size:.72rem; }
+}
+
+/* ── Small / narrow phones ── */
+@media(max-width:400px){
+  .stat-grid{ grid-template-columns:1fr; }
+  h1.auth-title{ font-size:1.15rem; }
+  .icon-shield{ width:46px; height:46px; font-size:1.25rem; }
+  .table-portal{ min-width:520px; }
+  .avatar{ width:30px; height:30px; font-size:.72rem; }
+  .theme-toggle{ width:32px; height:32px; }
+}
+
+/* ── Fine-tune touch targets on any touch device ── */
+@media(hover:none) and (pointer:coarse){
+  .icon-btn{ min-width:34px; min-height:34px; }
+  .nav-link{ padding:12px 20px; }
+  .chip{ padding:6px 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ LOGIN SCREEN (shown when no Sales / Admin session exists) ═══ -->
+<div id="loginScreen">
+  <div class="auth-card">
+    <div class="auth-logo"><div class="icon-shield"><i class="fas fa-handshake"></i></div></div>
+    <h1 class="auth-title">Sales Department</h1>
+    <p class="auth-sub">CADPOINT Sales Team Portal</p>
+
+    <div class="alert-error" id="loginError"><i class="fas fa-circle-exclamation"></i><span id="loginErrorText">Invalid username or password.</span></div>
+
+    <form id="salesLoginForm" novalidate>
+      <div class="form-group">
+        <label>Username</label>
+        <div class="input-wrap">
+          <i class="fas fa-user field-icon"></i>
+          <input type="text" id="loginUsername" autocomplete="username" required>
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom:22px;">
+        <label>Password</label>
+        <div class="input-wrap">
+          <i class="fas fa-lock field-icon"></i>
+          <input type="password" id="loginPassword" autocomplete="current-password" required style="padding-right:38px;">
+          <i class="fas fa-eye toggle-pass" id="loginTogglePass"></i>
+        </div>
+      </div>
+      <button type="submit" class="btn-login" id="loginBtn">
+        <span class="btn-text"><i class="fas fa-right-to-bracket me-2"></i>Login</span>
+        <i class="fas fa-spinner fa-spin btn-spinner"></i>
+      </button>
+    </form>
+    <a class="back-link" href="../index.html"><i class="fas fa-arrow-left me-1"></i>Back to Website</a>
+  </div>
+</div>
+
+<!-- ═══ SALES PORTAL SHELL ═══ -->
+<div class="portal-bg" id="portalBg" style="display:none;"></div>
+<div class="sidebar-overlay" id="overlay"></div>
+
+<div class="dash-shell" id="dashShell" style="display:none;">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <div class="main-area">
+    <div class="topbar" id="topbar"></div>
+
+    <div class="content wide">
+
+      <!-- ═══ OVERVIEW ═══ -->
+      <section id="view-overview">
+        <h2 class="page-title" style="color:white;">Sales Overview</h2>
+        <p class="page-sub">Welcome back. Here's a snapshot of enquiries and certificates today.</p>
+
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-icon blue"><i class="fas fa-phone-volume"></i></div>
+            <div><div class="stat-label">Total Enquiries</div><div class="stat-value" id="ovTotalEnq">0</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon amber"><i class="fas fa-arrows-rotate"></i></div>
+            <div><div class="stat-label">Follow-up / New</div><div class="stat-value" id="ovOpenEnq">0</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green"><i class="fas fa-circle-check"></i></div>
+            <div><div class="stat-label">Admitted</div><div class="stat-value" id="ovAdmitted">0</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon purple"><i class="fas fa-award"></i></div>
+            <div><div class="stat-label">Certificates Issued</div><div class="stat-value" id="ovCertsIssued">0</div></div>
+          </div>
+        </div>
+
+        <div class="row g-4 my-1">
+          <div class="col-md-6">
+            <div class="glass-card" style="cursor:pointer;" data-sales-view="enquiries">
+              <div class="stat-icon" style="margin-bottom:14px;"><i class="fas fa-handshake"></i></div>
+              <h4 style="font-family:'Montserrat',sans-serif;font-weight:700;">Sales Enquiries</h4>
+              <p class="page-sub" style="margin-bottom:0;">View, add, edit and manage enquiry records.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="glass-card" style="cursor:pointer;" data-sales-view="certificates">
+              <div class="stat-icon" style="margin-bottom:14px;"><i class="fas fa-award"></i></div>
+              <h4 style="font-family:'Montserrat',sans-serif;font-weight:700;">Certificates</h4>
+              <p class="page-sub" style="margin-bottom:0;">View, add, edit and update student certificates.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <h5 style="font-family:'Montserrat',sans-serif;font-weight:700;margin-bottom:14px;"><i class="fas fa-clock-rotate-left me-2" style="color:var(--primary)"></i>Recent Activity</h5>
+          <div id="overviewActivity"></div>
+        </div>
+      </section>
+
+      <!-- ═══ ENQUIRIES ═══ -->
+      <section id="view-enquiries" style="display:none;">
+        <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-1">
+          <div>
+            <h2 class="page-title" style="color:white;">Sales Enquiry Details</h2>
+            <p class="page-sub">Student enquiries, admissions pipeline and follow-up tracking.</p>
+          </div>
+          <button class="btn-portal" id="addEnquiryBtn"><i class="fas fa-plus me-1"></i>Add Enquiry</button>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-list"></i></div>
+            <div><div class="stat-label">Total</div><div class="stat-value" id="enqStatTotal">0</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon blue"><i class="fas fa-star"></i></div>
+            <div><div class="stat-label">New</div><div class="stat-value" id="enqStatNew">0</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon amber"><i class="fas fa-clock"></i></div>
+            <div><div class="stat-label">Follow-up</div><div class="stat-value" id="enqStatFollowup">0</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green"><i class="fas fa-circle-check"></i></div>
+            <div><div class="stat-label">Admitted</div><div class="stat-value" id="enqStatAdmitted">0</div></div>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <div class="toolbar">
+            <div class="search-box">
+              <i class="fas fa-magnifying-glass"></i>
+              <input type="text" class="form-control-portal" id="enqSearchInput" placeholder="Search by name, course or phone…">
+            </div>
+            <select class="form-control-portal" id="enqStageFilter">
+              <option value="">All Stages</option>
+              <option>New</option><option>Follow-up</option><option>Admitted</option><option>Closed</option>
+            </select>
+          </div>
+
+          <div class="table-portal-wrap">
+            <table class="table-portal">
+              <thead>
+                <tr><th>Name</th><th>Course Interested</th><th>Phone</th><th>Date</th><th>Stage</th><th>Actions</th></tr>
+              </thead>
+              <tbody id="enquiryTbody"></tbody>
+            </table>
+          </div>
+          <div class="empty-state" id="noEnquiries" style="display:none;">
+            <i class="fas fa-handshake"></i>
+            <p>No enquiries match your search. Add one to start tracking.</p>
+          </div>
+          <nav class="mt-3" id="enqPaginationWrap" style="display:none;">
+            <ul class="pagination pagination-sm justify-content-center mb-0" id="enqPagination"></ul>
+          </nav>
+        </div>
+      </section>
+
+      <!-- ═══ CERTIFICATES ═══ -->
+      <section id="view-certificates" style="display:none;">
+        <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-1">
+          <div>
+            <h2 class="page-title" style="color:white;">Certificate Management</h2>
+            <p class="page-sub">Issue, edit and track student certificates. Synced with the Technical Department records.</p>
+          </div>
+          <button class="btn-portal" id="addCertBtn"><i class="fas fa-plus me-1"></i>Add Certificate</button>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-award"></i></div>
+            <div><div class="stat-label">Total Certificates</div><div class="stat-value" id="certStatTotal">0</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green"><i class="fas fa-circle-check"></i></div>
+            <div><div class="stat-label">Issued</div><div class="stat-value" id="certStatIssued">0</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon amber"><i class="fas fa-hourglass-half"></i></div>
+            <div><div class="stat-label">Not Issued</div><div class="stat-value" id="certStatPending">0</div></div>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <div class="perm-note"><i class="fas fa-circle-info"></i>Sales Team can view, add, edit and update certificates. Removing a certificate record requires Admin access.</div>
+          <div class="toolbar">
+            <div class="search-box">
+              <i class="fas fa-magnifying-glass"></i>
+              <input type="text" class="form-control-portal" id="certSearchInput" placeholder="Search by student name, ID or certificate number…">
+            </div>
+            <select class="form-control-portal" id="certStatusFilter">
+              <option value="">All Statuses</option>
+              <option value="Issued">Issued</option>
+              <option value="Not Issued">Not Issued</option>
+            </select>
+          </div>
+
+          <div class="table-portal-wrap">
+            <table class="table-portal">
+              <thead>
+                <tr><th>Student</th><th>Course</th><th>Cert Number</th><th>Issue Date</th><th>Status</th><th>Actions</th></tr>
+              </thead>
+              <tbody id="certsTbody"></tbody>
+            </table>
+          </div>
+          <div class="empty-state" id="noCerts" style="display:none;">
+            <i class="fas fa-award"></i>
+            <p>No certificates found. Add one for a student to get started.</p>
+          </div>
+          <nav class="mt-3" id="certPaginationWrap" style="display:none;">
+            <ul class="pagination pagination-sm justify-content-center mb-0" id="certPagination"></ul>
+          </nav>
+        </div>
+      </section>
+
+      <!-- ═══ ACTIVITY LOGS ═══ -->
+      <section id="view-activity" style="display:none;">
+        <h2 class="page-title" style="color:white;">Activity Logs</h2>
+        <p class="page-sub">A complete trail of Sales Department actions — automatically synced with the Admin Dashboard.</p>
+        <div class="glass-card">
+          <div class="chip-list mb-2">
+            <span class="chip active" data-activity-filter="all">All Activity</span>
+            <span class="chip" data-activity-filter="mine">My Actions</span>
+          </div>
+          <div id="fullActivity"></div>
+          <div class="empty-state" id="noActivity" style="display:none;">
+            <i class="fas fa-clock-rotate-left"></i>
+            <p>No activity recorded yet.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ MY PROFILE ═══ -->
+      <section id="view-profile" style="display:none;">
+        <h2 class="page-title" style="color:white;">My Profile</h2>
+        <p class="page-sub">Manage your Sales Department account details.</p>
+        <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:flex-start;">
+          <div class="glass-card student-profile-card" style="max-width:440px; flex:1 1 380px;">
+            <div class="avatar" style="width:76px;height:76px;font-size:1.6rem;margin:0 auto 14px;"><i class="fas fa-handshake"></i></div>
+            <h3 id="profName">Sales Team</h3>
+            <p class="page-sub" style="margin-bottom:18px;">Role: Sales Executive · Enquiries &amp; Certificates Access</p>
+            <div class="info-grid">
+              <div class="info-item glass-card"><div class="lbl">Username</div><div class="val" id="profUsername">—</div></div>
+              <div class="info-item glass-card"><div class="lbl">Department</div><div class="val">Sales</div></div>
+              <div class="info-item glass-card" style="grid-column:1/-1;"><div class="lbl">Last Login</div><div class="val" id="profLastLogin">—</div></div>
+            </div>
+            <button class="btn-portal sm" id="changePwBtn" style="margin-top:18px;width:100%;"><i class="fas fa-key me-2"></i>Change Password</button>
+          </div>
+
+          <div class="glass-card" style="flex:1 1 380px; max-width:440px;">
+            <h5 style="font-family:'Montserrat',sans-serif;font-weight:700;margin-bottom:10px;"><i class="fas fa-shield-halved me-2" style="color:var(--primary)"></i>Access Permissions</h5>
+            <p class="page-sub" style="margin-bottom:14px;">Your account is restricted to the Sales Department module set below.</p>
+            <div class="info-grid" style="grid-template-columns:1fr;">
+              <div class="info-item glass-card"><div class="lbl">Sales Enquiries</div><div class="val"><span class="chip done" style="background:#d1fae5;color:#065f46;">View · Add · Edit · Delete</span></div></div>
+              <div class="info-item glass-card"><div class="lbl">Certificates</div><div class="val"><span class="chip done" style="background:#d1fae5;color:#065f46;">View · Add · Edit · Update</span></div></div>
+              <div class="info-item glass-card"><div class="lbl">Activity Logs</div><div class="val"><span class="chip pending" style="background:#fef3c7;color:#92400e;">View Only</span></div></div>
+              <div class="info-item glass-card"><div class="lbl">Student Records / Admin Settings</div><div class="val"><span class="chip" style="background:#e5e7eb;color:#4b5563;">No Access</span></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<!-- ADD / EDIT ENQUIRY MODAL -->
+<div class="modal fade" id="enquiryModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="enquiryModalTitle">Add Enquiry</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="editEnquiryIndex">
+        <div class="mb-3"><label class="form-label-sm">Name</label><input class="form-control-portal" id="e_name" placeholder="Enquirer's full name"></div>
+        <div class="mb-3"><label class="form-label-sm">Course Interested</label><input class="form-control-portal" id="e_course" placeholder="e.g. AutoCAD, Revit…"></div>
+        <div class="mb-3"><label class="form-label-sm">Phone</label><input class="form-control-portal" id="e_phone" placeholder="10-digit mobile number"></div>
+        <div class="mb-1">
+          <label class="form-label-sm">Stage</label>
+          <select class="form-control-portal" id="e_stage">
+            <option>New</option><option>Follow-up</option><option>Admitted</option><option>Closed</option>
+          </select>
+        </div>
+        <div class="invalid-feedback d-block text-danger small mt-1" id="enquiryFormError" style="display:none;"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-portal outline sm" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn-portal sm" id="saveEnquiryBtn"><i class="fas fa-floppy-disk me-1"></i>Save Enquiry</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADD / EDIT CERTIFICATE MODAL -->
+<div class="modal fade" id="certModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="certModalTitle">Add Certificate</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="editCertStudentId">
+        <input type="hidden" id="editCertIndex">
+
+        <div class="mb-3" id="certStudentSelectWrap">
+          <label class="form-label-sm">Student</label>
+          <select class="form-control-portal" id="c_studentId">
+            <option value="">Select a student…</option>
+          </select>
+        </div>
+        <div class="mb-3" id="certStudentLockedWrap" style="display:none;">
+          <label class="form-label-sm">Student</label>
+          <input class="form-control-portal locked" id="c_studentLocked" disabled>
+        </div>
+
+        <div class="mb-3"><label class="form-label-sm">Course Name</label><input class="form-control-portal" id="c_courseName" placeholder="e.g. CATIA V5 Essentials"></div>
+        <div class="mb-3"><label class="form-label-sm">Certificate Number</label><input class="form-control-portal" id="c_certNumber" placeholder="e.g. CDP-2026-1042"></div>
+
+        <div class="row g-2 mb-3">
+          <div class="col-6">
+            <label class="form-label-sm">Status</label>
+            <select class="form-control-portal" id="c_status">
+              <option value="Not Issued">Not Issued</option>
+              <option value="Issued">Issued</option>
+            </select>
+          </div>
+          <div class="col-6">
+            <label class="form-label-sm">Issue Date</label>
+            <input type="text" class="form-control-portal" id="c_issueDate" placeholder="e.g. 12 Aug 2026">
+          </div>
+        </div>
+
+        <label class="form-label-sm">Certificate File (image or PDF)</label>
+        <label class="upload-btn"><i class="fas fa-upload"></i><span id="c_fileLabel">Choose File</span><input type="file" id="c_fileInput" accept="image/*,application/pdf" hidden></label>
+
+        <div class="invalid-feedback d-block text-danger small mt-2" id="certFormError" style="display:none;"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-portal outline sm" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn-portal sm" id="saveCertBtn"><i class="fas fa-floppy-disk me-1"></i>Save Certificate</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHANGE PASSWORD MODAL -->
+<div class="modal fade" id="changePwModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Change Sales Department Password</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label-sm">Username</label>
+          <input type="text" class="form-control-portal" id="pw_username">
+        </div>
+        <div class="mb-1">
+          <label class="form-label-sm">New Password</label>
+          <div class="input-wrap">
+            <input type="password" class="form-control-portal" id="pw_password" style="padding-right:38px;">
+            <i class="fas fa-eye toggle-pass" id="pw_togglePass"></i>
+          </div>
+        </div>
+        <p class="lock-note mt-2"><i class="fas fa-circle-info"></i>This updates the shared Sales Department login used on the main site.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-portal outline sm" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn-portal sm" id="savePwBtn">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+/* ═══════════════════════════════════════════════════════════════════
+   CADPOINT SALES DEPARTMENT PORTAL
+   Shares its data layer 1:1 with admin-dashboard-new.html — same
+   localStorage keys, same record shapes — so every change made here
+   (enquiries, certificates, activity log) is instantly visible in the
+   Main Admin Dashboard, and vice versa. No separate/duplicate storage
+   is created.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Shared Storage Keys (MUST match admin-dashboard-new.html) ──── */
+const STUDENTS_KEY     = 'cadpoint_students';
+const ADMIN_SESS_KEY   = 'cadpoint_admin_session';
+const SALES_SESS_KEY   = 'cadpoint_sales_session';
+const STUDENT_SESS_KEY = 'cadpoint_student_session';
+const THEME_KEY        = 'cadpoint_theme';
+const ENQUIRIES_KEY    = 'cadpoint_enquiries';
+const ACTIVITY_KEY     = 'cadpoint_activity';
+const DEPT_CREDS_KEY   = 'cadpoint_dept_credentials';
+
+const DEFAULT_DEPT_CREDENTIALS = {
+  technical: { username:'admin', password:'tech123'  },
+  sales:     { username:'admin', password:'sales123' }
+};
+function getDeptCredentials(dept){
+  try {
+    const stored = JSON.parse(localStorage.getItem(DEPT_CREDS_KEY)) || {};
+    if (stored[dept] && stored[dept].username && stored[dept].password) return stored[dept];
+  } catch(e){}
+  return DEFAULT_DEPT_CREDENTIALS[dept];
+}
+function saveDeptCredentials(dept, username, password){
+  let all = {};
+  try { all = JSON.parse(localStorage.getItem(DEPT_CREDS_KEY)) || {}; } catch(e){}
+  all[dept] = { username, password };
+  localStorage.setItem(DEPT_CREDS_KEY, JSON.stringify(all));
+}
+
+/* ── Seed Data (identical to admin-dashboard-new.html so both pages
+   agree on the very first record set, whichever loads first) ─────── */
+function defaultModules(names, doneCount){
+  return names.map((n,i) => ({ name:n, done:i < doneCount }));
+}
+function seedStudents(){
+  return [
+    { id:'STU001', password:'pass123', name:'Arjun Ramesh', photo:'', course:'AutoCAD + SolidWorks', department:'Mechanical Design',
+      duration:'6 Months', join:'15 Jan 2025', dob:'12 Aug 2002', mobile:'+91 98765 43210', email:'arjun.r@email.com',
+      address:'12 Anna Nagar, Chennai, TN', emergencyContact:'+91 90000 11111', status:'Ongoing',
+      attendance:{ percent:87, present:52, absent:6, leave:2 },
+      progress:{ percent:62, modules: defaultModules(['Engineering Drawing Basics','AutoCAD 2D Fundamentals','AutoCAD 3D Modeling','SolidWorks Part Design','SolidWorks Assembly','Final Project'], 3) },
+      fees:{ status:'Partial', total:18000, paid:12000, due:6000, lastPaid:'10 Apr 2025' },
+      certificates:[], remarks:'Consistent performer, needs to improve attendance.' },
+    { id:'STU002', password:'pass123', name:'Priya Suresh', photo:'', course:'CATIA V5 Essentials', department:'Aerospace Engineering',
+      duration:'4 Months', join:'01 Sep 2024', dob:'23 Nov 2001', mobile:'+91 87654 32109', email:'priya.s@email.com',
+      address:'45 Besant Nagar, Chennai, TN', emergencyContact:'+91 90000 22222', status:'Finished',
+      attendance:{ percent:95, present:76, absent:3, leave:1 },
+      progress:{ percent:100, modules: defaultModules(['Part Design','Assembly Design','Drafting & Annotation','Surface Modelling'], 4) },
+      fees:{ status:'Paid', total:22000, paid:22000, due:0, lastPaid:'28 Dec 2024' },
+      certificates:[{ id:'CERT-STU002-1', courseName:'CATIA V5 Essentials', certNumber:'CDP-2024-1187', issueDate:'02 Jan 2025', status:'Issued', image:'' }],
+      remarks:'Top performer of the batch.' },
+    { id:'STU003', password:'pass123', name:'Karthik Velu', photo:'', course:'Revit Architecture', department:'Civil & Architecture',
+      duration:'3 Months', join:'01 Mar 2025', dob:'05 Feb 2003', mobile:'+91 76543 21098', email:'karthik.v@email.com',
+      address:'8 T Nagar, Chennai, TN', emergencyContact:'+91 90000 33333', status:'Ongoing',
+      attendance:{ percent:74, present:37, absent:9, leave:4 },
+      progress:{ percent:45, modules: defaultModules(['BIM Concepts','Revit Floor Plans','Elevations & Sections','3D Rendering'], 1) },
+      fees:{ status:'Partial', total:14000, paid:7000, due:7000, lastPaid:'05 Mar 2025' },
+      certificates:[], remarks:'Needs to catch up on pending modules.' },
+    { id:'STU004', password:'pass123', name:'Deepa Krishnan', photo:'', course:'ANSYS Simulation', department:'FEA & CFD',
+      duration:'5 Months', join:'10 Feb 2025', dob:'19 Jun 2002', mobile:'+91 65432 10987', email:'deepa.k@email.com',
+      address:'22 Velachery, Chennai, TN', emergencyContact:'+91 90000 44444', status:'Ongoing',
+      attendance:{ percent:91, present:55, absent:4, leave:1 },
+      progress:{ percent:55, modules: defaultModules(['FEA Theory','Static Structural','Thermal Analysis','CFD Basics','Final Project'], 2) },
+      fees:{ status:'Partial', total:25000, paid:15000, due:10000, lastPaid:'20 Mar 2025' },
+      certificates:[], remarks:'' },
+    { id:'STU005', password:'pass123', name:'Rahul Nair', photo:'', course:'AutoCAD Civil 3D', department:'Civil Engineering',
+      duration:'4 Months', join:'15 Apr 2025', dob:'30 Sep 2003', mobile:'+91 54321 09876', email:'rahul.n@email.com',
+      address:'3 Adyar, Chennai, TN', emergencyContact:'+91 90000 55555', status:'Ongoing',
+      attendance:{ percent:68, present:30, absent:11, leave:3 },
+      progress:{ percent:30, modules: defaultModules(['Civil 3D Basics','Surface Design','Corridor Modeling'], 0) },
+      fees:{ status:'Pending', total:16000, paid:8000, due:8000, lastPaid:'18 Apr 2025' },
+      certificates:[], remarks:'Attendance below required threshold — please follow up.' }
+  ];
+}
+function seedEnquiries(){
+  return [
+    { name:'Sneha Patel',  course:'UI/UX Design',     phone:'9876001122', stage:'Admitted', date:'2026-06-10' },
+    { name:'Rahul Verma',  course:'Civil 3D',         phone:'9876334455', stage:'New',       date:'2026-06-15' },
+    { name:'Anita Joseph', course:'Java Development', phone:'9876778899', stage:'Admitted', date:'2026-05-28' }
+  ];
+}
+if (!localStorage.getItem(STUDENTS_KEY))  localStorage.setItem(STUDENTS_KEY, JSON.stringify(seedStudents()));
+if (!localStorage.getItem(ENQUIRIES_KEY)) localStorage.setItem(ENQUIRIES_KEY, JSON.stringify(seedEnquiries()));
+
+/* ── Data Layer — same single source of truth as the Admin Dashboard ── */
+function getStudents(){ try { return JSON.parse(localStorage.getItem(STUDENTS_KEY)) || []; } catch(e){ return []; } }
+function saveStudents(list){ localStorage.setItem(STUDENTS_KEY, JSON.stringify(list)); }
+function getStudentById(id){ if (!id) return null; return getStudents().find(s => s.id === id.toUpperCase()) || null; }
+function patchStudent(id, patch){
+  const list = getStudents();
+  const idx = list.findIndex(s => s.id === id);
+  if (idx < 0) return null;
+  list[idx] = Object.assign({}, list[idx], patch);
+  saveStudents(list);
+  return list[idx];
+}
+function getEnquiries(){ try { return JSON.parse(localStorage.getItem(ENQUIRIES_KEY)) || []; } catch(e){ return []; } }
+function saveEnquiries(list){ localStorage.setItem(ENQUIRIES_KEY, JSON.stringify(list)); }
+
+/* ── Activity Log (shared feed — appears in Admin Dashboard too) ─── */
+function logActivity(text, actor){
+  const arr = JSON.parse(localStorage.getItem(ACTIVITY_KEY) || '[]');
+  arr.unshift({ actor: actor || currentActorLabel(), text, time: new Date().toISOString() });
+  localStorage.setItem(ACTIVITY_KEY, JSON.stringify(arr.slice(0, 60)));
+}
+function getActivity(){ try { return JSON.parse(localStorage.getItem(ACTIVITY_KEY)) || []; } catch(e){ return []; } }
+function timeAgo(iso){
+  const diff = (Date.now() - new Date(iso).getTime()) / 1000;
+  if (diff < 60) return 'just now';
+  if (diff < 3600) return Math.floor(diff/60) + 'm ago';
+  if (diff < 86400) return Math.floor(diff/3600) + 'h ago';
+  return Math.floor(diff/86400) + 'd ago';
+}
+
+/* ── Utilities ────────────────────────────────────────────────── */
+function escHtml(str){
+  return String(str == null ? '' : str)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function initials(name){
+  return String(name||'').split(' ').filter(Boolean).map(w=>w[0]).slice(0,2).join('').toUpperCase() || 'ST';
+}
+function certBadgeHtml(status){
+  return status === 'Issued'
+    ? `<span class="badge-status badge-issued"><i class="fas fa-award me-1"></i>Issued</span>`
+    : `<span class="badge-status badge-notissued"><i class="fas fa-hourglass-half me-1"></i>Not Issued</span>`;
+}
+function stageBadge(stage){
+  const map = {
+    New:        'background:rgba(37,99,235,0.12);color:#2563eb;',
+    'Follow-up':'background:#fef3c7;color:#92400e;',
+    Admitted:   'background:#d1fae5;color:#065f46;',
+    Closed:     'background:#e5e7eb;color:#4b5563;'
+  };
+  return `<span class="badge-status" style="${map[stage] || map.New}">${escHtml(stage)}</span>`;
+}
+function readFileAsDataUrl(file, cb){
+  const reader = new FileReader();
+  reader.onload = () => cb(reader.result);
+  reader.onerror = () => cb('');
+  reader.readAsDataURL(file);
+}
+function toast(msg, type){
+  type = type || 'success';
+  let el = document.getElementById('portalToast');
+  if (!el){
+    el = document.createElement('div');
+    el.id = 'portalToast';
+    el.className = 'portal-toast';
+    document.body.appendChild(el);
+  }
+  const icon = type === 'success' ? 'fa-circle-check' : 'fa-circle-exclamation';
+  el.className = 'portal-toast ' + type;
+  el.innerHTML = `<i class="fas ${icon}"></i><span>${escHtml(msg)}</span>`;
+  requestAnimationFrame(() => el.classList.add('show'));
+  clearTimeout(el._t);
+  el._t = setTimeout(() => el.classList.remove('show'), 2800);
+}
+
+/* ── Theme ────────────────────────────────────────────────────── */
+function initTheme(){
+  const saved = localStorage.getItem(THEME_KEY) || 'light';
+  document.documentElement.setAttribute('data-theme', saved);
+  const btn = document.getElementById('themeToggle');
+  if (btn){
+    btn.querySelector('i').className = saved === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    btn.addEventListener('click', () => {
+      const cur = document.documentElement.getAttribute('data-theme');
+      const next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem(THEME_KEY, next);
+      btn.querySelector('i').className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    });
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   AUTHENTICATION & ROLE-BASED ACCESS
+   Sales users can arrive here two ways:
+   1) A dedicated Sales session (created by the login form below), or
+   2) An existing Admin/Department session created by the main site's
+      login modal (role:'admin'), which historically routes Sales
+      Department logins into the same session shape.
+   Either way, this page enforces Sales-only permissions regardless
+   of which session type is present — it never grants Student or
+   Admin-only actions (student records, dept credential edits, etc).
+   ═══════════════════════════════════════════════════════════════ */
+function getAdminSession(){ try { return JSON.parse(sessionStorage.getItem(ADMIN_SESS_KEY)); } catch(e){ return null; } }
+function getSalesSession(){ try { return JSON.parse(sessionStorage.getItem(SALES_SESS_KEY)); } catch(e){ return null; } }
+function getStudentSession(){ try { return JSON.parse(sessionStorage.getItem(STUDENT_SESS_KEY)); } catch(e){ return null; } }
+
+let CURRENT_SALES_USER = null; // { username, loggedAt }
+
+function resolveSalesUser(){
+  const sales = getSalesSession();
+  if (sales && sales.role === 'sales' && sales.username) return sales;
+  const admin = getAdminSession();
+  if (admin && admin.role === 'admin' && admin.adminId) {
+    return { role:'sales', username: admin.adminId, loggedAt: admin.loggedAt, viaAdminSession:true };
+  }
+  return null;
+}
+function currentActorLabel(){
+  return 'Sales Team' + (CURRENT_SALES_USER && CURRENT_SALES_USER.username ? ` (${CURRENT_SALES_USER.username})` : '');
+}
+
+function showLoginScreen(message){
+  document.getElementById('loginScreen').style.display = 'flex';
+  document.getElementById('portalBg').style.display = 'none';
+  document.getElementById('dashShell').style.display = 'none';
+  document.body.classList.add('auth-mode');
+  if (message){
+    const err = document.getElementById('loginError');
+    document.getElementById('loginErrorText').textContent = message;
+    err.classList.add('show');
+  }
+}
+
+function bootSalesPortal(){
+  // A Student session alone should never see the Sales portal.
+  if (getStudentSession() && !resolveSalesUser()){
+    showLoginScreen('This account does not have Sales Department access.');
+    return;
+  }
+  const user = resolveSalesUser();
+  if (!user){
+    document.getElementById('loginScreen').style.display = 'flex';
+    document.body.classList.add('auth-mode');
+    return;
+  }
+  CURRENT_SALES_USER = user;
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('portalBg').style.display = 'block';
+  document.getElementById('dashShell').style.display = 'flex';
+  document.body.classList.remove('auth-mode');
+
+  document.getElementById('sidebar').innerHTML = salesSidebarHtml('overview');
+  document.getElementById('topbar').innerHTML = topbarHtml('Sales Department', { name:'Sales Team', role:'Sales Executive', photo:'' });
+  wireChrome();
+  initTheme();
+  populateCertStudentDropdown();
+  showSalesView('overview');
+}
+
+/* ── Login form handling ─────────────────────────────────────── */
+document.getElementById('loginTogglePass').addEventListener('click', function(){
+  const input = document.getElementById('loginPassword');
+  const isPass = input.type === 'password';
+  input.type = isPass ? 'text' : 'password';
+  this.classList.toggle('fa-eye'); this.classList.toggle('fa-eye-slash');
+});
+document.getElementById('salesLoginForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const loginBtn = document.getElementById('loginBtn');
+  const username = document.getElementById('loginUsername').value.trim();
+  const password = document.getElementById('loginPassword').value.trim();
+  const err = document.getElementById('loginError');
+  err.classList.remove('show');
+
+  if (!username || !password){
+    document.getElementById('loginErrorText').textContent = 'Please enter both username and password.';
+    err.classList.add('show');
+    return;
+  }
+
+  loginBtn.classList.add('loading'); loginBtn.disabled = true;
+  setTimeout(() => {
+    const creds = getDeptCredentials('sales');
+    if (username === creds.username && password === creds.password){
+      sessionStorage.setItem(SALES_SESS_KEY, JSON.stringify({ role:'sales', username, loggedAt: new Date().toISOString() }));
+      CURRENT_SALES_USER = { username, loggedAt: new Date().toISOString() };
+      logActivity('Sales Team logged in.', currentActorLabel());
+      loginBtn.classList.remove('loading'); loginBtn.disabled = false;
+      bootSalesPortal();
+      toast('Welcome back, ' + username + '!', 'success');
+    } else {
+      loginBtn.classList.remove('loading'); loginBtn.disabled = false;
+      document.getElementById('loginErrorText').textContent = 'Invalid username or password. Please try again.';
+      err.classList.add('show');
+    }
+  }, 400);
+});
+
+/* ── Sidebar / Topbar Chrome ─────────────────────────────────── */
+const SALES_NAV = [
+  { key:'overview',     label:'Overview',           icon:'fa-grip' },
+  { key:'enquiries',    label:'Sales Enquiries',    icon:'fa-handshake' },
+  { key:'certificates', label:'Certificates',       icon:'fa-award' },
+  { key:'activity',     label:'Activity Logs',      icon:'fa-clock-rotate-left' },
+  { key:'profile',      label:'My Profile',         icon:'fa-id-badge' }
+];
+function salesSidebarHtml(activeKey){
+  const links = SALES_NAV.map(item => `
+    <a class="nav-link ${item.key===activeKey?'active':''}" data-sales-view="${item.key}">
+      <i class="fas ${item.icon}"></i>${item.label}
+    </a>`).join('');
+  return `
+    <div class="brand"><span>CADPOINT<small>Sales Portal</small></span></div>
+    <div class="nav-section-label">Main</div>
+    ${links}
+    <div class="nav-section-label">Site</div>
+    <a class="nav-link" href="../index.html" target="_blank"><i class="fas fa-globe"></i>View Website</a>
+    <div class="logout-link"><a id="logoutBtn"><i class="fas fa-right-from-bracket"></i>Logout</a></div>
+  `;
+}
+function topbarHtml(title, entity){
+  return `
+    <button class="menu-burger" id="burger"><i class="fas fa-bars"></i></button>
+    <div class="topbar-title">${escHtml(title)}</div>
+    <div class="topbar-right">
+      <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+      <div class="user-chip">
+        <div class="avatar">${initials(entity.name)}</div>
+        <div class="d-none d-sm-block">
+          <div class="name">${escHtml(CURRENT_SALES_USER ? CURRENT_SALES_USER.username : (entity.name||'').split(' ')[0])}</div>
+          <div class="role">${escHtml(entity.role || 'Sales')}</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+function wireChrome(){
+  const burger = document.getElementById('burger');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+  if (burger && sidebar && overlay){
+    burger.addEventListener('click', () => { sidebar.classList.add('open'); overlay.classList.add('show'); });
+    overlay.addEventListener('click', () => { sidebar.classList.remove('open'); overlay.classList.remove('show'); });
+  }
+  const logoutBtn = document.getElementById('logoutBtn');
+  if (logoutBtn) logoutBtn.addEventListener('click', e => {
+    e.preventDefault();
+    logActivity('Sales Team logged out.', currentActorLabel());
+    sessionStorage.removeItem(SALES_SESS_KEY);
+    sessionStorage.removeItem(ADMIN_SESS_KEY);
+    CURRENT_SALES_USER = null;
+    document.getElementById('salesLoginForm').reset();
+    document.getElementById('loginError').classList.remove('show');
+    showLoginScreen();
+  });
+}
+
+document.body.addEventListener('click', e => {
+  const link = e.target.closest('[data-sales-view]');
+  if (link) showSalesView(link.dataset.salesView);
+});
+
+/* ═══════════════════════════════════════════════════════════════
+   VIEW SWITCHING
+   ═══════════════════════════════════════════════════════════════ */
+const SALES_VIEWS = ['overview','enquiries','certificates','activity','profile'];
+let currentActivityFilter = 'all';
+let enqPage = 1, certPage = 1;
+const PAGE_SIZE = 6;
+
+function showSalesView(name){
+  if (!SALES_VIEWS.includes(name)) name = 'overview';
+  SALES_VIEWS.forEach(v => {
+    const el = document.getElementById('view-' + v);
+    if (el) el.style.display = (v === name) ? 'block' : 'none';
+  });
+  document.querySelectorAll('.nav-link[data-sales-view]').forEach(l => l.classList.remove('active'));
+  const link = document.querySelector(`.nav-link[data-sales-view="${name}"]`);
+  if (link) link.classList.add('active');
+
+  if (name === 'overview') renderOverview();
+  if (name === 'enquiries') { enqPage = 1; renderEnquiriesTable(); }
+  if (name === 'certificates') { certPage = 1; renderCertsTable(); }
+  if (name === 'activity') renderActivityLog();
+  if (name === 'profile') renderProfile();
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   OVERVIEW
+   ═══════════════════════════════════════════════════════════════ */
+function renderOverview(){
+  const enquiries = getEnquiries();
+  document.getElementById('ovTotalEnq').textContent = enquiries.length;
+  document.getElementById('ovOpenEnq').textContent = enquiries.filter(e => e.stage === 'New' || e.stage === 'Follow-up').length;
+  document.getElementById('ovAdmitted').textContent = enquiries.filter(e => e.stage === 'Admitted').length;
+
+  const allCerts = [];
+  getStudents().forEach(s => (s.certificates||[]).forEach(c => allCerts.push(c)));
+  document.getElementById('ovCertsIssued').textContent = allCerts.filter(c => c.status === 'Issued').length;
+
+  const target = document.getElementById('overviewActivity');
+  const items = getActivity().slice(0, 6);
+  target.innerHTML = items.map(a => `
+    <div class="activity-row">
+      <div class="activity-dot ${a.actor===currentActorLabel()?'self':''}"></div>
+      <div><div style="font-size:.86rem;">${escHtml(a.text)}</div><div style="font-size:.74rem;color:var(--muted);">${escHtml(a.actor)} · ${timeAgo(a.time)}</div></div>
+    </div>`).join('') || '<p class="page-sub" style="margin:0;">No activity yet.</p>';
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SALES ENQUIRY DETAILS MODULE (view / add / edit / update / delete)
+   ═══════════════════════════════════════════════════════════════ */
+function filteredEnquiries(){
+  const q = (document.getElementById('enqSearchInput').value || '').trim().toLowerCase();
+  const stage = document.getElementById('enqStageFilter').value;
+  let list = getEnquiries().map((e, i) => Object.assign({ _idx: i }, e));
+  if (q) list = list.filter(e => e.name.toLowerCase().includes(q) || e.course.toLowerCase().includes(q) || (e.phone||'').includes(q));
+  if (stage) list = list.filter(e => e.stage === stage);
+  return list;
+}
+function renderEnquiryStats(){
+  const all = getEnquiries();
+  document.getElementById('enqStatTotal').textContent = all.length;
+  document.getElementById('enqStatNew').textContent = all.filter(e => e.stage === 'New').length;
+  document.getElementById('enqStatFollowup').textContent = all.filter(e => e.stage === 'Follow-up').length;
+  document.getElementById('enqStatAdmitted').textContent = all.filter(e => e.stage === 'Admitted').length;
+}
+function renderPagination(wrapId, listEl, total, page, onChange){
+  const wrap = document.getElementById(wrapId);
+  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+  if (totalPages <= 1){ wrap.style.display = 'none'; listEl.innerHTML = ''; return; }
+  wrap.style.display = 'block';
+  let html = '';
+  for (let p = 1; p <= totalPages; p++){
+    html += `<li class="page-item ${p===page?'active':''}"><a class="page-link" href="#" data-page="${p}" style="${p===page?'background:var(--primary);border-color:var(--primary);':'color:var(--primary);'}">${p}</a></li>`;
+  }
+  listEl.innerHTML = html;
+  listEl.querySelectorAll('[data-page]').forEach(a => a.addEventListener('click', ev => {
+    ev.preventDefault();
+    onChange(Number(a.dataset.page));
+  }));
+}
+function renderEnquiriesTable(){
+  renderEnquiryStats();
+  const all = filteredEnquiries();
+  const totalPages = Math.max(1, Math.ceil(all.length / PAGE_SIZE));
+  if (enqPage > totalPages) enqPage = totalPages;
+  const pageItems = all.slice((enqPage-1)*PAGE_SIZE, enqPage*PAGE_SIZE);
+
+  document.getElementById('enquiryTbody').innerHTML = pageItems.map(e => `
+    <tr>
+      <td style="font-weight:600;">${escHtml(e.name)}</td>
+      <td>${escHtml(e.course)}</td>
+      <td>${escHtml(e.phone)}</td>
+      <td>${escHtml(e.date)}</td>
+      <td>${stageBadge(e.stage)}</td>
+      <td>
+        <div class="row-actions">
+          <button class="icon-btn edit-enquiry" data-i="${e._idx}" title="Edit"><i class="fas fa-pen"></i></button>
+          <button class="icon-btn danger del-enquiry" data-i="${e._idx}" title="Delete"><i class="fas fa-trash"></i></button>
+        </div>
+      </td>
+    </tr>`).join('');
+  document.getElementById('noEnquiries').style.display = all.length ? 'none' : 'block';
+  renderPagination('enqPaginationWrap', document.getElementById('enqPagination'), all.length, enqPage, p => { enqPage = p; renderEnquiriesTable(); });
+
+  document.querySelectorAll('.edit-enquiry').forEach(btn => btn.addEventListener('click', () => openEnquiryModal(Number(btn.dataset.i))));
+  document.querySelectorAll('.del-enquiry').forEach(btn => btn.addEventListener('click', () => {
+    const idx = Number(btn.dataset.i);
+    const e = getEnquiries()[idx];
+    if (!e) return;
+    if (!confirm(`Delete enquiry from ${e.name}?`)) return;
+    const list = getEnquiries(); list.splice(idx, 1); saveEnquiries(list);
+    logActivity(`Deleted sales enquiry from ${e.name}.`, currentActorLabel());
+    toast('Enquiry deleted', 'success');
+    renderEnquiriesTable();
+  }));
+}
+['enqSearchInput'].forEach(id => document.getElementById(id).addEventListener('input', () => { enqPage = 1; renderEnquiriesTable(); }));
+document.getElementById('enqStageFilter').addEventListener('change', () => { enqPage = 1; renderEnquiriesTable(); });
+
+const enquiryModalEl = document.getElementById('enquiryModal');
+const enquiryModal = new bootstrap.Modal(enquiryModalEl);
+function openEnquiryModal(index){
+  document.getElementById('enquiryFormError').style.display = 'none';
+  document.getElementById('editEnquiryIndex').value = '';
+  document.getElementById('e_name').value = '';
+  document.getElementById('e_course').value = '';
+  document.getElementById('e_phone').value = '';
+  document.getElementById('e_stage').value = 'New';
+
+  if (index !== null && index !== undefined){
+    const e = getEnquiries()[index];
+    if (!e) return;
+    document.getElementById('enquiryModalTitle').textContent = 'Edit Enquiry';
+    document.getElementById('editEnquiryIndex').value = index;
+    document.getElementById('e_name').value = e.name;
+    document.getElementById('e_course').value = e.course;
+    document.getElementById('e_phone').value = e.phone;
+    document.getElementById('e_stage').value = e.stage;
+  } else {
+    document.getElementById('enquiryModalTitle').textContent = 'Add Enquiry';
+  }
+  enquiryModal.show();
+}
+document.getElementById('addEnquiryBtn').addEventListener('click', () => openEnquiryModal(null));
+document.getElementById('saveEnquiryBtn').addEventListener('click', () => {
+  const name = document.getElementById('e_name').value.trim();
+  const course = document.getElementById('e_course').value.trim();
+  const phone = document.getElementById('e_phone').value.trim();
+  const stage = document.getElementById('e_stage').value;
+  const editIndex = document.getElementById('editEnquiryIndex').value;
+  const errEl = document.getElementById('enquiryFormError');
+
+  if (!name || !course || !phone){
+    errEl.textContent = 'Name, Course and Phone are required.'; errEl.style.display = 'block'; return;
+  }
+  if (!/^[0-9+\s-]{7,15}$/.test(phone)){
+    errEl.textContent = 'Please enter a valid phone number.'; errEl.style.display = 'block'; return;
+  }
+  errEl.style.display = 'none';
+
+  const list = getEnquiries();
+  if (editIndex !== ''){
+    const existing = list[Number(editIndex)];
+    list[Number(editIndex)] = Object.assign({}, existing, { name, course, phone, stage });
+    saveEnquiries(list);
+    logActivity(`Updated sales enquiry for ${name}.`, currentActorLabel());
+    toast('Enquiry updated successfully', 'success');
+  } else {
+    list.push({ name, course, phone, stage, date: new Date().toISOString().slice(0,10) });
+    saveEnquiries(list);
+    logActivity(`Added new sales enquiry from ${name}.`, currentActorLabel());
+    toast('Enquiry added successfully', 'success');
+  }
+  enquiryModal.hide();
+  renderEnquiriesTable();
+});
+
+/* ═══════════════════════════════════════════════════════════════
+   CERTIFICATE MODULE (view / add / edit / update)
+   Certificates live on the shared student record (student.certificates)
+   — identical storage used by the Admin Dashboard's Certificates tab.
+   ═══════════════════════════════════════════════════════════════ */
+function populateCertStudentDropdown(){
+  const sel = document.getElementById('c_studentId');
+  const students = getStudents();
+  sel.innerHTML = '<option value="">Select a student…</option>' +
+    students.map(s => `<option value="${s.id}">${escHtml(s.name)} (${s.id}) — ${escHtml(s.course)}</option>`).join('');
+}
+function allCertRows(){
+  const rows = [];
+  getStudents().forEach(s => (s.certificates||[]).forEach((c, idx) => rows.push({ s, c, idx })));
+  return rows;
+}
+function filteredCertRows(){
+  const q = (document.getElementById('certSearchInput').value || '').trim().toLowerCase();
+  const status = document.getElementById('certStatusFilter').value;
+  let rows = allCertRows();
+  if (q) rows = rows.filter(({s,c}) => s.name.toLowerCase().includes(q) || s.id.toLowerCase().includes(q) || (c.certNumber||'').toLowerCase().includes(q));
+  if (status) rows = rows.filter(({c}) => c.status === status);
+  return rows;
+}
+function renderCertStats(){
+  const rows = allCertRows();
+  document.getElementById('certStatTotal').textContent = rows.length;
+  document.getElementById('certStatIssued').textContent = rows.filter(r => r.c.status === 'Issued').length;
+  document.getElementById('certStatPending').textContent = rows.filter(r => r.c.status !== 'Issued').length;
+}
+function renderCertsTable(){
+  renderCertStats();
+  const all = filteredCertRows();
+  const totalPages = Math.max(1, Math.ceil(all.length / PAGE_SIZE));
+  if (certPage > totalPages) certPage = totalPages;
+  const pageRows = all.slice((certPage-1)*PAGE_SIZE, certPage*PAGE_SIZE);
+
+  const tbody = document.getElementById('certsTbody');
+  document.getElementById('noCerts').style.display = all.length ? 'none' : 'block';
+
+  tbody.innerHTML = pageRows.map(({s,c,idx}) => `
+    <tr>
+      <td>${escHtml(s.name)} <span style="color:var(--muted);font-size:.75rem;">(${escHtml(s.id)})</span></td>
+      <td>${escHtml(c.courseName)}</td>
+      <td>${escHtml(c.certNumber||'—')}</td>
+      <td>${escHtml(c.issueDate||'—')}</td>
+      <td>${certBadgeHtml(c.status)}</td>
+      <td>
+        <div class="row-actions">
+          <button class="icon-btn edit-cert" data-sid="${s.id}" data-idx="${idx}" title="Edit"><i class="fas fa-pen"></i></button>
+          <button class="icon-btn toggle-cert" data-sid="${s.id}" data-idx="${idx}" title="${c.status==='Issued'?'Revoke':'Issue'}">
+            <i class="fas ${c.status==='Issued'?'fa-ban':'fa-award'}"></i>
+          </button>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+  renderPagination('certPaginationWrap', document.getElementById('certPagination'), all.length, certPage, p => { certPage = p; renderCertsTable(); });
+
+  document.querySelectorAll('.edit-cert').forEach(btn => btn.addEventListener('click', () => openCertModal('edit', btn.dataset.sid, Number(btn.dataset.idx))));
+  document.querySelectorAll('.toggle-cert').forEach(btn => btn.addEventListener('click', () => toggleCertStatus(btn.dataset.sid, Number(btn.dataset.idx))));
+}
+['certSearchInput'].forEach(id => document.getElementById(id).addEventListener('input', () => { certPage = 1; renderCertsTable(); }));
+document.getElementById('certStatusFilter').addEventListener('change', () => { certPage = 1; renderCertsTable(); });
+
+function toggleCertStatus(studentId, idx){
+  const s = getStudentById(studentId);
+  if (!s || !s.certificates[idx]) return;
+  s.certificates[idx].status = s.certificates[idx].status === 'Issued' ? 'Not Issued' : 'Issued';
+  if (s.certificates[idx].status === 'Issued' && !s.certificates[idx].issueDate){
+    s.certificates[idx].issueDate = new Date().toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' });
+  }
+  patchStudent(studentId, { certificates: s.certificates });
+  logActivity(`${s.certificates[idx].status === 'Issued' ? 'Issued' : 'Revoked'} certificate for ${s.name} (${s.certificates[idx].courseName}).`, currentActorLabel());
+  toast('Certificate status updated', 'success');
+  renderCertsTable();
+}
+
+const certModalEl = document.getElementById('certModal');
+const certModal = new bootstrap.Modal(certModalEl);
+let pendingCertFile = '';
+
+function openCertModal(mode, studentId, idx){
+  document.getElementById('certFormError').style.display = 'none';
+  pendingCertFile = '';
+  document.getElementById('c_fileLabel').textContent = 'Choose File';
+  document.getElementById('c_fileInput').value = '';
+  document.getElementById('editCertStudentId').value = studentId || '';
+  document.getElementById('editCertIndex').value = (idx !== undefined && idx !== null) ? idx : '';
+
+  const selectWrap = document.getElementById('certStudentSelectWrap');
+  const lockedWrap = document.getElementById('certStudentLockedWrap');
+
+  if (mode === 'add'){
+    document.getElementById('certModalTitle').textContent = 'Add Certificate';
+    selectWrap.style.display = 'block'; lockedWrap.style.display = 'none';
+    document.getElementById('c_studentId').value = '';
+    document.getElementById('c_courseName').value = '';
+    document.getElementById('c_certNumber').value = '';
+    document.getElementById('c_status').value = 'Not Issued';
+    document.getElementById('c_issueDate').value = '';
+    populateCertStudentDropdown();
+    document.getElementById('c_studentId').onchange = function(){
+      const s = getStudentById(this.value);
+      if (s) document.getElementById('c_courseName').value = s.course;
+    };
+  } else {
+    const s = getStudentById(studentId);
+    const c = s && s.certificates[idx];
+    if (!s || !c) return;
+    document.getElementById('certModalTitle').textContent = 'Edit Certificate';
+    selectWrap.style.display = 'none'; lockedWrap.style.display = 'block';
+    document.getElementById('c_studentLocked').value = `${s.name} (${s.id})`;
+    document.getElementById('c_courseName').value = c.courseName || '';
+    document.getElementById('c_certNumber').value = c.certNumber || '';
+    document.getElementById('c_status').value = c.status || 'Not Issued';
+    document.getElementById('c_issueDate').value = c.issueDate || '';
+    pendingCertFile = c.image || '';
+    if (c.image) document.getElementById('c_fileLabel').textContent = 'File attached ✓';
+  }
+  certModal.show();
+}
+document.getElementById('addCertBtn').addEventListener('click', () => openCertModal('add'));
+document.getElementById('c_fileInput').addEventListener('change', function(){
+  const file = this.files[0];
+  if (!file) return;
+  readFileAsDataUrl(file, dataUrl => {
+    pendingCertFile = dataUrl;
+    document.getElementById('c_fileLabel').textContent = file.name;
+    toast('Certificate file attached', 'success');
+  });
+});
+document.getElementById('saveCertBtn').addEventListener('click', () => {
+  const errEl = document.getElementById('certFormError');
+  const courseName = document.getElementById('c_courseName').value.trim();
+  const certNumber = document.getElementById('c_certNumber').value.trim();
+  const status = document.getElementById('c_status').value;
+  const issueDate = document.getElementById('c_issueDate').value.trim();
+  const editStudentId = document.getElementById('editCertStudentId').value;
+  const editIndex = document.getElementById('editCertIndex').value;
+  const isAdd = !editStudentId;
+
+  const studentId = isAdd ? document.getElementById('c_studentId').value : editStudentId;
+  if (!studentId){ errEl.textContent = 'Please select a student.'; errEl.style.display = 'block'; return; }
+  if (!courseName){ errEl.textContent = 'Course name is required.'; errEl.style.display = 'block'; return; }
+  errEl.style.display = 'none';
+
+  const s = getStudentById(studentId);
+  if (!s){ toast('Student not found.', 'error'); return; }
+  const certs = JSON.parse(JSON.stringify(s.certificates || []));
+
+  if (isAdd){
+    certs.push({
+      id: `CERT-${studentId}-${Date.now()}`,
+      courseName, certNumber, status,
+      issueDate: issueDate || (status === 'Issued' ? new Date().toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' }) : ''),
+      image: pendingCertFile || ''
+    });
+    patchStudent(studentId, { certificates: certs });
+    logActivity(`Added certificate (${courseName}) for ${s.name}.`, currentActorLabel());
+    toast('Certificate added successfully', 'success');
+  } else {
+    const idx = Number(editIndex);
+    if (!certs[idx]){ toast('Certificate not found.', 'error'); return; }
+    certs[idx] = Object.assign({}, certs[idx], { courseName, certNumber, status, issueDate, image: pendingCertFile || certs[idx].image || '' });
+    patchStudent(studentId, { certificates: certs });
+    logActivity(`Updated certificate for ${s.name} (${courseName}).`, currentActorLabel());
+    toast('Certificate updated successfully', 'success');
+  }
+  certModal.hide();
+  renderCertsTable();
+});
+
+/* ═══════════════════════════════════════════════════════════════
+   ACTIVITY LOGS (read-only; auto-populated by every action above)
+   ═══════════════════════════════════════════════════════════════ */
+function renderActivityLog(){
+  let all = getActivity();
+  if (currentActivityFilter === 'mine') all = all.filter(a => a.actor === currentActorLabel());
+  document.getElementById('fullActivity').innerHTML = all.map(a => `
+    <div class="activity-row">
+      <div class="activity-dot ${a.actor===currentActorLabel()?'self':''}"></div>
+      <div><div style="font-size:.88rem;">${escHtml(a.text)}</div><div style="font-size:.75rem;color:var(--muted);">${escHtml(a.actor)} · ${timeAgo(a.time)}</div></div>
+    </div>`).join('');
+  document.getElementById('noActivity').style.display = all.length ? 'none' : 'block';
+}
+document.querySelectorAll('[data-activity-filter]').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('[data-activity-filter]').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    currentActivityFilter = chip.dataset.activityFilter;
+    renderActivityLog();
+  });
+});
+
+/* ═══════════════════════════════════════════════════════════════
+   MY PROFILE (own account only — no admin/department credential edits)
+   ═══════════════════════════════════════════════════════════════ */
+function renderProfile(){
+  const user = CURRENT_SALES_USER || resolveSalesUser() || {};
+  document.getElementById('profName').textContent = user.username || 'Sales Team';
+  document.getElementById('profUsername').textContent = user.username || '—';
+  document.getElementById('profLastLogin').textContent = user.loggedAt ? new Date(user.loggedAt).toLocaleString() : '—';
+}
+const changePwModalEl = document.getElementById('changePwModal');
+const changePwModal = new bootstrap.Modal(changePwModalEl);
+document.getElementById('changePwBtn').addEventListener('click', () => {
+  const creds = getDeptCredentials('sales');
+  document.getElementById('pw_username').value = creds.username;
+  document.getElementById('pw_password').value = '';
+  changePwModal.show();
+});
+document.getElementById('pw_togglePass').addEventListener('click', function(){
+  const input = document.getElementById('pw_password');
+  const isPass = input.type === 'password';
+  input.type = isPass ? 'text' : 'password';
+  this.classList.toggle('fa-eye'); this.classList.toggle('fa-eye-slash');
+});
+document.getElementById('savePwBtn').addEventListener('click', () => {
+  const username = document.getElementById('pw_username').value.trim();
+  const password = document.getElementById('pw_password').value.trim();
+  if (!username || !password){ toast('Username and password are required.', 'error'); return; }
+  saveDeptCredentials('sales', username, password);
+  logActivity('Updated Sales Department login credentials.', currentActorLabel());
+  toast('Password updated successfully', 'success');
+  changePwModal.hide();
+});
+
+/* ═══════════════════════════════════════════════════════════════
+   CROSS-TAB DATA SYNCHRONIZATION
+   If the Admin Dashboard (or another Sales tab) changes shared data
+   in another browser tab, refresh the currently visible view so this
+   page always reflects the single source of truth.
+   ═══════════════════════════════════════════════════════════════ */
+window.addEventListener('storage', (e) => {
+  if (![STUDENTS_KEY, ENQUIRIES_KEY, ACTIVITY_KEY].includes(e.key)) return;
+  const visible = SALES_VIEWS.find(v => document.getElementById('view-' + v) && document.getElementById('view-' + v).style.display !== 'none');
+  if (visible) showSalesView(visible);
+});
+
+/* ═══════════════════════════════════════════════════════════════
+   BOOT
+   ═══════════════════════════════════════════════════════════════ */
+bootSalesPortal();
+</script>
+</body>
+</html>
